@@ -1,12 +1,12 @@
-<Workspace Version="1.0.0.1180" X="148.327635815167" Y="-250.50721939261" zoom="0.931461511641261" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.0.0.1180" X="1393.49763783883" Y="-923.574475885445" zoom="1.86702477084053" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1128.11052696978" y="2275.57674805723" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>c:\netz\adieckmann\Desktop\journals\adieckmann_journal.0913.txt</System.String>
-      <HintPath>c:\netz\adieckmann\Desktop\journals\adieckmann_journal.0913.txt</HintPath>
+      <System.String>c:\netz\adieckmann\Desktop\journals\Journals_dhess\journal.0455.txt</System.String>
+      <HintPath>c:\netz\adieckmann\Desktop\journals\Journals_dhess\journal.0455.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-716.522200590308" y="2275.71166633532" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" />
     <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="cd15a18c-d579-4ea4-8150-736ffb8de456" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="String.TrimLeadingWhitespace" x="-156.954319133152" y="2307.79004648193" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.TrimLeadingWhitespace@string" />
@@ -233,7 +233,7 @@ class JournalFile:
 		return [x for x in self.Lines if x.Type == type]
 	def GetLinesByTypes(self,types):
 		return [x for x in self.Lines if x.Type in types]
-
+"""
 class JournalBlock:
 	def __init__(self, number, lines):
 		self.Number = number
@@ -241,7 +241,7 @@ class JournalBlock:
 		self.LineCount = len(lines)
 		self.Timestamp = lines[0]
 	def __repr__(self):
-		return 'JournalBlock'
+		return 'JournalBlock'"""
 
 class JournalLine:
 	def __init__(self, number, raw, block, type):
@@ -485,7 +485,7 @@ for line in lineObjs:
 
 # Round 3: Create blocks and create relationships to journal and lines
 journal = JournalFile(lineObjs, jVersion, jUsername, jModels)
-i = 0
+"""i = 0
 blocks = []
 while i &lt; (b + 1):
 	blocks.append(JournalBlock(i, journal.GetLinesByBlockNumber(1)))
@@ -493,7 +493,7 @@ while i &lt; (b + 1):
 journal.Blocks = blocks
 journal.BlockCount = b + 1
 for line in lineObjs:
-	line.Block = blocks[line.BlockNumber]
+	line.Block = blocks[line.BlockNumber]"""
 	
 OUT = journal</Script>
     </PythonNodeModels.PythonNode>
@@ -735,7 +735,7 @@ OUT = IN[0].GetLinesByBlockNumber(IN[1])</Script>
 
 OUT = IN[0].LineCount</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="a24eff03-7167-4c80-8b88-f0a3c46e2721" type="PythonNodeModels.PythonNode" nickname="JournalFile.Blocks" x="-41.5766740121268" y="638.156898092755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="a24eff03-7167-4c80-8b88-f0a3c46e2721" type="PythonNodeModels.PythonNode" nickname="JournalFile.Blocks" x="-41.5766740121268" y="638.156898092755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="true" isPinned="false" inputcount="1">
       <Script>import clr
 
 OUT = IN[0].Blocks</Script>
@@ -785,12 +785,12 @@ OUT = []
 for line in lines:
 	OUT.append(line.Block)</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="29c33623-01c3-4e02-9dbe-624232414c98" type="PythonNodeModels.PythonNode" nickname="JournalFile.GetBlockByNumber" x="-41.6384341050949" y="1094.85037846614" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="29c33623-01c3-4e02-9dbe-624232414c98" type="PythonNodeModels.PythonNode" nickname="JournalFile.GetBlockByNumber" x="-41.6384341050949" y="1094.85037846614" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="true" isPinned="false" inputcount="2">
       <Script>import clr
 
 OUT = IN[0].GetBlockByNumber(IN[1])</Script>
     </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="f3f02f33-8086-4d0e-8e11-36459e0b5d24" type="PythonNodeModels.PythonNode" nickname="JournalFile.GetBlockByNumbers" x="-44.3372689560245" y="1499.16060604442" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+    <PythonNodeModels.PythonNode guid="f3f02f33-8086-4d0e-8e11-36459e0b5d24" type="PythonNodeModels.PythonNode" nickname="JournalFile.GetBlockByNumbers" x="-44.3372689560245" y="1499.16060604442" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="true" isPinned="false" inputcount="2">
       <Script>import clr
 
 OUT = IN[0].GetBlockByNumbers(IN[1])</Script>
