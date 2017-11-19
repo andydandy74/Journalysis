@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1830.23864506088" Y="855.536330339371" zoom="0.200990056095123" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="586.160990696908" Y="2191.03799925565" zoom="0.870284008551205" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -6,8 +6,8 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1797.80829596439" y="-2234.64761904115" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Desktop\journals\journal.0855.txt</System.String>
-      <HintPath>U:\Desktop\journals\journal.0855.txt</HintPath>
+      <System.String>..\..\..\..\AppData\Local\Autodesk\Revit\Autodesk Revit 2016\Journals\journal.0087.txt</System.String>
+      <HintPath>C:\Users\andreas\AppData\Local\Autodesk\Revit\Autodesk Revit 2016\Journals\journal.0087.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1386.21996958491" y="-2234.51270076306" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -492,30 +492,6 @@ for line in lines:
       <System.String>JournalAPIMessage</System.String>
       <System.String value="JournalAPIMessage" />
     </CoreNodeModels.Input.StringInput>
-    <PythonNodeModels.PythonNode guid="6fda1981-29e9-4642-b68e-c6d970a2f812" type="PythonNodeModels.PythonNode" nickname="JournalAPIMessage.MessageType" x="350.562692218391" y="-2174.16030274151" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalAPIMessage":
-		OUT.append(line.MessageType)
-	else:
-		OUT.append(None)</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="860b78e8-350b-47d8-98d4-f41d9cc38767" type="PythonNodeModels.PythonNode" nickname="JournalAPIMessage.MessageText" x="350.562692218391" y="-2272.37177304084" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalAPIMessage":
-		OUT.append(line.MessageText)
-	else:
-		OUT.append(None)</Script>
-    </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-49.4788866991271" y="-1288.88214544022" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
@@ -849,6 +825,30 @@ if IN[0].__repr__() == 'Journal':
     <CoreNodeModels.Watch guid="3baf1662-d4da-4967-aebb-e25519efcbaf" type="CoreNodeModels.Watch" nickname="Watch" x="6.71503698227775" y="-3933.16794044185" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="e7132e29-208a-4e8a-8849-50b4b2c30060" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAPIMessage.Text" x="350.562692218391" y="-2272.37177304084" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="72e1782d-a35d-4dd9-927e-96e46058adb3" />
+      <Name value="JournalAPIMessage.Text" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalAPIMessage" />
+      </Inputs>
+      <Outputs>
+        <Output value="text" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="d9a2f643-3ae0-4ddf-b045-104939685f31" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAPIMessage.Type" x="350.562692218391" y="-2174.16030274151" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="0385a541-b8a2-402f-8cd4-cb98551a11ea" />
+      <Name value="JournalAPIMessage.Type" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalAPIMessage" />
+      </Inputs>
+      <Outputs>
+        <Output value="type" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
@@ -897,8 +897,8 @@ if IN[0].__repr__() == 'Journal':
     <Dynamo.Graph.Connectors.ConnectorModel start="74c30557-166c-489e-b588-61c1bcfcc026" start_index="0" end="0b5f86e9-c024-4782-87c3-1edee050d484" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="22cf9a1d-1bfe-47e5-8c76-ff845a533825" start_index="0" end="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" start_index="0" end="22cf9a1d-1bfe-47e5-8c76-ff845a533825" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="6fda1981-29e9-4642-b68e-c6d970a2f812" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="860b78e8-350b-47d8-98d4-f41d9cc38767" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="e7132e29-208a-4e8a-8849-50b4b2c30060" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="d9a2f643-3ae0-4ddf-b045-104939685f31" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a4d566bd-b27a-4456-8245-f8273191187f" start_index="0" end="f2745683-9de0-487f-80bc-fce2d78acb11" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="d8d69469-8d89-4566-9390-02311325ee4f" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="540dbab6-30f2-4100-8995-ea1b3fbda912" end_index="0" portType="0" />
@@ -984,11 +984,11 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" />
       <Models ModelGuid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="-289.437307781609" top="-2318.37177304084" width="865" height="237.21147029933" fontSize="30" InitialTop="-2272.37177304084" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="-289.437307781609" top="-2318.37177304084" width="908" height="237.21147029933" fontSize="30" InitialTop="-2272.37177304084" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f2745683-9de0-487f-80bc-fce2d78acb11" />
       <Models ModelGuid="a4d566bd-b27a-4456-8245-f8273191187f" />
-      <Models ModelGuid="6fda1981-29e9-4642-b68e-c6d970a2f812" />
-      <Models ModelGuid="860b78e8-350b-47d8-98d4-f41d9cc38767" />
+      <Models ModelGuid="d9a2f643-3ae0-4ddf-b045-104939685f31" />
+      <Models ModelGuid="e7132e29-208a-4e8a-8849-50b4b2c30060" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="-281.478886699127" top="-1388.88214544022" width="788" height="247" fontSize="30" InitialTop="-1342.88214544022" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" />
@@ -1002,7 +1002,7 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="2ce22c30-8557-4fb3-8f61-669f3bb5664b" />
       <Models ModelGuid="e6e523de-e80d-4324-bf14-2eff530688d5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="108577b6-5d53-426a-a69c-38ee058f6bbe" annotationText="JournalCommand.Query" left="-284.823048145" top="-2042.07362054603" width="902" height="352.911097562531" fontSize="30" InitialTop="-1996.07362054603" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="108577b6-5d53-426a-a69c-38ee058f6bbe" annotationText="JournalCommand.Query" left="-284.823048145" top="-2042.07362054603" width="902" height="352.91109756253" fontSize="30" InitialTop="-1996.07362054603" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="56cdcaba-ff64-4c34-bfee-a697f0b6ff1b" />
       <Models ModelGuid="ed93d718-f20b-4d16-ae9d-00868591c202" />
       <Models ModelGuid="2568c828-decc-4604-be9d-f2cff387f99f" />
@@ -1048,10 +1048,10 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="263" height="142" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="328" height="140" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="01391ae7-07e5-4b2a-9ea1-453da995294e" annotationText="JournalMiscCommand TEST" left="-3172.44438383198" top="-2058.92097961711" width="2472" height="1095" fontSize="30" InitialTop="-2012.92097961711" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFFFAA45">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="01391ae7-07e5-4b2a-9ea1-453da995294e" annotationText="JournalMiscCommand TEST" left="-3172.44438383198" top="-2058.92097961711" width="2472" height="811" fontSize="30" InitialTop="-2012.92097961711" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFFFAA45">
       <Models ModelGuid="7bbf59f9-26e4-4165-bac2-5f8bff52c433" />
       <Models ModelGuid="87664bfd-002d-4339-898e-b85ed3f3f877" />
       <Models ModelGuid="f2db2d2c-863a-466a-aa87-36c3098d52e4" />
@@ -1071,7 +1071,7 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="ea876c9c-3e70-4d53-b822-73ad76aa8675" />
       <Models ModelGuid="0f88a431-0fb2-4d68-bb8f-d3d9c213afab" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="d9052e87-0c21-4fe2-a0ac-2d375edfa626" annotationText="JournalComment TEST" left="-3176.83117994796" top="-922.511770275311" width="2473.163477259" height="1252.78028484677" fontSize="30" InitialTop="-876.511770275311" InitialHeight="794.999999999997" TextblockHeight="36" backgrouund="#FFFFAA45">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="d9052e87-0c21-4fe2-a0ac-2d375edfa626" annotationText="JournalComment TEST" left="-3176.83117994796" top="-922.511770275311" width="2459.43722525709" height="968.780284846766" fontSize="30" InitialTop="-876.511770275311" InitialHeight="794.999999999997" TextblockHeight="36" backgrouund="#FFFFAA45">
       <Models ModelGuid="752c6228-7d97-4e7f-b37f-2b73475147e6" />
       <Models ModelGuid="3b9143bc-6f75-46e8-a145-e1560d7dd572" />
       <Models ModelGuid="51d17aa6-c3c3-4292-a26c-2d8b9c182cf7" />
@@ -1089,7 +1089,7 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="696252f8-eb5c-493d-a64c-fb703aa13df9" />
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-343.733244997139" top="-4153.34912153399" width="628.480855713991" height="429.181181092141" fontSize="30" InitialTop="-4107.34912153399" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-343.733244997139" top="-4153.34912153399" width="628.480855713991" height="333.18118109214" fontSize="30" InitialTop="-4107.34912153399" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
       <Models ModelGuid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" />
       <Models ModelGuid="c55905b3-7b64-4eae-9c10-322d08238465" />
       <Models ModelGuid="95a036f4-9d3e-4dc0-abcf-ec88ecd8e4ec" />
@@ -1100,6 +1100,6 @@ if IN[0].__repr__() == 'Journal':
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
