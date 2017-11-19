@@ -1,0 +1,325 @@
+<Workspace Version="1.3.1.1736" X="117" Y="171" zoom="1" ScaleFactor="1" Name="Journal.ByString" Description="" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <CoreNodeModels.Input.StringInput guid="abd87ea1-65f1-4e0a-9a84-7df6e6750e66" type="CoreNodeModels.Input.StringInput" nickname="String" x="10.6434130757856" y="93.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>
+</System.String>
+      <System.String value="&#xD;&#xA;" />
+    </CoreNodeModels.Input.StringInput>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="cdd00f69-977c-4dff-a828-b154bfcfa179" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="239.643413075786" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="b1241917-b897-4a9e-8d18-439d39c35eb0" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="String.TrimLeadingWhitespace" x="569.643413075786" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.TrimLeadingWhitespace@string">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <PythonNodeModels.PythonNode guid="bc202d2a-9a69-4e98-a13f-41e20b07502f" type="PythonNodeModels.PythonNode" nickname="Python Script" x="871.643413075786" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+class Journal:
+	def __init__(self, lines, version, username, models, blockcount):
+		self.Lines = lines
+		self.LineCount = len(lines)
+		self.Version = version
+		self.User = username
+		self.LoadedModels = set(models)
+		self.BlockCount = blockcount
+	def __repr__(self):
+		return 'Journal'
+	def GetLinesByBlock(self,block):
+		return [x for x in self.Lines if x.Block == block]
+	def GetLinesByBlocks(self,blocks):
+		return [x for x in self.Lines if x.Block in blocks]
+	def GetLinesByType(self,type):
+		return [x for x in self.Lines if x.Type == type]
+	def GetLinesByTypes(self,types):
+		return [x for x in self.Lines if x.Type in types]
+
+class JournalLine:
+	def __init__(self, number, raw, block, type):
+		self.Number = number
+		self.RawText = raw
+		self.Block = block
+		self.Type = type
+	def __repr__(self):
+		return 'JournalLine'
+
+class JournalAddinEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MessageText = ''
+	def __repr__(self):
+		return 'JournalAddinEvent'
+
+class JournalAPIMessage(JournalLine):
+	def __init__(self, number, raw, block, type, msg_type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MessageType = msg_type
+		self.MessageText = ''
+	def __repr__(self):
+		return 'JournalAPIMessage'
+
+class JournalCommand(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.CommandType = ''
+		self.CommandDescription = ''
+		self.CommandID = ''
+	def __repr__(self):
+		return 'JournalCommand'
+
+class JournalComment(JournalLine):
+	def __repr__(self):
+		return 'JournalComment'
+
+class JournalData(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = ''
+		self.Values = []
+	def __repr__(self):
+		return 'JournalData'
+
+class JournalDirective(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = ''
+		self.Values = []
+	def __repr__(self):
+		return 'JournalDirective'
+
+class JournalGUIResourceUsage(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Available = 0
+		self.Used = 0
+		self.User = 0
+	def __repr__(self):
+		return 'JournalGUIResourceUsage'
+
+class JournalKeyboardEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = ''
+	def __repr__(self):
+		return 'JournalKeyboardEvent'
+		
+class JournalMemoryMetrics(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.VMAvailable = 0
+		self.VMUsed = 0
+		self.VMPeak = 0
+		self.RAMAvailable = 0
+		self.RAMUsed = 0
+		self.RAMPeak = 0
+	def __repr__(self):
+		return 'JournalMemoryMetrics'
+
+class JournalMiscCommand(JournalLine):
+	def __repr__(self):
+		return 'JournalMiscCommand'
+
+class JournalMouseEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MouseEventType = ''
+		self.Data = []
+	def __repr__(self):
+		return 'JournalMouseEvent'
+		
+class JournalTimeStamp(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.TimeStampType = ''
+		self.DateTime = ''
+		self.Description = ''
+	def __repr__(self):
+		return 'JournalTimeStamp'
+
+class JournalUIEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.UIEventType = ''
+		self.Data = []
+	def __repr__(self):
+		return 'JournalUInEvent'
+
+lines = IN[0]
+lineObjs = []
+jVersion = ''
+jUsername = ''
+jModels = []
+i = 1
+b = 0
+# Round 1: Create line objects
+for line in lines:
+	# ignore empty lines
+	if len(line) &lt; 2:
+		pass
+	elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E "):
+		b += 1
+		lineObjs.append(JournalTimeStamp(i,line,b,'JournalTimeStamp'))
+	elif ":&lt; API_SUCCESS { " in line:
+		lineObjs.append(JournalAPIMessage(i,line,b,'JournalAPIMessage','Success'))
+	elif ":&lt; API_ERROR { " in line:
+		lineObjs.append(JournalAPIMessage(i,line,b,'JournalAPIMessage','Error'))
+	elif ":: Delta VM: " in line or line.startswith("' 0:&lt; Initial VM: "):
+		lineObjs.append(JournalMemoryMetrics(i,line,b,'JournalMemoryMetrics'))
+	elif ":&lt; GUI Resource Usage GDI: " in line:
+		lineObjs.append(JournalGUIResourceUsage(i,line,b,'JournalGUIResourceUsage'))
+	elif line.startswith("Jrn.Data "):
+		lineObjs.append(JournalData(i,line,b,'JournalData'))
+	elif line.startswith("Jrn.Directive "):
+		lineObjs.append(JournalDirective(i,line,b,'JournalDirective'))
+	elif line.startswith("Jrn.Command "):
+		lineObjs.append(JournalCommand(i,line,b,'JournalCommand'))
+	elif line.startswith("Jrn.Key "):
+		lineObjs.append(JournalKeyboardEvent(i,line,b,'JournalKeyboardEvent'))
+	elif line.startswith("Jrn.AddInEvent "):
+		lineObjs.append(JournalAddinEvent(i,line,b,'JournalAddinEvent'))
+	elif line.startswith('Jrn.Wheel') or line.startswith('Jrn.MouseMove') or line.startswith('Jrn.LButtonUp') or line.startswith('Jrn.LButtonDown')  or line.startswith('Jrn.LButtonDblClk') or line.startswith('Jrn.MButtonUp') or line.startswith('Jrn.MButtonDown') or line.startswith('Jrn.RButtonUp') or line.startswith('Jrn.RButtonDown'):
+		lineObjs.append(JournalMouseEvent(i,line,b,'JournalMouseEvent'))
+	elif line.startswith('Jrn.Activate') or line.startswith('Jrn.AppButtonEvent') or line.startswith('Jrn.Browser') or line.startswith('Jrn.Close') or line.startswith('Jrn.ComboBox') or line.startswith('Jrn.Edit') or line.startswith('Jrn.Grid') or line.startswith('Jrn.ListBox') or line.startswith('Jrn.PropertiesPalette') or line.startswith('Jrn.PushButton') or line.startswith('Jrn.RadioButton') or line.startswith('Jrn.RibbonEvent') or line.startswith('Jrn.SliderCtrl') or line.startswith('Jrn.TabCtrl') or line.startswith('Jrn.TreeCtrl'):
+		lineObjs.append(JournalUIEvent(i,line,b,'JournalUIEvent'))
+	# append linebreaks to previous line
+	elif lineObjs[-1].RawText[-1] == "_":
+		lineObjs[-1].RawText = lineObjs[-1].RawText[:-1] + line
+	# append linebreaks in commands
+	elif line[0] == ",":
+		lineObjs[-1].RawText = (lineObjs[-1].RawText + line).replace(" _,",",")
+	elif line[0] == "'":
+		# append linebreaks in API Messages
+		if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"):
+			lineObjs[-1].RawText += " " + line[1:]
+		else:
+			lineObjs.append(JournalComment(i,line,b,'JournalComment'))
+	else:
+		lineObjs.append(JournalMiscCommand(i,line,b,'JournalMiscCommand'))
+	i += 1
+jBlockCount = b
+
+# Round 2: Process raw multiline text and fill type-specific attributes
+for line in lineObjs:
+	if line.Type == 'JournalAPIMessage':
+		line.MessageText = line.RawText.split("{ ")[1].split(" }")[0].strip()
+	elif line.Type == 'JournalDirective':
+		d1 = line.RawText.split('"  , ')
+		line.Key = d1[0][15:]
+		for d2 in d1[1].split(","):
+			line.Values.append(d2.strip().replace('"',''))
+		# Add Revit version to journal metadata
+		if line.Key == 'Version':
+			jVersion = line.Values[0]
+		# Add username to journal metadata
+		elif line.Key == 'Username':
+			jUsername = line.Values[0]
+	elif line.Type == 'JournalData':
+		d1 = line.RawText.split('"  , ')
+		line.Key = d1[0][10:]
+		for d2 in d1[1].split(","):
+			line.Values.append(d2.strip().replace('"',''))
+		# Add model list to journal metadata
+		if line.Key == 'File Name' and line.Values[0] == 'IDOK':
+			jModels.append(line.Values[1])
+	elif line.Type == 'JournalCommand':
+		c1 = line.RawText.split('" , "')
+		line.CommandType = c1[0][13:]
+		c2 = c1[1].split(" , ")
+		line.CommandDescription = c2[0]
+		line.CommandID = c2[1][:-1]
+	elif line.Type == 'JournalMouseEvent':
+		m1 = line.RawText.split(" ",1)
+		line.MouseEventType = m1[0][4:].strip()
+		for m2 in m1[1].split(","):
+			line.Data.append(int(m2.strip()))
+	elif line.Type == 'JournalKeyboardEvent':
+		line.Key = line.RawText.split('"')[1]
+	elif line.Type == 'JournalGUIResourceUsage':
+		g2 = []
+		for g1 in line.RawText.split(","):
+			g2.append(int(g1.strip().split()[-1]))
+		line.Available = g2[0]
+		line.Used = g2[1]
+		line.User = g2[2]
+	elif line.Type == 'JournalUIEvent':
+		d1 = line.RawText.split(" ",1)
+		line.UIEventType = d1[0][4:]
+		for d2 in d1[1].split(","):
+			d3 = d2.strip().replace('"','').strip()
+			if line.UIEventType == "RibbonEvent":
+				for d4 in d3.split(":"):
+					d4 = d4.strip()
+					if d4 != "": line.Data.append(d4)
+			elif d3 != "": line.Data.append(d3)
+	elif line.Type == 'JournalAddinEvent':
+		line.MessageText = line.RawText.split('"')[3]
+	elif line.Type == 'JournalTimeStamp':
+		line.TimeStampType = line.RawText[1]
+		ts1 = line.RawText.split(";")	
+		line.DateTime = ts1[0][3:]
+		line.Description = ts1[1][7:]
+	elif line.Type == 'JournalMemoryMetrics':
+		if "Initial VM" in line.RawText:
+			m1 = line.RawText.split(":",2)[2].replace(";","").split()
+		else:
+			m1 = line.RawText.split(":",6)[6].split()
+		m3 = []
+		m4 = []
+		for m2 in m1:
+			if m2.isdigit(): 
+				m3.append(int(m2))
+			elif m2 in ("Avail","Used","Peak"):
+				m4.append(m2)
+		line.VMAvailable = m3[0]
+		line.VMUsed = m3[1]
+		if len(m3) == 6:		
+			line.VMPeak = m3[2]
+			line.RAMAvailable = m3[3]
+			line.RAMUsed = m3[4]
+			line.RAMPeak = m3[5]
+		elif len(m3) == 5:
+			if m4[2] == "Avail":
+				line.VMPeak = None
+				line.RAMAvailable = m3[2]
+				line.RAMUsed = m3[3]
+				line.RAMPeak = m3[4]
+			elif m4[2] == "Peak":
+				line.VMPeak = m3[2]
+				line.RAMAvailable = m3[3]
+				line.RAMUsed = m3[4]
+				line.RAMPeak = None
+		elif len(m3) == 4:
+			line.VMPeak = None
+			line.RAMAvailable = m3[2]
+			line.RAMUsed = m3[3]
+			line.RAMPeak = None
+
+OUT = Journal(lineObjs, jVersion, jUsername, jModels,jBlockCount)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="10.6434130757856" y="9.79083982502448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="str : string" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="319b6752-3aec-4874-a8cc-871a6f35e165" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1095.64341307579" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="journal" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="abd87ea1-65f1-4e0a-9a84-7df6e6750e66" start_index="0" end="cdd00f69-977c-4dff-a828-b154bfcfa179" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="cdd00f69-977c-4dff-a828-b154bfcfa179" start_index="0" end="b1241917-b897-4a9e-8d18-439d39c35eb0" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b1241917-b897-4a9e-8d18-439d39c35eb0" start_index="0" end="bc202d2a-9a69-4e98-a13f-41e20b07502f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bc202d2a-9a69-4e98-a13f-41e20b07502f" start_index="0" end="319b6752-3aec-4874-a8cc-871a6f35e165" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" start_index="0" end="cdd00f69-977c-4dff-a828-b154bfcfa179" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
