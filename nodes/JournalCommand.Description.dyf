@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="388" Y="164" zoom="1" ScaleFactor="1" Name="JournalCommand.Description" Description="" ID="e6193c33-e573-4dc5-b8e5-e4391b7e1a53" Category="Journalysis.JournalLine.Command.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="99f96da1-8de0-43f3-be14-db0630aaa73e" type="PythonNodeModels.PythonNode" nickname="Python Script" x="303.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalCommandDescription(input):
+	if input.__repr__() == 'JournalCommand': return input.CommandDescription
+	else: return 0
+
+OUT = process_input(journalCommandDescription,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a8989bd5-cce2-4869-a6c8-b9b25c50316e" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="58.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalCommand" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="4ffb136f-09bb-4413-94a5-ef22fab1de01" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="527.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="description" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="99f96da1-8de0-43f3-be14-db0630aaa73e" start_index="0" end="4ffb136f-09bb-4413-94a5-ef22fab1de01" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a8989bd5-cce2-4869-a6c8-b9b25c50316e" start_index="0" end="99f96da1-8de0-43f3-be14-db0630aaa73e" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalAddinEvent.MessageText" Description="" ID="5dd51041-47ab-442b-ae79-16b535c8f245" Category="Journalysis.JournalLine.AddinEvent.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalAddinEvent.Text" Description="" ID="5dd51041-47ab-442b-ae79-16b535c8f245" Category="Journalysis.JournalLine.AddinEvent.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -24,7 +24,7 @@ OUT = process_input(journalAddinEventMessageText,IN[0])</Script>
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="47e9f5c2-b3d4-4f2d-8240-27b5bf08a36e" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="515.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <Symbol value="messageText" />
+      <Symbol value="text" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
