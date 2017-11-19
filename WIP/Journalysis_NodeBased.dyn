@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1861.83919034582" Y="829.304082508923" zoom="0.225923043266889" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="1847.89986705968" Y="840.875394957285" zoom="0.214924847965431" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -6,8 +6,8 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1797.80829596439" y="-2234.64761904115" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0462_SoftCrash.txt</System.String>
-      <HintPath>U:\Desktop\journals\Journals_dhess\journal.0462_SoftCrash.txt</HintPath>
+      <System.String>..\..\..\Desktop\journals\journal.0855.txt</System.String>
+      <HintPath>U:\Desktop\journals\journal.0855.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1386.21996958491" y="-2234.51270076306" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -474,18 +474,6 @@ for line in lines:
       <System.String>JournalAddinEvent</System.String>
       <System.String value="JournalAddinEvent" />
     </CoreNodeModels.Input.StringInput>
-    <PythonNodeModels.PythonNode guid="d0485435-82a9-4158-a85c-1225c6980c0c" type="PythonNodeModels.PythonNode" nickname="JournalAddinEvent.MessageText" x="297.138824545575" y="-2468.75414276527" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalAddinEvent":
-		OUT.append(line.MessageText)
-	else:
-		OUT.append(None)</Script>
-    </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="f2745683-9de0-487f-80bc-fce2d78acb11" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-39.437307781609" y="-2228.16030274151" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
@@ -692,7 +680,7 @@ for line in lines:
         <Output value="journalLines" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Input.StringInput guid="87664bfd-002d-4339-898e-b85ed3f3f877" type="CoreNodeModels.Input.StringInput" nickname="String" x="-3162.44438383198" y="-1842.42097961711" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="87664bfd-002d-4339-898e-b85ed3f3f877" type="CoreNodeModels.Input.StringInput" nickname="String" x="-3162.44438383198" y="-1842.42097961711" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="true" isPinned="false">
       <System.String>JournalMiscCommand</System.String>
       <System.String value="JournalMiscCommand" />
     </CoreNodeModels.Input.StringInput>
@@ -770,7 +758,7 @@ for line in lines:
         <Output value="journalLines" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Input.StringInput guid="3b9143bc-6f75-46e8-a145-e1560d7dd572" type="CoreNodeModels.Input.StringInput" nickname="String" x="-3166.83117994796" y="-698.32005183959" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="3b9143bc-6f75-46e8-a145-e1560d7dd572" type="CoreNodeModels.Input.StringInput" nickname="String" x="-3166.83117994796" y="-698.32005183959" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="true" isPinned="false">
       <System.String>JournalComment</System.String>
       <System.String value="JournalComment" />
     </CoreNodeModels.Input.StringInput>
@@ -825,6 +813,27 @@ for line in lines:
     <CoreNodeModels.Watch guid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" type="CoreNodeModels.Watch" nickname="Watch" x="-1123.80391102748" y="-2711.45432647314" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAddinEvent.MessageText" x="297.138824545575" y="-2468.75414276527" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="5dd51041-47ab-442b-ae79-16b535c8f245" />
+      <Name value="JournalAddinEvent.MessageText" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalAddinEvent" />
+      </Inputs>
+      <Outputs>
+        <Output value="messageText" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <PythonNodeModels.PythonNode guid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-324.171398799286" y="-3732.12464264544" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+OUT = []
+if IN[0].__repr__() == 'Journal':
+	allAPImsgs = IN[0].GetLinesByType('JournalAPIMessage')
+	OUT = [x.MessageText for x in allAPImsgs if x.MessageType == 'Error']</Script>
+    </PythonNodeModels.PythonNode>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
@@ -859,6 +868,7 @@ for line in lines:
     <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="d95e228c-0e5b-4a9a-9571-ab36940d47bf" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="7bbf59f9-26e4-4165-bac2-5f8bff52c433" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="752c6228-7d97-4e7f-b37f-2b73475147e6" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="35e02060-e5aa-461d-84ea-5baa1985c60e" start_index="0" end="e4f34336-c591-4afa-8a7d-c7790d8b74d7" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="35e02060-e5aa-461d-84ea-5baa1985c60e" start_index="0" end="43df1a3e-f6d1-4d27-a991-0aae5eb1cec3" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="35e02060-e5aa-461d-84ea-5baa1985c60e" start_index="0" end="ea876c9c-3e70-4d53-b822-73ad76aa8675" end_index="0" portType="0" />
@@ -869,7 +879,7 @@ for line in lines:
     <Dynamo.Graph.Connectors.ConnectorModel start="ac80c0dc-be09-4f7f-b71c-dd1db38cb4e6" start_index="0" end="6e53e5ab-1ac1-459f-9a21-76a0135dd304" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="0b5f86e9-c024-4782-87c3-1edee050d484" start_index="0" end="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="74c30557-166c-489e-b588-61c1bcfcc026" start_index="0" end="0b5f86e9-c024-4782-87c3-1edee050d484" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="22cf9a1d-1bfe-47e5-8c76-ff845a533825" start_index="0" end="d0485435-82a9-4158-a85c-1225c6980c0c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="22cf9a1d-1bfe-47e5-8c76-ff845a533825" start_index="0" end="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" start_index="0" end="22cf9a1d-1bfe-47e5-8c76-ff845a533825" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="6fda1981-29e9-4642-b68e-c6d970a2f812" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="860b78e8-350b-47d8-98d4-f41d9cc38767" end_index="0" portType="0" />
@@ -923,6 +933,7 @@ for line in lines:
     <Dynamo.Graph.Notes.NoteModel guid="1b10df0f-1ca5-4055-b167-01717600a3ae" text="QUESTION: &#xD;&#xA;Do you see more than three items in this list? (Dim, Set, Jrn.Size)" x="-1000.44438383198" y="-2012.92097961711" />
     <Dynamo.Graph.Notes.NoteModel guid="2dc3c2c3-de39-4722-8ff9-6293cfad2729" text="QUESTION:&#xD;&#xA;Would you like to be able to pull any of this data from the journal file?" x="-1005.39395469087" y="-876.511770275311" />
     <Dynamo.Graph.Notes.NoteModel guid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" text="QUESTION:&#xD;&#xA;Does the graph execute okay? Do any nodes turn yellow?" x="-991.055673169307" y="-2313.04291648462" />
+    <Dynamo.Graph.Notes.NoteModel guid="c55905b3-7b64-4eae-9c10-322d08238465" text="Extract all API error messages" x="-321.981200714799" y="-3772.83223709763" />
   </Notes>
   <Annotations>
     <Dynamo.Graph.Annotations.AnnotationModel guid="306b06b6-efb8-4452-96e2-97e7a3404ea9" annotationText="Journal.Query" left="-346.038696299275" top="-3236.89668580701" width="268.081089030294" height="618.42497284342" fontSize="30" InitialTop="-3190.89668580701" InitialHeight="602.424972843421" TextblockHeight="36" backgrouund="#FFC1D676">
@@ -949,10 +960,10 @@ for line in lines:
       <Models ModelGuid="74c30557-166c-489e-b588-61c1bcfcc026" />
       <Models ModelGuid="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="-284.526185339345" top="-2514.75414276527" width="803.66500988492" height="165.92730453151" fontSize="30" InitialTop="-2468.75414276527" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="-284.526185339345" top="-2514.75414276527" width="901.66500988492" height="165.92730453151" fontSize="30" InitialTop="-2468.75414276527" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" />
       <Models ModelGuid="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" />
-      <Models ModelGuid="d0485435-82a9-4158-a85c-1225c6980c0c" />
+      <Models ModelGuid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="-289.437307781609" top="-2318.37177304084" width="865" height="237.21147029933" fontSize="30" InitialTop="-2272.37177304084" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f2745683-9de0-487f-80bc-fce2d78acb11" />
@@ -1018,7 +1029,7 @@ for line in lines:
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="360" height="142" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="263" height="142" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="01391ae7-07e5-4b2a-9ea1-453da995294e" annotationText="JournalMiscCommand TEST" left="-3172.44438383198" top="-2058.92097961711" width="2472" height="1095" fontSize="30" InitialTop="-2012.92097961711" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
@@ -1058,6 +1069,10 @@ for line in lines:
     <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="JournalLineTypes" left="-1399.66827572331" top="-2757.78897028465" width="516.86436469583" height="375.33464381151" fontSize="30" InitialTop="-2711.78897028465" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="696252f8-eb5c-493d-a64c-fb703aa13df9" />
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-334.171398799286" top="-3854.83223709763" width="197.190198084487" height="215.707594452191" fontSize="30" InitialTop="-3772.83223709763" InitialHeight="123" TextblockHeight="72" backgrouund="#FF48B9FF">
+      <Models ModelGuid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" />
+      <Models ModelGuid="c55905b3-7b64-4eae-9c10-322d08238465" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
