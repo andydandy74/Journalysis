@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="585.181576542093" Y="2053.40685466402" zoom="1.05221840921068" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="944.977691969961" Y="1481.57653442177" zoom="0.90867354952402" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -42,34 +42,6 @@
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
-    <PythonNodeModels.PythonNode guid="540dbab6-30f2-4100-8995-ea1b3fbda912" type="PythonNodeModels.PythonNode" nickname="JournalDirective.Values" x="337.216515227287" y="-1082.87063405528" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalDirectiveValues(input):
-	if input.__repr__() == 'JournalDirective': return input.Values
-	else: return []
-
-OUT = process_input(journalDirectiveValues,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="d8d69469-8d89-4566-9390-02311325ee4f" type="PythonNodeModels.PythonNode" nickname="JournalDirective.Key" x="337.216515227287" y="-1190.87063405528" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalDirectiveKey(input):
-	if input.__repr__() == 'JournalDirective': return input.Key
-	else: return None
-
-OUT = process_input(journalDirectiveKey,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
     <PythonNodeModels.PythonNode guid="aeb58506-358e-47b2-b12d-c7f0a5ad6030" type="PythonNodeModels.PythonNode" nickname="JournalMouseEvent.Data" x="362.443718294996" y="474.748795989714" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
@@ -97,48 +69,6 @@ def journalMouseEventType(input):
 	else: return None
 
 OUT = process_input(journalMouseEventType,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="b17e54cb-6264-4eb8-b8b3-cda59a8e17f3" type="PythonNodeModels.PythonNode" nickname="JournalGUIResourceUsage.Available" x="393.688291761973" y="-914.728763847364" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalGUIResourceUsageAvailable(input):
-	if input.__repr__() == 'JournalGUIResourceUsage': return input.Available
-	else: return None
-
-OUT = process_input(journalGUIResourceUsageAvailable,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="cf653478-63a8-42a3-9d89-04211a266a13" type="PythonNodeModels.PythonNode" nickname="JournalGUIResourceUsage.Used" x="396.386924903795" y="-809.427396989185" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalGUIResourceUsageUsed(input):
-	if input.__repr__() == 'JournalGUIResourceUsage': return input.Used
-	else: return None
-
-OUT = process_input(journalGUIResourceUsageUsed,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="c79c3b96-f2c0-4850-a48a-ba0258529346" type="PythonNodeModels.PythonNode" nickname="JournalGUIResourceUsage.User" x="393.688291761973" y="-698.728763847363" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalGUIResourceUsageUser(input):
-	if input.__repr__() == 'JournalGUIResourceUsage': return input.User
-	else: return None
-
-OUT = process_input(journalGUIResourceUsageUser,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="58a83d89-e9b4-48fa-87f4-36c7cec0c6ba" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-560.514555391911" y="-3392.47061724689" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="30..34;&#xA;33;" ShouldFocus="false" />
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="18f9547a-d733-42f2-8baa-046b724353fa" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-783.614314201471" y="-3498.62914297229" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="{&quot;JournalData&quot;,&quot;JournalDirective&quot;};&#xA;&quot;JournalData&quot;;" ShouldFocus="false" />
@@ -169,20 +99,6 @@ def journalUIEventData(input):
 	else: return None
 
 OUT = process_input(journalUIEventData,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="1d70c89f-ce54-47fe-96c9-431e61196f3e" type="PythonNodeModels.PythonNode" nickname="JournalMemoryMetrics.VMAvailable" x="379.317106043062" y="-340.595469115578" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalMemoryMetricsVMAvailable(input):
-	if input.__repr__() == 'JournalMemoryMetrics': return input.VMAvailable
-	else: return None
-
-OUT = process_input(journalMemoryMetricsVMAvailable,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <PythonNodeModels.PythonNode guid="2bee6c92-f40a-47a1-aa9a-39c661bd06c3" type="PythonNodeModels.PythonNode" nickname="JournalMemoryMetrics.VMUsed" x="379.317106043062" y="-232.595469115578" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
@@ -426,7 +342,7 @@ OUT = process_input(journalTimeStampDescription,IN[0])</Script>
       <System.String>JournalTimeStamp</System.String>
       <System.String value="JournalTimeStamp" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="0b5f86e9-c024-4782-87c3-1edee050d484" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-36.6995777360858" y="-530.581793905136" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="0b5f86e9-c024-4782-87c3-1edee050d484" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-34.7194594256344" y="-728.593624950278" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <ID value="5fa50a37-dad4-4723-9030-912e3cde1c72" />
@@ -440,24 +356,10 @@ OUT = process_input(journalTimeStampDescription,IN[0])</Script>
         <Output value="journalLines" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Input.StringInput guid="74c30557-166c-489e-b588-61c1bcfcc026" type="CoreNodeModels.Input.StringInput" nickname="String" x="-272.699577736086" y="-504.581793905136" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="74c30557-166c-489e-b588-61c1bcfcc026" type="CoreNodeModels.Input.StringInput" nickname="String" x="-270.719459425635" y="-702.593624950278" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>JournalKeyboardEvent</System.String>
       <System.String value="JournalKeyboardEvent" />
     </CoreNodeModels.Input.StringInput>
-    <PythonNodeModels.PythonNode guid="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" type="PythonNodeModels.PythonNode" nickname="JournalKeyboardEvent.Key" x="335.980955429489" y="-531.204183475459" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
-      <PortInfo index="0" default="False" />
-      <Script>import clr
-
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
-	
-def journalKeyboardEventKey(input):
-	if input.__repr__() == 'JournalKeyboardEvent': return input.Key
-	else: return None
-
-OUT = process_input(journalKeyboardEventKey,IN[0])</Script>
-    </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-39.65055148485" y="-2453.52725055215" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
@@ -494,7 +396,7 @@ OUT = process_input(journalKeyboardEventKey,IN[0])</Script>
       <System.String>JournalAPIMessage</System.String>
       <System.String value="JournalAPIMessage" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-52.7834847727127" y="-1136.87063405528" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-50.4925933628375" y="-1317.85105543541" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <ID value="5fa50a37-dad4-4723-9030-912e3cde1c72" />
@@ -508,7 +410,7 @@ OUT = process_input(journalKeyboardEventKey,IN[0])</Script>
         <Output value="journalLines" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Input.StringInput guid="1605f9d0-149e-4648-8fe0-ada143f5d864" type="CoreNodeModels.Input.StringInput" nickname="String" x="-274.783484772713" y="-1110.87063405528" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="1605f9d0-149e-4648-8fe0-ada143f5d864" type="CoreNodeModels.Input.StringInput" nickname="String" x="-272.492593362838" y="-1291.85105543541" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>JournalDirective</System.String>
       <System.String value="JournalDirective" />
     </CoreNodeModels.Input.StringInput>
@@ -566,7 +468,7 @@ OUT = process_input(journalKeyboardEventKey,IN[0])</Script>
       <System.String>JournalMouseEvent</System.String>
       <System.String value="JournalMouseEvent" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="104f80f9-a949-4461-adb9-6fb0de4fe901" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="3.68829176197369" y="-806.728763847363" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="104f80f9-a949-4461-adb9-6fb0de4fe901" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="11.6087650037794" y="-993.849944185022" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <ID value="5fa50a37-dad4-4723-9030-912e3cde1c72" />
@@ -580,7 +482,7 @@ OUT = process_input(journalKeyboardEventKey,IN[0])</Script>
         <Output value="journalLines" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Input.StringInput guid="a13f9b61-87e4-410b-bab0-a879cd06bd77" type="CoreNodeModels.Input.StringInput" nickname="String" x="-276.311708238027" y="-780.728763847363" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="a13f9b61-87e4-410b-bab0-a879cd06bd77" type="CoreNodeModels.Input.StringInput" nickname="String" x="-268.391234996221" y="-967.849944185022" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>JournalGUIResourceUsage</System.String>
       <System.String value="JournalGUIResourceUsage" />
     </CoreNodeModels.Input.StringInput>
@@ -887,6 +789,90 @@ if IN[0].__repr__() == 'Journal':
         <Output value="values" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6654b90a-783e-44d8-af76-0d4014d049d9" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalDirective.Key" x="339.507406637162" y="-1371.85105543541" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="e6f22f52-e574-4dcd-a8e3-996534f3a6ac" />
+      <Name value="JournalDirective.Key" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalDirective" />
+      </Inputs>
+      <Outputs>
+        <Output value="key" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="794aa987-a7c4-4f98-96f9-a52f4b3a9513" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalDirective.Values" x="339.507406637162" y="-1263.85105543541" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="98ff0d09-bd8c-41bc-afe2-9e0db0ec288f" />
+      <Name value="JournalDirective.Values" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalDirective" />
+      </Inputs>
+      <Outputs>
+        <Output value="values" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6c4abac6-7da0-4f91-b88b-127f9513459f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalGUIResourceUsage.Available" x="401.608765003779" y="-1101.84994418502" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="cf574004-4ccc-4242-a0bd-27e4683efbbd" />
+      <Name value="JournalGUIResourceUsage.Available" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalGUIResourceUsage" />
+      </Inputs>
+      <Outputs>
+        <Output value="available" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="f7376835-64ab-47cc-aa19-f0fcc81b8da9" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalGUIResourceUsage.Used" x="404.307398145601" y="-996.548577326844" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="89417227-ca61-4654-918a-d3e584b81c46" />
+      <Name value="JournalGUIResourceUsage.Used" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalGUIResourceUsage" />
+      </Inputs>
+      <Outputs>
+        <Output value="used" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalGUIResourceUsage.User" x="401.608765003779" y="-885.849944185022" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="1cdb061e-f42c-4871-9d40-cbc3e7e10bc1" />
+      <Name value="JournalGUIResourceUsage.User" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalGUIResourceUsage" />
+      </Inputs>
+      <Outputs>
+        <Output value="user" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="ed38f7c8-9d86-4267-a327-395b65095daa" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalKeyboardEvent.Key" x="337.96107373994" y="-729.216014520601" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="4f4e5558-d31e-47e5-860b-fabbfb444b1c" />
+      <Name value="JournalKeyboardEvent.Key" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalKeyboardEvent" />
+      </Inputs>
+      <Outputs>
+        <Output value="key" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="f65507dc-d43f-4360-ab36-f4fdabccf266" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalMemoryMetrics.VMAvailable" x="379.317106043062" y="-340.595469115578" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="2605bfba-08bc-473f-80a9-9d7b60b5317d" />
+      <Name value="JournalMemoryMetrics.VMAvailable" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalMemoryMetrics" />
+      </Inputs>
+      <Outputs>
+        <Output value="VMAvailable" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
@@ -931,15 +917,15 @@ if IN[0].__repr__() == 'Journal':
     <Dynamo.Graph.Connectors.ConnectorModel start="6e53e5ab-1ac1-459f-9a21-76a0135dd304" start_index="0" end="14e496e1-8461-42f7-8fc5-27740e5bbc42" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="6e53e5ab-1ac1-459f-9a21-76a0135dd304" start_index="0" end="2de18472-91e2-4b31-8119-a43eba4bfd16" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="ac80c0dc-be09-4f7f-b71c-dd1db38cb4e6" start_index="0" end="6e53e5ab-1ac1-459f-9a21-76a0135dd304" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="0b5f86e9-c024-4782-87c3-1edee050d484" start_index="0" end="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0b5f86e9-c024-4782-87c3-1edee050d484" start_index="0" end="ed38f7c8-9d86-4267-a327-395b65095daa" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="74c30557-166c-489e-b588-61c1bcfcc026" start_index="0" end="0b5f86e9-c024-4782-87c3-1edee050d484" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="22cf9a1d-1bfe-47e5-8c76-ff845a533825" start_index="0" end="a6bee305-9287-4c4f-b343-00c9d44c33e7" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" start_index="0" end="22cf9a1d-1bfe-47e5-8c76-ff845a533825" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="e7132e29-208a-4e8a-8849-50b4b2c30060" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f2745683-9de0-487f-80bc-fce2d78acb11" start_index="0" end="d9a2f643-3ae0-4ddf-b045-104939685f31" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a4d566bd-b27a-4456-8245-f8273191187f" start_index="0" end="f2745683-9de0-487f-80bc-fce2d78acb11" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="d8d69469-8d89-4566-9390-02311325ee4f" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="540dbab6-30f2-4100-8995-ea1b3fbda912" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="6654b90a-783e-44d8-af76-0d4014d049d9" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5a2cefdc-bec4-4ee4-ab17-1a530644372c" start_index="0" end="794aa987-a7c4-4f98-96f9-a52f4b3a9513" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="1605f9d0-149e-4648-8fe0-ada143f5d864" start_index="0" end="5a2cefdc-bec4-4ee4-ab17-1a530644372c" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" start_index="0" end="b02d5c51-c987-4f2e-8b3c-58f3839cb997" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" start_index="0" end="bd9c4251-5e33-4ab8-8ae1-10d9f2c06bac" end_index="0" portType="0" />
@@ -951,19 +937,19 @@ if IN[0].__repr__() == 'Journal':
     <Dynamo.Graph.Connectors.ConnectorModel start="4de33e6b-2604-495f-aaa1-74b21cb032dc" start_index="0" end="1800e010-1376-420c-a45e-6e9976eb5598" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="4de33e6b-2604-495f-aaa1-74b21cb032dc" start_index="0" end="aeb58506-358e-47b2-b12d-c7f0a5ad6030" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="35ac1207-c2bf-434b-9ffa-b9923cc93e02" start_index="0" end="4de33e6b-2604-495f-aaa1-74b21cb032dc" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="b17e54cb-6264-4eb8-b8b3-cda59a8e17f3" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="cf653478-63a8-42a3-9d89-04211a266a13" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="c79c3b96-f2c0-4850-a48a-ba0258529346" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="6c4abac6-7da0-4f91-b88b-127f9513459f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="f7376835-64ab-47cc-aa19-f0fcc81b8da9" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="104f80f9-a949-4461-adb9-6fb0de4fe901" start_index="0" end="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a13f9b61-87e4-410b-bab0-a879cd06bd77" start_index="0" end="104f80f9-a949-4461-adb9-6fb0de4fe901" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="dac3b953-16fe-49aa-8051-3145b850c610" start_index="0" end="5e5d9c15-3a94-4cd5-a5d0-85dd094b8391" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="dac3b953-16fe-49aa-8051-3145b850c610" start_index="0" end="656c120e-d39b-41aa-8d3b-76ae1ddd4483" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="2683393e-0a63-4fb7-a8fb-4c5df785f226" start_index="0" end="dac3b953-16fe-49aa-8051-3145b850c610" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="1d70c89f-ce54-47fe-96c9-431e61196f3e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="2bee6c92-f40a-47a1-aa9a-39c661bd06c3" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="3ce2d6f0-5fab-4745-8c93-041ef01201a6" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="ee0f365f-6e87-4f8a-aebf-23eb75c069a0" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="d5ad3350-a413-49d2-a339-d6f89e29c100" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="f141112c-2e59-486b-b490-3b37aa8d5b36" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="f65507dc-d43f-4360-ab36-f4fdabccf266" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="9c53dd18-96da-4542-9501-af0984f47a08" start_index="0" end="d95e228c-0e5b-4a9a-9571-ab36940d47bf" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="7bbf59f9-26e4-4165-bac2-5f8bff52c433" start_index="0" end="911e0eab-bcb8-4f98-9bcf-c39a10a29641" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87664bfd-002d-4339-898e-b85ed3f3f877" start_index="0" end="7bbf59f9-26e4-4165-bac2-5f8bff52c433" end_index="1" portType="0" />
@@ -1012,10 +998,10 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="6e53e5ab-1ac1-459f-9a21-76a0135dd304" />
       <Models ModelGuid="ac80c0dc-be09-4f7f-b71c-dd1db38cb4e6" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="-282.699577736086" top="-577.204183475459" width="805.680533165575" height="165.622389570323" fontSize="30" InitialTop="-531.204183475459" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="-280.719459425635" top="-775.216014520601" width="903.680533165575" height="165.622389570323" fontSize="30" InitialTop="-729.216014520601" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="0b5f86e9-c024-4782-87c3-1edee050d484" />
       <Models ModelGuid="74c30557-166c-489e-b588-61c1bcfcc026" />
-      <Models ModelGuid="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" />
+      <Models ModelGuid="ed38f7c8-9d86-4267-a327-395b65095daa" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="-286.65055148485" top="-2499.52725055215" width="901" height="165" fontSize="30" InitialTop="-2453.52725055215" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" />
@@ -1028,11 +1014,11 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="d9a2f643-3ae0-4ddf-b045-104939685f31" />
       <Models ModelGuid="e7132e29-208a-4e8a-8849-50b4b2c30060" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="-284.783484772713" top="-1236.87063405528" width="788" height="247" fontSize="30" InitialTop="-1190.87063405528" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="-282.492593362838" top="-1417.85105543541" width="886" height="247" fontSize="30" InitialTop="-1371.85105543541" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" />
       <Models ModelGuid="1605f9d0-149e-4648-8fe0-ada143f5d864" />
-      <Models ModelGuid="d8d69469-8d89-4566-9390-02311325ee4f" />
-      <Models ModelGuid="540dbab6-30f2-4100-8995-ea1b3fbda912" />
+      <Models ModelGuid="6654b90a-783e-44d8-af76-0d4014d049d9" />
+      <Models ModelGuid="794aa987-a7c4-4f98-96f9-a52f4b3a9513" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="-285.451009300095" top="-1686.81964615599" width="837.176108342906" height="248.17055511525" fontSize="30" InitialTop="-1640.81964615599" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" />
@@ -1053,12 +1039,12 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="aeb58506-358e-47b2-b12d-c7f0a5ad6030" />
       <Models ModelGuid="1800e010-1376-420c-a45e-6e9976eb5598" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="6c1fbef8-5510-48a6-828e-18a0a2a80e94" annotationText="JournalGUIResourceUsage.Query" left="-286.311708238027" top="-960.728763847364" width="925" height="355.000000000001" fontSize="30" InitialTop="-914.728763847364" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="6c1fbef8-5510-48a6-828e-18a0a2a80e94" annotationText="JournalGUIResourceUsage.Query" left="-278.391234996221" top="-1147.84994418502" width="1021" height="355.000000000001" fontSize="30" InitialTop="-1101.84994418502" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="104f80f9-a949-4461-adb9-6fb0de4fe901" />
       <Models ModelGuid="a13f9b61-87e4-410b-bab0-a879cd06bd77" />
-      <Models ModelGuid="c79c3b96-f2c0-4850-a48a-ba0258529346" />
-      <Models ModelGuid="cf653478-63a8-42a3-9d89-04211a266a13" />
-      <Models ModelGuid="b17e54cb-6264-4eb8-b8b3-cda59a8e17f3" />
+      <Models ModelGuid="6c4abac6-7da0-4f91-b88b-127f9513459f" />
+      <Models ModelGuid="f7376835-64ab-47cc-aa19-f0fcc81b8da9" />
+      <Models ModelGuid="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="-278.659911695736" top="952.916704512245" width="763.020109756136" height="244.690417711885" fontSize="30" InitialTop="998.916704512245" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="dac3b953-16fe-49aa-8051-3145b850c610" />
@@ -1066,10 +1052,9 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="656c120e-d39b-41aa-8d3b-76ae1ddd4483" />
       <Models ModelGuid="5e5d9c15-3a94-4cd5-a5d0-85dd094b8391" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="-281.682893956938" top="-386.595469115578" width="906" height="679" fontSize="30" InitialTop="-340.595469115578" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="-281.682893956938" top="-278.595469115578" width="915" height="571" fontSize="30" InitialTop="-232.595469115578" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="d95e228c-0e5b-4a9a-9571-ab36940d47bf" />
       <Models ModelGuid="9c53dd18-96da-4542-9501-af0984f47a08" />
-      <Models ModelGuid="1d70c89f-ce54-47fe-96c9-431e61196f3e" />
       <Models ModelGuid="2bee6c92-f40a-47a1-aa9a-39c661bd06c3" />
       <Models ModelGuid="3ce2d6f0-5fab-4745-8c93-041ef01201a6" />
       <Models ModelGuid="ee0f365f-6e87-4f8a-aebf-23eb75c069a0" />
