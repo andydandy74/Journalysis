@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.RAMPeak" Description="" ID="867d0cc1-26b6-422f-b1bd-312aea44d6a1" Category="Journalysis.JournalLine.MemoryMetrics.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="a7039681-aab7-48dd-9bae-f9ce01f1f808" type="PythonNodeModels.PythonNode" nickname="Python Script" x="306.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalMemoryMetricsRAMPeak(input):
+	if input.__repr__() == 'JournalMemoryMetrics': return input.RAMPeak
+	else: return None
+
+OUT = process_input(journalMemoryMetricsRAMPeak,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="df1ec370-5688-453f-8adb-5bb40579b36d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="11.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalMemoryMetrics" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="07bcf8c6-9717-42d1-bf9a-817b020073a5" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="530.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="RAMPeak" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="a7039681-aab7-48dd-9bae-f9ce01f1f808" start_index="0" end="07bcf8c6-9717-42d1-bf9a-817b020073a5" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="df1ec370-5688-453f-8adb-5bb40579b36d" start_index="0" end="a7039681-aab7-48dd-9bae-f9ce01f1f808" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

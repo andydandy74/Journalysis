@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.RAMAvailable" Description="" ID="de3f440e-77d8-49bb-a7b6-49d26b841033" Category="Journalysis.JournalLine.MemoryMetrics">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="8b5ac489-ea37-4ffc-88be-eb58b777e94f" type="PythonNodeModels.PythonNode" nickname="Python Script" x="320" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalMemoryMetricsRAMAvailable(input):
+	if input.__repr__() == 'JournalMemoryMetrics': return input.RAMAvailable
+	else: return None
+
+OUT = process_input(journalMemoryMetricsRAMAvailable,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="5da07d32-04dc-4dd3-9f21-0cb4f0032cb0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="25" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalMemoryMetrics" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="38dfee94-c0d4-47db-b962-c652ac2b6497" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="544" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="RAMAvailable" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="8b5ac489-ea37-4ffc-88be-eb58b777e94f" start_index="0" end="38dfee94-c0d4-47db-b962-c652ac2b6497" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="5da07d32-04dc-4dd3-9f21-0cb4f0032cb0" start_index="0" end="8b5ac489-ea37-4ffc-88be-eb58b777e94f" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
