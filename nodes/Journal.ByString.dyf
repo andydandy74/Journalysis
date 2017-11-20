@@ -21,13 +21,14 @@
       <Script>import clr
 
 class Journal:
-	def __init__(self, lines, version, username, models, blockcount):
+	def __init__(self, lines, version, username, models, blockcount, path):
 		self.Lines = lines
 		self.LineCount = len(lines)
 		self.Version = version
 		self.User = username
 		self.LoadedModels = set(models)
 		self.BlockCount = blockcount
+		self.Path = path
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -154,6 +155,7 @@ lineObjs = []
 jVersion = None
 jUsername = None
 jModels = []
+jPath = None
 i = 1
 b = 0
 # Round 1: Create line objects
@@ -298,7 +300,9 @@ for line in lineObjs:
 			line.RAMAvailable = m3[2]
 			line.RAMUsed = m3[3]
 			line.RAMPeak = None
-
+	elif line.Type == 'JournalComment':
+		if "this journal =" in line.RawText:
+			jPath = line.RawText.split("=")[1].strip()
 """
 ### ToDo ###
 - Add journal path attribute
@@ -310,7 +314,7 @@ for line in lineObjs:
 - Add exceptions flag
 """
 
-OUT = Journal(lineObjs, jVersion, jUsername, jModels,jBlockCount)</Script>
+OUT = Journal(lineObjs, jVersion, jUsername, jModels, jBlockCount, jPath)</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="10.6434130757856" y="9.79083982502448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="str : string" />
