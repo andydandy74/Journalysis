@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMouseEvent.Type" Description="" ID="39b41107-a8a3-4851-8059-c8a4784015c0" Category="Journalysis.JournalLine.MouseEvent.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="5439806f-473d-4838-b2d5-22fbf646c51f" type="PythonNodeModels.PythonNode" nickname="Python Code" x="268.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalMouseEventType(input):
+	if input.__repr__() == 'JournalMouseEvent': return input.MouseEventType
+	else: return None
+
+OUT = process_input(journalMouseEventType,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="9d371a26-a68e-4cba-a772-fe2ea60074b0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-1.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalMouseEvent" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="7fdf07cb-c161-4e33-815b-103753d8cf3a" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="492.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="type" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="5439806f-473d-4838-b2d5-22fbf646c51f" start_index="0" end="7fdf07cb-c161-4e33-815b-103753d8cf3a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="9d371a26-a68e-4cba-a772-fe2ea60074b0" start_index="0" end="5439806f-473d-4838-b2d5-22fbf646c51f" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
