@@ -151,8 +151,8 @@ class JournalUIEvent(JournalLine):
 
 lines = IN[0]
 lineObjs = []
-jVersion = ''
-jUsername = ''
+jVersion = None
+jUsername = None
 jModels = []
 i = 1
 b = 0
