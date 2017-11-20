@@ -15,7 +15,7 @@ def process_input(func, input):
 	
 def journalCommandDescription(input):
 	if input.__repr__() == 'JournalCommand': return input.CommandDescription
-	else: return 0
+	else: return None
 
 OUT = process_input(journalCommandDescription,IN[0])</Script>
     </PythonNodeModels.PythonNode>

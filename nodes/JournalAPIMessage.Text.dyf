@@ -15,7 +15,7 @@ def process_input(func, input):
 	
 def journalAPIMessageText(input):
 	if input.__repr__() == 'JournalAPIMessage': return input.MessageText
-	else: return 0
+	else: return None
 
 OUT = process_input(journalAPIMessageText,IN[0])</Script>
     </PythonNodeModels.PythonNode>

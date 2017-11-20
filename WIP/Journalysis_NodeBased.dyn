@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1192.2158293677" Y="784.685092730689" zoom="0.183740186285609" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="1021.51124870915" Y="777.520360837676" zoom="0.181995817428467" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -46,25 +46,29 @@
       <PortInfo index="0" default="False" />
       <Script>import clr
 
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalDirective":
-		OUT.append(line.Values)
-	else:
-		OUT.append([])</Script>
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalDirectiveValues(input):
+	if input.__repr__() == 'JournalDirective': return input.Values
+	else: return []
+
+OUT = process_input(journalDirectiveValues,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <PythonNodeModels.PythonNode guid="d8d69469-8d89-4566-9390-02311325ee4f" type="PythonNodeModels.PythonNode" nickname="JournalDirective.Key" x="340.521113300873" y="-1342.88214544022" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
 
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalDirective":
-		OUT.append(line.Key)
-	else:
-		OUT.append(None)</Script>
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalDirectiveKey(input):
+	if input.__repr__() == 'JournalDirective': return input.Key
+	else: return None
+
+OUT = process_input(journalDirectiveKey,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <PythonNodeModels.PythonNode guid="aeb58506-358e-47b2-b12d-c7f0a5ad6030" type="PythonNodeModels.PythonNode" nickname="JournalMouseEvent.Data" x="369.229184014775" y="320.584259298956" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
@@ -496,25 +500,29 @@ for line in lines:
       <PortInfo index="0" default="False" />
       <Script>import clr
 
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalData":
-		OUT.append(line.Key)
-	else:
-		OUT.append(None)</Script>
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalDataKey(input):
+	if input.__repr__() == 'JournalData': return input.Key
+	else: return None
+
+OUT = process_input(journalDataKey,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <PythonNodeModels.PythonNode guid="2ce22c30-8557-4fb3-8f61-669f3bb5664b" type="PythonNodeModels.PythonNode" nickname="JournalData.Values" x="316.231734078448" y="-1511.10292328365" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
 
-lines = IN[0]
-OUT = []
-for line in lines:
-	if line.Type == "JournalData":
-		OUT.append(line.Values)
-	else:
-		OUT.append([])</Script>
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalDataValues(input):
+	if input.__repr__() == 'JournalData': return input.Values
+	else: return []
+
+OUT = process_input(journalDataValues,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="56cdcaba-ff64-4c34-bfee-a697f0b6ff1b" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByType" x="-43.8230481450005" y="-1890.1625229835" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -753,7 +761,7 @@ for line in lines:
     <CoreNodeModels.Watch guid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" type="CoreNodeModels.Watch" nickname="Watch" x="-1123.80391102748" y="-2711.45432647314" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAddinEvent.MessageText" x="297.138824545575" y="-2468.75414276527" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAddinEvent.Text" x="297.138824545575" y="-2468.75414276527" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="5dd51041-47ab-442b-ae79-16b535c8f245" />
       <Name value="JournalAddinEvent.MessageText" />
@@ -762,7 +770,7 @@ for line in lines:
         <Input value="journalAddinEvent" />
       </Inputs>
       <Outputs>
-        <Output value="messageText" />
+        <Output value="text" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <PythonNodeModels.PythonNode guid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-333.733244997139" y="-4046.8996087737" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
@@ -979,7 +987,7 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="74c30557-166c-489e-b588-61c1bcfcc026" />
       <Models ModelGuid="b9a84edc-9350-4ae6-9c47-c5b4b91a3345" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="-284.526185339345" top="-2514.75414276527" width="901.66500988492" height="165.92730453151" fontSize="30" InitialTop="-2468.75414276527" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="-284.526185339345" top="-2514.75414276527" width="845.66500988492" height="165.92730453151" fontSize="30" InitialTop="-2468.75414276527" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" />
       <Models ModelGuid="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" />
       <Models ModelGuid="3a5e42bf-e18e-477f-94f7-b4b10d6c710f" />
@@ -1085,11 +1093,11 @@ if IN[0].__repr__() == 'Journal':
       <Models ModelGuid="2063b580-0a48-44c8-9167-d6fcdfdd7415" />
       <Models ModelGuid="2dc3c2c3-de39-4722-8ff9-6293cfad2729" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="JournalLineTypes" left="-1399.66827572331" top="-2757.78897028465" width="516.86436469583" height="375.33464381151" fontSize="30" InitialTop="-2711.78897028465" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="JournalLineTypes" left="-1399.66827572331" top="-2757.78897028465" width="363.86436469583" height="140.33464381151" fontSize="30" InitialTop="-2711.78897028465" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="696252f8-eb5c-493d-a64c-fb703aa13df9" />
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-343.733244997139" top="-4153.34912153399" width="628.480855713991" height="333.18118109214" fontSize="30" InitialTop="-4107.34912153399" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-343.733244997139" top="-4153.34912153399" width="628.480855713991" height="314.18118109214" fontSize="30" InitialTop="-4107.34912153399" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
       <Models ModelGuid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" />
       <Models ModelGuid="c55905b3-7b64-4eae-9c10-322d08238465" />
       <Models ModelGuid="95a036f4-9d3e-4dc0-abcf-ec88ecd8e4ec" />
