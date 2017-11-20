@@ -22,6 +22,8 @@
 import sys
 sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
 import os
+import time
+processing_started = time.time()
 
 class Journal:
 	def __init__(self, lines, version, username, models, blockcount, path):
@@ -31,8 +33,8 @@ class Journal:
 		self.User = username	
 		self.BlockCount = blockcount
 		self.Path = path
-		jdir = os.path.dirname(path)
-		self.LoadedModels = set([os.path.normpath(os.path.join(jdir, x)) for x in models])
+		self.LoadedModels = set([os.path.normpath(os.path.join(os.path.dirname(path), x)) for x in models])
+		self.ProcessingTime = None
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -56,7 +58,7 @@ class JournalLine:
 class JournalAddinEvent(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.MessageText = ''
+		self.MessageText = None
 	def __repr__(self):
 		return 'JournalAddinEvent'
 
@@ -64,16 +66,16 @@ class JournalAPIMessage(JournalLine):
 	def __init__(self, number, raw, block, type, msg_type):
 		JournalLine.__init__(self, number, raw, block, type)
 		self.MessageType = msg_type
-		self.MessageText = ''
+		self.MessageText = None
 	def __repr__(self):
 		return 'JournalAPIMessage'
 
 class JournalCommand(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.CommandType = ''
-		self.CommandDescription = ''
-		self.CommandID = ''
+		self.CommandType = None
+		self.CommandDescription = None
+		self.CommandID = None
 	def __repr__(self):
 		return 'JournalCommand'
 
@@ -84,7 +86,7 @@ class JournalComment(JournalLine):
 class JournalData(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.Key = ''
+		self.Key = None
 		self.Values = []
 	def __repr__(self):
 		return 'JournalData'
@@ -92,7 +94,7 @@ class JournalData(JournalLine):
 class JournalDirective(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.Key = ''
+		self.Key = None
 		self.Values = []
 	def __repr__(self):
 		return 'JournalDirective'
@@ -100,28 +102,28 @@ class JournalDirective(JournalLine):
 class JournalGUIResourceUsage(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.Available = 0
-		self.Used = 0
-		self.User = 0
+		self.Available = None
+		self.Used = None
+		self.User = None
 	def __repr__(self):
 		return 'JournalGUIResourceUsage'
 
 class JournalKeyboardEvent(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.Key = ''
+		self.Key = None
 	def __repr__(self):
 		return 'JournalKeyboardEvent'
 		
 class JournalMemoryMetrics(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.VMAvailable = 0
-		self.VMUsed = 0
-		self.VMPeak = 0
-		self.RAMAvailable = 0
-		self.RAMUsed = 0
-		self.RAMPeak = 0
+		self.VMAvailable = None
+		self.VMUsed = None
+		self.VMPeak = None
+		self.RAMAvailable = None
+		self.RAMUsed = None
+		self.RAMPeak = None
 	def __repr__(self):
 		return 'JournalMemoryMetrics'
 
@@ -132,7 +134,7 @@ class JournalMiscCommand(JournalLine):
 class JournalMouseEvent(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.MouseEventType = ''
+		self.MouseEventType = None
 		self.Data = []
 	def __repr__(self):
 		return 'JournalMouseEvent'
@@ -140,16 +142,16 @@ class JournalMouseEvent(JournalLine):
 class JournalTimeStamp(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.TimeStampType = ''
-		self.DateTime = ''
-		self.Description = ''
+		self.TimeStampType = None
+		self.DateTime = None
+		self.Description = None
 	def __repr__(self):
 		return 'JournalTimeStamp'
 
 class JournalUIEvent(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
-		self.UIEventType = ''
+		self.UIEventType = None
 		self.Data = []
 	def __repr__(self):
 		return 'JournalUInEvent'
@@ -309,16 +311,15 @@ for line in lineObjs:
 			jPath = line.RawText.split("=")[1].strip()
 """
 ### ToDo ###
-- Add journal path attribute
-- Convert model paths to absolute paths before building the journal object
 - Add termination flags
 - Add total session time
 - Add API errors flag
 - Add journal playback terminated flag
 - Add exceptions flag
 """
-
-OUT = Journal(lineObjs, jVersion, jUsername, jModels, jBlockCount, jPath)</Script>
+journal = Journal(lineObjs, jVersion, jUsername, jModels, jBlockCount, jPath)
+journal.ProcessingTime = time.time() - processing_started
+OUT = journal</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="10.6434130757856" y="9.79083982502448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="str : string" />
