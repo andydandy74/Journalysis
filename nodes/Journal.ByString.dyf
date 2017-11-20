@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="117" Y="171" zoom="1" ScaleFactor="1" Name="Journal.ByString" Description="" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
+<Workspace Version="1.3.1.1736" X="625" Y="285" zoom="1" ScaleFactor="1" Name="Journal.ByString" Description="" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -19,16 +19,20 @@
     <PythonNodeModels.PythonNode guid="bc202d2a-9a69-4e98-a13f-41e20b07502f" type="PythonNodeModels.PythonNode" nickname="Python Script" x="871.643413075786" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
+import sys
+sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
+import os
 
 class Journal:
 	def __init__(self, lines, version, username, models, blockcount, path):
 		self.Lines = lines
 		self.LineCount = len(lines)
 		self.Version = version
-		self.User = username
-		self.LoadedModels = set(models)
+		self.User = username	
 		self.BlockCount = blockcount
 		self.Path = path
+		jdir = os.path.dirname(path)
+		self.LoadedModels = set([os.path.normpath(os.path.join(jdir, x)) for x in models])
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
