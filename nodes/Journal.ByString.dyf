@@ -36,6 +36,7 @@ class Journal:
 		self.LoadedModels = set([os.path.normpath(os.path.join(os.path.dirname(path), x)) for x in models])
 		self.ProcessingTime = None
 		self.SessionTime = None
+		self.StartupTime = None
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -270,7 +271,7 @@ for line in lineObjs:
 	elif line.Type == 'JournalTimeStamp':
 		line.TimeStampType = line.RawText[1]
 		ts1 = line.RawText.split(";")	
-		line.DateTime = ts1[0][3:]
+		line.DateTime = time.strptime(ts1[0][3:])
 		line.Description = ts1[1][7:]
 	elif line.Type == 'JournalMemoryMetrics':
 		if "Initial VM" in line.RawText:
@@ -318,8 +319,15 @@ for line in lineObjs:
 - Add exceptions flag
 """
 journal = Journal(lineObjs, jVersion, jUsername, jModels, jBlockCount, jPath)
+# Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
-journal.SessionTime = time.strptime(ts[-1].DateTime) - time.strptime(ts[0].DateTime)
+journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
+# Compute Revit startup time
+comms = journal.GetLinesByType('JournalCommand')
+startup = [x.Block for x in comms if x.CommandID == "ID_FILE_MRU_FIRST"]
+if isinstance(startup, list):
+	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup[0]][0] - ts[0].DateTime
+# Compute total processing time of this node
 journal.ProcessingTime = time.time() - processing_started
 OUT = journal</Script>
     </PythonNodeModels.PythonNode>
