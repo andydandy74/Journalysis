@@ -324,14 +324,14 @@ ts = journal.GetLinesByType('JournalTimeStamp')
 journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
 # Compute Revit startup time
 comms = journal.GetLinesByType('JournalCommand')
-startup = [x.Block for x in comms if x.CommandID == "ID_FILE_MRU_FIRST"]
-if isinstance(startup, list):
+startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
+if len(startup) &gt; 0:
 	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup[0]][0] - ts[0].DateTime
 # Compute total processing time of this node
 journal.ProcessingTime = time.time() - processing_started
 OUT = journal</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="10.6434130757856" y="9.79083982502448" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="8.6434130757856" y="-61.2091601749755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="str : string" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="319b6752-3aec-4874-a8cc-871a6f35e165" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="1095.64341307579" y="38.7908398250245" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
