@@ -36,6 +36,7 @@ class Journal:
 		self.ProcessingTime = None
 		self.SessionTime = None
 		self.StartupTime = None
+		self.SessionTerminatedProperly = False
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -267,7 +268,7 @@ for line in lineObjs:
 		line.TimeStampType = line.RawText[1]
 		ts1 = line.RawText.split(";")	
 		line.DateTime = time.strptime(ts1[0][3:])
-		line.Description = ts1[1][7:]
+		line.Description = ts1[1][7:].strip()
 	elif line.Type == 'JournalMemoryMetrics':
 		if "Initial VM" in line.RawText:
 			m1 = line.RawText.split(":",2)[2].replace(";","").split()
@@ -308,7 +309,6 @@ for line in lineObjs:
 			jPath = line.RawText.split("=")[1].strip()
 """
 ### ToDo ###
-- Add termination flags
 - Add API errors flag
 - Add journal playback terminated flag
 - Add exceptions flag
@@ -317,6 +317,9 @@ journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath)
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
 journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
+# Find out if the session was terminated properly
+if ts[-1].Description == "finished recording journal file":
+	journal.SessionTerminatedProperly = True
 # Compute Revit startup time
 comms = journal.GetLinesByType('JournalCommand')
 startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
@@ -324,6 +327,7 @@ if len(startup) &gt; 0:
 	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup[0]][0] - ts[0].DateTime
 # Compute total processing time of this node
 journal.ProcessingTime = time.time() - processing_started
+
 OUT = journal</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="48e7ad73-3db5-4e9c-8d2b-41f0b1bb3de9" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="8.6434130757856" y="-61.2091601749755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
