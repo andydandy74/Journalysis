@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1547.03752451719" Y="1028.46110076311" zoom="0.252231871828513" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="-985.235260647271" Y="3173.18416534949" zoom="0.78557599030985" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -6,8 +6,8 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1797.80829596439" y="-2234.64761904115" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0457_HardCrash.txt</System.String>
-      <HintPath>U:\Desktop\journals\Journals_dhess\journal.0457_HardCrash.txt</HintPath>
+      <System.String>..\..\..\..\Downloads\journal.0009.txt</System.String>
+      <HintPath>C:\Users\andreas\Downloads\journal.0009.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1386.21996958491" y="-2234.51270076306" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -915,9 +915,29 @@ OUT = (files,ts)</Script>
     <CoreNodeModels.Watch guid="0875eb24-c4f7-4987-a3db-ec234acd2763" type="CoreNodeModels.Watch" nickname="Watch" x="401.605212601528" y="-3778.62157059513" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
+    <PythonNodeModels.PythonNode guid="dd6f58c2-9624-49d1-a9be-e1111dd71240" type="PythonNodeModels.PythonNode" nickname="Python Script" x="1423.24007177354" y="-3276.36899190085" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+OUT = [x.split(":")[-1].strip() for x in IN[0] if x.startswith('Starting')]</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="7d16b939-ad2e-4741-9765-aa8ff77f498b" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="List.Sort" x="1580.88290244281" y="-3275.58803535574" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true" assembly="DSCoreNodes.dll" function="DSCore.List.Sort@var[]">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="cefe0619-3b51-4d62-b2f2-ad5485e967d1" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="CSV.WriteToFile" x="1829.27143578506" y="-3359.42788820806" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.CSV.WriteToFile@string,var[][]">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="b2877f8a-c015-4a63-9eab-6c08cb3fc99f" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="String.Replace" x="1830.07812258681" y="-3519.90795939059" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Replace@string,string,string">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="83d8e8ce-4cf1-4a30-9bf7-82529b8d94c3" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1560" y="-3477" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;.txt&quot;;&#xA;&quot;_ASSEMBLIES.txt&quot;;" ShouldFocus="false" />
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="b2877f8a-c015-4a63-9eab-6c08cb3fc99f" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="23f7ae74-c00a-4524-9f17-488ce938b559" start_index="0" end="94efe62e-16c8-4bdd-93ea-822f2f9a6342" end_index="0" portType="0" />
@@ -1017,7 +1037,13 @@ OUT = (files,ts)</Script>
     <Dynamo.Graph.Connectors.ConnectorModel start="696252f8-eb5c-493d-a64c-fb703aa13df9" start_index="0" end="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" start_index="0" end="6a384d4a-a7de-4cd3-a56a-deeb5aa493f1" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="95a036f4-9d3e-4dc0-abcf-ec88ecd8e4ec" start_index="0" end="3baf1662-d4da-4967-aebb-e25519efcbaf" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e7132e29-208a-4e8a-8849-50b4b2c30060" start_index="0" end="dd6f58c2-9624-49d1-a9be-e1111dd71240" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="a7c503e5-8d9a-4d68-95f3-35142e5fb57d" start_index="0" end="0875eb24-c4f7-4987-a3db-ec234acd2763" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="dd6f58c2-9624-49d1-a9be-e1111dd71240" start_index="0" end="7d16b939-ad2e-4741-9765-aa8ff77f498b" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7d16b939-ad2e-4741-9765-aa8ff77f498b" start_index="0" end="cefe0619-3b51-4d62-b2f2-ad5485e967d1" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b2877f8a-c015-4a63-9eab-6c08cb3fc99f" start_index="0" end="cefe0619-3b51-4d62-b2f2-ad5485e967d1" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="83d8e8ce-4cf1-4a30-9bf7-82529b8d94c3" start_index="0" end="b2877f8a-c015-4a63-9eab-6c08cb3fc99f" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="83d8e8ce-4cf1-4a30-9bf7-82529b8d94c3" start_index="1" end="b2877f8a-c015-4a63-9eab-6c08cb3fc99f" end_index="2" portType="0" />
   </Connectors>
   <Notes>
     <Dynamo.Graph.Notes.NoteModel guid="1b10df0f-1ca5-4055-b167-01717600a3ae" text="QUESTION: &#xD;&#xA;Do you see more than three items in this list? (Dim, Set, Jrn.Size)" x="21.4538879987298" y="-1891.39794188589" />
@@ -1044,49 +1070,49 @@ OUT = (files,ts)</Script>
       <Models ModelGuid="844bbb1d-3bfc-47c0-a899-bc89d20b8f16" />
       <Models ModelGuid="78a3f6ec-3502-4ba1-bf36-ca3a62854660" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="ecc0aa0c-43f0-4fdc-aa90-cacb795e5276" annotationText="JournalTimeStamp.Query" left="492.878788980168" top="-617.736587228505" width="945.000000000001" height="361.820880384628" fontSize="30" InitialTop="-571.736587228505" InitialHeight="321.049837911305" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="ecc0aa0c-43f0-4fdc-aa90-cacb795e5276" annotationText="JournalTimeStamp.Query" left="492.878788980168" top="-617.736587228505" width="945.000000000002" height="361.820880384628" fontSize="30" InitialTop="-571.736587228505" InitialHeight="321.049837911305" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="6e53e5ab-1ac1-459f-9a21-76a0135dd304" />
       <Models ModelGuid="ac80c0dc-be09-4f7f-b71c-dd1db38cb4e6" />
       <Models ModelGuid="e73bbf56-083f-40ee-98a5-f40e1fa99f1c" />
       <Models ModelGuid="1c235f6e-7091-47a7-b186-162aeff01fd1" />
       <Models ModelGuid="d675ad81-74a2-41a6-a1da-56f031227454" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="493.00557300967" top="-1780.00606848953" width="903.680533165579" height="165.62238957032" fontSize="30" InitialTop="-1734.00606848953" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="493.00557300967" top="-1780.00606848953" width="903.68053316558" height="165.62238957031" fontSize="30" InitialTop="-1734.00606848953" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="0b5f86e9-c024-4782-87c3-1edee050d484" />
       <Models ModelGuid="74c30557-166c-489e-b588-61c1bcfcc026" />
       <Models ModelGuid="ed38f7c8-9d86-4267-a327-395b65095daa" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="487.074480950455" top="-3504.31730452109" width="901.000000000004" height="165" fontSize="30" InitialTop="-3458.31730452109" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="487.074480950455" top="-3504.31730452109" width="901.000000000005" height="165" fontSize="30" InitialTop="-3458.31730452109" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" />
       <Models ModelGuid="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" />
       <Models ModelGuid="a6bee305-9287-4c4f-b343-00c9d44c33e7" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="484.287724653696" top="-3323.16182700978" width="908.000000000003" height="237.21147029933" fontSize="30" InitialTop="-3277.16182700978" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="484.287724653696" top="-3323.16182700978" width="908.000000000004" height="237.21147029934" fontSize="30" InitialTop="-3277.16182700978" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f2745683-9de0-487f-80bc-fce2d78acb11" />
       <Models ModelGuid="a4d566bd-b27a-4456-8245-f8273191187f" />
       <Models ModelGuid="d9a2f643-3ae0-4ddf-b045-104939685f31" />
       <Models ModelGuid="e7132e29-208a-4e8a-8849-50b4b2c30060" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="491.232439072467" top="-2422.64110940435" width="886.000000000002" height="247" fontSize="30" InitialTop="-2376.64110940435" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="491.232439072467" top="-2422.64110940435" width="886.000000000003" height="247" fontSize="30" InitialTop="-2376.64110940435" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" />
       <Models ModelGuid="1605f9d0-149e-4648-8fe0-ada143f5d864" />
       <Models ModelGuid="6654b90a-783e-44d8-af76-0d4014d049d9" />
       <Models ModelGuid="794aa987-a7c4-4f98-96f9-a52f4b3a9513" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="488.27402313521" top="-2691.60970012493" width="837.176108342909" height="248.17055511525" fontSize="30" InitialTop="-2645.60970012493" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="488.27402313521" top="-2691.60970012493" width="837.17610834291" height="248.17055511525" fontSize="30" InitialTop="-2645.60970012493" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" />
       <Models ModelGuid="51a557fa-6006-47ed-a203-c2a388436b09" />
       <Models ModelGuid="b02d5c51-c987-4f2e-8b3c-58f3839cb997" />
       <Models ModelGuid="bd9c4251-5e33-4ab8-8ae1-10d9f2c06bac" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="108577b6-5d53-426a-a69c-38ee058f6bbe" annotationText="JournalCommand.Query" left="486.003184511109" top="-3065.70587307973" width="934" height="352.91109756253" fontSize="30" InitialTop="-3019.70587307973" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="108577b6-5d53-426a-a69c-38ee058f6bbe" annotationText="JournalCommand.Query" left="486.003184511109" top="-3065.70587307973" width="934.000000000001" height="352.91109756253" fontSize="30" InitialTop="-3019.70587307973" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="56cdcaba-ff64-4c34-bfee-a697f0b6ff1b" />
       <Models ModelGuid="ed93d718-f20b-4d16-ae9d-00868591c202" />
       <Models ModelGuid="2611def9-e1cb-4335-943e-1db7069538c3" />
       <Models ModelGuid="88ff2101-cff8-4564-8117-c9ce0dd0656d" />
       <Models ModelGuid="1624d089-db50-4195-b7ee-f259de1a62cc" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="491.165576748959" top="-884.252856735335" width="916" height="247" fontSize="30" InitialTop="-838.252856735335" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="491.165576748959" top="-884.252856735335" width="916.000000000001" height="247" fontSize="30" InitialTop="-838.252856735335" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="4de33e6b-2604-495f-aaa1-74b21cb032dc" />
       <Models ModelGuid="35ac1207-c2bf-434b-9ffa-b9923cc93e02" />
       <Models ModelGuid="2090f0bd-291d-4557-9eb1-9336d0ea0eef" />
@@ -1099,13 +1125,13 @@ OUT = (files,ts)</Script>
       <Models ModelGuid="f7376835-64ab-47cc-aa19-f0fcc81b8da9" />
       <Models ModelGuid="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="490.429980101217" top="-228.670856662397" width="861.020109756132" height="244.690417711885" fontSize="30" InitialTop="-182.670856662397" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="490.429980101217" top="-228.670856662397" width="861.020109756133" height="244.690417711885" fontSize="30" InitialTop="-182.670856662397" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="dac3b953-16fe-49aa-8051-3145b850c610" />
       <Models ModelGuid="2683393e-0a63-4fb7-a8fb-4c5df785f226" />
       <Models ModelGuid="4e52fa1e-7d21-4b00-83e5-98047da4f9de" />
       <Models ModelGuid="f60a0a98-6211-4aaf-9d34-05b3ffc63a0c" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="494.27452963098" top="-1585.60355336181" width="1002" height="679" fontSize="30" InitialTop="-1539.60355336181" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="494.27452963098" top="-1585.60355336181" width="1002" height="678.999999999995" fontSize="30" InitialTop="-1539.60355336181" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="d95e228c-0e5b-4a9a-9571-ab36940d47bf" />
       <Models ModelGuid="9c53dd18-96da-4542-9501-af0984f47a08" />
       <Models ModelGuid="f65507dc-d43f-4360-ab36-f4fdabccf266" />
@@ -1125,7 +1151,7 @@ OUT = (files,ts)</Script>
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="366" height="142" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1807.80829596439" top="-2280.64761904115" width="218" height="140" fontSize="30" InitialTop="-2234.64761904115" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="01391ae7-07e5-4b2a-9ea1-453da995294e" annotationText="JournalMiscCommand TEST" left="-2150.54611200127" top="-1937.39794188589" width="2472" height="811" fontSize="30" InitialTop="-1891.39794188589" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFFFAA45">
@@ -1166,7 +1192,7 @@ OUT = (files,ts)</Script>
       <Models ModelGuid="696252f8-eb5c-493d-a64c-fb703aa13df9" />
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-291.120421513761" top="-4004.50490076824" width="983.725634115289" height="447.883330173106" fontSize="30" InitialTop="-3958.50490076824" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="237b079c-8a91-4719-a0a2-533a7244198e" annotationText="Python Examples " left="-291.120421513761" top="-4004.50490076824" width="964.679529632733" height="371.88333017311" fontSize="30" InitialTop="-3958.50490076824" InitialHeight="123" TextblockHeight="36" backgrouund="#FF48B9FF">
       <Models ModelGuid="2af9c3cb-ec8a-410e-ac2e-2c52ed13c315" />
       <Models ModelGuid="c55905b3-7b64-4eae-9c10-322d08238465" />
       <Models ModelGuid="95a036f4-9d3e-4dc0-abcf-ec88ecd8e4ec" />
@@ -1180,6 +1206,6 @@ OUT = (files,ts)</Script>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
