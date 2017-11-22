@@ -13,8 +13,8 @@ def process_input(func, input):
 	if isinstance(input, list): return [func(x) for x in input]
 	else: return func(input)
 	
-def journalGUIResourceUsageUser(input):
-	if input.__repr__() == 'JournalGUIResourceUsage': return input.User
+def journalGUIResourceUsageUser(jguiru):
+	if jguiru.__repr__() == 'JournalGUIResourceUsage': return jguiru.User
 	else: return None
 
 OUT = process_input(journalGUIResourceUsageUser,IN[0])</Script>
@@ -34,4 +34,7 @@ OUT = process_input(journalGUIResourceUsageUser,IN[0])</Script>
   <Notes />
   <Annotations />
   <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
 </Workspace>

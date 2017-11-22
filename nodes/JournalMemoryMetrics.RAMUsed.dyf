@@ -13,8 +13,8 @@ def process_input(func, input):
 	if isinstance(input, list): return [func(x) for x in input]
 	else: return func(input)
 	
-def journalMemoryMetricsRAMUsed(input):
-	if input.__repr__() == 'JournalMemoryMetrics': return input.RAMUsed
+def journalMemoryMetricsRAMUsed(jmm):
+	if jmm.__repr__() == 'JournalMemoryMetrics': return jmm.RAMUsed
 	else: return None
 
 OUT = process_input(journalMemoryMetricsRAMUsed,IN[0])</Script>
