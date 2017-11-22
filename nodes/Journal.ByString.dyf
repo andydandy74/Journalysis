@@ -26,14 +26,13 @@ import time
 processing_started = time.time()
 
 class Journal:
-	def __init__(self, lines, version, username, models, blockcount, path):
+	def __init__(self, lines, version, username, blockcount, path):
 		self.Lines = lines
 		self.LineCount = len(lines)
 		self.Version = version
 		self.User = username	
 		self.BlockCount = blockcount
 		self.Path = path
-		self.LoadedModels = set([os.path.normpath(os.path.join(os.path.dirname(path), x)) for x in models])
 		self.ProcessingTime = None
 		self.SessionTime = None
 		self.StartupTime = None
@@ -162,7 +161,6 @@ lines = IN[0]
 lineObjs = []
 jVersion = None
 jUsername = None
-jModels = []
 jPath = None
 i = 1
 b = 0
@@ -233,9 +231,6 @@ for line in lineObjs:
 		line.Key = d1[0][10:]
 		for d2 in d1[1].split(","):
 			line.Values.append(d2.strip().replace('"',''))
-		# Add model list to journal metadata
-		if line.Key == 'File Name' and line.Values[0] == 'IDOK':
-			jModels.append(line.Values[1])
 	elif line.Type == 'JournalCommand':
 		c1 = line.RawText.split('" , "')
 		line.CommandType = c1[0][13:]
@@ -318,7 +313,7 @@ for line in lineObjs:
 - Add journal playback terminated flag
 - Add exceptions flag
 """
-journal = Journal(lineObjs, jVersion, jUsername, jModels, jBlockCount, jPath)
+journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath)
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
 journal.SessionTime = ts[-1].DateTime - ts[0].DateTime

@@ -1,35 +1,39 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedModels" Description="" ID="ccfe27e4-521a-481f-a942-15a28e5ea0e5" Category="Journalysis.Journal.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedModels" Description="" ID="d48e6dd4-5381-4996-a8aa-28ad1d8219fd" Category="Journalysis.Journal.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <PythonNodeModels.PythonNode guid="bc79596b-1338-441b-869c-e22cf8edc74b" type="PythonNodeModels.PythonNode" nickname="Python Script" x="219.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+    <PythonNodeModels.PythonNode guid="565bb644-a7f1-428f-ac81-630740fa3d3d" type="PythonNodeModels.PythonNode" nickname="Python Script" x="192" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
+import sys
+sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
+import os
 
 def process_input(func, input):
 	if isinstance(input, list): return [func(x) for x in input]
 	else: return func(input)
-	
-def journalLoadedModels(input):
-	if input.__repr__() == 'Journal': return input.LoadedModels
+
+def journalLoadedModels(journal):
+	if journal.__repr__() == 'Journal':	
+		return set([os.path.normpath(os.path.join(os.path.dirname(IN[0].Path),x.Values[1])) for x in journal.GetLinesByType('JournalData') if x.Key == 'File Name' and x.Values[0] == 'IDOK'])
 	else: return []
 
 OUT = process_input(journalLoadedModels,IN[0])</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="2fe278da-d7c0-45a6-a172-9b4ddf43734d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="31.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="d7de26d0-a1de-4ee8-9b9c-619ac3c5b4aa" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="33" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="journal" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="138b3421-b4c5-4812-b9f8-61527cdc3b66" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="443.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="a92aba09-ef70-43b2-ac47-9f62265902d7" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="416" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <Symbol value="loadedModels" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel start="bc79596b-1338-441b-869c-e22cf8edc74b" start_index="0" end="138b3421-b4c5-4812-b9f8-61527cdc3b66" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="2fe278da-d7c0-45a6-a172-9b4ddf43734d" start_index="0" end="bc79596b-1338-441b-869c-e22cf8edc74b" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="565bb644-a7f1-428f-ac81-630740fa3d3d" start_index="0" end="a92aba09-ef70-43b2-ac47-9f62265902d7" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="d7de26d0-a1de-4ee8-9b9c-619ac3c5b4aa" start_index="0" end="565bb644-a7f1-428f-ac81-630740fa3d3d" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations />
