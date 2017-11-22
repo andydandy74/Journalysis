@@ -24,7 +24,7 @@ OUT = process_input(journalAPIMessageText,IN[0])</Script>
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="55814f07-9bb1-425c-a0f9-b7b24bfd0b0d" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="517" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <Symbol value="text" />
+      <Symbol value="str" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>

@@ -24,7 +24,7 @@ OUT = process_input(journalMemoryMetricsRAMAvailable,IN[0])</Script>
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="38dfee94-c0d4-47db-b962-c652ac2b6497" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="544" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <Symbol value="RAMAvailable" />
+      <Symbol value="int" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
