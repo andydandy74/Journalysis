@@ -1,0 +1,41 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedAssemblies" Description="" ID="ef6753f4-b23f-4152-b90f-1e9b36af09cd" Category="Journalysis.Journal.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="e43d3b05-aeee-43dc-a23b-1b467122b953" type="PythonNodeModels.PythonNode" nickname="Python Script" x="206.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+
+def journalLoadedAssemblies(journal):
+	if journal.__repr__() == 'Journal':	
+		return [x.MessageText.split(":")[-1].strip() for x in journal.GetLinesByType('JournalAPIMessage') if x.MessageText.startswith('Starting')]
+	else: return []
+
+OUT = process_input(journalLoadedAssemblies,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="7b909dab-e91d-480b-a77e-183cccd892ba" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="18.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journal" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f0224129-5bb9-4103-8919-17ad3749d245" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="430.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="loadedAssemblies" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="e43d3b05-aeee-43dc-a23b-1b467122b953" start_index="0" end="f0224129-5bb9-4103-8919-17ad3749d245" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7b909dab-e91d-480b-a77e-183cccd892ba" start_index="0" end="e43d3b05-aeee-43dc-a23b-1b467122b953" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
