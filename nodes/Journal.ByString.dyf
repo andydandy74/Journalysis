@@ -38,6 +38,7 @@ class Journal:
 		self.StartupTime = None
 		self.SessionTerminatedProperly = False
 		self.IsInPlaybackMode = False
+		self.PlaybackInterrupted = False
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -224,7 +225,7 @@ for line in lineObjs:
 			line.Values.append(d2.strip().replace('"',''))
 		# Add Revit version to journal metadata
 		if line.Key == 'Version':
-			jVersion = line.Values[0]
+			jVersion = int(line.Values[0][:4])
 		# Add username to journal metadata
 		elif line.Key == 'Username':
 			jUsername = line.Values[0]
@@ -324,6 +325,9 @@ if ts[-1].Description == "finished recording journal file":
 # Find out if journal is in playback mode
 if len([x for x in ts if x.Description.startswith("started journal file playback")]) &gt; 0:
 	journal.IsInPlaybackMode = True
+	# Find out if journal playback was interrupted
+	if len([x for x in ts if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0:
+		journal.PlaybackInterrupted = True
 # Compute Revit startup time
 comms = journal.GetLinesByType('JournalCommand')
 startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
