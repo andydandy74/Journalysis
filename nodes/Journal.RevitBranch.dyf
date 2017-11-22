@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.RevitBranch" Description="" ID="97f1a4f8-4fbe-43ba-80cc-99418458b52d" Category="Journalysis.Journal.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="91f375f8-c4c3-4372-a5ff-121caa982ca1" type="PythonNodeModels.PythonNode" nickname="Python Script" x="206.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalBranch(journal):
+	if journal.__repr__() == 'Journal': return journal.Branch
+	else: return None
+
+OUT = process_input(journalBranch,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="03c2c714-9b36-43a7-bae3-e51671ee72d2" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="18.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journal" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="dc32a686-40c5-4b4c-b5cd-2da291e769a5" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="430.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="str" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="91f375f8-c4c3-4372-a5ff-121caa982ca1" start_index="0" end="dc32a686-40c5-4b4c-b5cd-2da291e769a5" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="03c2c714-9b36-43a7-bae3-e51671ee72d2" start_index="0" end="91f375f8-c4c3-4372-a5ff-121caa982ca1" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

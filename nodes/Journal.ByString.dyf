@@ -26,7 +26,7 @@ import time
 processing_started = time.time()
 
 class Journal:
-	def __init__(self, lines, version, username, blockcount, path):
+	def __init__(self, lines, version, username, blockcount, path, build, branch):
 		self.Lines = lines
 		self.LineCount = len(lines)
 		self.Version = version
@@ -39,6 +39,8 @@ class Journal:
 		self.SessionTerminatedProperly = False
 		self.IsInPlaybackMode = False
 		self.PlaybackInterrupted = False
+		self.Build = build
+		self.Branch = branch
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -309,13 +311,16 @@ for line in lineObjs:
 	elif line.Type == 'JournalComment':
 		if "this journal =" in line.RawText:
 			jPath = line.RawText.split("=")[1].strip()
+		elif line.RawText.startswith("' Build:"):
+			jBuild = line.RawText.split(":")[1]
+		elif line.RawText.startswith("' Branch:"):
+			jBranch = line.RawText.split(":")[1]
 """
 ### ToDo ###
 - Add API errors flag
-- Add journal playback terminated flag
 - Add exceptions flag
 """
-journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath)
+journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch)
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
 journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
