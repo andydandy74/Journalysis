@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="625" Y="285" zoom="1" ScaleFactor="1" Name="Journal.ByString" Description="" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
+<Workspace Version="1.3.1.1736" X="127" Y="289" zoom="1" ScaleFactor="1" Name="Journal.ByString" Description="" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -37,6 +37,7 @@ class Journal:
 		self.SessionTime = None
 		self.StartupTime = None
 		self.SessionTerminatedProperly = False
+		self.IsInPlaybackMode = False
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -320,6 +321,9 @@ journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
 # Find out if the session was terminated properly
 if ts[-1].Description == "finished recording journal file":
 	journal.SessionTerminatedProperly = True
+# Find out if journal is in playback mode
+if len([x for x in ts if x.Description.startswith("started journal file playback")]) &gt; 0:
+	journal.IsInPlaybackMode = True
 # Compute Revit startup time
 comms = journal.GetLinesByType('JournalCommand')
 startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
