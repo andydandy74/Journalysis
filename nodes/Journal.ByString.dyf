@@ -42,6 +42,7 @@ class Journal:
 		self.Build = build
 		self.Branch = branch
 		self.ContainsAPIErrors = False
+		self.ContainsExceptions = False
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -316,12 +317,10 @@ for line in lineObjs:
 			jBuild = line.RawText.split(":")[1].strip()
 		elif line.RawText.startswith("' Branch:"):
 			jBranch = line.RawText.split(":")[1].strip()
-"""
-### ToDo ###
-- Add API errors flag
-- Add exceptions flag
-"""
+
+# Create journal object
 journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch)
+
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
 journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
@@ -334,6 +333,9 @@ if len([x for x in ts if x.Description.startswith("started journal file playback
 	# Find out if journal playback was interrupted
 	if len([x for x in ts if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0:
 		journal.PlaybackInterrupted = True
+# Find out if journal contains recorded exceptions
+if len([x for x in ts if x.Description.startswith("ExceptionCode")]) &gt; 0:
+	journal.ContainsExceptions = True
 # Find out if any API errors occured
 apimsgs = journal.GetLinesByType('JournalAPIMessage')
 if len([x for x in apimsgs if x.MessageType == "Error"]) &gt; 0:
