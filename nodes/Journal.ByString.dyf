@@ -26,7 +26,7 @@ import time
 processing_started = time.time()
 
 class Journal:
-	def __init__(self, lines, version, username, blockcount, path, build, branch):
+	def __init__(self, lines, version, username, blockcount, path, build, branch, machinename):
 		self.Lines = lines
 		self.LineCount = len(lines)
 		self.Version = version
@@ -43,6 +43,7 @@ class Journal:
 		self.Branch = branch
 		self.ContainsAPIErrors = False
 		self.ContainsExceptions = False
+		self.Machine = machinename
 	def __repr__(self):
 		return 'Journal'
 	def GetLinesByBlock(self,block):
@@ -168,6 +169,7 @@ lines = IN[0]
 lineObjs = []
 jVersion = None
 jUsername = None
+jMachineName = None
 jPath = None
 i = 1
 b = 0
@@ -219,6 +221,7 @@ for line in lines:
 jBlockCount = b
 
 # Round 2: Process raw multiline text and fill type-specific attributes
+machineNameFound = False
 for line in lineObjs:
 	if line.Type == 'JournalAPIMessage':
 		line.MessageText = line.RawText.split("{ ")[1].split(" }")[0].strip()
@@ -317,9 +320,13 @@ for line in lineObjs:
 			jBuild = line.RawText.split(":")[1].strip()
 		elif line.RawText.startswith("' Branch:"):
 			jBranch = line.RawText.split(":")[1].strip()
+		elif not machineNameFound:
+			if "Additional IP address/name found for host" in line.RawText:
+				jMachineName = line.RawText.split(":")[1].split(" ")[-1]
+				machineNameFound = True
 
 # Create journal object
-journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch)
+journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch, jMachineName)
 
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
