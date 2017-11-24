@@ -15,7 +15,7 @@ def process_input(func, input):
 	
 def journalOSVersion(journal):
 	if journal.__repr__() == 'Journal': return journal.OSVersion
-	else: return False
+	else: return None
 
 OUT = process_input(journalOSVersion,IN[0])</Script>
     </PythonNodeModels.PythonNode>
