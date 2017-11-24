@@ -1,0 +1,105 @@
+<Workspace Version="1.3.1.1736" X="1643.8017150901" Y="2546.91669945515" zoom="1.02057044132902" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1556.33582275237" y="-2067.51297647389" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>C:\Users\adieckmann\Desktop\KeyboardShortcuts.xml</System.String>
+      <HintPath>C:\Users\adieckmann\Desktop\KeyboardShortcuts.xml</HintPath>
+    </CoreNodeModels.Input.Filename>
+    <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1105.33582275237" y="-2067.51297647389" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Input.FileObject>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="File.ReadText" x="-895.335822752368" y="-2067.51297647389" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.File.ReadText@var">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <PythonNodeModels.PythonNode guid="6c63adb3-bb56-4dae-a7f6-8c65ebd9776c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-632.335822752368" y="-2067.51297647389" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+import sys
+pyt_path = r'C:\Program Files (x86)\IronPython 2.7\Lib'
+sys.path.append(pyt_path)
+import xml.etree.ElementTree as ET
+
+elementlist = []
+
+root = ET.fromstring(IN[0])
+CommandNames = []
+CommandIDs = []
+CommandShortcuts = []
+CommandPaths = []
+CommandHasShortcuts = []
+CommandHasPaths = []
+
+for child in root:
+	if child.tag == "ShortcutItem":
+		CommandNames.append(child.get("CommandName"))
+		CommandIDs.append(child.get("CommandId"))
+		shortcuts = child.get("Shortcuts") 
+		if shortcuts == None:
+			CommandShortcuts.append([])
+			CommandHasShortcuts.append(False)
+		else:
+			CommandShortcuts.append(shortcuts.split("#"))
+			CommandHasShortcuts.append(True)
+		paths = child.get("Paths") 
+		if paths == None:
+			CommandPaths.append([])
+			CommandHasPaths.append(False)
+		else:
+			CommandPaths.append(paths.split("; "))
+			CommandHasPaths.append(True)
+
+OUT = (CommandNames, CommandIDs, CommandShortcuts, CommandPaths, CommandHasShortcuts, CommandHasPaths)</Script>
+    </PythonNodeModels.PythonNode>
+    <CoreNodeModels.Watch guid="a23c6b1f-cda5-429d-b8e4-fcf85fb44c1d" type="CoreNodeModels.Watch" nickname="Watch" x="-173.698116478809" y="-2099.28243180508" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="60e7692b-a512-44a7-8d76-34586ee3bd2f" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-408.335822752368" y="-2063.29964314056" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="seq[0];&#xA;seq[1];&#xA;seq[2];&#xA;seq[3];&#xA;seq[4];&#xA;seq[5];" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <CoreNodeModels.Watch guid="5695e1b5-908f-4bd9-ab1a-2d0fdb7a3b02" type="CoreNodeModels.Watch" nickname="Watch" x="155.555077839979" y="-2101.7759137383" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="6872a80d-50af-4e62-9d7e-e5544fe54a3f" type="CoreNodeModels.Watch" nickname="Watch" x="675.736159988595" y="-2092.12517133118" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="e0f31f17-06c0-4dbc-8b5e-56807ebd225f" type="CoreNodeModels.Watch" nickname="Watch" x="473.118809638572" y="-2097.42466441142" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="662d6c31-cb33-42ef-a9d2-e1baf72ea0c3" type="CoreNodeModels.Watch" nickname="Watch" x="991.987825546808" y="-2092.36203265034" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+    <CoreNodeModels.Watch guid="04de2508-8d2d-4086-8c84-4bf37cd952a7" type="CoreNodeModels.Watch" nickname="Watch" x="1150.995967553" y="-2090.81947127628" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Watch>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="6c63adb3-bb56-4dae-a7f6-8c65ebd9776c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="6c63adb3-bb56-4dae-a7f6-8c65ebd9776c" start_index="0" end="60e7692b-a512-44a7-8d76-34586ee3bd2f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="0" end="a23c6b1f-cda5-429d-b8e4-fcf85fb44c1d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="1" end="5695e1b5-908f-4bd9-ab1a-2d0fdb7a3b02" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="2" end="e0f31f17-06c0-4dbc-8b5e-56807ebd225f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="3" end="6872a80d-50af-4e62-9d7e-e5544fe54a3f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="4" end="662d6c31-cb33-42ef-a9d2-e1baf72ea0c3" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="60e7692b-a512-44a7-8d76-34586ee3bd2f" start_index="5" end="04de2508-8d2d-4086-8c84-4bf37cd952a7" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Evaluate Journal" left="-1115.33582275237" top="-2113.51297647389" width="383" height="139" fontSize="30" InitialTop="-2067.51297647389" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" />
+      <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1566.33582275237" top="-2113.51297647389" width="351" height="142" fontSize="30" InitialTop="-2067.51297647389" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+      <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
