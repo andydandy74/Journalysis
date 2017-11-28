@@ -1,0 +1,477 @@
+<Workspace Version="1.3.1.1736" X="2313.67077813981" Y="3361.25638725099" zoom="1.31562590258408" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1682.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0453.txt</System.String>
+      <HintPath>Z:\U\Desktop\journals\Journals_dhess\journal.0453.txt</HintPath>
+    </CoreNodeModels.Input.Filename>
+    <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1330.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Input.FileObject>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="File.ReadText" x="-1120.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.File.ReadText@var">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.ByString" x="-867.885991716246" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="a293c700-5298-4ab5-9dce-d23c323a405a" />
+      <Name value="Journal.ByString" />
+      <Description value="" />
+      <Inputs>
+        <Input value="str" />
+      </Inputs>
+      <Outputs>
+        <Output value="journal" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <PythonNodeModels.PythonNode guid="208f09cb-18fe-44d3-93d4-6ffd60cfbc3c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-997.753826191423" y="-1711.16757645862" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <Script>import clr
+
+OUT = []
+if IN[0].__repr__() == 'Journal':
+	if isinstance(IN[1], list): OUT = IN[0].GetLinesByBlocks(IN[1])
+	else: OUT = IN[0].GetLinesByBlock(IN[1])</Script>
+    </PythonNodeModels.PythonNode>
+    <PythonNodeModels.PythonNode guid="656efa5a-de34-4133-a2d0-154a785c8ef1" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-658.178646615372" y="-2448.45923216013" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+import sys
+sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
+import os
+import time
+processing_started = time.time()
+
+class Journal:
+	def __init__(self, lines, version, username, blockcount, path, build, branch, machinename, osversion):
+		self.Lines = lines
+		self.LineCount = len(lines)
+		self.Version = version
+		self.User = username	
+		self.BlockCount = blockcount
+		self.Path = path
+		self.ProcessingTime = None
+		self.SessionTime = None
+		self.StartupTime = None
+		self.SessionTerminatedProperly = False
+		self.IsInPlaybackMode = False
+		self.PlaybackInterrupted = False
+		self.Build = build
+		self.Branch = branch
+		self.ContainsAPIErrors = False
+		self.ContainsExceptions = False
+		self.Machine = machinename
+		self.OSVersion = osversion
+		self.MaxRAMPeak = None
+		self.MinRAMAvailable = None
+		self.MaxVMPeak = None
+		self.MinVMAvailable = None
+	def __repr__(self):
+		return 'Journal'
+	def GetLinesByBlock(self,block):
+		return [x for x in self.Lines if x.Block == block]
+	def GetLinesByBlocks(self,blocks):
+		return [x for x in self.Lines if x.Block in blocks]
+	def GetLinesByType(self,type):
+		return [x for x in self.Lines if x.Type == type]
+	def GetLinesByTypes(self,types):
+		return [x for x in self.Lines if x.Type in types]
+
+class JournalLine:
+	def __init__(self, number, raw, block, type):
+		self.Number = number
+		self.RawText = raw
+		self.Block = block
+		self.Type = type
+	def __repr__(self):
+		return 'JournalLine'
+	def Next(self, journal):
+		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
+			return journal.Lines[journal.Lines.index(self) + 1]
+		else: return None
+	def Previous(self, journal):
+		if journal.Lines.index(self) - 1 &gt; -1:
+			return journal.Lines[journal.Lines.index(self) - 1]
+		else: return None
+
+class JournalAddinEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MessageText = None
+	def __repr__(self):
+		return 'JournalAddinEvent'
+
+class JournalAPIMessage(JournalLine):
+	def __init__(self, number, raw, block, type, msg_type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MessageType = msg_type
+		self.MessageText = None
+	def __repr__(self):
+		return 'JournalAPIMessage'
+
+class JournalCommand(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.CommandType = None
+		self.CommandDescription = None
+		self.CommandID = None
+	def __repr__(self):
+		return 'JournalCommand'
+
+class JournalComment(JournalLine):
+	def __repr__(self):
+		return 'JournalComment'
+
+class JournalData(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = None
+		self.Values = []
+	def __repr__(self):
+		return 'JournalData'
+
+class JournalDirective(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = None
+		self.Values = []
+	def __repr__(self):
+		return 'JournalDirective'
+
+class JournalGUIResourceUsage(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Available = None
+		self.Used = None
+		self.User = None
+	def __repr__(self):
+		return 'JournalGUIResourceUsage'
+
+class JournalKeyboardEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Key = None
+	def __repr__(self):
+		return 'JournalKeyboardEvent'
+		
+class JournalMemoryMetrics(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.VMAvailable = None
+		self.VMUsed = None
+		self.VMPeak = None
+		self.RAMAvailable = None
+		self.RAMUsed = None
+		self.RAMPeak = None
+	def __repr__(self):
+		return 'JournalMemoryMetrics'
+
+class JournalMiscCommand(JournalLine):
+	def __repr__(self):
+		return 'JournalMiscCommand'
+
+class JournalMouseEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.MouseEventType = None
+		self.Data = []
+	def __repr__(self):
+		return 'JournalMouseEvent'
+		
+class JournalTimeStamp(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.TimeStampType = None
+		self.DateTime = None
+		self.Description = None
+	def __repr__(self):
+		return 'JournalTimeStamp'
+
+class JournalUIEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.UIEventType = None
+		self.Data = []
+	def __repr__(self):
+		return 'JournalUIEvent'
+
+lines = IN[0]
+lineObjs = []
+jVersion = None
+jUsername = None
+jMachineName = None
+jOSVersion = None
+jPath = None
+i = 1
+b = 0
+# Round 1: Create line objects
+for line in lines:
+	# ignore empty lines
+	if len(line) &lt; 2:
+		pass
+	elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E "):
+		b += 1
+		lineObjs.append(JournalTimeStamp(i,line,b,'JournalTimeStamp'))
+	elif ":&lt; API_SUCCESS { " in line:
+		lineObjs.append(JournalAPIMessage(i,line,b,'JournalAPIMessage','Success'))
+	elif ":&lt; API_ERROR { " in line:
+		lineObjs.append(JournalAPIMessage(i,line,b,'JournalAPIMessage','Error'))
+	elif ":: Delta VM: " in line or line.startswith("' 0:&lt; Initial VM: "):
+		lineObjs.append(JournalMemoryMetrics(i,line,b,'JournalMemoryMetrics'))
+	elif ":&lt; GUI Resource Usage GDI: " in line:
+		lineObjs.append(JournalGUIResourceUsage(i,line,b,'JournalGUIResourceUsage'))
+	elif line.startswith("Jrn.Data "):
+		lineObjs.append(JournalData(i,line,b,'JournalData'))
+	elif line.startswith("Jrn.Directive "):
+		lineObjs.append(JournalDirective(i,line,b,'JournalDirective'))
+	elif line.startswith("Jrn.Command "):
+		lineObjs.append(JournalCommand(i,line,b,'JournalCommand'))
+	elif line.startswith("Jrn.Key "):
+		lineObjs.append(JournalKeyboardEvent(i,line,b,'JournalKeyboardEvent'))
+	elif line.startswith("Jrn.AddInEvent "):
+		lineObjs.append(JournalAddinEvent(i,line,b,'JournalAddinEvent'))
+	elif line.startswith('Jrn.Wheel') or line.startswith('Jrn.MouseMove') or line.startswith('Jrn.LButtonUp') or line.startswith('Jrn.LButtonDown') or line.startswith('Jrn.LButtonDblClk') or line.startswith('Jrn.MButtonUp') or line.startswith('Jrn.MButtonDown') or line.startswith('Jrn.MButtonDblClk') or line.startswith('Jrn.RButtonUp') or line.startswith('Jrn.RButtonDown') or line.startswith('Jrn.RButtonDblClk'):
+		lineObjs.append(JournalMouseEvent(i,line,b,'JournalMouseEvent'))
+	elif line.startswith('Jrn.Activate') or line.startswith('Jrn.AppButtonEvent') or line.startswith('Jrn.Browser') or line.startswith('Jrn.Close') or line.startswith('Jrn.ComboBox') or line.startswith('Jrn.Edit') or line.startswith('Jrn.Grid') or line.startswith('Jrn.ListBox') or line.startswith('Jrn.PropertiesPalette') or line.startswith('Jrn.PushButton') or line.startswith('Jrn.RadioButton') or line.startswith('Jrn.RibbonEvent') or line.startswith('Jrn.SliderCtrl') or line.startswith('Jrn.TabCtrl') or line.startswith('Jrn.TreeCtrl'):
+		lineObjs.append(JournalUIEvent(i,line,b,'JournalUIEvent'))
+	# append linebreaks to previous line
+	elif lineObjs[-1].RawText[-1] == "_":
+		lineObjs[-1].RawText = lineObjs[-1].RawText[:-1] + line
+	# append linebreaks in commands
+	elif line[0] == ",":
+		lineObjs[-1].RawText = (lineObjs[-1].RawText + line).replace(" _,",",")
+	elif line[0] == "'":
+		# append linebreaks in API Messages
+		if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"):
+			lineObjs[-1].RawText += " " + line[1:]
+		else:
+			lineObjs.append(JournalComment(i,line,b,'JournalComment'))
+	else:
+		lineObjs.append(JournalMiscCommand(i,line,b,'JournalMiscCommand'))
+	i += 1
+jBlockCount = b
+
+# Round 2: Process raw multiline text and fill type-specific attributes
+machineNameFound = False
+OSVersionFound = False
+for line in lineObjs:
+	if line.Type == 'JournalAPIMessage':
+		line.MessageText = line.RawText.split("{ ")[1].split(" }")[0].strip()
+	elif line.Type == 'JournalDirective':
+		d1 = line.RawText.split('"  , ')
+		line.Key = d1[0][15:]
+		for d2 in d1[1].split(","):
+			line.Values.append(d2.strip().replace('"',''))
+		# Add Revit version to journal metadata
+		if line.Key == 'Version':
+			jVersion = int(line.Values[0][:4])
+		# Add username to journal metadata
+		elif line.Key == 'Username':
+			jUsername = line.Values[0]
+	elif line.Type == 'JournalData':
+		d1 = line.RawText.split('"  , ')
+		line.Key = d1[0][10:]
+		for d2 in d1[1].split(","):
+			line.Values.append(d2.strip().replace('"',''))
+	elif line.Type == 'JournalCommand':
+		c1 = line.RawText.split('" , "')
+		line.CommandType = c1[0][13:]
+		c2 = c1[1].split(" , ")
+		line.CommandDescription = c2[0]
+		line.CommandID = c2[1][:-1]
+	elif line.Type == 'JournalMouseEvent':
+		m1 = line.RawText.split(" ",1)
+		line.MouseEventType = m1[0][4:].strip()
+		for m2 in m1[1].split(","):
+			line.Data.append(int(m2.strip()))
+	elif line.Type == 'JournalKeyboardEvent':
+		line.Key = line.RawText.split('"')[1]
+	elif line.Type == 'JournalGUIResourceUsage':
+		g2 = []
+		for g1 in line.RawText.split(","):
+			g2.append(int(g1.strip().split()[-1]))
+		line.Available = g2[0]
+		line.Used = g2[1]
+		line.User = g2[2]
+	elif line.Type == 'JournalUIEvent':
+		d1 = line.RawText.split(" ",1)
+		line.UIEventType = d1[0][4:]
+		for d2 in d1[1].split(","):
+			d3 = d2.strip().replace('"','').strip()
+			if line.UIEventType == "RibbonEvent":
+				for d4 in d3.split(":"):
+					d4 = d4.strip()
+					if d4 != "": line.Data.append(d4)
+			elif d3 != "": line.Data.append(d3)
+	elif line.Type == 'JournalAddinEvent':
+		line.MessageText = line.RawText.split('"')[3]
+	elif line.Type == 'JournalTimeStamp':
+		line.TimeStampType = line.RawText[1]
+		ts1 = line.RawText.split(";")	
+		line.DateTime = time.strptime(ts1[0][3:])
+		line.Description = ts1[1][7:].strip()
+	elif line.Type == 'JournalMemoryMetrics':
+		if "Initial VM" in line.RawText:
+			m1 = line.RawText.split(":",2)[2].replace(";","").split()
+		else:
+			m1 = line.RawText.split(":",6)[6].split()
+		m3 = []
+		m4 = []
+		for m2 in m1:
+			if m2.isdigit(): 
+				m3.append(int(m2))
+			elif m2 in ("Avail","Used","Peak"):
+				m4.append(m2)
+		line.VMAvailable = m3[0]
+		line.VMUsed = m3[1]
+		if len(m3) == 6:		
+			line.VMPeak = m3[2]
+			line.RAMAvailable = m3[3]
+			line.RAMUsed = m3[4]
+			line.RAMPeak = m3[5]
+		elif len(m3) == 5:
+			if m4[2] == "Avail":
+				line.VMPeak = None
+				line.RAMAvailable = m3[2]
+				line.RAMUsed = m3[3]
+				line.RAMPeak = m3[4]
+			elif m4[2] == "Peak":
+				line.VMPeak = m3[2]
+				line.RAMAvailable = m3[3]
+				line.RAMUsed = m3[4]
+				line.RAMPeak = None
+		elif len(m3) == 4:
+			line.VMPeak = None
+			line.RAMAvailable = m3[2]
+			line.RAMUsed = m3[3]
+			line.RAMPeak = None
+	elif line.Type == 'JournalComment':
+		if "this journal =" in line.RawText:
+			jPath = line.RawText.split("=")[1].strip()
+		elif line.RawText.startswith("' Build:"):
+			jBuild = line.RawText.split(":")[1].strip()
+		elif line.RawText.startswith("' Branch:"):
+			jBranch = line.RawText.split(":")[1].strip()
+		elif not OSVersionFound:
+			if "Caption :" in line.RawText:
+				jOSVersion = line.RawText.split(":")[-1].strip()
+				OSVersionFound = True
+		elif not machineNameFound:
+			if "Additional IP address/name found for host" in line.RawText:
+				jMachineName = line.RawText.split(":")[1].split(" ")[-1]
+				machineNameFound = True
+
+# Create journal object
+journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch, jMachineName, jOSVersion)
+
+# Compute total session time
+ts = journal.GetLinesByType('JournalTimeStamp')
+journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
+# Find out if the session was terminated properly
+if ts[-1].Description == "finished recording journal file":
+	journal.SessionTerminatedProperly = True
+# Find out if journal is in playback mode
+if len([x for x in ts if x.Description.startswith("started journal file playback")]) &gt; 0:
+	journal.IsInPlaybackMode = True
+	# Find out if journal playback was interrupted
+	if len([x for x in ts if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0:
+		journal.PlaybackInterrupted = True
+# Find out if journal contains recorded exceptions
+if len([x for x in ts if x.Description.startswith("ExceptionCode")]) &gt; 0:
+	journal.ContainsExceptions = True
+# Find out if any API errors occured
+apimsgs = journal.GetLinesByType('JournalAPIMessage')
+if len([x for x in apimsgs if x.MessageType == "Error"]) &gt; 0:
+	journal.ContainsAPIErrors = True
+# Compute Revit startup time
+comms = journal.GetLinesByType('JournalCommand')
+startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
+if len(startup) &gt; 0:
+	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup[0]][0] - ts[0].DateTime
+# Compute max/min memory values of session
+mm = journal.GetLinesByType('JournalMemoryMetrics')
+journal.MaxRAMPeak = max([x.RAMPeak for x in mm])
+journal.MinRAMAvailable = min([x.RAMAvailable for x in mm])
+journal.MaxVMPeak = max([x.VMPeak for x in mm])
+journal.MinVMAvailable = min([x.VMAvailable for x in mm])
+# Compute total processing time of this node
+journal.ProcessingTime = time.time() - processing_started
+
+OUT = journal</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="85ea8697-dd44-4976-a46c-b4358bb38957" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="String.TrimLeadingWhitespace" x="-960.178646615372" y="-2448.45923216013" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.TrimLeadingWhitespace@string">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="deae5fcd-d14b-4ee7-b74c-91bcde03c76c" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="-1290.17864661537" y="-2448.45923216013" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
+    <CoreNodeModels.Input.StringInput guid="0ea3334c-ec01-4c07-86d3-626e2a243958" type="CoreNodeModels.Input.StringInput" nickname="String" x="-1519.17864661537" y="-2393.45923216013" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>
+</System.String>
+      <System.String value="&#xD;&#xA;" />
+    </CoreNodeModels.Input.StringInput>
+    <PythonNodeModels.PythonNode guid="f7210408-293f-45f5-af06-87c9a4d0d8aa" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-122.885067725001" y="-2236.39286933464" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalLineNext(jline, journal):
+	if hasattr(jline, 'Next') and journal.__repr__() == 'Journal': return jline.Next(journal)
+	else: return None
+
+OUT = process_input(journalLineNext, IN[0], IN[1])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="30eb5a8d-16a9-4a47-bb80-17cdface6dad" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.Lines" x="-635.188754263983" y="-2253.87504261416" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="e3f9de1e-0112-4706-833c-0010ac6f925e" />
+      <Name value="Journal.Lines" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journal" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLines" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="18cd85fd-3346-41e3-90be-bee27caa9a1e" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="List.FirstItem" x="-350.153320358763" y="-2262.99617649913" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.List.FirstItem@var[]..[]">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="deae5fcd-d14b-4ee7-b74c-91bcde03c76c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="656efa5a-de34-4133-a2d0-154a785c8ef1" start_index="0" end="30eb5a8d-16a9-4a47-bb80-17cdface6dad" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="656efa5a-de34-4133-a2d0-154a785c8ef1" start_index="0" end="f7210408-293f-45f5-af06-87c9a4d0d8aa" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="85ea8697-dd44-4976-a46c-b4358bb38957" start_index="0" end="656efa5a-de34-4133-a2d0-154a785c8ef1" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="deae5fcd-d14b-4ee7-b74c-91bcde03c76c" start_index="0" end="85ea8697-dd44-4976-a46c-b4358bb38957" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0ea3334c-ec01-4c07-86d3-626e2a243958" start_index="0" end="deae5fcd-d14b-4ee7-b74c-91bcde03c76c" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="30eb5a8d-16a9-4a47-bb80-17cdface6dad" start_index="0" end="18cd85fd-3346-41e3-90be-bee27caa9a1e" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="18cd85fd-3346-41e3-90be-bee27caa9a1e" start_index="0" end="f7210408-293f-45f5-af06-87c9a4d0d8aa" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Evaluate Journal" left="-1340.88599171625" top="-2125.65167095318" width="661.000000000004" height="139" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" />
+      <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
+      <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1692.88599171625" top="-2125.65167095318" width="300" height="142" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+      <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
