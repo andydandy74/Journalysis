@@ -68,6 +68,14 @@ class JournalLine:
 		self.Type = type
 	def __repr__(self):
 		return 'JournalLine'
+	def Next(self, journal):
+		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
+			return journal.Lines[journal.Lines.index(self) + 1]
+		else: return None
+	def Previous(self, journal):
+		if journal.Lines.index(self) - 1 &gt; -1:
+			return journal.Lines[journal.Lines.index(self) - 1]
+		else: return None
 
 class JournalAddinEvent(JournalLine):
 	def __init__(self, number, raw, block, type):
