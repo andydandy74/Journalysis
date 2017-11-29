@@ -57,6 +57,8 @@ class Journal:
 		return [x for x in self.Lines if x.Block in blocks]
 	def GetLinesByType(self,type):
 		return [x for x in self.Lines if x.Type == type]
+	def GetLinesByTypeAndProperty(self,type,prop,val):
+		return [x for x in self.Lines if x.Type == type and getattr(x, prop) == val]
 	def GetLinesByTypes(self,types):
 		return [x for x in self.Lines if x.Type in types]
 
