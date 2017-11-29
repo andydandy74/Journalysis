@@ -51,15 +51,15 @@ class Journal:
 		self.MinVMAvailable = None
 	def __repr__(self):
 		return 'Journal'
-	def GetLinesByBlock(self,block):
+	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
-	def GetLinesByBlocks(self,blocks):
+	def GetLinesByBlocks(self, blocks):
 		return [x for x in self.Lines if x.Block in blocks]
-	def GetLinesByType(self,type):
+	def GetLinesByType(self, type):
 		return [x for x in self.Lines if x.Type == type]
-	def GetLinesByTypeAndProperty(self,type,prop,val):
+	def GetLinesByTypeAndProperty(self, type, prop, val):
 		return [x for x in self.Lines if x.Type == type and getattr(x, prop) == val]
-	def GetLinesByTypes(self,types):
+	def GetLinesByTypes(self, types):
 		return [x for x in self.Lines if x.Type in types]
 
 class JournalLine:
@@ -70,6 +70,14 @@ class JournalLine:
 		self.Type = type
 	def __repr__(self):
 		return 'JournalLine'
+	def AllNext(self, journal):
+		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
+			return journal.Lines[journal.Lines.index(self) + 1:]
+		else: return []
+	def AllPrevious(self, journal):
+		if journal.Lines.index(self) - 1 &gt; -1:
+			return journal.Lines[:journal.Lines.index(self)]
+		else: return []
 	def Next(self, journal):
 		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
 			return journal.Lines[journal.Lines.index(self) + 1]
