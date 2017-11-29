@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1828.67077813981" Y="3105.25638725099" zoom="1.31562590258408" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="2843.02926207895" Y="3591.52357374648" zoom="1.53758359573478" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -7,7 +7,7 @@
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1682.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0453.txt</System.String>
-      <HintPath>Z:\U\Desktop\journals\Journals_dhess\journal.0453.txt</HintPath>
+      <HintPath>U:\Desktop\journals\Journals_dhess\journal.0453.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1330.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -40,8 +40,8 @@ if IN[0].__repr__() == 'Journal':
 	allPushButtonEvents = [x for x in allUIEvents if x.UIEventType == 'PushButton']
 	allSyncs1StartCandidates = [x for x in allPushButtonEvents if x.Data[2] == 'Dialog_Revit_PartitionsSaveToMaster']
 	allSyncs1Start = [x for x in allSyncs1StartCandidates if x.Data[4] == 'IDOK']
-	allSyncs1StartTimeStampIndices = [allLines.index(x)+1 for x in allSyncs1Start]
-	allSyncs1StartTimeStamps = [allLines[x].DateTime for x in allSyncs1StartTimeStampIndices]
+	allSyncs1StartTimeStamps = [x.Next(IN[0]) for x in allSyncs1Start]
+	
 	# Option 2: Quick sync from ribbon
 	# Option 3: Sync with settings via keyboard shortcut
 	# Option 4: Quick sync via keyboard shortcut
