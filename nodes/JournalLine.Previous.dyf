@@ -5,32 +5,23 @@
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <PythonNodeModels.PythonNode guid="ff22d654-0e2d-4b33-899e-2fa147861c9d" type="PythonNodeModels.PythonNode" nickname="Python Script" x="223" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
+    <PythonNodeModels.PythonNode guid="ff22d654-0e2d-4b33-899e-2fa147861c9d" type="PythonNodeModels.PythonNode" nickname="Python Script" x="223" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
       <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
       <Script>import clr
 
-def process_input(func, input1, input2):
-	if isinstance(input1, list) and isinstance(input2, list): 
-		return map(func, input1, input2)
-	elif isinstance(input1, list): 
-		return [func(x, input2) for x in input1]
-	elif isinstance(input2, list):
-		return None
-	else: return func(input1, input2)
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
 	
-def journalLinePrevious(jline, journal):
-	if hasattr(jline, 'Previous') and journal.__repr__() == 'Journal': 
-		return jline.Previous(journal)
+def journalLinePrevious(jline):
+	if hasattr(jline, 'Previous'): 
+		return jline.Previous()
 	else: return None
 
-OUT = process_input(journalLinePrevious, IN[0], IN[1])</Script>
+OUT = process_input(journalLinePrevious, IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="23d591e8-28c4-4df4-9b2b-ee1e4c7e5fb6" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="2" y="33" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="journalLine" />
-    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="e32e5b7d-99bf-42b7-80de-38762ca32f79" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="2" y="117" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="journal" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="7a04c0c7-c5dd-432c-a975-e9c04908eabe" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="447" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -40,7 +31,6 @@ OUT = process_input(journalLinePrevious, IN[0], IN[1])</Script>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="ff22d654-0e2d-4b33-899e-2fa147861c9d" start_index="0" end="7a04c0c7-c5dd-432c-a975-e9c04908eabe" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="23d591e8-28c4-4df4-9b2b-ee1e4c7e5fb6" start_index="0" end="ff22d654-0e2d-4b33-899e-2fa147861c9d" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="e32e5b7d-99bf-42b7-80de-38762ca32f79" start_index="0" end="ff22d654-0e2d-4b33-899e-2fa147861c9d" end_index="1" portType="0" />
   </Connectors>
   <Notes />
   <Annotations />

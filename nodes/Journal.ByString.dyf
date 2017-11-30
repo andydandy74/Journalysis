@@ -68,23 +68,24 @@ class JournalLine:
 		self.RawText = raw
 		self.Block = block
 		self.Type = type
+		self.Journal = None
 	def __repr__(self):
 		return 'JournalLine'
-	def AllNext(self, journal):
-		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
-			return journal.Lines[journal.Lines.index(self) + 1:]
+	def AllNext(self):
+		if self.Journal.Lines.index(self) + 1 &lt; self.Journal.LineCount:
+			return self.Journal.Lines[self.Journal.Lines.index(self) + 1:]
 		else: return []
-	def AllPrevious(self, journal):
-		if journal.Lines.index(self) - 1 &gt; -1:
-			return journal.Lines[:journal.Lines.index(self)]
+	def AllPrevious(self):
+		if self.Journal.Lines.index(self) - 1 &gt; -1:
+			return self.Journal.Lines[:self.Journal.Lines.index(self)]
 		else: return []
-	def Next(self, journal):
-		if journal.Lines.index(self) + 1 &lt; journal.LineCount:
-			return journal.Lines[journal.Lines.index(self) + 1]
+	def Next(self):
+		if self.Journal.Lines.index(self) + 1 &lt; self.Journal.LineCount:
+			return self.Journal.Lines[self.Journal.Lines.index(self) + 1]
 		else: return None
-	def Previous(self, journal):
-		if journal.Lines.index(self) - 1 &gt; -1:
-			return journal.Lines[journal.Lines.index(self) - 1]
+	def Previous(self):
+		if self.Journal.Lines.index(self) - 1 &gt; -1:
+			return self.Journal.Lines[self.Journal.Lines.index(self) - 1]
 		else: return None
 
 class JournalAddinEvent(JournalLine):
@@ -356,6 +357,8 @@ for line in lineObjs:
 
 # Create journal object
 journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBranch, jMachineName, jOSVersion)
+for line in journal.Lines:
+	line.Journal = journal
 
 # Compute total session time
 ts = journal.GetLinesByType('JournalTimeStamp')
