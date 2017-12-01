@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="920.187566349402" Y="3117.83232097694" zoom="1.02441785714382" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="894.36610026696" Y="2265.08888182844" zoom="0.808757526403157" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -6,8 +6,8 @@
   </NamespaceResolutionMap>
   <Elements>
     <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1682.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0453.txt</System.String>
-      <HintPath>U:\Desktop\journals\Journals_dhess\journal.0453.txt</HintPath>
+      <System.String>..\..\..\..\Desktop\avinor\journal.0534.txt</System.String>
+      <HintPath>C:\Users\andreas\Desktop\avinor\journal.0534.txt</HintPath>
     </CoreNodeModels.Input.Filename>
     <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1330.88599171625" y="-2079.65167095318" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -27,7 +27,7 @@
         <Output value="journal" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <PythonNodeModels.PythonNode guid="26e144d5-ffd0-4165-8dd7-5975975e468c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-353.102019446429" y="-2161.11103624246" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+    <PythonNodeModels.PythonNode guid="26e144d5-ffd0-4165-8dd7-5975975e468c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-350.629090373491" y="-1953.38499411565" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
 
@@ -460,91 +460,28 @@ OUT = journal</Script>
 </System.String>
       <System.String value="&#xD;&#xA;" />
     </CoreNodeModels.Input.StringInput>
-    <PythonNodeModels.PythonNode guid="9e9079fb-e542-43c1-a372-dadab25e58a1" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-85.8680220348322" y="-2435.33007514759" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <Script>import clr
-
-def process_input(func, input1, input2):
-	if isinstance(input1, list): return [func(x, input2) for x in input1]
-	else: return func(input1, input2)
-	
-def journalLineAllNextOfType(jline, type):
-	if hasattr(jline, 'AllNextOfType'): 
-		return jline.AllNextOfType(type)
-	else: return None
-
-OUT = process_input(journalLineAllNextOfType, IN[0], IN[1])</Script>
-    </PythonNodeModels.PythonNode>
     <CoreNodeModels.Input.StringInput guid="e709fbb6-a18d-4f11-a9bd-41c409518623" type="CoreNodeModels.Input.StringInput" nickname="String" x="-344.065365646762" y="-2410.61597172881" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>JournalCommand</System.String>
       <System.String value="JournalCommand" />
     </CoreNodeModels.Input.StringInput>
-    <PythonNodeModels.PythonNode guid="4671c22a-ec31-445e-b235-0a6290dddbe1" type="PythonNodeModels.PythonNode" nickname="Python Script" x="141.840476215773" y="-2438.9993891633" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <Script>import clr
-
-def process_input(func, input1, input2):
-	if isinstance(input1, list): return [func(x, input2) for x in input1]
-	else: return func(input1, input2)
-	
-def journalLineAllPreviousOfType(jline, type):
-	if hasattr(jline, 'AllPreviousOfType'): 
-		return jline.AllPreviousOfType(type)
-	else: return None
-
-OUT = process_input(journalLineAllPreviousOfType, IN[0], IN[1])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="0bc2cfd7-a928-4b49-847f-1e6cf2a6f48b" type="PythonNodeModels.PythonNode" nickname="Python Script" x="408.497614470345" y="-2441.93522744028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <Script>import clr
-
-def process_input(func, input1, input2):
-	if isinstance(input1, list): return [func(x, input2) for x in input1]
-	else: return func(input1, input2)
-	
-def journalLineNextOfType(jline, type):
-	if hasattr(jline, 'NextOfType'): 
-		return jline.NextOfType(type)
-	else: return None
-
-OUT = process_input(journalLineNextOfType, IN[0], IN[1])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="6de90915-e85a-46eb-89a4-f06119459e83" type="PythonNodeModels.PythonNode" nickname="Python Script" x="646.177155898472" y="-2444.48257782771" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
-      <PortInfo index="0" default="False" />
-      <PortInfo index="1" default="False" />
-      <Script>import clr
-
-def process_input(func, input1, input2):
-	if isinstance(input1, list): return [func(x, input2) for x in input1]
-	else: return func(input1, input2)
-	
-def journalLinePreviousOfType(jline, type):
-	if hasattr(jline, 'PreviousOfType'): 
-		return jline.PreviousOfType(type)
-	else: return None
-
-OUT = process_input(journalLinePreviousOfType, IN[0], IN[1])</Script>
-    </PythonNodeModels.PythonNode>
-    <PythonNodeModels.PythonNode guid="ff4c4254-aefa-489d-9909-857eb959f541" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-75.5996623984383" y="-2958.45784400486" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="4">
+    <PythonNodeModels.PythonNode guid="ff4c4254-aefa-489d-9909-857eb959f541" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-49.6339071325866" y="-2739.60362104982" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="4">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
       <PortInfo index="2" default="False" />
       <PortInfo index="3" default="False" />
       <Script>import clr
 
-def process_input(func, input1, input2):
-	if isinstance(input1, list): return [func(x, input2) for x in input1]
-	else: return func(input1, input2)
+def process_input(func, inputs):
+	if isinstance(inputs[1], list) or isinstance(inputs[2], list) or isinstance(inputs[3], list): return None
+	elif isinstance(inputs[0], list): return [func(x, inputs[1], inputs[2], inputs[3]) for x in inputs[0]]
+	else: return func(inputs[0], inputs[1], inputs[2], inputs[3])
 	
-def journalLineAllNextOfType(jline, type):
-	if hasattr(jline, 'AllNextOfType'): 
-		return jline.AllNextOfType(type)
+def journalLineAllNextOfTypeAndProperty(jline, type, prop, val):
+	if hasattr(jline, 'AllNextOfTypeAndProperty'): 
+		return jline.AllNextOfTypeAndProperty(type, prop, val)
 	else: return None
 
-OUT = process_input(journalLineAllNextOfTypeAndProperty, IN[0], IN[1], IN[2], IN[3])</Script>
+OUT = process_input(journalLineAllNextOfTypeAndProperty, IN)</Script>
     </PythonNodeModels.PythonNode>
     <CoreNodeModels.Input.StringInput guid="79f9190a-aee8-4e63-bbcc-7dbb40da47d6" type="CoreNodeModels.Input.StringInput" nickname="String" x="-344.769045059528" y="-2576.90970785794" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>CommandID</System.String>
@@ -554,26 +491,100 @@ OUT = process_input(journalLineAllNextOfTypeAndProperty, IN[0], IN[1], IN[2], IN
       <System.String>ID_CANCEL_EDITOR</System.String>
       <System.String value="ID_CANCEL_EDITOR" />
     </CoreNodeModels.Input.StringInput>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="fe8116ab-bb11-4c70-a9ee-32fb593348b3" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalLine.AllNextOfType" x="-16.1986144481773" y="-1908.56149550923" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <ID value="1f7ec4a9-7fe5-4bd9-ae9f-0364fe04cc5d" />
+      <Name value="JournalLine.AllNextOfType" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalLine" />
+        <Input value="journalLineType" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLines" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="a18298b3-2502-4d12-9ccd-6be6bbfa852d" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalLine.AllPreviousOfType" x="-11.1925408321063" y="-1764.17833772545" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <ID value="7c4fef62-0441-4d5d-a1bf-967b12c4a43b" />
+      <Name value="JournalLine.AllPreviousOfType" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalLine" />
+        <Input value="journalLineType" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLines" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="95fe4494-4668-43d4-ae58-1aa7a181ed4a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalLine.NextOfType" x="360.275497548049" y="-1979.49749080083" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <ID value="6fc48c9e-94ed-4611-899e-bd4dafb86411" />
+      <Name value="JournalLine.NextOfType" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalLine" />
+        <Input value="journalLineType" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLine" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="f57a6fb6-ef92-4256-89d3-c309655d7eaf" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalLIne.PreviousOfType" x="384.046674167016" y="-1829.95970320255" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <ID value="b3150a66-0850-4291-a33c-e80e0f244203" />
+      <Name value="JournalLIne.PreviousOfType" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journalLine" />
+        <Input value="journalLineType" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLine" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="86cac6ed-fef1-4f25-bc40-c095902a69b4" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.GetLinesByTypeAndProperty" x="-489.397580443428" y="-2866.77611330548" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+      <PortInfo index="3" default="False" />
+      <ID value="34868ba5-6614-4415-b848-e36578fd5462" />
+      <Name value="Journal.GetLinesByTypeAndProperty" />
+      <Description value="" />
+      <Inputs>
+        <Input value="journal" />
+        <Input value="journalLineType" />
+        <Input value="property" />
+        <Input value="value" />
+      </Inputs>
+      <Outputs>
+        <Output value="journalLines" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="bbf4c1a2-2f77-44e0-b339-2db1d7e9c6fc" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="9e9079fb-e542-43c1-a372-dadab25e58a1" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="4671c22a-ec31-445e-b235-0a6290dddbe1" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="0bc2cfd7-a928-4b49-847f-1e6cf2a6f48b" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="6de90915-e85a-46eb-89a4-f06119459e83" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="ff4c4254-aefa-489d-9909-857eb959f541" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="fe8116ab-bb11-4c70-a9ee-32fb593348b3" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="a18298b3-2502-4d12-9ccd-6be6bbfa852d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="95fe4494-4668-43d4-ae58-1aa7a181ed4a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="26e144d5-ffd0-4165-8dd7-5975975e468c" start_index="0" end="f57a6fb6-ef92-4256-89d3-c309655d7eaf" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="bbf4c1a2-2f77-44e0-b339-2db1d7e9c6fc" start_index="0" end="b6c87b5e-da3f-479c-80e2-27f2bc7e86b7" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b6c87b5e-da3f-479c-80e2-27f2bc7e86b7" start_index="0" end="305fb3aa-fc30-488f-b2c3-c46792df4577" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="305fb3aa-fc30-488f-b2c3-c46792df4577" start_index="0" end="26e144d5-ffd0-4165-8dd7-5975975e468c" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="95ea66d6-fa72-42ef-a9ba-a34aaaa138d0" start_index="0" end="bbf4c1a2-2f77-44e0-b339-2db1d7e9c6fc" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="9e9079fb-e542-43c1-a372-dadab25e58a1" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="4671c22a-ec31-445e-b235-0a6290dddbe1" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="0bc2cfd7-a928-4b49-847f-1e6cf2a6f48b" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="6de90915-e85a-46eb-89a4-f06119459e83" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="ff4c4254-aefa-489d-9909-857eb959f541" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="fe8116ab-bb11-4c70-a9ee-32fb593348b3" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="a18298b3-2502-4d12-9ccd-6be6bbfa852d" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="95fe4494-4668-43d4-ae58-1aa7a181ed4a" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e709fbb6-a18d-4f11-a9bd-41c409518623" start_index="0" end="f57a6fb6-ef92-4256-89d3-c309655d7eaf" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="79f9190a-aee8-4e63-bbcc-7dbb40da47d6" start_index="0" end="ff4c4254-aefa-489d-9909-857eb959f541" end_index="2" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="9aacb600-0d0f-442d-85cb-4b5f998140bb" start_index="0" end="ff4c4254-aefa-489d-9909-857eb959f541" end_index="3" portType="0" />
   </Connectors>
@@ -582,7 +593,7 @@ OUT = process_input(journalLineAllNextOfTypeAndProperty, IN[0], IN[1], IN[2], IN
     <Dynamo.Graph.Notes.NoteModel guid="8c4677d2-7540-4ac0-a5c7-4cd74afe1208" text="AllPreviousOfType" x="133.973609358139" y="-2486.70587362658" />
     <Dynamo.Graph.Notes.NoteModel guid="23125ae4-7d3f-4248-a1cd-362f5355c77b" text="NextOfType" x="420.499467346709" y="-2485.06124971168" />
     <Dynamo.Graph.Notes.NoteModel guid="c658f67b-da13-4a6b-8e7b-0f8415a647cb" text="PreviousOfType" x="652.692864071421" y="-2487.32476908568" />
-    <Dynamo.Graph.Notes.NoteModel guid="e4b966d2-53e9-4e40-a6dd-5466ce27cbf5" text="AllNextOfTypeAndProperty" x="-61.9362140741004" y="-2999.07624457427" />
+    <Dynamo.Graph.Notes.NoteModel guid="e4b966d2-53e9-4e40-a6dd-5466ce27cbf5" text="AllNextOfTypeAndProperty" x="-35.9704588082487" y="-2780.22202161923" />
   </Notes>
   <Annotations>
     <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Evaluate Journal" left="-1340.88599171625" top="-2125.65167095318" width="660.349628857405" height="139" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
@@ -590,12 +601,12 @@ OUT = process_input(journalLineAllNextOfTypeAndProperty, IN[0], IN[1], IN[2], IN
       <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1692.88599171625" top="-2125.65167095318" width="300" height="142" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1692.88599171625" top="-2125.65167095318" width="241" height="140" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
