@@ -1269,6 +1269,18 @@
     <CoreNodeModels.Watch guid="33bc219b-ca6f-4b8f-9742-f474dd3475cc" type="CoreNodeModels.Watch" nickname="Watch" x="1226.41554632402" y="-3634.96009733714" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="c01c73d7-7651-4b97-a7e5-44c690f5316b" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcuts.CommandsWithShortcuts" x="-417.801372247892" y="-1530.4897065362" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="04d7eca3-8497-415a-9fe2-b05cad2412f6" />
+      <Name value="KeyboardShortcuts.CommandsWithShortcuts" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcuts" />
+      </Inputs>
+      <Outputs>
+        <Output value="seq" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
@@ -1389,9 +1401,10 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="6132ebf3-304e-47e3-9ef9-6ba9435ae26a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="c2c46f44-e4c4-4c96-a1ef-9f617479c3f0" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="16eded5b-3799-4cf0-abaf-1f887b66ea23" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="80b8e098-9b8e-413c-bd58-84030f810324" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="de6fc7dc-7848-4817-99de-d65b7cc77ca2" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="c01c73d7-7651-4b97-a7e5-44c690f5316b" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" start_index="0" end="502a0402-112a-4968-99a0-a9fa3bd257ea" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="59666416-520b-4f79-861d-3bbaaebc0514" start_index="0" end="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="206c529a-843c-4768-8fc3-ecd0d47b3ed9" start_index="0" end="59666416-520b-4f79-861d-3bbaaebc0514" end_index="0" portType="0" />
@@ -1439,36 +1452,36 @@
       <Models ModelGuid="78a3f6ec-3502-4ba1-bf36-ca3a62854660" />
       <Models ModelGuid="a284119c-6dfc-4696-a5fb-85159d9d21c5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="ecc0aa0c-43f0-4fdc-aa90-cacb795e5276" annotationText="JournalTimeStamp.Query" left="1627.71530944916" top="-2409.87797726022" width="931.999999999998" height="355.000000000005" fontSize="30" InitialTop="-2363.87797726022" InitialHeight="321.049837911305" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="ecc0aa0c-43f0-4fdc-aa90-cacb795e5276" annotationText="JournalTimeStamp.Query" left="1627.71530944916" top="-2409.87797726022" width="931.99999999999" height="355" fontSize="30" InitialTop="-2363.87797726022" InitialHeight="321.049837911305" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="6e53e5ab-1ac1-459f-9a21-76a0135dd304" />
       <Models ModelGuid="ac80c0dc-be09-4f7f-b71c-dd1db38cb4e6" />
       <Models ModelGuid="e73bbf56-083f-40ee-98a5-f40e1fa99f1c" />
       <Models ModelGuid="1c235f6e-7091-47a7-b186-162aeff01fd1" />
       <Models ModelGuid="d675ad81-74a2-41a6-a1da-56f031227454" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="1629.25786730459" top="-3565.50397625358" width="898.680533165583" height="165.62238957031" fontSize="30" InitialTop="-3519.50397625358" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="55c4099e-f248-41dc-9a6d-8889914c7d0f" annotationText="JournalKeyboardEvent.Query" left="1629.25786730459" top="-3565.50397625358" width="898.68053316558" height="165.62238957031" fontSize="30" InitialTop="-3519.50397625358" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="0b5f86e9-c024-4782-87c3-1edee050d484" />
       <Models ModelGuid="74c30557-166c-489e-b588-61c1bcfcc026" />
       <Models ModelGuid="ed38f7c8-9d86-4267-a327-395b65095daa" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="1623.32677524538" top="-5289.81521228514" width="894.000000000007" height="165" fontSize="30" InitialTop="-5243.81521228514" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="fc50f941-a890-41fe-9d4c-d2feb21e773c" annotationText="JournalAddinEvent.Query" left="1623.32677524538" top="-5289.81521228514" width="894" height="165" fontSize="30" InitialTop="-5243.81521228514" InitialHeight="149.622389570323" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="22cf9a1d-1bfe-47e5-8c76-ff845a533825" />
       <Models ModelGuid="f26c27ce-1050-4cb8-a562-2a6f6a96d1ba" />
       <Models ModelGuid="a6bee305-9287-4c4f-b343-00c9d44c33e7" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="1621.54001894862" top="-5111.52010209202" width="898.999999999993" height="247" fontSize="30" InitialTop="-5065.52010209202" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9c527059-3193-4766-b9a4-0b8fc0e59535" annotationText="JournalAPIMessage.Query" left="1621.54001894862" top="-5111.52010209202" width="898.99999999999" height="247" fontSize="30" InitialTop="-5065.52010209202" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f2745683-9de0-487f-80bc-fce2d78acb11" />
       <Models ModelGuid="a4d566bd-b27a-4456-8245-f8273191187f" />
       <Models ModelGuid="d9a2f643-3ae0-4ddf-b045-104939685f31" />
       <Models ModelGuid="e7132e29-208a-4e8a-8849-50b4b2c30060" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="1627.48473336739" top="-4208.1390171684" width="868.000000000005" height="247" fontSize="30" InitialTop="-4162.1390171684" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="1627.48473336739" top="-4208.1390171684" width="868" height="247" fontSize="30" InitialTop="-4162.1390171684" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" />
       <Models ModelGuid="1605f9d0-149e-4648-8fe0-ada143f5d864" />
       <Models ModelGuid="6654b90a-783e-44d8-af76-0d4014d049d9" />
       <Models ModelGuid="794aa987-a7c4-4f98-96f9-a52f4b3a9513" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="1624.52631743013" top="-4477.10760788898" width="819.176108342912" height="248.17055511525" fontSize="30" InitialTop="-4431.10760788898" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="1624.52631743013" top="-4477.10760788898" width="819.17610834291" height="248.17055511525" fontSize="30" InitialTop="-4431.10760788898" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" />
       <Models ModelGuid="51a557fa-6006-47ed-a203-c2a388436b09" />
       <Models ModelGuid="b02d5c51-c987-4f2e-8b3c-58f3839cb997" />
@@ -1481,26 +1494,26 @@
       <Models ModelGuid="88ff2101-cff8-4564-8117-c9ce0dd0656d" />
       <Models ModelGuid="1624d089-db50-4195-b7ee-f259de1a62cc" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="1627.40092227781" top="-2678.05583088781" width="907.999999999995" height="247" fontSize="30" InitialTop="-2632.05583088781" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="1627.40092227781" top="-2678.05583088781" width="907.99999999999" height="247" fontSize="30" InitialTop="-2632.05583088781" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="4de33e6b-2604-495f-aaa1-74b21cb032dc" />
       <Models ModelGuid="35ac1207-c2bf-434b-9ffa-b9923cc93e02" />
       <Models ModelGuid="2090f0bd-291d-4557-9eb1-9336d0ea0eef" />
       <Models ModelGuid="8b7362eb-c226-41eb-b5cf-e23871dda7e5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="6c1fbef8-5510-48a6-828e-18a0a2a80e94" annotationText="JournalGUIResourceUsage.Query" left="1631.586091734" top="-3938.137905918" width="986.698633141828" height="355" fontSize="30" InitialTop="-3892.137905918" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="6c1fbef8-5510-48a6-828e-18a0a2a80e94" annotationText="JournalGUIResourceUsage.Query" left="1631.586091734" top="-3938.137905918" width="986.69863314183" height="355" fontSize="30" InitialTop="-3892.137905918" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="104f80f9-a949-4461-adb9-6fb0de4fe901" />
       <Models ModelGuid="a13f9b61-87e4-410b-bab0-a879cd06bd77" />
       <Models ModelGuid="6c4abac6-7da0-4f91-b88b-127f9513459f" />
       <Models ModelGuid="f7376835-64ab-47cc-aa19-f0fcc81b8da9" />
       <Models ModelGuid="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="1626.66532563007" top="-2041.56306774319" width="853.999999999996" height="247" fontSize="30" InitialTop="-1995.56306774319" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="1626.66532563007" top="-2041.56306774319" width="853.99999999999" height="247" fontSize="30" InitialTop="-1995.56306774319" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="dac3b953-16fe-49aa-8051-3145b850c610" />
       <Models ModelGuid="2683393e-0a63-4fb7-a8fb-4c5df785f226" />
       <Models ModelGuid="4e52fa1e-7d21-4b00-83e5-98047da4f9de" />
       <Models ModelGuid="f60a0a98-6211-4aaf-9d34-05b3ffc63a0c" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="1626.20099578248" top="-3380.59679973175" width="941.999999999995" height="679" fontSize="30" InitialTop="-3334.59679973175" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="be084bdf-f39c-4507-967c-fb77f7663673" annotationText="JournalMemoryMetrics.Query" left="1626.20099578248" top="-3380.59679973175" width="941.99999999999" height="679" fontSize="30" InitialTop="-3334.59679973175" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="d95e228c-0e5b-4a9a-9571-ab36940d47bf" />
       <Models ModelGuid="9c53dd18-96da-4542-9501-af0984f47a08" />
       <Models ModelGuid="f65507dc-d43f-4360-ab36-f4fdabccf266" />
@@ -1513,17 +1526,17 @@
     <Dynamo.Graph.Annotations.AnnotationModel guid="24feefc0-05ac-4f71-ac79-f9b5295ab035" annotationText="Test Inputs" left="-752.283378894119" top="-4991.30487704605" width="339" height="203" fontSize="30" InitialTop="-4945.30487704605" InitialHeight="239.1585257254" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="18f9547a-d733-42f2-8baa-046b724353fa" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Journal.Create" left="-1313.19664721226" top="-3699.27773761501" width="661" height="139" fontSize="30" InitialTop="-3653.27773761501" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Journal.Create" left="-1313.19664721226" top="-3699.27773761501" width="660.999999999999" height="139" fontSize="30" InitialTop="-3653.27773761501" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" />
       <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1959.06132444434" top="-2843.49632069603" width="351" height="339.069698130309" fontSize="30" InitialTop="-2797.49632069603" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1959.06132444434" top="-2843.49632069603" width="351" height="339.06969813031" fontSize="30" InitialTop="-2797.49632069603" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
       <Models ModelGuid="206c529a-843c-4768-8fc3-ecd0d47b3ed9" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="142f805f-6898-4a70-9e79-4e09c0a0025e" annotationText="JournalLine.Query" left="821.076484848605" top="-4938.66209467343" width="245.983333333333" height="451.730055954839" fontSize="30" InitialTop="-4892.66209467343" InitialHeight="457.651622310137" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="142f805f-6898-4a70-9e79-4e09c0a0025e" annotationText="JournalLine.Query" left="821.076484848605" top="-4938.66209467343" width="245.983333333333" height="451.73005595484" fontSize="30" InitialTop="-4892.66209467343" InitialHeight="457.651622310137" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="e4f34336-c591-4afa-8a7d-c7790d8b74d7" />
       <Models ModelGuid="43df1a3e-f6d1-4d27-a991-0aae5eb1cec3" />
       <Models ModelGuid="ea876c9c-3e70-4d53-b822-73ad76aa8675" />
@@ -1563,12 +1576,13 @@
       <Models ModelGuid="a8ceecfa-4d4e-430c-a5dd-19eb02a208cb" />
       <Models ModelGuid="7009494f-c105-45f4-afb2-5d563638c602" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="f33c4331-10f4-42ae-8d7a-f1006d81f02c" annotationText="KeyboardShortcuts.Query" left="-425.825497830727" top="-1954.2545431673" width="432" height="391.82774379634" fontSize="30" InitialTop="-1908.2545431673" InitialHeight="375.82774379634" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="f33c4331-10f4-42ae-8d7a-f1006d81f02c" annotationText="KeyboardShortcuts.Query" left="-427.801372247892" top="-1954.2545431673" width="433.975874417165" height="516.764836631104" fontSize="30" InitialTop="-1908.2545431673" InitialHeight="375.82774379634" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="80b8e098-9b8e-413c-bd58-84030f810324" />
       <Models ModelGuid="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" />
       <Models ModelGuid="de6fc7dc-7848-4817-99de-d65b7cc77ca2" />
+      <Models ModelGuid="c01c73d7-7651-4b97-a7e5-44c690f5316b" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="c633950e-6dea-48e6-9e88-fde10a64567e" annotationText="Evaluate KeyboardShortcuts" left="-1292.3002229961" top="-1825.03850548745" width="733" height="139" fontSize="30" InitialTop="-1779.03850548745" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="c633950e-6dea-48e6-9e88-fde10a64567e" annotationText="Evaluate KeyboardShortcuts" left="-1292.3002229961" top="-1825.03850548745" width="733.000000000003" height="139" fontSize="30" InitialTop="-1779.03850548745" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="59666416-520b-4f79-861d-3bbaaebc0514" />
       <Models ModelGuid="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" />
       <Models ModelGuid="502a0402-112a-4968-99a0-a9fa3bd257ea" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="KeyboardShortcuts.ByString" Description="" ID="680af772-884a-4fc5-adf5-2f7d3e5066a6" Category="Journalysis.KeyboardShortcuts.Create">
+<Workspace Version="1.3.1.1736" X="446" Y="283" zoom="1" ScaleFactor="1" Name="KeyboardShortcuts.ByString" Description="" ID="680af772-884a-4fc5-adf5-2f7d3e5066a6" Category="Journalysis.KeyboardShortcuts.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -20,6 +20,8 @@ class KeyboardShortcuts:
 		self.CommandCountWithShortcuts = commandcountwithshortcuts
 	def __repr__(self):
 		return 'KeyboardShortcuts'
+	def GetCommandsWithShortcuts(self):
+		return [x for x in self.Commands if x.HasShortcuts]
 
 class KeyboardShortcutCommand:
 	def __init__(self, name, id, shortcuts, paths):
