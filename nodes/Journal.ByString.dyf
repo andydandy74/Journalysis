@@ -75,17 +75,41 @@ class JournalLine:
 		if self.Journal.Lines.index(self) + 1 &lt; self.Journal.LineCount:
 			return self.Journal.Lines[self.Journal.Lines.index(self) + 1:]
 		else: return []
+	def AllNextOfType(self, type):
+		return [x for x in self.AllNext() if x.Type == type]
+	def AllNextOfTypeAndProperty(self, type, prop, val):
+		return [x for x in self.AllNext() if x.Type == type and getattr(x, prop) == val]
 	def AllPrevious(self):
 		if self.Journal.Lines.index(self) - 1 &gt; -1:
 			return self.Journal.Lines[:self.Journal.Lines.index(self)]
 		else: return []
+	def AllPreviousOfType(self, type):
+		return [x for x in self.AllPrevious() if x.Type == type]
+	def AllPreviousOfTypeAndProperty(self, type, prop, val):
+		return [x for x in self.AllPrevious() if x.Type == type and getattr(x, prop) == val]
 	def Next(self):
 		if self.Journal.Lines.index(self) + 1 &lt; self.Journal.LineCount:
 			return self.Journal.Lines[self.Journal.Lines.index(self) + 1]
 		else: return None
+	def NextOfType(self, type):
+		allnext = self.AllNextOfType(type)
+		if len(allnext) &gt; 0: return allnext[0]
+		else: return None
+	def NextOfTypeAndProperty(self, type, prop, val):
+		allnext = self.AllNextOfTypeAndProperty(type, prop, val)
+		if len(allnext) &gt; 0: return allnext[0]
+		else: return None
 	def Previous(self):
 		if self.Journal.Lines.index(self) - 1 &gt; -1:
 			return self.Journal.Lines[self.Journal.Lines.index(self) - 1]
+		else: return None
+	def PreviousOfType(self, type):
+		allprev = self.AllPreviousOfType(type)
+		if len(allprev) &gt; 0: return allprev[-1]
+		else: return None
+	def PreviousOfTypeAndProperty(self, type, prop, val):
+		allprev = self.AllPreviousOfTypeAndProperty(type, prop, val)
+		if len(allprev) &gt; 0: return allprev[-1]
 		else: return None
 
 class JournalAddinEvent(JournalLine):

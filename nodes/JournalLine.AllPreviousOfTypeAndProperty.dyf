@@ -1,0 +1,57 @@
+<Workspace Version="1.3.1.1736" X="705" Y="369" zoom="1" ScaleFactor="1" Name="JournalLine.AllPreviousOfTypeAndProperty" Description="" ID="ab2210f1-ad2b-4170-8a66-1a31946c3700" Category="Journalysis.JournalLine.Actions">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" type="PythonNodeModels.PythonNode" nickname="Python Script" x="239.5" y="186" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="4">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="False" />
+      <PortInfo index="3" default="False" />
+      <Script>import clr
+
+def process_input(func, inputs):
+	if isinstance(inputs[1], list) or isinstance(inputs[2], list) or isinstance(inputs[3], list): return None
+	elif isinstance(inputs[0], list): return [func(x, inputs[1], inputs[2], inputs[3]) for x in inputs[0]]
+	else: return func(inputs[0], inputs[1], inputs[2], inputs[3])
+	
+def journalLineAllPreviousOfTypeAndProperty(jline, type, prop, val):
+	if hasattr(jline, 'AllPreviousOfTypeAndProperty'): 
+		return jline.AllPreviousOfTypeAndProperty(type, prop, val)
+	else: return None
+
+OUT = process_input(journalLineAllPreviousOfTypeAndProperty, IN)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="73044eda-2ab5-44dc-9c67-4f078845c92f" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-14.5" y="100" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalLine" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f9da60b1-7414-45fc-882c-e02e508653fb" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-14.5" y="183" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalLineType" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="560b5516-5e2f-481f-960f-22b87ec78d74" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-14.5" y="267" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="property" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="c4109925-917d-435f-89f7-a880bf6c233a" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-14.5" y="350" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="value" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="93d80a5b-98fe-498f-8d64-a14415f6e695" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="463.5" y="186" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="journalLines" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" start_index="0" end="93d80a5b-98fe-498f-8d64-a14415f6e695" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="73044eda-2ab5-44dc-9c67-4f078845c92f" start_index="0" end="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f9da60b1-7414-45fc-882c-e02e508653fb" start_index="0" end="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="560b5516-5e2f-481f-960f-22b87ec78d74" start_index="0" end="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" end_index="2" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c4109925-917d-435f-89f7-a880bf6c233a" start_index="0" end="c428bddf-3b3e-47fb-a7b2-dca70aa0780b" end_index="3" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
