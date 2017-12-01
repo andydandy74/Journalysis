@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1590.54301306861" Y="739.245933202386" zoom="0.138298060352177" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="1590.54301306861" Y="739.245933202386" zoom="0.138298060352177" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -446,7 +446,7 @@
         <Input value="journalData" />
       </Inputs>
       <Outputs>
-        <Output value="str" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="6654b90a-783e-44d8-af76-0d4014d049d9" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalDirective.Key" x="360.366558471243" y="-843.063334885584" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -470,7 +470,7 @@
         <Input value="journalDirective" />
       </Inputs>
       <Outputs>
-        <Output value="str" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="6c4abac6-7da0-4f91-b88b-127f9513459f" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalGUIResourceUsage.Available" x="422.467916837853" y="-573.062223635184" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -614,7 +614,7 @@
         <Input value="journalMouseEvent" />
       </Inputs>
       <Outputs>
-        <Output value="int" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="e73bbf56-083f-40ee-98a5-f40e1fa99f1c" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalTimeStamp.Type" x="372.597134553004" y="1171.1977050226" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -674,7 +674,7 @@
         <Input value="journalUIEvent" />
       </Inputs>
       <Outputs>
-        <Output value="str" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="86effb6a-1064-45ce-a3db-ff3b83cc2cdf" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.Path" x="-278.301076117168" y="-3124.07455023208" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -734,7 +734,7 @@
         <Input value="journal" />
       </Inputs>
       <Outputs>
-        <Output value="str" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="340beb30-e160-42a1-9450-03e02ba27720" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.LoadedModels" x="-265.430083808063" y="-3849.45248494723" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -746,7 +746,7 @@
         <Input value="journal" />
       </Inputs>
       <Outputs>
-        <Output value="str" />
+        <Output value="seq" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="4f250b37-315f-446a-a268-b573a39bd582" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.SessionTerminatedProperly" x="-278.301076117168" y="-2349.63329843815" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -1458,13 +1458,13 @@
       <Models ModelGuid="d9a2f643-3ae0-4ddf-b045-104939685f31" />
       <Models ModelGuid="e7132e29-208a-4e8a-8849-50b4b2c30060" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="-261.633441528762" top="-889.063334885584" width="863.000000000005" height="247" fontSize="30" InitialTop="-843.063334885584" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3c12fbc0-8ddd-49c5-b92d-ea70a7805f3c" annotationText="JournalDirective.Query" left="-261.633441528762" top="-889.063334885584" width="868.000000000005" height="247" fontSize="30" InitialTop="-843.063334885584" InitialHeight="149.9273045315" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="5a2cefdc-bec4-4ee4-ab17-1a530644372c" />
       <Models ModelGuid="1605f9d0-149e-4648-8fe0-ada143f5d864" />
       <Models ModelGuid="6654b90a-783e-44d8-af76-0d4014d049d9" />
       <Models ModelGuid="794aa987-a7c4-4f98-96f9-a52f4b3a9513" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="-264.591857466019" top="-1158.03192560616" width="814.176108342912" height="248.17055511525" fontSize="30" InitialTop="-1112.03192560616" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3121332d-2215-47a8-914e-b6d49d0bc69b" annotationText="JournalData.Query" left="-264.591857466019" top="-1158.03192560616" width="819.176108342912" height="248.17055511525" fontSize="30" InitialTop="-1112.03192560616" InitialHeight="231" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f8365d4a-bb5f-4bfb-a9f4-0b37fcad0f7b" />
       <Models ModelGuid="51a557fa-6006-47ed-a203-c2a388436b09" />
       <Models ModelGuid="b02d5c51-c987-4f2e-8b3c-58f3839cb997" />
@@ -1477,7 +1477,7 @@
       <Models ModelGuid="88ff2101-cff8-4564-8117-c9ce0dd0656d" />
       <Models ModelGuid="1624d089-db50-4195-b7ee-f259de1a62cc" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="-261.717252618341" top="641.019851395006" width="902.999999999995" height="247" fontSize="30" InitialTop="687.019851395006" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="47ec2cb3-6482-4ed7-9d21-2d97985d3b5e" annotationText="JournalMouseEvent.Query" left="-261.717252618341" top="641.019851395006" width="907.999999999995" height="247" fontSize="30" InitialTop="687.019851395006" InitialHeight="149.62238957032" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="4de33e6b-2604-495f-aaa1-74b21cb032dc" />
       <Models ModelGuid="35ac1207-c2bf-434b-9ffa-b9923cc93e02" />
       <Models ModelGuid="2090f0bd-291d-4557-9eb1-9336d0ea0eef" />
@@ -1490,7 +1490,7 @@
       <Models ModelGuid="f7376835-64ab-47cc-aa19-f0fcc81b8da9" />
       <Models ModelGuid="15ef5fee-8c16-4b95-ace6-d8898f4b7cf5" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="-262.452849266083" top="1277.51261453963" width="848.999999999996" height="247" fontSize="30" InitialTop="1323.51261453963" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="714baf3a-31fb-4c10-9f55-14ec2f2f8cc2" annotationText="JournalUIEvent.Query" left="-262.452849266083" top="1277.51261453963" width="853.999999999996" height="247" fontSize="30" InitialTop="1323.51261453963" InitialHeight="339" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="dac3b953-16fe-49aa-8051-3145b850c610" />
       <Models ModelGuid="2683393e-0a63-4fb7-a8fb-4c5df785f226" />
       <Models ModelGuid="4e52fa1e-7d21-4b00-83e5-98047da4f9de" />
@@ -1525,7 +1525,7 @@
       <Models ModelGuid="ea876c9c-3e70-4d53-b822-73ad76aa8675" />
       <Models ModelGuid="0f88a431-0fb2-4d68-bb8f-d3d9c213afab" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="Helpers" left="-1389.61838650255" top="-2053.12093619567" width="384" height="139" fontSize="30" InitialTop="-2007.12093619567" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="Helpers" left="-1389.61838650255" top="-2053.12093619567" width="537" height="375" fontSize="30" InitialTop="-2007.12093619567" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
       <Models ModelGuid="04f86fc0-3d3d-4f57-9f92-5cba5edc9317" />
     </Dynamo.Graph.Annotations.AnnotationModel>
