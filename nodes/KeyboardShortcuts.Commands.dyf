@@ -1,0 +1,31 @@
+<Workspace Version="1.3.1.1736" X="64" Y="22" zoom="1" ScaleFactor="1" Name="KeyboardShortcuts.Commands" Description="" ID="2901c738-a0a3-4e64-8eb2-40d1f4681352" Category="Journalysis.KeyboardShortcuts.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="56570d78-a487-4399-9989-c2c97ba6331b" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>if IN[0].__repr__() == 'KeyboardShortcuts': OUT = IN[0].Commands
+else: OUT = None</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="ced46019-b445-4130-968b-5e1a63e8770e" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="keyboardShortcuts" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="32c3a4f6-1f4b-4169-a1a8-1d168b94ac74" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="keyboardShortcutCommands" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="56570d78-a487-4399-9989-c2c97ba6331b" start_index="0" end="32c3a4f6-1f4b-4169-a1a8-1d168b94ac74" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="ced46019-b445-4130-968b-5e1a63e8770e" start_index="0" end="56570d78-a487-4399-9989-c2c97ba6331b" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

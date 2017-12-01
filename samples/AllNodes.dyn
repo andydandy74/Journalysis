@@ -1,11 +1,11 @@
-<Workspace Version="1.3.1.1736" X="1589.95902979817" Y="831.177715366434" zoom="0.15622412317865" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+<Workspace Version="1.3.1.1736" X="1590.54301306861" Y="739.245933202386" zoom="0.138298060352177" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="File Path" x="-1847.75770250772" y="-2233.22049313991" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="Journal File Path" x="-1947.88615087186" y="-815.846679629689" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>..\..\..\Desktop\journals\Journals_dhess\journal.0464.txt</System.String>
       <HintPath>U:\Desktop\journals\Journals_dhess\journal.0464.txt</HintPath>
     </CoreNodeModels.Input.Filename>
@@ -350,16 +350,7 @@
         <Output value="str" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="696252f8-eb5c-493d-a64c-fb703aa13df9" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalLineTypes.All" x="-1391.83580495824" y="-2039.35798707757" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <ID value="8a565703-8301-4b87-9dc0-37db9ec7041a" />
-      <Name value="JournalLineTypes.All" />
-      <Description value="" />
-      <Inputs />
-      <Outputs>
-        <Output value="str" />
-      </Outputs>
-    </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <CoreNodeModels.Watch guid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" type="CoreNodeModels.Watch" nickname="Watch" x="-1125.97144026241" y="-2039.02334326606" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Watch guid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" type="CoreNodeModels.Watch" nickname="Watch" x="-1093.61838650255" y="-2007.12093619567" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
     </CoreNodeModels.Watch>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="e7132e29-208a-4e8a-8849-50b4b2c30060" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="JournalAPIMessage.Text" x="370.421844052463" y="-1746.4444198092" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
@@ -1136,6 +1127,145 @@
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="95b65727-a5e4-4459-8a1b-6f188084308a" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="460.532086745568" y="-3655.15950737514" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="&quot;JournalCommand&quot;;&#xA;&quot;CommandID&quot;;&#xA;&quot;ID_CANCEL_EDITOR&quot;;" ShouldFocus="false" />
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="7009494f-c105-45f4-afb2-5d563638c602" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.HasPaths" x="275.328120825494" y="1665.91630807385" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="13528261-29c6-4137-92bd-5e2c74e5d003" />
+      <Name value="KeyboardShortcutCommand.HasPaths" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="bool" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="a8ceecfa-4d4e-430c-a5dd-19eb02a208cb" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.HasShortcuts" x="281.708731724136" y="1783.87497519695" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="2101ae1a-adae-4246-971f-3b079e154128" />
+      <Name value="KeyboardShortcutCommand.HasShortcuts" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="bool" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcuts.CommandCountWithShortcuts" x="-488.379113554568" y="1814.73855676582" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="700418e7-6b36-4ce3-937d-76cf8f820cea" />
+      <Name value="KeyboardShortcuts.CommandCountWithShortcuts" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcuts" />
+      </Inputs>
+      <Outputs>
+        <Output value="int" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="80b8e098-9b8e-413c-bd58-84030f810324" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcuts.CommandCount" x="-488.342020133978" y="1684.99600939776" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="2eda879b-e1ad-4782-89f5-9bbb16be251c" />
+      <Name value="KeyboardShortcuts.CommandCount" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcuts" />
+      </Inputs>
+      <Outputs>
+        <Output value="int" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="5fa04e43-3f8e-4be3-bf9e-f32fe4e95c64" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.ID" x="292.632041554315" y="1907.0209302541" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="58ec6d61-7f6c-4e24-9cc2-720e65369d87" />
+      <Name value="KeyboardShortcutCommand.ID" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="str" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="de6fc7dc-7848-4817-99de-d65b7cc77ca2" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcuts.Commands" x="-489.194492877378" y="1937.8237531941" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="2901c738-a0a3-4e64-8eb2-40d1f4681352" />
+      <Name value="KeyboardShortcuts.Commands" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcuts" />
+      </Inputs>
+      <Outputs>
+        <Output value="keyboardShortcutCommands" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6132ebf3-304e-47e3-9ef9-6ba9435ae26a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.Name" x="279.147544678007" y="2031.29864858244" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="6b3c8ee8-fb06-42ba-b362-9af4047d35db" />
+      <Name value="KeyboardShortcutCommand.Name" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="str" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="502a0402-112a-4968-99a0-a9fa3bd257ea" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcuts.ByString" x="-887.669218042747" y="1814.21204707761" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="680af772-884a-4fc5-adf5-2f7d3e5066a6" />
+      <Name value="KeyboardShortcuts.ByString" />
+      <Description value="" />
+      <Inputs>
+        <Input value="str" />
+      </Inputs>
+      <Outputs>
+        <Output value="keyboardShortcuts" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="File.ReadText" x="-1150.66921804275" y="1814.21204707761" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.File.ReadText@var">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="16eded5b-3799-4cf0-abaf-1f887b66ea23" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.Paths" x="286.602592455124" y="2164.94923522242" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="5eb362f8-f908-4888-b04d-144d1d8b7e0e" />
+      <Name value="KeyboardShortcutCommand.Paths" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="seq" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <CoreNodeModels.Input.FileObject guid="59666416-520b-4f79-861d-3bbaaebc0514" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1360.66921804275" y="1814.21204707761" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Input.FileObject>
+    <CoreNodeModels.Input.Filename guid="206c529a-843c-4768-8fc3-ecd0d47b3ed9" type="CoreNodeModels.Input.Filename" nickname="Keyboardshortcuts File Path" x="-1949.06132444434" y="-698.76025200421" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>C:\Users\adieckmann\Desktop\KeyboardShortcuts.xml</System.String>
+      <HintPath>C:\Users\adieckmann\Desktop\KeyboardShortcuts.xml</HintPath>
+    </CoreNodeModels.Input.Filename>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="c2c46f44-e4c4-4c96-a1ef-9f617479c3f0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="KeyboardShortcutCommand.Shortcuts" x="279.201625600537" y="2291.91079963801" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="40e02f9c-d0c0-4fb2-acef-4204630a3242" />
+      <Name value="KeyboardShortcutCommand.Shortcuts" />
+      <Description value="" />
+      <Inputs>
+        <Input value="keyboardShortcutCommand" />
+      </Inputs>
+      <Outputs>
+        <Output value="seq" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="04f86fc0-3d3d-4f57-9f92-5cba5edc9317" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Helpers.AllJournalLineTypes" x="-1379.61838650255" y="-2007.12093619567" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <ID value="8a565703-8301-4b87-9dc0-37db9ec7041a" />
+      <Name value="Helpers.AllJournalLineTypes" />
+      <Description value="" />
+      <Inputs />
+      <Outputs>
+        <Output value="str" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
@@ -1229,7 +1359,6 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="f38b4bbe-13fc-452d-ad25-95623e2c457e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="d95e228c-0e5b-4a9a-9571-ab36940d47bf" start_index="0" end="1cbff42b-c835-423a-b842-a1efd6f5a620" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="9c53dd18-96da-4542-9501-af0984f47a08" start_index="0" end="d95e228c-0e5b-4a9a-9571-ab36940d47bf" end_index="1" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="696252f8-eb5c-493d-a64c-fb703aa13df9" start_index="0" end="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="117aef3c-2381-468a-b798-9d0fd028941b" start_index="0" end="78aa7405-e3ce-40bd-b208-24b118693c48" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="117aef3c-2381-468a-b798-9d0fd028941b" start_index="0" end="ee1d8911-5ace-485d-8b8f-b89cf1e255e6" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="117aef3c-2381-468a-b798-9d0fd028941b" start_index="0" end="210080f3-3084-4f3c-a162-39a675d89fa0" end_index="0" portType="0" />
@@ -1261,9 +1390,22 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="95b65727-a5e4-4459-8a1b-6f188084308a" start_index="2" end="6a42bbe1-6be6-4729-8f28-c7ba6d09bba8" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="95b65727-a5e4-4459-8a1b-6f188084308a" start_index="2" end="26a7b844-075e-4e97-925f-1de87168e196" end_index="3" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="95b65727-a5e4-4459-8a1b-6f188084308a" start_index="2" end="604d9536-377e-4a14-874f-9eca8eccf0e8" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="7009494f-c105-45f4-afb2-5d563638c602" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="a8ceecfa-4d4e-430c-a5dd-19eb02a208cb" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="5fa04e43-3f8e-4be3-bf9e-f32fe4e95c64" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="6132ebf3-304e-47e3-9ef9-6ba9435ae26a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="c2c46f44-e4c4-4c96-a1ef-9f617479c3f0" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="de6fc7dc-7848-4817-99de-d65b7cc77ca2" start_index="0" end="16eded5b-3799-4cf0-abaf-1f887b66ea23" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="80b8e098-9b8e-413c-bd58-84030f810324" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="502a0402-112a-4968-99a0-a9fa3bd257ea" start_index="0" end="de6fc7dc-7848-4817-99de-d65b7cc77ca2" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" start_index="0" end="502a0402-112a-4968-99a0-a9fa3bd257ea" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="59666416-520b-4f79-861d-3bbaaebc0514" start_index="0" end="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="206c529a-843c-4768-8fc3-ecd0d47b3ed9" start_index="0" end="59666416-520b-4f79-861d-3bbaaebc0514" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="04f86fc0-3d3d-4f57-9f92-5cba5edc9317" start_index="0" end="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" end_index="0" portType="0" />
   </Connectors>
   <Notes>
-    <Dynamo.Graph.Notes.NoteModel guid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" text="QUESTION:&#xD;&#xA;Does the graph execute okay? Do any nodes turn yellow?" x="-1840.76913870418" y="-2313.20376364474" />
+    <Dynamo.Graph.Notes.NoteModel guid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" text="QUESTION:&#xD;&#xA;Does the graph execute okay? Do any nodes turn yellow?" x="-1940.89758706832" y="-895.829950134519" />
   </Notes>
   <Annotations>
     <Dynamo.Graph.Annotations.AnnotationModel guid="306b06b6-efb8-4452-96e2-97e7a3404ea9" annotationText="Journal.Query" left="-288.301076117168" top="-4661.8457497683" width="268.870992309105" height="2628.29236065401" fontSize="30" InitialTop="-4615.8457497683" InitialHeight="602.424972843421" TextblockHeight="36" backgrouund="#FFC1D676">
@@ -1372,9 +1514,10 @@
       <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
       <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1857.75770250772" top="-2359.20376364474" width="307.98856380354" height="221.98327050483" fontSize="30" InitialTop="-2313.20376364474" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1959.06132444434" top="-941.829950134519" width="351" height="339.06969813031" fontSize="30" InitialTop="-895.829950134519" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
+      <Models ModelGuid="206c529a-843c-4768-8fc3-ecd0d47b3ed9" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="142f805f-6898-4a70-9e79-4e09c0a0025e" annotationText="JournalLine.Query" left="821.076484848605" top="-4938.66209467343" width="245.983333333333" height="451.73005595484" fontSize="30" InitialTop="-4892.66209467343" InitialHeight="457.651622310137" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="e4f34336-c591-4afa-8a7d-c7790d8b74d7" />
@@ -1382,11 +1525,11 @@
       <Models ModelGuid="ea876c9c-3e70-4d53-b822-73ad76aa8675" />
       <Models ModelGuid="0f88a431-0fb2-4d68-bb8f-d3d9c213afab" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="JournalLineTypes" left="-1401.83580495824" top="-2085.35798707757" width="516.86436469583" height="375.33464381151" fontSize="30" InitialTop="-2039.35798707757" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
-      <Models ModelGuid="696252f8-eb5c-493d-a64c-fb703aa13df9" />
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9de2bdf1-7e71-469b-99d0-c53a8c59706a" annotationText="Helpers" left="-1389.61838650255" top="-2053.12093619567" width="384" height="139" fontSize="30" InitialTop="-2007.12093619567" InitialHeight="348.334643811508" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="1ae4bb20-6de0-4c2a-80c9-6f69706be12a" />
+      <Models ModelGuid="04f86fc0-3d3d-4f57-9f92-5cba5edc9317" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="58737ce5-ad1f-49e7-aee3-5c8f6483af30" annotationText="JournalLine.Actions" left="815.853548193432" top="-4447.55154589984" width="325.509929663338" height="1820.26392083252" fontSize="30" InitialTop="-4401.55154589984" InitialHeight="299.320277350854" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="58737ce5-ad1f-49e7-aee3-5c8f6483af30" annotationText="JournalLine.Actions" left="815.853548193432" top="-4447.55154589984" width="325.509929663339" height="1820.26392083252" fontSize="30" InitialTop="-4401.55154589984" InitialHeight="299.320277350854" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="f3f7d460-5715-4f27-809b-91ebf7539f59" />
       <Models ModelGuid="017c3ac5-56d6-407a-b419-73849b73347a" />
       <Models ModelGuid="78aa7405-e3ce-40bd-b208-24b118693c48" />
@@ -1400,13 +1543,31 @@
       <Models ModelGuid="210080f3-3084-4f3c-a162-39a675d89fa0" />
       <Models ModelGuid="ee1d8911-5ace-485d-8b8f-b89cf1e255e6" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="c840f476-e7c0-49fb-8f32-74d4ae80fb43" annotationText="Test Inputs" left="101.572121700071" top="-3822.6678435816" width="554.290244470205" height="416.123304232605" fontSize="30" InitialTop="-3776.6678435816" InitialHeight="488.82989529807" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="c840f476-e7c0-49fb-8f32-74d4ae80fb43" annotationText="Test Inputs" left="101.572121700071" top="-3822.6678435816" width="554.290244470205" height="416.12330423261" fontSize="30" InitialTop="-3776.6678435816" InitialHeight="488.82989529807" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="117aef3c-2381-468a-b798-9d0fd028941b" />
       <Models ModelGuid="6d02d06f-c64c-4f3a-bc83-3067a2802063" />
       <Models ModelGuid="519d20c5-1bc6-4cad-acb9-8112bc24012c" />
       <Models ModelGuid="551bcdc6-f9f0-40e2-a370-5ad985bafa98" />
       <Models ModelGuid="cea09ebb-c812-45a6-a5d9-dc3b86db3671" />
       <Models ModelGuid="95b65727-a5e4-4459-8a1b-6f188084308a" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="1c929ddc-8476-435f-acd6-059c3fa0be28" annotationText="KeyboardShortcutCommand.Query" left="265.328120825494" top="1619.91630807385" width="472.74" height="764.99449156416" fontSize="30" InitialTop="1665.91630807385" InitialHeight="748.99449156416" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="5fa04e43-3f8e-4be3-bf9e-f32fe4e95c64" />
+      <Models ModelGuid="6132ebf3-304e-47e3-9ef9-6ba9435ae26a" />
+      <Models ModelGuid="c2c46f44-e4c4-4c96-a1ef-9f617479c3f0" />
+      <Models ModelGuid="16eded5b-3799-4cf0-abaf-1f887b66ea23" />
+      <Models ModelGuid="a8ceecfa-4d4e-430c-a5dd-19eb02a208cb" />
+      <Models ModelGuid="7009494f-c105-45f4-afb2-5d563638c602" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="f33c4331-10f4-42ae-8d7a-f1006d81f02c" annotationText="KeyboardShortcuts.Query" left="-499.194492877378" top="1638.99600939776" width="423.696239912743" height="391.82774379634" fontSize="30" InitialTop="1684.99600939776" InitialHeight="375.82774379634" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="80b8e098-9b8e-413c-bd58-84030f810324" />
+      <Models ModelGuid="d2bd1f0e-c5bc-4f2e-9c46-8a0e24aa2ada" />
+      <Models ModelGuid="de6fc7dc-7848-4817-99de-d65b7cc77ca2" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="c633950e-6dea-48e6-9e88-fde10a64567e" annotationText="Evaluate KeyboardShortcuts" left="-1370.66921804275" top="1768.21204707761" width="742.999999999998" height="139" fontSize="30" InitialTop="1814.21204707761" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="59666416-520b-4f79-861d-3bbaaebc0514" />
+      <Models ModelGuid="48e8eaef-17cd-4c3a-9550-7463f95ac4a6" />
+      <Models ModelGuid="502a0402-112a-4968-99a0-a9fa3bd257ea" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
