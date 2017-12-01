@@ -405,9 +405,13 @@ if len([x for x in apimsgs if x.MessageType == "Error"]) &gt; 0:
 	journal.ContainsAPIErrors = True
 # Compute Revit startup time
 comms = journal.GetLinesByType('JournalCommand')
-startup = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
-if len(startup) &gt; 0:
-	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup[0]][0] - ts[0].DateTime
+startup1 = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
+startup2 = [x.Block for x in comms if x.CommandID == "ID_FILE_MRU_FIRST"]
+if len(startup1) &gt; 0:
+	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup1[0]][0] - ts[0].DateTime
+elif len(startup2) &gt; 0:
+	# DynamoAutomation journal playback
+	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup2[0]][0] - ts[0].DateTime
 # Compute max/min memory values of session
 mm = journal.GetLinesByType('JournalMemoryMetrics')
 journal.MaxRAMPeak = max([x.RAMPeak for x in mm])
