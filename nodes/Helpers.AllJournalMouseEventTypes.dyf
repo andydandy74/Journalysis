@@ -1,0 +1,43 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalMouseEventTypes" Description="" ID="ee4d7efd-1342-423b-b478-868ae64146d1" Category="Journalysis.Helpers.Query">
+  <NamespaceResolutionMap />
+  <Elements>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="e0d400de-528c-4531-9ab7-df7042dddbc8" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="467.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
+    <CoreNodeModels.Input.StringInput guid="e43e53a2-9146-4fce-bfcb-876424b4b9c0" type="CoreNodeModels.Input.StringInput" nickname="String" x="249.513510231971" y="7.31610837549999" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>LButtonDblClk
+LButtonDown
+LButtonUp
+MButtonDblClk
+MButtonDown
+MButtonUp
+MouseMove
+RButtonDblClk
+RButtonDown
+RButtonUp
+Wheel</System.String>
+      <System.String value="LButtonDblClk&#xD;&#xA;LButtonDown&#xD;&#xA;LButtonUp&#xD;&#xA;MButtonDblClk&#xD;&#xA;MButtonDown&#xD;&#xA;MButtonUp&#xD;&#xA;MouseMove&#xD;&#xA;RButtonDblClk&#xD;&#xA;RButtonDown&#xD;&#xA;RButtonUp&#xD;&#xA;Wheel" />
+    </CoreNodeModels.Input.StringInput>
+    <CoreNodeModels.Input.StringInput guid="1f463235-0d42-4735-803c-12e445b71c51" type="CoreNodeModels.Input.StringInput" nickname="String" x="249.513510231971" y="255.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>
+</System.String>
+      <System.String value="&#xD;&#xA;" />
+    </CoreNodeModels.Input.StringInput>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="241284c2-584b-4d0e-a67a-a16641544cf3" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="797.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="seq" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="e0d400de-528c-4531-9ab7-df7042dddbc8" start_index="0" end="241284c2-584b-4d0e-a67a-a16641544cf3" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e43e53a2-9146-4fce-bfcb-876424b4b9c0" start_index="0" end="e0d400de-528c-4531-9ab7-df7042dddbc8" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1f463235-0d42-4735-803c-12e445b71c51" start_index="0" end="e0d400de-528c-4531-9ab7-df7042dddbc8" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

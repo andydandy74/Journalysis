@@ -32,7 +32,7 @@ JournalUIEvent</System.String>
     </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="0ae3a5ed-0dec-454e-94ce-075a34ebea0f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="802.027020463942" y="138" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
-      <Symbol value="str" />
+      <Symbol value="seq" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
