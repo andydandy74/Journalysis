@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalMaxVMPeak(journal):
-	if journal.__repr__() == 'Journal': return journal.MaxVMPeak
+	if journal.__repr__() == 'Journal': return journal.GetMaxVMPeak()
 	else: return None
 
 OUT = process_input(journalMaxVMPeak,IN[0])</Script>

@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalPlaybackInterrupted(journal):
-	if journal.__repr__() == 'Journal': return journal.PlaybackInterrupted
+	if journal.__repr__() == 'Journal': return journal.WasPlaybackInterrupted()
 	else: return False
 
 OUT = process_input(journalPlaybackInterrupted,IN[0])</Script>

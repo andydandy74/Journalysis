@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalMinVMAvailable(journal):
-	if journal.__repr__() == 'Journal': return journal.MinVMAvailable
+	if journal.__repr__() == 'Journal': return journal.GetMinVMAvailable()
 	else: return None
 
 OUT = process_input(journalMinVMAvailable,IN[0])</Script>

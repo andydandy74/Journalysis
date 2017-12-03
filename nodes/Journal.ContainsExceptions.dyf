@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalContainsExceptions(journal):
-	if journal.__repr__() == 'Journal': return journal.ContainsExceptions
+	if journal.__repr__() == 'Journal': return journal.ContainsExceptions()
 	else: return False
 
 OUT = process_input(journalContainsExceptions,IN[0])</Script>

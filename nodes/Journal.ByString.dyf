@@ -33,24 +33,21 @@ class Journal:
 		self.User = username	
 		self.BlockCount = blockcount
 		self.Path = path
-		self.ProcessingTime = None
-		self.SessionTime = None
-		self.StartupTime = None
-		self.SessionTerminatedProperly = False
-		self.IsInPlaybackMode = False
-		self.PlaybackInterrupted = False
 		self.Build = build
 		self.Branch = branch
-		self.ContainsAPIErrors = False
-		self.ContainsExceptions = False
 		self.Machine = machinename
 		self.OSVersion = osversion
-		self.MaxRAMPeak = None
-		self.MinRAMAvailable = None
-		self.MaxVMPeak = None
-		self.MinVMAvailable = None
+		self.ProcessingTime = None
 	def __repr__(self):
 		return 'Journal'
+	def ContainsAPIErrors(self):
+		if len([x for x in self.GetLinesByTypeAndProperty('JournalAPIMessage', 'MessageType', 'Error')]) &gt; 0: return True
+		else: return False
+	def ContainsExceptions(self):
+		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("ExceptionCode")]) &gt; 0: return True
+		else: return False
+	def GetDateTimeByBlock(self, block):
+		return [x for x in self.GetLinesByType('JournalTimeStamp') if x.Block == block][0].DateTime
 	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
 	def GetLinesByBlocks(self, blocks):
@@ -61,6 +58,37 @@ class Journal:
 		return [x for x in self.Lines if x.Type == type and getattr(x, prop) == val]
 	def GetLinesByTypes(self, types):
 		return [x for x in self.Lines if x.Type in types]
+	def GetMaxRAMPeak(self):
+		return max([x.RAMPeak for x in self.GetLinesByType('JournalMemoryMetrics')])
+	def GetMaxVMPeak(self):
+		return max([x.VMPeak for x in self.GetLinesByType('JournalMemoryMetrics')])
+	def GetMinRAMAvailable(self):
+		return min([x.RAMAvailable for x in self.GetLinesByType('JournalMemoryMetrics')])
+	def GetMinVMAvailable(self):
+		return min([x.VMAvailable for x in self.GetLinesByType('JournalMemoryMetrics')])
+	def GetSessionTime(self):
+		ts = self.GetLinesByType('JournalTimeStamp')
+		return ts[-1].DateTime - ts[0].DateTime
+	def GetStartupTime(self):
+		first_ts = self.GetDateTimeByBlock(1)
+		startup1 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_STARTUP_PAGE')]
+		if len(startup1) &gt; 0:
+			return self.GetDateTimeByBlock(startup1[0]) - first_ts
+		else:
+			# DynamoAutomation journal playback
+			startup2 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_FILE_MRU_FIRST')]
+			if len(startup2) &gt; 0:
+				return self.GetDateTimeByBlock(startup2[0]) - first_ts
+			else: return None
+	def IsInPlaybackMode(self):
+		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("started journal file playback")]) &gt; 0: return True
+		else: return False
+	def WasPlaybackInterrupted(self):
+		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0: return True
+		else: return False
+	def WasSessionTerminatedProperly(self):
+		if len([x for x in self.GetLinesByTypeAndProperty('JournalTimeStamp', 'Description', 'finished recording journal file')]) &gt; 0: return True
+		else: return False
 
 class JournalLine:
 	def __init__(self, number, raw, block, type):
@@ -384,40 +412,6 @@ journal = Journal(lineObjs, jVersion, jUsername, jBlockCount, jPath, jBuild, jBr
 for line in journal.Lines:
 	line.Journal = journal
 
-# Compute total session time
-ts = journal.GetLinesByType('JournalTimeStamp')
-journal.SessionTime = ts[-1].DateTime - ts[0].DateTime
-# Find out if the session was terminated properly
-if ts[-1].Description == "finished recording journal file":
-	journal.SessionTerminatedProperly = True
-# Find out if journal is in playback mode
-if len([x for x in ts if x.Description.startswith("started journal file playback")]) &gt; 0:
-	journal.IsInPlaybackMode = True
-	# Find out if journal playback was interrupted
-	if len([x for x in ts if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0:
-		journal.PlaybackInterrupted = True
-# Find out if journal contains recorded exceptions
-if len([x for x in ts if x.Description.startswith("ExceptionCode")]) &gt; 0:
-	journal.ContainsExceptions = True
-# Find out if any API errors occured
-apimsgs = journal.GetLinesByType('JournalAPIMessage')
-if len([x for x in apimsgs if x.MessageType == "Error"]) &gt; 0:
-	journal.ContainsAPIErrors = True
-# Compute Revit startup time
-comms = journal.GetLinesByType('JournalCommand')
-startup1 = [x.Block for x in comms if x.CommandID == "ID_STARTUP_PAGE"]
-startup2 = [x.Block for x in comms if x.CommandID == "ID_FILE_MRU_FIRST"]
-if len(startup1) &gt; 0:
-	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup1[0]][0] - ts[0].DateTime
-elif len(startup2) &gt; 0:
-	# DynamoAutomation journal playback
-	journal.StartupTime = [x.DateTime for x in ts if x.Block == startup2[0]][0] - ts[0].DateTime
-# Compute max/min memory values of session
-mm = journal.GetLinesByType('JournalMemoryMetrics')
-journal.MaxRAMPeak = max([x.RAMPeak for x in mm])
-journal.MinRAMAvailable = min([x.RAMAvailable for x in mm])
-journal.MaxVMPeak = max([x.VMPeak for x in mm])
-journal.MinVMAvailable = min([x.VMAvailable for x in mm])
 # Compute total processing time of this node
 journal.ProcessingTime = time.time() - processing_started
 

@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalMinRAMAvailable(journal):
-	if journal.__repr__() == 'Journal': return journal.MinRAMAvailable
+	if journal.__repr__() == 'Journal': return journal.GetMinRAMAvailable()
 	else: return None
 
 OUT = process_input(journalMinRAMAvailable,IN[0])</Script>

@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalContainsAPIErrors(journal):
-	if journal.__repr__() == 'Journal': return journal.ContainsAPIErrors
+	if journal.__repr__() == 'Journal': return journal.ContainsAPIErrors()
 	else: return False
 
 OUT = process_input(journalContainsAPIErrors,IN[0])</Script>

@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalSessionTerminatedProperly(journal):
-	if journal.__repr__() == 'Journal': return journal.SessionTerminatedProperly
+	if journal.__repr__() == 'Journal': return journal.WasSessionTerminatedProperly()
 	else: return False
 
 OUT = process_input(journalSessionTerminatedProperly,IN[0])</Script>

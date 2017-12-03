@@ -14,7 +14,7 @@ def process_input(func, input):
 	else: return func(input)
 	
 def journalStartupTime(journal):
-	if journal.__repr__() == 'Journal': return journal.StartupTime
+	if journal.__repr__() == 'Journal': return journal.GetStartupTime()
 	else: return None
 
 OUT = process_input(journalStartupTime,IN[0])</Script>
