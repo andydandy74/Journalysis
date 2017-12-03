@@ -10,3 +10,9 @@ This package is aimed at automating the analysis of Revit journals for statistic
 - Monitor memory usage
 - Monitor sync with central duration
 - Keyboard shortcut usage
+
+# Contribute
+If you're interested in helping with this project, I welcome the following types of contributions:
+- Code
+- Journals (in particular those with spectacular crashes)
+- Use cases
