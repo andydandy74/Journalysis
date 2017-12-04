@@ -47,7 +47,8 @@ class Journal:
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("ExceptionCode")]) &gt; 0: return True
 		else: return False
 	def GetDateTimeByBlock(self, block):
-		return [x for x in self.GetLinesByType('JournalTimeStamp') if x.Block == block][0].DateTime
+		if block == 0: return None
+		else: return [x for x in self.GetLinesByType('JournalTimeStamp') if x.Block == block][0].DateTime
 	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
 	def GetLinesByBlocks(self, blocks):
@@ -115,6 +116,8 @@ class JournalLine:
 		return [x for x in self.AllPrevious() if x.Type == type]
 	def AllPreviousOfTypeAndProperty(self, type, prop, val):
 		return [x for x in self.AllPrevious() if x.Type == type and getattr(x, prop) == val]
+	def GetDateTimeOfBlock(self):
+		return self.Journal.GetDateTimeByBlock(self.Block)
 	def Next(self):
 		if self.Journal.Lines.index(self) + 1 &lt; self.Journal.LineCount:
 			return self.Journal.Lines[self.Journal.Lines.index(self) + 1]
