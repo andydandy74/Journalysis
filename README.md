@@ -16,3 +16,4 @@ If you're interested in helping with this project, I welcome the following types
 - Code
 - Journals (in particular those with spectacular crashes)
 - Use cases
+- Data that should be mined from a journal but is not yet supported by any of the nodes
