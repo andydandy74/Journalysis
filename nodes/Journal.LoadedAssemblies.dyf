@@ -12,10 +12,9 @@
 def process_input(func, input):
 	if isinstance(input, list): return [func(x) for x in input]
 	else: return func(input)
-
+	
 def journalLoadedAssemblies(journal):
-	if journal.__repr__() == 'Journal':	
-		return [x.MessageText.split(":")[-1].strip() for x in journal.GetLinesByType('JournalAPIMessage') if x.MessageText.startswith('Starting')]
+	if journal.__repr__() == 'Journal':	return journal.GetLoadedAssemblies()
 	else: return []
 
 OUT = process_input(journalLoadedAssemblies,IN[0])</Script>
