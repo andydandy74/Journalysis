@@ -5,7 +5,7 @@
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
-    <CoreNodeModels.Input.StringInput guid="0689ca35-e76c-4ed5-bad7-7cff37755afa" type="CoreNodeModels.Input.StringInput" nickname="String" x="243.513510231971" y="287.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="0689ca35-e76c-4ed5-bad7-7cff37755afa" type="CoreNodeModels.Input.StringInput" nickname="String" x="247.513510231971" y="307.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>
 </System.String>
       <System.String value="&#xD;&#xA;" />
@@ -17,6 +17,7 @@ Browser
 Checkbox
 Close
 ComboBox
+DropFiles
 Edit
 Grid
 ListBox
@@ -27,7 +28,7 @@ RibbonEvent
 SliderCtrl
 TabCtrl
 TreeCtrl</System.String>
-      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
+      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;DropFiles&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
     </CoreNodeModels.Input.StringInput>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="1b2121fc-646c-4c8e-99b4-d7bbab121145" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="803.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
