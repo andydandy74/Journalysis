@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalUIEventTypes" Description="" ID="b501a424-dd92-438d-a7e6-264012bcf07f" Category="Journalysis.Helpers.Query">
+<Workspace Version="1.3.1.1736" X="26" Y="201" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalUIEventTypes" Description="" ID="b501a424-dd92-438d-a7e6-264012bcf07f" Category="Journalysis.Helpers.Query">
   <NamespaceResolutionMap />
   <Elements>
     <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="b1d77fd1-0080-44ef-becf-bbb3d5c030dc" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="473.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
@@ -14,6 +14,7 @@
       <System.String>Activate
 AppButtonEvent
 Browser
+Checkbox
 Close
 ComboBox
 Edit
@@ -26,7 +27,7 @@ RibbonEvent
 SliderCtrl
 TabCtrl
 TreeCtrl</System.String>
-      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
+      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
     </CoreNodeModels.Input.StringInput>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="1b2121fc-646c-4c8e-99b4-d7bbab121145" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="803.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
