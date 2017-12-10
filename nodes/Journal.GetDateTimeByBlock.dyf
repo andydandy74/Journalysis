@@ -1,0 +1,40 @@
+<Workspace Version="1.3.1.1736" X="329" Y="186" zoom="1" ScaleFactor="1" Name="Journal.GetDateTimeByBlock" Description="" ID="4d36fc94-7ac9-469b-ba85-dc70224c0aa2" Category="Journalysis.Journal.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="28d5c889-2ea8-4418-b9ba-a4284f5a8652" type="PythonNodeModels.PythonNode" nickname="Python Script" x="227" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <Script>import clr
+
+OUT = []
+if IN[0].__repr__() == 'Journal':
+	if isinstance(IN[1], list): OUT = IN[0].GetDateTimeByBlocks(IN[1])
+	else: OUT = IN[0].GetDateTimeByBlock(IN[1])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="bb4fef2a-b3f2-4d29-b1ea-04a2a3edda2d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-2" y="33" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journal" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="e2845c6c-9dfd-43bb-bc4b-0431e7f08f1c" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-2" y="117" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journalBlock" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="f998d7a6-fd18-4a00-a95d-6e1d33eaf53c" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="451" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="dateTime" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="28d5c889-2ea8-4418-b9ba-a4284f5a8652" start_index="0" end="f998d7a6-fd18-4a00-a95d-6e1d33eaf53c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bb4fef2a-b3f2-4d29-b1ea-04a2a3edda2d" start_index="0" end="28d5c889-2ea8-4418-b9ba-a4284f5a8652" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="e2845c6c-9dfd-43bb-bc4b-0431e7f08f1c" start_index="0" end="28d5c889-2ea8-4418-b9ba-a4284f5a8652" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
