@@ -284,7 +284,7 @@ for line in lines:
 		lineObjs.append(JournalKeyboardEvent(i,line,b,'JournalKeyboardEvent'))
 	elif line.startswith("Jrn.AddInEvent "):
 		lineObjs.append(JournalAddinEvent(i,line,b,'JournalAddinEvent'))
-	elif line.startswith('Jrn.Wheel') or line.startswith('Jrn.MouseMove') or line.startswith('Jrn.LButtonUp') or line.startswith('Jrn.LButtonDown') or line.startswith('Jrn.LButtonDblClk') or line.startswith('Jrn.MButtonUp') or line.startswith('Jrn.MButtonDown') or line.startswith('Jrn.MButtonDblClk') or line.startswith('Jrn.RButtonUp') or line.startswith('Jrn.RButtonDown') or line.startswith('Jrn.RButtonDblClk'):
+	elif line.startswith('Jrn.Wheel') or line.startswith('Jrn.MouseMove') or line.startswith('Jrn.LButtonUp') or line.startswith('Jrn.LButtonDown') or line.startswith('Jrn.LButtonDblClk') or line.startswith('Jrn.MButtonUp') or line.startswith('Jrn.MButtonDown') or line.startswith('Jrn.MButtonDblClk') or line.startswith('Jrn.RButtonUp') or line.startswith('Jrn.RButtonDown') or line.startswith('Jrn.RButtonDblClk') or line.startswith('Jrn.Scroll'):
 		lineObjs.append(JournalMouseEvent(i,line,b,'JournalMouseEvent'))
 	elif line.startswith('Jrn.Activate') or line.startswith('Jrn.AppButtonEvent') or line.startswith('Jrn.Browser') or line.startswith('Jrn.Close') or line.startswith('Jrn.ComboBox') or line.startswith('Jrn.Edit') or line.startswith('Jrn.Grid') or line.startswith('Jrn.ListBox') or line.startswith('Jrn.PropertiesPalette') or line.startswith('Jrn.PushButton') or line.startswith('Jrn.RadioButton') or line.startswith('Jrn.RibbonEvent') or line.startswith('Jrn.SliderCtrl') or line.startswith('Jrn.TabCtrl') or line.startswith('Jrn.TreeCtrl'):
 		lineObjs.append(JournalUIEvent(i,line,b,'JournalUIEvent'))

@@ -16,8 +16,9 @@ MouseMove
 RButtonDblClk
 RButtonDown
 RButtonUp
+Scroll
 Wheel</System.String>
-      <System.String value="LButtonDblClk&#xD;&#xA;LButtonDown&#xD;&#xA;LButtonUp&#xD;&#xA;MButtonDblClk&#xD;&#xA;MButtonDown&#xD;&#xA;MButtonUp&#xD;&#xA;MouseMove&#xD;&#xA;RButtonDblClk&#xD;&#xA;RButtonDown&#xD;&#xA;RButtonUp&#xD;&#xA;Wheel" />
+      <System.String value="LButtonDblClk&#xD;&#xA;LButtonDown&#xD;&#xA;LButtonUp&#xD;&#xA;MButtonDblClk&#xD;&#xA;MButtonDown&#xD;&#xA;MButtonUp&#xD;&#xA;MouseMove&#xD;&#xA;RButtonDblClk&#xD;&#xA;RButtonDown&#xD;&#xA;RButtonUp&#xD;&#xA;Scroll&#xD;&#xA;Wheel" />
     </CoreNodeModels.Input.StringInput>
     <CoreNodeModels.Input.StringInput guid="1f463235-0d42-4735-803c-12e445b71c51" type="CoreNodeModels.Input.StringInput" nickname="String" x="249.513510231971" y="255.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>
