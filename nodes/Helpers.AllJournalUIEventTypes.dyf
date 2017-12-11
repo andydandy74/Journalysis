@@ -5,7 +5,7 @@
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
-    <CoreNodeModels.Input.StringInput guid="0689ca35-e76c-4ed5-bad7-7cff37755afa" type="CoreNodeModels.Input.StringInput" nickname="String" x="246.513510231971" y="373.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="0689ca35-e76c-4ed5-bad7-7cff37755afa" type="CoreNodeModels.Input.StringInput" nickname="String" x="245.513510231971" y="382.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>
 </System.String>
       <System.String value="&#xD;&#xA;" />
@@ -31,8 +31,9 @@ RibbonEvent
 SBTrayAction
 SliderCtrl
 TabCtrl
-TreeCtrl</System.String>
-      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;DropFiles&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;Maximize&#xD;&#xA;Minimize&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;Restore&#xD;&#xA;RibbonEvent&#xD;&#xA;SBTrayAction&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
+TreeCtrl
+WidgetEvent</System.String>
+      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;DropFiles&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;Maximize&#xD;&#xA;Minimize&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;Restore&#xD;&#xA;RibbonEvent&#xD;&#xA;SBTrayAction&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl&#xD;&#xA;WidgetEvent" />
     </CoreNodeModels.Input.StringInput>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="1b2121fc-646c-4c8e-99b4-d7bbab121145" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="803.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
