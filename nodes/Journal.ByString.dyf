@@ -357,6 +357,10 @@ for line in lineObjs:
 					for d4 in d3.split(":"):
 						d4 = d4.strip()
 						if d4 != "": line.Data.append(d4)
+				elif line.UIEventType == "Browser":
+					for d4 in d3.split("&gt;&gt;"):
+						d4 = d4.strip()
+						if d4 != "": line.Data.append(d4)
 				elif d3 != "": line.Data.append(d3)
 	elif line.Type == 'JournalAddinEvent':
 		line.MessageText = line.RawText.split('"')[3]
