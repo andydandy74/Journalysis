@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalAPIMessageTypes" Description="" ID="66f857f6-f78a-4d27-ad04-27c73bf89e17" Category="Journalysis.Helpers.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalAPIMessageTypes" Description="Lists all JournalAPIMessage types" ID="66f857f6-f78a-4d27-ad04-27c73bf89e17" Category="Journalysis.Helpers.Query">
   <NamespaceResolutionMap />
   <Elements>
     <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="43c4f51a-0bf2-4692-97ad-716ae844008a" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="447.013510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
@@ -28,7 +28,4 @@ Success</System.String>
   <Notes />
   <Annotations />
   <Presets />
-  <Cameras>
-    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
-  </Cameras>
 </Workspace>
