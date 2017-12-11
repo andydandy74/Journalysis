@@ -26,11 +26,12 @@ Minimize
 PropertiesPalette
 PushButton
 RadioButton
+Restore
 RibbonEvent
 SliderCtrl
 TabCtrl
 TreeCtrl</System.String>
-      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;DropFiles&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;Maximize&#xD;&#xA;Minimize&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
+      <System.String value="Activate&#xD;&#xA;AppButtonEvent&#xD;&#xA;Browser&#xD;&#xA;Checkbox&#xD;&#xA;Close&#xD;&#xA;ComboBox&#xD;&#xA;DropFiles&#xD;&#xA;Edit&#xD;&#xA;Grid&#xD;&#xA;ListBox&#xD;&#xA;Maximize&#xD;&#xA;Minimize&#xD;&#xA;PropertiesPalette&#xD;&#xA;PushButton&#xD;&#xA;RadioButton&#xD;&#xA;Restore&#xD;&#xA;RibbonEvent&#xD;&#xA;SliderCtrl&#xD;&#xA;TabCtrl&#xD;&#xA;TreeCtrl" />
     </CoreNodeModels.Input.StringInput>
     <Dynamo.Graph.Nodes.CustomNodes.Output guid="1b2121fc-646c-4c8e-99b4-d7bbab121145" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="803.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
