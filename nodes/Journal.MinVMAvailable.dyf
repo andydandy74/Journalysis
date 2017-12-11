@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.MinVMAvailable" Description="" ID="cc6ae9d0-84c9-4c4c-9309-3a060bfb3c8b" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.MinVMAvailable" Description="Computes the minimum VM available during a Revit session based on the given journal" ID="cc6ae9d0-84c9-4c4c-9309-3a060bfb3c8b" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

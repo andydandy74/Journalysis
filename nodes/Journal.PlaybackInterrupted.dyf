@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.PlaybackInterrupted" Description="" ID="1cd5b108-376d-4782-b01c-834484999b9c" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.PlaybackInterrupted" Description="Computes whether playback was interrupted for the given journal" ID="1cd5b108-376d-4782-b01c-834484999b9c" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

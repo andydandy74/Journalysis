@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.IsInPlaybackMode" Description="" ID="053d4cb7-3ff9-4b24-bb50-b9e2c05509c5" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.IsInPlaybackMode" Description="Computes whether a given journal is in playback mode" ID="053d4cb7-3ff9-4b24-bb50-b9e2c05509c5" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

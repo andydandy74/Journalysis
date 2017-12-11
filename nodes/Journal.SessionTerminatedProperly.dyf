@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.SessionTerminatedProperly" Description="" ID="d9894328-54f0-4d68-9245-dde4f4c62fef" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.SessionTerminatedProperly" Description="Computes whether the Revit session  of the given journal was terminated properly" ID="d9894328-54f0-4d68-9245-dde4f4c62fef" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="244" Y="69" zoom="1" ScaleFactor="1" Name="Journal.StartupTime" Description="" ID="c2a778e7-f058-4018-b0ec-272020192d0b" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="244" Y="69" zoom="1" ScaleFactor="1" Name="Journal.StartupTime" Description="Computes the time it took Revit to display the startup screen based on the given journal" ID="c2a778e7-f058-4018-b0ec-272020192d0b" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
