@@ -89,6 +89,8 @@ class Journal:
 	def IsInPlaybackMode(self):
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("started journal file playback")]) &gt; 0: return True
 		else: return False
+	def StripComments(self):
+		return "\n".join([x.RawText for x in self.Lines if x.Type in ('JournalAddinEvent', 'JournalCommand', 'JournalData', 'JournalDirective', 'JournalKeyboardEvent', 'JournalMiscCommand', 'JournalMouseEvent', 'JournalUIEvent')])
 	def WasPlaybackInterrupted(self):
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("stopped at line") and x.Description.endswith("journal file playback")]) &gt; 0: return True
 		else: return False
