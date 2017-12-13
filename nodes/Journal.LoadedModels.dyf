@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedModels" Description="" ID="d48e6dd4-5381-4996-a8aa-28ad1d8219fd" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="120.47374282625" Y="323.662849096523" zoom="1.78359936238281" ScaleFactor="1" Name="Journal.LoadedModels" Description="" ID="d48e6dd4-5381-4996-a8aa-28ad1d8219fd" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -79,7 +79,7 @@ for index in sorted(ignoreEvents, reverse=True): del events[index]
 loadedModels = [LoadedModel(journal, paths[x], events[x]) for x in range(0, len(events))]
 
 # Get lines of load completed
-loadedLines = [x.JournalLine.AllNextOfTypeAndProperty('JournalComment', 'RawText', "'***********************************************************")[0].NextOfType('JournalTimeStamp') for x in events]
+loadedLines = [x.JournalLine.NextOfTypeAndProperty('JournalComment', 'RawText', "'***********************************************************").NextOfType('JournalTimeStamp') for x in events]
 # Create event objects for load completed
 loadedEvents = [LoadedModelEvent(x, 'Loaded', x.DateTime) for x in loadedLines]
 # Add events to loaded models
