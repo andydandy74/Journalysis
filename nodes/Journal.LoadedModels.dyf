@@ -22,9 +22,11 @@ class LoadedModel:
 	def __repr__(self):
 		return "LoadedModel"
 	def GetVersion(self):
-		return None
+		return [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)) if x.Type == "JournalComment" and ":&lt; File was saved in" in x.RawText][0].RawText.split("File was saved in")[-1].strip()
 	def GetVersionHistory(self):
-		return []
+		allComments = [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block))] 
+		saveHistoryMarkers = [x.Number for x in allComments if x.Type == "JournalComment" and ":&lt; Document save history" in x.RawText]
+		return [x.RawText.split(":&lt;")[-1].strip() for x in allComments if x.Number in range(saveHistoryMarkers[0] + 1, saveHistoryMarkers[1])]
 	def NormalizePath(self, path):
 		return os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path),path))
 
