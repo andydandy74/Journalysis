@@ -165,6 +165,16 @@ class JournalAPIMessage(JournalLine):
 	def __repr__(self):
 		return 'JournalAPIMessage'
 
+class JournalBasicFileInfo(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.Worksharing = None
+		self.CentralModelPath = None
+		self.LastSavePath = None
+		self.Locale = None
+	def __repr__(self):
+		return 'JournalBasicFileInfo'
+
 class JournalCommand(JournalLine):
 	def __init__(self, number, raw, block, type):
 		JournalLine.__init__(self, number, raw, block, type)
@@ -276,6 +286,8 @@ for line in lines:
 		lineObjs.append(JournalMemoryMetrics(i,line,b,'JournalMemoryMetrics'))
 	elif ":&lt; GUI Resource Usage GDI: " in line:
 		lineObjs.append(JournalGUIResourceUsage(i,line,b,'JournalGUIResourceUsage'))
+	elif line.startswith("' [Jrn.BasicFileInfo]"):
+		lineObjs.append(JournalBasicFileInfo(i,line,b,'JournalBasicFileInfo'))
 	elif line.startswith("Jrn.Data "):
 		lineObjs.append(JournalData(i,line,b,'JournalData'))
 	elif line.startswith("Jrn.Directive "):
@@ -342,6 +354,13 @@ for line in lineObjs:
 			line.Data.append(int(m2.strip()))
 	elif line.Type == 'JournalKeyboardEvent':
 		line.Key = line.RawText.split('"')[1]
+	elif line.Type == 'JournalBasicFileInfo':
+		bfi = map(list, zip(*[x.split(":",1) for x in line.RawText[22:].split("Rvt.Attr.")[1:]]))
+		bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
+		line.Worksharing = bfidict["Worksharing"]
+		line.CentralModelPath = bfidict["CentralModelPath"]
+		line.LastSavePath = bfidict["LastSavePath"]
+		line.Locale = bfidict["LocaleWhenSaved"]
 	elif line.Type == 'JournalGUIResourceUsage':
 		g2 = []
 		for g1 in line.RawText.split(","):
