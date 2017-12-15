@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="2717.02926207895" Y="3694.52357374648" zoom="1.53758359573478" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="1869.86419256847" Y="2190.43377471985" zoom="0.92683227360331" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -27,30 +27,138 @@
         <Output value="journal" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <PythonNodeModels.PythonNode guid="26e144d5-ffd0-4165-8dd7-5975975e468c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-586.585259639585" y="-2079.16427227495" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+    <PythonNodeModels.PythonNode guid="2d0f35c5-f2d6-4dfe-af29-87e304b500d5" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-745.344360630543" y="-1814.22563396524" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
+import sys
+sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
+import os
 
-OUT = []
-if IN[0].__repr__() == 'Journal':
-	# Option 1: Sync with settings from ribbon
-	allPushButtonEvents = IN[0].GetLinesByTypeAndProperty('JournalUIEvent', 'UIEventType', 'PushButton')
-	allSyncs1StartCandidates = [x for x in allPushButtonEvents if x.Data[2] == 'Dialog_Revit_PartitionsSaveToMaster']
-	allSyncs1Start = [x for x in allSyncs1StartCandidates if x.Data[4] == 'IDOK']
-	allSyncs1StartTimeStamps = [x.Next() for x in allSyncs1Start]
-	
-	# Option 2: Quick sync from ribbon
-	# Option 3: Sync with settings via keyboard shortcut
-	# Option 4: Quick sync via keyboard shortcut
-	# Option 5: Sync on exit
-OUT = allSyncs1StartTimeStamps</Script>
+class LoadedModel:
+	def __init__(self, journal, path, initialEvent):
+		self.Journal = journal
+		if path != None: self.Path = self.NormalizePath(path)
+		else: self.Path = None
+		self.Events = []
+		self.Events.append(initialEvent)
+	def __repr__(self):
+		return "LoadedModel"
+	def GetVersion(self):
+		return [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)) if x.Type == "JournalComment" and ":&lt; File was saved in" in x.RawText][0].RawText.split("File was saved in")[-1].strip()
+	def GetVersionHistory(self):
+		allComments = [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block))] 
+		saveHistoryMarkers = [x.Number for x in allComments if x.Type == "JournalComment" and ":&lt; Document save history" in x.RawText]
+		return [x.RawText.split(":&lt;")[-1].strip() for x in allComments if x.Number in range(saveHistoryMarkers[0] + 1, saveHistoryMarkers[1])]
+	def NormalizePath(self, path):
+		return os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path),path))
+
+class LoadedModelEvent:
+	def __init__(self, journalLine, type):
+		self.JournalLine = journalLine
+		self.Type = type
+		self.DateTime = journalLine.GetDateTimeOfBlock()
+	def __repr__(self):
+		return "LoadedModelEvent"
+
+journal = IN[0]
+
+# All variations of opening a document via dialog
+events = [LoadedModelEvent(x, 'Open_Dialog') for x in journal.GetLinesByType('JournalCommand') if x.CommandID in ('ID_REVIT_FILE_OPEN', 'ID_APPMENU_PROJECT_OPEN')]
+# All variations of opening a document via recent files
+events.extend([LoadedModelEvent(x, 'Open_Recent') for x in journal.GetLinesByType('JournalCommand') if x.CommandID == 'ID_FILE_MRU_FIRST' or x.CommandID.startswith('ID_FILE_MRU_FILE')])
+# Models opened via drag &amp; drop
+events.extend([LoadedModelEvent(x, 'Open_DragDrop') for x in journal.GetLinesByType('JournalUIEvent') if x.UIEventType == "DropFiles"])
+
+# Get next JournalData line to extract file path
+nextDataLines = [x.JournalLine.NextOfTypeAndProperty('JournalData', 'Block', x.JournalLine.Block + 1) for x in events]
+paths = []
+ignoreEvents = []
+i = 0
+for line in nextDataLines:
+	# For workshared models we'll need the second JournalData line
+	if line.Key not in ("File Name", "Dropped File Name", "MRUFileName"):
+		line = line.NextOfTypeAndProperty('JournalData', 'Block', line.Block + 1)
+	nextDataLine = line.NextOfType('JournalData')
+	# Flag models that do not have a JournalData line that carries the filename
+	if line.Key not in ("File Name", "Dropped File Name", "MRUFileName"):
+		ignoreEvents.append(i)
+	# Flag models that were canceled in file open dialog
+	elif line.Key == "File Name" and line.Values[0] == "IDCANCEL":
+		ignoreEvents.append(i)
+	# Flag models that were canceled in status bar, otherwise add path to list
+	elif nextDataLine != None:
+		if nextDataLine.Key == "ProgressCancelled":
+			nextDataLine2 = nextDataLine.NextOfType('JournalData')
+			if nextDataLine2.Key == "TaskDialogResult" and nextDataLine2.Values[-1] == "IDYES":
+				ignoreEvents.append(i)
+			else: paths.append(line.Values[-1])
+		else: paths.append(line.Values[-1])
+	else: paths.append(line.Values[-1])
+	i += 1
+
+# Remove flagged events
+for index in sorted(ignoreEvents, reverse=True): del events[index]
+
+# Build LoadedModel objects
+loadedModels = [LoadedModel(journal, paths[x], events[x]) for x in range(0, len(events))]
+
+# Get lines of load completed
+loadedLines = [x.JournalLine.NextOfTypeAndProperty('JournalComment', 'RawText', "'***********************************************************") for x in events]
+# Create event objects for load completed
+loadedEvents = [LoadedModelEvent(x, 'Loaded') for x in loadedLines]
+# Add events to loaded models
+[loadedModels[x].Events.append(loadedEvents[x]) for x in range(0, len(loadedModels))]
+
+# Sync with settings
+allPushbuttonEvents = journal.GetLinesByTypeAndProperty('JournalUIEvent', 'UIEventType', 'PushButton')
+allRegularSyncs = [x for x in allPushbuttonEvents if x.Data[2] == 'Dialog_Revit_PartitionsSaveToMaster']
+allSyncsWithSettings = [x for x in allRegularSyncs if x.Data[4] == 'IDOK']
+SWSEvents = [LoadedModelEvent(x, 'SyncStart_WithSettings') for x in allSyncsWithSettings]
+
+# Quick sync
+allQuickSyncs = journal.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_FILE_SAVE_TO_MASTER_SHORTCUT')
+QSEvents = [LoadedModelEvent(x, 'SyncStart_Quick') for x in allQuickSyncs]
+
+allSyncStartLines = allSyncsWithSettings + allQuickSyncs
+allSyncStartEvents = SWSEvents + QSEvents
+
+# Finished sync events
+syncEndRegular = [x.NextOfTypeAndProperty('JournalTimeStamp', 'Description', 'idle0_doc') for x in allSyncStartLines]
+syncEndOnCloseCandidates = [x.NextOfTypeAndProperty('JournalUIEvent', 'UIEventType', 'RibbonEvent') for x in allSyncStartLines]
+syncEndOnClose = []
+for line in syncEndOnCloseCandidates:
+	if line != None:
+		if line.Data[0] != "ComboCurrentChangedEvent" or line.Data[0] == "workset_option":
+			line = None
+	syncEndOnClose.append(line)
+
+# Determine which sync end event is correct
+syncEnd = []
+ignoreEvents = []
+i = 0
+for Regular, OnClose in zip(syncEndRegular,syncEndOnClose):
+	if Regular == None and OnClose == None: ignoreEvents = i
+	elif Regular == None: syncEnd.append(OnClose)
+	elif OnClose == None: syncEnd.append(Regular)
+	elif Regular.GetDateTimeOfBlock() &lt; OnClose.GetDateTimeOfBlock(): syncEnd.append(Regular)
+	else: syncEnd.append(OnClose)
+	i += 0
+allSyncEndEvents = [LoadedModelEvent(x, 'SyncDone') for x in syncEnd]
+
+# Remove flagged events
+for index in sorted(ignoreEvents, reverse=True): del allSyncStartEvents[index]
+
+# Match sync events to loaded models via filename
+BFI = [x.JournalLine.NextOfType('JournalBasicFileInfo') for x in allSyncStartEvents]
+
+OUT = loadedModels, allSyncStartEvents, allSyncEndEvents, BFI</Script>
     </PythonNodeModels.PythonNode>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="26e144d5-ffd0-4165-8dd7-5975975e468c" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="2d0f35c5-f2d6-4dfe-af29-87e304b500d5" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations>
