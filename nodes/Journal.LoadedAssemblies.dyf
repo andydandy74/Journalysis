@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedAssemblies" Description="Pulls a list of all loaded assemblies (i.e. addin DLLs) from a given journal" ID="ef6753f4-b23f-4152-b90f-1e9b36af09cd" Category="Journalysis.Journal.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.LoadedAssemblies" Description="Pulls a list of all loaded assemblies (i.e. addin DLLs) from a given journal" ID="ef6753f4-b23f-4152-b90f-1e9b36af09cd" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

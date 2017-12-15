@@ -27,7 +27,7 @@
         <Output value="journal" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <PythonNodeModels.PythonNode guid="2d0f35c5-f2d6-4dfe-af29-87e304b500d5" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-745.344360630543" y="-1814.22563396524" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+    <PythonNodeModels.PythonNode guid="2d0f35c5-f2d6-4dfe-af29-87e304b500d5" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-609.39743302719" y="-2079.64582595274" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
 import sys
@@ -160,7 +160,9 @@ OUT = loadedModels, allSyncStartEvents, allSyncEndEvents, BFI</Script>
     <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="2d0f35c5-f2d6-4dfe-af29-87e304b500d5" end_index="0" portType="0" />
   </Connectors>
-  <Notes />
+  <Notes>
+    <Dynamo.Graph.Notes.NoteModel guid="66483fee-fcaa-4d23-9f60-97cba0e3f5aa" text="Journal.LoadedModels&#xD;&#xA;(Additional code)" x="-620.61477856438" y="-2140.9217664439" />
+  </Notes>
   <Annotations>
     <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Evaluate Journal" left="-1340.88599171625" top="-2125.65167095318" width="660.349628857405" height="139" fontSize="30" InitialTop="-2079.65167095318" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" />
