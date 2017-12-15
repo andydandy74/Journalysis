@@ -357,10 +357,10 @@ for line in lineObjs:
 	elif line.Type == 'JournalBasicFileInfo':
 		bfi = map(list, zip(*[x.split(":",1) for x in line.RawText[22:].split("Rvt.Attr.")[1:]]))
 		bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
-		line.Worksharing = bfidict["Worksharing"]
-		line.CentralModelPath = bfidict["CentralModelPath"]
-		line.LastSavePath = bfidict["LastSavePath"]
-		line.Locale = bfidict["LocaleWhenSaved"]
+		if bfidict["Worksharing"] != "": line.Worksharing = bfidict["Worksharing"]
+		if bfidict["CentralModelPath"] != "": line.CentralModelPath = bfidict["CentralModelPath"]
+		if bfidict["LastSavePath"] != "": line.LastSavePath = bfidict["LastSavePath"]
+		if bfidict["LocaleWhenSaved"] != "": line.Locale = bfidict["LocaleWhenSaved"]
 	elif line.Type == 'JournalGUIResourceUsage':
 		g2 = []
 		for g1 in line.RawText.split(","):
