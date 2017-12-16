@@ -46,6 +46,8 @@ class Journal:
 	def ContainsExceptions(self):
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("ExceptionCode")]) &gt; 0: return True
 		else: return False
+	def GetDate(self):
+		return self.GetDateTimeByBlock(1).Date
 	def GetDateTimeByBlock(self, block):
 		if block == 0: return None
 		else: return [x for x in self.GetLinesByType('JournalTimeStamp') if x.Block == block][0].DateTime
@@ -172,6 +174,7 @@ class JournalBasicFileInfo(JournalLine):
 		self.CentralModelPath = None
 		self.LastSavePath = None
 		self.Locale = None
+		self.FileName = None
 	def __repr__(self):
 		return 'JournalBasicFileInfo'
 
@@ -359,7 +362,9 @@ for line in lineObjs:
 		bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
 		if bfidict["Worksharing"] != "": line.Worksharing = bfidict["Worksharing"]
 		if bfidict["CentralModelPath"] != "": line.CentralModelPath = bfidict["CentralModelPath"]
-		if bfidict["LastSavePath"] != "": line.LastSavePath = bfidict["LastSavePath"]
+		if bfidict["LastSavePath"] != "": 
+			line.LastSavePath = bfidict["LastSavePath"]
+			line.FileName = bfidict["LastSavePath"].split("\\")[-1]
 		if bfidict["LocaleWhenSaved"] != "": line.Locale = bfidict["LocaleWhenSaved"]
 	elif line.Type == 'JournalGUIResourceUsage':
 		g2 = []
