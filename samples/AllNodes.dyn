@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1460.92529419173" Y="1349.03379978713" zoom="0.230544130616466" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="838.319076156433" Y="2870.00354419889" zoom="0.632697771347584" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -20,7 +20,7 @@
       <PortInfo index="0" default="False" />
       <ID value="a293c700-5298-4ab5-9dce-d23c323a405a" />
       <Name value="Journal.ByString" />
-      <Description value="" />
+      <Description value="Creates a queriable object from the contents of a Revit journal file" />
       <Inputs>
         <Input value="str" />
       </Inputs>
@@ -357,7 +357,7 @@
       <PortInfo index="0" default="False" />
       <ID value="72e1782d-a35d-4dd9-927e-96e46058adb3" />
       <Name value="JournalAPIMessage.Text" />
-      <Description value="" />
+      <Description value="Returns the text from an APIMessage line" />
       <Inputs>
         <Input value="journalAPIMessage" />
       </Inputs>
@@ -369,7 +369,7 @@
       <PortInfo index="0" default="False" />
       <ID value="0385a541-b8a2-402f-8cd4-cb98551a11ea" />
       <Name value="JournalAPIMessage.Type" />
-      <Description value="" />
+      <Description value="Returns the type of an APIMessage line" />
       <Inputs>
         <Input value="journalAPIMessage" />
       </Inputs>
@@ -381,7 +381,7 @@
       <PortInfo index="0" default="False" />
       <ID value="4660d43d-69af-4380-8a7a-897549f8be30" />
       <Name value="JournalCommand.Type" />
-      <Description value="" />
+      <Description value="Returns the type of a JournalCommand line" />
       <Inputs>
         <Input value="journalCommand" />
       </Inputs>
@@ -393,7 +393,7 @@
       <PortInfo index="0" default="False" />
       <ID value="e6193c33-e573-4dc5-b8e5-e4391b7e1a53" />
       <Name value="JournalCommand.Description" />
-      <Description value="" />
+      <Description value="Returns the description of a JournalCommand line" />
       <Inputs>
         <Input value="journalCommand" />
       </Inputs>
@@ -405,7 +405,7 @@
       <PortInfo index="0" default="False" />
       <ID value="9663ce43-d035-41e9-a06d-8c31ea3e37c3" />
       <Name value="JournalCommand.ID" />
-      <Description value="" />
+      <Description value="Returns the command ID of a JournalCommand line" />
       <Inputs>
         <Input value="journalCommand" />
       </Inputs>
@@ -417,7 +417,7 @@
       <PortInfo index="0" default="False" />
       <ID value="5dd51041-47ab-442b-ae79-16b535c8f245" />
       <Name value="JournalAddinEvent.Text" />
-      <Description value="" />
+      <Description value="Returns the text from an AddinEvent line" />
       <Inputs>
         <Input value="journalAddinEvent" />
       </Inputs>
@@ -429,7 +429,7 @@
       <PortInfo index="0" default="False" />
       <ID value="d60bff86-8fc7-490c-baff-40918fc48d13" />
       <Name value="JournalData.Key" />
-      <Description value="" />
+      <Description value="Returns the key of a JournalData line" />
       <Inputs>
         <Input value="journalData" />
       </Inputs>
@@ -441,7 +441,7 @@
       <PortInfo index="0" default="False" />
       <ID value="2b7ff8d5-77c1-4f2e-bf1e-bd46b40b2ede" />
       <Name value="JournalData.Values" />
-      <Description value="" />
+      <Description value="Returns the values from a JournalData line" />
       <Inputs>
         <Input value="journalData" />
       </Inputs>
@@ -453,7 +453,7 @@
       <PortInfo index="0" default="False" />
       <ID value="e6f22f52-e574-4dcd-a8e3-996534f3a6ac" />
       <Name value="JournalDirective.Key" />
-      <Description value="" />
+      <Description value="Returns the key of a JournalDirective line" />
       <Inputs>
         <Input value="journalDirective" />
       </Inputs>
@@ -465,7 +465,7 @@
       <PortInfo index="0" default="False" />
       <ID value="98ff0d09-bd8c-41bc-afe2-9e0db0ec288f" />
       <Name value="JournalDirective.Values" />
-      <Description value="" />
+      <Description value="Returns the values from a JournalDirective line" />
       <Inputs>
         <Input value="journalDirective" />
       </Inputs>
@@ -513,7 +513,7 @@
       <PortInfo index="0" default="False" />
       <ID value="4f4e5558-d31e-47e5-860b-fabbfb444b1c" />
       <Name value="JournalKeyboardEvent.Key" />
-      <Description value="" />
+      <Description value="Returns the pressed key of a KeyboardEvent line" />
       <Inputs>
         <Input value="journalKeyboardEvent" />
       </Inputs>
@@ -525,7 +525,7 @@
       <PortInfo index="0" default="False" />
       <ID value="2605bfba-08bc-473f-80a9-9d7b60b5317d" />
       <Name value="JournalMemoryMetrics.VMAvailable" />
-      <Description value="" />
+      <Description value="Returns the available VM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -537,7 +537,7 @@
       <PortInfo index="0" default="False" />
       <ID value="d7592e1e-4f5f-4576-9aca-df5b6de24773" />
       <Name value="JournalMemoryMetrics.VMUsed" />
-      <Description value="" />
+      <Description value="Returns the used VM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -549,7 +549,7 @@
       <PortInfo index="0" default="False" />
       <ID value="f64079dd-9ffd-49f8-8c3e-7e2668ae9b49" />
       <Name value="JournalMemoryMetrics.VMPeak" />
-      <Description value="" />
+      <Description value="Returns the peak VM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -561,7 +561,7 @@
       <PortInfo index="0" default="False" />
       <ID value="de3f440e-77d8-49bb-a7b6-49d26b841033" />
       <Name value="JournalMemoryMetrics.RAMAvailable" />
-      <Description value="" />
+      <Description value="Returns the available RAM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -573,7 +573,7 @@
       <PortInfo index="0" default="False" />
       <ID value="7cce2c99-649b-4ce2-af83-20d119817e68" />
       <Name value="JournalMemoryMetrics.RAMUsed" />
-      <Description value="" />
+      <Description value="Returns the used RAM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -585,7 +585,7 @@
       <PortInfo index="0" default="False" />
       <ID value="867d0cc1-26b6-422f-b1bd-312aea44d6a1" />
       <Name value="JournalMemoryMetrics.RAMPeak" />
-      <Description value="" />
+      <Description value="Returns the peak RAM of a MemoryMetrics line" />
       <Inputs>
         <Input value="journalMemoryMetrics" />
       </Inputs>
@@ -597,7 +597,7 @@
       <PortInfo index="0" default="False" />
       <ID value="39b41107-a8a3-4851-8059-c8a4784015c0" />
       <Name value="JournalMouseEvent.Type" />
-      <Description value="" />
+      <Description value="Returns the type of a MouseEvent line" />
       <Inputs>
         <Input value="journalMouseEvent" />
       </Inputs>
@@ -609,7 +609,7 @@
       <PortInfo index="0" default="False" />
       <ID value="6ff5a885-7bd9-48c8-ac09-7c69b583d61e" />
       <Name value="JournalMouseEvent.Data" />
-      <Description value="" />
+      <Description value="Returns the data from a MouseEvent line" />
       <Inputs>
         <Input value="journalMouseEvent" />
       </Inputs>
@@ -621,7 +621,7 @@
       <PortInfo index="0" default="False" />
       <ID value="d0cbc990-56f5-4610-879a-37b40aeb082b" />
       <Name value="JournalTimeStamp.Type" />
-      <Description value="" />
+      <Description value="Returns the type of a TimeStamp line" />
       <Inputs>
         <Input value="journalTimeStamp" />
       </Inputs>
@@ -633,7 +633,7 @@
       <PortInfo index="0" default="False" />
       <ID value="fa0fee5f-a8ca-4194-b925-362f47f1e6c7" />
       <Name value="JournalTimeStamp.DateTime" />
-      <Description value="" />
+      <Description value="Returns the date and time of a TimeStamp line" />
       <Inputs>
         <Input value="journalTimeStamp" />
       </Inputs>
@@ -645,7 +645,7 @@
       <PortInfo index="0" default="False" />
       <ID value="07285acc-0bd5-4afd-979c-878a64b198ec" />
       <Name value="JournalTimeStamp.Description" />
-      <Description value="" />
+      <Description value="Returns the description of a TimeStamp line" />
       <Inputs>
         <Input value="journalTimeStamp" />
       </Inputs>
@@ -657,7 +657,7 @@
       <PortInfo index="0" default="False" />
       <ID value="7538966d-be82-4e09-91d8-d4ec55b33edd" />
       <Name value="JournalUIEvent.Type" />
-      <Description value="" />
+      <Description value="Returns the type of a UIEvent line" />
       <Inputs>
         <Input value="journalUIEvent" />
       </Inputs>
@@ -669,7 +669,7 @@
       <PortInfo index="0" default="False" />
       <ID value="0f7e748d-c763-435b-b223-4da4ba2b2a92" />
       <Name value="JournalUIEvent.Data" />
-      <Description value="" />
+      <Description value="Returns the data from a UIEvent line" />
       <Inputs>
         <Input value="journalUIEvent" />
       </Inputs>
@@ -1119,7 +1119,7 @@
       <PortInfo index="0" default="False" />
       <ID value="13528261-29c6-4137-92bd-5e2c74e5d003" />
       <Name value="KeyboardShortcutCommand.HasPaths" />
-      <Description value="" />
+      <Description value="Returns whether a given command has any paths assigned" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1131,7 +1131,7 @@
       <PortInfo index="0" default="False" />
       <ID value="2101ae1a-adae-4246-971f-3b079e154128" />
       <Name value="KeyboardShortcutCommand.HasShortcuts" />
-      <Description value="" />
+      <Description value="Returns whether a given command has any shortcuts assigned" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1143,7 +1143,7 @@
       <PortInfo index="0" default="False" />
       <ID value="700418e7-6b36-4ce3-937d-76cf8f820cea" />
       <Name value="KeyboardShortcuts.CommandCountWithShortcuts" />
-      <Description value="" />
+      <Description value="Returns the total number of commands that have a shortcut assigned in a given KeyboardShirtcuts object" />
       <Inputs>
         <Input value="keyboardShortcuts" />
       </Inputs>
@@ -1155,7 +1155,7 @@
       <PortInfo index="0" default="False" />
       <ID value="2eda879b-e1ad-4782-89f5-9bbb16be251c" />
       <Name value="KeyboardShortcuts.CommandCount" />
-      <Description value="" />
+      <Description value="Returns the total number of commands in a given KeyboardShirtcuts object" />
       <Inputs>
         <Input value="keyboardShortcuts" />
       </Inputs>
@@ -1167,7 +1167,7 @@
       <PortInfo index="0" default="False" />
       <ID value="58ec6d61-7f6c-4e24-9cc2-720e65369d87" />
       <Name value="KeyboardShortcutCommand.ID" />
-      <Description value="" />
+      <Description value="Returns the ID of a given command" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1179,7 +1179,7 @@
       <PortInfo index="0" default="False" />
       <ID value="2901c738-a0a3-4e64-8eb2-40d1f4681352" />
       <Name value="KeyboardShortcuts.Commands" />
-      <Description value="" />
+      <Description value="Returns all commands from a given KeyboardShirtcuts object" />
       <Inputs>
         <Input value="keyboardShortcuts" />
       </Inputs>
@@ -1191,7 +1191,7 @@
       <PortInfo index="0" default="False" />
       <ID value="6b3c8ee8-fb06-42ba-b362-9af4047d35db" />
       <Name value="KeyboardShortcutCommand.Name" />
-      <Description value="" />
+      <Description value="Returns the name of a given command" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1203,7 +1203,7 @@
       <PortInfo index="0" default="False" />
       <ID value="680af772-884a-4fc5-adf5-2f7d3e5066a6" />
       <Name value="KeyboardShortcuts.ByString" />
-      <Description value="" />
+      <Description value="Creates a queriable object from the content of a Revit KeyboardShortcuts.xml file" />
       <Inputs>
         <Input value="str" />
       </Inputs>
@@ -1218,7 +1218,7 @@
       <PortInfo index="0" default="False" />
       <ID value="5eb362f8-f908-4888-b04d-144d1d8b7e0e" />
       <Name value="KeyboardShortcutCommand.Paths" />
-      <Description value="" />
+      <Description value="Returns all paths assigned to a given command" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1237,7 +1237,7 @@
       <PortInfo index="0" default="False" />
       <ID value="40e02f9c-d0c0-4fb2-acef-4204630a3242" />
       <Name value="KeyboardShortcutCommand.Shortcuts" />
-      <Description value="" />
+      <Description value="Returns all shortcuts assigned to a given command" />
       <Inputs>
         <Input value="keyboardShortcutCommand" />
       </Inputs>
@@ -1261,7 +1261,7 @@
       <PortInfo index="0" default="False" />
       <ID value="04d7eca3-8497-415a-9fe2-b05cad2412f6" />
       <Name value="KeyboardShortcuts.CommandsWithShortcuts" />
-      <Description value="" />
+      <Description value="Returns all commands that have a shortcut assigned from a given KeyboardShirtcuts object" />
       <Inputs>
         <Input value="keyboardShortcuts" />
       </Inputs>
@@ -1419,7 +1419,7 @@
       <PortInfo index="0" default="False" useLevels="True" level="2" shouldKeepListStructure="False" />
       <ID value="fb003228-26ab-47bd-b46c-6dbafab4a466" />
       <Name value="LoadedModelEvent.DateTime" />
-      <Description value="Returns the DateTime of a given LoadedModelEvent" />
+      <Description value="Returns the date and time of a given LoadedModelEvent" />
       <Inputs>
         <Input value="loadedModelEvent" />
       </Inputs>
@@ -1485,7 +1485,7 @@
       <PortInfo index="0" default="False" />
       <ID value="d04c4ff7-f3b9-4051-b532-35b643c4e741" />
       <Name value="JournalBasicFileInfo.CentralModelPath" />
-      <Description value="" />
+      <Description value="Returns the central model path from a BasicFileInfo line" />
       <Inputs>
         <Input value="journalBasicFileInfo" />
       </Inputs>
@@ -1497,7 +1497,7 @@
       <PortInfo index="0" default="False" />
       <ID value="f5c7e4ae-53ec-4b94-8087-aca9568e04d0" />
       <Name value="JournalBasicFileInfo.LastSavePath" />
-      <Description value="" />
+      <Description value="Returns the last save path from a BasicFileInfo line" />
       <Inputs>
         <Input value="journalBasicFileInfo" />
       </Inputs>
@@ -1509,7 +1509,7 @@
       <PortInfo index="0" default="False" />
       <ID value="08630556-ec20-4701-b0b5-4dd9f417a39b" />
       <Name value="JournalBasicFileInfo.Locale" />
-      <Description value="" />
+      <Description value="Returns the locale a model was saved in from a BasicFileInfo line" />
       <Inputs>
         <Input value="journalBasicFileInfo" />
       </Inputs>
@@ -1521,7 +1521,7 @@
       <PortInfo index="0" default="False" />
       <ID value="076fdbc9-2ccd-47a9-ab94-f55cd53295e5" />
       <Name value="JournalBasicFileInfo.Worksharing" />
-      <Description value="" />
+      <Description value="Returns the worksharing status from a BasicFileInfo line" />
       <Inputs>
         <Input value="journalBasicFileInfo" />
       </Inputs>
@@ -1557,7 +1557,7 @@
       <PortInfo index="0" default="False" />
       <ID value="5f331f78-8449-4c4e-90cc-fe5cc0e72234" />
       <Name value="JournalBasicFileInfo.FileName" />
-      <Description value="" />
+      <Description value="Returns the file name from the last save path of a BasicFileInfo line" />
       <Inputs>
         <Input value="journalBasicFileInfo" />
       </Inputs>
@@ -1929,7 +1929,7 @@
       <Models ModelGuid="519cbb69-9b39-4dd4-a28d-7bd707d03fbe" />
       <Models ModelGuid="86ebab94-37a1-4fe5-9aba-89c84fb606d1" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="3e6faeaa-9e50-4cda-99d9-5cc16c631c17" annotationText="JournalBasicFileInfo.Query" left="1365.37016887597" top="-5322.7838272393" width="944.117909532052" height="541.772722449395" fontSize="30" InitialTop="-5276.7838272393" InitialHeight="427.903319133497" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="3e6faeaa-9e50-4cda-99d9-5cc16c631c17" annotationText="JournalBasicFileInfo.Query" left="1365.37016887597" top="-5322.7838272393" width="944.11790953205" height="541.77272244939" fontSize="30" InitialTop="-5276.7838272393" InitialHeight="427.903319133497" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="d537d9ed-a0b7-4480-bf98-527a11cd245e" />
       <Models ModelGuid="41cc5d88-1524-48d1-8e62-cf8f392cdf68" />
       <Models ModelGuid="4d14bbe0-45a8-4c43-b949-39efe2a85984" />
