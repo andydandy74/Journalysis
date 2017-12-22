@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="169" Y="32" zoom="1" ScaleFactor="1" Name="Journal.GetLinesByTypeAndProperty" Description="Retrieves all JournalLines of a given type from a given journal, pre-filtered by a property value" ID="34868ba5-6614-4415-b848-e36578fd5462" Category="Journalysis.Journal.Actions">
+<Workspace Version="1.3.1.1736" X="169" Y="32" zoom="1" ScaleFactor="1" Name="Journal.LinesByTypeAndProperty" Description="Retrieves all JournalLines of a given type from a given journal, pre-filtered by a property value" ID="34868ba5-6614-4415-b848-e36578fd5462" Category="Journalysis.Journal.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
