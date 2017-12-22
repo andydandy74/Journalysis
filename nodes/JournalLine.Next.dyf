@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="265" Y="71" zoom="1" ScaleFactor="1" Name="JournalLine.Next" Description="" ID="616c0c80-23ed-4651-be8b-263a64b31544" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="265" Y="71" zoom="1" ScaleFactor="1" Name="JournalLine.Next" Description="Retrieves the next line after the given line" ID="616c0c80-23ed-4651-be8b-263a64b31544" Category="Journalysis.JournalLine.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

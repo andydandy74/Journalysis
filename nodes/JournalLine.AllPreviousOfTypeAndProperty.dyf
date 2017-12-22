@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="705" Y="369" zoom="1" ScaleFactor="1" Name="JournalLine.AllPreviousOfTypeAndProperty" Description="" ID="ab2210f1-ad2b-4170-8a66-1a31946c3700" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="705" Y="369" zoom="1" ScaleFactor="1" Name="JournalLine.AllPreviousOfTypeAndProperty" Description="Retrieves all lines of a given type and property value before the given line from the journal" ID="ab2210f1-ad2b-4170-8a66-1a31946c3700" Category="Journalysis.JournalLine.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="291" Y="312" zoom="1" ScaleFactor="1" Name="JournalLine.DateTimeOfBlock" Description="" ID="1975f030-2c6d-45a8-a52d-6e4df75ab2d2" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="291" Y="312" zoom="1" ScaleFactor="1" Name="JournalLine.DateTimeOfBlock" Description="Retrieves the date and time of the block of a given JournalLine" ID="1975f030-2c6d-45a8-a52d-6e4df75ab2d2" Category="Journalysis.JournalLine.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
