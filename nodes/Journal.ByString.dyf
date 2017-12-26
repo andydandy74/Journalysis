@@ -54,8 +54,6 @@ class Journal:
 	def GetDateTimeByBlocks(self, blocks):
 		if 0 in blocks: return None
 		else: return [x.DateTime for x in self.GetLinesByType('JournalTimeStamp') if x.Block in blocks]
-	def GetLoadedAssemblies(self):
-		return [x.MessageText.split(":")[-1].strip() for x in self.GetLinesByType('JournalAPIMessage') if x.MessageText.startswith('Starting')]
 	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
 	def GetLinesByBlocks(self, blocks):
