@@ -1,0 +1,48 @@
+<Workspace Version="1.3.1.1736" X="115" Y="76" zoom="1" ScaleFactor="1" Name="WorksharingLog.ProcessingTime" Description="Returns the amount of time it took to process the given WorksharingLog" ID="653839b7-9b27-4644-877b-2461654f2c95" Category="Journalysis.WorksharingLog.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="5dbf8146-0774-4bd2-9920-8aca7e078d7d" type="PythonNodeModels.PythonNode" nickname="Python Script" x="359" y="342" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def WSLogProcessingTime(wslog):
+	if wslog.__repr__() == 'WorksharingLog': return wslog.ProcessingTime
+	else: return None
+
+OUT = process_input(WSLogProcessingTime,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="f1d2ea6d-73e9-410a-9a28-cec556f1bcd3" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="109" y="342" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="worksharingLog" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="770a74dd-e814-4194-b6aa-2a46d65b9cd0" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="833" y="266" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="timeSpan" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="87752aab-58f4-47da-b645-ad1f7a233b70" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="TimeSpan.Create" x="539" y="265" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.TimeSpan.Create@double,double,double,double,double">
+      <PortInfo index="0" default="True" />
+      <PortInfo index="1" default="True" />
+      <PortInfo index="2" default="True" />
+      <PortInfo index="3" default="True" />
+      <PortInfo index="4" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="5dbf8146-0774-4bd2-9920-8aca7e078d7d" start_index="0" end="87752aab-58f4-47da-b645-ad1f7a233b70" end_index="3" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="f1d2ea6d-73e9-410a-9a28-cec556f1bcd3" start_index="0" end="5dbf8146-0774-4bd2-9920-8aca7e078d7d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="87752aab-58f4-47da-b645-ad1f7a233b70" start_index="0" end="770a74dd-e814-4194-b6aa-2a46d65b9cd0" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

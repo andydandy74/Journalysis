@@ -1,0 +1,37 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.LoadDuration" Description="Computes the load time of the model (and all linked models) for a given WorksharingSession" ID="37664e1e-4d1f-4f97-a6a8-4f9278251137" Category="Journalysis.WorksharingSession.Actions">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="d6397fdc-2453-4715-8246-c059de419a07" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def WSSessionLoadDuration(wssess):
+	if wssess.__repr__() == 'WorksharingSession': return wssess.GetLoadDuration()
+	else: return None
+
+OUT = process_input(WSSessionLoadDuration,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="7a916ae2-115f-4550-a7fb-1b466f64e5b1" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="worksharingSession" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ca40a7ff-97ad-43ab-8460-0d17c5c3b856" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="timeSpan" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="d6397fdc-2453-4715-8246-c059de419a07" start_index="0" end="ca40a7ff-97ad-43ab-8460-0d17c5c3b856" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7a916ae2-115f-4550-a7fb-1b466f64e5b1" start_index="0" end="d6397fdc-2453-4715-8246-c059de419a07" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+</Workspace>

@@ -1,0 +1,37 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.Events" Description="Returns all recorded events of a given WorksharingSession" ID="ec8eca1b-1b91-4090-9c6c-d45038000cc2" Category="Journalysis.WorksharingSession.Query">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="6e0de054-d085-4859-a89c-c8ef98432e97" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def WSSessionEvents(wssess):
+	if wssess.__repr__() == 'WorksharingSession': return wssess.Events
+	else: return []
+
+OUT = process_input(WSSessionEvents,IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4642cfe2-1d6d-49bc-b8c0-0d4c60538ff0" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="worksharingSession" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="43e7208d-16fd-4420-8035-58331eb16ebd" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="worksharingEvents" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="6e0de054-d085-4859-a89c-c8ef98432e97" start_index="0" end="43e7208d-16fd-4420-8035-58331eb16ebd" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="4642cfe2-1d6d-49bc-b8c0-0d4c60538ff0" start_index="0" end="6e0de054-d085-4859-a89c-c8ef98432e97" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+</Workspace>
