@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="-196.682656793388" Y="366.322204777685" zoom="1.08570356044719" ScaleFactor="1" Name="Journal.ByString" Description="Creates a queriable object from the contents of a Revit journal file" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
+<Workspace Version="1.3.1.1736" X="303.317343206612" Y="236.322204777685" zoom="1.08570356044719" ScaleFactor="1" Name="Journal.ByString" Description="Creates a queriable object from the contents of a Revit journal file" ID="a293c700-5298-4ab5-9dce-d23c323a405a" Category="Journalysis.Journal.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -263,6 +263,15 @@ class JournalUIEvent(JournalLine):
 	def __repr__(self):
 		return 'JournalUIEvent'
 
+class JournalWorksharingEvent(JournalLine):
+	def __init__(self, number, raw, block, type):
+		JournalLine.__init__(self, number, raw, block, type)
+		self.SessionID = None
+		self.DateTime = None
+		self.Text = None
+	def __repr__(self):
+		return 'JournalWorksharingEvent'
+
 lines = IN[0]
 lineObjs = []
 jVersion = None
@@ -304,6 +313,8 @@ for line in lines:
 		lineObjs.append(JournalMouseEvent(i,line,b,'JournalMouseEvent'))
 	elif line.startswith('Jrn.Activate') or line.startswith('Jrn.AppButtonEvent') or line.startswith('Jrn.Browser') or line.startswith('Jrn.CheckBox') or line.startswith('Jrn.Close') or line.startswith('Jrn.ComboBox') or line.startswith('Jrn.DropFiles') or line.startswith('Jrn.Edit') or line.startswith('Jrn.Grid') or line.startswith('Jrn.ListBox') or line.startswith('Jrn.Maximize') or line.startswith('Jrn.Minimize') or line.startswith('Jrn.PropertiesPalette') or line.startswith('Jrn.PushButton') or line.startswith('Jrn.RadioButton') or line.startswith('Jrn.RibbonEvent') or line.startswith('Jrn.SBTrayAction') or line.startswith('Jrn.SliderCtrl') or line.startswith('Jrn.TabCtrl') or line.startswith('Jrn.TreeCtrl') or line.startswith('Jrn.WidgetEvent'):
 		lineObjs.append(JournalUIEvent(i,line,b,'JournalUIEvent'))
+	elif ":&lt; SLOG $" in line:
+		lineObjs.append(JournalWorksharingEvent(i,line,b,'JournalWorksharingEvent'))
 	# append linebreaks to previous line
 	elif lineObjs[-1].RawText[-1] == "_":
 		lineObjs[-1].RawText = lineObjs[-1].RawText[:-1] + line
@@ -356,6 +367,11 @@ for line in lineObjs:
 		line.Key = d1[0][10:]
 		for d2 in d1[1].split(","):
 			line.Values.append(d2.strip().replace('"',''))
+	elif line.Type == 'JournalWorksharingEvent':
+		ws = line.RawText.split(':&lt; SLOG ')[-1].split()
+		line.SessionID = ws[0]
+		line.DateTime = time.strptime(ws[1] + " " + ws[2])
+		line.Text = ' '.join(ws[3:])
 	elif line.Type == 'JournalCommand':
 		c1 = line.RawText.split('" , "')
 		line.CommandType = c1[0][13:]
@@ -487,6 +503,6 @@ OUT = journal</Script>
   <Annotations />
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

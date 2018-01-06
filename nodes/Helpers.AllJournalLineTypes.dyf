@@ -5,7 +5,7 @@
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <CoreNodeModels.Input.StringInput guid="f2f736dd-fb27-4338-8f34-5d818ef008f1" type="CoreNodeModels.Input.StringInput" nickname="String" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="f2f736dd-fb27-4338-8f34-5d818ef008f1" type="CoreNodeModels.Input.StringInput" nickname="String" x="221.013510231971" y="-24.683891624497" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>JournalAddinEvent
 JournalAPIMessage
 JournalBasicFileInfo
@@ -19,19 +19,20 @@ JournalMemoryMetrics
 JournalMiscCommand
 JournalMouseEvent
 JournalTimeStamp
-JournalUIEvent</System.String>
-      <System.String value="JournalAddinEvent&#xD;&#xA;JournalAPIMessage&#xD;&#xA;JournalBasicFileInfo&#xD;&#xA;JournalCommand&#xD;&#xA;JournalComment&#xD;&#xA;JournalData&#xD;&#xA;JournalDirective&#xD;&#xA;JournalGUIResourceUsage&#xD;&#xA;JournalKeyboardEvent&#xD;&#xA;JournalMemoryMetrics&#xD;&#xA;JournalMiscCommand&#xD;&#xA;JournalMouseEvent&#xD;&#xA;JournalTimeStamp&#xD;&#xA;JournalUIEvent" />
+JournalUIEvent
+JournalWorksharingEvent</System.String>
+      <System.String value="JournalAddinEvent&#xD;&#xA;JournalAPIMessage&#xD;&#xA;JournalBasicFileInfo&#xD;&#xA;JournalCommand&#xD;&#xA;JournalComment&#xD;&#xA;JournalData&#xD;&#xA;JournalDirective&#xD;&#xA;JournalGUIResourceUsage&#xD;&#xA;JournalKeyboardEvent&#xD;&#xA;JournalMemoryMetrics&#xD;&#xA;JournalMiscCommand&#xD;&#xA;JournalMouseEvent&#xD;&#xA;JournalTimeStamp&#xD;&#xA;JournalUIEvent&#xD;&#xA;JournalWorksharingEvent" />
     </CoreNodeModels.Input.StringInput>
-    <CoreNodeModels.Input.StringInput guid="78678152-da3d-4cee-bf4b-b319f767a620" type="CoreNodeModels.Input.StringInput" nickname="String" x="372.090501853156" y="262.632216751006" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <CoreNodeModels.Input.StringInput guid="78678152-da3d-4cee-bf4b-b319f767a620" type="CoreNodeModels.Input.StringInput" nickname="String" x="221.013510231971" y="287.316108375503" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>
 </System.String>
       <System.String value="&#xD;&#xA;" />
     </CoreNodeModels.Input.StringInput>
-    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="4df87e1b-ec90-44f6-baa6-85873cb136d1" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="492.027020463942" y="139.138554185936" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
+    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="4df87e1b-ec90-44f6-baa6-85873cb136d1" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="501.013510231971" y="118.316108375503" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">
       <PortInfo index="0" default="False" />
       <PortInfo index="1" default="False" />
     </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="0ae3a5ed-0dec-454e-94ce-075a34ebea0f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="802.027020463942" y="138" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="0ae3a5ed-0dec-454e-94ce-075a34ebea0f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="831.013510231971" y="118.316108375503" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <Symbol value="seq" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
