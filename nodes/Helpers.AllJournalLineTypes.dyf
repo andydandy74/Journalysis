@@ -18,10 +18,11 @@ JournalKeyboardEvent
 JournalMemoryMetrics
 JournalMiscCommand
 JournalMouseEvent
+JournalSystemInformation
 JournalTimeStamp
 JournalUIEvent
 JournalWorksharingEvent</System.String>
-      <System.String value="JournalAddinEvent&#xD;&#xA;JournalAPIMessage&#xD;&#xA;JournalBasicFileInfo&#xD;&#xA;JournalCommand&#xD;&#xA;JournalComment&#xD;&#xA;JournalData&#xD;&#xA;JournalDirective&#xD;&#xA;JournalGUIResourceUsage&#xD;&#xA;JournalKeyboardEvent&#xD;&#xA;JournalMemoryMetrics&#xD;&#xA;JournalMiscCommand&#xD;&#xA;JournalMouseEvent&#xD;&#xA;JournalTimeStamp&#xD;&#xA;JournalUIEvent&#xD;&#xA;JournalWorksharingEvent" />
+      <System.String value="JournalAddinEvent&#xD;&#xA;JournalAPIMessage&#xD;&#xA;JournalBasicFileInfo&#xD;&#xA;JournalCommand&#xD;&#xA;JournalComment&#xD;&#xA;JournalData&#xD;&#xA;JournalDirective&#xD;&#xA;JournalGUIResourceUsage&#xD;&#xA;JournalKeyboardEvent&#xD;&#xA;JournalMemoryMetrics&#xD;&#xA;JournalMiscCommand&#xD;&#xA;JournalMouseEvent&#xD;&#xA;JournalSystemInformation&#xD;&#xA;JournalTimeStamp&#xD;&#xA;JournalUIEvent&#xD;&#xA;JournalWorksharingEvent" />
     </CoreNodeModels.Input.StringInput>
     <CoreNodeModels.Input.StringInput guid="78678152-da3d-4cee-bf4b-b319f767a620" type="CoreNodeModels.Input.StringInput" nickname="String" x="221.013510231971" y="287.316108375503" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>

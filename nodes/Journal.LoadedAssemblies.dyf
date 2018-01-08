@@ -9,71 +9,15 @@
       <PortInfo index="0" default="False" />
       <Script>import clr
 
-class LoadedAssembly:
-	def __init__(self, name, classname, path, vendor, initialEvent):
-		self.Name = name
-		self.Class = classname
-		self.Path = path
-		self.Filename = path.split("\\")[-1]
-		self.Vendor = vendor
-		self.GUID = None
-		self.Events = [initialEvent]
-	def __repr__(self):
-		return "LoadedAssembly"
+def process_input(func, input):
+	if isinstance(input, list): return [func(x) for x in input]
+	else: return func(input)
+	
+def journalLoadedAssemblies(journal):
+	if journal.__repr__() == 'Journal': return journal.GetLoadedAssemblies()
+	else: return None
 
-journal = IN[0]
-loadedAssemblies = []
-replacedCommands = {}
-OUT = []
-apimsgs = journal.GetLinesByType("JournalAPIMessage")
-
-for apimsg in apimsgs:
-	if apimsg.MessageText.startswith("Starting"):
-		startdata1 = apimsg.MessageText.split("Application: ")[-1].split(", Class: ")
-		startdata2 = startdata1[-1].split(", Vendor : ")
-		startdata3 = startdata2[-1].split(", Assembly: ") 
-		appname = startdata1[0]
-		classname = startdata2[0]
-		path = startdata3[-1]
-		vendor = startdata3[0]
-		loadedAssemblies.append(LoadedAssembly(appname, classname, path, vendor, apimsg))
-		
-for apimsg in apimsgs:
-	if apimsg.MessageText.startswith("Registering") or apimsg.MessageText.startswith("Unregistering") or apimsg.MessageText.startswith("API registering") or apimsg.MessageText.startswith("API unregistering"):
-		regevt = apimsg.MessageText.split("by application ")[-1].rsplit(" (",1)
-		appname = regevt[0]
-		appguid = regevt[1][:-2]
-		foundByGUID = [x for x in loadedAssemblies if x.GUID == appguid]
-		if len(foundByGUID) &gt; 0: foundByGUID[0].Events.append(apimsg)
-		else:
-			foundByName = [x for x in loadedAssemblies if x.Name == appname and x.GUID == None]
-			if len(foundByName) &gt; 0:
-				foundByName[0].GUID = appguid
-				foundByName[0].Events.append(apimsg)
-	elif apimsg.MessageText.startswith("Replacing"):
-		replname = apimsg.MessageText.split("from application '",1)[-1].split("'",1)[0]
-		replcommand = apimsg.MessageText.split("Replacing command id '",1)[-1].split("'",1)[0]
-		foundByName = [x for x in loadedAssemblies if x.Name == replname]
-		if len(foundByName) &gt; 0: 
-			foundByName[0].Events.append(apimsg)
-			replacedCommands[replcommand] = foundByName[0]
-	elif apimsg.MessageText.startswith("Restoring"):
-		restcommand = apimsg.MessageText.split("Restoring command id '",1)[-1].split("'",1)[0]
-		if restcommand in replacedCommands:
-			replacedCommands[restcommand].Events.append(apimsg)
-	elif apimsg.MessageText.startswith("Added pushbutton"):
-		pbpath = apimsg.MessageText.split(", ")[-1].replace("assembly: ","").replace("assembly ","")
-		foundByPath = [x for x in loadedAssemblies if x.Path == pbpath]
-		if len(foundByPath) &gt; 0: foundByPath[0].Events.append(apimsg)
-		else:
-			foundByFilename = [x for x in loadedAssemblies if x.Filename == pbpath.rsplit("\\",1)[-1]]
-			if len(foundByFilename) &gt; 0: foundByFilename[0].Events.append(apimsg)
-	elif apimsg.MessageText.startswith("System."):
-		excguid = apimsg.MessageText.split("). Changes made by this handler are going to be discarded.",1)[0].rsplit(" (",1)[-1]
-		foundByGUID = [x for x in loadedAssemblies if x.GUID == excguid]
-		if len(foundByGUID) &gt; 0: foundByGUID[0].Events.append(apimsg)
-
-OUT = loadedAssemblies</Script>
+OUT = process_input(journalLoadedAssemblies,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="7b909dab-e91d-480b-a77e-183cccd892ba" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="18.5" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="journal" />
@@ -91,6 +35,6 @@ OUT = loadedAssemblies</Script>
   <Annotations />
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
