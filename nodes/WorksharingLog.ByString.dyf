@@ -24,6 +24,10 @@ class WorksharingLog:
 		return "WorksharingLog"
 	def AllSessionsUseSameBuild(self):
 		return len(set([x.RevitBuild for x in self.Sessions])) == 1
+	def GetSessionByID(self, ID):
+		sessionlookup = [x for x in sessions if x.ID == ID]
+		if len(sessionlookup) &gt; 0: return sessionlookup[0]
+		else: return None
 
 class WorksharingSession:
 	def __init__(self, id):
@@ -41,7 +45,6 @@ class WorksharingSession:
 		self.ServerIP = None
 		self.ServerName = None
 		self.Central = None
-		self.TimeBias = None
 		self.Events = []
 	def __repr__(self):
 		return "WorksharingSession"
@@ -108,12 +111,16 @@ version = None
 for line in slog:
 	if line.startswith("$"):
 		contents = line.split()
-		if len([x for x in sessions if x.ID == contents[0]]) == 0:
+		session_lookup = [x for x in sessions if x.ID == contents[0]]
+		if len(session_lookup) == 0:
 			sessions.append(WorksharingSession(contents[0]))
+			current_session = sessions[-1]
+		else:
+			current_session = session_lookup[0]
 		timestamp = time.strptime(contents[1] + " " + contents[2])
 		text = ' '.join(contents[3:])
 		event = WorksharingEvent(timestamp, text)
-		sessions[-1].Events.append(event)
+		current_session.Events.append(event)
 		if text.startswith("&gt;Session"): 
 			sessions[-1].Start = timestamp
 			sessions[-1].Date = timestamp.Date
@@ -138,8 +145,6 @@ for line in slog:
 		sessions[-1].ServerName = serverinfo[-1][1:-1]
 	elif line.startswith("central"):
 		sessions[-1].Central = line.split('central="')[-1][:-1]
-	elif line.startswith("timebias"):
-		sessions[-1].TimeBias = int(line.split('timebias=')[-1])
 	elif line.startswith("Worksharing"):
 		version = line.split("Version ")[-1].split(",")[0]	
 
