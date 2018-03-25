@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1594.14514383295" Y="566.613526254312" zoom="0.487110365957586" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="1722.76064185705" Y="593.226950127248" zoom="0.511268673580988" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -301,7 +301,7 @@
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Input.Filename guid="2018aeee-636a-40a5-bd48-7e72734a2d60" type="CoreNodeModels.Input.Filename" nickname="Worksharing Log File Path" x="-1608.85915384272" y="-672.898183921743" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <System.String>..\..\..\Desktop\Projekt1_backup\Projekt1.slog</System.String>
-      <HintPath>U:\Desktop\Projekt1_backup\Projekt1.slog</HintPath>
+      <HintPath>Z:\U\Desktop\Projekt1_backup\Projekt1.slog</HintPath>
     </CoreNodeModels.Input.Filename>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="4fafbf75-cb84-4b20-83cb-2f1bc0d210a0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.ServerIP" x="367.529000940422" y="454.293433149981" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -339,19 +339,7 @@
         <Output value="dateTime" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="3d298430-14c9-448c-bb17-47977ae72153" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.TimeBias" x="364.352557596496" y="742.618303899981" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <PortInfo index="0" default="False" />
-      <ID value="2c83fb24-d3db-4b0d-b927-3c92ea444413" />
-      <Name value="WorksharingSession.TimeBias" />
-      <Description value="Returns the time bias of a given WorksharingSession" />
-      <Inputs>
-        <Input value="worksharingSession" />
-      </Inputs>
-      <Outputs>
-        <Output value="int" />
-      </Outputs>
-    </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="46f6dab0-d5a8-4d2b-b984-0f0d2ddf3c8a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.User" x="363.242594173445" y="845.339889760611" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="46f6dab0-d5a8-4d2b-b984-0f0d2ddf3c8a" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.User" x="371.454285567318" y="744.746670185673" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="d9fd7e94-d809-4f23-a5b8-cbdbf8d2649c" />
       <Name value="WorksharingSession.User" />
@@ -363,7 +351,7 @@
         <Output value="str" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="a90707b7-d6f9-499c-b06d-5420d2493ab3" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.Version" x="360.659734194006" y="949.254825016921" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="a90707b7-d6f9-499c-b06d-5420d2493ab3" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.Version" x="368.871425587879" y="848.661605441983" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="1a2c62fa-2aa5-4541-b4c2-269e36d90aaf" />
       <Name value="WorksharingSession.Version" />
@@ -424,7 +412,6 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="d4f2002c-a396-40cd-b1c3-7a3c9ba37bef" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="4fafbf75-cb84-4b20-83cb-2f1bc0d210a0" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="513bddc8-b6b3-4695-bb55-81f5b21a7075" end_index="0" portType="0" />
-    <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="3d298430-14c9-448c-bb17-47977ae72153" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="0ff75627-203e-4d81-8f8f-3d8da59909e8" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="a3de4278-fc7b-4336-8ffc-6708c692f033" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="5289e948-08e5-4887-b6b1-eb321087b493" end_index="0" portType="0" />
@@ -440,7 +427,7 @@
     <Dynamo.Graph.Notes.NoteModel guid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" text="QUESTION:&#xD;&#xA;Does the graph execute okay? Do any nodes turn yellow?" x="-1606.65194489917" y="-756.91690656847" />
   </Notes>
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1618.85915384272" top="-802.91690656847" width="303.207208943554" height="226.018722646727" fontSize="30" InitialTop="-756.91690656847" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1618.85915384272" top="-802.91690656847" width="303.20720894355" height="226.018722646727" fontSize="30" InitialTop="-756.91690656847" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="d3ce6ac3-2218-4cca-aa6b-347bf2be3d7d" />
       <Models ModelGuid="2018aeee-636a-40a5-bd48-7e72734a2d60" />
     </Dynamo.Graph.Annotations.AnnotationModel>
@@ -467,7 +454,7 @@
       <Models ModelGuid="93bc6c5b-aa26-4047-8dde-977b026f721b" />
       <Models ModelGuid="fadc6831-7e2e-42ed-b277-b87908cc4ff3" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="657520e2-4694-41fa-ba67-bb499afa9437" annotationText="WorksharingSession.Query" left="350.659734194006" top="-568.907446331219" width="403.174886121362" height="1611.16227134814" fontSize="30" InitialTop="-522.907446331219" InitialHeight="1595.16227134814" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="657520e2-4694-41fa-ba67-bb499afa9437" annotationText="WorksharingSession.Query" left="357.444926939047" top="-568.907446331219" width="403.174886121362" height="1510.5690517732" fontSize="30" InitialTop="-522.907446331219" InitialHeight="1595.16227134814" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="8759f785-1c81-463c-9430-fce7bf78e72d" />
       <Models ModelGuid="1a14d72d-b8b0-4dbf-98fe-1d9e66172618" />
       <Models ModelGuid="567c133d-9d0d-4048-997d-aea55e7f0916" />
@@ -481,7 +468,6 @@
       <Models ModelGuid="4fafbf75-cb84-4b20-83cb-2f1bc0d210a0" />
       <Models ModelGuid="513bddc8-b6b3-4695-bb55-81f5b21a7075" />
       <Models ModelGuid="0ff75627-203e-4d81-8f8f-3d8da59909e8" />
-      <Models ModelGuid="3d298430-14c9-448c-bb17-47977ae72153" />
       <Models ModelGuid="46f6dab0-d5a8-4d2b-b984-0f0d2ddf3c8a" />
       <Models ModelGuid="a90707b7-d6f9-499c-b06d-5420d2493ab3" />
     </Dynamo.Graph.Annotations.AnnotationModel>
