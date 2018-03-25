@@ -5,33 +5,36 @@
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <PythonNodeModels.PythonNode guid="3c96bdcc-edc4-49aa-a56b-3b160c737cb5" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+    <PythonNodeModels.PythonNode guid="3c96bdcc-edc4-49aa-a56b-3b160c737cb5" type="PythonNodeModels.PythonNode" nickname="Python Script" x="313.5" y="37.5" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
       <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
       <Script>import clr
 
-def process_input(func, input):
-	if isinstance(input, list): return [func(x) for x in input]
-	else: return func(input)
+def process_input(func, input1, input2):
+	if isinstance(input, list): return [func(x, input2) for x in input1]
+	else: return func(input1, input2)
 	
-def journalStripComments(journal):
-	if journal.__repr__() == 'Journal': return journal.StripComments()
+def journalStripComments(journal, preserveTimestamps):
+	if journal.__repr__() == 'Journal': return journal.StripComments(preserveTimestamps)
 	else: return None
 
-OUT = process_input(journalStripComments,IN[0])
-
-OUT = journal.StripComments()</Script>
+OUT = process_input(journalStripComments,IN[0],IN[1])</Script>
     </PythonNodeModels.PythonNode>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="22e8a188-0f5d-4d0d-ad70-fb0c587778f7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="22e8a188-0f5d-4d0d-ad70-fb0c587778f7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-88.5" y="8.5" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="journal" />
     </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c3e8e0f1-c2f5-4876-8d74-49d1176756c1" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c3e8e0f1-c2f5-4876-8d74-49d1176756c1" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="537.5" y="37.5" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <Symbol value="str" />
     </Dynamo.Graph.Nodes.CustomNodes.Output>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="a7eedddb-bf17-464a-b1c4-5928958bfd6d" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-88.5" y="92.5" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="preserveTimestamps : bool = false" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="3c96bdcc-edc4-49aa-a56b-3b160c737cb5" start_index="0" end="c3e8e0f1-c2f5-4876-8d74-49d1176756c1" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="22e8a188-0f5d-4d0d-ad70-fb0c587778f7" start_index="0" end="3c96bdcc-edc4-49aa-a56b-3b160c737cb5" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="a7eedddb-bf17-464a-b1c4-5928958bfd6d" start_index="0" end="3c96bdcc-edc4-49aa-a56b-3b160c737cb5" end_index="1" portType="0" />
   </Connectors>
   <Notes />
   <Annotations />
