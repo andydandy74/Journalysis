@@ -48,6 +48,8 @@ class WorksharingSession:
 		self.Events = []
 	def __repr__(self):
 		return "WorksharingSession"
+	def CreatesDetached(self):
+		return self.Events[1].Text == "&gt;Open"
 	def CreatesNewCentral(self):
 		return len([x for x in self.Events if x.Text == "&gt;Open"]) == 0
 	def GetLoadDuration(self):
