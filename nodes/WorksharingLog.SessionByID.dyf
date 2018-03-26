@@ -1,0 +1,45 @@
+<Workspace Version="1.3.1.1736" X="632" Y="178" zoom="1" ScaleFactor="1" Name="WorksharingLog.SessionByID" Description="Retrieves a WorksharingSession from a WorksharingLog based on the session ID." ID="fc9ef041-9b22-4547-b69f-2f92421f5964" Category="Journalysis.WorksharingLog.Actions">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="343cce48-e49c-4aaf-a55e-610dd124a4a1" type="PythonNodeModels.PythonNode" nickname="Python Script" x="251.5" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <Script>import clr
+
+def process_input(func, input1, input2):
+	if isinstance(input2, list): return [func(input1, x) for x in input2]
+	else: return func(input1, input2)
+	
+def WSLogSessionByID(wslog, id):
+	if wslog.__repr__() == 'WorksharingLog': return wslog.GetSessionByID(id)
+	else: return None
+
+OUT = process_input(WSLogSessionByID, IN[0], IN[1])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="4869bba6-d184-4042-9918-edc5aa45e9df" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-26.5" y="33" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="worksharingLog" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="99c42067-7217-400c-a9c1-6f2890077837" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="-26.5" y="117" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="sessionID : string" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="9f5f6faa-22c8-45db-8c4a-2f098349b683" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="475.5" y="62" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="worksharingSession" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="343cce48-e49c-4aaf-a55e-610dd124a4a1" start_index="0" end="9f5f6faa-22c8-45db-8c4a-2f098349b683" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="4869bba6-d184-4042-9918-edc5aa45e9df" start_index="0" end="343cce48-e49c-4aaf-a55e-610dd124a4a1" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="99c42067-7217-400c-a9c1-6f2890077837" start_index="0" end="343cce48-e49c-4aaf-a55e-610dd124a4a1" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>

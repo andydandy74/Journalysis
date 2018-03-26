@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="1722.76064185705" Y="593.226950127248" zoom="0.511268673580988" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.1.1736" X="1579.0115102704" Y="598.693432418027" zoom="0.50536955975273" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -300,8 +300,8 @@
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Input.Filename guid="2018aeee-636a-40a5-bd48-7e72734a2d60" type="CoreNodeModels.Input.Filename" nickname="Worksharing Log File Path" x="-1608.85915384272" y="-672.898183921743" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Desktop\Projekt1_backup\Projekt1.slog</System.String>
-      <HintPath>Z:\U\Desktop\Projekt1_backup\Projekt1.slog</HintPath>
+      <System.String>..\..\..\Journals\Projekt1.slog</System.String>
+      <HintPath>U:\Journals\Projekt1.slog</HintPath>
     </CoreNodeModels.Input.Filename>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="4fafbf75-cb84-4b20-83cb-2f1bc0d210a0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.ServerIP" x="367.529000940422" y="454.293433149981" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -375,7 +375,7 @@
         <Output value="bool" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="95cf8be9-a55a-4c48-8936-5941d4016d9e" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingLog.AllSessionsUseSameBuild" x="-387.398546949833" y="-1016.89658140954" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="95cf8be9-a55a-4c48-8936-5941d4016d9e" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingLog.AllSessionsUseSameBuild" x="-388.753616069544" y="-1125.30211098642" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="1e569f04-3121-4f94-872a-b758aad2e2a0" />
       <Name value="WorksharingLog.AllSessionsUseSameBuild" />
@@ -385,6 +385,20 @@
       </Inputs>
       <Outputs>
         <Output value="bool" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="1a226a45-5d5f-4d22-b31c-0a494038c501" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingLog.SessionByID" x="-390.717875195678" y="-1029.51394689268" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <ID value="fc9ef041-9b22-4547-b69f-2f92421f5964" />
+      <Name value="WorksharingLog.SessionByID" />
+      <Description value="Retrieves a WorksharingSession from a WorksharingLog based on the session ID." />
+      <Inputs>
+        <Input value="worksharingLog" />
+        <Input value="sessionID" />
+      </Inputs>
+      <Outputs>
+        <Output value="worksharingSession" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
@@ -420,6 +434,8 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="988db513-0652-4783-8672-bfa5e85d7ee9" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="87460693-8401-4152-a427-2531f5e41f47" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="cc0cc408-3272-4c4d-812f-706ce127c369" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="1a226a45-5d5f-4d22-b31c-0a494038c501" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="2be4d763-455b-424e-8059-024db1c79fbf" start_index="0" end="1a226a45-5d5f-4d22-b31c-0a494038c501" end_index="1" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="03a3b844-1490-42d1-8a8d-d5b3da3404e1" start_index="0" end="ef504449-0fa3-43ee-ad7e-5db7c41a3231" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="2018aeee-636a-40a5-bd48-7e72734a2d60" start_index="0" end="03a3b844-1490-42d1-8a8d-d5b3da3404e1" end_index="0" portType="0" />
   </Connectors>
@@ -475,8 +491,9 @@
       <Models ModelGuid="6ee9c4ea-7574-43f2-a700-c828b81fc1f6" />
       <Models ModelGuid="8a3358ed-bed3-4cc4-a145-5018eef9aeb0" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="b4aea97d-be0a-4dad-b5f8-b2ab1475b547" annotationText="WorksharingLog.Actions" left="-397.398546949833" top="-1062.89658140954" width="332.043333333333" height="139" fontSize="30" InitialTop="-1016.89658140954" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="b4aea97d-be0a-4dad-b5f8-b2ab1475b547" annotationText="WorksharingLog.Actions" left="-400.717875195678" top="-1171.30211098642" width="392.079074207199" height="260.788164093743" fontSize="30" InitialTop="-1125.30211098642" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="95cf8be9-a55a-4c48-8936-5941d4016d9e" />
+      <Models ModelGuid="1a226a45-5d5f-4d22-b31c-0a494038c501" />
     </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
