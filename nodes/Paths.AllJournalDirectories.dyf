@@ -1,0 +1,74 @@
+<Workspace Version="1.3.1.1736" X="-237.526859076667" Y="408.103367153182" zoom="0.729950825270786" ScaleFactor="1" Name="Paths.AllJournalDirectories" Description="Retrieves a list of all journal folders on the current machine" ID="a323d9d0-0a3d-4329-b12c-ccb55bb10d8d" Category="Journalysis.Paths.Query">
+  <NamespaceResolutionMap />
+  <Elements>
+    <CoreNodeModels.Input.StringInput guid="e6bfa415-3d1e-41a7-81a1-4f73503c6234" type="CoreNodeModels.Input.StringInput" nickname="String" x="1800.06581876063" y="182.636038891779" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>Journals</System.String>
+      <System.String value="Journals" />
+    </CoreNodeModels.Input.StringInput>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="9ebc030c-a03f-4c58-bae2-dfbee44d774a" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="String.StartsWith" x="1448.45313748909" y="169.147841237127" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.StartsWith@string,string,bool">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <PortInfo index="2" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="af6adf53-fbf8-4b7a-9243-92a49ae80978" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="1924.6755696975" y="110.667463250782" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="dir + &quot;\\&quot; + folder;" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="813544ec-49d7-4bef-bbe2-e55de12e4b57" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="List.FilterByBoolMask" x="1702.79641695241" y="56.4641098293241" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.List.FilterByBoolMask@var[]..[],var[]..[]">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="14217046-b9cc-4b79-bf3d-49ac973abecf" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="FilePath.FileName" x="1166.99442631852" y="110.534064638314" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.FilePath.FileName@string,bool">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <CoreNodeModels.Input.StringInput guid="1f3d9768-a505-4790-a212-e9d747757835" type="CoreNodeModels.Input.StringInput" nickname="String" x="1286.40319994072" y="239.977615264888" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>Autodesk Revit</System.String>
+      <System.String value="Autodesk Revit" />
+    </CoreNodeModels.Input.StringInput>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="8abba980-0e6c-456d-931b-1d73a6173405" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="Directory.Contents" x="867.602046153844" y="30.4192745110555" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.Directory.Contents@var,string">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="True" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <CoreNodeModels.Input.DirectoryObject guid="8e0ccaa5-1855-4d4a-bc76-753b587c7779" type="CoreNodeModels.Input.DirectoryObject" nickname="Directory.FromPath" x="668.00603404461" y="31.1840101896349" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Input.DirectoryObject>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="c5c6c695-4d9b-4a17-8ea9-5e50a22d8d04" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="FilePath.Combine" x="416.923267046202" y="30.9136328523647" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.FilePath.Combine@string[]" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction>
+    <CoreNodeModels.Input.StringInput guid="afb9a7a8-2b84-497c-ad62-e80512f6e609" type="CoreNodeModels.Input.StringInput" nickname="String" x="250" y="95.6125735679469" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>Autodesk\Revit</System.String>
+      <System.String value="Autodesk\Revit" />
+    </CoreNodeModels.Input.StringInput>
+    <PythonNodeModels.PythonNode guid="442d49f7-f6e9-433f-b1a5-38e8b8111a39" type="PythonNodeModels.PythonNode" nickname="Python Script" x="269.757806788067" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false" inputcount="0">
+      <Script>import clr
+from System import Environment
+OUT = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="925909c2-c559-48f3-8877-97f01b2e400d" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="2226.03881560199" y="107.445703533532" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="seq" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="e6bfa415-3d1e-41a7-81a1-4f73503c6234" start_index="0" end="af6adf53-fbf8-4b7a-9243-92a49ae80978" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="9ebc030c-a03f-4c58-bae2-dfbee44d774a" start_index="0" end="813544ec-49d7-4bef-bbe2-e55de12e4b57" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="af6adf53-fbf8-4b7a-9243-92a49ae80978" start_index="0" end="925909c2-c559-48f3-8877-97f01b2e400d" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="813544ec-49d7-4bef-bbe2-e55de12e4b57" start_index="0" end="af6adf53-fbf8-4b7a-9243-92a49ae80978" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="14217046-b9cc-4b79-bf3d-49ac973abecf" start_index="0" end="9ebc030c-a03f-4c58-bae2-dfbee44d774a" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1f3d9768-a505-4790-a212-e9d747757835" start_index="0" end="9ebc030c-a03f-4c58-bae2-dfbee44d774a" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="8abba980-0e6c-456d-931b-1d73a6173405" start_index="1" end="14217046-b9cc-4b79-bf3d-49ac973abecf" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="8abba980-0e6c-456d-931b-1d73a6173405" start_index="1" end="813544ec-49d7-4bef-bbe2-e55de12e4b57" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="8e0ccaa5-1855-4d4a-bc76-753b587c7779" start_index="0" end="8abba980-0e6c-456d-931b-1d73a6173405" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="c5c6c695-4d9b-4a17-8ea9-5e50a22d8d04" start_index="0" end="8e0ccaa5-1855-4d4a-bc76-753b587c7779" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="afb9a7a8-2b84-497c-ad62-e80512f6e609" start_index="0" end="c5c6c695-4d9b-4a17-8ea9-5e50a22d8d04" end_index="1" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="442d49f7-f6e9-433f-b1a5-38e8b8111a39" start_index="0" end="c5c6c695-4d9b-4a17-8ea9-5e50a22d8d04" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
