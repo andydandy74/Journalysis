@@ -1,0 +1,179 @@
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingLog.ByPath" Description="Creates a queryable object from a Revit worksharing log" ID="9605f14e-7767-492d-a49b-895d4589d982" Category="Journalysis.WorksharingLog.Create">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="FilePath" resolvedName="DSCore.IO.FilePath" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="String" resolvedName="DSCore.String" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="List" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="DSOffice.Excel" resolvedName="DSOffice.Excel" assemblyName="DSOffice.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="2309af7e-334b-4991-821a-bd8800a5046c" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+import time
+
+class WorksharingLog:
+	def __init__(self, version, sessions):
+		self.Version = version
+		self.Sessions = sessions
+		self.SessionCount = len(sessions)
+		self.ProcessingTime = None
+	def __repr__(self):
+		return "WorksharingLog"
+	def AllSessionsUseSameBuild(self):
+		return len(set([x.RevitBuild for x in self.Sessions])) == 1
+	def GetSessionByID(self, ID):
+		sessionlookup = [x for x in sessions if x.ID == ID]
+		if len(sessionlookup) &gt; 0: return sessionlookup[0]
+		else: return None
+
+class WorksharingSession:
+	def __init__(self, id):
+		self.ID = id
+		self.Start = None
+		self.End = None
+		self.Date = None
+		self.Duration = None
+		self.User = None
+		self.RevitVersion = None
+		self.RevitBuild = None
+		self.Journal = None
+		self.HostIP = None
+		self.HostName = None
+		self.ServerIP = None
+		self.ServerName = None
+		self.Central = None
+		self.Events = []
+	def __repr__(self):
+		return "WorksharingSession"
+	def CreatesDetached(self):
+		return self.Events[1].Text == "&gt;Open"
+	def CreatesNewCentral(self):
+		return len([x for x in self.Events if x.Text == "&gt;Open"]) == 0
+	def GetLoadDuration(self):
+		if self.CreatesNewCentral(): return None
+		else:
+			openStart = [x.DateTime for x in self.Events if x.Text == "&gt;Open"][0]
+			openEnd = None
+			if self.UsesCentralModel(): 
+				breakLoop = False
+				for event in self.Events:
+					if event.Text == "&gt;Open": breakLoop = True
+					if event.Text.startswith("&gt;Open") or event.Text.startswith(".Open") or event.Text.startswith("&lt;Open"):
+						if event.Text.startswith("&lt;Open"): openEnd = event.DateTime
+					# Terminate the loop as soon as we start seeing stuff that's not from the Open block
+					# This should give us the timestamp of the last opened link 
+					# (if any - otherwise the timestamp of the concluded opening sequence)
+					# Of course we only want to start breaking the loop once the Open block has begun
+					elif breakLoop == True: break
+					else: pass					
+			# In local copies, there's a WSConfig block directly following the Open block which we should include here
+			# Linked models are loaded in between those blocks
+			else: 
+				lastOpenLine = [x.DateTime for x in self.Events if x.Text == "&lt;WSConfig"]
+				if len(lastOpenLine) &gt; 0: openEnd = lastOpenLine[0]
+			if openEnd == None: return None
+			else: return openEnd - openStart
+	def GetSyncEvents(self):
+		events = []
+		for event in self.Events:
+			if event.Text == "&gt;STC": events.append(SyncEvent(event.DateTime))
+			elif event.Text == "&lt;STC" and len(events) &gt; 0:
+				events[-1].End = event.DateTime
+				events[-1].Duration = event.DateTime - events[-1].Start
+		return events
+	def HasLoadedLinks(self):
+		return len([x for x in self.Events if x.Text == "&lt;OpenLink"]) &gt; 0
+	def UsesCentralModel(self):
+		if self.CreatesNewCentral(): return True
+		else: return len([x for x in self.Events if x.Text.startswith("&gt;Open:Central")]) &gt; 0
+	def WasTerminatedProperly(self):
+		return self.End != None
+
+class WorksharingEvent:
+	def __init__(self, timestamp, text):
+		self.DateTime = timestamp
+		self.Text = text
+	def __repr__(self):
+		return "WorksharingEvent"
+
+class SyncEvent:
+	def __init__(self, start):
+		self.Start = start
+		self.End = None
+		self.Duration = None
+	def __repr__(self):
+		return "SyncEvent"
+
+def WSLogFromPath(path):
+	try:
+		processing_started = time.time()
+		sessions = []
+		version = None
+		with open(path, 'r') as slog:
+			for line in slog:
+				line = line.lstrip().rstrip('\n')
+				if line.startswith("$"):
+					contents = line.split()
+					session_lookup = [x for x in sessions if x.ID == contents[0]]
+					if len(session_lookup) == 0:
+						sessions.append(WorksharingSession(contents[0]))
+						current_session = sessions[-1]
+					else: current_session = session_lookup[0]
+					timestamp = time.strptime(contents[1] + " " + contents[2])
+					text = ' '.join(contents[3:])
+					event = WorksharingEvent(timestamp, text)
+					current_session.Events.append(event)
+					if text.startswith("&gt;Session"): 
+						sessions[-1].Start = timestamp
+						sessions[-1].Date = timestamp.Date
+					elif text.startswith("&lt;Session"): 
+						sessions[-1].End = timestamp
+						sessions[-1].Duration = timestamp - sessions[-1].Start
+				elif line.startswith("user"): sessions[-1].User = line.split('user="')[-1][:-1]
+				elif line.startswith("build"):
+					versioninfo = line.split('build="')[-1].split()
+					sessions[-1].RevitVersion = int(versioninfo[0])
+					sessions[-1].RevitBuild = versioninfo[-1][:-1]
+				elif line.startswith("journal"): sessions[-1].Journal = line.split('journal="')[-1][:-1]
+				elif line.startswith("host"):
+					hostinfo = line.split('host=')[-1].split()
+					sessions[-1].HostIP = hostinfo[0]
+					sessions[-1].HostName = hostinfo[-1][1:-1]
+				elif line.startswith("server"):
+					serverinfo = line.split('server=')[-1].split()
+					sessions[-1].ServerIP = serverinfo[0]
+					sessions[-1].ServerName = serverinfo[-1][1:-1]
+				elif line.startswith("central"): sessions[-1].Central = line.split('central="')[-1][:-1]
+				elif line.startswith("Worksharing"): version = line.split("Version ")[-1].split(",")[0]
+		WSLog = WorksharingLog(version, sessions)
+		WSLog.ProcessingTime = time.time() - processing_started
+		return WSLog
+	except:
+		import sys
+		pyt_path = r'C:\Program Files (x86)\IronPython 2.7\Lib'
+		sys.path.append(pyt_path)
+		import traceback
+		return traceback.format_exc()
+
+if isinstance(IN[0], list): OUT = [WSLogFromPath(x) for x in IN[0]]
+else: OUT = WSLogFromPath(IN[0])</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="05e88030-75a8-4c6a-b28b-6ac7771877d5" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="path : string" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="d8f59cb9-cce4-40c8-91fa-a7359c68994f" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="worksharingLog" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="2309af7e-334b-4991-821a-bd8800a5046c" start_index="0" end="d8f59cb9-cce4-40c8-91fa-a7359c68994f" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="05e88030-75a8-4c6a-b28b-6ac7771877d5" start_index="0" end="2309af7e-334b-4991-821a-bd8800a5046c" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+</Workspace>
