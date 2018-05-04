@@ -85,6 +85,8 @@ class WorksharingSession:
 				events[-1].End = event.DateTime
 				events[-1].Duration = event.DateTime - events[-1].Start
 		return events
+	def HasLoadedLinks(self):
+		return len([x for x in self.Events if x.Text == "&lt;OpenLink"]) &gt; 0
 	def UsesCentralModel(self):
 		if self.CreatesNewCentral(): return True
 		else: return len([x for x in self.Events if x.Text.startswith("&gt;Open:Central")]) &gt; 0

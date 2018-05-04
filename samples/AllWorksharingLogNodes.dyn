@@ -1,4 +1,3 @@
-<Workspace Version="1.3.1.1736" X="1134.07585334135" Y="591.63925826961" zoom="0.418305576776405" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -17,7 +16,7 @@
         <Output value="timeSpan" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="ccbeaf9f-21e5-4f6f-898e-5d1e023314be" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.CreatesNewCentral" x="364.478443792292" y="-1105.07669215767" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="ccbeaf9f-21e5-4f6f-898e-5d1e023314be" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.CreatesNewCentral" x="364.478443792292" y="-1200.55684013729" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="55b69fa8-e246-4e5f-ac3c-c173c245ca9c" />
       <Name value="WorksharingSession.CreatesNewCentral" />
@@ -401,11 +400,22 @@
         <Output value="worksharingSession" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="186411b4-2255-4d54-acc9-0b6eb284bc03" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.CreatesDetached" x="364.627545439283" y="-1208.50525507999" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="186411b4-2255-4d54-acc9-0b6eb284bc03" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.CreatesDetached" x="364.627545439283" y="-1303.98540305961" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
       <ID value="3e798f71-87dc-49cf-8c1e-87ecbd93658a" />
       <Name value="WorksharingSession.CreatesDetached" />
       <Description value="" />
+      <Inputs>
+        <Input value="worksharingSession" />
+      </Inputs>
+      <Outputs>
+        <Output value="bool" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="02ad8d3b-d21d-4d36-9b36-8248b393a8ef" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.HasLoadedWithLinks" x="368.131295056065" y="-1102.52227338868" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="bdf77345-7072-4a3f-b329-45a4d477391c" />
+      <Description value="Determines if linked models were loaded in this session" />
       <Inputs>
         <Input value="worksharingSession" />
       </Inputs>
@@ -442,6 +452,7 @@
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="a3de4278-fc7b-4336-8ffc-6708c692f033" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="5289e948-08e5-4887-b6b1-eb321087b493" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="186411b4-2255-4d54-acc9-0b6eb284bc03" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="02ad8d3b-d21d-4d36-9b36-8248b393a8ef" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="6a156934-2bb4-4ebd-8614-b1509a400c3b" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="95cf8be9-a55a-4c48-8936-5941d4016d9e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="b7e231fb-acc2-4750-987b-da2e8868517e" start_index="0" end="988db513-0652-4783-8672-bfa5e85d7ee9" end_index="0" portType="0" />
@@ -471,7 +482,7 @@
       <Models ModelGuid="988db513-0652-4783-8672-bfa5e85d7ee9" />
       <Models ModelGuid="cc0cc408-3272-4c4d-812f-706ce127c369" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="dc5adca4-dca7-44fd-a461-d236c133543a" annotationText="WorksharingSession.Actions" left="350.020975988875" top="-1254.50525507999" width="408.856139888347" height="651.864398333139" fontSize="30" InitialTop="-1208.50525507999" InitialHeight="426.50283685651" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="dc5adca4-dca7-44fd-a461-d236c133543a" annotationText="WorksharingSession.Actions" left="350.020975988875" top="-1349.98540305961" width="408.856139888347" height="747.344546312759" fontSize="30" InitialTop="-1303.98540305961" InitialHeight="426.50283685651" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="ccbeaf9f-21e5-4f6f-898e-5d1e023314be" />
       <Models ModelGuid="5289e948-08e5-4887-b6b1-eb321087b493" />
       <Models ModelGuid="bac3f1fc-623c-417b-8e36-7c88b29da0e1" />
@@ -504,7 +515,7 @@
       <Models ModelGuid="95cf8be9-a55a-4c48-8936-5941d4016d9e" />
       <Models ModelGuid="1a226a45-5d5f-4d22-b31c-0a494038c501" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="b15165b4-0d36-4c45-8555-8465a51d87a4" annotationText="SyncEvent.Query" left="886.880951977873" top="-1056.56030255413" width="259.527472521" height="352.366372178277" fontSize="30" InitialTop="-1010.56030255413" InitialHeight="336.366372178277" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="b15165b4-0d36-4c45-8555-8465a51d87a4" annotationText="SyncEvent.Query" left="886.880951977873" top="-1056.56030255413" width="259.527472521" height="352.366372178274" fontSize="30" InitialTop="-1010.56030255413" InitialHeight="336.366372178277" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="e54cc39f-5f96-4edc-b78a-d0e82196cd4e" />
       <Models ModelGuid="93bc6c5b-aa26-4047-8dde-977b026f721b" />
       <Models ModelGuid="fadc6831-7e2e-42ed-b277-b87908cc4ff3" />
