@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.ByPath" Description="Creates a queryable object from the contents of a Revit journal file" ID="77141d35-29af-4172-ab94-7d688a42917b" Category="Journalysis.Journal.Create">
+<Workspace Version="1.3.2.2480" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Journal.ByPath" Description="Creates a queryable object from the contents of a Revit journal file" ID="77141d35-29af-4172-ab94-7d688a42917b" Category="Journalysis.Journal.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -467,6 +467,10 @@ def JournalFromPath(path):
 				elif line.SystemInformationType == "VideoController" and line.Key == "AdapterCompatibility": sysinfoItem += 1
 				elif line.SystemInformationType == "Printer" and line.Key == "Caption": sysinfoItem += 1
 				elif line.SystemInformationType == "PrinterConfiguration" and line.Key == "Color": sysinfoItem += 1
+				if not OSVersionFound:
+					if "Caption :" in line.RawText:
+						jOSVersion = line.RawText.split(":")[-1].strip()
+						OSVersionFound = True
 				line.ItemNumber = sysinfoItem
 			elif line.Type == 'JournalCommand':
 				c1 = line.RawText.split('" , "')
@@ -552,10 +556,6 @@ def JournalFromPath(path):
 				if "this journal =" in line.RawText: jPath = line.RawText.split("=")[1].strip()
 				elif line.RawText.startswith("' Build:"): jBuild = line.RawText.split(":")[1].strip()
 				elif line.RawText.startswith("' Branch:"): jBranch = line.RawText.split(":")[1].strip()
-				elif not OSVersionFound:
-					if "Caption :" in line.RawText:
-						jOSVersion = line.RawText.split(":")[-1].strip()
-						OSVersionFound = True
 				elif not machineNameFound:
 					if "Additional IP address/name found for host" in line.RawText:
 						jMachineName = line.RawText.split(":")[1].split(" ")[-1]
@@ -590,6 +590,6 @@ else: OUT = JournalFromPath(IN[0])</Script>
   <Annotations />
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>
