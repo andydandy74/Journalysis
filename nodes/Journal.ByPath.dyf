@@ -409,7 +409,9 @@ def JournalFromPath(path):
 						elif " INFORMATION:" in line: 
 							sysinfoType = "Unknown"
 							lineObjs.append(JournalComment(i,line,b))
-						elif ":&lt;    " in line: lineObjs.append(JournalSystemInformation(i,line,b,sysinfoType))
+						elif ":&lt;    " in line: 
+							if line.split(":&lt;    ")[-1].startswith(" "): lineObjs.append(JournalComment(i,line,b))
+							else: lineObjs.append(JournalSystemInformation(i,line,b,sysinfoType))
 						else: lineObjs.append(JournalComment(i,line,b))
 					else:
 						if not sysinfoStarted:
@@ -462,7 +464,8 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalSystemInformation':
 				si = line.RawText.split(':&lt;    ')[-1].split(' : ')
 				line.Key = si[0]
-				line.Value = si[1]
+				if len(si) &gt; 1: line.Value = si[1]
+				else: line.Value = None
 				if line.SystemInformationType == "Processor" and line.Key == "AddressWidth": sysinfoItem += 1
 				elif line.SystemInformationType == "VideoController" and line.Key == "AdapterCompatibility": sysinfoItem += 1
 				elif line.SystemInformationType == "Printer" and line.Key == "Caption": sysinfoItem += 1
