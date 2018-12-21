@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HostIP" Description="Returns the host IP address of a given WorksharingSession" ID="a1e49042-4fd1-40a4-8687-88f15cb570dc" Category="Journalysis.WorksharingSession.Query">
+<Workspace Version="1.3.3.4651" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HostAddress" Description="Returns the host address (IP or MAC depending on environment) of a given WorksharingSession" ID="a1e49042-4fd1-40a4-8687-88f15cb570dc" Category="Journalysis.WorksharingSession.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -13,11 +13,11 @@ def process_input(func, input):
 	if isinstance(input, list): return [func(x) for x in input]
 	else: return func(input)
 	
-def WSSessionHostIP(wssess):
-	if wssess.__repr__() == 'WorksharingSession': return wssess.HostIP
+def WSSessionHostAddress(wssess):
+	if wssess.__repr__() == 'WorksharingSession': return wssess.HostAddress
 	else: return None
 
-OUT = process_input(WSSessionHostIP,IN[0])</Script>
+OUT = process_input(WSSessionHostAddress,IN[0])</Script>
     </PythonNodeModels.PythonNode>
     <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="1677128e-4f17-41f9-99da-9ab533dcbce5" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
       <Symbol value="worksharingSession" />
