@@ -1,3 +1,10 @@
+If you're interested in helping with this project, I welcome the following types of contributions:
+- Code
+- Journals (in particular those with spectacular crashes)
+- Worksharing logs
+- Use cases
+- Data that should be mined from a journal but is not yet supported by any of the nodes
+
 Some simple rules for posting issues and pull requests for Journalysis
 
 ### Issues
