@@ -1,6 +1,6 @@
 [![Current 1.x version](https://img.shields.io/badge/current%201.x%20version-unpublished-brightgreen.svg)](https://github.com/andydandy74/Journalysis/tree/master/nodes) ![Current 2.x version](https://img.shields.io/badge/current%202.x%20version-none-brightgreen.svg) ![Node count](https://img.shields.io/badge/node%20count-160-brightgreen.svg) [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/andydandy74/Journalysis/blob/master/.github/CONTRIBUTING.md) [![Follow me on Twitter for updates](https://img.shields.io/twitter/follow/a_dieckmann.svg?label=Follow&style=social)](https://twitter.com/a_dieckmann)
 
-![Image](icons/raw/Journalysis.png)
+![Journalysis logo](icons/raw/Journalysis.png)
 
 **Journalysis** is a Revit journal and worsharing log analysis package for the [Dynamo](http://www.dynamobim.com) visual programming environment. It will be published on the Dynamo package manager in early 2019. It is currently being developed in Dynamo 1.3 and has not been tested with Dynamo 2.x.
 
