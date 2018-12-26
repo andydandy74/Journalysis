@@ -1,5 +1,4 @@
-[![](https://img.shields.io/badge/current%201.x%20version-unpublished-brightgreen.svg)](https://github.com/andydandy74/Journalysis/tree/master/nodes) ![Image](https://img.shields.io/badge/current%202.x%20version-none-brightgreen.svg)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/andydandy74/Journalysis/blob/master/.github/CONTRIBUTING.md) [![](https://img.shields.io/twitter/follow/a_dieckmann.svg?label=Follow&style=social)](https://twitter.com/a_dieckmann)
+[![Current 1.x version](https://img.shields.io/badge/current%201.x%20version-unpublished-brightgreen.svg)](https://github.com/andydandy74/Journalysis/tree/master/nodes) ![Current 2.x version](https://img.shields.io/badge/current%202.x%20version-none-brightgreen.svg) ![Node count](https://img.shields.io/badge/node%20count-160-brightgreen.svg) [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/andydandy74/Journalysis/blob/master/.github/CONTRIBUTING.md) [![Follow me on Twitter for updates](https://img.shields.io/twitter/follow/a_dieckmann.svg?label=Follow&style=social)](https://twitter.com/a_dieckmann)
 
 ![Image](icons/raw/Journalysis.png)
 
