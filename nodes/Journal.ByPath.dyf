@@ -42,6 +42,10 @@ class Journal:
 	def GetDateTimeByBlocks(self, blocks):
 		if 0 in blocks: return None
 		else: return [x.DateTime for x in self.GetLinesByType('JournalTimeStamp') if x.Block in blocks]
+	def GetFirstLines(self, number):
+		return self.Lines[:number]
+	def GetLastLines(self, number):
+		return self.Lines[-number:]
 	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
 	def GetLinesByBlocks(self, blocks):

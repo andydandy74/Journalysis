@@ -1,0 +1,49 @@
+<Workspace Version="1.3.3.4651" X="142.990017147902" Y="61.1939519636894" zoom="1.31537540500821" ScaleFactor="1" Name="Journal.FirstLines" Description="Gets the first N lines of a given journal (faster than OOTB list operations)." ID="56f1e702-4d21-4726-8fa9-e00e91de22ea" Category="Journalysis.Journal.Actions">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <PythonNodeModels.PythonNode guid="68dc7b4e-b256-4a7e-a5da-06007331de42" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="2">
+      <PortInfo index="0" default="False" />
+      <PortInfo index="1" default="False" />
+      <Script>import clr
+
+def process_input(func, input):
+	if isinstance(input[0], list): 
+		if isinstance(input[1], list): return [func(x, y) for x, y in zip(input[0], input[1])]
+		else: return [func(x, input[1]) for x in input[0]]
+	else: 
+		if isinstance(input[1], list): return [func(input[0], x) for x in input[1]]
+		else: return func(input[0], input[1])
+	
+def journalFirstLines(journal, num):
+	if journal.__repr__() == 'Journal': return journal.GetFirstLines(num)
+	else: return None
+
+OUT = process_input(journalFirstLines,IN)</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="1a0bc447-3e3d-42bf-b416-a88d0f84b6a7" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="journal" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="13345714-e9ad-404a-b80d-54ee01b11caf" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="150" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="numberOfLines:int" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="ea36702c-22d0-40eb-8cce-e89a36806492" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="journalLines" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="68dc7b4e-b256-4a7e-a5da-06007331de42" start_index="0" end="ea36702c-22d0-40eb-8cce-e89a36806492" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="1a0bc447-3e3d-42bf-b416-a88d0f84b6a7" start_index="0" end="68dc7b4e-b256-4a7e-a5da-06007331de42" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="13345714-e9ad-404a-b80d-54ee01b11caf" start_index="0" end="68dc7b4e-b256-4a7e-a5da-06007331de42" end_index="1" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
