@@ -14,3 +14,5 @@ This package is aimed at automating the analysis of Revit journals and workshari
 - Monitor memory usage
 - Monitor sync with central duration
 - Keyboard shortcut usage
+
+[![Bad Monkeys logo](https://www.badmonkeys.net/wp-content/uploads/2016/12/BadMonkey_finalLogo-01.png)](http://www.badmonkeys.net/)
