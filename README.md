@@ -15,4 +15,7 @@ This package is aimed at automating the analysis of Revit journals and workshari
 - Monitor sync with central duration
 - Keyboard shortcut usage
 
+# References
+Yarmohammadi, Saman & Pourabolghasem, Reza & Shirazi, Arezoo & Ashuri, Baabak. (2016). [A Sequential Pattern Mining Approach to Extract Information from BIM Design Log Files](https://www.researchgate.net/publication/308174811_A_Sequential_Pattern_Mining_Approach_to_Extract_Information_from_BIM_Design_Log_Files). 33rd International Symposium on Automation and Robotics in Construction. 
+
 [![Bad Monkeys logo](https://www.badmonkeys.net/wp-content/uploads/2016/12/BadMonkey_finalLogo-01.png)](http://www.badmonkeys.net/)
