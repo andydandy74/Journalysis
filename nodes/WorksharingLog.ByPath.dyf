@@ -1,4 +1,4 @@
-<Workspace Version="1.3.3.4651" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingLog.ByPath" Description="Creates a queryable object from a Revit worksharing log" ID="9605f14e-7767-492d-a49b-895d4589d982" Category="Journalysis.WorksharingLog.Create">
+<Workspace Version="1.3.4.6666" X="409" Y="290" zoom="1" ScaleFactor="1" Name="WorksharingLog.ByPath" Description="Creates a queryable object from a Revit worksharing log" ID="9605f14e-7767-492d-a49b-895d4589d982" Category="Journalysis.WorksharingLog.Create">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -129,9 +129,7 @@ def WSLogFromPath(path):
 					if text.startswith("&gt;Session"): 
 						sessions[-1].Start = timestamp
 						sessions[-1].Date = timestamp.Date
-					elif text.startswith("&lt;Session"): 
-						sessions[-1].End = timestamp
-						sessions[-1].Duration = timestamp - sessions[-1].Start
+					else: current_session.End = timestamp
 				elif line.startswith("user"): sessions[-1].User = line.split('user="')[-1][:-1]
 				elif line.startswith("build"):
 					versioninfo = line.split('build="')[-1].split()
@@ -148,6 +146,7 @@ def WSLogFromPath(path):
 					sessions[-1].ServerName = serverinfo[-1][1:-1]
 				elif line.startswith("central"): sessions[-1].Central = line.split('central="')[-1][:-1]
 				elif line.startswith("Worksharing"): version = line.split("Version ")[-1].split(",")[0]
+		for session in sessions: session.Duration = session.End - session.Start
 		WSLog = WorksharingLog(version, sessions)
 		WSLog.ProcessingTime = time.time() - processing_started
 		return WSLog
