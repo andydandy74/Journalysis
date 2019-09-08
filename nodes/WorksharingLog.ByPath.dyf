@@ -56,26 +56,9 @@ class WorksharingSession:
 		if self.CreatesNewCentral(): return None
 		else:
 			openStart = [x.DateTime for x in self.Events if x.Text == "&gt;Open"][0]
-			openEnd = None
-			if self.UsesCentralModel(): 
-				breakLoop = False
-				for event in self.Events:
-					if event.Text == "&gt;Open": breakLoop = True
-					if event.Text.startswith("&gt;Open") or event.Text.startswith(".Open") or event.Text.startswith("&lt;Open"):
-						if event.Text.startswith("&lt;Open"): openEnd = event.DateTime
-					# Terminate the loop as soon as we start seeing stuff that's not from the Open block
-					# This should give us the timestamp of the last opened link 
-					# (if any - otherwise the timestamp of the concluded opening sequence)
-					# Of course we only want to start breaking the loop once the Open block has begun
-					elif breakLoop == True: break
-					else: pass					
-			# In local copies, there's a WSConfig block directly following the Open block which we should include here
-			# Linked models are loaded in between those blocks
-			else: 
-				lastOpenLine = [x.DateTime for x in self.Events if x.Text == "&lt;WSConfig"]
-				if len(lastOpenLine) &gt; 0: openEnd = lastOpenLine[0]
-			if openEnd == None: return None
-			else: return openEnd - openStart
+			openEnd = [x.DateTime for x in self.Events if x.Text == "&lt;Open"]
+			if len(openEnd) == 0: return None
+			else: return openEnd[0] - openStart
 	def GetSyncEvents(self):
 		events = []
 		for event in self.Events:
