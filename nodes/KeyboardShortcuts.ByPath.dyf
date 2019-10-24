@@ -5,13 +5,6 @@
     <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
   </NamespaceResolutionMap>
   <Elements>
-    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="8532f8af-1bf5-4420-ae9a-b0598e367fe6" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <Symbol value="path : string" />
-    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
-    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c1f6d4f1-b090-48dc-ac55-686c3f8f7216" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
-      <PortInfo index="0" default="False" />
-      <Symbol value="keyboardShortcuts" />
-    </Dynamo.Graph.Nodes.CustomNodes.Output>
     <PythonNodeModels.PythonNode guid="2e114dc0-7f88-48fc-9dcf-8a5c10ea91f0" type="PythonNodeModels.PythonNode" nickname="Python Script" x="250" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" inputcount="1">
       <PortInfo index="0" default="False" />
       <Script>import clr
@@ -22,7 +15,6 @@ import xml.etree.ElementTree as ET
 
 hardcodedshortcuts = {
 	"ID_APP_EXIT": ["Alt+Fn4"],
-	"ID_BUTTON_DELETE": ["Delete"],
 	"ID_BUTTON_REDO": ["Ctrl+Y","Ctrl+Shift+Z"],
 	"ID_BUTTON_UNDO": ["Ctrl+Z","Alt+Backspace"],
 	"ID_CHECK_SPELLING": ["Fn7"],
@@ -46,6 +38,10 @@ class KeyboardShortcuts:
 		self.CommandCountWithShortcuts = commandcountwithshortcuts
 	def __repr__(self):
 		return 'KeyboardShortcuts'
+	def GetCommandById(self, id):
+		found = [x for x in self.Commands if x.ID == id]
+		if len(found) &gt; 0: return found[0]
+		else: return None
 	def GetCommandsWithShortcuts(self):
 		return [x for x in self.Commands if x.HasShortcuts]
 
@@ -92,10 +88,17 @@ def KSFromPath(path):
 if isinstance(IN[0], list): OUT = [KSFromPath(x) for x in IN[0]]
 else: OUT = KSFromPath(IN[0])</Script>
     </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CustomNodes.Symbol guid="8532f8af-1bf5-4420-ae9a-b0598e367fe6" type="Dynamo.Graph.Nodes.CustomNodes.Symbol" nickname="Input" x="0" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <Symbol value="path : string" />
+    </Dynamo.Graph.Nodes.CustomNodes.Symbol>
+    <Dynamo.Graph.Nodes.CustomNodes.Output guid="c1f6d4f1-b090-48dc-ac55-686c3f8f7216" type="Dynamo.Graph.Nodes.CustomNodes.Output" nickname="Output" x="449" y="0" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <Symbol value="keyboardShortcuts" />
+    </Dynamo.Graph.Nodes.CustomNodes.Output>
   </Elements>
   <Connectors>
-    <Dynamo.Graph.Connectors.ConnectorModel start="8532f8af-1bf5-4420-ae9a-b0598e367fe6" start_index="0" end="2e114dc0-7f88-48fc-9dcf-8a5c10ea91f0" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="2e114dc0-7f88-48fc-9dcf-8a5c10ea91f0" start_index="0" end="c1f6d4f1-b090-48dc-ac55-686c3f8f7216" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="8532f8af-1bf5-4420-ae9a-b0598e367fe6" start_index="0" end="2e114dc0-7f88-48fc-9dcf-8a5c10ea91f0" end_index="0" portType="0" />
   </Connectors>
   <Notes />
   <Annotations />
