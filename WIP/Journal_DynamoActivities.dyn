@@ -1,0 +1,149 @@
+<Workspace Version="1.3.1.1736" X="1680.85018008986" Y="4227.77993267784" zoom="1.20324477423422" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap>
+    <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
+    <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
+    <ClassMap partialName="List.Empty" resolvedName="DSCore.List" assemblyName="DSCoreNodes.dll" />
+  </NamespaceResolutionMap>
+  <Elements>
+    <CoreNodeModels.Input.Filename guid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" type="CoreNodeModels.Input.Filename" nickname="Journal File Path" x="-1773.14804100165" y="-3591.48363644434" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
+      <System.String>..\..\..\Journals\_dynamo\DynamoStuff.journal.0250.txt</System.String>
+      <HintPath>Z:\U\Journals\_dynamo\DynamoStuff.journal.0250.txt</HintPath>
+    </CoreNodeModels.Input.Filename>
+    <CoreNodeModels.Input.FileObject guid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" type="CoreNodeModels.Input.FileObject" nickname="File.FromPath" x="-1342.41978288074" y="-3594.44303411229" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+    </CoreNodeModels.Input.FileObject>
+    <Dynamo.Graph.Nodes.ZeroTouch.DSFunction guid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" type="Dynamo.Graph.Nodes.ZeroTouch.DSFunction" nickname="File.ReadText" x="-1132.41978288074" y="-3594.44303411229" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.IO.File.ReadText@var">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.ZeroTouch.DSFunction>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Journal.ByString" x="-878.252022744859" y="-3596.94509484967" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true">
+      <PortInfo index="0" default="False" />
+      <ID value="a293c700-5298-4ab5-9dce-d23c323a405a" />
+      <Name value="Journal.ByString" />
+      <Description value="Creates a queriable object from the contents of a Revit journal file" />
+      <Inputs>
+        <Input value="str" />
+      </Inputs>
+      <Outputs>
+        <Output value="journal" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <PythonNodeModels.PythonNode guid="0f9c7a6b-51f1-48b5-a215-3b25d59fd8fd" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-1161.73384669757" y="-3412.25660862801" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+self = IN[0]
+
+class DynamoSession:
+	def __init__(self, launchEvent, playerSession):
+		self.LaunchEvent = launchEvent
+		self.Start = launchEvent.GetDateTimeOfBlock()
+		self.IsPlayerSession = playerSession
+		self.ShutdownEvent = None
+		self.End = None
+		self.Duration = None
+		self.Scripts = []
+		self.ScriptsCount = 0
+		self.TransactionsCount = 0
+	def __repr__(self):
+		return 'JournalDynamoSession'
+		
+class DynamoScript:
+	def __init__(self, openEvent):
+		self.OpenEvent = openEvent
+		self.TimeStamp = openEvent.GetDateTimeOfBlock()
+		self.FileName = None
+		self.Transactions = []
+		self.TransactionsCount = 0
+	def __repr__(self):
+		return 'JournalDynamoScript'
+
+# Create Dynamo session events
+uiSessions = [DynamoSession(x, False) for x in self.GetLinesByTypeAndProperty("JournalCommand", "CommandID", "ID_VISUAL_PROGRAMMING_DYNAMO")]
+playerSessions = [DynamoSession(x, True) for x in self.GetLinesByTypeAndProperty("JournalCommand", "CommandID", "ID_FILE_TOPOSURFACE_LINK")]
+dynamoSessions = uisessions
+# Bind shutdowns to sessions
+for dynamoShutdown in self.GetLinesByTypeAndProperty("JournalAddinEvent", "MessageText", "WpfWindow(_this,Dynamo).Close()"):
+	shutdownTime = dynamoShutdown.GetDateTimeOfBlock()
+	i = 0
+	for dynamoSession in dynamoSessions:
+		if dynamoSession.Start &gt; shutdownTime:
+			dynamoSessions[i-1].ShutdownEvent = dynamoShutdown
+			dynamoSessions[i-1].End = shutdownTime
+			dynamoSessions[i-1].Duration = shutdownTime - dynamoSessions[i-1].Start
+			break
+		i += 1
+# Bind scripts to events
+allAddinEvents = self.GetLinesByType("JournalAddinEvent")
+for dynamoOpen in [x for x in allAddinEvents if x.MessageText.startswith("FileDialog(Win7Open,Open Dynamo Definition")]:
+	# Exclude custom nodes
+	if ".dyn,Dynamo Definitions" in dynamoOpen.MessageText:
+		for dynamoSession in dynamoSessions:
+			if dynamoOpen.Number &gt; dynamoSession.LaunchEvent.Number and dynamoOpen.Number &lt; dynamoSession.ShutdownEvent.Number:
+				thisScript = DynamoScript(dynamoOpen)
+				thisScript.FileName = dynamoOpen.MessageText.split(".SelectFile(")[1].split("\.dyn,")[0]
+				dynamoSession.Scripts.append(thisScript)
+				dynamoSession.ScriptsCount += 1
+				break		
+# Bind transactions to scripts
+
+OUT = dynamoSessions</Script>
+    </PythonNodeModels.PythonNode>
+    <PythonNodeModels.PythonNode guid="01464d41-537c-4ab0-b3d3-29801c249d10" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-855.894163966173" y="-3408.10117815612" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+sessions = IN[0]
+start = [x.Start for x in sessions]
+end = [x.End for x in sessions]
+time = [x.Duration for x in sessions]
+
+OUT = [(x. Start, x.End, x.Duration, x. Scripts) for x in sessions]</Script>
+    </PythonNodeModels.PythonNode>
+    <Dynamo.Graph.Nodes.CodeBlockNodeModel guid="974c2e51-2b59-45f8-a885-b91c7a7dc564" type="Dynamo.Graph.Nodes.CodeBlockNodeModel" nickname="Code Block" x="-646.344198544076" y="-3405.45280798195" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="false" CodeText="seq[0][3][0];" ShouldFocus="false">
+      <PortInfo index="0" default="False" />
+    </Dynamo.Graph.Nodes.CodeBlockNodeModel>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="1ab2b5c3-7b4b-403d-b16d-ab6e6249c954" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Object.Members" x="-563.351858744841" y="-3278.45174743303" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="true">
+      <PortInfo index="0" default="False" />
+      <ID value="02725396-8278-4c8f-8f7c-a79c9c100660" />
+      <Name value="Object.Members" />
+      <Description value="Gets a list of all members (properties and methods) of a selected element" />
+      <Inputs>
+        <Input value="element" />
+      </Inputs>
+      <Outputs>
+        <Output value="members" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <PythonNodeModels.PythonNode guid="cc683e4c-a5c0-4ea1-aff2-b9726a65d764" type="PythonNodeModels.PythonNode" nickname="Python Script" x="-396.05448123478" y="-3471.18282072654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" IsFrozen="false" isPinned="true" inputcount="1">
+      <PortInfo index="0" default="False" />
+      <Script>import clr
+
+OUT = IN[0].FileName</Script>
+    </PythonNodeModels.PythonNode>
+  </Elements>
+  <Connectors>
+    <Dynamo.Graph.Connectors.ConnectorModel start="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" start_index="0" end="fbf3e296-e2e2-4ba0-9585-dfc942d02331" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="fbf3e296-e2e2-4ba0-9585-dfc942d02331" start_index="0" end="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" start_index="0" end="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" start_index="0" end="0f9c7a6b-51f1-48b5-a215-3b25d59fd8fd" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="0f9c7a6b-51f1-48b5-a215-3b25d59fd8fd" start_index="0" end="01464d41-537c-4ab0-b3d3-29801c249d10" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="01464d41-537c-4ab0-b3d3-29801c249d10" start_index="0" end="974c2e51-2b59-45f8-a885-b91c7a7dc564" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="974c2e51-2b59-45f8-a885-b91c7a7dc564" start_index="0" end="1ab2b5c3-7b4b-403d-b16d-ab6e6249c954" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="974c2e51-2b59-45f8-a885-b91c7a7dc564" start_index="0" end="cc683e4c-a5c0-4ea1-aff2-b9726a65d764" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="57f8b93d-0c71-471d-9495-383295a5f9ec" annotationText="Journal.Create" left="-1352.41978288074" top="-3642.94509484967" width="662.167760135881" height="141.50206073738" fontSize="30" InitialTop="-3596.94509484967" InitialHeight="201.530215721562" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="fbf3e296-e2e2-4ba0-9585-dfc942d02331" />
+      <Models ModelGuid="7a0b9ac6-ed23-45c0-ac0e-3b6e97941625" />
+      <Models ModelGuid="41c6f982-6c1c-4b72-a203-3f4e2d5b2b05" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1783.14804100165" top="-3637.48363644434" width="345" height="142" fontSize="30" InitialTop="-3591.48363644434" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+      <Models ModelGuid="19fd1f7b-c2dc-4f95-9b5f-26ec82af2d4a" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
+  </Annotations>
+  <Presets />
+  <Cameras>
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+  </Cameras>
+</Workspace>
