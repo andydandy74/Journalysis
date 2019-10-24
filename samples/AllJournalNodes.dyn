@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="230.991084984528" Y="953.403688838626" zoom="0.135269917570527" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.4.6666" X="709.517877788093" Y="979.813946963113" zoom="0.141037143754768" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

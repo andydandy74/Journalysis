@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="845.629039427575" Y="536.765175394982" zoom="0.34612780681676" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.4.6666" X="807.129039427575" Y="536.765175394983" zoom="0.34612780681676" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -270,8 +270,8 @@
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
     <CoreNodeModels.Input.Filename guid="2018aeee-636a-40a5-bd48-7e72734a2d60" type="CoreNodeModels.Input.Filename" nickname="Worksharing Log File Path" x="-1334.55414314247" y="-719.464211875573" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True" IsFrozen="false" isPinned="false">
-      <System.String>..\..\..\Journals\SLOG\3474_Zhoushan_ARC_GESAMT_R17Z_2.slog.bak</System.String>
-      <HintPath>U:\Journals\SLOG\3474_Zhoushan_ARC_GESAMT_R17Z_2.slog.bak</HintPath>
+      <System.String>..\..\..\Journals\Projekt1.slog</System.String>
+      <HintPath>U:\Journals\Projekt1.slog</HintPath>
     </CoreNodeModels.Input.Filename>
     <Dynamo.Graph.Nodes.CustomNodes.Function guid="513bddc8-b6b3-4695-bb55-81f5b21a7075" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingSession.ServerName" x="335.747657678522" y="548.736043852014" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" />
@@ -537,7 +537,7 @@
   </Connectors>
   <Notes />
   <Annotations>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1344.55414314247" top="-765.464211875573" width="412" height="140" fontSize="30" InitialTop="-719.464211875573" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f0af76a-43ec-4354-bbde-87daeb7c6821" annotationText="INPUT" left="-1344.55414314247" top="-765.464211875573" width="198" height="140" fontSize="30" InitialTop="-719.464211875573" InitialHeight="126" TextblockHeight="36" backgrouund="#FF848484">
       <Models ModelGuid="2018aeee-636a-40a5-bd48-7e72734a2d60" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="22d73219-f35a-4177-aa6a-b62f3583f774" annotationText="WorksharingLog.Create" left="-866.927595913265" top="-766.181499419774" width="318.76" height="139" fontSize="30" InitialTop="-720.181499419774" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
