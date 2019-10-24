@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.WasTerminatedProperly" Description="Determines whether a given WorksharingSession was terminated properly" ID="8987d50b-c9fd-4634-bea5-ce0956a541b7" Category="Journalysis.WorksharingSession.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.WasTerminatedProperly" Description="Determines whether a given WorksharingSession was terminated properly" ID="8987d50b-c9fd-4634-bea5-ce0956a541b7" Category="Journalysis.WorksharingLog.WorksharingSession.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

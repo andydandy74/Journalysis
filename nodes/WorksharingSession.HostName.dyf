@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HostName" Description="Returns the host name of a given WorksharingSession" ID="5c3a0926-db83-43b4-9eb4-9e7fe1006016" Category="Journalysis.WorksharingSession.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HostName" Description="Returns the host name of a given WorksharingSession" ID="5c3a0926-db83-43b4-9eb4-9e7fe1006016" Category="Journalysis.WorksharingLog.WorksharingSession.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

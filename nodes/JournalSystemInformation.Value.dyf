@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalSystemInformation.Value" Description="Returns the value of a given JournalSystemInformation line" ID="5e7a722c-1917-4c1e-95c4-1e79b57d2d78" Category="Journalysis.JournalLine.SystemInformation.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalSystemInformation.Value" Description="Returns the value of a given JournalSystemInformation line" ID="5e7a722c-1917-4c1e-95c4-1e79b57d2d78" Category="Journalysis.Journal.JournalLine.SystemInformation.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

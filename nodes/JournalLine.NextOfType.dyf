@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="539" Y="312" zoom="1" ScaleFactor="1" Name="JournalLine.NextOfType" Description="Retrieves the next line of a given type after the given line from the journal" ID="6fc48c9e-94ed-4611-899e-bd4dafb86411" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="539" Y="312" zoom="1" ScaleFactor="1" Name="JournalLine.NextOfType" Description="Retrieves the next line of a given type after the given line from the journal" ID="6fc48c9e-94ed-4611-899e-bd4dafb86411" Category="Journalysis.Journal.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

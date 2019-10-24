@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Vendor" Description="Returns the vendor information of a given LoadedAssembly" ID="39b7ba55-86da-42ab-b154-52ea0e68fdc6" Category="Journalysis.LoadedAssembly.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Vendor" Description="Returns the vendor information of a given LoadedAssembly" ID="39b7ba55-86da-42ab-b154-52ea0e68fdc6" Category="Journalysis.Journal.LoadedAssembly.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

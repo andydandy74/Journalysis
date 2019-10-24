@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalDirective.Values" Description="Returns the values from a JournalDirective line" ID="98ff0d09-bd8c-41bc-afe2-9e0db0ec288f" Category="Journalysis.JournalLine.Directive.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalDirective.Values" Description="Returns the values from a JournalDirective line" ID="98ff0d09-bd8c-41bc-afe2-9e0db0ec288f" Category="Journalysis.Journal.JournalLine.Directive.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedModel.VersionHistory" Description="Retrieves the version history of a loaded model" ID="3787115e-1d49-4648-b196-a7a920807903" Category="Journalysis.LoadedModel.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedModel.VersionHistory" Description="Retrieves the version history of a loaded model" ID="3787115e-1d49-4648-b196-a7a920807903" Category="Journalysis.Journal.LoadedModel.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

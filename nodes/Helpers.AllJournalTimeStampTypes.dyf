@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalTimeStampTypes" Description="Lists all JournalTimeStamp types" ID="f450cb47-c061-4709-b9d3-ed58afbe2788" Category="Journalysis.Helpers.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalTimeStampTypes" Description="Lists all JournalTimeStamp types" ID="f450cb47-c061-4709-b9d3-ed58afbe2788" Category="Journalysis.Journal.Helpers.Query">
   <NamespaceResolutionMap />
   <Elements>
     <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="f25f3a7d-77d8-4d99-b73b-445224309b6a" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="523.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">

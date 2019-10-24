@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Events" Description="Returns all journal lines associated with a given LoadedAssembly. &#xD;&#xA;ATTENTION: Note that this will most likely not catch all AddedPushbutton events of a given assembly." ID="e71eb176-a547-4c33-8645-44d4e9d75235" Category="Journalysis.LoadedAssembly.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Events" Description="Returns all journal lines associated with a given LoadedAssembly. &#xD;&#xA;ATTENTION: Note that this will most likely not catch all AddedPushbutton events of a given assembly." ID="e71eb176-a547-4c33-8645-44d4e9d75235" Category="Journalysis.Journal.LoadedAssembly.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

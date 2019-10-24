@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="KeyboardShortcutCommand.Paths" Description="Returns all paths assigned to a given command" ID="5eb362f8-f908-4888-b04d-144d1d8b7e0e" Category="Journalysis.KeyboardShortcutCommand.Query">
+<Workspace Version="1.3.4.6666" X="0" Y="0" zoom="1" ScaleFactor="1" Name="KeyboardShortcutCommand.Paths" Description="Returns all paths assigned to a given command" ID="5eb362f8-f908-4888-b04d-144d1d8b7e0e" Category="Journalysis.KeyboardShortcuts.KeyboardShortcutCommand.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

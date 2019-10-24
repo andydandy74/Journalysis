@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalTimeStamp.Description" Description="Returns the description of a TimeStamp line" ID="07285acc-0bd5-4afd-979c-878a64b198ec" Category="Journalysis.JournalLine.TimeStamp.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalTimeStamp.Description" Description="Returns the description of a TimeStamp line" ID="07285acc-0bd5-4afd-979c-878a64b198ec" Category="Journalysis.Journal.JournalLine.TimeStamp.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

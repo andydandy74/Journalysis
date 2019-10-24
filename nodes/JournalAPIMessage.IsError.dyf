@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="123.648901121199" Y="57.1468442894165" zoom="1.83541648937758" ScaleFactor="1" Name="JournalAPIMessage.IsError" Description="Returns whether an APIMessage reports an error" ID="0406faa1-d393-42c7-b939-1b29bb4db371" Category="Journalysis.JournalLine.APIMessage.Query">
+<Workspace Version="1.3.1.1736" X="123.648901121199" Y="57.1468442894165" zoom="1.83541648937758" ScaleFactor="1" Name="JournalAPIMessage.IsError" Description="Returns whether an APIMessage reports an error" ID="0406faa1-d393-42c7-b939-1b29bb4db371" Category="Journalysis.Journal.JournalLine.APIMessage.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

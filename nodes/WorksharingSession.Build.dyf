@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.Build" Description="Returns the Revit build of a given WorksharingSession" ID="a748cc28-ce91-45a3-b1e2-ea2c302023f0" Category="Journalysis.WorksharingSession.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.Build" Description="Returns the Revit build of a given WorksharingSession" ID="a748cc28-ce91-45a3-b1e2-ea2c302023f0" Category="Journalysis.WorksharingLog.WorksharingSession.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

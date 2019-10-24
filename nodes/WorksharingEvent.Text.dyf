@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingEvent.Text" Description="Returns the logged text of a given WorksharingEvent" ID="7de2600e-a165-4798-baf8-6c10914cc340" Category="Journalysis.WorksharingEvent.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingEvent.Text" Description="Returns the logged text of a given WorksharingEvent" ID="7de2600e-a165-4798-baf8-6c10914cc340" Category="Journalysis.WorksharingLog.WorksharingSession.WorksharingEvent.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

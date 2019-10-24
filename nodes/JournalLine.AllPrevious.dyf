@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalLine.AllPrevious" Description="Retrieves all lines before the given line from the journal" ID="84309ffa-5303-497a-bfc3-30669e687b3f" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalLine.AllPrevious" Description="Retrieves all lines before the given line from the journal" ID="84309ffa-5303-497a-bfc3-30669e687b3f" Category="Journalysis.Journal.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

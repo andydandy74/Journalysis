@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalMouseEventTypes" Description="Lists all JournalMouseEvent types" ID="ee4d7efd-1342-423b-b478-868ae64146d1" Category="Journalysis.Helpers.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalMouseEventTypes" Description="Lists all JournalMouseEvent types" ID="ee4d7efd-1342-423b-b478-868ae64146d1" Category="Journalysis.Journal.Helpers.Query">
   <NamespaceResolutionMap />
   <Elements>
     <Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction guid="e0d400de-528c-4531-9ab7-df7042dddbc8" type="Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction" nickname="String.Split" x="467.513510231971" y="118.3161083755" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false" assembly="DSCoreNodes.dll" function="DSCore.String.Split@string,string[]" inputcount="2">

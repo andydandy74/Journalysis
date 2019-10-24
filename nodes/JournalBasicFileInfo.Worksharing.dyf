@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalBasicFileInfo.Worksharing" Description="Returns the worksharing status from a BasicFileInfo line" ID="076fdbc9-2ccd-47a9-ab94-f55cd53295e5" Category="Journalysis.JournalLine.BasicFileInfo.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalBasicFileInfo.Worksharing" Description="Returns the worksharing status from a BasicFileInfo line" ID="076fdbc9-2ccd-47a9-ab94-f55cd53295e5" Category="Journalysis.Journal.JournalLine.BasicFileInfo.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

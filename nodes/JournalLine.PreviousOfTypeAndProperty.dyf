@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="448" Y="142" zoom="1" ScaleFactor="1" Name="JournalLine.PreviousOfTypeAndProperty" Description="Retrieves the previous line of a given type and property value before the given line from the journal" ID="557f8c0f-c668-4b06-9bff-808535b4e91c" Category="Journalysis.JournalLine.JournalLine.Actions">
+<Workspace Version="1.3.1.1736" X="448" Y="142" zoom="1" ScaleFactor="1" Name="JournalLine.PreviousOfTypeAndProperty" Description="Retrieves the previous line of a given type and property value before the given line from the journal" ID="557f8c0f-c668-4b06-9bff-808535b4e91c" Category="Journalysis.Journal.JournalLine.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

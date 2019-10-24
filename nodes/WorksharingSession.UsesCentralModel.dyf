@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.UsesCentralModel" Description="Determines if the user was working in the central model (as opposed to a local copy) in a given WorksharingSession" ID="da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc" Category="Journalysis.WorksharingSession.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.UsesCentralModel" Description="Determines if the user was working in the central model (as opposed to a local copy) in a given WorksharingSession" ID="da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc" Category="Journalysis.WorksharingLog.WorksharingSession.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

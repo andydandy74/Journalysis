@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalLine.RawText" Description="Returns the raw text of a given journal line" ID="76fccf43-763c-43e7-bf16-aa52d43dd91b" Category="Journalysis.JournalLine.JournalLine.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalLine.RawText" Description="Returns the raw text of a given journal line" ID="76fccf43-763c-43e7-bf16-aa52d43dd91b" Category="Journalysis.Journal.JournalLine.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

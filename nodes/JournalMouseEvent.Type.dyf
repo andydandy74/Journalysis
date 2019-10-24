@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMouseEvent.Type" Description="Returns the type of a MouseEvent line" ID="39b41107-a8a3-4851-8059-c8a4784015c0" Category="Journalysis.JournalLine.MouseEvent.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMouseEvent.Type" Description="Returns the type of a MouseEvent line" ID="39b41107-a8a3-4851-8059-c8a4784015c0" Category="Journalysis.Journal.JournalLine.MouseEvent.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

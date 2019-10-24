@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalBasicFileInfo.Locale" Description="Returns the locale a model was saved in from a BasicFileInfo line" ID="08630556-ec20-4701-b0b5-4dd9f417a39b" Category="Journalysis.JournalLine.BasicFileInfo.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalBasicFileInfo.Locale" Description="Returns the locale a model was saved in from a BasicFileInfo line" ID="08630556-ec20-4701-b0b5-4dd9f417a39b" Category="Journalysis.Journal.JournalLine.BasicFileInfo.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.Central" Description="Returns the file path to the central model of a given WorksharingSession" ID="c61374ae-b6df-4b6f-bf36-c7930874d268" Category="Journalysis.WorksharingSession.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.Central" Description="Returns the file path to the central model of a given WorksharingSession" ID="c61374ae-b6df-4b6f-bf36-c7930874d268" Category="Journalysis.WorksharingLog.WorksharingSession.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

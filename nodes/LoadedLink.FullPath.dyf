@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="328" Y="247" zoom="1" ScaleFactor="1" Name="LoadedLink.FullPath" Description="Returns the full path of a given loaded link" ID="11e4cc55-e22e-48aa-8956-3c0005aa747b" Category="Journalysis.LoadedLink.Query">
+<Workspace Version="1.3.4.6666" X="328" Y="247" zoom="1" ScaleFactor="1" Name="LoadedLink.FullPath" Description="Returns the full path of a given loaded link" ID="11e4cc55-e22e-48aa-8956-3c0005aa747b" Category="Journalysis.WorksharingLog.WorksharingSession.LoadedLink.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

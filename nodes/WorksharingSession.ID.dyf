@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="121" Y="31" zoom="1" ScaleFactor="1" Name="WorksharingSession.ID" Description="Returns the ID of a given WorksharingSession" ID="b4ccc034-d30a-4c2f-805e-6a2ef2b3890d" Category="Journalysis.WorksharingSession.Query">
+<Workspace Version="1.3.1.1736" X="121" Y="31" zoom="1" ScaleFactor="1" Name="WorksharingSession.ID" Description="Returns the ID of a given WorksharingSession" ID="b4ccc034-d30a-4c2f-805e-6a2ef2b3890d" Category="Journalysis.WorksharingLog.WorksharingSession.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="286" Y="304" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalLineTypes" Description="Lists all JournalLine types" ID="8a565703-8301-4b87-9dc0-37db9ec7041a" Category="Journalysis.Helpers.Query">
+<Workspace Version="1.3.1.1736" X="286" Y="304" zoom="1" ScaleFactor="1" Name="Helpers.AllJournalLineTypes" Description="Lists all JournalLine types" ID="8a565703-8301-4b87-9dc0-37db9ec7041a" Category="Journalysis.Journal.Helpers.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

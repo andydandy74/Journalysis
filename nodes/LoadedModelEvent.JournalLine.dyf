@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedModelEvent.JournalLine" Description="Returns the JournalLIne of a given LoadedModelEvent" ID="1304305e-d23d-4637-abcc-2d22fc4eb74b" Category="Journalysis.LoadedModelEvent.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedModelEvent.JournalLine" Description="Returns the JournalLIne of a given LoadedModelEvent" ID="1304305e-d23d-4637-abcc-2d22fc4eb74b" Category="Journalysis.Journal.LoadedModelEvent.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="218" Y="184" zoom="1" ScaleFactor="1" Name="WorksharingSession.LoadedLinks" Description="Retrieves a list of loaded links from a given WorkharingSession" ID="e06898ef-4120-4b70-9f0b-fd44d8a4c3c2" Category="Journalysis.WorksharingSession.Actions">
+<Workspace Version="1.3.4.6666" X="218" Y="184" zoom="1" ScaleFactor="1" Name="WorksharingSession.LoadedLinks" Description="Retrieves a list of loaded links from a given WorkharingSession" ID="e06898ef-4120-4b70-9f0b-fd44d8a4c3c2" Category="Journalysis.WorksharingLog.WorksharingSession.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

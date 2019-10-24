@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.RAMPeak" Description="Returns the peak RAM of a MemoryMetrics line" ID="867d0cc1-26b6-422f-b1bd-312aea44d6a1" Category="Journalysis.JournalLine.MemoryMetrics.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.RAMPeak" Description="Returns the peak RAM of a MemoryMetrics line" ID="867d0cc1-26b6-422f-b1bd-312aea44d6a1" Category="Journalysis.Journal.JournalLine.MemoryMetrics.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

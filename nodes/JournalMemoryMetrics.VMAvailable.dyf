@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.VMAvailable" Description="Returns the available VM of a MemoryMetrics line" ID="2605bfba-08bc-473f-80a9-9d7b60b5317d" Category="Journalysis.JournalLine.MemoryMetrics.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="JournalMemoryMetrics.VMAvailable" Description="Returns the available VM of a MemoryMetrics line" ID="2605bfba-08bc-473f-80a9-9d7b60b5317d" Category="Journalysis.Journal.JournalLine.MemoryMetrics.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

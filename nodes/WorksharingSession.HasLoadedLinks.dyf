@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HasLoadedLinks" Description="Determines if linked models were loaded in this session" ID="bdf77345-7072-4a3f-b329-45a4d477391c" Category="Journalysis.WorksharingSession.Actions">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="WorksharingSession.HasLoadedLinks" Description="Determines if linked models were loaded in this session" ID="bdf77345-7072-4a3f-b329-45a4d477391c" Category="Journalysis.WorksharingLog.WorksharingSession.Actions">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

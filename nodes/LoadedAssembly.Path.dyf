@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Path" Description="Returns the path of a given LoadedAssembly" ID="540981fd-dede-455c-963f-fefa5ab1df16" Category="Journalysis.LoadedAssembly.Query">
+<Workspace Version="1.3.1.1736" X="0" Y="0" zoom="1" ScaleFactor="1" Name="LoadedAssembly.Path" Description="Returns the path of a given LoadedAssembly" ID="540981fd-dede-455c-963f-fefa5ab1df16" Category="Journalysis.Journal.LoadedAssembly.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

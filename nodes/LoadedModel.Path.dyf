@@ -1,4 +1,4 @@
-<Workspace Version="1.3.1.1736" X="123" Y="47" zoom="1" ScaleFactor="1" Name="LoadedModel.Path" Description="Returns the Rpath of a loaded model" ID="d274ea6f-b3db-4828-96ea-7ec0c8032062" Category="Journalysis.LoadedModel.Query">
+<Workspace Version="1.3.1.1736" X="123" Y="47" zoom="1" ScaleFactor="1" Name="LoadedModel.Path" Description="Returns the Rpath of a loaded model" ID="d274ea6f-b3db-4828-96ea-7ec0c8032062" Category="Journalysis.Journal.LoadedModel.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />

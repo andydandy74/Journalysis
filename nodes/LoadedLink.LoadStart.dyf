@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="328" Y="247" zoom="1" ScaleFactor="1" Name="LoadedLink.LoadStart" Description="Returns the date and time a given loaded link started loading" ID="7eaaffa4-7663-42de-8413-6357a047084b" Category="Journalysis.LoadedLink.Query">
+<Workspace Version="1.3.4.6666" X="328" Y="247" zoom="1" ScaleFactor="1" Name="LoadedLink.LoadStart" Description="Returns the date and time a given loaded link started loading" ID="7eaaffa4-7663-42de-8413-6357a047084b" Category="Journalysis.WorksharingLog.WorksharingSession.LoadedLink.Query">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
