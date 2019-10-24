@@ -43,26 +43,17 @@ class WorksharingSession:
 		if self.CreatesNewCentral(): return None
 		else:
 			openStart = [x.DateTime for x in self.Events if x.Text == ">Open"][0]
-			openEnd = None
-			if self.UsesCentralModel(): 
-				breakLoop = False
-				for event in self.Events:
-					if event.Text == ">Open": breakLoop = True
-					if event.Text.startswith(">Open") or event.Text.startswith(".Open") or event.Text.startswith("<Open"):
-						if event.Text.startswith("<Open"): openEnd = event.DateTime
-					# Terminate the loop as soon as we start seeing stuff that's not from the Open block
-					# This should give us the timestamp of the last opened link 
-					# (if any - otherwise the timestamp of the concluded opening sequence)
-					# Of course we only want to start breaking the loop once the Open block has begun
-					elif breakLoop == True: break
-					else: pass					
-			# In local copies, there's a WSConfig block directly following the Open block which we should include here
-			# Linked models are loaded in between those blocks
-			else: 
-				lastOpenLine = [x.DateTime for x in self.Events if x.Text == "<WSConfig"]
-				if len(lastOpenLine) > 0: openEnd = lastOpenLine[0]
-			if openEnd == None: return None
-			else: return openEnd - openStart
+			openEnd = [x.DateTime for x in self.Events if x.Text == "<Open"]
+			if len(openEnd) == 0: return None
+			else: return openEnd[0] - openStart
+	def GetLoadedLinks(self):
+		links = []
+		for event in self.Events:
+			if event.Text.startswith(">OpenLink"): links.append(LoadedLink(event.DateTime, event.Text.split("\"")[1]))
+			elif event.Text == "<OpenLink" and len(links) > 0:
+				links[-1].LoadEnd = event.DateTime
+				links[-1].LoadDuration = event.DateTime - links[-1].LoadStart				
+		return links
 	def GetSyncEvents(self):
 		events = []
 		for event in self.Events:
@@ -93,6 +84,16 @@ class SyncEvent:
 		self.Duration = None
 	def __repr__(self):
 		return "SyncEvent"
+		
+class LoadedLink:
+	def __init__(self, start, linkpath):
+		self.LoadStart = start
+		self.LoadEnd = None
+		self.LoadDuration = None
+		self.FileName = linkpath.split("\\")[-1]
+		self.FullPath = linkpath
+	def __repr__(self):
+		return "LoadedLink"
 
 def WSLogFromPath(path):
 	try:
@@ -116,9 +117,7 @@ def WSLogFromPath(path):
 					if text.startswith(">Session"): 
 						sessions[-1].Start = timestamp
 						sessions[-1].Date = timestamp.Date
-					elif text.startswith("<Session"): 
-						sessions[-1].End = timestamp
-						sessions[-1].Duration = timestamp - sessions[-1].Start
+					else: current_session.End = timestamp
 				elif line.startswith("user"): sessions[-1].User = line.split('user="')[-1][:-1]
 				elif line.startswith("build"):
 					versioninfo = line.split('build="')[-1].split()
@@ -135,6 +134,7 @@ def WSLogFromPath(path):
 					sessions[-1].ServerName = serverinfo[-1][1:-1]
 				elif line.startswith("central"): sessions[-1].Central = line.split('central="')[-1][:-1]
 				elif line.startswith("Worksharing"): version = line.split("Version ")[-1].split(",")[0]
+		for session in sessions: session.Duration = session.End - session.Start
 		WSLog = WorksharingLog(version, sessions)
 		WSLog.ProcessingTime = time.time() - processing_started
 		return WSLog

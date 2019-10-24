@@ -33,6 +33,10 @@ class Journal:
 	def GetDateTimeByBlocks(self, blocks):
 		if 0 in blocks: return None
 		else: return [x.DateTime for x in self.GetLinesByType('JournalTimeStamp') if x.Block in blocks]
+	def GetFirstLines(self, number):
+		return self.Lines[:number]
+	def GetLastLines(self, number):
+		return self.Lines[-number:]
 	def GetLinesByBlock(self, block):
 		return [x for x in self.Lines if x.Block == block]
 	def GetLinesByBlocks(self, blocks):
@@ -110,13 +114,18 @@ class Journal:
 		return ts[-1].DateTime - ts[0].DateTime
 	def GetStartupTime(self):
 		first_ts = self.GetDateTimeByBlock(1)
-		startup1 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_STARTUP_PAGE')]
+		# Revit 2019 and later
+		startup1 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_REVIT_MODEL_BROWSER_OPEN')]
 		if len(startup1) > 0: return self.GetDateTimeByBlock(startup1[0]) - first_ts
 		else:
-			# DynamoAutomation journal playback
-			startup2 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_FILE_MRU_FIRST')]
+			# Revit 2018 and earlier
+			startup2 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_STARTUP_PAGE')]
 			if len(startup2) > 0: return self.GetDateTimeByBlock(startup2[0]) - first_ts
-			else: return None
+			else:
+				# DynamoAutomation journal playback
+				startup3 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_FILE_MRU_FIRST')]
+				if len(startup3) > 0: return self.GetDateTimeByBlock(startup3[0]) - first_ts
+				else: return None
 	def IsInPlaybackMode(self):
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("started journal file playback")]) > 0: return True
 		else: return False
