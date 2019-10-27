@@ -1,7 +1,7 @@
 {
   "Uuid": "08630556-ec20-4701-b0b5-4dd9f417a39b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.BasicFileInfo.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the locale a model was saved in from a BasicFileInfo line",
   "Name": "JournalBasicFileInfo.Locale",
   "ElementResolver": {

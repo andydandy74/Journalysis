@@ -1,7 +1,7 @@
 {
   "Uuid": "d0cbc990-56f5-4610-879a-37b40aeb082b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.TimeStamp.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the type of a TimeStamp line",
   "Name": "JournalTimeStamp.Type",
   "ElementResolver": {

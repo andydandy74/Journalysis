@@ -1,7 +1,7 @@
 {
   "Uuid": "c7cd5cf4-4926-40b9-a2b9-962da9808d23",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves all lines after the given line from the journal",
   "Name": "JournalLine.AllNext",
   "ElementResolver": {

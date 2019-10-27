@@ -1,7 +1,7 @@
 {
   "Uuid": "b3150a66-0850-4291-a33c-e80e0f244203",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves the previous line of a given type before the given line from the journal",
   "Name": "JournalLine.PreviousOfType",
   "ElementResolver": {

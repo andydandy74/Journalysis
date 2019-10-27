@@ -1,7 +1,7 @@
 {
   "Uuid": "2605bfba-08bc-473f-80a9-9d7b60b5317d",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.MemoryMetrics.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the available VM of a MemoryMetrics line",
   "Name": "JournalMemoryMetrics.VMAvailable",
   "ElementResolver": {

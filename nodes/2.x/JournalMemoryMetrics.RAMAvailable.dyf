@@ -1,7 +1,7 @@
 {
   "Uuid": "de3f440e-77d8-49bb-a7b6-49d26b841033",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.MemoryMetrics.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the available RAM of a MemoryMetrics line",
   "Name": "JournalMemoryMetrics.RAMAvailable",
   "ElementResolver": {

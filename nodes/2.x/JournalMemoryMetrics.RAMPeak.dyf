@@ -1,7 +1,7 @@
 {
   "Uuid": "867d0cc1-26b6-422f-b1bd-312aea44d6a1",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.MemoryMetrics.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the peak RAM of a MemoryMetrics line",
   "Name": "JournalMemoryMetrics.RAMPeak",
   "ElementResolver": {

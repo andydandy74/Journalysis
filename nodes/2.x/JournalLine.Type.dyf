@@ -1,7 +1,7 @@
 {
   "Uuid": "8224cdaa-9a58-4fb6-8acc-fab4431289b1",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the type of a given journal line",
   "Name": "JournalLine.Type",
   "ElementResolver": {

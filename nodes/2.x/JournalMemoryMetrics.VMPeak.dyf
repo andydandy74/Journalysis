@@ -1,7 +1,7 @@
 {
   "Uuid": "f64079dd-9ffd-49f8-8c3e-7e2668ae9b49",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.MemoryMetrics.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the peak VM of a MemoryMetrics line",
   "Name": "JournalMemoryMetrics.VMPeak",
   "ElementResolver": {

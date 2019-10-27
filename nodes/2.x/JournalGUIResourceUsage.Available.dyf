@@ -1,7 +1,7 @@
 {
   "Uuid": "cf574004-4ccc-4242-a0bd-27e4683efbbd",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.GUIResourceUsage.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "",
   "Name": "JournalGUIResourceUsage.Available",
   "ElementResolver": {

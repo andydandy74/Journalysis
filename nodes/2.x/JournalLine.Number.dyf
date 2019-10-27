@@ -1,7 +1,7 @@
 {
   "Uuid": "eb43cc67-61f4-4e3f-8b54-37a9a08a8668",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the line number of a given journal line",
   "Name": "JournalLine.Number",
   "ElementResolver": {

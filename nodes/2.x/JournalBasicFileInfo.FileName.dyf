@@ -1,7 +1,7 @@
 {
   "Uuid": "5f331f78-8449-4c4e-90cc-fe5cc0e72234",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.BasicFileInfo.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the file name from the last save path of a BasicFileInfo line",
   "Name": "JournalBasicFileInfo.FileName",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "d74df289-3c8a-48d3-958d-6b031c3ef7c0",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.WorksharingEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the session ID (used in the worksharing log of the central file) of a given JournalWorksharingEvent",
   "Name": "JournalWorksharingEvent.SessionID",
   "ElementResolver": {

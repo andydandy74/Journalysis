@@ -1,7 +1,7 @@
 {
   "Uuid": "84309ffa-5303-497a-bfc3-30669e687b3f",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves all lines before the given line from the journal",
   "Name": "JournalLine.AllPrevious",
   "ElementResolver": {

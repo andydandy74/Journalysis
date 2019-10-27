@@ -1,7 +1,7 @@
 {
   "Uuid": "076fdbc9-2ccd-47a9-ab94-f55cd53295e5",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.BasicFileInfo.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the worksharing status from a BasicFileInfo line",
   "Name": "JournalBasicFileInfo.Worksharing",
   "ElementResolver": {

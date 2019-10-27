@@ -1,7 +1,7 @@
 {
   "Uuid": "d04c4ff7-f3b9-4051-b532-35b643c4e741",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.BasicFileInfo.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the central model path from a BasicFileInfo line",
   "Name": "JournalBasicFileInfo.CentralModelPath",
   "ElementResolver": {

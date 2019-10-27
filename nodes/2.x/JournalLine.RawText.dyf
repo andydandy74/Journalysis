@@ -1,7 +1,7 @@
 {
   "Uuid": "76fccf43-763c-43e7-bf16-aa52d43dd91b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the raw text of a given journal line",
   "Name": "JournalLine.RawText",
   "ElementResolver": {

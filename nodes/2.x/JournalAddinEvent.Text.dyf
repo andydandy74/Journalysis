@@ -1,7 +1,7 @@
 {
   "Uuid": "5dd51041-47ab-442b-ae79-16b535c8f245",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.AddinEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the text from an AddinEvent line",
   "Name": "JournalAddinEvent.Text",
   "ElementResolver": {

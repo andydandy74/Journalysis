@@ -1,7 +1,7 @@
 {
   "Uuid": "0f7e748d-c763-435b-b223-4da4ba2b2a92",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.UIEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the data from a UIEvent line",
   "Name": "JournalUIEvent.Data",
   "ElementResolver": {

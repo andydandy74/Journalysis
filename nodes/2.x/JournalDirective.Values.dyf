@@ -1,7 +1,7 @@
 {
   "Uuid": "98ff0d09-bd8c-41bc-afe2-9e0db0ec288f",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Directive.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the values from a JournalDirective line",
   "Name": "JournalDirective.Values",
   "ElementResolver": {

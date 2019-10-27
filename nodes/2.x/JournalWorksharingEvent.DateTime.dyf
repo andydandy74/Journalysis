@@ -1,7 +1,7 @@
 {
   "Uuid": "7d8237c3-d775-4a7d-b8f2-d4568882086e",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.WorksharingEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the date and time of a given JournalWorksharingEvent",
   "Name": "JournalWorksharingEvent.DateTime",
   "ElementResolver": {

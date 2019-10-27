@@ -1,7 +1,7 @@
 {
   "Uuid": "58f61cb2-f126-4d4a-8ce7-5c04ea0f5710",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.WorksharingEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the recorded text of a given JournalWorksharingEvent",
   "Name": "JournalWorksharingEvent.Text",
   "ElementResolver": {

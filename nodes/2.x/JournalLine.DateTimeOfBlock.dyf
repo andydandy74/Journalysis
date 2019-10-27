@@ -1,7 +1,7 @@
 {
   "Uuid": "1975f030-2c6d-45a8-a52d-6e4df75ab2d2",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves the date and time of the block of a given JournalLine",
   "Name": "JournalLine.DateTimeOfBlock",
   "ElementResolver": {

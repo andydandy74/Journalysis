@@ -1,7 +1,7 @@
 {
   "Uuid": "6ff5a885-7bd9-48c8-ac09-7c69b583d61e",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.MouseEvent.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns the data from a MouseEvent line",
   "Name": "JournalMouseEvent.Data",
   "ElementResolver": {

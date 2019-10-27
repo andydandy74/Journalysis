@@ -1,7 +1,7 @@
 {
   "Uuid": "05398e6e-dbb3-4f8b-8caf-c583b5a23253",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieve the next line of a given type and property value after the given line from the journal",
   "Name": "JournalLine.NextOfTypeAndProperty",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "0406faa1-d393-42c7-b939-1b29bb4db371",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.APIMessage.Query",
+  "Category": "Journalysis.Journal.JournalLine.Query",
   "Description": "Returns whether an APIMessage reports an error",
   "Name": "JournalAPIMessage.IsError",
   "ElementResolver": {

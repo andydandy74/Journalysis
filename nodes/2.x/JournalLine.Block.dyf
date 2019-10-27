@@ -1,7 +1,7 @@
 {
   "Uuid": "92d575d5-ca83-4e6c-a1a4-ff01147c81f6",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the block number of a given journal line",
   "Name": "JournalLine.Block",
   "ElementResolver": {

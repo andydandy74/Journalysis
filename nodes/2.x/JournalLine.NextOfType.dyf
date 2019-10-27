@@ -1,7 +1,7 @@
 {
   "Uuid": "6fc48c9e-94ed-4611-899e-bd4dafb86411",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves the next line of a given type after the given line from the journal",
   "Name": "JournalLine.NextOfType",
   "ElementResolver": {
