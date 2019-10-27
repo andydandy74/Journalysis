@@ -1,0 +1,177 @@
+{
+  "Uuid": "76fccf43-763c-43e7-bf16-aa52d43dd91b",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Description": "Returns the raw text of a given journal line",
+  "Name": "JournalLine.RawText",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalLineRawText(jline):\r\n\tif hasattr(jline, 'RawText'): return jline.RawText\r\n\telse: return None\r\n\r\nOUT = process_input(journalLineRawText,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "7414a656d7cc4a97be5af0393a3ac75b",
+      "Inputs": [
+        {
+          "Id": "47e2dbfb66bf436ebe50e80841662d30",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ac33b107626d44fbb7455f3ff2997f32",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalLine",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "b7a6c7a8b48a45968e2ce3f84710e6ed",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d73d9b899c734a91b4298e24cce1fb9d",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "str",
+      "Id": "981895f47658426cb9a9ee5cf21f982f",
+      "Inputs": [
+        {
+          "Id": "885bf1359a56485f82df0157e3dea461",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ac33b107626d44fbb7455f3ff2997f32",
+      "End": "885bf1359a56485f82df0157e3dea461",
+      "Id": "541e8d94f8a744a08bc0d282cf4023f7"
+    },
+    {
+      "Start": "d73d9b899c734a91b4298e24cce1fb9d",
+      "End": "47e2dbfb66bf436ebe50e80841662d30",
+      "Id": "f7b3049fd1f24cf0aac6189958d07fca"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "7414a656d7cc4a97be5af0393a3ac75b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 230.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "b7a6c7a8b48a45968e2ce3f84710e6ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 9.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "981895f47658426cb9a9ee5cf21f982f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 454.5,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

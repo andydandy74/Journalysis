@@ -1,0 +1,177 @@
+{
+  "Uuid": "39b41107-a8a3-4851-8059-c8a4784015c0",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.MouseEvent.Query",
+  "Description": "Returns the type of a MouseEvent line",
+  "Name": "JournalMouseEvent.Type",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalMouseEventType(input):\r\n\tif input.__repr__() == 'JournalMouseEvent': return input.MouseEventType\r\n\telse: return None\r\n\r\nOUT = process_input(journalMouseEventType,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "5439806f473d4838b2d522fbf646c51f",
+      "Inputs": [
+        {
+          "Id": "b79748b4848341b7920b03429e422d12",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "357946bd79ee4fa0a78d750f29491c1e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalMouseEvent",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "9d371a26a68e4cbaa772fe2ea60074b0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "320d53346bc346848a73e59c73bc0ef5",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "str",
+      "Id": "7fdf07cbc1614e33815b103753d8cf3a",
+      "Inputs": [
+        {
+          "Id": "bddaaf539eca4774b0bd0b34445da8cc",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "357946bd79ee4fa0a78d750f29491c1e",
+      "End": "bddaaf539eca4774b0bd0b34445da8cc",
+      "Id": "b4d0317582684e4bbd2071310dac31ca"
+    },
+    {
+      "Start": "320d53346bc346848a73e59c73bc0ef5",
+      "End": "b79748b4848341b7920b03429e422d12",
+      "Id": "45570c1a0e814eca81f77c9a377f6cc3"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "5439806f473d4838b2d522fbf646c51f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Code",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 268.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "9d371a26a68e4cbaa772fe2ea60074b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -1.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "7fdf07cbc1614e33815b103753d8cf3a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 492.5,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

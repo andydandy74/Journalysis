@@ -1,0 +1,227 @@
+{
+  "Uuid": "fc9ef041-9b22-4547-b69f-2f92421f5964",
+  "IsCustomNode": true,
+  "Category": "Journalysis.WorksharingLog.Actions",
+  "Description": "Retrieves a WorksharingSession from a WorksharingLog based on the session ID.",
+  "Name": "WorksharingLog.SessionByID",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input1, input2):\r\n\tif isinstance(input2, list): return [func(input1, x) for x in input2]\r\n\telse: return func(input1, input2)\r\n\t\r\ndef WSLogSessionByID(wslog, id):\r\n\tif wslog.__repr__() == 'WorksharingLog': return wslog.GetSessionByID(id)\r\n\telse: return None\r\n\r\nOUT = process_input(WSLogSessionByID, IN[0], IN[1])",
+      "VariableInputPorts": true,
+      "Id": "343cce48e49c4aafa55e610dd124a4a1",
+      "Inputs": [
+        {
+          "Id": "4f1b3b23bd2543b5b1b981153d05644f",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "52fc77d5ea294ab3938b2c2ba823c897",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b62aabdd3b9a47f799ee49be592348ca",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "worksharingLog",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "4869bba6d18440429918edc5aa45e9df",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3826e44616bc467ab22bf470df11e1a8",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "sessionID",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "99c420677217400ca9c16f2890077837",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9306b4bc0d0148b69ac1399a714c984f",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "worksharingSession",
+      "Id": "9f5f6faa22c845db8c4a2f098349b683",
+      "Inputs": [
+        {
+          "Id": "30639ab65658406e9d8aea47ae419dcd",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b62aabdd3b9a47f799ee49be592348ca",
+      "End": "30639ab65658406e9d8aea47ae419dcd",
+      "Id": "a34c9da4e86346fb94503ac32d0f02b2"
+    },
+    {
+      "Start": "3826e44616bc467ab22bf470df11e1a8",
+      "End": "4f1b3b23bd2543b5b1b981153d05644f",
+      "Id": "fff5262072974611b606fb68a8866b3e"
+    },
+    {
+      "Start": "9306b4bc0d0148b69ac1399a714c984f",
+      "End": "52fc77d5ea294ab3938b2c2ba823c897",
+      "Id": "144d4a12295b4c0caacc5e1112bb2f0c"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "343cce48e49c4aafa55e610dd124a4a1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 251.5,
+        "Y": 62.0
+      },
+      {
+        "Id": "4869bba6d18440429918edc5aa45e9df",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -26.5,
+        "Y": 33.0
+      },
+      {
+        "Id": "99c420677217400ca9c16f2890077837",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -26.5,
+        "Y": 117.0
+      },
+      {
+        "Id": "9f5f6faa22c845db8c4a2f098349b683",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 475.5,
+        "Y": 62.0
+      }
+    ],
+    "Annotations": [],
+    "X": 632.0,
+    "Y": 178.0,
+    "Zoom": 1.0
+  }
+}

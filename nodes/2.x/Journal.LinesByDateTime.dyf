@@ -1,0 +1,285 @@
+{
+  "Uuid": "e9fafde2-1cc8-4dc7-807d-cf007c0f82d5",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Actions",
+  "Description": "Retrieves all lines of a given journal that fall in a given time window. At least one DateTime needs to be given (from or to).",
+  "Name": "Journal.LinesByDateTime",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSCore.DateTime": {
+        "Key": "DSCore.DateTime",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.DateTime": {
+        "Key": "System.DateTime",
+        "Value": ""
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, inputs):\r\n\tif isinstance(inputs[0], list): return [func(x, inputs[1], inputs[2]) for x in inputs[0]]\r\n\telse: return func(inputs[0], inputs[1], inputs[2])\r\n\t\r\ndef journalLinesByDateTime(journal, fromDateTime, toDateTime):\r\n\tif journal.__repr__() == 'Journal': return journal.GetLinesByDateTime(fromDateTime, toDateTime)\r\n\telse: return None\r\n\r\nOUT = process_input(journalLinesByDateTime, IN)",
+      "VariableInputPorts": true,
+      "Id": "9d1d81cfb4bb4f4fac0da109cbabc76d",
+      "Inputs": [
+        {
+          "Id": "7b7f650464e943e3bd69e27f015c4bd2",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8b1fc5aa3f174091b80efa784ebb8cad",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a9aea02ec494e9a98a2dc16d1ed3d60",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8ad0c932d0fb4a128a17e5eb8ee7ed30",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "ee983561f5e94034b305d3d2cf31effa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "aec7e872438e4c7ca1e44e70b9c31e1e",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "fromDateTime",
+        "TypeName": "System.DateTime",
+        "TypeRank": 0,
+        "DefaultValue": "null",
+        "Description": ""
+      },
+      "Id": "73ffcc751da34c08bf07b71a67418d57",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "22790173a49049adb8e99356db6273ec",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "journalLines",
+      "Id": "063b30c87d6b487d9c566dc2c1e8aca5",
+      "Inputs": [
+        {
+          "Id": "d894fbd2b8924adebd5f93e5b882d996",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "toDateTime",
+        "TypeName": "System.DateTime",
+        "TypeRank": 0,
+        "DefaultValue": "null",
+        "Description": ""
+      },
+      "Id": "ce1d1308288b4127a7f0c6564a18faeb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "66155346cd754f65af75d718c430bc55",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "8ad0c932d0fb4a128a17e5eb8ee7ed30",
+      "End": "d894fbd2b8924adebd5f93e5b882d996",
+      "Id": "e2d4aa145e3246de870c09dc290e464b"
+    },
+    {
+      "Start": "aec7e872438e4c7ca1e44e70b9c31e1e",
+      "End": "7b7f650464e943e3bd69e27f015c4bd2",
+      "Id": "f779566898f74a059bb4dd89e1f2a676"
+    },
+    {
+      "Start": "22790173a49049adb8e99356db6273ec",
+      "End": "8b1fc5aa3f174091b80efa784ebb8cad",
+      "Id": "8346e8f1a14f4484a02144e55fb31604"
+    },
+    {
+      "Start": "66155346cd754f65af75d718c430bc55",
+      "End": "7a9aea02ec494e9a98a2dc16d1ed3d60",
+      "Id": "97283d2616124e1c86e5d0a382a9a45d"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "9d1d81cfb4bb4f4fac0da109cbabc76d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 282.5,
+        "Y": 58.5
+      },
+      {
+        "Id": "ee983561f5e94034b305d3d2cf31effa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -152.5,
+        "Y": 1.5
+      },
+      {
+        "Id": "73ffcc751da34c08bf07b71a67418d57",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -152.5,
+        "Y": 84.5
+      },
+      {
+        "Id": "063b30c87d6b487d9c566dc2c1e8aca5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 506.5,
+        "Y": 58.5
+      },
+      {
+        "Id": "ce1d1308288b4127a7f0c6564a18faeb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -152.5,
+        "Y": 167.5
+      }
+    ],
+    "Annotations": [],
+    "X": 187.818713822894,
+    "Y": -4.64514720572353,
+    "Zoom": 1.33823125
+  }
+}

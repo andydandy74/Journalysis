@@ -1,0 +1,230 @@
+{
+  "Uuid": "5dd1db91-8d90-49df-9678-e8fdf844dc3b",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Helpers.Query",
+  "Description": "Lists all JournalSystemInformation types",
+  "Name": "Helpers.AllJournalSystemInformationTypes",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "ed3c5936438443c89ab049e3bee96af3",
+      "Name": "String",
+      "Type": "string",
+      "Value": "\r\n",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "cb3d8183992a4c3bbdadc787140abd5a",
+      "Name": "String",
+      "Type": "string",
+      "Value": "OperatingSystem\r\nPrinter\r\nPrinterConfiguration\r\nProcessor\r\nUnknown\r\nVideoController",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "52744e1f821b4283b3ba2fd88a8dbaaf",
+      "Inputs": [
+        {
+          "Id": "7aaefb2442794cefb9be8df16f730a20",
+          "Name": "str",
+          "Description": "String to split up.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2f8d64eb407e4eaebd955c0bca80c275",
+          "Name": "separater0",
+          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f71c3c2a0a2d4466a1b45dd24f0bd85d",
+          "Name": "strings",
+          "Description": "List of strings made from the input string.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "\r\n",
+      "Id": "ed3c5936438443c89ab049e3bee96af3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7813cfa59f734ae5a0bea3be8236828d",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "OperatingSystem\r\nPrinter\r\nPrinterConfiguration\r\nProcessor\r\nUnknown\r\nVideoController",
+      "Id": "cb3d8183992a4c3bbdadc787140abd5a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abfd0c00d85047c48d60e0e04598815a",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "seq",
+      "Id": "05130927e1d04f3fb29c07652dfdfc57",
+      "Inputs": [
+        {
+          "Id": "71a14d0ad62e40ff954e2c35fe7f4834",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f71c3c2a0a2d4466a1b45dd24f0bd85d",
+      "End": "71a14d0ad62e40ff954e2c35fe7f4834",
+      "Id": "09b93e4ff5774e27b51cde14a7e54811"
+    },
+    {
+      "Start": "7813cfa59f734ae5a0bea3be8236828d",
+      "End": "2f8d64eb407e4eaebd955c0bca80c275",
+      "Id": "e663c7658397498a8ab624c23453ffc4"
+    },
+    {
+      "Start": "abfd0c00d85047c48d60e0e04598815a",
+      "End": "7aaefb2442794cefb9be8df16f730a20",
+      "Id": "b846ea39227e4df29d0abc4f19786184"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "52744e1f821b4283b3ba2fd88a8dbaaf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String.Split",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 474.0,
+        "Y": 53.0
+      },
+      {
+        "Id": "ed3c5936438443c89ab049e3bee96af3",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 254.135696067305,
+        "Y": 149.576708286048
+      },
+      {
+        "Id": "cb3d8183992a4c3bbdadc787140abd5a",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "05130927e1d04f3fb29c07652dfdfc57",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 779.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

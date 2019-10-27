@@ -1,0 +1,177 @@
+{
+  "Uuid": "f64079dd-9ffd-49f8-8c3e-7e2668ae9b49",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.MemoryMetrics.Query",
+  "Description": "Returns the peak VM of a MemoryMetrics line",
+  "Name": "JournalMemoryMetrics.VMPeak",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalMemoryMetricsVMPeak(jmm):\r\n\tif jmm.__repr__() == 'JournalMemoryMetrics': return jmm.VMPeak\r\n\telse: return None\r\n\r\nOUT = process_input(journalMemoryMetricsVMPeak,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "27d86287f8d54176a72a51b70895aa67",
+      "Inputs": [
+        {
+          "Id": "3ec33a846506415b80dbf359bc758881",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0572d23b59a5489bad5103cafe2062b0",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalMemoryMetrics",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "7ed7d5e030fc4ab6ac844c00509c2155",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0f90dbb4861842d18fe63e2328bb5917",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "int",
+      "Id": "25eab67c1e9f4660bb25faef483cdd49",
+      "Inputs": [
+        {
+          "Id": "12e879392c3e4035a1792684d937dd9f",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "0572d23b59a5489bad5103cafe2062b0",
+      "End": "12e879392c3e4035a1792684d937dd9f",
+      "Id": "2cf1d912c9374af09e9a41af6a1c16ce"
+    },
+    {
+      "Start": "0f90dbb4861842d18fe63e2328bb5917",
+      "End": "3ec33a846506415b80dbf359bc758881",
+      "Id": "3affedd4d4b24be2aabc543ef7d860f0"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "27d86287f8d54176a72a51b70895aa67",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 302.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "7ed7d5e030fc4ab6ac844c00509c2155",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 7.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "25eab67c1e9f4660bb25faef483cdd49",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 526.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

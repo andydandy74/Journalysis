@@ -1,0 +1,177 @@
+{
+  "Uuid": "cf574004-4ccc-4242-a0bd-27e4683efbbd",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.GUIResourceUsage.Query",
+  "Description": "",
+  "Name": "JournalGUIResourceUsage.Available",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalGUIResourceUsageAvailable(jguiru):\r\n\tif jguiru.__repr__() == 'JournalGUIResourceUsage': return jguiru.Available\r\n\telse: return None\r\n\r\nOUT = process_input(journalGUIResourceUsageAvailable,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "cb6b9fc4dc5647cda0b4f1099bd1dd0f",
+      "Inputs": [
+        {
+          "Id": "64fcdcf91cb6427b905ce94920a80e38",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eae2752d504f4f97ad52bdae05c705ed",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalGUIResourceUsage",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "50f81097faf64d4c95ad80095c2df0ad",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4bea6e36387440a88aa9488f8e29e5de",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "int",
+      "Id": "4ee03746f43544c38ff68fc13c8f83ca",
+      "Inputs": [
+        {
+          "Id": "3b2ba91b6b5744aea62787d5b94f76eb",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "eae2752d504f4f97ad52bdae05c705ed",
+      "End": "3b2ba91b6b5744aea62787d5b94f76eb",
+      "Id": "bd79f067e0104b4ea27abc67f9b5070e"
+    },
+    {
+      "Start": "4bea6e36387440a88aa9488f8e29e5de",
+      "End": "64fcdcf91cb6427b905ce94920a80e38",
+      "Id": "9b9a64ae13a64e92b5fcfbc8daf80146"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "cb6b9fc4dc5647cda0b4f1099bd1dd0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 328.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "50f81097faf64d4c95ad80095c2df0ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 8.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "4ee03746f43544c38ff68fc13c8f83ca",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 552.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

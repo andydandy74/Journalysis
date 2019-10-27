@@ -1,0 +1,227 @@
+{
+  "Uuid": "f551e0d9-ddda-46b8-bb06-456d45188f46",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Actions",
+  "Description": "Retrieves all JournalLines of a given block from a given journal",
+  "Name": "Journal.LinesByBlock",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tif isinstance(IN[1], list): OUT = IN[0].GetLinesByBlocks(IN[1])\r\n\telse: OUT = IN[0].GetLinesByBlock(IN[1])",
+      "VariableInputPorts": true,
+      "Id": "215735302ece4feb9b4eabc978a3481c",
+      "Inputs": [
+        {
+          "Id": "91f08b9381824cca87676ccb624d7ae4",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "510164a6521c4d68bf7cf8bf2bc9c3ed",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "092702765ee64db4a72cbbc2d3792d29",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "981bd47693ad4e47b8d1f9ee16f65dc4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0aa9b03e5c6741c191a16adb007aed87",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalBlock",
+        "TypeName": "int",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "0de86863061e43a88109822a8fc7d11b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a227617eac354bdaad8d8fbad51676c7",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "journalLines",
+      "Id": "e211f3cb725e442783feb953706c5d9a",
+      "Inputs": [
+        {
+          "Id": "1999101808e8443cb80108cd22ee95e9",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "092702765ee64db4a72cbbc2d3792d29",
+      "End": "1999101808e8443cb80108cd22ee95e9",
+      "Id": "c872fbf28e344a78b87a20b5fc0b387f"
+    },
+    {
+      "Start": "0aa9b03e5c6741c191a16adb007aed87",
+      "End": "91f08b9381824cca87676ccb624d7ae4",
+      "Id": "f444fa9c1aad4f7190acc97edccb4997"
+    },
+    {
+      "Start": "a227617eac354bdaad8d8fbad51676c7",
+      "End": "510164a6521c4d68bf7cf8bf2bc9c3ed",
+      "Id": "523d13b745a64f30910871b93e77a5a5"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "215735302ece4feb9b4eabc978a3481c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 242.5,
+        "Y": 62.0
+      },
+      {
+        "Id": "981bd47693ad4e47b8d1f9ee16f65dc4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 21.5,
+        "Y": 33.0
+      },
+      {
+        "Id": "0de86863061e43a88109822a8fc7d11b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 21.5,
+        "Y": 117.0
+      },
+      {
+        "Id": "e211f3cb725e442783feb953706c5d9a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 466.5,
+        "Y": 62.0
+      }
+    ],
+    "Annotations": [],
+    "X": 257.0,
+    "Y": 180.0,
+    "Zoom": 1.0
+  }
+}

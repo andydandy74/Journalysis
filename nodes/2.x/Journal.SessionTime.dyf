@@ -1,0 +1,177 @@
+{
+  "Uuid": "1905c2ec-76fe-45b8-85f4-8659a21533d1",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Actions",
+  "Description": "Computes the entire Revit session time based on the given journal",
+  "Name": "Journal.SessionTime",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalSessionTime(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.GetSessionTime()\r\n\telse: return None\r\n\r\nOUT = process_input(journalSessionTime,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "a660c6d4c90e4c4c881f042ba52a1a5a",
+      "Inputs": [
+        {
+          "Id": "f58a67c73c0744d4ab482f388569fb9c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ea55312aa1b140169a54626c33bef848",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "f86192ddd517437fb7d24bf5e1f07993",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "df064e912162413e8d6eede87c35ce3f",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "timeSpan",
+      "Id": "3d0b9920554d4ee2a74962a869f2ddfc",
+      "Inputs": [
+        {
+          "Id": "3906472f9f7e4fa189caea2b3e1d0954",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ea55312aa1b140169a54626c33bef848",
+      "End": "3906472f9f7e4fa189caea2b3e1d0954",
+      "Id": "24dab98eb2224eda98d153596ea99baa"
+    },
+    {
+      "Start": "df064e912162413e8d6eede87c35ce3f",
+      "End": "f58a67c73c0744d4ab482f388569fb9c",
+      "Id": "bf03c07298b943fdb0b3dee865e2b555"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "a660c6d4c90e4c4c881f042ba52a1a5a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 206.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "f86192ddd517437fb7d24bf5e1f07993",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 18.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "3d0b9920554d4ee2a74962a869f2ddfc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 430.5,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 162.671867161602,
+    "Y": 175.010140370284,
+    "Zoom": 1.78359936238281
+  }
+}

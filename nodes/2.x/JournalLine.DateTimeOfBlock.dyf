@@ -1,0 +1,177 @@
+{
+  "Uuid": "1975f030-2c6d-45a8-a52d-6e4df75ab2d2",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.Actions",
+  "Description": "Retrieves the date and time of the block of a given JournalLine",
+  "Name": "JournalLine.DateTimeOfBlock",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalLineDateTime(jline):\r\n\tif hasattr(jline, 'GetDateTimeOfBlock'): \r\n\t\treturn jline.GetDateTimeOfBlock()\r\n\telse: return None\r\n\r\nOUT = process_input(journalLineDateTime, IN[0])",
+      "VariableInputPorts": true,
+      "Id": "df49e4e794634954823d1d0c1f1ea417",
+      "Inputs": [
+        {
+          "Id": "32d1bee8329e4e88aa952e7aaa6a2e57",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "676f998a97f14061805c138e16eb0b76",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalLine",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "26a5f41c05ee4484bbf51843c1f2ae52",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7bbf604418c64604a7c0ad3670fa654a",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "dateTime",
+      "Id": "de416ccbff064e0b93ed9c3b6f746fe1",
+      "Inputs": [
+        {
+          "Id": "09127b09bca34b5e9e9da98dd09e4b38",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "676f998a97f14061805c138e16eb0b76",
+      "End": "09127b09bca34b5e9e9da98dd09e4b38",
+      "Id": "7f738a0e0ee34488a544217aec358edf"
+    },
+    {
+      "Start": "7bbf604418c64604a7c0ad3670fa654a",
+      "End": "32d1bee8329e4e88aa952e7aaa6a2e57",
+      "Id": "07033879c8bc415580462f99decd6695"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "df49e4e794634954823d1d0c1f1ea417",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 223.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "26a5f41c05ee4484bbf51843c1f2ae52",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2.0,
+        "Y": 0.0
+      },
+      {
+        "Id": "de416ccbff064e0b93ed9c3b6f746fe1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 447.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 291.0,
+    "Y": 312.0,
+    "Zoom": 1.0
+  }
+}

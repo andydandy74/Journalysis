@@ -1,0 +1,177 @@
+{
+  "Uuid": "5eb362f8-f908-4888-b04d-144d1d8b7e0e",
+  "IsCustomNode": true,
+  "Category": "Journalysis.KeyboardShortcuts.KeyboardShortcutCommand.Query",
+  "Description": "Returns all paths assigned to a given command",
+  "Name": "KeyboardShortcutCommand.Paths",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef ksCommandPaths(ksc):\r\n\tif ksc.__repr__() == 'KeyboardShortcutCommand': return ksc.Paths\r\n\telse: return []\r\n\r\nOUT = process_input(ksCommandPaths,IN[0])",
+      "VariableInputPorts": true,
+      "Id": "d3e66e2ad64f4e1e9503e3b8cad2160e",
+      "Inputs": [
+        {
+          "Id": "48e28775290546c1ad2e91757c6f1527",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d6cec5f794874917ba4c2901d28fca37",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "keyboardShortcutCommand",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "301cf359bf664c50ae32c41aad6c1cf6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "73f73ed76425430081ff92602a982024",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "seq",
+      "Id": "71c97937febb46c982c3e58235384048",
+      "Inputs": [
+        {
+          "Id": "cb0f5c0fd76f4b40a045d30e08bee1f1",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d6cec5f794874917ba4c2901d28fca37",
+      "End": "cb0f5c0fd76f4b40a045d30e08bee1f1",
+      "Id": "70d4790207794aed9f10ffdcb79ad1d1"
+    },
+    {
+      "Start": "73f73ed76425430081ff92602a982024",
+      "End": "48e28775290546c1ad2e91757c6f1527",
+      "Id": "18369238491d4ce6a462e129e618fc9d"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "d3e66e2ad64f4e1e9503e3b8cad2160e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 272.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "301cf359bf664c50ae32c41aad6c1cf6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -47.5,
+        "Y": 0.0
+      },
+      {
+        "Id": "71c97937febb46c982c3e58235384048",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 496.5,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "Uuid": "f450cb47-c061-4709-b9d3-ed58afbe2788",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Helpers.Query",
+  "Description": "Lists all JournalTimeStamp types",
+  "Name": "Helpers.AllJournalTimeStampTypes",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "645d9d186b0e43a3ac4b9719369a6b26",
+      "Name": "String",
+      "Type": "string",
+      "Value": "\r\n",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "84c9a96bb1a84db0a968600af11f34bc",
+      "Name": "String",
+      "Type": "string",
+      "Value": "C\r\nE\r\nH",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "f25f3a7d77d84d99b73b445224309b6a",
+      "Inputs": [
+        {
+          "Id": "ccb59f022b3242efac95482906e723a8",
+          "Name": "str",
+          "Description": "String to split up.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9a0f78907e8a4672ae6437e05ba80fad",
+          "Name": "separater0",
+          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fa0d9ecaf08f4b29abfeb1aec800b2b7",
+          "Name": "strings",
+          "Description": "List of strings made from the input string.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "\r\n",
+      "Id": "645d9d186b0e43a3ac4b9719369a6b26",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2d7138468a414319ae02a35b3a3cbf51",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C\r\nE\r\nH",
+      "Id": "84c9a96bb1a84db0a968600af11f34bc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "eae725aa184b4336a72c89b4ac72c26f",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "seq",
+      "Id": "65bd53589aca4d148cfd8b321b6a5338",
+      "Inputs": [
+        {
+          "Id": "ae4b4bf5556d44be861a12b42b145bbc",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "fa0d9ecaf08f4b29abfeb1aec800b2b7",
+      "End": "ae4b4bf5556d44be861a12b42b145bbc",
+      "Id": "5c02c336612c4d619d3e5a9f785786b7"
+    },
+    {
+      "Start": "2d7138468a414319ae02a35b3a3cbf51",
+      "End": "9a0f78907e8a4672ae6437e05ba80fad",
+      "Id": "a8f390bbb2be4c45b6b3c1a349423caa"
+    },
+    {
+      "Start": "eae725aa184b4336a72c89b4ac72c26f",
+      "End": "ccb59f022b3242efac95482906e723a8",
+      "Id": "eb57f06b7f7c4d91bcc9111ba94b5aa1"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "f25f3a7d77d84d99b73b445224309b6a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String.Split",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 523.513510231971,
+        "Y": 118.3161083755
+      },
+      {
+        "Id": "645d9d186b0e43a3ac4b9719369a6b26",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 364.513510231971,
+        "Y": 189.3161083755
+      },
+      {
+        "Id": "84c9a96bb1a84db0a968600af11f34bc",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 364.513510231971,
+        "Y": 73.3161083755
+      },
+      {
+        "Id": "65bd53589aca4d148cfd8b321b6a5338",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 853.513510231971,
+        "Y": 118.3161083755
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
