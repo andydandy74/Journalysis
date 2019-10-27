@@ -1,0 +1,1193 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Journals_PythonExamples",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "19fd1f7bc2dc4f959b5f26ec82af2d4a",
+      "Name": "File Path",
+      "Type": "string",
+      "Value": "..\\..\\..\\Journals\\Journals\\journal.0140.txt",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "Id": "0f1af498c70e4ed394a4db849be13963",
+      "Name": "String",
+      "Type": "string",
+      "Value": "JournalAPIMessage",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "beb9966c47ac4229bc74ac3d497d8604",
+      "Name": "String",
+      "Type": "string",
+      "Value": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tOUT = set([x.MessageText for x in IN[0].GetLinesByTypeAndProperty('JournalAPIMessage', 'MessageType', 'Error')])",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "76e9041a8a2e43e6819ccf04533de745",
+      "Name": "String",
+      "Type": "string",
+      "Value": "JournalCommand",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "fafd77cc65dc41c0b13bdcee61c79eb7",
+      "Name": "String",
+      "Type": "string",
+      "Value": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tOUT = set([x.CommandID for x in IN[0].GetLinesByTypeAndProperty('JournalCommand', 'CommandType', 'KeyboardShortcut')])",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "242f0ae1ff27441aabbb0d1aee98dff6",
+      "Name": "String",
+      "Type": "string",
+      "Value": "CommandType",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "7dee2d5c58d946ffb863ba056ee3f378",
+      "Name": "String",
+      "Type": "string",
+      "Value": "KeyboardShortcut",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "c1bc8dd18e4243608415ed5b61916c98",
+      "Name": "String",
+      "Type": "string",
+      "Value": "MessageType",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "6a53fd3fff2440ff9583d15c863e7e00",
+      "Name": "String",
+      "Type": "string",
+      "Value": "Error",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "U:\\Journals\\Journals\\journal.0140.txt",
+      "InputValue": "..\\..\\..\\Journals\\Journals\\journal.0140.txt",
+      "NodeType": "ExtensionNode",
+      "Id": "19fd1f7bc2dc4f959b5f26ec82af2d4a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c5b45a7fdaca42d5b1b6134d60ef28d9",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "JournalAPIMessage",
+      "Id": "0f1af498c70e4ed394a4db849be13963",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "10878b1b9c5b455d837a2093a032b162",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "72e1782d-a35d-4dd9-927e-96e46058adb3",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "d99f0e8e7a334e6d9bc7f8178e973b79",
+      "Inputs": [
+        {
+          "Id": "00fcddba7ae043639ff6310f61e71641",
+          "Name": "journalAPIMessage",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d78e56f7c9fa42a4b6b4f63cc06c402e",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": ""
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.UniqueItems@var[]..[]",
+      "Id": "4ba9e9503847469db000f1cec0f238e3",
+      "Inputs": [
+        {
+          "Id": "45060dda9e6a48d68e1bd2810d772fb3",
+          "Name": "list",
+          "Description": "List to filter duplicates out of.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f04eed4f455c43759f2a096f6f8b6698",
+          "Name": "list",
+          "Description": "Filtered list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a new list containing all unique items in the given list.\n\nList.UniqueItems (list: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tOUT = set([x.MessageText for x in IN[0].GetLinesByTypeAndProperty('JournalAPIMessage', 'MessageType', 'Error')])",
+      "Id": "beb9966c47ac4229bc74ac3d497d8604",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5b5b75305af0411995d5a2d42e91792e",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "acba6f22aef34f8388b4450d45ca81a1",
+      "Inputs": [
+        {
+          "Id": "7c0fa1a827c34b0499fa40cd28564dd4",
+          "Name": "script",
+          "Description": "Python script to run.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ec27f101e9eb4194ac1da1d9ae95bdc9",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1e5a4427817b4abf8447f6a21c683f75",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs a IronPython script from a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "8f36ab0438a149128a46e06eab5a37f6",
+      "Inputs": [
+        {
+          "Id": "ef642778b95647d3a52e86235827c2fd",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "efeb19d1136a477db66ec88314f2d1d5",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "311c87bdccc94826a92c4e05d0dc3fcb",
+      "Inputs": [
+        {
+          "Id": "901cd0dc20984d63a56c0cb7f03f0aac",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d8141a89a9f84db6a950e1210ba38494",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "JournalCommand",
+      "Id": "76e9041a8a2e43e6819ccf04533de745",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "72d16f08e078496eaaacb49610fa9ca3",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tOUT = set([x.CommandID for x in IN[0].GetLinesByTypeAndProperty('JournalCommand', 'CommandType', 'KeyboardShortcut')])",
+      "Id": "fafd77cc65dc41c0b13bdcee61c79eb7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4d83966f783b4502aa9632d4eeb631dc",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "9663ce43-d035-41e9-a06d-8c31ea3e37c3",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "eaea0d2e996e488284c6103a3f4aaf58",
+      "Inputs": [
+        {
+          "Id": "0520f2a58c0c46b59d48624329a6ffb1",
+          "Name": "journalCommand",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d863c43698c947bc8c836a277c84bbf8",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": ""
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.UniqueItems@var[]..[]",
+      "Id": "97390607fa1c4d2a9bf88340c635c14c",
+      "Inputs": [
+        {
+          "Id": "bd5c2e78f01c4ca7baf06f115d5efd4f",
+          "Name": "list",
+          "Description": "List to filter duplicates out of.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "94397696654240e7a05aa91538653108",
+          "Name": "list",
+          "Description": "Filtered list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a new list containing all unique items in the given list.\n\nList.UniqueItems (list: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "6863eabbfce84efeaf0f31c4f5018b6b",
+      "Inputs": [
+        {
+          "Id": "c9d5731a52104d05acb847019474fa11",
+          "Name": "script",
+          "Description": "Python script to run.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "36cd6a9e2e1e4fd6852738cc762ae32b",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d91f454c504b4841bfd6263fc3b7715c",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs a IronPython script from a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "ca1305de5b1142b9815c69557ab989e8",
+      "Inputs": [
+        {
+          "Id": "bb3e9283a044436bac8585874c3ca205",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "227890820c2e489d9fe9dc784637dc0e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "08cdb0688922419998b77337a4fd9f13",
+      "Inputs": [
+        {
+          "Id": "d2c93a7386e046c6b8026acbff4132a5",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c289d05018f420ba8b8e1212a9dd731",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "34868ba5-6614-4415-b848-e36578fd5462",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "25967537a57142d1a6b5ecd1690e9004",
+      "Inputs": [
+        {
+          "Id": "7065ca05ff1643c5a5141fb360119501",
+          "Name": "journal",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "258dc720d9bb46c88476e20b038022d7",
+          "Name": "journalLineType",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d45f8006cd0242f49b497ce75151bc17",
+          "Name": "property",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "02137d9e21f649778b8b542bd10afb22",
+          "Name": "value",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a5b5f203e82f486da820dba6defeb858",
+          "Name": "journalLines",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": ""
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "CommandType",
+      "Id": "242f0ae1ff27441aabbb0d1aee98dff6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "34fd02fe70724badb7e174e31ea73a2c",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "KeyboardShortcut",
+      "Id": "7dee2d5c58d946ffb863ba056ee3f378",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6b73153cdb5b40a49412f5ac4c3aeacf",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "MessageType",
+      "Id": "c1bc8dd18e4243608415ed5b61916c98",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "43af46d28a4a4f8f81eaec857899a2a7",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Error",
+      "Id": "6a53fd3fff2440ff9583d15c863e7e00",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a19376d8d93247f9806e1cb56e3345c0",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "34868ba5-6614-4415-b848-e36578fd5462",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "5f7a13d4b4644b76a9ef2b8381214d43",
+      "Inputs": [
+        {
+          "Id": "4b70c194b3d9472caf16887092a4f3ca",
+          "Name": "journal",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9c5348f23ff34fc088588b7fcf20e043",
+          "Name": "journalLineType",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0509c3d47aca4583999d4ccc78d52f1f",
+          "Name": "property",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "579bfb8db352437e9a829288bbc6470d",
+          "Name": "value",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ba4449e263ae4f03bec885a392660de4",
+          "Name": "journalLines",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": ""
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "77141d35-29af-4172-ab94-7d688a42917b",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "bcecb666c01442c281a0c4e2a21adaef",
+      "Inputs": [
+        {
+          "Id": "5bcfe011de33402b972dc605ba6297aa",
+          "Name": "path",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "07401cde71244f8587bbb7e5ebf4c989",
+          "Name": "journal",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a queryable object from the contents of a Revit journal file"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "c5b45a7fdaca42d5b1b6134d60ef28d9",
+      "End": "5bcfe011de33402b972dc605ba6297aa",
+      "Id": "bfe67006772b4475b62ce5576d160f97"
+    },
+    {
+      "Start": "10878b1b9c5b455d837a2093a032b162",
+      "End": "9c5348f23ff34fc088588b7fcf20e043",
+      "Id": "0894403e28de4b449590f19484f12da4"
+    },
+    {
+      "Start": "d78e56f7c9fa42a4b6b4f63cc06c402e",
+      "End": "45060dda9e6a48d68e1bd2810d772fb3",
+      "Id": "95752709b3914587bf625aec2b3d7f54"
+    },
+    {
+      "Start": "f04eed4f455c43759f2a096f6f8b6698",
+      "End": "ef642778b95647d3a52e86235827c2fd",
+      "Id": "ee10df53060544b0a7a34e32e2353cb9"
+    },
+    {
+      "Start": "5b5b75305af0411995d5a2d42e91792e",
+      "End": "7c0fa1a827c34b0499fa40cd28564dd4",
+      "Id": "96e194a926e649e6b3f3ebe722b37bb8"
+    },
+    {
+      "Start": "1e5a4427817b4abf8447f6a21c683f75",
+      "End": "901cd0dc20984d63a56c0cb7f03f0aac",
+      "Id": "4e289d0920394c3b9f6403ff2c9c45ff"
+    },
+    {
+      "Start": "72d16f08e078496eaaacb49610fa9ca3",
+      "End": "258dc720d9bb46c88476e20b038022d7",
+      "Id": "a2d0b68b7cd24a05a959d71ebb11ecca"
+    },
+    {
+      "Start": "4d83966f783b4502aa9632d4eeb631dc",
+      "End": "c9d5731a52104d05acb847019474fa11",
+      "Id": "17e2d404d146486eb55743be497c3083"
+    },
+    {
+      "Start": "d863c43698c947bc8c836a277c84bbf8",
+      "End": "bd5c2e78f01c4ca7baf06f115d5efd4f",
+      "Id": "da794d285cd141f4b018dff9b28c325d"
+    },
+    {
+      "Start": "94397696654240e7a05aa91538653108",
+      "End": "bb3e9283a044436bac8585874c3ca205",
+      "Id": "6d97e1b85df64effb5aa5ff3835c4f97"
+    },
+    {
+      "Start": "d91f454c504b4841bfd6263fc3b7715c",
+      "End": "d2c93a7386e046c6b8026acbff4132a5",
+      "Id": "b355dcca1a6448a3ae2c8184635e813c"
+    },
+    {
+      "Start": "a5b5f203e82f486da820dba6defeb858",
+      "End": "0520f2a58c0c46b59d48624329a6ffb1",
+      "Id": "59a2b73c7c3d4e5a82702faf14aa3027"
+    },
+    {
+      "Start": "34fd02fe70724badb7e174e31ea73a2c",
+      "End": "d45f8006cd0242f49b497ce75151bc17",
+      "Id": "478ed60b82cd4f9d9181a9b141ac0fa2"
+    },
+    {
+      "Start": "6b73153cdb5b40a49412f5ac4c3aeacf",
+      "End": "02137d9e21f649778b8b542bd10afb22",
+      "Id": "448506d04b2146168618bb524a31e0bb"
+    },
+    {
+      "Start": "43af46d28a4a4f8f81eaec857899a2a7",
+      "End": "0509c3d47aca4583999d4ccc78d52f1f",
+      "Id": "e6c149b3826543e5ab0bd0a4dde94a37"
+    },
+    {
+      "Start": "a19376d8d93247f9806e1cb56e3345c0",
+      "End": "579bfb8db352437e9a829288bbc6470d",
+      "Id": "a02e51d8634244e2b554e33aa0beb3df"
+    },
+    {
+      "Start": "ba4449e263ae4f03bec885a392660de4",
+      "End": "00fcddba7ae043639ff6310f61e71641",
+      "Id": "544b6474d1ac4e4ba405babd01724925"
+    },
+    {
+      "Start": "07401cde71244f8587bbb7e5ebf4c989",
+      "End": "4b70c194b3d9472caf16887092a4f3ca",
+      "Id": "16ce127d754e44cab8fce5199f062faa"
+    },
+    {
+      "Start": "07401cde71244f8587bbb7e5ebf4c989",
+      "End": "ec27f101e9eb4194ac1da1d9ae95bdc9",
+      "Id": "780ad819be7847fc8309c040484da898"
+    },
+    {
+      "Start": "07401cde71244f8587bbb7e5ebf4c989",
+      "End": "36cd6a9e2e1e4fd6852738cc762ae32b",
+      "Id": "ab2c847d6f6a44778f7f9728017809eb"
+    },
+    {
+      "Start": "07401cde71244f8587bbb7e5ebf4c989",
+      "End": "7065ca05ff1643c5a5141fb360119501",
+      "Id": "0d94180369ef442ca51350269bc5122e"
+    }
+  ],
+  "Dependencies": [
+    "72e1782d-a35d-4dd9-927e-96e46058adb3",
+    "9663ce43-d035-41e9-a06d-8c31ea3e37c3",
+    "34868ba5-6614-4415-b848-e36578fd5462",
+    "77141d35-29af-4172-ab94-7d688a42917b"
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "19fd1f7bc2dc4f959b5f26ec82af2d4a",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1192.3845162967,
+        "Y": -2253.89986840554
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "0f1af498c70e4ed394a4db849be13963",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -548.536830802569,
+        "Y": -2700.49328443872
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JournalAPIMessage.Text",
+        "Id": "d99f0e8e7a334e6d9bc7f8178e973b79",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 11.7426379205863,
+        "Y": -2702.59388431725
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.UniqueItems",
+        "Id": "4ba9e9503847469db000f1cec0f238e3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 324.540370187478,
+        "Y": -2703.75327891838
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "beb9966c47ac4229bc74ac3d497d8604",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -340.431312317274,
+        "Y": -2491.74975277919
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
+        "Id": "acba6f22aef34f8388b4450d45ca81a1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -46.3994233465257,
+        "Y": -2494.98087243821
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "8f36ab0438a149128a46e06eab5a37f6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 536.717227796408,
+        "Y": -2702.67623903204
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "311c87bdccc94826a92c4e05d0dc3fcb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 200.232080968358,
+        "Y": -2496.521670165
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "76e9041a8a2e43e6819ccf04533de745",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -554.083625820413,
+        "Y": -2191.79775130068
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "fafd77cc65dc41c0b13bdcee61c79eb7",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -291.108289047071,
+        "Y": -2008.11335389865
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JournalCommand.ID",
+        "Id": "eaea0d2e996e488284c6103a3f4aaf58",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7.20932411496551,
+        "Y": -2189.64771539648
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.UniqueItems",
+        "Id": "97390607fa1c4d2a9bf88340c635c14c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 315.933365643124,
+        "Y": -2193.11652485185
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
+        "Id": "6863eabbfce84efeaf0f31c4f5018b6b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -23.2448868920605,
+        "Y": -2007.55849872839
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "ca1305de5b1142b9815c69557ab989e8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 533.312091513134,
+        "Y": -2194.27279467031
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "08cdb0688922419998b77337a4fd9f13",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 210.366862314705,
+        "Y": -2010.14549572924
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Journal.GetLinesByTypeAndProperty",
+        "Id": "25967537a57142d1a6b5ecd1690e9004",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -341.953190491088,
+        "Y": -2190.8386870398
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "242f0ae1ff27441aabbb0d1aee98dff6",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -538.881765889828,
+        "Y": -2123.49819719438
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "7dee2d5c58d946ffb863ba056ee3f378",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -549.316358966598,
+        "Y": -2052.17034725195
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "c1bc8dd18e4243608415ed5b61916c98",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -536.046872532863,
+        "Y": -2628.12961291508
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "6a53fd3fff2440ff9583d15c863e7e00",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -532.367889524448,
+        "Y": -2555.51871060127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Journal.GetLinesByTypeAndProperty",
+        "Id": "5f7a13d4b4644b76a9ef2b8381214d43",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -342.311036050617,
+        "Y": -2700.34364836219
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Journal.ByPath",
+        "Id": "bcecb666c01442c281a0c4e2a21adaef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -891.16993659593,
+        "Y": -2249.8014973213
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "57f8b93d0c71471d9495383295a5f9ec",
+        "Title": "Evaluate Journal",
+        "Nodes": [
+          "bcecb666c01442c281a0c4e2a21adaef"
+        ],
+        "Left": -901.16993659593,
+        "Top": -2331.8014973213,
+        "Width": 210.0,
+        "Height": 175.0,
+        "FontSize": 30.0,
+        "InitialTop": -2249.8014973213,
+        "InitialHeight": 201.530215721562,
+        "TextblockHeight": 72.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7f0af76a43ec4354bbde87daeb7c6821",
+        "Title": "INPUT",
+        "Nodes": [
+          "19fd1f7bc2dc4f959b5f26ec82af2d4a"
+        ],
+        "Left": -1202.3845162967,
+        "Top": -2299.89986840554,
+        "Width": 260.0,
+        "Height": 140.0,
+        "FontSize": 30.0,
+        "InitialTop": -2253.89986840554,
+        "InitialHeight": 126.0,
+        "TextblockHeight": 36.0,
+        "Background": "#FF848484"
+      },
+      {
+        "Id": "1686d9f788b940358b18cef0f006a4d8",
+        "Title": "Extract unique list of API error messages",
+        "Nodes": [
+          "0f1af498c70e4ed394a4db849be13963",
+          "d99f0e8e7a334e6d9bc7f8178e973b79",
+          "4ba9e9503847469db000f1cec0f238e3",
+          "beb9966c47ac4229bc74ac3d497d8604",
+          "acba6f22aef34f8388b4450d45ca81a1",
+          "8f36ab0438a149128a46e06eab5a37f6",
+          "311c87bdccc94826a92c4e05d0dc3fcb",
+          "5f7a13d4b4644b76a9ef2b8381214d43",
+          "c1bc8dd18e4243608415ed5b61916c98",
+          "6a53fd3fff2440ff9583d15c863e7e00"
+        ],
+        "Left": -558.536830802569,
+        "Top": -2749.75327891838,
+        "Width": 1183.2540585989771,
+        "Height": 455.00352613918994,
+        "FontSize": 30.0,
+        "InitialTop": -2703.75327891838,
+        "InitialHeight": 445.096780677753,
+        "TextblockHeight": 36.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "a9318916eeb74cbb9a7b4f6e9adf37db",
+        "Title": "Extract unique list of commands triggered by a keyboard shortcut",
+        "Nodes": [
+          "76e9041a8a2e43e6819ccf04533de745",
+          "fafd77cc65dc41c0b13bdcee61c79eb7",
+          "eaea0d2e996e488284c6103a3f4aaf58",
+          "97390607fa1c4d2a9bf88340c635c14c",
+          "6863eabbfce84efeaf0f31c4f5018b6b",
+          "ca1305de5b1142b9815c69557ab989e8",
+          "08cdb0688922419998b77337a4fd9f13",
+          "25967537a57142d1a6b5ecd1690e9004",
+          "7dee2d5c58d946ffb863ba056ee3f378",
+          "242f0ae1ff27441aabbb0d1aee98dff6"
+        ],
+        "Left": -564.083625820413,
+        "Top": -2240.27279467031,
+        "Width": 1185.3957173335471,
+        "Height": 445.15944077165977,
+        "FontSize": 30.0,
+        "InitialTop": -2194.27279467031,
+        "InitialHeight": 464.159440771658,
+        "TextblockHeight": 36.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "ed7133f36dc54e1ab035e7669be547f6",
+        "Title": "This sample shows how you can achieve the same goal using nodes or Python code.",
+        "Nodes": [],
+        "Left": -1198.17574058202,
+        "Top": -2369.17911576643,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 395.48830852078527,
+    "Y": 1192.4488746681379,
+    "Zoom": 0.3050373130933593
+  }
+}
