@@ -1,7 +1,7 @@
 {
   "Uuid": "87ad3e95-f27d-4681-9952-02d475be154e",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes the date of a given journal",
   "Name": "Journal.Date",
   "ElementResolver": {

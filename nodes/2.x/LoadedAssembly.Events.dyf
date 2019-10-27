@@ -1,7 +1,7 @@
 {
   "Uuid": "e71eb176-a547-4c33-8645-44d4e9d75235",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns all journal lines associated with a given LoadedAssembly. \r\nATTENTION: Note that this will most likely not catch all AddedPushbutton events of a given assembly.",
   "Name": "LoadedAssembly.Events",
   "ElementResolver": {

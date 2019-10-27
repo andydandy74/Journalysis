@@ -1,7 +1,7 @@
 {
   "Uuid": "6f3c3f41-a87d-42e6-bd54-7bd28319f5fd",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the file name of a given LoadedAssembly",
   "Name": "LoadedAssembly.Filename",
   "ElementResolver": {

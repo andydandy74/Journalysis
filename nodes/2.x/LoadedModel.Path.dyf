@@ -1,7 +1,7 @@
 {
   "Uuid": "d274ea6f-b3db-4828-96ea-7ec0c8032062",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedModel.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the Rpath of a loaded model",
   "Name": "LoadedModel.Path",
   "ElementResolver": {

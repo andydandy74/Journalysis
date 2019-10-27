@@ -1,7 +1,7 @@
 {
   "Uuid": "f551e0d9-ddda-46b8-bb06-456d45188f46",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Retrieves all JournalLines of a given block from a given journal",
   "Name": "Journal.LinesByBlock",
   "ElementResolver": {

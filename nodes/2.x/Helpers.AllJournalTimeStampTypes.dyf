@@ -1,7 +1,7 @@
 {
   "Uuid": "f450cb47-c061-4709-b9d3-ed58afbe2788",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all JournalTimeStamp types",
   "Name": "Helpers.AllJournalTimeStampTypes",
   "ElementResolver": {

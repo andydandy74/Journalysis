@@ -1,7 +1,7 @@
 {
   "Uuid": "63d6e59f-2013-4ceb-8c6d-e0d0849d6d87",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the original path of a given journal",
   "Name": "Journal.Path",
   "ElementResolver": {

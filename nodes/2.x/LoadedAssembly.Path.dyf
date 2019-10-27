@@ -1,7 +1,7 @@
 {
   "Uuid": "540981fd-dede-455c-963f-fefa5ab1df16",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the path of a given LoadedAssembly",
   "Name": "LoadedAssembly.Path",
   "ElementResolver": {

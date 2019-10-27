@@ -1,7 +1,7 @@
 {
   "Uuid": "8f11a593-98d8-4175-9e44-9b639f515493",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the number of lines in a given journal",
   "Name": "Journal.LineCount",
   "ElementResolver": {

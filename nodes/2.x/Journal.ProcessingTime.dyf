@@ -1,7 +1,7 @@
 {
   "Uuid": "d6c5d44c-06f3-45c1-83a9-ef152295ef7e",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the time it took the Journal.ByString node to process a given journal",
   "Name": "Journal.ProcessingTime",
   "ElementResolver": {

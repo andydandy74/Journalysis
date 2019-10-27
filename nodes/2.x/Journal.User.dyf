@@ -1,7 +1,7 @@
 {
   "Uuid": "96e032da-c038-4603-be1d-136b9110f56c",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the Revit user name from a given journal",
   "Name": "Journal.User",
   "ElementResolver": {

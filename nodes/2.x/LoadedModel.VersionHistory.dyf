@@ -1,7 +1,7 @@
 {
   "Uuid": "3787115e-1d49-4648-b196-a7a920807903",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedModel.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves the version history of a loaded model",
   "Name": "LoadedModel.VersionHistory",
   "ElementResolver": {

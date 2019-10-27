@@ -1,7 +1,7 @@
 {
   "Uuid": "ef6753f4-b23f-4152-b90f-1e9b36af09cd",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Pulls a list of all loaded assemblies (i.e. addin DLLs) from a given journal",
   "Name": "Journal.LoadedAssemblies",
   "ElementResolver": {

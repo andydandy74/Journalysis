@@ -1,7 +1,7 @@
 {
   "Uuid": "fb003228-26ab-47bd-b46c-6dbafab4a466",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedModel.LoadedModelEvent.Query",
+  "Category": "Journalysis.Journal.LoadedModel.Query",
   "Description": "Returns the date and time of a given LoadedModelEvent",
   "Name": "LoadedModelEvent.DateTime",
   "ElementResolver": {

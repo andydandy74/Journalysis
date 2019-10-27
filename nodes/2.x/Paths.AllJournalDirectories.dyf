@@ -1,7 +1,7 @@
 {
   "Uuid": "a323d9d0-0a3d-4329-b12c-ccb55bb10d8d",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Paths.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Retrieves a list of all journal folders on the current machine",
   "Name": "Paths.AllJournalDirectories",
   "ElementResolver": {

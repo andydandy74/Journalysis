@@ -1,7 +1,7 @@
 {
   "Uuid": "97f1a4f8-4fbe-43ba-80cc-99418458b52d",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the Revit branch from a given journal",
   "Name": "Journal.RevitBranch",
   "ElementResolver": {

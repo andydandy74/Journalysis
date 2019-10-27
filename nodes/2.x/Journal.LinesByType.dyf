@@ -1,7 +1,7 @@
 {
   "Uuid": "5fa50a37-dad4-4723-9030-912e3cde1c72",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Retrieves all JournalLines of a given type from a given journal",
   "Name": "Journal.LinesByType",
   "ElementResolver": {

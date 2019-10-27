@@ -1,7 +1,7 @@
 {
   "Uuid": "bea14f73-f2e5-4835-a7d2-6225b265e6a1",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the GUID of a given LoadedAssembly",
   "Name": "LoadedAssembly.GUID",
   "ElementResolver": {

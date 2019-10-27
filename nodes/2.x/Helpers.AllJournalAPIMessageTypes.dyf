@@ -1,7 +1,7 @@
 {
   "Uuid": "66f857f6-f78a-4d27-ad04-27c73bf89e17",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all JournalAPIMessage types",
   "Name": "Helpers.AllJournalAPIMessageTypes",
   "ElementResolver": {

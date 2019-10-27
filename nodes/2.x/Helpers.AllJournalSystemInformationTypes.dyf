@@ -1,7 +1,7 @@
 {
   "Uuid": "5dd1db91-8d90-49df-9678-e8fdf844dc3b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all JournalSystemInformation types",
   "Name": "Helpers.AllJournalSystemInformationTypes",
   "ElementResolver": {

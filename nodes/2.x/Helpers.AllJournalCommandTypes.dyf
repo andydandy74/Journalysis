@@ -1,7 +1,7 @@
 {
   "Uuid": "f2264349-34eb-422c-9974-8282c9c151a5",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all known JournalCommand types",
   "Name": "Helpers.AllJournalCommandTypes",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "ee4d7efd-1342-423b-b478-868ae64146d1",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all JournalMouseEvent types",
   "Name": "Helpers.AllJournalMouseEventTypes",
   "ElementResolver": {

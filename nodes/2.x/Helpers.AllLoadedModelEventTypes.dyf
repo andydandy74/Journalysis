@@ -1,7 +1,7 @@
 {
   "Uuid": "005220dc-d3a7-4b69-8570-5be3f00afbed",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all LoadedModelEvent types",
   "Name": "Helpers.AllLoadedModelEventTypes",
   "ElementResolver": {

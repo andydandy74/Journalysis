@@ -1,7 +1,7 @@
 {
   "Uuid": "fceeb8b6-20cb-4e8d-ab20-3a008f4eddb3",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Strips all comments from the original journal string and only returns all (re-formatted) lines that are potentially relevant for journal playback.",
   "Name": "Journal.StripComments",
   "ElementResolver": {

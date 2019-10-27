@@ -1,7 +1,7 @@
 {
   "Uuid": "39b7ba55-86da-42ab-b154-52ea0e68fdc6",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the vendor information of a given LoadedAssembly",
   "Name": "LoadedAssembly.Vendor",
   "ElementResolver": {

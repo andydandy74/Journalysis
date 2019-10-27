@@ -1,7 +1,7 @@
 {
   "Uuid": "e9fafde2-1cc8-4dc7-807d-cf007c0f82d5",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Retrieves all lines of a given journal that fall in a given time window. At least one DateTime needs to be given (from or to).",
   "Name": "Journal.LinesByDateTime",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "56f1e702-4d21-4726-8fa9-e00e91de22ea",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Gets the first N lines of a given journal (faster than OOTB list operations).",
   "Name": "Journal.FirstLines",
   "ElementResolver": {

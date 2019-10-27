@@ -1,7 +1,7 @@
 {
   "Uuid": "38f6d55b-d7bc-43c0-b5b2-5fa2f9f62c33",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Paths.Actions",
+  "Category": "Journalysis.Journal.Actions",
   "Description": "Retrieves the path of the journal directory for a given Revit version.",
   "Name": "Paths.JournalDirectoryByVersion",
   "ElementResolver": {

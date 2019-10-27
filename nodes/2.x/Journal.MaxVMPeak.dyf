@@ -1,7 +1,7 @@
 {
   "Uuid": "960f285f-776b-42dd-a592-5d72e256f8d9",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes the maximum VM used during a Revit session based on the given journal",
   "Name": "Journal.MaxVMPeak",
   "ElementResolver": {

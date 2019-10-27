@@ -1,7 +1,7 @@
 {
   "Uuid": "254394c3-2850-4cc1-bdad-8e1618b0fbfe",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the Revit version from a given journal",
   "Name": "Journal.RevitVersion",
   "ElementResolver": {

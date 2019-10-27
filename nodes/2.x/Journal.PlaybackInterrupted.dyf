@@ -1,7 +1,7 @@
 {
   "Uuid": "1cd5b108-376d-4782-b01c-834484999b9c",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes whether playback was interrupted for the given journal",
   "Name": "Journal.PlaybackInterrupted",
   "ElementResolver": {

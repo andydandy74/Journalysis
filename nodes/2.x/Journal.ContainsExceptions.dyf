@@ -1,7 +1,7 @@
 {
   "Uuid": "27ac9ebf-007d-4b0a-aaa4-470f8b9aa368",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes whether a given journal contains any exceptions",
   "Name": "Journal.ContainsExceptions",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "f2d97893-4e1c-4bbb-a196-27833b8b371c",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the Windows version from a given journal",
   "Name": "Journal.OSVersion",
   "ElementResolver": {

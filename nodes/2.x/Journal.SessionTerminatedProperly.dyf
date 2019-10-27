@@ -1,7 +1,7 @@
 {
   "Uuid": "d9894328-54f0-4d68-9245-dde4f4c62fef",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes whether the Revit session  of the given journal was terminated properly",
   "Name": "Journal.SessionTerminatedProperly",
   "ElementResolver": {

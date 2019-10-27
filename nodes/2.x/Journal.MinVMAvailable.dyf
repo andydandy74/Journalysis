@@ -1,7 +1,7 @@
 {
   "Uuid": "cc6ae9d0-84c9-4c4c-9309-3a060bfb3c8b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes the minimum VM available during a Revit session based on the given journal",
   "Name": "Journal.MinVMAvailable",
   "ElementResolver": {

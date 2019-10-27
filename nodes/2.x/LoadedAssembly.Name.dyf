@@ -1,7 +1,7 @@
 {
   "Uuid": "237cd2e3-1f9f-4f96-b80e-e6e4460ccc9a",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.LoadedAssembly.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the name of a given LoadedAssembly",
   "Name": "LoadedAssembly.Name",
   "ElementResolver": {

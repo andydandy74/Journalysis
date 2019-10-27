@@ -1,7 +1,7 @@
 {
   "Uuid": "c2a778e7-f058-4018-b0ec-272020192d0b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes the time it took Revit to display the startup screen based on the given journal",
   "Name": "Journal.StartupTime",
   "ElementResolver": {

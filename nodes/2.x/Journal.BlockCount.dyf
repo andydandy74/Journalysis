@@ -1,7 +1,7 @@
 {
   "Uuid": "027f774d-4b6e-416e-86e8-ddaace6c3730",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the number of blocks in a given journal",
   "Name": "Journal.BlockCount",
   "ElementResolver": {

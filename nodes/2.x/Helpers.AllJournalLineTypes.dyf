@@ -1,7 +1,7 @@
 {
   "Uuid": "8a565703-8301-4b87-9dc0-37db9ec7041a",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Helpers.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Lists all JournalLine types",
   "Name": "Helpers.AllJournalLineTypes",
   "ElementResolver": {

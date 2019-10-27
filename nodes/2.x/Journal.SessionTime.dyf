@@ -1,7 +1,7 @@
 {
   "Uuid": "1905c2ec-76fe-45b8-85f4-8659a21533d1",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes the entire Revit session time based on the given journal",
   "Name": "Journal.SessionTime",
   "ElementResolver": {

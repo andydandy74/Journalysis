@@ -1,7 +1,7 @@
 {
   "Uuid": "053d4cb7-3ff9-4b24-bb50-b9e2c05509c5",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Computes whether a given journal is in playback mode",
   "Name": "Journal.IsInPlaybackMode",
   "ElementResolver": {

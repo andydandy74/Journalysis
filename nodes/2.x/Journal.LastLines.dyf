@@ -1,7 +1,7 @@
 {
   "Uuid": "9e585478-8fee-434b-9b99-842d59bad37f",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Gets the last N lines of a given journal (faster than OOTB list operations).",
   "Name": "Journal.LastLines",
   "ElementResolver": {

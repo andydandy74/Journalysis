@@ -1,7 +1,7 @@
 {
   "Uuid": "77141d35-29af-4172-ab94-7d688a42917b",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Create",
+  "Category": "Journalysis.Create",
   "Description": "Creates a queryable object from the contents of a Revit journal file",
   "Name": "Journal.ByPath",
   "ElementResolver": {

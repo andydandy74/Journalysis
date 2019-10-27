@@ -1,7 +1,7 @@
 {
   "Uuid": "d3601e6c-25f0-4e4a-87bd-1ae618fecf5c",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the computer name from a given journal",
   "Name": "Journal.Machine",
   "ElementResolver": {

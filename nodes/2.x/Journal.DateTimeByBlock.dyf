@@ -1,7 +1,7 @@
 {
   "Uuid": "4d36fc94-7ac9-469b-ba85-dc70224c0aa2",
   "IsCustomNode": true,
-  "Category": "Journalysis.Journal.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Retrieves the DateTime of a given block from a given journal",
   "Name": "Journal.DateTimeByBlock",
   "ElementResolver": {
