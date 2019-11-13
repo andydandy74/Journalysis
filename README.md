@@ -2,10 +2,10 @@
 
 ![Journalysis logo](icons/raw/Journalysis.png)
 
-**Journalysis** is a Revit journal, worksharing log and keyboard shortcuts analysis package for the [Dynamo](http://www.dynamobim.com) visual programming environment. It is currently being developed in Dynamo 1.3 and has **not** been tested with Dynamo 2.x.
+**Journalysis** is a Revit journal, worksharing log and keyboard shortcuts analysis package for the [Dynamo](http://www.dynamobim.com) visual programming environment. 
 
 # Documentation
-This is still very much a work in progress. Since there is hardly any documentation on Revit journals, it is a slow process. I have started writing some documentation in the [wiki](https://github.com/andydandy74/Journalysis/wiki) that may, however, not always be up-to-date.
+This is still a bit of a work in progress. Since there is hardly any documentation on Revit journals, it is a slow process. I have started writing some documentation in the [wiki](https://github.com/andydandy74/Journalysis/wiki) that may, however, not always be up-to-date.
 
 # Goal
 This package is aimed at automating the analysis of Revit journals and worksharing logs for statistical purposes. Some possible use cases:
