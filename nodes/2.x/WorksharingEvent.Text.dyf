@@ -1,7 +1,7 @@
 {
   "Uuid": "7de2600e-a165-4798-baf8-6c10914cc340",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.WorksharingEvent.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the logged text of a given WorksharingEvent",
   "Name": "WorksharingEvent.Text",
   "ElementResolver": {

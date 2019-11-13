@@ -1,7 +1,7 @@
 {
   "Uuid": "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.SyncEvent.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the number of times that Reload Latest occured during a given SyncEvent",
   "Name": "SyncEvent.ReloadLatestCount",
   "ElementResolver": {

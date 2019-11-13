@@ -1,7 +1,7 @@
 {
   "Uuid": "9d1984f2-dbb0-41dc-8f13-902e3137cd59",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Create",
+  "Category": "Journalysis.Create",
   "Description": "Creates a queryable object from the content of a Revit KeyboardShortcuts.xml file",
   "Name": "KeyboardShortcuts.ByPath",
   "ElementResolver": {

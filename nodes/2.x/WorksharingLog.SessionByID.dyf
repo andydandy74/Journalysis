@@ -1,7 +1,7 @@
 {
   "Uuid": "fc9ef041-9b22-4547-b69f-2f92421f5964",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Retrieves a WorksharingSession from a WorksharingLog based on the session ID.",
   "Name": "WorksharingLog.SessionByID",
   "ElementResolver": {

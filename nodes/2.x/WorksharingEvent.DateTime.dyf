@@ -1,7 +1,7 @@
 {
   "Uuid": "a06fcfd9-a217-41f4-8469-f5e7e53acf5a",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.WorksharingEvent.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the date and time of a given WorksharingEvent",
   "Name": "WorksharingEvent.DateTime",
   "ElementResolver": {

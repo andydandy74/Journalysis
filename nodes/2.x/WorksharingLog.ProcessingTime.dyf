@@ -1,7 +1,7 @@
 {
   "Uuid": "653839b7-9b27-4644-877b-2461654f2c95",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the amount of time it took to process the given WorksharingLog",
   "Name": "WorksharingLog.ProcessingTime",
   "ElementResolver": {

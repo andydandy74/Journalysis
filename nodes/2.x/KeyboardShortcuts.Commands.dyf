@@ -1,7 +1,7 @@
 {
   "Uuid": "2901c738-a0a3-4e64-8eb2-40d1f4681352",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns all commands from a given KeyboardShirtcuts object",
   "Name": "KeyboardShortcuts.Commands",
   "ElementResolver": {

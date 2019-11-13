@@ -1,7 +1,7 @@
 {
   "Uuid": "d9fd7e94-d809-4f23-a5b8-cbdbf8d2649c",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Category": "Journalysis.WorksharingLog.Query",
   "Description": "Returns the Revit user name of a given WorksharingSession",
   "Name": "WorksharingSession.User",
   "ElementResolver": {

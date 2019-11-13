@@ -1,7 +1,7 @@
 {
   "Uuid": "04d7eca3-8497-415a-9fe2-b05cad2412f6",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Returns all commands that have a shortcut assigned from a given KeyboardShirtcuts object",
   "Name": "KeyboardShortcuts.CommandsWithShortcuts",
   "ElementResolver": {

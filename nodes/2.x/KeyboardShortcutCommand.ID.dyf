@@ -1,7 +1,7 @@
 {
   "Uuid": "58ec6d61-7f6c-4e24-9cc2-720e65369d87",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.KeyboardShortcutCommand.Query",
+  "Category": "Journalysis.KeyboardShortcuts.Query",
   "Description": "Returns the ID of a given command",
   "Name": "KeyboardShortcutCommand.ID",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "c2c53424-91ea-44e9-b803-16f4d654efac",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Extracts all SyncEvents from a given WorkharingSession",
   "Name": "WorksharingSession.SyncEvents",
   "ElementResolver": {

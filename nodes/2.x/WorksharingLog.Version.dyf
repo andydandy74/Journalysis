@@ -1,7 +1,7 @@
 {
   "Uuid": "1fe317c1-c9b0-4b53-ba97-ba20404b3fe9",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the version of a given WorksharingLog",
   "Name": "WorksharingLog.Version",
   "ElementResolver": {

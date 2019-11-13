@@ -1,7 +1,7 @@
 {
   "Uuid": "da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Determines if the user was working in the central model (as opposed to a local copy) in a given WorksharingSession",
   "Name": "WorksharingSession.UsesCentralModel",
   "ElementResolver": {

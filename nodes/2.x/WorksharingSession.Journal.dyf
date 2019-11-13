@@ -1,7 +1,7 @@
 {
   "Uuid": "974e726f-f83e-4efe-a8e9-6302a039945a",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Category": "Journalysis.WorksharingLog.Query",
   "Description": "Returns the journal file path of a given WorksharingSession",
   "Name": "WorksharingSession.Journal",
   "ElementResolver": {

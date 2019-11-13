@@ -1,7 +1,7 @@
 {
   "Uuid": "55b69fa8-e246-4e5f-ac3c-c173c245ca9c",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Determines if a new central model was created in a given WorksharingSession",
   "Name": "WorksharingSession.CreatesNewCentral",
   "ElementResolver": {

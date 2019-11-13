@@ -1,7 +1,7 @@
 {
   "Uuid": "bdf77345-7072-4a3f-b329-45a4d477391c",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Determines if linked models were loaded in this session",
   "Name": "WorksharingSession.HasLoadedLinks",
   "ElementResolver": {

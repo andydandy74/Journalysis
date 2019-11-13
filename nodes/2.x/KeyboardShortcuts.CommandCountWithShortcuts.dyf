@@ -1,7 +1,7 @@
 {
   "Uuid": "700418e7-6b36-4ce3-937d-76cf8f820cea",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the total number of commands that have a shortcut assigned in a given KeyboardShirtcuts object",
   "Name": "KeyboardShortcuts.CommandCountWithShortcuts",
   "ElementResolver": {

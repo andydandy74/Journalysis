@@ -1,7 +1,7 @@
 {
   "Uuid": "e06898ef-4120-4b70-9f0b-fd44d8a4c3c2",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Retrieves a list of loaded links from a given WorkharingSession",
   "Name": "WorksharingSession.LoadedLinks",
   "ElementResolver": {

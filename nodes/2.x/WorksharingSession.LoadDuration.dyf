@@ -1,7 +1,7 @@
 {
   "Uuid": "37664e1e-4d1f-4f97-a6a8-4f9278251137",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession",
   "Name": "WorksharingSession.LoadDuration",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "2eda879b-e1ad-4782-89f5-9bbb16be251c",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Query",
+  "Category": "Journalysis.Query",
   "Description": "Returns the total number of commands in a given KeyboardShirtcuts object",
   "Name": "KeyboardShortcuts.CommandCount",
   "ElementResolver": {

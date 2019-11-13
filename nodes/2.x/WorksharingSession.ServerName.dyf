@@ -1,7 +1,7 @@
 {
   "Uuid": "06520d3d-a47d-4bb1-83e4-53e98af14c24",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Category": "Journalysis.WorksharingLog.Query",
   "Description": "Returns the server name of a given WorksharingSession",
   "Name": "WorksharingSession.ServerName",
   "ElementResolver": {

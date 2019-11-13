@@ -1,7 +1,7 @@
 {
   "Uuid": "11e4cc55-e22e-48aa-8956-3c0005aa747b",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.LoadedLink.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the full path of a given loaded link",
   "Name": "LoadedLink.FullPath",
   "ElementResolver": {

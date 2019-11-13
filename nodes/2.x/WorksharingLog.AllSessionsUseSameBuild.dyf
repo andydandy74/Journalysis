@@ -1,7 +1,7 @@
 {
   "Uuid": "1e569f04-3121-4f94-872a-b758aad2e2a0",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Actions",
+  "Category": "Journalysis.Actions",
   "Description": "Determines whether all sessions of a given WorksharingLog use the same Revit build",
   "Name": "WorksharingLog.AllSessionsUseSameBuild",
   "ElementResolver": {

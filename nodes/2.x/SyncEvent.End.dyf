@@ -1,7 +1,7 @@
 {
   "Uuid": "f78d9021-10b2-478a-a568-d734ce7075fc",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.SyncEvent.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the date and time a given SyncEvent concluded",
   "Name": "SyncEvent.End",
   "ElementResolver": {

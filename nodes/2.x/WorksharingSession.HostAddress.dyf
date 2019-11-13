@@ -1,7 +1,7 @@
 {
   "Uuid": "a1e49042-4fd1-40a4-8687-88f15cb570dc",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Category": "Journalysis.WorksharingLog.Query",
   "Description": "Returns the host address (IP or MAC depending on environment) of a given WorksharingSession",
   "Name": "WorksharingSession.HostAddress",
   "ElementResolver": {

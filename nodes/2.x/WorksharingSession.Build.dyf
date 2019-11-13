@@ -1,7 +1,7 @@
 {
   "Uuid": "a748cc28-ce91-45a3-b1e2-ea2c302023f0",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Category": "Journalysis.WorksharingLog.Query",
   "Description": "Returns the Revit build of a given WorksharingSession",
   "Name": "WorksharingSession.Build",
   "ElementResolver": {

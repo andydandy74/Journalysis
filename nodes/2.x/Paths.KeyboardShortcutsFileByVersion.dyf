@@ -1,7 +1,7 @@
 {
   "Uuid": "645cf02b-5fb6-46bc-a20d-5af92abdd1b6",
   "IsCustomNode": true,
-  "Category": "Journalysis.KeyboardShortcuts.Paths.Actions",
+  "Category": "Journalysis.KeyboardShortcuts.Actions",
   "Description": "Retrieves the path of the keyboard shortcuts file for a given Revit version.",
   "Name": "Paths.KeyboardShortcutsFileByVersion",
   "ElementResolver": {

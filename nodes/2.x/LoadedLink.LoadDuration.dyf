@@ -1,7 +1,7 @@
 {
   "Uuid": "5216ece1-7c1f-4aab-a786-55f0184fba00",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.LoadedLink.Query",
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
   "Description": "Returns the load duration of a given loaded link",
   "Name": "LoadedLink.LoadDuration",
   "ElementResolver": {

@@ -1,7 +1,7 @@
 {
   "Uuid": "9605f14e-7767-492d-a49b-895d4589d982",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Create",
+  "Category": "Journalysis.Create",
   "Description": "Creates a queryable object from a Revit worksharing log",
   "Name": "WorksharingLog.ByPath",
   "ElementResolver": {

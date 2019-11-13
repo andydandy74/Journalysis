@@ -1,7 +1,7 @@
 {
   "Uuid": "3e798f71-87dc-49cf-8c1e-87ecbd93658a",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "",
   "Name": "WorksharingSession.CreatesDetached",
   "ElementResolver": {

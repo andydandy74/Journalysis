@@ -1,7 +1,7 @@
 {
   "Uuid": "8987d50b-c9fd-4634-bea5-ce0956a541b7",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.WorksharingSession.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Determines whether a given WorksharingSession was terminated properly",
   "Name": "WorksharingSession.WasTerminatedProperly",
   "ElementResolver": {
