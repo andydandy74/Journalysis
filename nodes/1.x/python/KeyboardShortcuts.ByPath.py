@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 
 hardcodedshortcuts = {
 	"ID_APP_EXIT": ["Alt+Fn4"],
+	"ID_BUTTON_DELETE": ["Delete"],
 	"ID_BUTTON_REDO": ["Ctrl+Y","Ctrl+Shift+Z"],
 	"ID_BUTTON_UNDO": ["Ctrl+Z","Alt+Backspace"],
 	"ID_CHECK_SPELLING": ["Fn7"],
