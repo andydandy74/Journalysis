@@ -48,12 +48,8 @@ class WorksharingSession:
 		self.Events = []
 	def __repr__(self):
 		return "WorksharingSession"
-	def CreatesDetached(self):
-		return self.Events[1].Text == "&gt;Open"
-	def CreatesNewCentral(self):
-		return len([x for x in self.Events if x.Text == "&gt;Open"]) == 0
 	def GetLoadDuration(self):
-		if self.CreatesNewCentral(): return None
+		if len([x for x in self.Events if x.Text == "&gt;Open"]) == 0: return None
 		else:
 			openStart = [x.DateTime for x in self.Events if x.Text == "&gt;Open"][0]
 			openEnd = [x.DateTime for x in self.Events if x.Text == "&lt;Open"]
@@ -67,6 +63,18 @@ class WorksharingSession:
 				links[-1].LoadEnd = event.DateTime
 				links[-1].LoadDuration = event.DateTime - links[-1].LoadStart				
 		return links
+	def GetSessionType(self):
+		containsOpen = len([x for x in self.Events if x.Text == "&gt;Open"]) &gt; 0
+		containsOpenCentral = len([x for x in self.Events if x.Text == "&gt;Open:Central"]) &gt; 0
+		containsSTC = len([x for x in self.Events if x.Text == "&gt;STC"]) &gt; 0
+		containsWSD = len([x for x in self.Events if x.Text == "&gt;WSD"]) &gt; 0
+		if not containsOpen and containsSTC: return "CreateNewCentral"
+		elif containsOpenCentral:
+			if self.Events[1].Text == "&gt;Open": return "CreateDetached"
+			else: return "WorkInCentral"
+		elif not containsOpen and containsWSD: return "ChooseWorksets"
+		elif containsOpen and not containsOpenCentral: return "CreateLocalCopy"
+		else: return "Unknown"
 	def GetSyncEvents(self):
 		events = []
 		for event in self.Events:
@@ -78,9 +86,6 @@ class WorksharingSession:
 		return events
 	def HasLoadedLinks(self):
 		return len([x for x in self.Events if x.Text == "&lt;OpenLink"]) &gt; 0
-	def UsesCentralModel(self):
-		if self.CreatesNewCentral(): return True
-		else: return len([x for x in self.Events if x.Text.startswith("&gt;Open:Central")]) &gt; 0
 	def WasTerminatedProperly(self):
 		return self.End != None
 
