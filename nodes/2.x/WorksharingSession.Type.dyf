@@ -1,9 +1,9 @@
 {
-  "Uuid": "3e798f71-87dc-49cf-8c1e-87ecbd93658a",
+  "Uuid": "f98018f5-3630-4e4d-892e-b0380f7580dd",
   "IsCustomNode": true,
   "Category": "Journalysis.WorksharingLog.Actions",
-  "Description": "",
-  "Name": "WorksharingSession.CreatesDetached",
+  "Description": "Returns the type of a given WorksharingSession",
+  "Name": "WorksharingSession.Type",
   "ElementResolver": {
     "ResolutionMap": {
       "File": {
@@ -26,12 +26,12 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef WSSessionCreatesDetached(wssess):\r\n\tif wssess.__repr__() == 'WorksharingSession': return wssess.CreatesDetached()\r\n\telse: return None\r\n\r\nOUT = process_input(WSSessionCreatesDetached,IN[0])",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef WSSessionType(wssess):\r\n\tif wssess.__repr__() == 'WorksharingSession': return wssess.GetSessionType()\r\n\telse: return None\r\n\r\nOUT = process_input(WSSessionType,IN[0])",
       "VariableInputPorts": true,
-      "Id": "2c976876f6c94e15b0bdb5d91d99503c",
+      "Id": "4b455f492ba446f4a572923fadcb7cb6",
       "Inputs": [
         {
-          "Id": "a42c25c44c694e308379725ce3a0b1d9",
+          "Id": "296b5605d9d24c8cbdd0036f0afb6770",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -42,7 +42,7 @@
       ],
       "Outputs": [
         {
-          "Id": "92e6c8296edf4d3bb383a4f3caec8c8e",
+          "Id": "e445536f5be745388093a8c5bd9ee426",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -64,11 +64,11 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "d20d8f7c70a649ef949993ad0da5f72e",
+      "Id": "286640a90de14a87b7069e70e207ff5d",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "1c0012c461b948fdaba751496dd5add1",
+          "Id": "66de3f6df14f4720ba38f1e22b640445",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -84,11 +84,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "bool",
-      "Id": "98c1fa22bb9645058ae03cbe72747b94",
+      "Symbol": "str",
+      "Id": "eaa3524f7ae744909247b898fe58a264",
       "Inputs": [
         {
-          "Id": "11dfb052ff274507a725c506752d0bb4",
+          "Id": "4cf8d34b591b49848410314f637aacf7",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -104,18 +104,17 @@
   ],
   "Connectors": [
     {
-      "Start": "92e6c8296edf4d3bb383a4f3caec8c8e",
-      "End": "11dfb052ff274507a725c506752d0bb4",
-      "Id": "e485054d6ccc4be1a332aa2df3e4046a"
+      "Start": "e445536f5be745388093a8c5bd9ee426",
+      "End": "4cf8d34b591b49848410314f637aacf7",
+      "Id": "7e7d49e52cf647f089cc11abc78d2ff3"
     },
     {
-      "Start": "1c0012c461b948fdaba751496dd5add1",
-      "End": "a42c25c44c694e308379725ce3a0b1d9",
-      "Id": "a7b823b396ee42f8a59f693896c76493"
+      "Start": "66de3f6df14f4720ba38f1e22b640445",
+      "End": "296b5605d9d24c8cbdd0036f0afb6770",
+      "Id": "89d8282376c846baa55c35b8f75ba85e"
     }
   ],
   "Dependencies": [],
-  "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
@@ -139,39 +138,39 @@
     },
     "NodeViews": [
       {
-        "Id": "2c976876f6c94e15b0bdb5d91d99503c",
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "4b455f492ba446f4a572923fadcb7cb6",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 250.0,
         "Y": 0.0
       },
       {
-        "Id": "d20d8f7c70a649ef949993ad0da5f72e",
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "286640a90de14a87b7069e70e207ff5d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 0.0,
         "Y": 0.0
       },
       {
-        "Id": "98c1fa22bb9645058ae03cbe72747b94",
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "eaa3524f7ae744909247b898fe58a264",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 449.0,
         "Y": 0.0
       }
     ],
     "Annotations": [],
-    "X": 308.0,
-    "Y": 92.0,
+    "X": 158.0,
+    "Y": 8.0,
     "Zoom": 1.0
   }
 }

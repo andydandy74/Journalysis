@@ -63,37 +63,6 @@
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "55b69fa8-e246-4e5f-ac3c-c173c245ca9c",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "ccbeaf9f21e54f6f898e5d1e023314be",
-      "Inputs": [
-        {
-          "Id": "7d72b96c441248af891858400e81d7ed",
-          "Name": "worksharingSession",
-          "Description": "var[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "4095051d4b07405ead82917d9b457b3c",
-          "Name": "bool",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Determines if a new central model was created in a given WorksharingSession"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "37664e1e-4d1f-4f97-a6a8-4f9278251137",
       "FunctionType": "Graph",
       "NodeType": "FunctionNode",
@@ -121,7 +90,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession"
+      "Description": "Computes the load time of the model (not including loading of linked models) for a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -184,37 +153,6 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the date and time a given SyncEvent concluded"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "fbb12a12ac664ab499cf194fa8ad0dd1",
-      "Inputs": [
-        {
-          "Id": "a2d20383830f45eb9a6278e4bc94e014",
-          "Name": "worksharingSession",
-          "Description": "var[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "d450ab2f9634455fa0c95131ad4ccd49",
-          "Name": "bool",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Determines if the user was working in the central model (as opposed to a local copy) in a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -961,37 +899,6 @@
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "3e798f71-87dc-49cf-8c1e-87ecbd93658a",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "186411b422554d54acc90b6eb284bc03",
-      "Inputs": [
-        {
-          "Id": "0507a82d28a441838758fbd13e00de31",
-          "Name": "worksharingSession",
-          "Description": "var[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "a61c1d7d969641009e04e4607a5ab862",
-          "Name": "bool",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": ""
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "bdf77345-7072-4a3f-b329-45a4d477391c",
       "FunctionType": "Graph",
       "NodeType": "FunctionNode",
@@ -1330,6 +1237,37 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the number of times that Reload Latest occured during a given SyncEvent"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "f98018f5-3630-4e4d-892e-b0380f7580dd",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "a5f193cd10094b4bb44fe6ec6a405427",
+      "Inputs": [
+        {
+          "Id": "9bec1c9340614bd9a3df3ef1dfc11187",
+          "Name": "worksharingSession",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "47514088498d4bd7be121c14545ef796",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of a given WorksharingSession"
     }
   ],
   "Connectors": [
@@ -1365,18 +1303,8 @@
     },
     {
       "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "7d72b96c441248af891858400e81d7ed",
-      "Id": "671b5becedf64b25a2149341b661e655"
-    },
-    {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
       "End": "7eb33a692da84088be942723a59e1cf8",
       "Id": "3bf6729d69c9411693bd84096634b74b"
-    },
-    {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "a2d20383830f45eb9a6278e4bc94e014",
-      "Id": "5020fd2a8fa541de907385a761e9e612"
     },
     {
       "Start": "3ae88e0de1c74342b14c86c81533fbf0",
@@ -1455,11 +1383,6 @@
     },
     {
       "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "0507a82d28a441838758fbd13e00de31",
-      "Id": "6e18ccf6a5ef4758b61b114489d8f06c"
-    },
-    {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
       "End": "c887addd2ccf44d8bb3ad2bab7646b31",
       "Id": "6903fb2d36714958aa249f2297af6113"
     },
@@ -1477,6 +1400,11 @@
       "Start": "3ae88e0de1c74342b14c86c81533fbf0",
       "End": "0106e045144644f199eb32b187c0c5d5",
       "Id": "9d422a049e274279b470f2ce3cec8f83"
+    },
+    {
+      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
+      "End": "9bec1c9340614bd9a3df3ef1dfc11187",
+      "Id": "524d5a96b645403fb463a55ef02450ed"
     },
     {
       "Start": "e5665e8122974ceeab464c1c9a6de7c5",
@@ -1546,11 +1474,9 @@
   ],
   "Dependencies": [
     "d934a77a-33ce-4748-95f7-be38366e1836",
-    "55b69fa8-e246-4e5f-ac3c-c173c245ca9c",
     "37664e1e-4d1f-4f97-a6a8-4f9278251137",
     "c2c53424-91ea-44e9-b803-16f4d654efac",
     "f78d9021-10b2-478a-a568-d734ce7075fc",
-    "da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc",
     "4a3f4f12-9d8c-435f-a8d4-6ed9afe367f3",
     "a748cc28-ce91-45a3-b1e2-ea2c302023f0",
     "c61374ae-b6df-4b6f-bf36-c7930874d268",
@@ -1574,7 +1500,6 @@
     "8987d50b-c9fd-4634-bea5-ce0956a541b7",
     "1e569f04-3121-4f94-872a-b758aad2e2a0",
     "fc9ef041-9b22-4547-b69f-2f92421f5964",
-    "3e798f71-87dc-49cf-8c1e-87ecbd93658a",
     "bdf77345-7072-4a3f-b329-45a4d477391c",
     "9605f14e-7767-492d-a49b-895d4589d982",
     "a1e49042-4fd1-40a4-8687-88f15cb570dc",
@@ -1585,7 +1510,8 @@
     "5216ece1-7c1f-4aab-a786-55f0184fba00",
     "507cf92a-abdd-4b08-a081-30f097b1d99e",
     "7eaaffa4-7663-42de-8413-6357a047084b",
-    "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5"
+    "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5",
+    "f98018f5-3630-4e4d-892e-b0380f7580dd"
   ],
   "Bindings": [],
   "View": {
@@ -1622,16 +1548,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "WorksharingSession.CreatesNewCentral",
-        "Id": "ccbeaf9f21e54f6f898e5d1e023314be",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 371.312610629719,
-        "Y": -1304.43617606618
-      },
-      {
-        "ShowGeometry": true,
         "Name": "WorksharingSession.LoadDuration",
         "Id": "5289e94808e54887b6b1eb321087b493",
         "IsSetAsInput": false,
@@ -1659,16 +1575,6 @@
         "Excluded": false,
         "X": 857.169044959181,
         "Y": -742.098702583473
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.UsesCentralModel",
-        "Id": "fbb12a12ac664ab499cf194fa8ad0dd1",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 363.201776581091,
-        "Y": -798.123331988022
       },
       {
         "ShowGeometry": true,
@@ -1912,16 +1818,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "WorksharingSession.CreatesDetached",
-        "Id": "186411b422554d54acc90b6eb284bc03",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 371.46171227671,
-        "Y": -1407.8647389885
-      },
-      {
-        "ShowGeometry": true,
         "Name": "WorksharingSession.HasLoadedLinks",
         "Id": "02ad8d3bd21d4d369b368248b393a8ef",
         "IsSetAsInput": false,
@@ -2029,6 +1925,16 @@
         "Excluded": false,
         "X": 865.322743777692,
         "Y": -636.255937230545
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WorksharingSession.Type",
+        "Id": "a5f193cd10094b4bb44fe6ec6a405427",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 365.87538664761831,
+        "Y": -799.19799769980284
       }
     ],
     "Annotations": [
@@ -2044,7 +1950,7 @@
         "Height": 140.0,
         "FontSize": 30.0,
         "InitialTop": -719.464211875573,
-        "InitialHeight": 126.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -2060,7 +1966,7 @@
         "Height": 139.0,
         "FontSize": 30.0,
         "InitialTop": -720.181499419774,
-        "InitialHeight": 123.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2079,7 +1985,7 @@
         "Height": 433.70452580892993,
         "FontSize": 30.0,
         "InitialTop": -816.280413738068,
-        "InitialHeight": 417.70452580893,
+        "InitialHeight": 439.70452580892993,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2087,22 +1993,20 @@
         "Id": "dc5adca4dca744fda461d236c133543a",
         "Title": "WorksharingSession.Actions",
         "Nodes": [
-          "ccbeaf9f21e54f6f898e5d1e023314be",
           "5289e94808e54887b6b1eb321087b493",
           "bac3f1fc623c417b8e367c88b29da0e1",
-          "fbb12a12ac664ab499cf194fa8ad0dd1",
           "a3de4278fc7b43368ffc6708c692f033",
-          "186411b422554d54acc90b6eb284bc03",
           "02ad8d3bd21d4d369b368248b393a8ef",
-          "51b376fa0dea4a35be00d0db7d295aad"
+          "51b376fa0dea4a35be00d0db7d295aad",
+          "a5f193cd10094b4bb44fe6ec6a405427"
         ],
         "Left": 350.020975988875,
-        "Top": -1453.8647389885,
+        "Top": -1252.40160931757,
         "Width": 404.17905693823144,
-        "Height": 851.223882241645,
+        "Height": 649.76075257071511,
         "FontSize": 30.0,
-        "InitialTop": -1407.8647389885,
-        "InitialHeight": 426.50283685651,
+        "InitialTop": -1206.40160931757,
+        "InitialHeight": 857.223882241645,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2132,7 +2036,7 @@
         "Height": 1510.5690517732019,
         "FontSize": 30.0,
         "InitialTop": -521.487521545036,
-        "InitialHeight": 1595.16227134814,
+        "InitialHeight": 1516.5690517732019,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2149,7 +2053,7 @@
         "Height": 246.98809151950991,
         "FontSize": 30.0,
         "InitialTop": -76.335714417411,
-        "InitialHeight": 230.98809151951,
+        "InitialHeight": 252.98809151950991,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2166,7 +2070,7 @@
         "Height": 260.78816409374008,
         "FontSize": 30.0,
         "InitialTop": -1125.30211098642,
-        "InitialHeight": 123.0,
+        "InitialHeight": 240.78816409374008,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2176,7 +2080,8 @@
         "Nodes": [
           "e54cc39f5f964edcb78ad0e82196cd4e",
           "93bc6c5baa2640478dde977b026f721b",
-          "fadc68317e2e42edb277b87908cc4ff3"
+          "fadc68317e2e42edb277b87908cc4ff3",
+          "2b050189fe004e6aa69c624d92a884cc"
         ],
         "Left": 847.169044959181,
         "Top": -896.006912014997,
@@ -2184,7 +2089,7 @@
         "Height": 450.84533270125007,
         "FontSize": 30.0,
         "InitialTop": -850.006912014997,
-        "InitialHeight": 336.366372178277,
+        "InitialHeight": 456.84533270125007,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2204,13 +2109,13 @@
         "Height": 583.11534330575012,
         "FontSize": 30.0,
         "InitialTop": -1464.0984209144,
-        "InitialHeight": 522.115343305753,
+        "InitialHeight": 589.11534330575012,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 330.6672449126869,
-    "Y": 564.38073561024862,
-    "Zoom": 0.22529415270084643
+    "X": 600.39368748907,
+    "Y": 499.4310259999416,
+    "Zoom": 0.32062805293291635
   }
 }

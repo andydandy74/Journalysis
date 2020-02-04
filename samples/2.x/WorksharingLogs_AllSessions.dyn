@@ -68,7 +68,7 @@
       "Id": "8f5987e99ac94eb09cca57da36083b4a",
       "Name": "String",
       "Type": "string",
-      "Value": "Model\r\nSessionID\r\nSessionStarted\r\nUsername\r\nWorkingInCentral\r\nCreatingNewCentral\r\nSessionTerminatedProperly\r\nLoadDuration\r\nNumberOfSyncs\r\nMachine\r\nSessionDuration\r\nLoadedLinks\r\nLinkLoadTime",
+      "Value": "Model\r\nSessionID\r\nSessionStarted\r\nUsername\r\nSessionType\r\nSessionTerminatedProperly\r\nLoadDuration\r\nNumberOfSyncs\r\nMachine\r\nSessionDuration\r\nLoadedLinks\r\nLinkLoadTime",
       "Description": "Creates a string."
     },
     {
@@ -109,37 +109,6 @@
   ],
   "Outputs": [],
   "Nodes": [
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "884682a88d1b403ebff09bcbdd2994ff",
-      "Inputs": [
-        {
-          "Id": "f65e10ac258f44d181985283f656d621",
-          "Name": "worksharingSession",
-          "Description": "var[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "caee370c8c8e46beabd826f8ba5a3467",
-          "Name": "bool",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Determines if the user was working in the central model (as opposed to a local copy) in a given WorksharingSession"
-    },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "d9fd7e94-d809-4f23-a5b8-cbdbf8d2649c",
@@ -201,37 +170,6 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the date and time a given WorksharingSession was started"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "55b69fa8-e246-4e5f-ac3c-c173c245ca9c",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "b3c2193a30844182b59e2cb964c0331a",
-      "Inputs": [
-        {
-          "Id": "92a55cd81da94397b664841d043ed023",
-          "Name": "worksharingSession",
-          "Description": "var[]..[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "935079bd0fd34ef48dd503103d783bcb",
-          "Name": "bool",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Determines if a new central model was created in a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -438,15 +376,6 @@
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
-        },
-        {
-          "Id": "8865a7a9d57c4de1af8286774e6bad8d",
-          "Name": "item12",
-          "Description": "Item Index #12",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
         }
       ],
       "Outputs": [
@@ -617,7 +546,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "Model\r\nSessionID\r\nSessionStarted\r\nUsername\r\nWorkingInCentral\r\nCreatingNewCentral\r\nSessionTerminatedProperly\r\nLoadDuration\r\nNumberOfSyncs\r\nMachine\r\nSessionDuration\r\nLoadedLinks\r\nLinkLoadTime",
+      "InputValue": "Model\r\nSessionID\r\nSessionStarted\r\nUsername\r\nSessionType\r\nSessionTerminatedProperly\r\nLoadDuration\r\nNumberOfSyncs\r\nMachine\r\nSessionDuration\r\nLoadedLinks\r\nLinkLoadTime",
       "Id": "8f5987e99ac94eb09cca57da36083b4a",
       "Inputs": [],
       "Outputs": [
@@ -1672,15 +1601,41 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession"
+      "Description": "Computes the load time of the model (not including loading of linked models) for a given WorksharingSession"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "f98018f5-3630-4e4d-892e-b0380f7580dd",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "4cc2e06200ed410ab978edfb4aa96a29",
+      "Inputs": [
+        {
+          "Id": "bfee2e0d39df4504bb5a93d16415c582",
+          "Name": "worksharingSession",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "55d9636c899f4a6fa16fe86a8ffc84bb",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of a given WorksharingSession"
     }
   ],
   "Connectors": [
-    {
-      "Start": "caee370c8c8e46beabd826f8ba5a3467",
-      "End": "ee71a21dd286483ca06ebfc0e9071560",
-      "Id": "13aa24b12ec64970912a1d22746a52a2"
-    },
     {
       "Start": "29f4f57569b94a3badf589b0d0c2fcf4",
       "End": "a6f4a2a156ef419fa71418361f2e677f",
@@ -1692,24 +1647,19 @@
       "Id": "d1a85596a2c7482c8be06f26dab568ae"
     },
     {
-      "Start": "935079bd0fd34ef48dd503103d783bcb",
-      "End": "28d5a2f0979149d29f84b6b6080b50df",
-      "Id": "545989e5187645b28bda7cdefb638a40"
-    },
-    {
       "Start": "768196c515414d3e80f57bae283ad9df",
       "End": "a0f40d0c1c8348739dd3873a87aaa2d5",
       "Id": "fe6df25894f941c7985c955fbab67de4"
     },
     {
       "Start": "45ed0812c6d14169adba67fc4cbb438e",
-      "End": "35e4884364674d01a75a403ffb8bd64e",
-      "Id": "f479e6cf24594afa9584525018e0ba65"
+      "End": "f9b6135b73e342a581576eed22dcf5a7",
+      "Id": "4c9104ac77e94423abacb1996075ea3a"
     },
     {
       "Start": "9f49090cecea4bd5b7c54650e2894cfb",
-      "End": "574429489d564a7c96aaa95c3d47673b",
-      "Id": "e9cda309f82b4a1c945763156683f108"
+      "End": "28d5a2f0979149d29f84b6b6080b50df",
+      "Id": "9bcbd0b05c4a433ea1905e1190522159"
     },
     {
       "Start": "a5845576b5bd4bb0af6e7b2189b8b447",
@@ -1728,8 +1678,8 @@
     },
     {
       "Start": "c47683f2a9c2481d909b605e295aa4bd",
-      "End": "f9b6135b73e342a581576eed22dcf5a7",
-      "Id": "c803d634820340649168057712226f68"
+      "End": "574429489d564a7c96aaa95c3d47673b",
+      "Id": "29980c75de094ea88d6871e9c614f65c"
     },
     {
       "Start": "7644b125798b44449249847770b03c6a",
@@ -1823,8 +1773,8 @@
     },
     {
       "Start": "369b26a9c8744c7b910fe4ca9d350349",
-      "End": "dfd2dccfe7824d94ac4fb3a2945fca35",
-      "Id": "6a65d4815dfe49e1ab579cfa62a570b8"
+      "End": "35e4884364674d01a75a403ffb8bd64e",
+      "Id": "81c20521f7134470a4068825fd7315da"
     },
     {
       "Start": "11d78c25d7824317b7b0dedb41e50f41",
@@ -1868,16 +1818,6 @@
     },
     {
       "Start": "ce2f35d9e3314de1ad11b920ef50fdf4",
-      "End": "f65e10ac258f44d181985283f656d621",
-      "Id": "cf566b34176e47adbb811925a1bf29d7"
-    },
-    {
-      "Start": "ce2f35d9e3314de1ad11b920ef50fdf4",
-      "End": "92a55cd81da94397b664841d043ed023",
-      "Id": "d3fcc1e2a0a34f21937cfb78cdade96e"
-    },
-    {
-      "Start": "ce2f35d9e3314de1ad11b920ef50fdf4",
       "End": "04f49e9d2b464ed384e92f8601a93f97",
       "Id": "57c5d93d5ce6499da711b407046f150f"
     },
@@ -1917,6 +1857,11 @@
       "Id": "2c63cd7447994116968ec6bec87f35da"
     },
     {
+      "Start": "ce2f35d9e3314de1ad11b920ef50fdf4",
+      "End": "bfee2e0d39df4504bb5a93d16415c582",
+      "Id": "31d8a9d1665e495382c95b007da43dc0"
+    },
+    {
       "Start": "07d653dbef834b1c82d0ed31070c8dd7",
       "End": "c2bcf2cb63d24c8aac75cb9a4ceb3da1",
       "Id": "690c9075d19042159e712211251652ff"
@@ -1933,8 +1878,8 @@
     },
     {
       "Start": "8632a52a868c46dc843d81bea8073603",
-      "End": "8bb08e9198ae4f9e8158e5869556f020",
-      "Id": "6765717473434d75a694505530347cd4"
+      "End": "dfd2dccfe7824d94ac4fb3a2945fca35",
+      "Id": "e42f1c314e3940d783753c84699f0f69"
     },
     {
       "Start": "2983264103d9467ab743535ef814b407",
@@ -1948,8 +1893,8 @@
     },
     {
       "Start": "08fe8a34552a4137b869094a43c139c2",
-      "End": "87427a10f7a94b2db4965fc187ecd6c4",
-      "Id": "53aed0efe5994e058fd9e783131c1fa5"
+      "End": "8bb08e9198ae4f9e8158e5869556f020",
+      "Id": "7b014c6b10dc4f6c80df94905ab66805"
     },
     {
       "Start": "18a80e44f7fc4b21af6548d07c3f663b",
@@ -1963,20 +1908,23 @@
     },
     {
       "Start": "14b9d3b8a11049c2bbf2ae7108595bc0",
-      "End": "8865a7a9d57c4de1af8286774e6bad8d",
-      "Id": "4055b9592878463799e0fd01519ab87b"
+      "End": "87427a10f7a94b2db4965fc187ecd6c4",
+      "Id": "a4c461f7a13a41edb0d121808a9ff3a8"
     },
     {
       "Start": "411bffc06f3c4912aa7508eccea5d4d0",
       "End": "e8eff5d3e6d8422b98eb548f54a9432e",
       "Id": "19c62d4fbad4401ba70728fd11182d22"
+    },
+    {
+      "Start": "55d9636c899f4a6fa16fe86a8ffc84bb",
+      "End": "ee71a21dd286483ca06ebfc0e9071560",
+      "Id": "c6fbbeff6e2345738e43d879dbeefe82"
     }
   ],
   "Dependencies": [
-    "da9e32f1-35b1-4b76-8f6e-f7c9fe1520fc",
     "d9fd7e94-d809-4f23-a5b8-cbdbf8d2649c",
     "4ad5cfc6-cbf3-48dd-96b1-fb38473109e8",
-    "55b69fa8-e246-4e5f-ac3c-c173c245ca9c",
     "e06898ef-4120-4b70-9f0b-fd44d8a4c3c2",
     "8987d50b-c9fd-4634-bea5-ce0956a541b7",
     "2dd1e892-6338-4fba-8345-f7a9f418bb57",
@@ -1988,7 +1936,8 @@
     "45f0da6c-93d6-44ff-ba50-906088f9ad0b",
     "bdf77345-7072-4a3f-b329-45a4d477391c",
     "5216ece1-7c1f-4aab-a786-55f0184fba00",
-    "37664e1e-4d1f-4f97-a6a8-4f9278251137"
+    "37664e1e-4d1f-4f97-a6a8-4f9278251137",
+    "f98018f5-3630-4e4d-892e-b0380f7580dd"
   ],
   "Bindings": [],
   "View": {
@@ -2015,23 +1964,13 @@
     "NodeViews": [
       {
         "ShowGeometry": true,
-        "Name": "WorksharingSession.UsesCentralModel",
-        "Id": "884682a88d1b403ebff09bcbdd2994ff",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 195.188738537991,
-        "Y": -945.729141256994
-      },
-      {
-        "ShowGeometry": true,
         "Name": "WorksharingSession.User",
         "Id": "d86793c11de34a0981924949b95620d2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 195.188738537991,
-        "Y": -1053.48610750535
+        "X": 198.59694841283391,
+        "Y": -976.801385321383
       },
       {
         "ShowGeometry": true,
@@ -2040,18 +1979,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 195.188738537991,
-        "Y": -1161.14754110135
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.CreatesNewCentral",
-        "Id": "b3c2193a30844182b59e2cb964c0331a",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 195.188738537991,
-        "Y": -849.40984147111
+        "X": 198.59694841283391,
+        "Y": -1084.4628189173832
       },
       {
         "ShowGeometry": true,
@@ -2270,8 +2199,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 232.625464230654,
-        "Y": -1397.63987058179
+        "X": 236.03367410549689,
+        "Y": -1320.955148397823
       },
       {
         "ShowGeometry": true,
@@ -2280,8 +2209,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 197.489574743576,
-        "Y": -1272.40675822356
+        "X": 200.89778461841888,
+        "Y": -1195.7220360395931
       },
       {
         "ShowGeometry": true,
@@ -2290,8 +2219,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 753.269284642084,
-        "Y": -1376.51565738508
+        "X": 756.67749451692691,
+        "Y": -1299.8309352011129
       },
       {
         "ShowGeometry": true,
@@ -2300,8 +2229,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 567.941673108004,
-        "Y": -1295.17405675188
+        "X": 571.34988298284691,
+        "Y": -1218.4893345679129
       },
       {
         "ShowGeometry": true,
@@ -2482,6 +2411,16 @@
         "Excluded": false,
         "X": 192.657309726566,
         "Y": -640.580383173163
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WorksharingSession.Type",
+        "Id": "4cc2e06200ed410ab978edfb4aa96a29",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 201.45463502762277,
+        "Y": -867.17688466599009
       }
     ],
     "Annotations": [
@@ -2499,7 +2438,7 @@
         "Height": 297.73650747935994,
         "FontSize": 30.0,
         "InitialTop": -1248.14643284363,
-        "InitialHeight": 126.0,
+        "InitialHeight": 328.73650747935994,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -2507,10 +2446,8 @@
         "Id": "1599776e5abd4183ac8251d05dc5e9b1",
         "Title": "Collect data",
         "Nodes": [
-          "884682a88d1b403ebff09bcbdd2994ff",
           "d86793c11de34a0981924949b95620d2",
           "10c0427298d2480896a5f058f742fb1d",
-          "b3c2193a30844182b59e2cb964c0331a",
           "bdbb847e0d9c4e9aa35159c901241c5a",
           "e8582930eff64379b26917d06bde73a7",
           "d61675d348a140718b8ce154f90f210d",
@@ -2533,15 +2470,16 @@
           "6154d4348b324ad3923dabc607379a6d",
           "0623d3179b304a9b858c4b4d38dd8d53",
           "f4e7a2022d114042b1ab49a34b491cbe",
-          "4d79bf8287be46a78686c5763b1d2cf7"
+          "4d79bf8287be46a78686c5763b1d2cf7",
+          "4cc2e06200ed410ab978edfb4aa96a29"
         ],
         "Left": 182.657309726566,
-        "Top": -1443.63987058179,
+        "Top": -1366.955148397823,
         "Width": 1313.295294465524,
-        "Height": 1566.6495254993879,
+        "Height": 1489.9648033154208,
         "FontSize": 30.0,
-        "InitialTop": -1397.63987058179,
-        "InitialHeight": 750.556051590011,
+        "InitialTop": -1320.955148397823,
+        "InitialHeight": 1572.6495254993879,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2568,7 +2506,7 @@
         "Height": 555.15392056299913,
         "FontSize": 30.0,
         "InitialTop": -1249.25677334103,
-        "InitialHeight": 505.06479186365,
+        "InitialHeight": 586.15392056299913,
         "TextblockHeight": 36.0,
         "Background": "#FF48B9FF"
       },
@@ -2588,13 +2526,13 @@
         "Height": 191.0,
         "FontSize": 30.0,
         "InitialTop": -710.231982721678,
-        "InitialHeight": 149.0,
+        "InitialHeight": 145.820464276086,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 249.97925449257525,
-    "Y": 582.64580523588154,
-    "Zoom": 0.12196644321857329
+    "X": 456.43356386264134,
+    "Y": 556.89080496305644,
+    "Zoom": 0.23643404544359958
   }
 }
