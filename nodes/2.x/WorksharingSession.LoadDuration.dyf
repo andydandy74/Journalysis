@@ -2,7 +2,7 @@
   "Uuid": "37664e1e-4d1f-4f97-a6a8-4f9278251137",
   "IsCustomNode": true,
   "Category": "Journalysis.WorksharingLog.Actions",
-  "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession",
+  "Description": "Computes the load time of the model (not including loading of linked models) for a given WorksharingSession",
   "Name": "WorksharingSession.LoadDuration",
   "ElementResolver": {
     "ResolutionMap": {
@@ -139,39 +139,39 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "d6397fdc245347158246c059de419a07",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 250.0,
+        "X": 159.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "7a916ae2115f4550a7fb1b466f64e5b1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 0.0,
+        "X": -210.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "ca40a7ff97ad43ab84600d17c5c3b856",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 449.0,
+        "X": 383.0,
         "Y": 0.0
       }
     ],
     "Annotations": [],
-    "X": 0.0,
-    "Y": 0.0,
+    "X": 192.0,
+    "Y": 132.0,
     "Zoom": 1.0
   }
 }
