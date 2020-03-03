@@ -53,7 +53,10 @@ class WorksharingSession:
 		else:
 			openStart = [x.DateTime for x in self.Events if x.Text == "&gt;Open"][0]
 			openEnd = [x.DateTime for x in self.Events if x.Text == "&lt;Open"]
+			wsconfigStart = [x.DateTime for x in self.Events if x.Text == "&gt;WSConfig"]
+			wsconfigEnd = [x.DateTime for x in self.Events if x.Text == "&lt;WSConfig"]
 			if len(openEnd) == 0: return None
+			elif len(wsconfigStart) &gt; 0 and len(wsconfigEnd) &gt; 0: return (openEnd[0] - openStart) + (wsconfigEnd[0] - wsconfigStart[0])
 			else: return openEnd[0] - openStart
 	def GetLoadedLinks(self):
 		links = []
