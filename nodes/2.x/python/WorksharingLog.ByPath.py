@@ -35,16 +35,15 @@ class WorksharingSession:
 		self.Events = []
 	def __repr__(self):
 		return "WorksharingSession"
-	def CreatesDetached(self):
-		return self.Events[1].Text == ">Open"
-	def CreatesNewCentral(self):
-		return len([x for x in self.Events if x.Text == ">Open"]) == 0
 	def GetLoadDuration(self):
-		if self.CreatesNewCentral(): return None
+		if len([x for x in self.Events if x.Text == ">Open"]) == 0: return None
 		else:
 			openStart = [x.DateTime for x in self.Events if x.Text == ">Open"][0]
 			openEnd = [x.DateTime for x in self.Events if x.Text == "<Open"]
+			wsconfigStart = [x.DateTime for x in self.Events if x.Text == ">WSConfig"]
+			wsconfigEnd = [x.DateTime for x in self.Events if x.Text == "<WSConfig"]
 			if len(openEnd) == 0: return None
+			elif len(wsconfigStart) > 0 and len(wsconfigEnd) > 0: return (openEnd[0] - openStart) + (wsconfigEnd[0] - wsconfigStart[0])
 			else: return openEnd[0] - openStart
 	def GetLoadedLinks(self):
 		links = []
@@ -54,6 +53,18 @@ class WorksharingSession:
 				links[-1].LoadEnd = event.DateTime
 				links[-1].LoadDuration = event.DateTime - links[-1].LoadStart				
 		return links
+	def GetSessionType(self):
+		containsOpen = len([x for x in self.Events if x.Text == ">Open"]) > 0
+		containsOpenCentral = len([x for x in self.Events if x.Text == ">Open:Central"]) > 0
+		containsSTC = len([x for x in self.Events if x.Text == ">STC"]) > 0
+		containsWSD = len([x for x in self.Events if x.Text == ">WSD"]) > 0
+		if not containsOpen and containsSTC: return "CreateNewCentral"
+		elif containsOpenCentral:
+			if self.Events[1].Text == ">Open": return "CreateDetached"
+			else: return "WorkInCentral"
+		elif not containsOpen and containsWSD: return "ChooseWorksets"
+		elif containsOpen and not containsOpenCentral: return "CreateLocalCopy"
+		else: return "Unknown"
 	def GetSyncEvents(self):
 		events = []
 		for event in self.Events:
@@ -65,9 +76,6 @@ class WorksharingSession:
 		return events
 	def HasLoadedLinks(self):
 		return len([x for x in self.Events if x.Text == "<OpenLink"]) > 0
-	def UsesCentralModel(self):
-		if self.CreatesNewCentral(): return True
-		else: return len([x for x in self.Events if x.Text.startswith(">Open:Central")]) > 0
 	def WasTerminatedProperly(self):
 		return self.End != None
 
