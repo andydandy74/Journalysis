@@ -1,5 +1,10 @@
 import clr
 import time
+from System.Reflection import Assembly
+
+dynamoCore = Assembly.Load("DynamoCore")
+dynVersion = dynamoCore.GetName().Version.ToString()
+dynVersionInt = int(dynVersion[0])*10+int(dynVersion[2])
 
 class WorksharingLog:
 	def __init__(self, version, sessions):
@@ -58,6 +63,8 @@ class WorksharingSession:
 		containsOpenCentral = len([x for x in self.Events if x.Text == ">Open:Central"]) > 0
 		containsSTC = len([x for x in self.Events if x.Text == ">STC"]) > 0
 		containsWSD = len([x for x in self.Events if x.Text == ">WSD"]) > 0
+		containsReconnect = len([x for x in self.Events if x.Text.startswith(".ReconnectInMiddle")]) > 0
+		if containsReconnect: return "Reconnected"
 		if not containsOpen and containsSTC: return "CreateNewCentral"
 		elif containsOpenCentral:
 			if self.Events[1].Text == ">Open": return "CreateDetached"
@@ -111,6 +118,7 @@ def WSLogFromPath(path):
 		sessions = []
 		version = None
 		with open(path, 'r') as slog:
+			if dynVersionInt >= 21: slog = slog.read().decode('utf-16le').split("\n")
 			for line in slog:
 				line = line.lstrip().rstrip('\n')
 				if line.startswith("$"):
@@ -127,6 +135,9 @@ def WSLogFromPath(path):
 					if text.startswith(">Session"): 
 						sessions[-1].Start = timestamp
 						sessions[-1].Date = timestamp.Date
+					elif text.startswith(".ReconnectInMiddle"):
+						current_session.Start = current_session.Events[0].DateTime
+						current_session.Date = current_session.Events[0].DateTime.Date
 					else: current_session.End = timestamp
 				elif line.startswith("user"): sessions[-1].User = line.split('user="')[-1][:-1]
 				elif line.startswith("build"):
@@ -144,7 +155,8 @@ def WSLogFromPath(path):
 					sessions[-1].ServerName = serverinfo[-1][1:-1]
 				elif line.startswith("central"): sessions[-1].Central = line.split('central="')[-1][:-1]
 				elif line.startswith("Worksharing"): version = line.split("Version ")[-1].split(",")[0]
-		for session in sessions: session.Duration = session.End - session.Start
+		for session in sessions: 
+			if session.Start and session.End: session.Duration = session.End - session.Start
 		WSLog = WorksharingLog(version, sessions)
 		WSLog.ProcessingTime = time.time() - processing_started
 		return WSLog
