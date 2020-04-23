@@ -1,0 +1,292 @@
+{
+  "Uuid": "46fa1d1f-35ce-485a-90bb-84170d71e10a",
+  "IsCustomNode": true,
+  "Category": "Journalysis.WorksharingLog.Helpers.Actions",
+  "Description": "Identifies groups of SyncEvents that overlap in a given WorksharingLog. Expects a list of *all* SyncEvents of *all* WorksharingSessions within a WorksharingLog.",
+  "Name": "Helpers.FindSyncEventOverlaps",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "FilePath": {
+        "Key": "DSCore.IO.FilePath",
+        "Value": "DSCoreNodes.dll"
+      },
+      "String": {
+        "Key": "DSCore.String",
+        "Value": "DSCoreNodes.dll"
+      },
+      "List": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSOffice.Excel": {
+        "Key": "DSOffice.Excel",
+        "Value": "DSOffice.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "data = [(x.Start, x.End, x) for x in IN[0]]\n# sort by end first, then by start\ndata.sort(key=lambda x: x[1])\ndata.sort(key=lambda x: x[0])\nl = len(data)\noverlaps = []\nfor i in xrange(l):\n\tfor j in xrange(i+1, l):\n\t\tx = data[i]\n\t\ty = data[j]\n\t\t# identify overlaps\n\t\tif (y[0]<=x[1]): overlaps.append([x[2], y[2]])\n\nOUT = overlaps",
+      "VariableInputPorts": true,
+      "Id": "343407a02a53438bb332b54b58b4bdaa",
+      "Inputs": [
+        {
+          "Id": "0b520a3aa7ac4f86a823b0ebf5fb64cc",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c819b7981f4469ea2b672b5679f95ec",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes IronPython-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "8fb55317a38f4b3bbd90e215d169af1f",
+      "Inputs": [
+        {
+          "Id": "ec2e5444f8584f04871f5ed7febcaf78",
+          "Name": "list",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "038cdd8326704c12a043e707df050aac",
+          "Name": "amt",
+          "Description": "Die zu entfernenden Verschachtelungsebenen\n\nint\nVorgabewert : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c2b4a00741c4350a146d8a5a53a8638",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "097eaffbae0440f580762525116c3613",
+      "Inputs": [
+        {
+          "Id": "c55e0506ff4748ee8e5623d723f8e2f9",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "053244ceec5d460696ead72b7abd214a",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "SyncEvents",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "b10c76fd20024f8fb6d3d667cba8a103",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2bf37a3fb66d4b34bb979e3ef958a883",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "SyncEvents",
+      "Id": "a957743f0a54480e96cdb92cfd41abe4",
+      "Inputs": [
+        {
+          "Id": "13b6d98474384e779a54fe6b14c5427b",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3c819b7981f4469ea2b672b5679f95ec",
+      "End": "13b6d98474384e779a54fe6b14c5427b",
+      "Id": "f296f811dd26486db87b0aba7b0245a8"
+    },
+    {
+      "Start": "1c2b4a00741c4350a146d8a5a53a8638",
+      "End": "0b520a3aa7ac4f86a823b0ebf5fb64cc",
+      "Id": "dc582490c4984bec8a29663a758f3da9"
+    },
+    {
+      "Start": "053244ceec5d460696ead72b7abd214a",
+      "End": "ec2e5444f8584f04871f5ed7febcaf78",
+      "Id": "39f699d1714c4adfa8221c99ccdbcf6a"
+    },
+    {
+      "Start": "2bf37a3fb66d4b34bb979e3ef958a883",
+      "End": "c55e0506ff4748ee8e5623d723f8e2f9",
+      "Id": "c94400778af243ecac1aa8364c4cf6aa"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "343407a02a53438bb332b54b58b4bdaa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 721.035742038058,
+        "Y": 0.372828822358883
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "8fb55317a38f4b3bbd90e215d169af1f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 470.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Create",
+        "Id": "097eaffbae0440f580762525116c3613",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "b10c76fd20024f8fb6d3d667cba8a103",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "a957743f0a54480e96cdb92cfd41abe4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 920.035742038058,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 474.0,
+    "Y": 178.0,
+    "Zoom": 1.0
+  }
+}
