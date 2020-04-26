@@ -72,6 +72,7 @@ class WorksharingSession:
 		for event in self.Events:
 			if event.Text == ">STC": events.append(SyncEvent(event.DateTime))
 			elif event.Text == ">STC:RL:Read": events[-1].ReloadLatestCount += 1
+			elif event.Text == ".STC:RL:LockRoot RW gaveUp": events[-1].WasAborted = True
 			elif event.Text == "<STC" and len(events) > 0:
 				events[-1].End = event.DateTime
 				events[-1].Duration = event.DateTime - events[-1].Start
@@ -94,6 +95,7 @@ class SyncEvent:
 		self.End = None
 		self.Duration = None
 		self.ReloadLatestCount = 0
+		self.WasAborted = False
 	def __repr__(self):
 		return "SyncEvent"
 		
