@@ -1,4 +1,4 @@
-<Workspace Version="1.3.4.6666" X="795.525876128724" Y="549.005880114668" zoom="0.354488381860643" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
+<Workspace Version="1.3.4.6666" X="803.240919302601" Y="610.209403713096" zoom="0.396291257080058" ScaleFactor="1" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="False">
   <NamespaceResolutionMap>
     <ClassMap partialName="File" resolvedName="DSCore.IO.File" assemblyName="DSCoreNodes.dll" />
     <ClassMap partialName="System.IO.FileInfo" resolvedName="System.IO.FileInfo" assemblyName="" />
@@ -149,7 +149,7 @@
         <Output value="worksharingEvents" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6ee9c4ea-7574-43f2-a700-c828b81fc1f6" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingEvent.DateTime" x="835.014665548686" y="-76.335714417411" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="6ee9c4ea-7574-43f2-a700-c828b81fc1f6" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingEvent.DateTime" x="836.372961130837" y="-43.7366204457972" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" useLevels="True" level="2" shouldKeepListStructure="False" />
       <ID value="a06fcfd9-a217-41f4-8469-f5e7e53acf5a" />
       <Name value="WorksharingEvent.DateTime" />
@@ -161,7 +161,7 @@
         <Output value="dateTime" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
-    <Dynamo.Graph.Nodes.CustomNodes.Function guid="8a3358ed-bed3-4cc4-a145-5018eef9aeb0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingEvent.Text" x="834.630581222315" y="31.6523771020989" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="8a3358ed-bed3-4cc4-a145-5018eef9aeb0" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="WorksharingEvent.Text" x="835.988876804465" y="64.2514710737127" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
       <PortInfo index="0" default="False" useLevels="True" level="2" shouldKeepListStructure="False" />
       <ID value="7de2600e-a165-4798-baf8-6c10914cc340" />
       <Name value="WorksharingEvent.Text" />
@@ -479,12 +479,38 @@
         <Output value="str" />
       </Outputs>
     </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="84521372-dcc2-423d-afd6-8dd3d2faec89" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="SyncEvent.WasAborted" x="866.622606120702" y="-421.959748582748" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" useLevels="True" level="2" shouldKeepListStructure="False" />
+      <ID value="fa1db0f6-bbcb-49c3-b640-e20dc7837c5d" />
+      <Name value="SyncEvent.WasAborted" />
+      <Description value="Returns the number of times that Reload Latest occured during a given SyncEvent" />
+      <Inputs>
+        <Input value="syncEvent" />
+      </Inputs>
+      <Outputs>
+        <Output value="bool" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
+    <Dynamo.Graph.Nodes.CustomNodes.Function guid="fbebb3a6-ed34-4a10-8b14-b1956d5bc855" type="Dynamo.Graph.Nodes.CustomNodes.Function" nickname="Helpers.FindSyncEventOverlaps" x="854.150254285528" y="-236.953648721216" isVisible="true" isUpstreamVisible="true" lacing="Shortest" isSelectedInput="False" IsFrozen="false" isPinned="false">
+      <PortInfo index="0" default="False" />
+      <ID value="46fa1d1f-35ce-485a-90bb-84170d71e10a" />
+      <Name value="Helpers.FindSyncEventOverlaps" />
+      <Description value="Identifies groups of SyncEvents that overlap in a given WorksharingLog. Expects a list of *all* SyncEvents of *all* WorksharingSessions within a WorksharingLog." />
+      <Inputs>
+        <Input value="SyncEvents" />
+      </Inputs>
+      <Outputs>
+        <Output value="SyncEvents" />
+      </Outputs>
+    </Dynamo.Graph.Nodes.CustomNodes.Function>
   </Elements>
   <Connectors>
     <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="e54cc39f-5f96-4edc-b78a-d0e82196cd4e" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="fadc6831-7e2e-42ed-b277-b87908cc4ff3" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="93bc6c5b-aa26-4047-8dde-977b026f721b" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="2b050189-fe00-4e6a-a69c-624d92a884cc" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="84521372-dcc2-423d-afd6-8dd3d2faec89" end_index="0" portType="0" />
+    <Dynamo.Graph.Connectors.ConnectorModel start="bac3f1fc-623c-417b-8e36-7c88b29da0e1" start_index="0" end="fbebb3a6-ed34-4a10-8b14-b1956d5bc855" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="125951f6-58d8-4f42-89c0-cb465b707fc5" start_index="0" end="6ee9c4ea-7574-43f2-a700-c828b81fc1f6" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="125951f6-58d8-4f42-89c0-cb465b707fc5" start_index="0" end="8a3358ed-bed3-4cc4-a145-5018eef9aeb0" end_index="0" portType="0" />
     <Dynamo.Graph.Connectors.ConnectorModel start="87460693-8401-4152-a427-2531f5e41f47" start_index="0" end="bac3f1fc-623c-417b-8e36-7c88b29da0e1" end_index="0" portType="0" />
@@ -561,7 +587,7 @@
       <Models ModelGuid="83fa08e8-5101-4d2b-90d0-674c6b2733bd" />
       <Models ModelGuid="4bfd8fb9-1343-4e0e-89df-5ff8574dde5a" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="9793f99e-84e4-4508-be96-d81d19525e86" annotationText="WorksharingEvent.Query" left="824.630581222315" top="-122.335714417411" width="336.193333333333" height="246.98809151951" fontSize="30" InitialTop="-76.335714417411" InitialHeight="230.98809151951" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="9793f99e-84e4-4508-be96-d81d19525e86" annotationText="WorksharingEvent.Query" left="825.988876804465" top="-89.7366204457972" width="336.193333333333" height="246.98809151951" fontSize="30" InitialTop="-43.7366204457972" InitialHeight="230.98809151951" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="6ee9c4ea-7574-43f2-a700-c828b81fc1f6" />
       <Models ModelGuid="8a3358ed-bed3-4cc4-a145-5018eef9aeb0" />
     </Dynamo.Graph.Annotations.AnnotationModel>
@@ -569,11 +595,12 @@
       <Models ModelGuid="95cf8be9-a55a-4c48-8936-5941d4016d9e" />
       <Models ModelGuid="1a226a45-5d5f-4d22-b31c-0a494038c501" />
     </Dynamo.Graph.Annotations.AnnotationModel>
-    <Dynamo.Graph.Annotations.AnnotationModel guid="b15165b4-0d36-4c45-8555-8465a51d87a4" annotationText="SyncEvent.Query" left="847.169044959181" top="-896.006912014997" width="270.2986088282" height="450.84533270125" fontSize="30" InitialTop="-850.006912014997" InitialHeight="336.366372178277" TextblockHeight="36" backgrouund="#FFC1D676">
+    <Dynamo.Graph.Annotations.AnnotationModel guid="b15165b4-0d36-4c45-8555-8465a51d87a4" annotationText="SyncEvent.Query" left="847.169044959181" top="-896.006912014997" width="270.2986088282" height="567.047163432249" fontSize="30" InitialTop="-850.006912014997" InitialHeight="336.366372178277" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="e54cc39f-5f96-4edc-b78a-d0e82196cd4e" />
       <Models ModelGuid="93bc6c5b-aa26-4047-8dde-977b026f721b" />
       <Models ModelGuid="fadc6831-7e2e-42ed-b277-b87908cc4ff3" />
       <Models ModelGuid="2b050189-fe00-4e6a-a69c-624d92a884cc" />
+      <Models ModelGuid="84521372-dcc2-423d-afd6-8dd3d2faec89" />
     </Dynamo.Graph.Annotations.AnnotationModel>
     <Dynamo.Graph.Annotations.AnnotationModel guid="54a7b6f8-b353-4b5a-99ee-eb4c903c785f" annotationText="LoadedLink.Query" left="838.449380637499" top="-1510.0984209144" width="263.36683336749" height="583.11534330575" fontSize="30" InitialTop="-1464.0984209144" InitialHeight="522.115343305753" TextblockHeight="36" backgrouund="#FFC1D676">
       <Models ModelGuid="928667c7-f4da-499c-bee7-5fe3caaf41d6" />
@@ -582,9 +609,12 @@
       <Models ModelGuid="98d0f608-e688-4e9f-a7fc-91694ffa16c0" />
       <Models ModelGuid="a25a2609-1ab4-4c7e-b0d9-e6ba606e206d" />
     </Dynamo.Graph.Annotations.AnnotationModel>
+    <Dynamo.Graph.Annotations.AnnotationModel guid="7f2a1e09-308b-49a4-9ede-383090b5754d" annotationText="WorksharingLog.Helpers" left="844.150254285528" top="-282.953648721216" width="333.69" height="139" fontSize="30" InitialTop="-236.953648721216" InitialHeight="123" TextblockHeight="36" backgrouund="#FFC1D676">
+      <Models ModelGuid="fbebb3a6-ed34-4a10-8b14-b1956d5bc855" />
+    </Dynamo.Graph.Annotations.AnnotationModel>
   </Annotations>
   <Presets />
   <Cameras>
-    <Camera Name="Background Preview" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
+    <Camera Name="Hintergrundvorschau" eyeX="-17" eyeY="24" eyeZ="50" lookX="12" lookY="-13" lookZ="-58" upX="0" upY="1" upZ="0" />
   </Cameras>
 </Workspace>

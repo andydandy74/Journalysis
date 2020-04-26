@@ -25,7 +25,7 @@
       "Name": "Worksharing Log File Path",
       "Type": "string",
       "Value": "..\\..\\..\\Journals\\Projekt1.slog",
-      "Description": "Allows you to select a file on the system to get its filename"
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
     }
   ],
   "Outputs": [],
@@ -38,7 +38,7 @@
       "Id": "e54cc39f5f964edcb78ad0e82196cd4e",
       "Inputs": [
         {
-          "Id": "b500af03f6d0435aa81e8ea57b099442",
+          "Id": "150067673489469dbb3f82ac2af506ff",
           "Name": "syncEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -49,9 +49,9 @@
       ],
       "Outputs": [
         {
-          "Id": "606d6b97a37d42d19983f099667cc689",
+          "Id": "fda86b1f27194e6382c4b66acaea8495",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -69,7 +69,7 @@
       "Id": "5289e94808e54887b6b1eb321087b493",
       "Inputs": [
         {
-          "Id": "c621b9a2c7c343fd943192b9153f078c",
+          "Id": "f1b8f4ed48514476a85bd98518f7e5bf",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -80,9 +80,9 @@
       ],
       "Outputs": [
         {
-          "Id": "4beb7ee97d1b456cbc004b7c732af4f2",
+          "Id": "a739de67107f4fefa5e991f840cd9df6",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -90,7 +90,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Computes the load time of the model (not including loading of linked models) for a given WorksharingSession"
+      "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -100,7 +100,7 @@
       "Id": "bac3f1fc623c417b8e367c88b29da0e1",
       "Inputs": [
         {
-          "Id": "7eb33a692da84088be942723a59e1cf8",
+          "Id": "4d5f09ff250d4e7088ad74701485e722",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -111,9 +111,9 @@
       ],
       "Outputs": [
         {
-          "Id": "39a59e0f19cf45c5ad570327b1d8a783",
+          "Id": "e2ce155031d543e58c87cf41faccac6c",
           "Name": "SyncEvents",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -131,7 +131,7 @@
       "Id": "93bc6c5baa2640478dde977b026f721b",
       "Inputs": [
         {
-          "Id": "e7e2447bd9c148ed9fda9ee17c6cf3cb",
+          "Id": "7d3b088e30b649fabe9b8adbe6393569",
           "Name": "syncEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -142,9 +142,9 @@
       ],
       "Outputs": [
         {
-          "Id": "71876debd9cc4914876c5cb6aadad1c3",
+          "Id": "47c5af6fb43641c69f4a8acea7aa9f06",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -162,7 +162,7 @@
       "Id": "fadc68317e2e42edb277b87908cc4ff3",
       "Inputs": [
         {
-          "Id": "94be5d35f05b41239d39a40c728d81eb",
+          "Id": "908328b563d04f77983379c623a197ce",
           "Name": "syncEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -173,9 +173,9 @@
       ],
       "Outputs": [
         {
-          "Id": "fc9f5c2e2681406b8fe1b6a401714c68",
+          "Id": "33d9a28cc929416abe413f4d783a8e0c",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -193,7 +193,7 @@
       "Id": "8759f7851c81463c9430fce7bf78e72d",
       "Inputs": [
         {
-          "Id": "051edd7bea6c45429eae7bb58c9ea428",
+          "Id": "a4c1d4d7d49f463ba260089e5e87528d",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -204,9 +204,9 @@
       ],
       "Outputs": [
         {
-          "Id": "d051554648494dea9af95bc0ffdb855b",
+          "Id": "949ffa9a848b4ba795e271693e358ab4",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -224,7 +224,7 @@
       "Id": "1a14d72db8b04dbf98fe1d9e66172618",
       "Inputs": [
         {
-          "Id": "4717a664a1be4b5e884f393713b7fcd1",
+          "Id": "8d2bcee268e84c57a5665e046b862c15",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -235,9 +235,9 @@
       ],
       "Outputs": [
         {
-          "Id": "556ee08b75744bd0946f25e348e164ef",
+          "Id": "c7888e07a94940118ca5c10be4466c4f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -255,7 +255,7 @@
       "Id": "567c133d9d0d4048997daea55e7f0916",
       "Inputs": [
         {
-          "Id": "f239221d2acd4a53abf40e88d38c7142",
+          "Id": "47b7c6e870f044c18022fdc388319747",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -266,9 +266,9 @@
       ],
       "Outputs": [
         {
-          "Id": "d65206a90d404966889411e7be8bb419",
+          "Id": "6fff680f78d14a048c430aba19ae6031",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -286,7 +286,7 @@
       "Id": "6a1569342bb44ebd8614b1509a400c3b",
       "Inputs": [
         {
-          "Id": "9652298ee586446a98d96603dbfd8e0c",
+          "Id": "84355cec57a441d9b2899e869465e11a",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -297,9 +297,9 @@
       ],
       "Outputs": [
         {
-          "Id": "a1a6cf15ae844725a93f1eb8ef9fbf48",
+          "Id": "f55150b48b0a4d64b777f714103903c8",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -317,7 +317,7 @@
       "Id": "b97ac3f8e2214cb583b8b0522845719f",
       "Inputs": [
         {
-          "Id": "445fdf1338114cd58502564fe08665fb",
+          "Id": "2fc0c567f9754552aaadc96ce7708c22",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -328,9 +328,9 @@
       ],
       "Outputs": [
         {
-          "Id": "76b770c1ff024b8ca1f50f4054d55f86",
+          "Id": "2e97ca3cb6ac4c55a1082bd552cb2425",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -348,7 +348,7 @@
       "Id": "b6616ef82e1a4c49ba8ac6185dc7c4b5",
       "Inputs": [
         {
-          "Id": "efa3882f869843beba4626a884e74484",
+          "Id": "4aa280e65d6441f6a1a8e07e90e6de55",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -359,9 +359,9 @@
       ],
       "Outputs": [
         {
-          "Id": "3b1494abd4ae49b2932bf8c1a0c196b7",
+          "Id": "63937b4349ac4dbca32f747c8b185352",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -379,7 +379,7 @@
       "Id": "125951f658d84f4289c0cb465b707fc5",
       "Inputs": [
         {
-          "Id": "88e5575360d04c5ca3797be32cd8e57c",
+          "Id": "64864d5cca24494bb86fae0546bdb26b",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -390,9 +390,9 @@
       ],
       "Outputs": [
         {
-          "Id": "68a8db4cbd3946a8a76da1fae26f2713",
+          "Id": "d1f364f393704fafb487d1b49d39333e",
           "Name": "worksharingEvents",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -410,7 +410,7 @@
       "Id": "6ee9c4ea757443f2a700c828b81fc1f6",
       "Inputs": [
         {
-          "Id": "16a31934f40943d5b840e5dd3eb9bf70",
+          "Id": "812ee22de99a4d91b74f6b9dd420ea32",
           "Name": "worksharingEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -421,9 +421,9 @@
       ],
       "Outputs": [
         {
-          "Id": "8f5e9e6e24ab4a78886e645126a8e39d",
+          "Id": "e27280ec192745658204b6244ecb16ba",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -441,7 +441,7 @@
       "Id": "8a3358edbed34cc4a1455018eef9aeb0",
       "Inputs": [
         {
-          "Id": "1ac3783255d647bd95a5e99575054c06",
+          "Id": "cc4fc74995b442b59df03ab5f334f787",
           "Name": "worksharingEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -452,9 +452,9 @@
       ],
       "Outputs": [
         {
-          "Id": "d2a8136d977946378b89167d7fd07b44",
+          "Id": "433badf8a87a42f7ba38915a4337a158",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -472,7 +472,7 @@
       "Id": "8746069384014152a4272531f5e41f47",
       "Inputs": [
         {
-          "Id": "c0de490d02e44945a5042349d18c82d1",
+          "Id": "b32b3b4a5144464f82aafd1dd0c3d7f4",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -483,9 +483,9 @@
       ],
       "Outputs": [
         {
-          "Id": "3ae88e0de1c74342b14c86c81533fbf0",
+          "Id": "5e42499abfa04c17b9c3155bc4d5b1d0",
           "Name": "worksharingSessions",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -503,7 +503,7 @@
       "Id": "d4f2002ca39640cdb1c37a3c9ba37bef",
       "Inputs": [
         {
-          "Id": "24bbd7e510874f21b0f6875b79185446",
+          "Id": "e0eae84648484dd6bfee6e2ed0fd262a",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -514,9 +514,9 @@
       ],
       "Outputs": [
         {
-          "Id": "829d00dc3c6048139a0f4efe35528de4",
+          "Id": "2c92368b3e8348ac95ab546ad62a2bd2",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -534,7 +534,7 @@
       "Id": "988db513065247838672bfa5e85d7ee9",
       "Inputs": [
         {
-          "Id": "f499340097144d6cab4c2814d070ebfd",
+          "Id": "441622a300ec4a1a8893495e55091535",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -545,9 +545,9 @@
       ],
       "Outputs": [
         {
-          "Id": "90d0c4669b8b4eea92074f52372ad745",
+          "Id": "2d044e4db92a494dbe52188d8a5e0570",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -565,7 +565,7 @@
       "Id": "cc0cc40832724c4d812f706ce127c369",
       "Inputs": [
         {
-          "Id": "6e3a4da543614f92beb032cccabd695b",
+          "Id": "8d5d62c9bd714d2e9c925133e32827c0",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -576,9 +576,9 @@
       ],
       "Outputs": [
         {
-          "Id": "b6e639bbc70e4d5ab9973977a7209228",
+          "Id": "22c9a86d56d14f19baa256677b29de19",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -596,7 +596,7 @@
       "Id": "2be4d763455b424e8059024db1c79fbf",
       "Inputs": [
         {
-          "Id": "8a8523ec9b3f408bb5462cc24944d5a3",
+          "Id": "29b06b5ce5574c52b85b5ffc27e1a4f3",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -607,9 +607,9 @@
       ],
       "Outputs": [
         {
-          "Id": "e5665e8122974ceeab464c1c9a6de7c5",
+          "Id": "dd66f65eaee3413b9e4ac0bfecabd961",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -627,7 +627,7 @@
       "Id": "71f382e75d2049569d3f000201836f75",
       "Inputs": [
         {
-          "Id": "2a0ce769f06b44549b09afe5724dbb44",
+          "Id": "7cd3327b21634fe48296fff3b61fea1d",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -638,9 +638,9 @@
       ],
       "Outputs": [
         {
-          "Id": "426b375d60174329968450dba9e5bdbf",
+          "Id": "dc8778675f614737acafb351c5f0460e",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -659,7 +659,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "03741c19a6114f9e8f7d4a62453c973e",
+          "Id": "dd876fc70d124f3587e374405893689d",
           "Name": "",
           "Description": "Filename",
           "UsingDefaultValue": false,
@@ -669,7 +669,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a file on the system to get its filename"
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -679,7 +679,7 @@
       "Id": "513bddc8b6b34695bb5581f5b21a7075",
       "Inputs": [
         {
-          "Id": "35fceb84eae940b7a874fe0e10acb6f3",
+          "Id": "65b747c101db4109aad9cdf5a5b572d3",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -690,9 +690,9 @@
       ],
       "Outputs": [
         {
-          "Id": "0fb360006e1544da9f10ce44c0828ede",
+          "Id": "9350e75364e849fe8e9ad6bed6195f5b",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -710,7 +710,7 @@
       "Id": "0ff75627203e4d818f8f3d8da59909e8",
       "Inputs": [
         {
-          "Id": "d67bad321a494e82a4b5cc887c98816d",
+          "Id": "9f5b9eaeec544aed8917824a5344f042",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -721,9 +721,9 @@
       ],
       "Outputs": [
         {
-          "Id": "0b905df8984349ac80be2ee145e31c67",
+          "Id": "7c4706e9c4404b3481b1c866a666a02b",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -741,7 +741,7 @@
       "Id": "46f6dab0d5a84d2bb9840f0d2ddf3c8a",
       "Inputs": [
         {
-          "Id": "c530109bab7c45a48bb30c8bb8bcee44",
+          "Id": "98c0a3497ebe4103854a8c901f3dc41b",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -752,9 +752,9 @@
       ],
       "Outputs": [
         {
-          "Id": "4e467e219dc54122af4af4886545c0fa",
+          "Id": "ce23f960e38447f1bac345ea3758523b",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -772,7 +772,7 @@
       "Id": "a90707b7d6f9499cb06d5420d2493ab3",
       "Inputs": [
         {
-          "Id": "c07b838623f647029bae5ed6641b6b2d",
+          "Id": "15bc8bdb0ba24f5c85f6ee262ab62a5b",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -783,9 +783,9 @@
       ],
       "Outputs": [
         {
-          "Id": "86eb7d9887b647c2914c411a59e658b5",
+          "Id": "1b43c7e74b01489fa1f00d6222b43b95",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -803,7 +803,7 @@
       "Id": "a3de4278fc7b43368ffc6708c692f033",
       "Inputs": [
         {
-          "Id": "aea20dd4253e41d4b49e9f9df43cc13d",
+          "Id": "905dfec29a6841f0bbecbe4e60c58ef9",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -814,9 +814,9 @@
       ],
       "Outputs": [
         {
-          "Id": "40c84cc2ece5474cb325fe1025ea5d54",
+          "Id": "d77b458f2b18496db52a9e9fee791ccd",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -834,7 +834,7 @@
       "Id": "95cf8be9a55a4c4889365941d4016d9e",
       "Inputs": [
         {
-          "Id": "7f64733bbb82439480b4a80721b6641a",
+          "Id": "543be9cca87546e8a0c066613199f5d9",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -845,9 +845,9 @@
       ],
       "Outputs": [
         {
-          "Id": "567bd97efa4347a2a59447ed0fbb4169",
+          "Id": "65dcd80fa46142e080deca3a978c06aa",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -865,7 +865,7 @@
       "Id": "1a226a455d5f4d22b31c0a494038c501",
       "Inputs": [
         {
-          "Id": "9db0162e82614a4ebee77abafc41e200",
+          "Id": "9bbdd055561d467c9853c9c8a295c3cc",
           "Name": "worksharingLog",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -874,7 +874,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "1b1c33ee3e4c4ec280f62964de18ce1d",
+          "Id": "9f6b1ee449974d309731e05c216bcd2a",
           "Name": "sessionID",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -885,9 +885,9 @@
       ],
       "Outputs": [
         {
-          "Id": "a77c8bdd70da4fdcbf4c887841c30757",
+          "Id": "d991facc6f2d4f2c9877614c8f589a10",
           "Name": "worksharingSession",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -905,7 +905,7 @@
       "Id": "02ad8d3bd21d4d369b368248b393a8ef",
       "Inputs": [
         {
-          "Id": "c887addd2ccf44d8bb3ad2bab7646b31",
+          "Id": "d499eac12e344d658faec688b3156699",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -916,9 +916,9 @@
       ],
       "Outputs": [
         {
-          "Id": "0f0a07a4926247f9a2cdea02f0c7a1a9",
+          "Id": "96b6f5fdca7346c982532643f11c06f7",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -936,7 +936,7 @@
       "Id": "8cacaee62d984de881d713f84edfd04f",
       "Inputs": [
         {
-          "Id": "ea2a09837a6f4dc9aa9bab0f00439124",
+          "Id": "787481f2f9554d8ea7dbfddd6183bd46",
           "Name": "path",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -947,9 +947,9 @@
       ],
       "Outputs": [
         {
-          "Id": "714493078088440b83d4aa6df5eea961",
+          "Id": "54d779225cef41d78347b1d5f9941335",
           "Name": "worksharingLog",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -967,7 +967,7 @@
       "Id": "4bfd8fb913434e0e89df5ff8574dde5a",
       "Inputs": [
         {
-          "Id": "89a7bc04762d459c8aa380bd03ab4625",
+          "Id": "c6a5c1e1847c48c79d9233cec0b8996c",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -978,9 +978,9 @@
       ],
       "Outputs": [
         {
-          "Id": "931bd43168324ef78b6377919c311ce5",
+          "Id": "dd42d87af8e747ca9d54caffbd9d1f8f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -998,7 +998,7 @@
       "Id": "83fa08e851014d2b90d0674c6b2733bd",
       "Inputs": [
         {
-          "Id": "a6b4754ad93c4ebb8787a6c32f1c5b34",
+          "Id": "cfeac3e5365848d09b7517cf35c783ce",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1009,9 +1009,9 @@
       ],
       "Outputs": [
         {
-          "Id": "ec74937d4373441ba14f9bf6af0f5fbe",
+          "Id": "1b7d7de74c6a49a8b508642ca41e984b",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1029,7 +1029,7 @@
       "Id": "51b376fa0dea4a35be00d0db7d295aad",
       "Inputs": [
         {
-          "Id": "0106e045144644f199eb32b187c0c5d5",
+          "Id": "624bea61d9c84260aa1b925be440b1f9",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1040,9 +1040,9 @@
       ],
       "Outputs": [
         {
-          "Id": "4d3e87d97e5449b796e7f609220361e0",
+          "Id": "304dee3d0caf4fd282d05bea262e48d9",
           "Name": "LoadedLinks",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1060,7 +1060,7 @@
       "Id": "928667c7f4da499cbee75fe3caaf41d6",
       "Inputs": [
         {
-          "Id": "12fa55f29f9a461783f16bf72cda078b",
+          "Id": "f8841472150245f8bfe73d678c664941",
           "Name": "loadedLink",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1071,9 +1071,9 @@
       ],
       "Outputs": [
         {
-          "Id": "764e1a14281344aa958a784f24ffb9c4",
+          "Id": "86362218c10f49179607dbf4bff440c8",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1091,7 +1091,7 @@
       "Id": "36154e6acb2f4d11aaf45657cee6d6fc",
       "Inputs": [
         {
-          "Id": "95284916401c4764add4d9e76c625c57",
+          "Id": "15b7b35a0ee54b99aa2d65cf1ba64308",
           "Name": "loadedLink",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1102,9 +1102,9 @@
       ],
       "Outputs": [
         {
-          "Id": "9b574b383ea74bd7a995ac52c2a225d0",
+          "Id": "3ef56f1d274041ce8381a951d053babd",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1122,7 +1122,7 @@
       "Id": "fb239c1cf5db451195cba5206a254f40",
       "Inputs": [
         {
-          "Id": "1df96df5c1c84529a8b9cfdccd642c91",
+          "Id": "201cf36eb4aa48118879c4a6526781a2",
           "Name": "loadedLink",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1133,9 +1133,9 @@
       ],
       "Outputs": [
         {
-          "Id": "812ae68a9a3c46818f652b22967ded07",
+          "Id": "dc32fc1657504230844f92dc8d188f79",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1153,7 +1153,7 @@
       "Id": "98d0f608e6884e9fa7fc91694ffa16c0",
       "Inputs": [
         {
-          "Id": "ddd4499cc5c8471fb93ac558693026aa",
+          "Id": "540418bd2ece41049a24d0a9dd2c2cd5",
           "Name": "loadedLink",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1164,9 +1164,9 @@
       ],
       "Outputs": [
         {
-          "Id": "479d803f78fc403384fa053e6169e446",
+          "Id": "c1e3893a62c54e28aa7c82627cfaaa9c",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1184,7 +1184,7 @@
       "Id": "a25a26091ab44c7eb0d9e6ba606e206d",
       "Inputs": [
         {
-          "Id": "fd88a46336e84caa85bd0e8601cf08f9",
+          "Id": "7e82ff8bd72446129717a1659fecf98c",
           "Name": "loadedLink",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1195,9 +1195,9 @@
       ],
       "Outputs": [
         {
-          "Id": "7108f53670824b8992bb3db8e988bbe6",
+          "Id": "bd6f335b8aab476a9581d34caf50ef3e",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1215,7 +1215,7 @@
       "Id": "2b050189fe004e6aa69c624d92a884cc",
       "Inputs": [
         {
-          "Id": "3c6fe63b73bc4ddcb556c15cc7acd2d6",
+          "Id": "5639381a791e4cfdad132c0173805d72",
           "Name": "syncEvent",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1226,9 +1226,9 @@
       ],
       "Outputs": [
         {
-          "Id": "3de5ba3628f94b93bafa7841633519dc",
+          "Id": "3917307271e5451b9c6fb619cfeb493a",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1243,10 +1243,10 @@
       "FunctionSignature": "f98018f5-3630-4e4d-892e-b0380f7580dd",
       "FunctionType": "Graph",
       "NodeType": "FunctionNode",
-      "Id": "a5f193cd10094b4bb44fe6ec6a405427",
+      "Id": "58b72a86c179477d83963ae232f8a526",
       "Inputs": [
         {
-          "Id": "9bec1c9340614bd9a3df3ef1dfc11187",
+          "Id": "b33609f719c1489994acdbbe6ca3de87",
           "Name": "worksharingSession",
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
@@ -1257,9 +1257,9 @@
       ],
       "Outputs": [
         {
-          "Id": "47514088498d4bd7be121c14545ef796",
+          "Id": "aa3525fba56e4450b62be7daa3b46b14",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1267,209 +1267,281 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the type of a given WorksharingSession"
+      "Description": "Returns the Revit build of a given WorksharingSession"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "fa1db0f6-bbcb-49c3-b640-e20dc7837c5d",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "84521372dcc2423dafd68dd3d2faec89",
+      "Inputs": [
+        {
+          "Id": "97fdf43adb7b44fb9377275aa5b80386",
+          "Name": "syncEvent",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e7443fd9a6e74095bbdd060960eabb99",
+          "Name": "bool",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the number of times that Reload Latest occured during a given SyncEvent"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "46fa1d1f-35ce-485a-90bb-84170d71e10a",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "fbebb3a6ed344a108b14b1956d5bc855",
+      "Inputs": [
+        {
+          "Id": "f52e586332e7411caffeb6aa9b62ed05",
+          "Name": "SyncEvents",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "422e426742fa49bc961ea3645383f849",
+          "Name": "SyncEvents",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Identifies groups of SyncEvents that overlap in a given WorksharingLog. Expects a list of *all* SyncEvents of *all* WorksharingSessions within a WorksharingLog."
     }
   ],
   "Connectors": [
     {
-      "Start": "39a59e0f19cf45c5ad570327b1d8a783",
-      "End": "b500af03f6d0435aa81e8ea57b099442",
-      "Id": "20588f8981b64d35a17017b2d0ff5b47"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "150067673489469dbb3f82ac2af506ff",
+      "Id": "47c05f6868d743ad8e881f0f117bb723"
     },
     {
-      "Start": "39a59e0f19cf45c5ad570327b1d8a783",
-      "End": "94be5d35f05b41239d39a40c728d81eb",
-      "Id": "670f87a08301489e8c060af2021116bf"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "908328b563d04f77983379c623a197ce",
+      "Id": "d7de3b249b9e488aa5a1b687e206530c"
     },
     {
-      "Start": "39a59e0f19cf45c5ad570327b1d8a783",
-      "End": "e7e2447bd9c148ed9fda9ee17c6cf3cb",
-      "Id": "1ad28d5ee4c549018c3903ffcd76bc74"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "7d3b088e30b649fabe9b8adbe6393569",
+      "Id": "89669076a4364498ab88c5395f951440"
     },
     {
-      "Start": "39a59e0f19cf45c5ad570327b1d8a783",
-      "End": "3c6fe63b73bc4ddcb556c15cc7acd2d6",
-      "Id": "0e5736eca5d4497b9fd2a21409673584"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "5639381a791e4cfdad132c0173805d72",
+      "Id": "a2eb5d3126554ad4ade24163abce1dfa"
     },
     {
-      "Start": "68a8db4cbd3946a8a76da1fae26f2713",
-      "End": "16a31934f40943d5b840e5dd3eb9bf70",
-      "Id": "6c44dad730fa42e482457cc13cff5f51"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "97fdf43adb7b44fb9377275aa5b80386",
+      "Id": "4d00a11b58454f6798dc13a4cad08348"
     },
     {
-      "Start": "68a8db4cbd3946a8a76da1fae26f2713",
-      "End": "1ac3783255d647bd95a5e99575054c06",
-      "Id": "ef525da07a3a49be8f041288426b167f"
+      "Start": "e2ce155031d543e58c87cf41faccac6c",
+      "End": "f52e586332e7411caffeb6aa9b62ed05",
+      "Id": "09031ac45c9648f5822fb334aaf03345"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "7eb33a692da84088be942723a59e1cf8",
-      "Id": "3bf6729d69c9411693bd84096634b74b"
+      "Start": "d1f364f393704fafb487d1b49d39333e",
+      "End": "812ee22de99a4d91b74f6b9dd420ea32",
+      "Id": "4084a140eceb4fb38e96575703242298"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "051edd7bea6c45429eae7bb58c9ea428",
-      "Id": "72dc7ed5576b4dcfa420c603a3996aa4"
+      "Start": "d1f364f393704fafb487d1b49d39333e",
+      "End": "cc4fc74995b442b59df03ab5f334f787",
+      "Id": "5513b374594444f5943fad9bbf65a0ea"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "4717a664a1be4b5e884f393713b7fcd1",
-      "Id": "b415d8e576c145faaf1d965976d7e008"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "4d5f09ff250d4e7088ad74701485e722",
+      "Id": "57f186c926714f33beb06c07e3a1d452"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "f239221d2acd4a53abf40e88d38c7142",
-      "Id": "339e3ef1f6074d4a80495a6c9765d852"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "a4c1d4d7d49f463ba260089e5e87528d",
+      "Id": "6760bce87076431bbaf7c582a7f1be35"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "445fdf1338114cd58502564fe08665fb",
-      "Id": "152c613f3ee246c9a7d72c2e5c4a3e2c"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "8d2bcee268e84c57a5665e046b862c15",
+      "Id": "083bd01819d54ab0acf7bfb15923029b"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "efa3882f869843beba4626a884e74484",
-      "Id": "081b5934254542779e7f723c021d4a97"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "47b7c6e870f044c18022fdc388319747",
+      "Id": "70278f07e03b46179eb73e99ea342086"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "88e5575360d04c5ca3797be32cd8e57c",
-      "Id": "06f52d261a414e819025e42f613375a8"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "2fc0c567f9754552aaadc96ce7708c22",
+      "Id": "f4285a9596c24e70ba1bc88308dde118"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "8a8523ec9b3f408bb5462cc24944d5a3",
-      "Id": "dff3183827604ba4bca4c2db57be1a16"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "4aa280e65d6441f6a1a8e07e90e6de55",
+      "Id": "4e8a44e056fe4dde865f7a4b370e739a"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "c530109bab7c45a48bb30c8bb8bcee44",
-      "Id": "47a9f422cded45dd9d34e49fb1fbe9d1"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "64864d5cca24494bb86fae0546bdb26b",
+      "Id": "19ba9c052779474c9f6cefe7e35907b8"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "c07b838623f647029bae5ed6641b6b2d",
-      "Id": "dd6a040d2dd6476f90a9d5c368731cb6"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "29b06b5ce5574c52b85b5ffc27e1a4f3",
+      "Id": "437e7db362c24068b01b16576f9b7f41"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "2a0ce769f06b44549b09afe5724dbb44",
-      "Id": "eb29a9a2faab4a3aa87eb96fde572f67"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "98c0a3497ebe4103854a8c901f3dc41b",
+      "Id": "1779c8ff8ea343798e5fb49e7211b3df"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "24bbd7e510874f21b0f6875b79185446",
-      "Id": "9d2a959ce9454315add37d597aec93eb"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "15bc8bdb0ba24f5c85f6ee262ab62a5b",
+      "Id": "40123c45ab6849c2ba77954e661e1f50"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "35fceb84eae940b7a874fe0e10acb6f3",
-      "Id": "f9b9276372cd44afa426c4fad636fd23"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "7cd3327b21634fe48296fff3b61fea1d",
+      "Id": "20e169aef2654e0784fe9b4d44d5b220"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "d67bad321a494e82a4b5cc887c98816d",
-      "Id": "340b687327544e30b99ca67e6b57a098"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "e0eae84648484dd6bfee6e2ed0fd262a",
+      "Id": "f4afff0594214dafa88aa6c59a51ccf2"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "aea20dd4253e41d4b49e9f9df43cc13d",
-      "Id": "f766f60de2744303a4f01ef3d3c808cd"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "65b747c101db4109aad9cdf5a5b572d3",
+      "Id": "e5c0a22148d7425abfeea7f8cb1b2550"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "c621b9a2c7c343fd943192b9153f078c",
-      "Id": "8fb9c57f9f9f44e8b39e2c8a4a6d5d9b"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "9f5b9eaeec544aed8917824a5344f042",
+      "Id": "e3bf43bd33454e3ea46dafd18563523b"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "c887addd2ccf44d8bb3ad2bab7646b31",
-      "Id": "6903fb2d36714958aa249f2297af6113"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "905dfec29a6841f0bbecbe4e60c58ef9",
+      "Id": "763023361dd34c8bbc521c2a41076e57"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "89a7bc04762d459c8aa380bd03ab4625",
-      "Id": "c013b19633b54660ba135dc9ebb84573"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "f1b8f4ed48514476a85bd98518f7e5bf",
+      "Id": "d7f3ac4aa0d947158ecb6f51894646c1"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "a6b4754ad93c4ebb8787a6c32f1c5b34",
-      "Id": "1c8b8d79cef347b3bef01d91f3a4a2ca"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "d499eac12e344d658faec688b3156699",
+      "Id": "669e3149e2c149fbb65adb59b153f23d"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "0106e045144644f199eb32b187c0c5d5",
-      "Id": "9d422a049e274279b470f2ce3cec8f83"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "c6a5c1e1847c48c79d9233cec0b8996c",
+      "Id": "aec9e830d5e9405e88c896aa55bdf591"
     },
     {
-      "Start": "3ae88e0de1c74342b14c86c81533fbf0",
-      "End": "9bec1c9340614bd9a3df3ef1dfc11187",
-      "Id": "524d5a96b645403fb463a55ef02450ed"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "cfeac3e5365848d09b7517cf35c783ce",
+      "Id": "6e86dde17d3144c89ec494edf9f7882e"
     },
     {
-      "Start": "e5665e8122974ceeab464c1c9a6de7c5",
-      "End": "1b1c33ee3e4c4ec280f62964de18ce1d",
-      "Id": "8e918beba72f4845974e3c39d57fe48a"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "624bea61d9c84260aa1b925be440b1f9",
+      "Id": "595ca6ccd1f6453faba4623c5cd8de8f"
     },
     {
-      "Start": "03741c19a6114f9e8f7d4a62453c973e",
-      "End": "ea2a09837a6f4dc9aa9bab0f00439124",
-      "Id": "5c7cdcea4945491cab46d34102bbdfb2"
+      "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
+      "End": "b33609f719c1489994acdbbe6ca3de87",
+      "Id": "a5ee9de82a2f491ba3aa915e20613a7c"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "9652298ee586446a98d96603dbfd8e0c",
-      "Id": "52871933b97d483aa0462a5a22105e13"
+      "Start": "dd66f65eaee3413b9e4ac0bfecabd961",
+      "End": "9f6b1ee449974d309731e05c216bcd2a",
+      "Id": "19b9560fa93f4a59ab664e2b3aa60a5b"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "f499340097144d6cab4c2814d070ebfd",
-      "Id": "c09db8c699a647bb8f7da397ffbb2a98"
+      "Start": "dd876fc70d124f3587e374405893689d",
+      "End": "787481f2f9554d8ea7dbfddd6183bd46",
+      "Id": "24b4aa82874d4e10b7b995627a09cf6d"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "c0de490d02e44945a5042349d18c82d1",
-      "Id": "cd489cf85bd5470596f2a28ff8be4a4a"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "84355cec57a441d9b2899e869465e11a",
+      "Id": "440c677b174a406bb92fe39b1bc604d2"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "6e3a4da543614f92beb032cccabd695b",
-      "Id": "0ff7b58a4d624d0da2a6be3875017707"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "441622a300ec4a1a8893495e55091535",
+      "Id": "7135640479ba443f8d256f4d0982cff6"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "9db0162e82614a4ebee77abafc41e200",
-      "Id": "dcfc6360c2e34c20bab8b142ae3fab47"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "b32b3b4a5144464f82aafd1dd0c3d7f4",
+      "Id": "e9d54a0a3c1a4fc883d50a764ebe749f"
     },
     {
-      "Start": "714493078088440b83d4aa6df5eea961",
-      "End": "7f64733bbb82439480b4a80721b6641a",
-      "Id": "245e788a076f481f83b7c4173b19e494"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "8d5d62c9bd714d2e9c925133e32827c0",
+      "Id": "4a4722dde1974458a69ccbb6853a72e7"
     },
     {
-      "Start": "4d3e87d97e5449b796e7f609220361e0",
-      "End": "12fa55f29f9a461783f16bf72cda078b",
-      "Id": "76befc278f6d4c32b50549e207fa0c2a"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "9bbdd055561d467c9853c9c8a295c3cc",
+      "Id": "0d2753dd8cf54e739fdcfadc1ad9cdea"
     },
     {
-      "Start": "4d3e87d97e5449b796e7f609220361e0",
-      "End": "95284916401c4764add4d9e76c625c57",
-      "Id": "ff3fd5621dd345dd845d8fb06e4bcfc0"
+      "Start": "54d779225cef41d78347b1d5f9941335",
+      "End": "543be9cca87546e8a0c066613199f5d9",
+      "Id": "2ca2197a4e7e4b5e9135f2093b7ce21c"
     },
     {
-      "Start": "4d3e87d97e5449b796e7f609220361e0",
-      "End": "1df96df5c1c84529a8b9cfdccd642c91",
-      "Id": "514d878fef564d44b2c3cfc2d0d7e482"
+      "Start": "304dee3d0caf4fd282d05bea262e48d9",
+      "End": "f8841472150245f8bfe73d678c664941",
+      "Id": "c5a7168b4c584c56b932f2490d8f2794"
     },
     {
-      "Start": "4d3e87d97e5449b796e7f609220361e0",
-      "End": "ddd4499cc5c8471fb93ac558693026aa",
-      "Id": "9a5488ec8bda4314a6f7f7d617bd9124"
+      "Start": "304dee3d0caf4fd282d05bea262e48d9",
+      "End": "15b7b35a0ee54b99aa2d65cf1ba64308",
+      "Id": "9f4dab6258b64ef38ea0e24582cc4cc3"
     },
     {
-      "Start": "4d3e87d97e5449b796e7f609220361e0",
-      "End": "fd88a46336e84caa85bd0e8601cf08f9",
-      "Id": "706ae02bad3f4eba82e41b6cb0b5b374"
+      "Start": "304dee3d0caf4fd282d05bea262e48d9",
+      "End": "201cf36eb4aa48118879c4a6526781a2",
+      "Id": "37053340ae6d4972ac035707e8b50d3c"
+    },
+    {
+      "Start": "304dee3d0caf4fd282d05bea262e48d9",
+      "End": "540418bd2ece41049a24d0a9dd2c2cd5",
+      "Id": "dade5923086b4d789975cc5c194c1ea5"
+    },
+    {
+      "Start": "304dee3d0caf4fd282d05bea262e48d9",
+      "End": "7e82ff8bd72446129717a1659fecf98c",
+      "Id": "5570b730b576452a9592f90660d1c50a"
     }
   ],
   "Dependencies": [
@@ -1511,7 +1583,9 @@
     "507cf92a-abdd-4b08-a081-30f097b1d99e",
     "7eaaffa4-7663-42de-8413-6357a047084b",
     "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5",
-    "f98018f5-3630-4e4d-892e-b0380f7580dd"
+    "f98018f5-3630-4e4d-892e-b0380f7580dd",
+    "fa1db0f6-bbcb-49c3-b640-e20dc7837c5d",
+    "46fa1d1f-35ce-485a-90bb-84170d71e10a"
   ],
   "Bindings": [],
   "View": {
@@ -1524,7 +1598,7 @@
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -1663,8 +1737,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 835.014665548686,
-        "Y": -76.335714417411
+        "X": 836.372961130837,
+        "Y": -43.7366204457972
       },
       {
         "ShowGeometry": true,
@@ -1673,8 +1747,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 834.630581222315,
-        "Y": 31.6523771020989
+        "X": 835.988876804465,
+        "Y": 64.2514710737127
       },
       {
         "ShowGeometry": true,
@@ -1929,12 +2003,32 @@
       {
         "ShowGeometry": true,
         "Name": "WorksharingSession.Type",
-        "Id": "a5f193cd10094b4bb44fe6ec6a405427",
+        "Id": "58b72a86c179477d83963ae232f8a526",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 365.87538664761831,
-        "Y": -799.19799769980284
+        "X": 361.516089666903,
+        "Y": -793.583663755685
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SyncEvent.WasAborted",
+        "Id": "84521372dcc2423dafd68dd3d2faec89",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 866.622606120702,
+        "Y": -421.959748582748
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Helpers.FindSyncEventOverlaps",
+        "Id": "fbebb3a6ed344a108b14b1956d5bc855",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 854.150254285528,
+        "Y": -236.953648721216
       }
     ],
     "Annotations": [
@@ -1950,7 +2044,7 @@
         "Height": 140.0,
         "FontSize": 30.0,
         "InitialTop": -719.464211875573,
-        "InitialHeight": 145.0,
+        "InitialHeight": 126.0,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -1966,7 +2060,7 @@
         "Height": 139.0,
         "FontSize": 30.0,
         "InitialTop": -720.181499419774,
-        "InitialHeight": 145.0,
+        "InitialHeight": 123.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -1985,7 +2079,7 @@
         "Height": 433.70452580892993,
         "FontSize": 30.0,
         "InitialTop": -816.280413738068,
-        "InitialHeight": 439.70452580892993,
+        "InitialHeight": 417.70452580893,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -1998,7 +2092,7 @@
           "a3de4278fc7b43368ffc6708c692f033",
           "02ad8d3bd21d4d369b368248b393a8ef",
           "51b376fa0dea4a35be00d0db7d295aad",
-          "a5f193cd10094b4bb44fe6ec6a405427"
+          "58b72a86c179477d83963ae232f8a526"
         ],
         "Left": 350.020975988875,
         "Top": -1252.40160931757,
@@ -2006,7 +2100,7 @@
         "Height": 649.76075257071511,
         "FontSize": 30.0,
         "InitialTop": -1206.40160931757,
-        "InitialHeight": 857.223882241645,
+        "InitialHeight": 426.50283685651,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2036,7 +2130,7 @@
         "Height": 1510.5690517732019,
         "FontSize": 30.0,
         "InitialTop": -521.487521545036,
-        "InitialHeight": 1516.5690517732019,
+        "InitialHeight": 1595.16227134814,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2047,13 +2141,13 @@
           "6ee9c4ea757443f2a700c828b81fc1f6",
           "8a3358edbed34cc4a1455018eef9aeb0"
         ],
-        "Left": 824.630581222315,
-        "Top": -122.335714417411,
+        "Left": 825.988876804465,
+        "Top": -89.7366204457972,
         "Width": 336.19333333333333,
         "Height": 246.98809151950991,
         "FontSize": 30.0,
-        "InitialTop": -76.335714417411,
-        "InitialHeight": 252.98809151950991,
+        "InitialTop": -43.7366204457972,
+        "InitialHeight": 230.98809151951,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2070,7 +2164,7 @@
         "Height": 260.78816409374008,
         "FontSize": 30.0,
         "InitialTop": -1125.30211098642,
-        "InitialHeight": 240.78816409374008,
+        "InitialHeight": 123.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2081,15 +2175,16 @@
           "e54cc39f5f964edcb78ad0e82196cd4e",
           "93bc6c5baa2640478dde977b026f721b",
           "fadc68317e2e42edb277b87908cc4ff3",
-          "2b050189fe004e6aa69c624d92a884cc"
+          "2b050189fe004e6aa69c624d92a884cc",
+          "84521372dcc2423dafd68dd3d2faec89"
         ],
         "Left": 847.169044959181,
         "Top": -896.006912014997,
         "Width": 270.29860882820003,
-        "Height": 450.84533270125007,
+        "Height": 567.04716343224914,
         "FontSize": 30.0,
         "InitialTop": -850.006912014997,
-        "InitialHeight": 456.84533270125007,
+        "InitialHeight": 336.366372178277,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2109,13 +2204,29 @@
         "Height": 583.11534330575012,
         "FontSize": 30.0,
         "InitialTop": -1464.0984209144,
-        "InitialHeight": 589.11534330575012,
+        "InitialHeight": 522.115343305753,
+        "TextblockHeight": 36.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7f2a1e09308b49a49ede383090b5754d",
+        "Title": "WorksharingLog.Helpers",
+        "Nodes": [
+          "fbebb3a6ed344a108b14b1956d5bc855"
+        ],
+        "Left": 844.150254285528,
+        "Top": -282.95364872121604,
+        "Width": 333.69,
+        "Height": 139.00000000000003,
+        "FontSize": 30.0,
+        "InitialTop": -236.953648721216,
+        "InitialHeight": 123.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 600.39368748907,
-    "Y": 499.4310259999416,
-    "Zoom": 0.32062805293291635
+    "X": 803.240919302601,
+    "Y": 610.209403713096,
+    "Zoom": 0.396291257080058
   }
 }
