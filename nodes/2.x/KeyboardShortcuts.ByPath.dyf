@@ -26,7 +26,8 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nimport sys\r\npyt_path = r'C:\\Program Files (x86)\\IronPython 2.7\\Lib'\r\nsys.path.append(pyt_path)\r\nimport xml.etree.ElementTree as ET\r\n\r\nhardcodedshortcuts = {\r\n\t\"ID_APP_EXIT\": [\"Alt+Fn4\"],\r\n\t\"ID_BUTTON_DELETE\": [\"Delete\"],\r\n\t\"ID_BUTTON_REDO\": [\"Ctrl+Y\",\"Ctrl+Shift+Z\"],\r\n\t\"ID_BUTTON_UNDO\": [\"Ctrl+Z\",\"Alt+Backspace\"],\r\n\t\"ID_CHECK_SPELLING\": [\"Fn7\"],\r\n\t\"ID_EDIT_COPY\": [\"Ctrl+C\",\"Ctrl+Insert\"],\r\n\t\"ID_EDIT_CUT\": [\"Ctrl+X\",\"Ctrl+Delete\"],\r\n\t\"ID_EDIT_PASTE\": [\"Ctrl+V\"],\r\n\t\"ID_FILE_NEW_CHOOSE_TEMPLATE\": [\"Ctrl+N\"],\r\n\t\"ID_REVIT_FILE_CLOSE\": [\"Ctrl+W\"],\r\n\t\"ID_REVIT_FILE_OPEN\": [\"Ctrl+O\"],\r\n\t\"ID_REVIT_FILE_PRINT\": [\"Ctrl+P\"],\r\n\t\"ID_REVIT_FILE_SAVE\": [\"Ctrl+S\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_IN\": [\"Ctrl++\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_OUT\": [\"Ctrl+-\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_RESTORE\": [\"Ctrl+0\"]\r\n\t}\r\n\r\nclass KeyboardShortcuts:\r\n\tdef __init__(self, commands, commandcount, commandcountwithshortcuts):\r\n\t\tself.Commands = commands\r\n\t\tself.CommandCount = commandcount\r\n\t\tself.CommandCountWithShortcuts = commandcountwithshortcuts\r\n\tdef __repr__(self):\r\n\t\treturn 'KeyboardShortcuts'\r\n\tdef GetCommandById(self, id):\r\n\t\tfound = [x for x in self.Commands if x.ID == id]\r\n\t\tif len(found) > 0: return found[0]\r\n\t\telse: return None\r\n\tdef GetCommandsWithShortcuts(self):\r\n\t\treturn [x for x in self.Commands if x.HasShortcuts]\r\n\r\nclass KeyboardShortcutCommand:\r\n\tdef __init__(self, name, id, shortcuts, paths):\r\n\t\tself.Name = name.decode(\"utf-8\")\r\n\t\tself.ID = id\r\n\t\tself.Shortcuts = shortcuts\r\n\t\tself.Paths = paths\r\n\t\tself.HasShortcuts = len(shortcuts) > 0\r\n\t\tself.HasPaths = len(paths) > 0\r\n\tdef __repr__(self):\r\n\t\treturn 'KeyboardShortcutCommand'\r\n\r\ndef KSFromPath(path):\r\n\ttry:\r\n\t\tCommands = []\r\n\t\tCommandCount = 0\r\n\t\tCommandCountWithShortcuts = 0\r\n\t\troot = e = ET.parse(path).getroot()\r\n\t\tfor child in root:\r\n\t\t\tif child.tag == \"ShortcutItem\":\t\r\n\t\t\t\tCommandCount += 1\r\n\t\t\t\tCommandId = child.get(\"CommandId\")\r\n\t\t\t\tshortcuts = child.get(\"Shortcuts\") \r\n\t\t\t\tif shortcuts == None: \r\n\t\t\t\t\tif CommandId in hardcodedshortcuts: \r\n\t\t\t\t\t\tCommandShortcuts = hardcodedshortcuts[CommandId]\r\n\t\t\t\t\t\tCommandCountWithShortcuts += 1\r\n\t\t\t\t\telse: CommandShortcuts = []\r\n\t\t\t\telse: \r\n\t\t\t\t\tCommandShortcuts = shortcuts.split(\"#\")\r\n\t\t\t\t\tif CommandId in hardcodedshortcuts: CommandShortcuts = CommandShortcuts + hardcodedshortcuts[CommandId]\r\n\t\t\t\t\tCommandCountWithShortcuts += 1\r\n\t\t\t\tpaths = child.get(\"Paths\") \r\n\t\t\t\tif paths == None: CommandPaths = []\r\n\t\t\t\telse: CommandPaths = paths.split(\"; \")\r\n\t\t\t\tCommands.append(KeyboardShortcutCommand(child.get(\"CommandName\"), CommandId, CommandShortcuts, CommandPaths))\r\n\t\treturn KeyboardShortcuts(Commands, CommandCount, CommandCountWithShortcuts)\r\n\texcept:\r\n\t\timport traceback\r\n\t\treturn traceback.format_exc()\r\n\r\nif isinstance(IN[0], list): OUT = [KSFromPath(x) for x in IN[0]]\r\nelse: OUT = KSFromPath(IN[0])",
+      "Code": "import clr\r\nimport sys\r\npyt_path = r'C:\\Program Files (x86)\\IronPython 2.7\\Lib'\r\nsys.path.append(pyt_path)\r\nclr.AddReference(\"System.Xml\")\r\nfrom System.Xml import *\r\n\r\nhardcodedshortcuts = {\r\n\t\"ID_APP_EXIT\": [\"Alt+Fn4\"],\r\n\t\"ID_BUTTON_DELETE\": [\"Delete\"],\r\n\t\"ID_BUTTON_REDO\": [\"Ctrl+Y\",\"Ctrl+Shift+Z\"],\r\n\t\"ID_BUTTON_UNDO\": [\"Ctrl+Z\",\"Alt+Backspace\"],\r\n\t\"ID_CHECK_SPELLING\": [\"Fn7\"],\r\n\t\"ID_EDIT_COPY\": [\"Ctrl+C\",\"Ctrl+Insert\"],\r\n\t\"ID_EDIT_CUT\": [\"Ctrl+X\",\"Ctrl+Delete\"],\r\n\t\"ID_EDIT_PASTE\": [\"Ctrl+V\"],\r\n\t\"ID_FILE_NEW_CHOOSE_TEMPLATE\": [\"Ctrl+N\"],\r\n\t\"ID_REVIT_FILE_CLOSE\": [\"Ctrl+W\"],\r\n\t\"ID_REVIT_FILE_OPEN\": [\"Ctrl+O\"],\r\n\t\"ID_REVIT_FILE_PRINT\": [\"Ctrl+P\"],\r\n\t\"ID_REVIT_FILE_SAVE\": [\"Ctrl+S\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_IN\": [\"Ctrl++\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_OUT\": [\"Ctrl+-\"],\r\n\t\"ID_SCHEDULE_VIEW_ZOOM_RESTORE\": [\"Ctrl+0\"]\r\n\t}\r\n\r\nclass KeyboardShortcuts:\r\n\tdef __init__(self, commands, commandcount, commandcountwithshortcuts):\r\n\t\tself.Commands = commands\r\n\t\tself.CommandCount = commandcount\r\n\t\tself.CommandCountWithShortcuts = commandcountwithshortcuts\r\n\tdef __repr__(self):\r\n\t\treturn 'KeyboardShortcuts'\r\n\tdef GetCommandById(self, id):\r\n\t\tfound = [x for x in self.Commands if x.ID == id]\r\n\t\tif len(found) > 0: return found[0]\r\n\t\telse: return None\r\n\tdef GetCommandsWithShortcuts(self):\r\n\t\treturn [x for x in self.Commands if x.HasShortcuts]\r\n\r\nclass KeyboardShortcutCommand:\r\n\tdef __init__(self, name, id, shortcuts, paths):\r\n\t\tself.Name = name\r\n\t\tself.ID = id\r\n\t\tself.Shortcuts = shortcuts\r\n\t\tself.Paths = paths\r\n\t\tself.HasShortcuts = len(shortcuts) > 0\r\n\t\tself.HasPaths = len(paths) > 0\r\n\tdef __repr__(self):\r\n\t\treturn 'KeyboardShortcutCommand'\r\n\r\ndef KSFromPath(path):\r\n\ttry:\r\n\t\tCommands = []\r\n\t\tCommandCount = 0\r\n\t\tCommandCountWithShortcuts = 0\r\n\t\tdoc = XmlDocument()\r\n\t\ttextReader = XmlTextReader(path)\r\n\t\tnode = doc.ReadNode(textReader)\r\n\t\troot = e = node.ChildNodes\r\n\t\tfor child in root:\r\n\t\t\tif child.Name == \"ShortcutItem\":\t\r\n\t\t\t\tCommandCount += 1\r\n\t\t\t\tCommandId = child.Attributes[\"CommandId\"].Value\r\n\t\t\t\tshortcuts = child.Attributes[\"Shortcuts\"]\r\n\t\t\t\tif shortcuts == None: \r\n\t\t\t\t\tif CommandId in hardcodedshortcuts: \r\n\t\t\t\t\t\tCommandShortcuts = hardcodedshortcuts[CommandId]\r\n\t\t\t\t\t\tCommandCountWithShortcuts += 1\r\n\t\t\t\t\telse: CommandShortcuts = []\r\n\t\t\t\telse: \r\n\t\t\t\t\tCommandShortcuts = shortcuts.Value.split(\"#\")\r\n\t\t\t\t\tif CommandId in hardcodedshortcuts: CommandShortcuts = CommandShortcuts + hardcodedshortcuts[CommandId]\r\n\t\t\t\t\tCommandCountWithShortcuts += 1\r\n\t\t\t\tpaths = child.Attributes[\"Paths\"] \r\n\t\t\t\tif paths == None: CommandPaths = []\r\n\t\t\t\telse: CommandPaths = paths.Value.split(\"; \")\r\n\t\t\t\tCommands.append(KeyboardShortcutCommand(child.Attributes[\"CommandName\"].Value, CommandId, CommandShortcuts, CommandPaths))\r\n\t\treturn KeyboardShortcuts(Commands, CommandCount, CommandCountWithShortcuts)\r\n\texcept:\r\n\t\timport traceback\r\n\t\treturn traceback.format_exc()\r\n\r\nif isinstance(IN[0], list): OUT = [KSFromPath(x) for x in IN[0]]\r\nelse: OUT = KSFromPath(IN[0])",
+      "Engine": "IronPython2",
       "VariableInputPorts": true,
       "Id": "2e114dc07f8848fc9dcf8a5c10ea91f0",
       "Inputs": [
@@ -52,7 +53,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
+      "Description": "Führt ein eingebettetes Python-Skript aus."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
@@ -78,7 +79,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
@@ -99,7 +100,7 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "A function output, use with custom nodes"
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
     }
   ],
   "Connectors": [
@@ -115,13 +116,15 @@
     }
   ],
   "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -139,31 +142,31 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "2e114dc07f8848fc9dcf8a5c10ea91f0",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 250.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "8532f8af1bf54420ae9ab0598e367fe6",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 0.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "c1f6d4f1b09048dcac55686c3f8f7216",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 449.0,
         "Y": 0.0
