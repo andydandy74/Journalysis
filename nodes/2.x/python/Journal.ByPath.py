@@ -472,7 +472,10 @@ def JournalFromPath(path):
 				elif line.Key == 'Username': jUsername = line.Values[0]
 			elif line.Type == 'JournalData':
 				d1 = line.RawText.split('"  , ')
-				line.Key = d1[0][10:]
+				KeyCandidate = d1[0][10:]
+				# Allow for different formatting as in Revit 2022
+				if KeyCandidate.startswith('"'): KeyCandidate = KeyCandidate[1:]
+				line.Key = KeyCandidate
 				# if this line is cut off don't try to extract values
 				if len(d1) > 1:
 					for d2 in d1[1].split(","):
