@@ -54,7 +54,7 @@ class Journal:
 	def GetLinesByTypes(self, types):
 		return [x for x in self.Lines if x.Type in types]
 	def GetLoadedAssemblies(self):
-		apimsgs = journal.GetLinesByType("JournalAPIMessage")
+		apimsgs = self.GetLinesByType("JournalAPIMessage")
 		loadedAssemblies = []
 		replacedCommands = {}
 		for apimsg in apimsgs:
@@ -125,7 +125,11 @@ class Journal:
 				# DynamoAutomation journal playback
 				startup3 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_FILE_MRU_FIRST')]
 				if len(startup3) > 0: return self.GetDateTimeByBlock(startup3[0]) - first_ts
-				else: return None
+				else: 
+					# Session started by double-clicking project or family file
+					startup4 = [x.Block for x in self.GetLinesByTypeAndProperty('JournalCommand', 'CommandID', 'ID_REVIT_FILE_OPEN')]
+					if len(startup4) > 0: return self.GetDateTimeByBlock(startup4[0]) - first_ts
+					else: return None
 	def IsInPlaybackMode(self):
 		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("started journal file playback")]) > 0: return True
 		else: return False
@@ -368,7 +372,7 @@ def JournalFromPath(path):
 		# Round 1: Create line objects
 		with open(path, 'r') as lines:
 			for line in lines:
-				line = line.lstrip().rstrip('\n')
+				line = line.lstrip().rstrip('\n').rstrip('x00')
 				# ignore empty lines
 				if len(line) < 2: pass
 				elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E "):
@@ -450,9 +454,15 @@ def JournalFromPath(path):
 				else: line.MessageType = "Unknown"
 			elif line.Type == 'JournalDirective':
 				d1 = line.RawText.split('"  , ')
-				line.Key = d1[0][15:]
-				for d2 in d1[1].split(","):
-					line.Values.append(d2.strip().replace('"',''))
+				if len(d1) > 1:
+					line.Key = d1[0][15:]
+					for d2 in d1[1].split(","):
+						line.Values.append(d2.strip().replace('"',''))
+				else:
+					# Very rare case where a multiline error msg is inserted between key and values
+					d1 = line.RawText.split('"')
+					line.Key = d1[1]
+					line.Values.append(d1[2])
 				# Add Revit version to journal metadata
 				if line.Key == 'Version': jVersion = int(line.Values[0][:4])
 				# Add username to journal metadata
@@ -460,8 +470,10 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalData':
 				d1 = line.RawText.split('"  , ')
 				line.Key = d1[0][10:]
-				for d2 in d1[1].split(","):
-					line.Values.append(d2.strip().replace('"',''))
+				# if this line is cut off don't try to extract values
+				if len(d1) > 1:
+					for d2 in d1[1].split(","):
+						line.Values.append(d2.strip().replace('"',''))
 			elif line.Type == 'JournalWorksharingEvent':
 				ws = line.RawText.split(':< SLOG ')[-1].split()
 				line.SessionID = ws[0]
@@ -482,7 +494,7 @@ def JournalFromPath(path):
 						OSVersionFound = True
 				line.ItemNumber = sysinfoItem
 			elif line.Type == 'JournalCommand':
-				c1 = line.RawText.split('" , "')
+				c1 = line.RawText.replace("  "," ").split('" , "')
 				line.CommandType = c1[0][13:]
 				c2 = c1[1].split(" , ")
 				line.CommandDescription = c2[0]
@@ -491,7 +503,9 @@ def JournalFromPath(path):
 				m1 = line.RawText.split(" ",1)
 				line.MouseEventType = m1[0][4:].strip()
 				for m2 in m1[1].split(","):
-					line.Data.append(int(m2.strip()))
+					potential_int = m2.strip().rstrip('\x00')
+					# don't try converting broken lines
+					if len(potential_int) > 0: line.Data.append(int(potential_int))
 			elif line.Type == 'JournalKeyboardEvent': line.Key = line.RawText.split('"')[1]
 			elif line.Type == 'JournalBasicFileInfo':
 				bfi = map(list, zip(*[x.split(":",1) for x in line.RawText[22:].split("Rvt.Attr.")[1:]]))
@@ -527,9 +541,11 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalAddinEvent': line.MessageText = line.RawText.split('"')[3]
 			elif line.Type == 'JournalTimeStamp':
 				line.TimeStampType = line.RawText[1]
-				ts1 = line.RawText.split(";")	
-				line.DateTime = time.strptime(ts1[0][3:])
-				line.Description = ts1[1][7:].strip()
+				ts1 = line.RawText.split(";")
+				# if this line is cut off don't try to extract datetime or description
+				if len(ts1) > 1: 
+					line.DateTime = time.strptime(ts1[0][3:])
+					line.Description = ts1[1][7:].strip()
 			elif line.Type == 'JournalMemoryMetrics':
 				if "Initial VM" in line.RawText: m1 = line.RawText.split(":",2)[2].replace(";","").split()
 				else: m1 = line.RawText.split(":",6)[6].split()
@@ -538,8 +554,8 @@ def JournalFromPath(path):
 				for m2 in m1:
 					if m2.isdigit(): m3.append(int(m2))
 					elif m2 in ("Avail","Used","Peak"): m4.append(m2)
-				line.VMAvailable = m3[0]
-				line.VMUsed = m3[1]
+				if len(m3) > 0: line.VMAvailable = m3[0]
+				if len(m3) > 1: line.VMUsed = m3[1]
 				if len(m3) == 6:		
 					line.VMPeak = m3[2]
 					line.RAMAvailable = m3[3]

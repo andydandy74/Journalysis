@@ -141,12 +141,16 @@ def WSLogFromPath(path):
 						current_session.Start = current_session.Events[0].DateTime
 						current_session.Date = current_session.Events[0].DateTime.Date
 					else: current_session.End = timestamp
-				elif line.startswith("user"): sessions[-1].User = line.split('user="')[-1][:-1]
+				elif line.startswith("user"): 
+					if dynVersionInt >= 21: sessions[-1].User = line.split('user="')[-1][:-2]
+					else: sessions[-1].User = line.split('user="')[-1][:-1]
 				elif line.startswith("build"):
 					versioninfo = line.split('build="')[-1].split()
 					sessions[-1].RevitVersion = int(versioninfo[0])
 					sessions[-1].RevitBuild = versioninfo[-1][:-1]
-				elif line.startswith("journal"): sessions[-1].Journal = line.split('journal="')[-1][:-1]
+				elif line.startswith("journal"):
+					if dynVersionInt >= 21: sessions[-1].Journal = line.split('journal="')[-1][:-2]
+					else: sessions[-1].Journal = line.split('journal="')[-1][:-1]
 				elif line.startswith("host"):
 					hostinfo = line.split('host=')[-1].split()
 					sessions[-1].HostAddress = hostinfo[0]
@@ -155,7 +159,9 @@ def WSLogFromPath(path):
 					serverinfo = line.split('server=')[-1].split()
 					sessions[-1].ServerAddress = serverinfo[0]
 					sessions[-1].ServerName = serverinfo[-1][1:-1]
-				elif line.startswith("central"): sessions[-1].Central = line.split('central="')[-1][:-1]
+				elif line.startswith("central"): 
+					if dynVersionInt >= 21: sessions[-1].Central = line.split('central="')[-1][:-2]
+					else: sessions[-1].Central = line.split('central="')[-1][:-1]
 				elif line.startswith("Worksharing"): version = line.split("Version ")[-1].split(",")[0]
 		for session in sessions: 
 			if session.Start and session.End: session.Duration = session.End - session.Start

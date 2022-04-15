@@ -2,7 +2,8 @@ import clr
 import sys
 pyt_path = r'C:\Program Files (x86)\IronPython 2.7\Lib'
 sys.path.append(pyt_path)
-import xml.etree.ElementTree as ET
+clr.AddReference("System.Xml")
+from System.Xml import *
 
 hardcodedshortcuts = {
 	"ID_APP_EXIT": ["Alt+Fn4"],
@@ -39,7 +40,7 @@ class KeyboardShortcuts:
 
 class KeyboardShortcutCommand:
 	def __init__(self, name, id, shortcuts, paths):
-		self.Name = name.decode("utf-8")
+		self.Name = name
 		self.ID = id
 		self.Shortcuts = shortcuts
 		self.Paths = paths
@@ -53,25 +54,28 @@ def KSFromPath(path):
 		Commands = []
 		CommandCount = 0
 		CommandCountWithShortcuts = 0
-		root = e = ET.parse(path).getroot()
+		doc = XmlDocument()
+		textReader = XmlTextReader(path)
+		node = doc.ReadNode(textReader)
+		root = e = node.ChildNodes
 		for child in root:
-			if child.tag == "ShortcutItem":	
+			if child.Name == "ShortcutItem":	
 				CommandCount += 1
-				CommandId = child.get("CommandId")
-				shortcuts = child.get("Shortcuts") 
+				CommandId = child.Attributes["CommandId"].Value
+				shortcuts = child.Attributes["Shortcuts"]
 				if shortcuts == None: 
 					if CommandId in hardcodedshortcuts: 
 						CommandShortcuts = hardcodedshortcuts[CommandId]
 						CommandCountWithShortcuts += 1
 					else: CommandShortcuts = []
 				else: 
-					CommandShortcuts = shortcuts.split("#")
+					CommandShortcuts = shortcuts.Value.split("#")
 					if CommandId in hardcodedshortcuts: CommandShortcuts = CommandShortcuts + hardcodedshortcuts[CommandId]
 					CommandCountWithShortcuts += 1
-				paths = child.get("Paths") 
+				paths = child.Attributes["Paths"] 
 				if paths == None: CommandPaths = []
-				else: CommandPaths = paths.split("; ")
-				Commands.append(KeyboardShortcutCommand(child.get("CommandName"), CommandId, CommandShortcuts, CommandPaths))
+				else: CommandPaths = paths.Value.split("; ")
+				Commands.append(KeyboardShortcutCommand(child.Attributes["CommandName"].Value, CommandId, CommandShortcuts, CommandPaths))
 		return KeyboardShortcuts(Commands, CommandCount, CommandCountWithShortcuts)
 	except:
 		import traceback
