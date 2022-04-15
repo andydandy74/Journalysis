@@ -263,7 +263,7 @@ class JournalGUIResourceUsage(JournalLine):
 		self.Available = None
 		self.Used = None
 		self.User = None
-		self.Type = 'JournalGUIREsourceUsage'
+		self.Type = 'JournalGUIResourceUsage'
 	def __repr__(self):
 		return self.Type
 
@@ -456,7 +456,7 @@ def JournalFromPath(path):
 				d1 = line.RawText.split('"  , ')
 				if len(d1) > 1:
 					KeyCandidate = d1[0][15:]
-					# Allow for different formatting as in Revit 2022
+					# Allow for different formatting in Revit 2022
 					if KeyCandidate.startswith('"'): KeyCandidate = KeyCandidate[1:]
 					line.Key = KeyCandidate
 					for d2 in d1[1].split(","):
@@ -473,7 +473,7 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalData':
 				d1 = line.RawText.split('"  , ')
 				KeyCandidate = d1[0][10:]
-				# Allow for different formatting as in Revit 2022
+				# Allow for different formatting in Revit 2022
 				if KeyCandidate.startswith('"'): KeyCandidate = KeyCandidate[1:]
 				line.Key = KeyCandidate
 				# if this line is cut off don't try to extract values
@@ -505,7 +505,7 @@ def JournalFromPath(path):
 				c2 = c1[1].split(" , ")
 				line.CommandDescription = c2[0]
 				CommandIDCandidate = c2[1][:-1]
-				# Allow for different formatting as in Revit 2022
+				# Allow for different formatting in Revit 2022
 				if CommandIDCandidate.endswith('"'): CommandIDCandidate = CommandIDCandidate = CommandIDCandidate[:-1]
 				line.CommandID = CommandIDCandidate
 			elif line.Type == 'JournalMouseEvent':
