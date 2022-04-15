@@ -456,7 +456,7 @@ def JournalFromPath(path):
 				d1 = line.RawText.split('"  , ')
 				if len(d1) > 1:
 					KeyCandidate = d1[0][15:]
-					# Allow for different formatting as of Revit 2022
+					# Allow for different formatting as in Revit 2022
 					if KeyCandidate.startswith('"'): KeyCandidate = KeyCandidate[1:]
 					line.Key = KeyCandidate
 					for d2 in d1[1].split(","):
@@ -501,7 +501,10 @@ def JournalFromPath(path):
 				line.CommandType = c1[0][13:]
 				c2 = c1[1].split(" , ")
 				line.CommandDescription = c2[0]
-				line.CommandID = c2[1][:-1]
+				CommandIDCandidate = c2[1][:-1]
+				# Allow for different formatting as in Revit 2022
+				if CommandIDCandidate.endswith('"'): CommandIDCandidate = CommandIDCandidate = CommandIDCandidate[:-1]
+				line.CommandID = CommandIDCandidate
 			elif line.Type == 'JournalMouseEvent':
 				m1 = line.RawText.split(" ",1)
 				line.MouseEventType = m1[0][4:].strip()
