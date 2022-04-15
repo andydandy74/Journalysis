@@ -4,7 +4,8 @@ from System.Reflection import Assembly
 
 dynamoCore = Assembly.Load("DynamoCore")
 dynVersion = dynamoCore.GetName().Version.ToString()
-dynVersionInt = int(dynVersion[0])*10+int(dynVersion[2])
+dynVersionParts = dynVersion.Split('.')
+dynVersionInt = int(dynVersionParts[0] + dynVersionParts[1])
 
 class WorksharingLog:
 	def __init__(self, version, sessions):
