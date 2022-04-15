@@ -455,7 +455,10 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalDirective':
 				d1 = line.RawText.split('"  , ')
 				if len(d1) > 1:
-					line.Key = d1[0][15:]
+					KeyCandidate = d1[0][15:]
+					# Allow for different formatting as of Revit 2022
+					if KeyCandidate.startswith('"'): KeyCandidate = KeyCandidate[1:]
+					line.Key = KeyCandidate
 					for d2 in d1[1].split(","):
 						line.Values.append(d2.strip().replace('"',''))
 				else:
