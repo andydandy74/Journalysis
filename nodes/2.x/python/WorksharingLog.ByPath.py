@@ -18,7 +18,7 @@ class WorksharingLog:
 	def AllSessionsUseSameBuild(self):
 		return len(set([x.RevitBuild for x in self.Sessions])) == 1
 	def GetSessionByID(self, ID):
-		sessionlookup = [x for x in sessions if x.ID == ID]
+		sessionlookup = [x for x in self.Sessions if x.ID == ID]
 		if len(sessionlookup) > 0: return sessionlookup[0]
 		else: return None
 
