@@ -24,8 +24,9 @@
       "Id": "2018aeee636a40a5bd487e72734a2d60",
       "Name": "Worksharing Log File Path",
       "Type": "string",
-      "Value": "..\\..\\..\\Journals\\Projekt1.slog",
-      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+      "Value": "..\\..\\..\\..\\..\\Desktop\\NewFileName_backup\\NewFileName.slog",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen.",
+      "SelectedIndex": 0
     }
   ],
   "Outputs": [],
@@ -90,7 +91,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Computes the load time of the model (and all linked models) for a given WorksharingSession"
+      "Description": "Computes the load time of the model (not including loading of linked models) for a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -652,8 +653,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "U:\\Journals\\Projekt1.slog",
-      "InputValue": "..\\..\\..\\Journals\\Projekt1.slog",
+      "HintPath": "C:\\Users\\andreas\\Desktop\\NewFileName_backup\\NewFileName.slog",
+      "InputValue": "..\\..\\..\\..\\..\\Desktop\\NewFileName_backup\\NewFileName.slog",
       "NodeType": "ExtensionNode",
       "Id": "2018aeee636a40a5bd487e72734a2d60",
       "Inputs": [],
@@ -1065,7 +1066,7 @@
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
-          "UseLevels": false,
+          "UseLevels": true,
           "KeepListStructure": false
         }
       ],
@@ -1096,7 +1097,7 @@
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
-          "UseLevels": false,
+          "UseLevels": true,
           "KeepListStructure": false
         }
       ],
@@ -1127,7 +1128,7 @@
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
-          "UseLevels": false,
+          "UseLevels": true,
           "KeepListStructure": false
         }
       ],
@@ -1158,7 +1159,7 @@
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
-          "UseLevels": false,
+          "UseLevels": true,
           "KeepListStructure": false
         }
       ],
@@ -1189,7 +1190,7 @@
           "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
-          "UseLevels": false,
+          "UseLevels": true,
           "KeepListStructure": false
         }
       ],
@@ -1267,7 +1268,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the Revit build of a given WorksharingSession"
+      "Description": "Returns the type of a given WorksharingSession"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1587,13 +1588,86 @@
     "fa1db0f6-bbcb-49c3-b640-e20dc7837c5d",
     "46fa1d1f-35ce-485a-90bb-84170d71e10a"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "2.3.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "e54cc39f5f964edcb78ad0e82196cd4e",
+        "5289e94808e54887b6b1eb321087b493",
+        "bac3f1fc623c417b8e367c88b29da0e1",
+        "93bc6c5baa2640478dde977b026f721b",
+        "fadc68317e2e42edb277b87908cc4ff3",
+        "8759f7851c81463c9430fce7bf78e72d",
+        "1a14d72db8b04dbf98fe1d9e66172618",
+        "567c133d9d0d4048997daea55e7f0916",
+        "6a1569342bb44ebd8614b1509a400c3b",
+        "b97ac3f8e2214cb583b8b0522845719f",
+        "b6616ef82e1a4c49ba8ac6185dc7c4b5",
+        "125951f658d84f4289c0cb465b707fc5",
+        "6ee9c4ea757443f2a700c828b81fc1f6",
+        "8a3358edbed34cc4a1455018eef9aeb0",
+        "8746069384014152a4272531f5e41f47",
+        "d4f2002ca39640cdb1c37a3c9ba37bef",
+        "988db513065247838672bfa5e85d7ee9",
+        "cc0cc40832724c4d812f706ce127c369",
+        "2be4d763455b424e8059024db1c79fbf",
+        "71f382e75d2049569d3f000201836f75",
+        "513bddc8b6b34695bb5581f5b21a7075",
+        "0ff75627203e4d818f8f3d8da59909e8",
+        "46f6dab0d5a84d2bb9840f0d2ddf3c8a",
+        "a90707b7d6f9499cb06d5420d2493ab3",
+        "a3de4278fc7b43368ffc6708c692f033",
+        "95cf8be9a55a4c4889365941d4016d9e",
+        "1a226a455d5f4d22b31c0a494038c501",
+        "02ad8d3bd21d4d369b368248b393a8ef",
+        "8cacaee62d984de881d713f84edfd04f",
+        "4bfd8fb913434e0e89df5ff8574dde5a",
+        "83fa08e851014d2b90d0674c6b2733bd",
+        "51b376fa0dea4a35be00d0db7d295aad",
+        "928667c7f4da499cbee75fe3caaf41d6",
+        "36154e6acb2f4d11aaf45657cee6d6fc",
+        "fb239c1cf5db451195cba5206a254f40",
+        "98d0f608e6884e9fa7fc91694ffa16c0",
+        "a25a26091ab44c7eb0d9e6ba606e206d",
+        "2b050189fe004e6aa69c624d92a884cc",
+        "58b72a86c179477d83963ae232f8a526",
+        "84521372dcc2423dafd68dd3d2faec89",
+        "fbebb3a6ed344a108b14b1956d5bc855"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "1.10",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
-      "HasRunWithoutCrash": false,
+      "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -2040,11 +2114,11 @@
         ],
         "Left": -1344.55414314247,
         "Top": -765.464211875573,
-        "Width": 198.0,
+        "Width": 345.0,
         "Height": 140.0,
         "FontSize": 30.0,
         "InitialTop": -719.464211875573,
-        "InitialHeight": 126.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -2060,7 +2134,7 @@
         "Height": 139.0,
         "FontSize": 30.0,
         "InitialTop": -720.181499419774,
-        "InitialHeight": 123.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2075,11 +2149,11 @@
         ],
         "Left": -399.196076316862,
         "Top": -862.280413738068,
-        "Width": 418.0309433521287,
+        "Width": 363.0,
         "Height": 433.70452580892993,
         "FontSize": 30.0,
         "InitialTop": -816.280413738068,
-        "InitialHeight": 417.70452580893,
+        "InitialHeight": 439.70452580892993,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2096,11 +2170,11 @@
         ],
         "Left": 350.020975988875,
         "Top": -1252.40160931757,
-        "Width": 404.17905693823144,
+        "Width": 380.41333333333336,
         "Height": 649.76075257071511,
         "FontSize": 30.0,
         "InitialTop": -1206.40160931757,
-        "InitialHeight": 426.50283685651,
+        "InitialHeight": 655.76075257071511,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2126,11 +2200,11 @@
         ],
         "Left": 324.786656856828,
         "Top": -567.487521545036,
-        "Width": 402.001552788029,
+        "Width": 381.954562438508,
         "Height": 1510.5690517732019,
         "FontSize": 30.0,
         "InitialTop": -521.487521545036,
-        "InitialHeight": 1595.16227134814,
+        "InitialHeight": 1516.5690517732019,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2147,7 +2221,7 @@
         "Height": 246.98809151950991,
         "FontSize": 30.0,
         "InitialTop": -43.7366204457972,
-        "InitialHeight": 230.98809151951,
+        "InitialHeight": 252.98809151950991,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2160,11 +2234,11 @@
         ],
         "Left": -400.717875195678,
         "Top": -1171.30211098642,
-        "Width": 390.905740873866,
+        "Width": 357.0,
         "Height": 260.78816409374008,
         "FontSize": 30.0,
         "InitialTop": -1125.30211098642,
-        "InitialHeight": 123.0,
+        "InitialHeight": 240.78816409374008,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2180,11 +2254,11 @@
         ],
         "Left": 847.169044959181,
         "Top": -896.006912014997,
-        "Width": 270.29860882820003,
+        "Width": 270.29860882820014,
         "Height": 567.04716343224914,
         "FontSize": 30.0,
         "InitialTop": -850.006912014997,
-        "InitialHeight": 336.366372178277,
+        "InitialHeight": 573.04716343224914,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2204,7 +2278,7 @@
         "Height": 583.11534330575012,
         "FontSize": 30.0,
         "InitialTop": -1464.0984209144,
-        "InitialHeight": 522.115343305753,
+        "InitialHeight": 589.11534330575012,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2220,13 +2294,13 @@
         "Height": 139.00000000000003,
         "FontSize": 30.0,
         "InitialTop": -236.953648721216,
-        "InitialHeight": 123.0,
+        "InitialHeight": 145.00000000000003,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 803.240919302601,
+    "X": 847.24091930260124,
     "Y": 610.209403713096,
-    "Zoom": 0.396291257080058
+    "Zoom": 0.3962912570800583
   }
 }
