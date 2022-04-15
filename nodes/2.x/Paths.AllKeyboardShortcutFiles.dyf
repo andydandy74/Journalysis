@@ -2,7 +2,7 @@
   "Uuid": "6dd713da-0e00-49cf-906e-58419b9503e3",
   "IsCustomNode": true,
   "Category": "Journalysis.KeyboardShortcuts.Query",
-  "Description": "Retrieves a list of all journal folders on the current machine",
+  "Description": "Retrieves a list of all keyboard shortcuts files on the current machine",
   "Name": "Paths.AllKeyboardShortcutFiles",
   "ElementResolver": {
     "ResolutionMap": {}
