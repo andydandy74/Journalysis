@@ -26,7 +26,8 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nimport sys\r\nsys.path.append(\"C:\\Program Files (x86)\\IronPython 2.7\\Lib\")\r\nimport os\r\n\r\nclass LoadedModel:\r\n\tdef __init__(self, journal, path, initialEvent):\r\n\t\tself.Journal = journal\r\n\t\tif path != None: self.Path = self.NormalizePath(path)\r\n\t\telse: self.Path = None\r\n\t\tself.Events = []\r\n\t\tself.Events.append(initialEvent)\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModel\"\r\n\tdef GetVersion(self):\r\n\t\treturn [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)) if x.Type == \"JournalComment\" and \":< File was saved in\" in x.RawText][0].RawText.split(\"File was saved in\")[-1].strip()\r\n\tdef GetVersionHistory(self):\r\n\t\tallComments = [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block))] \r\n\t\tsaveHistoryMarkers = [x.Number for x in allComments if x.Type == \"JournalComment\" and \":< Document save history\" in x.RawText]\r\n\t\treturn [x.RawText.split(\":<\")[-1].strip() for x in allComments if x.Number in range(saveHistoryMarkers[0] + 1, saveHistoryMarkers[1])]\r\n\tdef NormalizePath(self, path):\r\n\t\treturn os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path),path))\r\n\r\nclass LoadedModelEvent:\r\n\tdef __init__(self, journalLine, type, dateTime):\r\n\t\tself.JournalLine = journalLine\r\n\t\tself.Type = type\r\n\t\tself.DateTime = dateTime\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModelEvent\"\r\n\r\njournal = IN[0]\r\n\r\n# All variations of opening a document via dialog\r\nevents = [LoadedModelEvent(x, 'Open_Dialog', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID in ('ID_REVIT_FILE_OPEN', 'ID_APPMENU_PROJECT_OPEN')]\r\n# All variations of opening a document via recent files\r\nevents.extend([LoadedModelEvent(x, 'Open_Recent', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID == 'ID_FILE_MRU_FIRST' or x.CommandID.startswith('ID_FILE_MRU_FILE')])\r\n# Models opened via drag & drop\r\nevents.extend([LoadedModelEvent(x, 'Open_DragDrop', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalUIEvent') if x.UIEventType == \"DropFiles\"])\r\n\r\n# Get next JournalData line to extract file path\r\nnextDataLines = [x.JournalLine.NextOfTypeAndProperty('JournalData', 'Block', x.JournalLine.Block + 1) for x in events]\r\npaths = []\r\nignoreEvents = []\r\ni = 0\r\nfor line in nextDataLines:\r\n\t# For workshared models we'll need the second JournalData line\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tline = line.NextOfTypeAndProperty('JournalData', 'Block', line.Block + 1)\r\n\tnextDataLine = line.NextOfType('JournalData')\r\n\t# Flag models that do not have a JournalData line that carries the filename\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in file open dialog\r\n\telif line.Key == \"File Name\" and line.Values[0] == \"IDCANCEL\":\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in status bar, otherwise add path to list\r\n\telif nextDataLine != None:\r\n\t\tif nextDataLine.Key == \"ProgressCancelled\":\r\n\t\t\tnextDataLine2 = nextDataLine.NextOfType('JournalData')\r\n\t\t\tif nextDataLine2.Key == \"TaskDialogResult\" and nextDataLine2.Values[-1] == \"IDYES\":\r\n\t\t\t\tignoreEvents.append(i)\r\n\t\t\telse: paths.append(line.Values[-1])\r\n\t\telse: paths.append(line.Values[-1])\r\n\telse: paths.append(line.Values[-1])\r\n\ti += 1\r\n\r\n# Remove flagged events\r\nfor index in sorted(ignoreEvents, reverse=True): del events[index]\r\n\r\n# Build LoadedModel objects\r\nloadedModels = [LoadedModel(journal, paths[x], events[x]) for x in range(0, len(events))]\r\n\r\n# Get lines of load completed\r\nloadedLines = [x.JournalLine.NextOfTypeAndProperty('JournalComment', 'RawText', \"'***********************************************************\").NextOfType('JournalTimeStamp') for x in events]\r\n# Create event objects for load completed\r\nloadedEvents = [LoadedModelEvent(x, 'Loaded', x.DateTime) for x in loadedLines]\r\n# Add events to loaded models\r\n[loadedModels[x].Events.append(loadedEvents[x]) for x in range(0, len(loadedModels))]\r\n\r\nOUT = loadedModels",
+      "Code": "import clr\r\nimport sys\r\nsys.path.append(\"C:\\Program Files (x86)\\IronPython 2.7\\Lib\")\r\nimport os\r\n\r\nclass LoadedModel:\r\n\tdef __init__(self, journal, path, initialEvent):\r\n\t\tself.Journal = journal\r\n\t\tif path != None: self.Path = self.NormalizePath(path)\r\n\t\telse: self.Path = None\r\n\t\tself.Events = []\r\n\t\tself.Events.append(initialEvent)\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModel\"\r\n\tdef GetVersion(self):\r\n\t\treturn [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)) if x.Type == \"JournalComment\" and \":< File was saved in\" in x.RawText][0].RawText.split(\"File was saved in\")[-1].strip()\r\n\tdef GetVersionHistory(self):\r\n\t\tallComments = [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block))] \r\n\t\tsaveHistoryMarkers = [x.Number for x in allComments if x.Type == \"JournalComment\" and \":< Document save history\" in x.RawText]\r\n\t\treturn [x.RawText.split(\":<\")[-1].strip() for x in allComments if x.Number in range(saveHistoryMarkers[0] + 1, saveHistoryMarkers[1])]\r\n\tdef NormalizePath(self, path):\r\n\t\treturn os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path),path))\r\n\r\nclass LoadedModelEvent:\r\n\tdef __init__(self, journalLine, type, dateTime):\r\n\t\tself.JournalLine = journalLine\r\n\t\tself.Type = type\r\n\t\tself.DateTime = dateTime\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModelEvent\"\r\n\r\njournal = IN[0]\r\n\r\n# All variations of opening a document via dialog\r\nevents = [LoadedModelEvent(x, 'Open_Dialog', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID in ('ID_REVIT_FILE_OPEN', 'ID_APPMENU_PROJECT_OPEN')]\r\n# All variations of opening a document via recent files\r\nevents.extend([LoadedModelEvent(x, 'Open_Recent', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID == 'ID_FILE_MRU_FIRST' or x.CommandID.startswith('ID_FILE_MRU_FILE')])\r\n# Models opened via drag & drop\r\nevents.extend([LoadedModelEvent(x, 'Open_DragDrop', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalUIEvent') if x.UIEventType == \"DropFiles\"])\r\n\r\n# Get next JournalData line to extract file path\r\nnextDataLines = [x.JournalLine.NextOfType('JournalData') for x in events]\r\npaths = []\r\nignoreEvents = []\r\ni = 0\r\nfor line in nextDataLines:\r\n\t# For workshared models we'll need the second JournalData line\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tline = line.NextOfType('JournalData')\r\n\tnextDataLine = line.NextOfType('JournalData')\r\n\t# Flag models that do not have a JournalData line that carries the filename\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in file open dialog\r\n\telif line.Key == \"File Name\" and line.Values[0] == \"IDCANCEL\":\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in status bar, otherwise add path to list\r\n\telif nextDataLine != None:\r\n\t\tif nextDataLine.Key == \"ProgressCancelled\":\r\n\t\t\tnextDataLine2 = nextDataLine.NextOfType('JournalData')\r\n\t\t\tif nextDataLine2.Key == \"TaskDialogResult\" and nextDataLine2.Values[-1] == \"IDYES\":\r\n\t\t\t\tignoreEvents.append(i)\r\n\t\t\telse: paths.append(line.Values[-1])\r\n\t\telse: paths.append(line.Values[-1])\r\n\telse: paths.append(line.Values[-1])\r\n\ti += 1\r\n\r\n# Remove flagged events\r\nfor index in sorted(ignoreEvents, reverse=True): del events[index]\r\n\r\n# Build LoadedModel objects\r\nloadedModels = [LoadedModel(journal, paths[x], events[x]) for x in range(0, len(events))]\r\n\r\n# Get lines of load completed\r\nloadedLines = [x.JournalLine.NextOfTypeAndProperty('JournalComment', 'RawText', \"'***********************************************************\").NextOfType('JournalTimeStamp') for x in events]\r\n# Create event objects for load completed\r\nloadedEvents = [LoadedModelEvent(x, 'Loaded', x.DateTime) for x in loadedLines]\r\n# Add events to loaded models\r\n[loadedModels[x].Events.append(loadedEvents[x]) for x in range(0, len(loadedModels))]\r\n\r\nOUT = loadedModels",
+      "Engine": "IronPython2",
       "VariableInputPorts": true,
       "Id": "565bb644a7f1428fac81630740fa3d3d",
       "Inputs": [
@@ -52,7 +53,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
+      "Description": "Führt ein eingebettetes Python-Skript aus."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
@@ -78,7 +79,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
@@ -99,7 +100,7 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "A function output, use with custom nodes"
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
     }
   ],
   "Connectors": [
@@ -115,18 +116,20 @@
     }
   ],
   "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -139,31 +142,31 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "565bb644a7f1428fac81630740fa3d3d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 192.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "d7de26d0a1de4ee89b9c619ac3c5b4aa",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 33.0,
         "Y": 0.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "a92aba09ef7043b2ac479f62265902d7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 416.0,
         "Y": 0.0

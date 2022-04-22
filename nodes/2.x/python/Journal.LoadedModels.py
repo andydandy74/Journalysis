@@ -39,14 +39,14 @@ events.extend([LoadedModelEvent(x, 'Open_Recent', x.GetDateTimeOfBlock()) for x 
 events.extend([LoadedModelEvent(x, 'Open_DragDrop', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalUIEvent') if x.UIEventType == "DropFiles"])
 
 # Get next JournalData line to extract file path
-nextDataLines = [x.JournalLine.NextOfTypeAndProperty('JournalData', 'Block', x.JournalLine.Block + 1) for x in events]
+nextDataLines = [x.JournalLine.NextOfType('JournalData') for x in events]
 paths = []
 ignoreEvents = []
 i = 0
 for line in nextDataLines:
 	# For workshared models we'll need the second JournalData line
 	if line.Key not in ("File Name", "Dropped File Name", "MRUFileName"):
-		line = line.NextOfTypeAndProperty('JournalData', 'Block', line.Block + 1)
+		line = line.NextOfType('JournalData')
 	nextDataLine = line.NextOfType('JournalData')
 	# Flag models that do not have a JournalData line that carries the filename
 	if line.Key not in ("File Name", "Dropped File Name", "MRUFileName"):
