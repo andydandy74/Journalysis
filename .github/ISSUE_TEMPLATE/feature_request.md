@@ -5,7 +5,7 @@ about: Suggest future improvements for Journalysis
 ---
 
 **What is the problem that needs solving?**
-(Please fill in. A clear and concise description of what the problem is. Ex. I'm always frustrated when [...])
+(Please fill in. A clear and concise description of what the problem is. Example: I'm always frustrated when [...])
 
 **How would you like to see it solved?**
 (Please fill in. A clear and concise description of what you want to happen.)
