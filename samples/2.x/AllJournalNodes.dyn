@@ -24,7 +24,7 @@
       "Id": "19fd1f7bc2dc4f959b5f26ec82af2d4a",
       "Name": "Journal File Path",
       "Type": "string",
-      "Value": "..\\..\\..\\..\\Desktop\\Journals\\journal.0855.txt",
+      "Value": "..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
       "Description": "Allows you to select a file on the system to get its filename"
     },
     {
@@ -144,8 +144,8 @@
   "Nodes": [
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\andreas\\Desktop\\Journals\\journal.0855.txt",
-      "InputValue": "..\\..\\..\\..\\Desktop\\Journals\\journal.0855.txt",
+      "HintPath": "C:\\Users\\andreas\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
+      "InputValue": "..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
       "NodeType": "ExtensionNode",
       "Id": "19fd1f7bc2dc4f959b5f26ec82af2d4a",
       "Inputs": [],
@@ -426,7 +426,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -466,7 +466,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given block from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -506,7 +506,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -566,7 +566,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -626,7 +626,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -686,7 +686,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -746,7 +746,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -806,7 +806,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -866,7 +866,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -926,7 +926,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -986,7 +986,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -1046,7 +1046,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -1106,7 +1106,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -1157,7 +1157,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the line number of a given journal line"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1188,7 +1188,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the type of a given journal line"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1219,7 +1219,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the block number of a given journal line"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1250,7 +1250,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the raw text of a given journal line"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -2209,7 +2209,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the entire Revit session time based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2240,7 +2240,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the time it took Revit to display the startup screen based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2271,7 +2271,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Pulls a list of all loaded assemblies (i.e. addin DLLs) from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2302,7 +2302,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether the Revit session  of the given journal was terminated properly"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2333,7 +2333,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal is in playback mode"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2364,7 +2364,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether playback was interrupted for the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2519,7 +2519,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal contains any API errors"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2550,7 +2550,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal contains any exceptions"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2612,7 +2612,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the maximum RAM used during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2643,7 +2643,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the maximum VM used during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2674,7 +2674,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the minimum RAM available during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2705,7 +2705,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the minimum VM available during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2736,7 +2736,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the next line after the given line"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2767,7 +2767,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the previous line before the given line"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2825,7 +2825,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal, pre-filtered by a property value"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2856,7 +2856,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines after the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -2887,7 +2887,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines before the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -3085,7 +3085,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines of a given type after the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3143,7 +3143,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines of a given type and property value after the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3183,7 +3183,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines of a given type before the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3241,7 +3241,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all lines of a given type and property value before the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3281,7 +3281,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the next line of a given type after the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3339,7 +3339,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieve the next line of a given type and property value after the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3379,7 +3379,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the previous line of a given type before the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3437,17 +3437,17 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the previous line of a given type and property value before the given line from the journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"JournalCommand\";\n\"CommandID\";\n\"ID_CANCEL_EDITOR\";",
+      "Code": "\"JournalCommand\";\n\"CommandID\";\n\"ID_REVIT_FILE_OPEN\";",
       "Id": "95b65727a5e444598a1b6f188084308a",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "3dfbf923b74940169e822f234f55684f",
+          "Id": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -3456,7 +3456,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "139098fab982428cbfba827e7e3ebaac",
+          "Id": "011d166e5ada4c7e8ee8998b12fa23c9",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -3465,7 +3465,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "d784cc42c1664f84a8d85776151c7eb9",
+          "Id": "5775b402550144e49a1b6ff3476e4f42",
           "Name": "",
           "Description": "Value of expression at line 3",
           "UsingDefaultValue": false,
@@ -3546,7 +3546,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Lists all JournalAPIMessage types"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3567,7 +3567,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Lists all known JournalCommand types"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3588,7 +3588,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Lists all JournalMouseEvent types"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3609,7 +3609,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Lists all JournalTimeStamp types"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3630,7 +3630,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Lists all JournalUIEvent types"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -3806,7 +3806,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the date and time of the block of a given JournalLine"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3846,7 +3846,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves the DateTime of a given block from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3917,7 +3917,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves a list of all models loaded during a given Revit session"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4213,7 +4213,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4492,7 +4492,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns all journal lines associated with a given LoadedAssembly"
+      "Description": "Returns all journal lines associated with a given LoadedAssembly. \r\nATTENTION: Note that this will most likely not catch all AddedPushbutton events of a given assembly."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4687,7 +4687,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -4860,7 +4860,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Retrieves all JournalLines of a given type from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -5858,84 +5858,84 @@
       "Id": "e6ca5fbabe1944f4b9d207584f2add8d"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "89f3c09c5fb24b35af44b64d4419bb27",
-      "Id": "fb791b9fc08840749f5fa316169df4a4"
+      "Id": "db24f0a91c0c4338a7d15da772ea03f9"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "cd6214240b864a80adb92b87cf94d983",
-      "Id": "d59403c576384d89b5c6fc89190a4b2f"
+      "Id": "9dc320d9ca194eaa92593b9dc23cc1b3"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "2b8b534e4b094a6bac0d2db3ae5ca640",
-      "Id": "948cf1ef22ff4509bc533a9d0b313a60"
+      "Id": "ffa477dd76bb447dba067b9107e37f7a"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "667a1c0818804ade9b2bf6f9c66d48f2",
-      "Id": "32942cc5fe6d473496edd1d527c320c2"
+      "Id": "47799fce050b4089a483bb8a0e653df2"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "ad306ab3ed3249d7a3b96d3796360d42",
-      "Id": "3c327937cb6d45669d822ccdf7d365a6"
+      "Id": "bd56b788ff1f428f8d45ddc6d4deb8e4"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "5f2df8fdc007453fabc98581dcc59826",
-      "Id": "37d1b3555b1e4289bcbdd9c176d4c6a3"
+      "Id": "161a15d3f50142a994c94f0b7dee98ac"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "b852c9827e5940a3a814d428397cbb59",
-      "Id": "bccac7d5183147b2abbaac526b8f81e0"
+      "Id": "5a21f312c9014973a3aa241f56902957"
     },
     {
-      "Start": "3dfbf923b74940169e822f234f55684f",
+      "Start": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
       "End": "8f8be136597f4c48ba59a63292ccf7c5",
-      "Id": "caf3086dafd84fc1b64279012004316b"
+      "Id": "5a7f289312d34819a2d0a441de2f7922"
     },
     {
-      "Start": "139098fab982428cbfba827e7e3ebaac",
+      "Start": "011d166e5ada4c7e8ee8998b12fa23c9",
       "End": "f34698eb6a93424e854ecd47da2f5634",
-      "Id": "3194b2ebff844581952e3adf89da1a1b"
+      "Id": "f076769ba99b4dce8fd562f7230b29d4"
     },
     {
-      "Start": "139098fab982428cbfba827e7e3ebaac",
+      "Start": "011d166e5ada4c7e8ee8998b12fa23c9",
       "End": "9fac79daa7604e01904a31946fbc3ef9",
-      "Id": "e8f9ea4b70e34a7387d81140cd53bff7"
+      "Id": "54c85ab8334940b4916a392b3d843a07"
     },
     {
-      "Start": "139098fab982428cbfba827e7e3ebaac",
+      "Start": "011d166e5ada4c7e8ee8998b12fa23c9",
       "End": "d7412daf68e948f8bd8a52018332095b",
-      "Id": "18f365aa8fb14b11bca5f678f4c9995b"
+      "Id": "551702d36e7a4868a7c229435973dee7"
     },
     {
-      "Start": "139098fab982428cbfba827e7e3ebaac",
+      "Start": "011d166e5ada4c7e8ee8998b12fa23c9",
       "End": "de6cb79226e747e8885f820f0d592327",
-      "Id": "5ab16b86992b4e3d8e263b38ef24a0af"
+      "Id": "acd03d3ce39c4e588086651f274649cc"
     },
     {
-      "Start": "d784cc42c1664f84a8d85776151c7eb9",
+      "Start": "5775b402550144e49a1b6ff3476e4f42",
       "End": "716f1651523a4627864876a6c3afd674",
-      "Id": "ab67bf372bb446a89902bcbb2975f5f4"
+      "Id": "07f31577941c421aaed8922fd17cd1a0"
     },
     {
-      "Start": "d784cc42c1664f84a8d85776151c7eb9",
+      "Start": "5775b402550144e49a1b6ff3476e4f42",
       "End": "f463f1c664994cccb10bf6cd02005831",
-      "Id": "cdebf7ed44124630ada494ba796678d4"
+      "Id": "5d114db2c323490eb702144a3619d921"
     },
     {
-      "Start": "d784cc42c1664f84a8d85776151c7eb9",
+      "Start": "5775b402550144e49a1b6ff3476e4f42",
       "End": "854c190c1a7b4c0784e330127209ffb2",
-      "Id": "cb72cf50ab67410186949d5de5f5e69e"
+      "Id": "590e9a4380f440df818c7158bf83b8dc"
     },
     {
-      "Start": "d784cc42c1664f84a8d85776151c7eb9",
+      "Start": "5775b402550144e49a1b6ff3476e4f42",
       "End": "dbc39c43b6ef4378ac30068c0ad3b1ce",
-      "Id": "79aed71a987246b9814e5c23328fedc2"
+      "Id": "5083169d7f4742b29479e92ce640b391"
     },
     {
       "Start": "5cfd07974e58419cbcd65e9bbd09053e",
@@ -6348,6 +6348,11 @@
       "Id": "151c8ea53e984288b7aad96ffec7871d"
     },
     {
+      "Start": "4de4a3cdc7914eeb9e5fd277744ed362",
+      "End": "addbeaa8fb5a438180cbfbd9ee8837e5",
+      "Id": "1ebf5ff4ba964db5b264a0e8a25800b1"
+    },
+    {
       "Start": "d87f21ec3f5541229b7c04a29b99d967",
       "End": "3b3669139c954a1281f26d8dd0018680",
       "Id": "19bd1e5981854c6e9d208cdd86d5cb83"
@@ -6468,13 +6473,150 @@
     "56f1e702-4d21-4726-8fa9-e00e91de22ea",
     "1304305e-d23d-4637-abcc-2d22fc4eb74b"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "2.3.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "35e02060e5aa461d84ea5baa1985c60e",
+        "b9b6d6e44b4740598784c1b83dc17faa",
+        "d817f8df4e94405da03e838e47500b76",
+        "7cd70758ac754b14b70148297d08b687",
+        "844bbb1d3bfc47c0a899bc89d20b8f16",
+        "78a3f6ec35024ba1bf36ca3a62854660",
+        "6e53e5ab1ac1459f9a2176a0135dd304",
+        "0b5f86e9c024478287c31edee050d484",
+        "22cf9a1d1bfe47e58c76ff845a533825",
+        "f27456839de0487f80bcfce2d78acb11",
+        "5a2cefdcbec44ee4ab171a530644372c",
+        "f8365d4abb5f4bfba9f40b37fcad0f7b",
+        "56cdcabaff644c34bfeea697f0b6ff1b",
+        "4de33e6b2604495faaa174b21cb032dc",
+        "104f80f9a9494461adb96fb0de4fe901",
+        "dac3b95316fe49aa80513145b850c610",
+        "d95e228c0e5b4a9a9571ab36940d47bf",
+        "e4f34336c5914afa8a7dc7790d8b74d7",
+        "43df1a3ef6d14d27a9910aae5eb1cec3",
+        "ea876c9c3e704d53b82273ad76aa8675",
+        "0f88a4310fb24d68bb8fd3d9c213afab",
+        "e7132e29208a4e8a884950b4b2c30060",
+        "d9a2f6433ae04ddfb045104939685f31",
+        "2611def9e1cb4335943e1db7069538c3",
+        "88ff2101cff845648117c9ce0dd0656d",
+        "1624d089db504195b7eef259de1a62cc",
+        "a6bee30592874c4fb34300c9d44c33e7",
+        "b02d5c51c9874f2e8b3c58f3839cb997",
+        "bd9c42515e334ab88ae110d9f2c06bac",
+        "6654b90a783e44d8af760d4014d049d9",
+        "794aa987a7c44f9896f9a52f4b3a9513",
+        "6c4abac67da04f91b88b127f9513459f",
+        "f737683564ab47ccaa19f0fcc81b8da9",
+        "15ef5fee8c164b95ace6d8898f4b7cf5",
+        "ed38f7c89d864267a327395b65095daa",
+        "f65507dcd43f4360ab36f4fdabccf266",
+        "8bc000d7093a45a89816b6d3c5470299",
+        "956b233c29084d749af961a71e2fd434",
+        "8fb74c53b1c244f08c728415e2095504",
+        "f38b4bbe13fc452dad2595623e2c457e",
+        "1cbff42bc835423ab842a1efd6f5a620",
+        "2090f0bd291d45579eb19336d0ea0eef",
+        "8b7362ebc22641ebb5cfe23871dda7e5",
+        "e73bbf56083f40ee98a5f40e1fa99f1c",
+        "1c235f6e709147a7b186162aeff01fd1",
+        "d675ad8174a241a6a1da56f031227454",
+        "4e52fa1e7d214b0083e598047da4f9de",
+        "f60a0a9862114aaf9d3405b3ffc63a0c",
+        "86effb6a106445cea3dbff3b83cc2cdf",
+        "0d59a2dce42e49e69f24cf078a97fd30",
+        "d4f5bc369df74b35a98abd8ecd4dcc4f",
+        "3b82d71c15ff42c4bd39dadeb2afc601",
+        "1b2b8395a6964d57a97d4aebb2d4605c",
+        "4f250b37315f446aa268b573a39bd582",
+        "72dc941475554da984824cb7a0dc735f",
+        "3c263a5d78364a02b4aef7d067448bbb",
+        "39b9f549ca84472cae1941c8a716dd1d",
+        "2c9f07ea4f8d4554b45593ec9e23aa0d",
+        "552b6337408c4482b0eaf08e9c89ccf4",
+        "64dd85fcbea645f1b123085309d9f8b2",
+        "453964fd3c3e437da52de0ba9fbc6467",
+        "1802db6139084cbb9dc4e48701074f7d",
+        "b5dea8e4678e40b48949710dccf93445",
+        "8859abc600d1429ca266d486d8ccdae6",
+        "41f6220849874942b196fae2693fc448",
+        "8177c56c1031441a96aed9e3510f3d13",
+        "11d8afcaeb2a4b898cf371fadeee18b8",
+        "f3f7d46057154f27809b91ebf7539f59",
+        "017c3ac556d6407ab41973849b73347a",
+        "a284119c6dfc4696a5fb85159d9d21c5",
+        "78aa7405e3ce40bdb20824b118693c48",
+        "d14d39c967104836b2d52c1dc23ff224",
+        "ee1d89115ace485d8b8fb89cf1e255e6",
+        "210080f330844f3ca16239a675d89fa0",
+        "6b10b44ddacb48dead372c237450b226",
+        "6a42bbe16be647298f28c7ba6d09bba8",
+        "ec03cef2eaa44fa28b5894bae7f98f26",
+        "26a7b844075e4e97925f1de87168e196",
+        "7e8fe428cf5a4e01a775480a01d8de7a",
+        "604d9536377e4a14874f9eca8eccf0e8",
+        "04f86fc03d3d4f579f925cba5edc9317",
+        "97c86919c672449d9b8c6a21ae4aa46d",
+        "a867c37728844a5289cbdc2f0864c38c",
+        "a3f981d6568647a7a9255a31ffff6da2",
+        "77229c1134544fe290a8c909f2dc437c",
+        "a49d29abb50b40b08669feaa17d82210",
+        "4a42a13866bb41b68f63c86f5373c6a2",
+        "7de72f3dc99949c3a42b1aa3c6ce9316",
+        "f3f28b5221934d0d8ba1d56487dc1dab",
+        "cf747c0485a54f759fbf5b5d3f3c22aa",
+        "a3ae272e8c5e49d4935e3ddbc9614f33",
+        "ec329c71ceb242d7bf40bccd2e0edb3c",
+        "64e727d32fd54aab826cafe28b02cb49",
+        "f28187986b6744db89f2be62a53f82cc",
+        "eb26346321724483b9b1bbbff9cefa9e",
+        "519cbb699b394dd4a28d7bd707d03fbe",
+        "86ebab9437a14fe59aba89c84fb606d1",
+        "41cc5d88152448d18e62cf8f392cdf68",
+        "4d14bbe045a84c43b94939efe2a85984",
+        "2c5f58b842f14bb291e2208cf4a570a6",
+        "4c65a8e05f274a17a49387ed307a8097",
+        "a7dbff4521c44c6b8a36080277dd8345",
+        "fc146d0f63734217aea71132f23dbe62",
+        "ffc2a86d68584090b649597e62aa7759",
+        "dd97fdfd962d45bc853b8f2553928633",
+        "caef369a31f949e990131f3c97e310ab",
+        "b516175a08ec4e7ab805b2cb1c3a596d",
+        "e841103192e441da999776b4d3e5c503",
+        "8dc034bd961d41eb827dc077200ab884",
+        "4d08cd684f204d25ae7781e54c6b52a3",
+        "6380e2df44b14ef48d9cfa9e1d5ca06e",
+        "20bcee7b401b4f829a70db89ddabad59",
+        "7b495d66513d4736bb104dad50bdacaf",
+        "33ae86313adb4cf996e4860aee298558",
+        "20f395d221354f65962d1965bf295d9e",
+        "92e2b88efbe441309e17e63886cc953a",
+        "3d7529da861e4df0a200fe242e13f032",
+        "bb321c3470454157a170ec174ea0719e",
+        "8943d828c65948a3a22bb73a670d590d",
+        "c85e3598f16f4d849a622eb9d8161797",
+        "49bafb287d544390b5a1a98c52c94ac1",
+        "7810834a96d248628bd752a40f2a476f",
+        "57c4bccf52a34f9f88ec4c285068f89f",
+        "e501201fd4454518a72a6ae160bb3cf9",
+        "7f03f734797e41a9a3f164958cfcdb14",
+        "f4c27ec7f1b1404eb6c44c5a1f878b3b",
+        "979dc811cb76456b92208005f3152efc",
+        "1f7ad5fb76ac45e1b0774a05cd455e55"
+      ]
+    }
+  ],
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
-      "HasRunWithoutCrash": false,
+      "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.6.1.8786",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -8156,7 +8298,7 @@
         "Height": 1296.06238599188,
         "FontSize": 30.0,
         "InitialTop": -3372.89835252124,
-        "InitialHeight": 602.424972843421,
+        "InitialHeight": 1302.06238599188,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8193,7 +8335,7 @@
         "Height": 2686.4585221792204,
         "FontSize": 30.0,
         "InitialTop": -6092.17179701493,
-        "InitialHeight": 300.635109944675,
+        "InitialHeight": 2666.4585221792204,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8213,7 +8355,7 @@
         "Height": 355.0,
         "FontSize": 30.0,
         "InitialTop": -1800.96418040022,
-        "InitialHeight": 321.049837911305,
+        "InitialHeight": 361.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8231,7 +8373,7 @@
         "Height": 165.62238957031013,
         "FontSize": 30.0,
         "InitialTop": -3426.34902904094,
-        "InitialHeight": 149.622389570323,
+        "InitialHeight": 171.62238957031013,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8249,7 +8391,7 @@
         "Height": 165.0,
         "FontSize": 30.0,
         "InitialTop": -5721.39397459429,
-        "InitialHeight": 149.622389570323,
+        "InitialHeight": 171.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8268,7 +8410,7 @@
         "Height": 247.0,
         "FontSize": 30.0,
         "InitialTop": -5543.09886440117,
-        "InitialHeight": 149.9273045315,
+        "InitialHeight": 253.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8287,7 +8429,7 @@
         "Height": 247.0,
         "FontSize": 30.0,
         "InitialTop": -4068.98406995576,
-        "InitialHeight": 149.9273045315,
+        "InitialHeight": 253.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8306,7 +8448,7 @@
         "Height": 248.17055511524995,
         "FontSize": 30.0,
         "InitialTop": -4337.95266067634,
-        "InitialHeight": 231.0,
+        "InitialHeight": 254.17055511524995,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8326,7 +8468,7 @@
         "Height": 355.0,
         "FontSize": 30.0,
         "InitialTop": -4713.60607671784,
-        "InitialHeight": 231.0,
+        "InitialHeight": 361.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8345,7 +8487,7 @@
         "Height": 247.0,
         "FontSize": 30.0,
         "InitialTop": -2538.90088367517,
-        "InitialHeight": 149.62238957032,
+        "InitialHeight": 253.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8365,7 +8507,7 @@
         "Height": 355.0,
         "FontSize": 30.0,
         "InitialTop": -3798.98295870536,
-        "InitialHeight": 339.0,
+        "InitialHeight": 361.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8384,7 +8526,7 @@
         "Height": 247.0,
         "FontSize": 30.0,
         "InitialTop": -1432.64927088319,
-        "InitialHeight": 339.0,
+        "InitialHeight": 253.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8407,7 +8549,7 @@
         "Height": 679.0,
         "FontSize": 30.0,
         "InitialTop": -3241.44185251911,
-        "InitialHeight": 231.0,
+        "InitialHeight": 685.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8421,11 +8563,11 @@
         ],
         "Left": -1301.92785917723,
         "Top": -4624.15134599009,
-        "Width": 616.278669395668,
+        "Width": 612.278669395668,
         "Height": 385.12942401911005,
         "FontSize": 30.0,
         "InitialTop": -4578.15134599009,
-        "InitialHeight": 239.1585257254,
+        "InitialHeight": 397.46911473143973,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -8441,7 +8583,7 @@
         "Height": 139.0,
         "FontSize": 30.0,
         "InitialTop": -3575.46525227018,
-        "InitialHeight": 201.530215721562,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8453,11 +8595,11 @@
         ],
         "Left": -1493.13346935586,
         "Top": -3622.83643585617,
-        "Width": 251.0,
+        "Width": 328.0,
         "Height": 140.0,
         "FontSize": 30.0,
         "InitialTop": -3576.83643585617,
-        "InitialHeight": 126.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -8476,7 +8618,7 @@
         "Height": 451.73005595484028,
         "FontSize": 30.0,
         "InitialTop": -4417.08157469311,
-        "InitialHeight": 457.651622310137,
+        "InitialHeight": 457.73005595484028,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8501,11 +8643,11 @@
         ],
         "Left": -1495.85205487196,
         "Top": -3396.9829633519,
-        "Width": 444.19198659635003,
-        "Height": 2065.4393053703498,
+        "Width": 608.58137039865,
+        "Height": 2166.4393053703498,
         "FontSize": 30.0,
         "InitialTop": -3350.9829633519,
-        "InitialHeight": 348.334643811508,
+        "InitialHeight": 2071.4393053703498,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8533,7 +8675,7 @@
         "Height": 1913.4921890322098,
         "FontSize": 30.0,
         "InitialTop": -3925.97102591952,
-        "InitialHeight": 299.320277350854,
+        "InitialHeight": 1841.4921890322098,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8550,11 +8692,11 @@
         ],
         "Left": -79.8348807666489,
         "Top": -3347.08732360128,
-        "Width": 554.29024447020493,
+        "Width": 592.95996504549692,
         "Height": 416.12330423260983,
         "FontSize": 30.0,
         "InitialTop": -3301.08732360128,
-        "InitialHeight": 488.82989529807,
+        "InitialHeight": 422.12330423260983,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -8568,11 +8710,11 @@
         ],
         "Left": 50.6166411628317,
         "Top": -5700.67811466022,
-        "Width": 556.68398648053733,
+        "Width": 550.68398648053733,
         "Height": 278.11162573640013,
         "FontSize": 30.0,
         "InitialTop": -5654.67811466022,
-        "InitialHeight": 234.396512995307,
+        "InitialHeight": 258.91245765927943,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8590,7 +8732,7 @@
         "Height": 342.82732011373992,
         "FontSize": 30.0,
         "InitialTop": -5751.41407535978,
-        "InitialHeight": 252.158008655498,
+        "InitialHeight": 348.82732011373992,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8607,7 +8749,7 @@
         "Height": 255.29710594432981,
         "FontSize": 30.0,
         "InitialTop": -5951.36260634991,
-        "InitialHeight": 239.297105944324,
+        "InitialHeight": 261.29710594432981,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8628,7 +8770,7 @@
         "Height": 541.77272244939013,
         "FontSize": 30.0,
         "InitialTop": -5276.7838272393,
-        "InitialHeight": 427.903319133497,
+        "InitialHeight": 547.77272244939013,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8650,7 +8792,7 @@
         "Height": 743.95225147805013,
         "FontSize": 30.0,
         "InitialTop": -6734.49505340681,
-        "InitialHeight": 727.952251478048,
+        "InitialHeight": 749.95225147805013,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8670,7 +8812,7 @@
         "Height": 357.6713314695661,
         "FontSize": 30.0,
         "InitialTop": -1160.37250777047,
-        "InitialHeight": 341.671331469567,
+        "InitialHeight": 363.6713314695661,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8691,7 +8833,7 @@
         "Height": 452.64623351721025,
         "FontSize": 30.0,
         "InitialTop": -2272.71024187422,
-        "InitialHeight": 436.646233517203,
+        "InitialHeight": 458.64623351721025,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8707,16 +8849,16 @@
         ],
         "Left": -1493.72710686476,
         "Top": -4087.48809618181,
-        "Width": 525.9626493280598,
-        "Height": 319.63961518407996,
+        "Width": 737.9626493280598,
+        "Height": 334.63961518407996,
         "FontSize": 30.0,
         "InitialTop": -4041.48809618181,
-        "InitialHeight": 318.639615184082,
+        "InitialHeight": 327.98414731177991,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 717.25235282984568,
+    "X": 694.75235282984568,
     "Y": 1117.4681421751586,
     "Zoom": 0.16147730951632908
   }
