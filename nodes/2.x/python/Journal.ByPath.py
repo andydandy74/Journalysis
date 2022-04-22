@@ -403,7 +403,7 @@ def JournalFromPath(path):
 				elif line[0] == "'":
 					# append linebreaks in API Messages
 					if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"): lineObjs[-1].RawText += " " + line[1:]
-					elif commandCount == 1 and sysinfoStarted:
+					elif sysinfoStarted:
 						if ":< PROCESSOR INFORMATION:" in line: 
 							sysinfoType = "Processor"
 							lineObjs.append(JournalComment(i,line,b))
@@ -554,7 +554,10 @@ def JournalFromPath(path):
 				# if this line is cut off don't try to extract datetime or description
 				if len(ts1) > 1: 
 					line.DateTime = time.strptime(ts1[0][3:])
-					line.Description = ts1[1][7:].strip()
+					# formatting until Revit 2019
+					if ':<' in ts1[1]: line.Description = ts1[1][7:].strip()
+					# formatting as of Revit 2020
+					else: line.Description = ts1[1][2:].strip()
 			elif line.Type == 'JournalMemoryMetrics':
 				if "Initial VM" in line.RawText: m1 = line.RawText.split(":",2)[2].replace(";","").split()
 				else: m1 = line.RawText.split(":",6)[6].split()
