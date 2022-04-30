@@ -24,57 +24,65 @@
       "Id": "e4dd65b28b6c47268dca5456fbd0e893",
       "Name": "Directory Path (Source)",
       "Type": "string",
-      "Value": "U:\\Journals\\Journals",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Value": "U:\\Projekte_Dynamo\\Journals",
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen.",
+      "SelectedIndex": 0
     },
     {
       "Id": "47344656401b48c18fccc1b165fc31cc",
       "Name": "String",
       "Type": "string",
       "Value": "*.txt",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "7d59f59b19f4486ca8e024f9ff01616b",
       "Name": "String",
       "Type": "string",
       "Value": "",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "f02f2c26d50b4d4893757af1d319519b",
       "Name": "String",
       "Type": "string",
       "Value": "JournalPath\r\nRevitBranch\r\nRevitBuild\r\nRevitVersion\r\nStartupTime\r\nSessionTerminatedProperly\r\nSessionTime\r\nProcessingTime\r\nUser\r\nIsInPlaybackMode\r\nPlaybackInterrupted\r\nOSVersion\r\nMinVMAvailable\r\nMinRAMAvailable\r\nMaxVMPeak\r\nMaxRAMPeak\r\nMachine\r\nContainsExceptions\r\nContainsAPIErrors\r\nFileSize",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "b56e670b7a2f4c15ae2fdaaf82da838e",
       "Name": "String",
       "Type": "string",
       "Value": "\r\n",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "2de4dafd11e94b358d5de28a95287e16",
       "Name": "Boolean",
       "Type": "boolean",
       "Value": "true",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False",
+      "SelectedIndex": 0
     },
     {
       "Id": "e728b9dc5e764630a22fe5f54e2eda84",
       "Name": "Filename / Sheetname",
       "Type": "string",
       "Value": "JournalHealthCheck",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "d491f06823784770837482b72a8eedd8",
       "Name": "Directory Path (Target)",
       "Type": "string",
       "Value": "C:\\temp",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen.",
+      "SelectedIndex": 0
     }
   ],
   "Outputs": [],
@@ -106,12 +114,12 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a file object from a path."
+      "Description": "Erstellt ein Dateiobjekt aus einem Pfad."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
       "HintPath": "U:\\Journals\\Journals",
-      "InputValue": "U:\\Journals\\Journals",
+      "InputValue": "U:\\Projekte_Dynamo\\Journals",
       "NodeType": "ExtensionNode",
       "Id": "e4dd65b28b6c47268dca5456fbd0e893",
       "Inputs": [],
@@ -127,7 +135,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -147,7 +155,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -170,7 +178,7 @@
         {
           "Id": "c42c532c70ea4480ba27642ffdbaeff8",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -178,7 +186,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the time it took Revit to display the startup screen based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -201,7 +209,7 @@
         {
           "Id": "79d9c7b2157f4a608196f37e264e2f92",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -209,7 +217,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the Revit branch from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -232,7 +240,7 @@
         {
           "Id": "4f2eca01cac04772b4cf0a11443c13fb",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -240,7 +248,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the Revit build from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -263,7 +271,7 @@
         {
           "Id": "f33587bc85a441f7bfafd2707574c6d8",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -271,7 +279,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the Revit version from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -294,7 +302,7 @@
         {
           "Id": "a5bd4a32c16647348397f7f7648e773a",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -302,7 +310,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the Revit user name from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -325,7 +333,7 @@
         {
           "Id": "6d0e485b0f214e52af7a88a82194cf65",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -333,7 +341,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the entire Revit session time based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -356,7 +364,7 @@
         {
           "Id": "6416762db69f4b05bb8534d35cbd63bb",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -364,7 +372,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether the Revit session  of the given journal was terminated properly"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -376,7 +384,7 @@
         {
           "Id": "483bb766462d4127b1dd5e80a7c43305",
           "Name": "list0",
-          "Description": "Lists to join into one.\n\nvar[]..[]",
+          "Description": "Die zu einer Liste zu verkettenden Listen\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -396,7 +404,7 @@
         {
           "Id": "15009f508ef343ad9fc974964c2f1707",
           "Name": "list",
-          "Description": "Joined list.",
+          "Description": "Verbundene Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -404,7 +412,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Concatenates all given lists into a single list.\n\nList.Join (lists: var[]..[]): var[]..[]"
+      "Description": "Verkettet alle angegebenen Listen zu einer einzelnen Liste.\n\nList.Join (lists: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -427,7 +435,7 @@
         {
           "Id": "1bd498b6c3954931acea125a6a076ca8",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -435,7 +443,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the time it took the Journal.ByString node to process a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -458,7 +466,7 @@
         {
           "Id": "b3422c4447ad45eb86c0f99ba5af4e41",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -466,7 +474,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether playback was interrupted for the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -489,7 +497,7 @@
         {
           "Id": "45a4a313ea3040e4a2d15ebe0224b768",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -497,7 +505,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal is in playback mode"
     },
     {
       "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
@@ -698,7 +706,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -709,7 +717,7 @@
         {
           "Id": "75e5282769a74452ae7ebdb78090dde6",
           "Name": "lists",
-          "Description": "A list of lists to be transposed.\n\nvar[]..[]",
+          "Description": "Liste der umzustellenden Listen\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -720,7 +728,7 @@
         {
           "Id": "43bc9daec322413e8bca899cdc8a384d",
           "Name": "lists",
-          "Description": "A list of transposed lists.",
+          "Description": "Liste der umgestellten Listen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -728,7 +736,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+      "Description": "Vertauscht Zeilen und Spalten in einer Liste von Listen. Wenn einige Zeilen kürzer als die übrigen sind, werden Nullwerte als Platzhalter in das resultierende Array eingefügt, sodass dieses immer rechteckig ist.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -739,7 +747,7 @@
         {
           "Id": "67b9b7e97e6c4850bd631389cde64a37",
           "Name": "Data",
-          "Description": "Data to check\n\nvar",
+          "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -748,7 +756,7 @@
         {
           "Id": "f52fde47581c4cf4a13a8d12819b6574",
           "Name": "ReplaceWith",
-          "Description": "Replace nulls with this value\n\nvar",
+          "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -758,8 +766,8 @@
       "Outputs": [
         {
           "Id": "e811cbf17b464351a5e02c64d3d9412c",
-          "Name": "Replaced",
-          "Description": "New items with replaced nulls",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -767,7 +775,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Replace Null values with something else\n\nManage.ReplaceNulls (Data: var, ReplaceWith: var): var[]..[]"
+      "Description": "Manage.ReplaceNulls (Data: var, ReplaceWith: var): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -787,7 +795,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -797,8 +805,8 @@
       "Inputs": [
         {
           "Id": "b0496f53b4804ada88927bb33a9d7728",
-          "Name": "obj",
-          "Description": "An object.\n\nvar",
+          "Name": "object",
+          "Description": "Objekt, von dem der Typ abgerufen wird\n\nvar",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -809,7 +817,7 @@
         {
           "Id": "105e3dff68464544a58f5db8b0d34ade",
           "Name": "string",
-          "Description": "Type of object.",
+          "Description": "Typ des Objekts",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -817,7 +825,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the type of object represented as string.\n\nObject.Type (obj: var): string"
+      "Description": "Gibt den Typ des Objekts als Zeichenfolge zurück.\n\nObject.Type (object: var): string"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -839,7 +847,7 @@
         {
           "Id": "8306a1dcd55048b7aa11238e0c7f83cc",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -847,7 +855,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "CoreNodeModels.FromObject, CoreNodeModels",
@@ -876,7 +884,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Convert an object to a string representation."
+      "Description": "Konvertiert ein Objekt in eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.Logic.If, CoreNodeModels",
@@ -923,7 +931,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Conditional statement"
+      "Description": "Bedingungsanweisung"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -943,7 +951,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -966,7 +974,7 @@
         {
           "Id": "113efe59647c45539cdcbcc49656cf52",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -974,7 +982,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal contains any API errors"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -997,7 +1005,7 @@
         {
           "Id": "7b4fd34519cb4be4a34b7d34196aaa4b",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1005,7 +1013,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes whether a given journal contains any exceptions"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1028,7 +1036,7 @@
         {
           "Id": "7009b19111634dc3bf28194b8b85fc8a",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1036,7 +1044,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the computer name from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1059,7 +1067,7 @@
         {
           "Id": "2c26923df3bd4275acd1ab4e476be466",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1067,7 +1075,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the maximum RAM used during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1090,7 +1098,7 @@
         {
           "Id": "ef2b6244a32e48218aaffdebb4c326c5",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1098,7 +1106,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the maximum VM used during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1121,7 +1129,7 @@
         {
           "Id": "6e7aa61230b046d2893d93ec38d74c85",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1129,7 +1137,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the minimum RAM available during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1152,7 +1160,7 @@
         {
           "Id": "6c21c540f34845cca95ca66b895a71ac",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1160,7 +1168,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Computes the minimum VM available during a Revit session based on the given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1183,7 +1191,7 @@
         {
           "Id": "89ed1296627e4d1b980a176d3350b5c5",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1191,7 +1199,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": ""
+      "Description": "Returns the Windows version from a given journal"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -1202,8 +1210,8 @@
       "Inputs": [
         {
           "Id": "f4b79d0d71d84186b655bb5790a5521c",
-          "Name": "str",
-          "Description": "String to split up.\n\nstring",
+          "Name": "string",
+          "Description": "Aufzuteilende Zeichenfolge\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1211,8 +1219,8 @@
         },
         {
           "Id": "5d2ce2280b3241eda2df15b1d8a5c9f4",
-          "Name": "separater0",
-          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "Name": "separator0",
+          "Description": "Zeichenfolgen, die (sofern vorhanden) Ende und Anfang der Teilung markieren.\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1223,7 +1231,7 @@
         {
           "Id": "6fa76c5e28d84d13b0e51747674e91e8",
           "Name": "strings",
-          "Description": "List of strings made from the input string.",
+          "Description": "Liste der aus der Eingabezeichenfolge erstellten Zeichenfolgen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1231,7 +1239,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+      "Description": "Teilt eine einzelne Zeichenfolge in eine Liste von Zeichenfolgen auf, wobei die Unterteilungen durch die angegebenen Trennzeichenfolgen bestimmt werden.\n\nString.Split (string: string, separators: string[]): string[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -1251,7 +1259,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
@@ -1281,82 +1289,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSOffice.Data.ExportExcel@string,string,int,int,var[][],bool",
-      "Id": "c4783724055246f6975a5f5925a3e666",
-      "Inputs": [
-        {
-          "Id": "3c1d3519e18f444b93b9e2354e9a2439",
-          "Name": "filePath",
-          "Description": "File path to the Microsoft Excel spreadsheet.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "df70c230cd8c405f8bcec9c23fa28a6a",
-          "Name": "sheetName",
-          "Description": "Name of the workseet to write data to.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "db65f5e5002b4519981fd5ef886d8fb6",
-          "Name": "startRow",
-          "Description": "Start row for writing data. Enter 0 for Row 1, 1 for Row 2, etc.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "54d9115b52964c3885c86ff3e354e0b8",
-          "Name": "startCol",
-          "Description": "Start column for writing data. Enter 0 for Column A, 1 for Column B, etc.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "874b9457599b47d888c8c6e4fcd1bfdf",
-          "Name": "data",
-          "Description": "Data to write to the spreadsheet.\n\nvar[][]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "d144963682334f7fa62b5797c982fd65",
-          "Name": "overWrite",
-          "Description": "bool\nDefault value : false",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "34079783684a445abf054747f7d2b209",
-          "Name": "data",
-          "Description": "Data written to the spreadsheet.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Write data to a Microsoft Excel spreadsheet. Data is written by row with sublists to be written in successive rows. Rows and columns are zero-indexed; for example, the value in the data list at [0,0] will be written to cell A1. Null values and empty lists are written to Excel as empty cells. This node requires Microsoft Excel to be installed.\n\nData.ExportExcel (filePath: string, sheetName: string, startRow: int, startCol: int, data: var[][], overWrite: bool = false): var[][]"
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
@@ -1376,7 +1309,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -1388,7 +1321,7 @@
         {
           "Id": "5ffd0396a28f4419a058f7a2ba563c3f",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1396,7 +1329,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -1416,7 +1349,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
@@ -1437,7 +1370,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -1448,8 +1381,8 @@
       "Inputs": [
         {
           "Id": "34945976c0aa4dc19590d14478034df6",
-          "Name": "path0",
-          "Description": "String to combine into a path.\n\nstring[]",
+          "Name": "string0",
+          "Description": "Zu einem Pfad zu kombinierende Zeichenfolgen\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1457,7 +1390,7 @@
         },
         {
           "Id": "9e8c6a779e834bd59508ddd13d6307ca",
-          "Name": "path1",
+          "Name": "string1",
           "Description": "string[]",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -1469,7 +1402,7 @@
         {
           "Id": "973628d6057d42f3be34f17df0eca40e",
           "Name": "string",
-          "Description": "string",
+          "Description": "Kombinierter Dateipfad",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1477,7 +1410,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Combines multiple strings into a single file path.\n\nFileSystem.CombinePath (paths: string[]): string"
+      "Description": "Verbindet mehrere Zeichenfolgen zu einem einzelnen Dateipfad.\n\nFileSystem.CombinePath (strings: string[]): string"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -1499,7 +1432,7 @@
         {
           "Id": "4ed3dbd73c3149c48efc5e1b28b7092d",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1507,7 +1440,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1530,7 +1463,7 @@
         {
           "Id": "e056defc7c2a4f94ab5be9f39a028810",
           "Name": "bytes",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1539,7 +1472,7 @@
         {
           "Id": "8dd7e0e231f54f119f41010d75c8776c",
           "Name": "kilobytes",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1548,7 +1481,7 @@
         {
           "Id": "cb9ad4f02eea48f085ad71365186c116",
           "Name": "megabytes",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1579,7 +1512,7 @@
         {
           "Id": "7eb202a81a314a31b1d6146ca1f83743",
           "Name": "journal",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1616,7 +1549,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a directory object from a path"
+      "Description": "Erstellt ein Verzeichnisobjekt aus einem Pfad."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1627,7 +1560,7 @@
         {
           "Id": "590ef40ebd024c52bf94db6f00798976",
           "Name": "directory",
-          "Description": "var",
+          "Description": "Verzeichnis zum Abrufen des Inhalts\n\nvar",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1636,7 +1569,7 @@
         {
           "Id": "35d82afb988b4477890ef1fbb5bf897b",
           "Name": "searchString",
-          "Description": "string\nDefault value : \"*.*\"",
+          "Description": "Suchzeichenfolge zum Filtern von Ergebnissen\n\nstring\nVorgabewert : \"*.*\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1645,7 +1578,7 @@
         {
           "Id": "fb9888f96a8e4b14a0137559fda75d99",
           "Name": "includeSubdirectories",
-          "Description": "bool\nDefault value : false",
+          "Description": "Legen Sie diese Option auf True fest, um Dateien und Ordner in Unterverzeichnissen (rekursiv) einzubeziehen, oder legen Sie False fest, um Ergebnisse nur aus der obersten Ebene des angegebenen Verzeichnisses einzubeziehen.\n\nbool\nVorgabewert : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1656,7 +1589,7 @@
         {
           "Id": "f6dc21d7417949bb82a959aaa3f75654",
           "Name": "files",
-          "Description": "var",
+          "Description": "Aus Abfrage resultierende Dateien",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1665,7 +1598,7 @@
         {
           "Id": "459b05a070ec475ab48c885ec2803f6e",
           "Name": "directories",
-          "Description": "var",
+          "Description": "Aus Abfrage resultierende Verzeichnisse",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1673,7 +1606,111 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "FileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
+      "Description": "Gibt eine Liste mit Dateien und Verzeichnissen zurück, die sich in einem bestimmten Verzeichnis befinden. Mit einer optionalen searchString können Sie die Ergebnisse filtern.\n\nFileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Id": "65788432358b480fb2ae2fc3628b9b78",
+      "Inputs": [
+        {
+          "Id": "b877ceb8850344e6a98ce4acd9727e49",
+          "Name": "filePath",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f0483154d3454d30b37aad834e9665d4",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "94f88910131e4805b21bac816f59cdb1",
+          "Name": "startRow",
+          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8577e9e9993c444a8f2889c68797cfe1",
+          "Name": "startColumn",
+          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a1830e7d5d24cb5bdefd75a6fd4b0fe",
+          "Name": "data",
+          "Description": "Die in die Tabelle zu schreibenden Daten\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "31723225ffda492486c7725f2ee5d6fa",
+          "Name": "overWrite",
+          "Description": "Löschen der Tabelle vor dem Schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a7c9d18445724ef3aff4d1e4ce584265",
+          "Name": "writeAsString",
+          "Description": "Excel-Datei als Zeichenfolgen schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dadbde3d5ce14f2ba38739bb4525b416",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "bf3ec2f94ebb40358983d9db45f130f1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2e01fb2647ca4cb285c17ebb80525b4d",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Auswahl zwischen True und False"
     }
   ],
   "Connectors": [
@@ -1729,8 +1766,8 @@
     },
     {
       "Start": "15009f508ef343ad9fc974964c2f1707",
-      "End": "874b9457599b47d888c8c6e4fcd1bfdf",
-      "Id": "6f05d35645c648c7a06e1e3d61bb921a"
+      "End": "6a1830e7d5d24cb5bdefd75a6fd4b0fe",
+      "Id": "ddaa53c9b142492abca4fbd3d28340c7"
     },
     {
       "Start": "1bd498b6c3954931acea125a6a076ca8",
@@ -1859,28 +1896,28 @@
     },
     {
       "Start": "caab89f427f74adc80e395cac59f56de",
-      "End": "d144963682334f7fa62b5797c982fd65",
-      "Id": "8cbef52f00a84c72adc03b66dbfaaaef"
+      "End": "31723225ffda492486c7725f2ee5d6fa",
+      "Id": "1fbb20c1181f4e91864c01f0c43a21fd"
     },
     {
       "Start": "5ffd0396a28f4419a058f7a2ba563c3f",
-      "End": "db65f5e5002b4519981fd5ef886d8fb6",
-      "Id": "056e6b9d555c4ce9b176a5ff9cfd1d41"
+      "End": "94f88910131e4805b21bac816f59cdb1",
+      "Id": "70276bd6ae4c4eaea385d4187b6153ce"
     },
     {
       "Start": "5ffd0396a28f4419a058f7a2ba563c3f",
-      "End": "54d9115b52964c3885c86ff3e354e0b8",
-      "Id": "962ee50e8ef74d06ad5ab36e2ec06a0a"
-    },
-    {
-      "Start": "50788736813c4e74a9b3ee079270de01",
-      "End": "df70c230cd8c405f8bcec9c23fa28a6a",
-      "Id": "00032b6a2b454cc49017541824b987e2"
+      "End": "8577e9e9993c444a8f2889c68797cfe1",
+      "Id": "19b1100b179441d484ddfc3658ee636d"
     },
     {
       "Start": "50788736813c4e74a9b3ee079270de01",
       "End": "9e8c6a779e834bd59508ddd13d6307ca",
       "Id": "20626e7d36dc49e0aee94855df0ebdd7"
+    },
+    {
+      "Start": "50788736813c4e74a9b3ee079270de01",
+      "End": "f0483154d3454d30b37aad834e9665d4",
+      "Id": "35e59086cd8e49beaab3372f92105470"
     },
     {
       "Start": "8aa687ff3f964f23ad810f21aeb69d2c",
@@ -1894,8 +1931,8 @@
     },
     {
       "Start": "4ed3dbd73c3149c48efc5e1b28b7092d",
-      "End": "3c1d3519e18f444b93b9e2354e9a2439",
-      "Id": "6dd4c15844f6430baceba27d5bceaff6"
+      "End": "b877ceb8850344e6a98ce4acd9727e49",
+      "Id": "f29916509eb64ac0a6f91c7c5eee7ed1"
     },
     {
       "Start": "cb9ad4f02eea48f085ad71365186c116",
@@ -2011,6 +2048,11 @@
       "Start": "f6dc21d7417949bb82a959aaa3f75654",
       "End": "28821ef8f0bf4c83a6464e3a4856d06c",
       "Id": "91a5d9f9414d4df4ae79822239954fcd"
+    },
+    {
+      "Start": "2e01fb2647ca4cb285c17ebb80525b4d",
+      "End": "fb9888f96a8e4b14a0137559fda75d99",
+      "Id": "e011f203995144ab9727be0c98565bdd"
     }
   ],
   "Dependencies": [
@@ -2035,18 +2077,79 @@
     "a7731432-83b2-4ab5-8d3b-a7728b8ebcf2",
     "77141d35-29af-4172-ab94-7d688a42917b"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "0.9.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a56ca29d5688413688658fada178011e",
+        "fb0cfd3649eb4a809936a6dfbdf0b676",
+        "2bfef06b2be9412d80c6529f4dc50ca6",
+        "24a57665d3364678a2b23025cd983744",
+        "4598fc9c4a8d475092a993a003014f62",
+        "20385095db3a4043b6c3ade32375f05d",
+        "36d22584625445358fccb11f5a30fa0b",
+        "63cded25e0fd4a1bbdd2bd9e70a1798e",
+        "fb9fd14c39a743cdafbf9313c72b73e2",
+        "c071fa99381948358ba36df35ed4231d",
+        "c03a7957a90b4ce6871f96718b0232e0",
+        "547db465bcb9457f828f3856969d38d0",
+        "2096653c80d74087b1b359e0614dda69",
+        "31f3982351cf450ca6eac26aeb4ebc6a",
+        "1b8a747e28bf4af49d1e15b8754bccfc",
+        "25810b4aba2c45b684d6812f8227fa67",
+        "c5a092210e0245b5b3e915f0e3511726",
+        "4de88d342cd54c6897d0cbee8b67e373",
+        "dae3000185ac425a8f0f46e264b117a6"
+      ]
+    },
+    {
+      "Name": "LunchBox for Dynamo",
+      "Version": "2018.7.6",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "0c4453ed6fb849fc8e5ae81b659f9ad7"
+      ]
+    },
+    {
+      "Name": "Clockwork for Dynamo 2.x",
+      "Version": "2.4.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "4112a5517fcf452bb66506b6089c6781"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -2075,8 +2178,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1875.52409011078,
-        "Y": -1432.46299533251
+        "X": -1881.3555189008516,
+        "Y": -1485.8103279207573
       },
       {
         "ShowGeometry": true,
@@ -2400,16 +2503,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Data.ExportExcel",
-        "Id": "c4783724055246f6975a5f5925a3e666",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 3444.07437717072,
-        "Y": -1236.79918207952
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Boolean",
         "Id": "2de4dafd11e94b358d5de28a95287e16",
         "IsSetAsInput": true,
@@ -2435,8 +2528,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1878.21365090992,
-        "Y": -1233.29918207952
+        "X": -1889.3409225031978,
+        "Y": -1231.2128186557804
       },
       {
         "ShowGeometry": true,
@@ -2445,8 +2538,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1876.33671612047,
-        "Y": -1334.10987849737
+        "X": -1887.4639877137479,
+        "Y": -1332.0235150736303
       },
       {
         "ShowGeometry": true,
@@ -2507,6 +2600,26 @@
         "Excluded": false,
         "X": -1439.4850532761923,
         "Y": -975.04757940905574
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ExportToExcel",
+        "Id": "65788432358b480fb2ae2fc3628b9b78",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3412.6080396479028,
+        "Y": -1238.4877163989922
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Process subdirectories",
+        "Id": "bf3ec2f94ebb40358983d9db45f130f1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1881.0477169632338,
+        "Y": -1395.8888959900842
       }
     ],
     "Annotations": [
@@ -2516,15 +2629,16 @@
         "Nodes": [
           "e4dd65b28b6c47268dca5456fbd0e893",
           "e728b9dc5e764630a22fe5f54e2eda84",
-          "d491f06823784770837482b72a8eedd8"
+          "d491f06823784770837482b72a8eedd8",
+          "bf3ec2f94ebb40358983d9db45f130f1"
         ],
-        "Left": -1888.21365090992,
-        "Top": -1478.46299533251,
-        "Width": 177.68956079914005,
-        "Height": 313.16381325298994,
+        "Left": -1899.3409225031978,
+        "Top": -1531.8103279207573,
+        "Width": 238.9854036023462,
+        "Height": 368.59750926497691,
         "FontSize": 30.0,
-        "InitialTop": -1432.46299533251,
-        "InitialHeight": 310.23820456706,
+        "InitialTop": -1485.8103279207573,
+        "InitialHeight": 344.16381325298994,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -2539,11 +2653,11 @@
         ],
         "Left": -1658.2010840650212,
         "Top": -1054.6523711931027,
-        "Width": 710.1082915775462,
+        "Width": 753.1082915775462,
         "Height": 251.92334612936281,
         "FontSize": 30.0,
         "InitialTop": -1008.6523711931027,
-        "InitialHeight": 198.870598586301,
+        "InitialHeight": 257.92334612936281,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2574,11 +2688,11 @@
         ],
         "Left": -336.925622829283,
         "Top": -1836.27702840792,
-        "Width": 541.72650655879193,
+        "Width": 547.72650655879193,
         "Height": 2168.4778463284038,
         "FontSize": 30.0,
         "InitialTop": -1790.27702840792,
-        "InitialHeight": 2083.68394056968,
+        "InitialHeight": 2174.4778463284038,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2599,7 +2713,7 @@
         "Height": 253.00000000000409,
         "FontSize": 30.0,
         "InitialTop": -1096.79918207952,
-        "InitialHeight": 284.35451145617,
+        "InitialHeight": 259.00000000000409,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2620,7 +2734,7 @@
         "Height": 523.00000000000409,
         "FontSize": 30.0,
         "InitialTop": -1357.79918207952,
-        "InitialHeight": 427.243248483735,
+        "InitialHeight": 539.00000000000409,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2628,25 +2742,25 @@
         "Id": "89be89e2c9c74c1e8bfa99f6048d4d33",
         "Title": "Write to Excel",
         "Nodes": [
-          "c4783724055246f6975a5f5925a3e666",
           "2de4dafd11e94b358d5de28a95287e16",
           "fcc9887c9c1c4ed2a6c765ef6b933426",
           "4d9b83600a41463490a47e372c80d19e",
-          "0217de5e7cc147ce8c87af562ae566ed"
+          "0217de5e7cc147ce8c87af562ae566ed",
+          "65788432358b480fb2ae2fc3628b9b78"
         ],
         "Left": 2790.07437717072,
         "Top": -1327.79918207952,
-        "Width": 880.0,
-        "Height": 336.0,
+        "Width": 853.533662477183,
+        "Height": 338.31146568052782,
         "FontSize": 30.0,
         "InitialTop": -1281.79918207952,
-        "InitialHeight": 305.30816292719,
+        "InitialHeight": 367.0,
         "TextblockHeight": 36.0,
         "Background": "#FF48B9FF"
       }
     ],
-    "X": 217.54029109481743,
-    "Y": 577.54358786228249,
-    "Zoom": 0.099850350360280685
+    "X": 605.05186314285288,
+    "Y": 704.177439154256,
+    "Zoom": 0.30436638316231651
   }
 }

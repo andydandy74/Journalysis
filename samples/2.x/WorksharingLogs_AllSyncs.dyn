@@ -41,63 +41,72 @@
       "Name": "Directory Path (Export Directory)",
       "Type": "string",
       "Value": "C:\\temp",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen.",
+      "SelectedIndex": 0
     },
     {
       "Id": "9e1e2886273e4e11ab089075ebe135c2",
       "Name": "Filename",
       "Type": "string",
       "Value": "Syncs",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "d5e4a0ece8cc4a2faa432417b06f938c",
       "Name": "String",
       "Type": "string",
       "Value": "\r\n",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "8f5987e99ac94eb09cca57da36083b4a",
       "Name": "String",
       "Type": "string",
       "Value": "SessionID\r\nUsername\r\nMachine\r\nLinksLoaded\r\nModel\r\nSyncStarted\r\nSyncDuration\r\nReloadLatest",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "c2db217511e046e5831be79684f7349d",
       "Name": "Boolean",
       "Type": "boolean",
       "Value": "true",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False",
+      "SelectedIndex": 0
     },
     {
       "Id": "2d516149c8ca480498f495e779fd4421",
       "Name": "String",
       "Type": "string",
       "Value": "Syncs",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "0742e546ba3246f5a1e99da01ced2c99",
       "Name": "String",
       "Type": "string",
       "Value": "",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "fa5b046e39f942768a67fb2fef46b712",
       "Name": "Boolean",
       "Type": "boolean",
       "Value": "false",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False",
+      "SelectedIndex": 0
     },
     {
       "Id": "fc8e5796a91540a5a41d2f88ff900d8f",
       "Name": "Directory Path (Log Directory)",
       "Type": "string",
       "Value": "U:\\Journals\\SLOG",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen.",
+      "SelectedIndex": 0
     }
   ],
   "Outputs": [],
@@ -123,7 +132,7 @@
         {
           "Id": "38f82ea221b742a48afbe1a0b1610c5d",
           "Name": "worksharingSessions",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -154,7 +163,7 @@
         {
           "Id": "0566f289babc470aaa4efe2ad5fc9974",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -185,7 +194,7 @@
         {
           "Id": "11bb693340b44cdcb06b2fecfac9d763",
           "Name": "SyncEvents",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -204,7 +213,7 @@
         {
           "Id": "c14811d74a6b476dbdf80bfa7614f34a",
           "Name": "list",
-          "Description": "List to get the item count of.\n\nvar[]..[]",
+          "Description": "Liste, deren Elementanzahl abgerufen werden soll\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": true,
@@ -214,8 +223,8 @@
       "Outputs": [
         {
           "Id": "50048bfa8b534c04a68f04ff4f29eb32",
-          "Name": "count",
-          "Description": "List length.",
+          "Name": "int",
+          "Description": "Länge der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -223,7 +232,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the number of items stored in the given list.\n\nList.Count (list: var[]..[]): int"
+      "Description": "Gibt die Anzahl der Elemente in der angegebenen Liste zurück.\n\nList.Count (list: var[]..[]): int"
     },
     {
       "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
@@ -316,7 +325,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
@@ -337,7 +346,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -357,7 +366,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -377,7 +386,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -397,7 +406,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
@@ -417,7 +426,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -428,8 +437,8 @@
       "Inputs": [
         {
           "Id": "6a9fa7778fbd4721a1e8facb5fd3d9f2",
-          "Name": "str",
-          "Description": "String to split up.\n\nstring",
+          "Name": "string",
+          "Description": "Aufzuteilende Zeichenfolge\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -437,8 +446,8 @@
         },
         {
           "Id": "1264824304db4d298b76628ba1c14699",
-          "Name": "separater0",
-          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "Name": "separator0",
+          "Description": "Zeichenfolgen, die (sofern vorhanden) Ende und Anfang der Teilung markieren.\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -449,7 +458,7 @@
         {
           "Id": "75a0f76988704b26aa463fe6bdc54754",
           "Name": "strings",
-          "Description": "List of strings made from the input string.",
+          "Description": "Liste der aus der Eingabezeichenfolge erstellten Zeichenfolgen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -457,7 +466,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+      "Description": "Teilt eine einzelne Zeichenfolge in eine Liste von Zeichenfolgen auf, wobei die Unterteilungen durch die angegebenen Trennzeichenfolgen bestimmt werden.\n\nString.Split (string: string, separators: string[]): string[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -468,7 +477,7 @@
         {
           "Id": "b94ae0898d3448819b95d3ca3e6cb8f3",
           "Name": "lists",
-          "Description": "A list of lists to be transposed.\n\nvar[]..[]",
+          "Description": "Liste der umzustellenden Listen\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -479,7 +488,7 @@
         {
           "Id": "6f64158b6d054f70bae58f1dd7938515",
           "Name": "lists",
-          "Description": "A list of transposed lists.",
+          "Description": "Liste der umgestellten Listen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -487,7 +496,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+      "Description": "Vertauscht Zeilen und Spalten in einer Liste von Listen. Wenn einige Zeilen kürzer als die übrigen sind, werden Nullwerte als Platzhalter in das resultierende Array eingefügt, sodass dieses immer rechteckig ist.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -509,7 +518,7 @@
         {
           "Id": "4b7bd088b0d748b998e87b66bcb54604",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -517,7 +526,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
@@ -547,7 +556,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -559,7 +568,7 @@
         {
           "Id": "d2052c2b983740f292882cd3543b2abc",
           "Name": "list0",
-          "Description": "Lists to join into one.\n\nvar[]..[]",
+          "Description": "Die zu einer Liste zu verkettenden Listen\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -579,7 +588,7 @@
         {
           "Id": "58d38b0e8a91410981227542182a7f85",
           "Name": "list",
-          "Description": "Joined list.",
+          "Description": "Verbundene Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -587,7 +596,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Concatenates all given lists into a single list.\n\nList.Join (lists: var[]..[]): var[]..[]"
+      "Description": "Verkettet alle angegebenen Listen zu einer einzelnen Liste.\n\nList.Join (lists: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -599,7 +608,7 @@
         {
           "Id": "a87777a341d84339bee118cbe48f99ac",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -607,7 +616,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
@@ -618,8 +627,8 @@
       "Inputs": [
         {
           "Id": "6e614bf9d81b4f659a83c7515381ebdd",
-          "Name": "path0",
-          "Description": "String to combine into a path.\n\nstring[]",
+          "Name": "string0",
+          "Description": "Zu einem Pfad zu kombinierende Zeichenfolgen\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -627,7 +636,7 @@
         },
         {
           "Id": "2ee53ecfa51642ec9974b186a0763f38",
-          "Name": "path1",
+          "Name": "string1",
           "Description": "string[]",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -639,7 +648,7 @@
         {
           "Id": "1d09469ef1c848cfa746ee6effed9ef4",
           "Name": "string",
-          "Description": "string",
+          "Description": "Kombinierter Dateipfad",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -647,7 +656,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Combines multiple strings into a single file path.\n\nFileSystem.CombinePath (paths: string[]): string"
+      "Description": "Verbindet mehrere Zeichenfolgen zu einem einzelnen Dateipfad.\n\nFileSystem.CombinePath (strings: string[]): string"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -667,82 +676,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSOffice.Data.ExportExcel@string,string,int,int,var[][],bool",
-      "Id": "edc0e02c27d34f3189f6ff793798cb48",
-      "Inputs": [
-        {
-          "Id": "cb250291a0224beb8c71e9e5a00a924a",
-          "Name": "filePath",
-          "Description": "File path to the Microsoft Excel spreadsheet.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "b0bb7e5097194334951379bedc026f76",
-          "Name": "sheetName",
-          "Description": "Name of the workseet to write data to.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "e6d439d924ff40f4bd0aa39342835e14",
-          "Name": "startRow",
-          "Description": "Start row for writing data. Enter 0 for Row 1, 1 for Row 2, etc.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "f75f170b30bc4cb0b52e323770e44771",
-          "Name": "startCol",
-          "Description": "Start column for writing data. Enter 0 for Column A, 1 for Column B, etc.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "8c59b99c300d423c84366e3ef5174c2c",
-          "Name": "data",
-          "Description": "Data to write to the spreadsheet.\n\nvar[][]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1d291edf52804039bb678b6a838fc109",
-          "Name": "overWrite",
-          "Description": "bool\nDefault value : false",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "8229b70f1d8343be92edd83d4ac445ee",
-          "Name": "data",
-          "Description": "Data written to the spreadsheet.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Write data to a Microsoft Excel spreadsheet. Data is written by row with sublists to be written in successive rows. Rows and columns are zero-indexed; for example, the value in the data list at [0,0] will be written to cell A1. Null values and empty lists are written to Excel as empty cells. This node requires Microsoft Excel to be installed.\n\nData.ExportExcel (filePath: string, sheetName: string, startRow: int, startCol: int, data: var[][], overWrite: bool = false): var[][]"
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -765,7 +699,7 @@
         {
           "Id": "ae6596df8c1b4a9ab5af22e28968a0a1",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -796,7 +730,7 @@
         {
           "Id": "b60f0128f75743a88f687b5e354dc79a",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -815,7 +749,7 @@
         {
           "Id": "de3f24e10a9a4937af432243c41c51c3",
           "Name": "item",
-          "Description": "The item to repeat.\n\nvar[]..[]",
+          "Description": "Das zu wiederholende Element\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -824,7 +758,7 @@
         {
           "Id": "d6be8b0401074007bf34c11a2e088e62",
           "Name": "amount",
-          "Description": "The number of times to repeat.\n\nint",
+          "Description": "Die Anzahl der Wiederholungen\n\nint",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -835,7 +769,7 @@
         {
           "Id": "2f1323a731e4433e961dd7f9acd4ef3d",
           "Name": "list",
-          "Description": "List of repeated items.",
+          "Description": "Liste der wiederholten Elemente",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -843,7 +777,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a list containing the given item the given number of times.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
+      "Description": "Erstellt eine Liste, die die angegebene Anzahl von Instanzen des angegebenen Elements enthält.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -854,7 +788,7 @@
         {
           "Id": "b0d35233551e406fba77ad1adde83e8a",
           "Name": "list",
-          "Description": "List to flatten.\n\nvar[]..[]",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 3,
           "UseLevels": true,
@@ -862,8 +796,8 @@
         },
         {
           "Id": "912e01e8144441649d13cc765a115fdf",
-          "Name": "amt",
-          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "Name": "amount",
+          "Description": "Layer der zu entfernenden Listenverschachtelung (-1 entfernt alle Listenverschachtelungen)\n\nint\nVorgabewert : -1",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -873,8 +807,8 @@
       "Outputs": [
         {
           "Id": "785a382cbb7d4bad90ebc5d49af7fd08",
-          "Name": "var[]..[]",
-          "Description": "var[]..[]",
+          "Name": "list",
+          "Description": "Vereinfachte Liste nach Betrag",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -882,7 +816,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -893,7 +827,7 @@
         {
           "Id": "e8b740af43e74781b8b95fa7687495ea",
           "Name": "timeSpan",
-          "Description": "A TimeSpan.\n\nvar",
+          "Description": "TimeSpan-Wert für das Abrufen der Sekundengesamtanzahl\n\nvar",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -904,7 +838,7 @@
         {
           "Id": "9e9b44a63d8746b68af5a3dd7eea69cf",
           "Name": "double",
-          "Description": "double",
+          "Description": "Gesamtanzahl der Sekunden",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -912,7 +846,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Converts the total amount of time represented by a TimeSpan to an inexact number of seconds.\n\nTimeSpan.TotalSeconds (timeSpan: var): double"
+      "Description": "Wandelt den gesamten durch einen TimeSpan-Wert dargestellten Zeitraum in eine ungenaue Anzahl von Sekunden um.\n\nTimeSpan.TotalSeconds (timeSpan: var): double"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -944,7 +878,7 @@
         {
           "Id": "db2ccc9651af4335aaff201a4c397e6b",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -972,7 +906,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -995,7 +929,7 @@
         {
           "Id": "7bd978450e1043449a109dff4fa33e7f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1014,7 +948,7 @@
         {
           "Id": "1c94d7ad8ced477082c7f6c5faaf4c4e",
           "Name": "item",
-          "Description": "The item to repeat.\n\nvar[]..[]",
+          "Description": "Das zu wiederholende Element\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1023,7 +957,7 @@
         {
           "Id": "16d65ba0f57b48128305721335285204",
           "Name": "amount",
-          "Description": "The number of times to repeat.\n\nint",
+          "Description": "Die Anzahl der Wiederholungen\n\nint",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1034,7 +968,7 @@
         {
           "Id": "0aea2da6cf024b9ea430b31f9971752e",
           "Name": "list",
-          "Description": "List of repeated items.",
+          "Description": "Liste der wiederholten Elemente",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1042,7 +976,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a list containing the given item the given number of times.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
+      "Description": "Erstellt eine Liste, die die angegebene Anzahl von Instanzen des angegebenen Elements enthält.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1065,7 +999,7 @@
         {
           "Id": "601c851f292e4e929b20dd22380d0ab6",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1084,7 +1018,7 @@
         {
           "Id": "94d7a91d36da4c2db1f410c5738e5b13",
           "Name": "item",
-          "Description": "The item to repeat.\n\nvar[]..[]",
+          "Description": "Das zu wiederholende Element\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1093,7 +1027,7 @@
         {
           "Id": "80a3d4cacd6140d29b6cc8d6c33fee40",
           "Name": "amount",
-          "Description": "The number of times to repeat.\n\nint",
+          "Description": "Die Anzahl der Wiederholungen\n\nint",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1104,7 +1038,7 @@
         {
           "Id": "68341ab9dcc441079a14e2adba2e2c4a",
           "Name": "list",
-          "Description": "List of repeated items.",
+          "Description": "Liste der wiederholten Elemente",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1112,7 +1046,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a list containing the given item the given number of times.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
+      "Description": "Erstellt eine Liste, die die angegebene Anzahl von Instanzen des angegebenen Elements enthält.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1135,7 +1069,7 @@
         {
           "Id": "deb999b59b1d4f168c1939132c53cb47",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1154,7 +1088,7 @@
         {
           "Id": "e1e2e7cc0fbe49019a4910074727f40b",
           "Name": "item",
-          "Description": "The item to repeat.\n\nvar[]..[]",
+          "Description": "Das zu wiederholende Element\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1163,7 +1097,7 @@
         {
           "Id": "807da86bb7b74974a9a27e1633de67f8",
           "Name": "amount",
-          "Description": "The number of times to repeat.\n\nint",
+          "Description": "Die Anzahl der Wiederholungen\n\nint",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1174,7 +1108,7 @@
         {
           "Id": "5aca62afab594540bb505304f1b2ac8e",
           "Name": "list",
-          "Description": "List of repeated items.",
+          "Description": "Liste der wiederholten Elemente",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1182,7 +1116,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a list containing the given item the given number of times.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
+      "Description": "Erstellt eine Liste, die die angegebene Anzahl von Instanzen des angegebenen Elements enthält.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1205,7 +1139,7 @@
         {
           "Id": "4f10ce265a7e4ef48eb9e312caffc1a9",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1224,7 +1158,7 @@
         {
           "Id": "d2646e721fe94cf897983a6672bb1b01",
           "Name": "path",
-          "Description": "Path to get the file name of.\n\nstring",
+          "Description": "Pfad, dessen Dateiname abgerufen werden soll\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1233,7 +1167,7 @@
         {
           "Id": "1b37c2cebbf04932abcb902c3e13b573",
           "Name": "withExtension",
-          "Description": "Determines whether or not the extension is included in the result, defaults to true.\n\nbool\nDefault value : true",
+          "Description": "Erweiterung im Ergebnis berücksichtigen ein/aus\n\nbool\nVorgabewert : true",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1244,7 +1178,7 @@
         {
           "Id": "e67a853e0a55493a9e970156a1f27122",
           "Name": "string",
-          "Description": "string",
+          "Description": "Dateiname aus Dateipfad",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1252,7 +1186,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the file name of a file path.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
+      "Description": "Gibt den Dateinamen eines Dateipfads zurück.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
@@ -1272,7 +1206,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1283,7 +1217,7 @@
         {
           "Id": "27118ddf26754d5e843af2acfb5809ea",
           "Name": "item",
-          "Description": "The item to repeat.\n\nvar[]..[]",
+          "Description": "Das zu wiederholende Element\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1292,7 +1226,7 @@
         {
           "Id": "cefd81f536584c86a9b98d141ce20bb4",
           "Name": "amount",
-          "Description": "The number of times to repeat.\n\nint",
+          "Description": "Die Anzahl der Wiederholungen\n\nint",
           "UsingDefaultValue": false,
           "Level": 1,
           "UseLevels": true,
@@ -1303,7 +1237,7 @@
         {
           "Id": "146af6ac0e5640a8b9ad2400c707bf87",
           "Name": "list",
-          "Description": "List of repeated items.",
+          "Description": "Liste der wiederholten Elemente",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1311,7 +1245,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a list containing the given item the given number of times.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
+      "Description": "Erstellt eine Liste, die die angegebene Anzahl von Instanzen des angegebenen Elements enthält.\n\nList.OfRepeatedItem (item: var[]..[], amount: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1322,7 +1256,7 @@
         {
           "Id": "9a5b40894fa54062861c998f3593e5f7",
           "Name": "list",
-          "Description": "List to flatten.\n\nvar[]..[]",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1330,8 +1264,8 @@
         },
         {
           "Id": "edee77c2b134483088d9fbcf70adcb2a",
-          "Name": "amt",
-          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "Name": "amount",
+          "Description": "Layer der zu entfernenden Listenverschachtelung (-1 entfernt alle Listenverschachtelungen)\n\nint\nVorgabewert : -1",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1341,8 +1275,8 @@
       "Outputs": [
         {
           "Id": "c9c6a62949ca4541ab1c1bdda03c40b7",
-          "Name": "var[]..[]",
-          "Description": "var[]..[]",
+          "Name": "list",
+          "Description": "Vereinfachte Liste nach Betrag",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1350,7 +1284,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1361,7 +1295,7 @@
         {
           "Id": "1bc50e850e944b99be7be3fdb121107a",
           "Name": "directory",
-          "Description": "var",
+          "Description": "Verzeichnis zum Abrufen des Inhalts\n\nvar",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1370,7 +1304,7 @@
         {
           "Id": "6062055c80994eae97bb87c46f0561f5",
           "Name": "searchString",
-          "Description": "string\nDefault value : \"*.*\"",
+          "Description": "Suchzeichenfolge zum Filtern von Ergebnissen\n\nstring\nVorgabewert : \"*.*\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1379,7 +1313,7 @@
         {
           "Id": "de73b09094834c99b1a006a345b585aa",
           "Name": "includeSubdirectories",
-          "Description": "bool\nDefault value : false",
+          "Description": "Legen Sie diese Option auf True fest, um Dateien und Ordner in Unterverzeichnissen (rekursiv) einzubeziehen, oder legen Sie False fest, um Ergebnisse nur aus der obersten Ebene des angegebenen Verzeichnisses einzubeziehen.\n\nbool\nVorgabewert : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -1390,7 +1324,7 @@
         {
           "Id": "dd504bc37b914603b36f2efe327add3c",
           "Name": "files",
-          "Description": "var",
+          "Description": "Aus Abfrage resultierende Dateien",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1399,7 +1333,7 @@
         {
           "Id": "6dd47d24d2154874b22f1177e3f7a2fc",
           "Name": "directories",
-          "Description": "var",
+          "Description": "Aus Abfrage resultierende Verzeichnisse",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1407,7 +1341,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "FileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
+      "Description": "Gibt eine Liste mit Dateien und Verzeichnissen zurück, die sich in einem bestimmten Verzeichnis befinden. Mit einer optionalen searchString können Sie die Ergebnisse filtern.\n\nFileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
@@ -1428,7 +1362,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a directory on the system to get its path"
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
     },
     {
       "ConcreteType": "CoreNodeModels.Input.DirectoryObject, CoreNodeModels",
@@ -1457,7 +1391,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a directory object from a path"
+      "Description": "Erstellt ein Verzeichnisobjekt aus einem Pfad."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1480,7 +1414,7 @@
         {
           "Id": "80a2d2e4af8940d39fa87dfeebc886cf",
           "Name": "worksharingLog",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1510,7 +1444,7 @@
         {
           "Id": "71a62f95161246bebbbca76c9248d56c",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1518,7 +1452,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1541,7 +1475,7 @@
         {
           "Id": "4a04b18015ba49358df7092fb8d2bbc5",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1550,6 +1484,90 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the number of times that Reload Latest occured during a given SyncEvent"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Id": "b1fd9b65ac3e4dd0943d8b694398577b",
+      "Inputs": [
+        {
+          "Id": "5cac2eac26f542a2b93bbc3486a8a7d8",
+          "Name": "filePath",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f4245d53506f4479ac9d3fcb1102de57",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "692bec41b7e0422981b3d5cf0203f485",
+          "Name": "startRow",
+          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fa92011597824571a55db93595b276c3",
+          "Name": "startColumn",
+          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e834889d3bc04410add56c7f13facd8a",
+          "Name": "data",
+          "Description": "Die in die Tabelle zu schreibenden Daten\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e512d15b16704dcc9dce257bdce6be55",
+          "Name": "overWrite",
+          "Description": "Löschen der Tabelle vor dem Schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0aa063e2b7d64173afadc2a923428f0d",
+          "Name": "writeAsString",
+          "Description": "Excel-Datei als Zeichenfolgen schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "19750ad58fbd4b54ae13ff71f33ea74e",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
     }
   ],
   "Connectors": [
@@ -1635,8 +1653,8 @@
     },
     {
       "Start": "f8667343185649048cd287628b6b22af",
-      "End": "1d291edf52804039bb678b6a838fc109",
-      "Id": "3e2eeea98ab94c8b9d3d203ac7eeaea7"
+      "End": "e512d15b16704dcc9dce257bdce6be55",
+      "Id": "d575644744f64f6e98f2f5925eb00639"
     },
     {
       "Start": "75a0f76988704b26aa463fe6bdc54754",
@@ -1660,28 +1678,28 @@
     },
     {
       "Start": "58d38b0e8a91410981227542182a7f85",
-      "End": "8c59b99c300d423c84366e3ef5174c2c",
-      "Id": "4e204069b8294af083abd2ef1e64d2da"
+      "End": "e834889d3bc04410add56c7f13facd8a",
+      "Id": "d9c3f9c4124a48f9a7f705f65c24b1fb"
     },
     {
       "Start": "a87777a341d84339bee118cbe48f99ac",
-      "End": "f75f170b30bc4cb0b52e323770e44771",
-      "Id": "04a7b301b7be4b838a6135190a948853"
+      "End": "692bec41b7e0422981b3d5cf0203f485",
+      "Id": "ba799cc3c994499b81468fa48f93e7fb"
     },
     {
       "Start": "a87777a341d84339bee118cbe48f99ac",
-      "End": "e6d439d924ff40f4bd0aa39342835e14",
-      "Id": "0b0440ecf3d24088a2eb8b9895d52469"
+      "End": "fa92011597824571a55db93595b276c3",
+      "Id": "20794a43d7e74ef5bac0af1dc3e3e1da"
     },
     {
       "Start": "1d09469ef1c848cfa746ee6effed9ef4",
-      "End": "cb250291a0224beb8c71e9e5a00a924a",
-      "Id": "f8e01a16a9b34848840067a2e465f311"
+      "End": "5cac2eac26f542a2b93bbc3486a8a7d8",
+      "Id": "fc6aee26fbe04050a0c3f814b121f138"
     },
     {
       "Start": "b491994e4834452cbcfaf3ac1ce05a5e",
-      "End": "b0bb7e5097194334951379bedc026f76",
-      "Id": "e26ab6d3c1e842ae8d24881e25f61fd8"
+      "End": "f4245d53506f4479ac9d3fcb1102de57",
+      "Id": "e108a922f1b149bda8e4e21b8ea1447e"
     },
     {
       "Start": "ae6596df8c1b4a9ab5af22e28968a0a1",
@@ -1843,18 +1861,63 @@
     "9605f14e-7767-492d-a49b-895d4589d982",
     "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "0.9.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "8746069384014152a4272531f5e41f47",
+        "d86793c11de34a0981924949b95620d2",
+        "bdbb847e0d9c4e9aa35159c901241c5a",
+        "ac483197ff2e4c599d59d52322951aa0",
+        "5ae716f5aba047049c272af18c428d9d",
+        "50e23a9b65e448318a9384fd98d90c01",
+        "57e4df7cfbd14b0e9cd4e7bfc403d926",
+        "64a95e65b3bc47a5916adfa414257bb4",
+        "6fd1e595cdc045db89f06fee10a93d1e",
+        "fca3b64e04334306be3319265c75346f",
+        "e308e03b1c86467c8ecc54c3490d996a"
+      ]
+    },
+    {
+      "Name": "Clockwork for Dynamo 2.x",
+      "Version": "2.4.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "632f3e50cfd747ad9ceaf0466e89041c"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -2045,16 +2108,6 @@
         "Excluded": false,
         "X": 2262.23538090429,
         "Y": -844.276868202742
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Data.ExportExcel",
-        "Id": "edc0e02c27d34f3189f6ff793798cb48",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 2437.52049440089,
-        "Y": -836.513915864672
       },
       {
         "ShowGeometry": true,
@@ -2295,6 +2348,16 @@
         "Excluded": false,
         "X": 258.830115351337,
         "Y": 52.1424706724433
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ExportToExcel",
+        "Id": "b1fd9b65ac3e4dd0943d8b694398577b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2421.4469403458529,
+        "Y": -830.52682533901907
       }
     ],
     "Annotations": [
@@ -2308,11 +2371,11 @@
         ],
         "Left": -1997.56493263803,
         "Top": -503.877584485596,
-        "Width": 240.31821626537322,
+        "Width": 291.0,
         "Height": 304.933787816991,
         "FontSize": 30.0,
         "InitialTop": -457.877584485596,
-        "InitialHeight": 126.0,
+        "InitialHeight": 335.933787816991,
         "TextblockHeight": 36.0,
         "Background": "#FF848484"
       },
@@ -2328,11 +2391,11 @@
         ],
         "Left": -1662.1910892377,
         "Top": -503.396492769909,
-        "Width": 1461.656810345527,
+        "Width": 1456.656810345527,
         "Height": 191.0,
         "FontSize": 30.0,
         "InitialTop": -457.396492769909,
-        "InitialHeight": 123.0,
+        "InitialHeight": 145.820464276086,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2358,11 +2421,11 @@
         ],
         "Left": -141.026455625964,
         "Top": -886.967012713113,
-        "Width": 1598.9190599479041,
+        "Width": 1593.9190599479041,
         "Height": 1032.1094833855564,
         "FontSize": 30.0,
         "InitialTop": -840.967012713113,
-        "InitialHeight": 750.556051590011,
+        "InitialHeight": 1038.1094833855564,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -2381,21 +2444,21 @@
           "d46b5be6f9604f20a90f35918fc36dc8",
           "44c07903688741e4bcfff244e1cf78d5",
           "2d516149c8ca480498f495e779fd4421",
-          "edc0e02c27d34f3189f6ff793798cb48"
+          "b1fd9b65ac3e4dd0943d8b694398577b"
         ],
         "Left": 1468.40979684591,
         "Top": -1025.4998370475919,
-        "Width": 1195.11069755498,
-        "Height": 540.85679591176483,
+        "Width": 1184.0371434999429,
+        "Height": 548.86808443917994,
         "FontSize": 30.0,
         "InitialTop": -979.499837047592,
-        "InitialHeight": 505.06479186365,
+        "InitialHeight": 571.856795911765,
         "TextblockHeight": 36.0,
         "Background": "#FF48B9FF"
       }
     ],
-    "X": 266.82464480083644,
-    "Y": 554.60180759322168,
-    "Zoom": 0.11915316119333361
+    "X": 751.61729676328162,
+    "Y": 634.18640081763726,
+    "Zoom": 0.3630660236118689
   }
 }

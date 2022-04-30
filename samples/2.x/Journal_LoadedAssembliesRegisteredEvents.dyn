@@ -162,7 +162,7 @@
       "Inputs": [
         {
           "Id": "2cc5d1e489ba4a57b8182c4eeb6cae77",
-          "Name": "str",
+          "Name": "string",
           "Description": "Zeichenfolge, deren Anfang durchsucht werden soll\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -181,7 +181,7 @@
         {
           "Id": "e68ab9e0f50e469da0518e8ba0ec34e8",
           "Name": "ignoreCase",
-          "Description": "Gibt an, ob die Groß- und Kleinschreibung beim Vergleich berücksichtigt werden soll.\n\nbool\nVorgabewert : false",
+          "Description": "True, um die Groß- und Kleinschreibung beim Vergleich zu ignorieren; False, um die Groß- und Kleinschreibung zu berücksichtigen\n\nbool\nVorgabewert : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -192,7 +192,7 @@
         {
           "Id": "e76a6e3517594cdcb762bb0ee1ce8e82",
           "Name": "bool",
-          "Description": "Gibt an, ob die Zeichenfolge mit der Teilzeichenfolge beginnt.",
+          "Description": "True, wenn die Zeichenfolge mit der Teilzeichenfolge beginnt, sonst False",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -200,7 +200,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Bestimmt, ob die angegebene Zeichenfolge mit der angegebenen Teilzeichenfolge beginnt.\n\nString.StartsWith (str: string, searchFor: string, ignoreCase: bool = false): bool"
+      "Description": "Bestimmt, ob die angegebene Zeichenfolge mit der angegebenen Teilzeichenfolge beginnt.\n\nString.StartsWith (string: string, searchFor: string, ignoreCase: bool = false): bool"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -279,7 +279,7 @@
         {
           "Id": "429347cf98454f4581b7d7e3f7a0af60",
           "Name": "list",
-          "Description": "Liste, in der nach Elementen gesucht werden soll\n\nvar[]..[]",
+          "Description": "Liste, die darauf überprüft werden soll, ob sie leer ist\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": true,
@@ -290,7 +290,7 @@
         {
           "Id": "5d376c2232f4477790e93e904d792874",
           "Name": "bool",
-          "Description": "Gibt an, ob die Liste leer ist.",
+          "Description": "True, wenn die Liste leer ist, sonst False",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -533,7 +533,7 @@
       "Outputs": [
         {
           "Id": "9661713a774d4033aa94a16a3169d1ec",
-          "Name": "count",
+          "Name": "int",
           "Description": "Länge der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -592,7 +592,7 @@
         {
           "Id": "bf9838d684584e678db51251cfdb7a6a",
           "Name": "lists",
-          "Description": "Eine Liste der umzustellenden Listen\n\nvar[]..[]",
+          "Description": "Liste der umzustellenden Listen\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -603,7 +603,7 @@
         {
           "Id": "bd580b3910da4ff2bba6cfb3d7ae7790",
           "Name": "lists",
-          "Description": "Eine Liste der umgestellten Listen",
+          "Description": "Liste der umgestellten Listen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -630,8 +630,8 @@
         },
         {
           "Id": "31132a5ff2db4345a3f8af93454e9671",
-          "Name": "amt",
-          "Description": "Die zu entfernenden Verschachtelungsebenen\n\nint\nVorgabewert : -1",
+          "Name": "amount",
+          "Description": "Layer der zu entfernenden Listenverschachtelung (-1 entfernt alle Listenverschachtelungen)\n\nint\nVorgabewert : -1",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -641,8 +641,8 @@
       "Outputs": [
         {
           "Id": "f3e77c2569d44b24b72f6659515411e6",
-          "Name": "var[]..[]",
-          "Description": "var[]..[]",
+          "Name": "list",
+          "Description": "Vereinfachte Liste nach Betrag",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -650,7 +650,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -689,7 +689,7 @@
         },
         {
           "Id": "f051ec2a345449ffba79088d72309b3d",
-          "Name": "unique keys",
+          "Name": "uniqueKeys",
           "Description": "der jeweiligen Gruppe entsprechender Schlüsselwert",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -749,7 +749,7 @@
       "Outputs": [
         {
           "Id": "082a805407a04b07a32de03516067f58",
-          "Name": "last",
+          "Name": "item",
           "Description": "Das letzte Element in der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -768,8 +768,8 @@
       "Inputs": [
         {
           "Id": "50ca2e1c12054915abd40c4782739136",
-          "Name": "str",
-          "Description": "Zeichenfolge, die die zu ersetzenden Teilzeichenfolgen enthält\n\nstring",
+          "Name": "string",
+          "Description": "Zeichenfolge, die die zu ersetzenden Teilzeichenfolgen enthält.\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -797,7 +797,7 @@
       "Outputs": [
         {
           "Id": "ef08f9883c9c4d43a6ba47b326a00532",
-          "Name": "str",
+          "Name": "string",
           "Description": "Zeichenfolge mit Ersetzungen",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -806,7 +806,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Ersetzt alle Vorkommen des angegebenen Texts in einer Zeichenfolge durch anderen Text.\n\nString.Replace (str: string, searchFor: string, replaceWith: string): string"
+      "Description": "Ersetzt alle Vorkommen des angegebenen Texts in einer Zeichenfolge durch anderen Text.\n\nString.Replace (string: string, searchFor: string, replaceWith: string): string"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -837,7 +837,7 @@
       "Inputs": [
         {
           "Id": "ba26b7bbae674c46a9199f1f7ce2c354",
-          "Name": "str",
+          "Name": "string",
           "Description": "Aufzuteilende Zeichenfolge\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -846,8 +846,8 @@
         },
         {
           "Id": "57761be1084d4184874336ecd7df27c6",
-          "Name": "separater0",
-          "Description": "Zeichenfolgen, die (sofern vorhanden) Ende und Anfang der Abschnitte markieren\n\nstring[]",
+          "Name": "separator0",
+          "Description": "Zeichenfolgen, die (sofern vorhanden) Ende und Anfang der Teilung markieren.\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -858,7 +858,7 @@
         {
           "Id": "bdbc55ae78a148fa9a2184e70427b5cb",
           "Name": "strings",
-          "Description": "Liste der aus der eingegebenen Zeichenfolge erstellten Zeichenfolgen",
+          "Description": "Liste der aus der Eingabezeichenfolge erstellten Zeichenfolgen",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -866,7 +866,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Teilt eine einzelne Zeichenfolge in eine Liste von Zeichenfolgen auf, wobei die Unterteilungen durch die angegebenen Trennzeichenfolgen bestimmt werden.\n\nString.Split (str: string, separaters: string[]): string[]"
+      "Description": "Teilt eine einzelne Zeichenfolge in eine Liste von Zeichenfolgen auf, wobei die Unterteilungen durch die angegebenen Trennzeichenfolgen bestimmt werden.\n\nString.Split (string: string, separators: string[]): string[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
@@ -977,7 +977,7 @@
         {
           "Id": "421af89d5a5a45e8ab2520ecb67d4958",
           "Name": "int",
-          "Description": "Index des Elements in der Liste",
+          "Description": "Der Index des Elements in der Liste. Der ungültige Index -1 wird zurückgegeben, wenn keine genaue Übereinstimmung gefunden wurde.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -985,7 +985,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Gibt den Index des Elements in der angegebenen Liste zurück.\n\nList.IndexOf (list: var[]..[], element: var): int"
+      "Description": "Gibt den Index des Elements in der angegebenen Liste zurück. Eine Übereinstimmung zwischen der angegebenen Liste und dem Zielelement muss eine genaue Übereinstimmung sein (d. h. int und int, double und double, string und string, object und object usw.).\n\nList.IndexOf (list: var[]..[], element: var): int"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -1236,81 +1236,6 @@
       "Description": "Verkettet alle angegebenen Listen zu einer einzelnen Liste.\n\nList.Join (lists: var[]..[]): var[]..[]"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSOffice.Data.ExportExcel@string,string,int,int,var[][],bool",
-      "Id": "0c9d471ff23f485783f07ebbcea69361",
-      "Inputs": [
-        {
-          "Id": "23d79b5fb8a9479f9a1e22f73faa2558",
-          "Name": "filePath",
-          "Description": "Dateipfad der Microsoft Excel-Tabelle.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "87d9eeccd9fa425f9c4bb2a8cf79bc50",
-          "Name": "sheetName",
-          "Description": "Name des Arbeitsblatts, in das Daten geschrieben werden sollen.\n\nstring",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1355d9045fe8401e87eec006be0ab4da",
-          "Name": "startRow",
-          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "8f9aabe1850340539654447184818b9b",
-          "Name": "startCol",
-          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "36bff516fd9d447cad462046adbcfc7a",
-          "Name": "data",
-          "Description": "Die in die Tabelle zu schreibenden Daten.\n\nvar[][]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "6771dabd7f1245e49cfbce85ea1088e5",
-          "Name": "overWrite",
-          "Description": "bool\nVorgabewert : false",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "812b201faf604e189a9ee35c10b99a16",
-          "Name": "data",
-          "Description": "Die in die Tabelle geschriebenen Daten.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportExcel (filePath: string, sheetName: string, startRow: int, startCol: int, data: var[][], overWrite: bool = false): var[][]"
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
       "Code": "0;",
@@ -1429,6 +1354,90 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Id": "bf25d7c193c8402badcf1c253976e63e",
+      "Inputs": [
+        {
+          "Id": "1bc03cc9e1b74174b4c7f97a335150c7",
+          "Name": "filePath",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bce7b62bae7841ff88580ff94c315ead",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "07e6a026a85443e7a02187334e5613f7",
+          "Name": "startRow",
+          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42078c04bf9a42e08a72a284d5c8cca0",
+          "Name": "startColumn",
+          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9378182bb29d4dec988bdabbe68e52cc",
+          "Name": "data",
+          "Description": "Die in die Tabelle zu schreibenden Daten\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d2c7b6bf669d493789be53f5a4ef3535",
+          "Name": "overWrite",
+          "Description": "Löschen der Tabelle vor dem Schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e93f37cf510f47af8f0d58c6d2346f53",
+          "Name": "writeAsString",
+          "Description": "Excel-Datei als Zeichenfolgen schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "53a7766f9dfc4304b7f3b04f365b72d4",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
     }
   ],
   "Connectors": [
@@ -1654,33 +1663,33 @@
     },
     {
       "Start": "c53ab902137c4594b3b53cbcaee2b731",
-      "End": "36bff516fd9d447cad462046adbcfc7a",
-      "Id": "286bdc79106e437c8a896392ef9a9a40"
+      "End": "9378182bb29d4dec988bdabbe68e52cc",
+      "Id": "21c4d7ff7be148babecb60d624286cfd"
     },
     {
       "Start": "7d115f6ed0ca4dc8a24d5b689ea8226f",
-      "End": "8f9aabe1850340539654447184818b9b",
-      "Id": "074aacb6a7f24df39fb5fbe73ada8966"
+      "End": "07e6a026a85443e7a02187334e5613f7",
+      "Id": "befdf931f0294861a5f291f44d6393f8"
     },
     {
       "Start": "7d115f6ed0ca4dc8a24d5b689ea8226f",
-      "End": "1355d9045fe8401e87eec006be0ab4da",
-      "Id": "a07af8dfb6904c62a0972f22e0e9f42f"
+      "End": "42078c04bf9a42e08a72a284d5c8cca0",
+      "Id": "187d1886258640c28702f65a6558ee9a"
     },
     {
       "Start": "14acc1a9a9bd49e98e21c9d19080c4d0",
-      "End": "6771dabd7f1245e49cfbce85ea1088e5",
-      "Id": "f4fb3323fc104918949c50ad0eadd5d3"
-    },
-    {
-      "Start": "40f25fb2fb2e43f0bd30b4fd8fec6ae6",
-      "End": "87d9eeccd9fa425f9c4bb2a8cf79bc50",
-      "Id": "afbc7acd2e83491b84e63669a4312515"
+      "End": "d2c7b6bf669d493789be53f5a4ef3535",
+      "Id": "fd15b1be6d244db5a6412f9e51fa71e0"
     },
     {
       "Start": "40f25fb2fb2e43f0bd30b4fd8fec6ae6",
       "End": "639bae0b45984956a490531478a2bdd2",
       "Id": "cb3c84b46a484578a40b55e38e5091f0"
+    },
+    {
+      "Start": "40f25fb2fb2e43f0bd30b4fd8fec6ae6",
+      "End": "bce7b62bae7841ff88580ff94c315ead",
+      "Id": "7fa1d5a084e7473c8e8b82d47086b093"
     },
     {
       "Start": "94c3c5520553482c93c77f6dae405803",
@@ -1689,8 +1698,8 @@
     },
     {
       "Start": "79aeed68bf2544758623cab5aa12cd7f",
-      "End": "23d79b5fb8a9479f9a1e22f73faa2558",
-      "Id": "7e593ff8e00d434cbe9dfbc68285811c"
+      "End": "1bc03cc9e1b74174b4c7f97a335150c7",
+      "Id": "45c02ee2a7214251b06eb904263d87cf"
     }
   ],
   "Dependencies": [
@@ -1700,14 +1709,45 @@
     "72e1782d-a35d-4dd9-927e-96e46058adb3",
     "50450816-5efc-48bd-98ce-425a5ad2b58e"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "0.9.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "eaad1249bc86466cae3e327ff29044c1",
+        "251897a1231a46c39ed273cbb5590c48",
+        "a52379f592df48aba332fed79971872b",
+        "e8cde763e7414221845f68ca815a8bc4",
+        "be654af28e154c8e835302f9893cb202"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.4.12684",
-      "RunType": "Automatic",
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
@@ -2075,16 +2115,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Data.ExportExcel",
-        "Id": "0c9d471ff23f485783f07ebbcea69361",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 6560.761983823415,
-        "Y": 496.39205442351522
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Code Block",
         "Id": "dd70e32cf2be4d81b4482f3bbe642cb8",
         "IsSetAsInput": false,
@@ -2132,6 +2162,16 @@
         "Excluded": false,
         "X": 6208.49253378104,
         "Y": 382.258658125127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ExportToExcel",
+        "Id": "bf25d7c193c8402badcf1c253976e63e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 6579.1502277574118,
+        "Y": 468.0537998847268
       }
     ],
     "Annotations": [
@@ -2157,7 +2197,7 @@
         "Height": 434.69823991431485,
         "FontSize": 36.0,
         "InitialTop": 647.72133953875868,
-        "InitialHeight": 610.9423114008722,
+        "InitialHeight": 458.69823991431485,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -2174,7 +2214,7 @@
         "Height": 249.12422442702382,
         "FontSize": 36.0,
         "InitialTop": 708.47997867551953,
-        "InitialHeight": 124.0,
+        "InitialHeight": 247.12422442702382,
         "TextblockHeight": 43.0,
         "Background": "#FF848484"
       },
@@ -2199,11 +2239,11 @@
         ],
         "Left": 2757.99860465981,
         "Top": 727.01202738927634,
-        "Width": 2428.6528798658314,
+        "Width": 2426.6528798658314,
         "Height": 401.65111043376521,
         "FontSize": 36.0,
         "InitialTop": 780.01202738927634,
-        "InitialHeight": 378.65111043376521,
+        "InitialHeight": 425.65111043376521,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -2220,25 +2260,25 @@
           "99609378f9dd4e349154fa15d0f64f41",
           "d286f9b587c84fe0a0421cd6f6eca668",
           "b20bb5fb01af40a6b2c1a05021f5e5a3",
-          "0c9d471ff23f485783f07ebbcea69361",
           "dd70e32cf2be4d81b4482f3bbe642cb8",
           "9f03b150728b462c9b58bb9e55c37f0b",
           "e7290556620146809b2c89c4885e3afa",
-          "66ac5cd013904d20845b917a7034f930"
+          "66ac5cd013904d20845b917a7034f930",
+          "bf25d7c193c8402badcf1c253976e63e"
         ],
         "Left": 5228.9600374083193,
         "Top": 329.258658125127,
-        "Width": 1557.8019464150957,
+        "Width": 1581.1901903490925,
         "Height": 638.6233882519731,
         "FontSize": 36.0,
         "InitialTop": 382.258658125127,
-        "InitialHeight": 615.6233882519731,
+        "InitialHeight": 615.29663076998816,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       }
     ],
-    "X": -75.503050438725936,
-    "Y": 308.59402218974731,
-    "Zoom": 0.52864525255430261
+    "X": -20.826059852725081,
+    "Y": 289.51330022461167,
+    "Zoom": 0.254674676565764
   }
 }
