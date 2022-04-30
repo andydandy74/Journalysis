@@ -174,7 +174,8 @@ def WSLogFromPath(path):
 		pyt_path = r'C:\Program Files (x86)\IronPython 2.7\Lib'
 		sys.path.append(pyt_path)
 		import traceback
-		return traceback.format_exc()
+		if line: return traceback.format_exc() + '\nCould not parse line:\n' + line
+		else: return traceback.format_exc()
 
 if isinstance(IN[0], list): OUT = [WSLogFromPath(x) for x in IN[0]]
 else: OUT = WSLogFromPath(IN[0])

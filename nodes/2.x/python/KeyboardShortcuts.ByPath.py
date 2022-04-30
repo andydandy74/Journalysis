@@ -79,7 +79,8 @@ def KSFromPath(path):
 		return KeyboardShortcuts(Commands, CommandCount, CommandCountWithShortcuts)
 	except:
 		import traceback
-		return traceback.format_exc()
+		if line: return traceback.format_exc() + '\nCould not parse line:\n' + line
+		else: return traceback.format_exc()
 
 if isinstance(IN[0], list): OUT = [KSFromPath(x) for x in IN[0]]
 else: OUT = KSFromPath(IN[0])

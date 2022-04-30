@@ -606,7 +606,9 @@ def JournalFromPath(path):
 		return journal
 	except:
 		import traceback
-		return traceback.format_exc()
+		if line and hasattr(line, "RawText"):
+			return traceback.format_exc() + '\nCould not parse line:\n' + line.RawText
+		else: return traceback.format_exc()
 
 if isinstance(IN[0], list): OUT = [JournalFromPath(x) for x in IN[0]]
 else: OUT = JournalFromPath(IN[0])
