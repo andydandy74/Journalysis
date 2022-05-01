@@ -357,6 +357,7 @@ class LoadedAssembly:
 		return "LoadedAssembly"
 
 def JournalFromPath(path):
+	line = None
 	try:
 		processing_started = time.time()
 		lineObjs = []
@@ -372,7 +373,7 @@ def JournalFromPath(path):
 		# Round 1: Create line objects
 		with open(path, 'r') as lines:
 			for line in lines:
-				line = line.lstrip().rstrip('\n').rstrip('x00')
+				line = line.lstrip().rstrip('\n').rstrip('\x00')
 				# ignore empty lines
 				if len(line) < 2: pass
 				elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E "):
@@ -553,7 +554,14 @@ def JournalFromPath(path):
 				ts1 = line.RawText.split(";")
 				# if this line is cut off don't try to extract datetime or description
 				if len(ts1) > 1: 
-					line.DateTime = time.strptime(ts1[0][3:])
+					try:
+						line.DateTime = time.strptime(ts1[0][3:])
+					# After starting RhinoInsideRevit month name abbreviations will be localized
+					# If we set the locale once parsing should continue to work
+					except:
+						import locale
+						locale.setlocale(locale.LC_ALL, '')
+						line.DateTime = time.strptime(ts1[0][3:])
 					# formatting until Revit 2019
 					if ':<' in ts1[1]: line.Description = ts1[1][7:].strip()
 					# formatting as of Revit 2020
@@ -606,8 +614,10 @@ def JournalFromPath(path):
 		return journal
 	except:
 		import traceback
-		if line and hasattr(line, "RawText"):
-			return traceback.format_exc() + '\nCould not parse line:\n' + line.RawText
+		if line:
+			if hasattr(line, "RawText"):
+				return traceback.format_exc() + '\nCould not parse line:\n' + line.RawText
+			else: return traceback.format_exc()
 		else: return traceback.format_exc()
 
 if isinstance(IN[0], list): OUT = [JournalFromPath(x) for x in IN[0]]
