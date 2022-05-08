@@ -1,7 +1,7 @@
 {
   "Uuid": "46fa1d1f-35ce-485a-90bb-84170d71e10a",
   "IsCustomNode": true,
-  "Category": "Journalysis.WorksharingLog.Helpers.Actions",
+  "Category": "Journalysis.WorksharingLog.Actions",
   "Description": "Identifies groups of SyncEvents that overlap in a given WorksharingLog. Expects a list of *all* SyncEvents of *all* WorksharingSessions within a WorksharingLog.",
   "Name": "Helpers.FindSyncEventOverlaps",
   "ElementResolver": {
