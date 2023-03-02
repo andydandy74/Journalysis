@@ -1,5 +1,5 @@
 ## Sample file
-- Download sample file: [AllJournalysisNodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/2.x/AllJournalysisNodes.dyn)
+- Download sample file: [AllKeyboardShortcutsNodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/2.x/AllKeyboardShortcutsNodes.dyn)
 - [More sample files](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x)
 
 ## Useful links

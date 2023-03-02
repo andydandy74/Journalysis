@@ -1,5 +1,8 @@
+## Background information
+[Learn more about the JournalBasicFileInfo line type](https://github.com/andydandy74/Journalysis/wiki/JournalLine-types#journalbasicfileinfo)
+
 ## Sample file
-- Download sample file: [AllJournalysisNodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/2.x/AllJournalysisNodes.dyn)
+- Download sample file: [AllJournalNodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/2.x/AllJournalNodes.dyn)
 - [More sample files](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x)
 
 ## Useful links
