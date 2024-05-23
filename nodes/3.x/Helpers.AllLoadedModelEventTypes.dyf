@@ -1,0 +1,230 @@
+{
+  "Uuid": "005220dc-d3a7-4b69-8570-5be3f00afbed",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Query",
+  "Description": "Lists all LoadedModelEvent types",
+  "Name": "Helpers.AllLoadedModelEventTypes",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "fff919ee47b841aaa3d336877f856457",
+      "Name": "String",
+      "Type": "string",
+      "Value": "Open_Dialog\r\nOpen_DragDrop\r\nOpen_Recent\r\nLoaded",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "eafccb0eb99b452e893f5a36a306839c",
+      "Name": "String",
+      "Type": "string",
+      "Value": "\r\n",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "a011607d3665413eae45fdf30a234253",
+      "Inputs": [
+        {
+          "Id": "f171e91e22ec4246816f625265329d4b",
+          "Name": "str",
+          "Description": "String to split up.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e22d36164cc840f58aa1fa66009390f9",
+          "Name": "separater0",
+          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "77e9208eb2c9408c9ed17fc42bcc7771",
+          "Name": "strings",
+          "Description": "List of strings made from the input string.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Open_Dialog\r\nOpen_DragDrop\r\nOpen_Recent\r\nLoaded",
+      "Id": "fff919ee47b841aaa3d336877f856457",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "68dd4c65cc124a08b6bf766017e85134",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "\r\n",
+      "Id": "eafccb0eb99b452e893f5a36a306839c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "766abb523e1d49abae1032c81e3f21cf",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "seq",
+      "Id": "c8c65ac3cfd14ca3a43e9e223c676e0c",
+      "Inputs": [
+        {
+          "Id": "b20d506688734db1b9bad3b2299bb408",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "77e9208eb2c9408c9ed17fc42bcc7771",
+      "End": "b20d506688734db1b9bad3b2299bb408",
+      "Id": "301262afe7e640aeacca025297e44d53"
+    },
+    {
+      "Start": "68dd4c65cc124a08b6bf766017e85134",
+      "End": "f171e91e22ec4246816f625265329d4b",
+      "Id": "1a50c747687a44c583cd151fbcb48cff"
+    },
+    {
+      "Start": "766abb523e1d49abae1032c81e3f21cf",
+      "End": "e22d36164cc840f58aa1fa66009390f9",
+      "Id": "40fd048d3a7e4235a31854b9fb51c1ff"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "a011607d3665413eae45fdf30a234253",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String.Split",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 449.023783994901,
+        "Y": 60.8866909572951
+      },
+      {
+        "Id": "fff919ee47b841aaa3d336877f856457",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 225.023783994901,
+        "Y": 7.88669095729506
+      },
+      {
+        "Id": "eafccb0eb99b452e893f5a36a306839c",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 225.023783994901,
+        "Y": 139.886690957295
+      },
+      {
+        "Id": "c8c65ac3cfd14ca3a43e9e223c676e0c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 779.023783994901,
+        "Y": 60.8866909572951
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

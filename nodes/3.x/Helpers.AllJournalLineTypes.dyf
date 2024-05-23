@@ -1,0 +1,230 @@
+{
+  "Uuid": "8a565703-8301-4b87-9dc0-37db9ec7041a",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Query",
+  "Description": "Lists all JournalLine types",
+  "Name": "Helpers.AllJournalLineTypes",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "f2f736ddfb2743388f345d818ef008f1",
+      "Name": "String",
+      "Type": "string",
+      "Value": "JournalAddinEvent\r\nJournalAPIMessage\r\nJournalBasicFileInfo\r\nJournalCommand\r\nJournalComment\r\nJournalData\r\nJournalDirective\r\nJournalGUIResourceUsage\r\nJournalKeyboardEvent\r\nJournalMemoryMetrics\r\nJournalMiscCommand\r\nJournalMouseEvent\r\nJournalSystemInformation\r\nJournalTimeStamp\r\nJournalUIEvent\r\nJournalWorksharingEvent",
+      "Description": "Creates a string."
+    },
+    {
+      "Id": "78678152da3d4ceebf4bb319f767a620",
+      "Name": "String",
+      "Type": "string",
+      "Value": "\r\n",
+      "Description": "Creates a string."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "JournalAddinEvent\r\nJournalAPIMessage\r\nJournalBasicFileInfo\r\nJournalCommand\r\nJournalComment\r\nJournalData\r\nJournalDirective\r\nJournalGUIResourceUsage\r\nJournalKeyboardEvent\r\nJournalMemoryMetrics\r\nJournalMiscCommand\r\nJournalMouseEvent\r\nJournalSystemInformation\r\nJournalTimeStamp\r\nJournalUIEvent\r\nJournalWorksharingEvent",
+      "Id": "f2f736ddfb2743388f345d818ef008f1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cfef2d62cf7146f893e46f8774408390",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "\r\n",
+      "Id": "78678152da3d4ceebf4bb319f767a620",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "32a62aa0172a4439a5adaafd76624921",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "4df87e1bec9044f6baa685873cb136d1",
+      "Inputs": [
+        {
+          "Id": "1c44a2f321de42b5992c4248f1c939c6",
+          "Name": "str",
+          "Description": "String to split up.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "437d58e614264029904fb877ffa351cc",
+          "Name": "separater0",
+          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf17ba835e6a44e692389a34c82211aa",
+          "Name": "strings",
+          "Description": "List of strings made from the input string.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Divides a single string into a list of strings, with divisions determined by the given separater strings.\n\nString.Split (str: string, separaters: string[]): string[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "seq",
+      "Id": "0ae3a5ed0dec454e94ce075a34ebea0f",
+      "Inputs": [
+        {
+          "Id": "5a3987fcd4c8431b9ff72db89c8699de",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "cfef2d62cf7146f893e46f8774408390",
+      "End": "1c44a2f321de42b5992c4248f1c939c6",
+      "Id": "646107552372451b996dcc7342461239"
+    },
+    {
+      "Start": "32a62aa0172a4439a5adaafd76624921",
+      "End": "437d58e614264029904fb877ffa351cc",
+      "Id": "cb239ff3e9e843119b0ca22e7b3bc774"
+    },
+    {
+      "Start": "cf17ba835e6a44e692389a34c82211aa",
+      "End": "5a3987fcd4c8431b9ff72db89c8699de",
+      "Id": "396932db383043dba4d75049b95585b7"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.3.8810",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "f2f736ddfb2743388f345d818ef008f1",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 221.013510231971,
+        "Y": -24.683891624497
+      },
+      {
+        "Id": "78678152da3d4ceebf4bb319f767a620",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "String",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 221.013510231971,
+        "Y": 287.316108375503
+      },
+      {
+        "Id": "4df87e1bec9044f6baa685873cb136d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "String.Split",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 501.013510231971,
+        "Y": 118.316108375503
+      },
+      {
+        "Id": "0ae3a5ed0dec454e94ce075a34ebea0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 831.013510231971,
+        "Y": 118.316108375503
+      }
+    ],
+    "Annotations": [],
+    "X": 286.0,
+    "Y": 304.0,
+    "Zoom": 1.0
+  }
+}
