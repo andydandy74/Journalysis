@@ -1,0 +1,235 @@
+{
+  "Uuid": "9aef6240-0c02-4f41-8dac-b15768582912",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Actions",
+  "Description": "Returns the command that corresponds with the given CommandID",
+  "Name": "KeyboardShortcuts.CommandByID",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "if IN[0].__repr__() == 'KeyboardShortcuts':\r\n\tif isinstance(IN[1], list): OUT = [IN[0].GetCommandById(x) for x in IN[1]]\r\n\telse: OUT = IN[0].GetCommandById(IN[1])\r\nelse: OUT = None",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "70fc59eaf9874a72bdaaa8b3c0d4e16a",
+      "Inputs": [
+        {
+          "Id": "acf6efb3246b474b9be7f1644a4c692c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2813594cc90e4a249bec7212c05bbd25",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "797285cb8ced4469bee4b5405f0657c5",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "keyboardShortcuts",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "7b3d08e1b4254340bf59a7e2452fa7fb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1dda0b6d7d9f440abc1013c605f0de31",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "command",
+      "Id": "a3123f47826d4322ae5236ae3bef1364",
+      "Inputs": [
+        {
+          "Id": "e5a7a2d93fb942569525e15193331f91",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "commandID",
+        "TypeName": "string",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "b2431f8f97384bb68b196450f85daed9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "87778172c86542839fdd25f19cf29757",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "797285cb8ced4469bee4b5405f0657c5",
+      "End": "e5a7a2d93fb942569525e15193331f91",
+      "Id": "e6ca5e6717e345f3a9ad8432db4a9005",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1dda0b6d7d9f440abc1013c605f0de31",
+      "End": "acf6efb3246b474b9be7f1644a4c692c",
+      "Id": "68bf05df8126472eacb3886c92e0a7b3",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "87778172c86542839fdd25f19cf29757",
+      "End": "2813594cc90e4a249bec7212c05bbd25",
+      "Id": "f4ceb226a8f8429a9d83fba0a3ce47dd",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.16.2.5624",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Id": "70fc59eaf9874a72bdaaa8b3c0d4e16a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 275.5,
+        "Y": 24.5
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "7b3d08e1b4254340bf59a7e2452fa7fb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -52.5,
+        "Y": -4.5
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "a3123f47826d4322ae5236ae3bef1364",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 499.5,
+        "Y": 24.5
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "b2431f8f97384bb68b196450f85daed9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -52.5,
+        "Y": 79.5
+      }
+    ],
+    "Annotations": [],
+    "X": 101.0,
+    "Y": 50.0,
+    "Zoom": 1.0
+  }
+}
