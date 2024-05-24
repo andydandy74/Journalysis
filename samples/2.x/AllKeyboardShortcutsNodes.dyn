@@ -21,18 +21,12 @@
   },
   "Inputs": [
     {
-      "Id": "206c529a843c47688fc3ecd0d47b3ed9",
-      "Name": "Keyboardshortcuts File Path",
-      "Type": "string",
-      "Value": "C:\\Users\\adieckmann\\Desktop\\KeyboardShortcuts.xml",
-      "Description": "Allows you to select a file on the system to get its filename"
-    },
-    {
       "Id": "977115e52d0f4a50862f32780097780f",
       "Name": "String",
       "Type": "string",
-      "Value": "2017",
-      "Description": "Creates a string."
+      "Value": "2022",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     }
   ],
   "Outputs": [],
@@ -58,7 +52,7 @@
         {
           "Id": "790317df06744726a7fd3dac0dc60292",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -89,7 +83,7 @@
         {
           "Id": "a8967e0eec4245a0a26d7ed63e2e7760",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -120,7 +114,7 @@
         {
           "Id": "cff370e41fcc498591518e0cf1760ff4",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -151,7 +145,7 @@
         {
           "Id": "bcbddefd621b4b9f99573821b831a798",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -182,7 +176,7 @@
         {
           "Id": "5e94bbba694644508948dab994d427f3",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -213,7 +207,7 @@
         {
           "Id": "b13da9b8b0d64e77b8fa748d7e4c96d7",
           "Name": "keyboardShortcutCommands",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -244,7 +238,7 @@
         {
           "Id": "32f2b0d6d2754a89890c6c67741a2dbf",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -275,7 +269,7 @@
         {
           "Id": "b5dde844fbe8498ab0c92352e2a596ba",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -284,27 +278,6 @@
       ],
       "Replication": "Auto",
       "Description": "Returns all paths assigned to a given command"
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\adieckmann\\Desktop\\KeyboardShortcuts.xml",
-      "InputValue": "C:\\Users\\adieckmann\\Desktop\\KeyboardShortcuts.xml",
-      "NodeType": "ExtensionNode",
-      "Id": "206c529a843c47688fc3ecd0d47b3ed9",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "226f63cd249f498fbab96572c7b4257c",
-          "Name": "",
-          "Description": "Filename",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Allows you to select a file on the system to get its filename"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -327,7 +300,7 @@
         {
           "Id": "2f5a0e9f34704bc3853a512df6c7ffed",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -358,7 +331,7 @@
         {
           "Id": "99b94173f9d7479592aacac8f1943852",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -395,12 +368,12 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "2017",
+      "InputValue": "2022",
       "Id": "977115e52d0f4a50862f32780097780f",
       "Inputs": [],
       "Outputs": [
@@ -415,7 +388,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -428,7 +401,7 @@
         {
           "Id": "63d94929adcd431896f66ee9c8e4f6d8",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -436,7 +409,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Retrieves a list of all journal folders on the current machine"
+      "Description": "Retrieves a list of all keyboard shortcuts files on the current machine"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -465,7 +438,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -488,7 +461,7 @@
         {
           "Id": "8c2c37b8757243c8a2e794d37495cbfc",
           "Name": "path",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -519,7 +492,7 @@
         {
           "Id": "14c538efc992421aa5c831e2f04ceeb3",
           "Name": "keyboardShortcuts",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -559,7 +532,7 @@
         {
           "Id": "f51815c4298848efb85f3f553b9b7301",
           "Name": "command",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -607,11 +580,6 @@
       "Id": "3caba11d67354500a5cee689f2a36374"
     },
     {
-      "Start": "226f63cd249f498fbab96572c7b4257c",
-      "End": "a04fcb38401a45dfa3bce89a758f75ea",
-      "Id": "d9f7c6a58e55473bbe5f2f927ff665be"
-    },
-    {
       "Start": "1837c405228f4a318ede819089c83c56",
       "End": "9017888bd9dc4088a6925db9ebee0814",
       "Id": "0565aa97e3664b7b837b70f8400bf976"
@@ -620,6 +588,11 @@
       "Start": "63d94929adcd431896f66ee9c8e4f6d8",
       "End": "9cb7b92bf0ad404cbd9437c39350e509",
       "Id": "2a9de4cf8c8d429e8700a63c6fe89c83"
+    },
+    {
+      "Start": "f10a1400fe454a3eb3a3f1e714091aa0",
+      "End": "a04fcb38401a45dfa3bce89a758f75ea",
+      "Id": "87339cfe9e324b008f0fbdc1be44179c"
     },
     {
       "Start": "8c2c37b8757243c8a2e794d37495cbfc",
@@ -668,18 +641,64 @@
     "9d1984f2-dbb0-41dc-8f13-902e3137cd59",
     "9aef6240-0c02-4f41-8dac-b15768582912"
   ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "2.4.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "7009494fc10545f4afb25d563638c602",
+        "a8ceecfa4d4e430ca5dd19eb02a208cb",
+        "d2bd1f0ec5bc4f2e9c468a0e24aa2ada",
+        "80b8e0989b8e413cbd5884030f810324",
+        "5fa04e433f8e4be3bf9ef32fe4e95c64",
+        "de6fc7dc7848481799ded65b7cc77ca2",
+        "6132ebf3304e47e39ef96ba9435ae26a",
+        "16eded5b37994cf0abaf1f887b66ea23",
+        "c2c46f44e4c44c96a1ef9f617479c3f0",
+        "c01c73d776514b97a7e544c690f5316b",
+        "75b0cb7445f54ea39d357f6cdaabac2a",
+        "d96ac45832514098a6283e3c978e98c6",
+        "fbbe505284234288ac40522f9e994c14",
+        "f068cc1c416c4a2ab91cfe9b0d06f09b"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "1.10",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
-      "HasRunWithoutCrash": false,
+      "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -773,16 +792,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Keyboardshortcuts File Path",
-        "Id": "206c529a843c47688fc3ecd0d47b3ed9",
-        "IsSetAsInput": true,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -1255.06341149987,
-        "Y": -1725.49192160285
-      },
-      {
-        "ShowGeometry": true,
         "Name": "KeyboardShortcutCommand.Shortcuts",
         "Id": "c2c46f44e4c44c96a1ef9f617479c3f0",
         "IsSetAsInput": false,
@@ -808,8 +817,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -821.451027903183,
-        "Y": -1456.91817345085
+        "X": -1165.4456810502734,
+        "Y": -1929.9108215280989
       },
       {
         "ShowGeometry": true,
@@ -818,8 +827,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1253.50268472503,
-        "Y": -1252.85217883051
+        "X": -1597.4973378721202,
+        "Y": -1725.8448269077589
       },
       {
         "ShowGeometry": true,
@@ -828,8 +837,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1167.85404427017,
-        "Y": -1460.74540117874
+        "X": -1511.8486974172604,
+        "Y": -1933.7380492559889
       },
       {
         "ShowGeometry": true,
@@ -838,8 +847,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -822.356533363973,
-        "Y": -1253.8762789525
+        "X": -1166.3511865110631,
+        "Y": -1726.8689270297489
       },
       {
         "ShowGeometry": true,
@@ -848,8 +857,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1131.12910582365,
-        "Y": -1251.70780249419
+        "X": -1475.1237589707403,
+        "Y": -1724.700450571439
       },
       {
         "ShowGeometry": true,
@@ -874,22 +883,6 @@
     ],
     "Annotations": [
       {
-        "Id": "7f0af76a43ec4354bbde87daeb7c6821",
-        "Title": "INPUT",
-        "Nodes": [
-          "206c529a843c47688fc3ecd0d47b3ed9"
-        ],
-        "Left": -1265.06341149987,
-        "Top": -1771.49192160285,
-        "Width": 349.0,
-        "Height": 140.0,
-        "FontSize": 30.0,
-        "InitialTop": -1725.49192160285,
-        "InitialHeight": 126.0,
-        "TextblockHeight": 36.0,
-        "Background": "#FF848484"
-      },
-      {
         "Id": "1c929ddc8476435facd6059c3fa0be28",
         "Title": "KeyboardShortcutCommand.Query",
         "Nodes": [
@@ -903,10 +896,10 @@
         "Left": 143.830860928287,
         "Top": -2004.70295870169,
         "Width": 472.34333333333336,
-        "Height": 764.99449156416,
+        "Height": 764.59449156415985,
         "FontSize": 30.0,
         "InitialTop": -1958.70295870169,
-        "InitialHeight": 748.99449156416,
+        "InitialHeight": 770.99449156416,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -921,10 +914,10 @@
         "Left": -425.825497830727,
         "Top": -1954.2545431673,
         "Width": 432.0,
-        "Height": 391.82774379634,
+        "Height": 391.42774379633988,
         "FontSize": 30.0,
         "InitialTop": -1908.2545431673,
-        "InitialHeight": 375.82774379634,
+        "InitialHeight": 397.82774379634,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -937,10 +930,10 @@
         "Left": -870.533356379728,
         "Top": -1771.83724559417,
         "Width": 352.92,
-        "Height": 139.0,
+        "Height": 138.59999999999991,
         "FontSize": 30.0,
         "InitialTop": -1725.83724559417,
-        "InitialHeight": 123.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -954,13 +947,13 @@
           "0fb39138e11f4e479c42e515b589ffca",
           "d96ac45832514098a6283e3c978e98c6"
         ],
-        "Left": -1263.50268472503,
-        "Top": -1506.74540117874,
-        "Width": 530.0516568218469,
-        "Height": 348.03759868454995,
+        "Left": -1607.4973378721202,
+        "Top": -1979.7380492559889,
+        "Width": 661.65165682184681,
+        "Height": 530.26912222623992,
         "FontSize": 30.0,
-        "InitialTop": -1460.74540117874,
-        "InitialHeight": 332.037598684545,
+        "InitialTop": -1933.7380492559889,
+        "InitialHeight": 354.03759868454995,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -974,16 +967,16 @@
         "Left": -418.928440854555,
         "Top": -1536.56151526618,
         "Width": 365.03000000000003,
-        "Height": 285.66683863641015,
+        "Height": 284.86683863641019,
         "FontSize": 30.0,
         "InitialTop": -1490.56151526618,
-        "InitialHeight": 269.66683863641,
+        "InitialHeight": 265.66683863641015,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 1129.6104231264121,
-    "Y": 1876.2141411197872,
-    "Zoom": 0.87613933531240229
+    "X": 124.30131872074406,
+    "Y": 1614.8556649087293,
+    "Zoom": 0.96965998827589073
   }
 }
