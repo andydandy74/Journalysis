@@ -1,9 +1,9 @@
 {
-  "Uuid": "87ad3e95-f27d-4681-9952-02d475be154e",
+  "Uuid": "d9894328-54f0-4d68-9245-dde4f4c62fef",
   "IsCustomNode": true,
   "Category": "Journalysis.Actions",
-  "Description": "Computes the date of a given journal",
-  "Name": "Journal.Date",
+  "Description": "Computes whether the Revit session  of the given journal was terminated properly",
+  "Name": "Journal.SessionTerminatedProperly",
   "ElementResolver": {
     "ResolutionMap": {
       "File": {
@@ -26,13 +26,13 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalDate(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.GetDate()\r\n\telse: return None\r\n\r\nOUT = process_input(journalDate,IN[0])",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalSessionTerminatedProperly(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.WasSessionTerminatedProperly()\r\n\telse: return False\r\n\r\nOUT = process_input(journalSessionTerminatedProperly,IN[0])",
       "Engine": "CPython3",
       "VariableInputPorts": true,
-      "Id": "c14ddd63f9df48269acc09a519a00407",
+      "Id": "aa8cbff0c25f4b939b75c99cc863d7cb",
       "Inputs": [
         {
-          "Id": "27645e6dcbbd48a68054cc6bb20bba43",
+          "Id": "abc02d45d55740d09bedfd3fea861608",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -43,7 +43,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4cfc574867014f25b5460b3e59e9af80",
+          "Id": "d1e849d825624ac48b99de29315e79dc",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -65,11 +65,11 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+      "Id": "1c106d83c582423b9470f0f0caa9bfed",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "cab6d27db64743b4ba75cbb03fc96ea9",
+          "Id": "94071ae03db94627859b5a42a10ed6e1",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -85,11 +85,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "dateTime",
-      "Id": "21feff7b450d483b9bf9530880e60c7d",
+      "Symbol": "bool",
+      "Id": "5ef126263de146da870a947c4147f8da",
       "Inputs": [
         {
-          "Id": "4523bf1643c243ffa4db71df685668c1",
+          "Id": "278bfc86ab8f465f9f83dbafae40c800",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -105,14 +105,14 @@
   ],
   "Connectors": [
     {
-      "Start": "4cfc574867014f25b5460b3e59e9af80",
-      "End": "4523bf1643c243ffa4db71df685668c1",
-      "Id": "aae4ab1d87ab4514926274e002206b13"
+      "Start": "d1e849d825624ac48b99de29315e79dc",
+      "End": "278bfc86ab8f465f9f83dbafae40c800",
+      "Id": "63b3e562439a4ee2a844d54da836e6a2"
     },
     {
-      "Start": "cab6d27db64743b4ba75cbb03fc96ea9",
-      "End": "27645e6dcbbd48a68054cc6bb20bba43",
-      "Id": "4a4198dd26ff4027bd1e4378c27c828b"
+      "Start": "94071ae03db94627859b5a42a10ed6e1",
+      "End": "abc02d45d55740d09bedfd3fea861608",
+      "Id": "b625848fb7c44e8abcc742111e8220d0"
     }
   ],
   "Dependencies": [],
@@ -144,31 +144,31 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "c14ddd63f9df48269acc09a519a00407",
+        "Id": "aa8cbff0c25f4b939b75c99cc863d7cb",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 250.0,
+        "X": 206.5,
         "Y": 0.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+        "Id": "1c106d83c582423b9470f0f0caa9bfed",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 0.0,
+        "X": 18.5,
         "Y": 0.0
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "21feff7b450d483b9bf9530880e60c7d",
+        "Id": "5ef126263de146da870a947c4147f8da",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 449.0,
+        "X": 430.5,
         "Y": 0.0
       }
     ],

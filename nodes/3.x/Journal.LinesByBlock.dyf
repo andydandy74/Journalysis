@@ -1,9 +1,9 @@
 {
-  "Uuid": "87ad3e95-f27d-4681-9952-02d475be154e",
+  "Uuid": "f551e0d9-ddda-46b8-bb06-456d45188f46",
   "IsCustomNode": true,
   "Category": "Journalysis.Actions",
-  "Description": "Computes the date of a given journal",
-  "Name": "Journal.Date",
+  "Description": "Retrieves all JournalLines of a given block from a given journal",
+  "Name": "Journal.LinesByBlock",
   "ElementResolver": {
     "ResolutionMap": {
       "File": {
@@ -26,15 +26,24 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalDate(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.GetDate()\r\n\telse: return None\r\n\r\nOUT = process_input(journalDate,IN[0])",
+      "Code": "import clr\r\n\r\nOUT = []\r\nif IN[0].__repr__() == 'Journal':\r\n\tif isinstance(IN[1], list): OUT = IN[0].GetLinesByBlocks(IN[1])\r\n\telse: OUT = IN[0].GetLinesByBlock(IN[1])",
       "Engine": "CPython3",
       "VariableInputPorts": true,
-      "Id": "c14ddd63f9df48269acc09a519a00407",
+      "Id": "215735302ece4feb9b4eabc978a3481c",
       "Inputs": [
         {
-          "Id": "27645e6dcbbd48a68054cc6bb20bba43",
+          "Id": "91f08b9381824cca87676ccb624d7ae4",
           "Name": "IN[0]",
           "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "510164a6521c4d68bf7cf8bf2bc9c3ed",
+          "Name": "IN[1]",
+          "Description": "Input #1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -43,7 +52,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4cfc574867014f25b5460b3e59e9af80",
+          "Id": "092702765ee64db4a72cbbc2d3792d29",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -65,11 +74,37 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+      "Id": "981bd47693ad4e47b8d1f9ee16f65dc4",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "cab6d27db64743b4ba75cbb03fc96ea9",
+          "Id": "0aa9b03e5c6741c191a16adb007aed87",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalBlock",
+        "TypeName": "int",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "0de86863061e43a88109822a8fc7d11b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a227617eac354bdaad8d8fbad51676c7",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -85,11 +120,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "dateTime",
-      "Id": "21feff7b450d483b9bf9530880e60c7d",
+      "Symbol": "journalLines",
+      "Id": "e211f3cb725e442783feb953706c5d9a",
       "Inputs": [
         {
-          "Id": "4523bf1643c243ffa4db71df685668c1",
+          "Id": "1999101808e8443cb80108cd22ee95e9",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -105,14 +140,19 @@
   ],
   "Connectors": [
     {
-      "Start": "4cfc574867014f25b5460b3e59e9af80",
-      "End": "4523bf1643c243ffa4db71df685668c1",
-      "Id": "aae4ab1d87ab4514926274e002206b13"
+      "Start": "092702765ee64db4a72cbbc2d3792d29",
+      "End": "1999101808e8443cb80108cd22ee95e9",
+      "Id": "c872fbf28e344a78b87a20b5fc0b387f"
     },
     {
-      "Start": "cab6d27db64743b4ba75cbb03fc96ea9",
-      "End": "27645e6dcbbd48a68054cc6bb20bba43",
-      "Id": "4a4198dd26ff4027bd1e4378c27c828b"
+      "Start": "0aa9b03e5c6741c191a16adb007aed87",
+      "End": "91f08b9381824cca87676ccb624d7ae4",
+      "Id": "f444fa9c1aad4f7190acc97edccb4997"
+    },
+    {
+      "Start": "a227617eac354bdaad8d8fbad51676c7",
+      "End": "510164a6521c4d68bf7cf8bf2bc9c3ed",
+      "Id": "523d13b745a64f30910871b93e77a5a5"
     }
   ],
   "Dependencies": [],
@@ -144,37 +184,47 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "c14ddd63f9df48269acc09a519a00407",
+        "Id": "215735302ece4feb9b4eabc978a3481c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 250.0,
-        "Y": 0.0
+        "X": 242.5,
+        "Y": 62.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+        "Id": "981bd47693ad4e47b8d1f9ee16f65dc4",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 0.0,
-        "Y": 0.0
+        "X": 21.5,
+        "Y": 33.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "0de86863061e43a88109822a8fc7d11b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 21.5,
+        "Y": 117.0
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "21feff7b450d483b9bf9530880e60c7d",
+        "Id": "e211f3cb725e442783feb953706c5d9a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 449.0,
-        "Y": 0.0
+        "X": 466.5,
+        "Y": 62.0
       }
     ],
     "Annotations": [],
-    "X": 0.0,
-    "Y": 0.0,
+    "X": 257.0,
+    "Y": 180.0,
     "Zoom": 1.0
   }
 }

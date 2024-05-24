@@ -1,9 +1,9 @@
 {
-  "Uuid": "87ad3e95-f27d-4681-9952-02d475be154e",
+  "Uuid": "053d4cb7-3ff9-4b24-bb50-b9e2c05509c5",
   "IsCustomNode": true,
   "Category": "Journalysis.Actions",
-  "Description": "Computes the date of a given journal",
-  "Name": "Journal.Date",
+  "Description": "Computes whether a given journal is in playback mode",
+  "Name": "Journal.IsInPlaybackMode",
   "ElementResolver": {
     "ResolutionMap": {
       "File": {
@@ -26,13 +26,13 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalDate(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.GetDate()\r\n\telse: return None\r\n\r\nOUT = process_input(journalDate,IN[0])",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalIsInPlaybackMode(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.IsInPlaybackMode()\r\n\telse: return False\r\n\r\nOUT = process_input(journalIsInPlaybackMode,IN[0])",
       "Engine": "CPython3",
       "VariableInputPorts": true,
-      "Id": "c14ddd63f9df48269acc09a519a00407",
+      "Id": "c20384d824274619a188b2b7fbe1ceb3",
       "Inputs": [
         {
-          "Id": "27645e6dcbbd48a68054cc6bb20bba43",
+          "Id": "ccf1dfc46e644f9ebbb6331b1f50dcd4",
           "Name": "IN[0]",
           "Description": "Input #0",
           "UsingDefaultValue": false,
@@ -43,7 +43,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4cfc574867014f25b5460b3e59e9af80",
+          "Id": "153741445fd94cf4a660ecca380d7d3f",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -65,11 +65,11 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+      "Id": "41ad830f1980419681dfee126ab7d18e",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "cab6d27db64743b4ba75cbb03fc96ea9",
+          "Id": "1c5d75b4736347b78a7e8d0ab89f5167",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -85,11 +85,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "dateTime",
-      "Id": "21feff7b450d483b9bf9530880e60c7d",
+      "Symbol": "bool",
+      "Id": "e7ddd711e0ab40008993cfddac8d66dc",
       "Inputs": [
         {
-          "Id": "4523bf1643c243ffa4db71df685668c1",
+          "Id": "7f3072d377f84c4b95acaadb3beac536",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -105,14 +105,14 @@
   ],
   "Connectors": [
     {
-      "Start": "4cfc574867014f25b5460b3e59e9af80",
-      "End": "4523bf1643c243ffa4db71df685668c1",
-      "Id": "aae4ab1d87ab4514926274e002206b13"
+      "Start": "153741445fd94cf4a660ecca380d7d3f",
+      "End": "7f3072d377f84c4b95acaadb3beac536",
+      "Id": "21cd5261fbc643bc813458674e6b7278"
     },
     {
-      "Start": "cab6d27db64743b4ba75cbb03fc96ea9",
-      "End": "27645e6dcbbd48a68054cc6bb20bba43",
-      "Id": "4a4198dd26ff4027bd1e4378c27c828b"
+      "Start": "1c5d75b4736347b78a7e8d0ab89f5167",
+      "End": "ccf1dfc46e644f9ebbb6331b1f50dcd4",
+      "Id": "752d89dc3bce4208965a424760f447f6"
     }
   ],
   "Dependencies": [],
@@ -144,31 +144,31 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "c14ddd63f9df48269acc09a519a00407",
+        "Id": "c20384d824274619a188b2b7fbe1ceb3",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 250.0,
+        "X": 206.5,
         "Y": 0.0
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+        "Id": "41ad830f1980419681dfee126ab7d18e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 0.0,
+        "X": 18.5,
         "Y": 0.0
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "21feff7b450d483b9bf9530880e60c7d",
+        "Id": "e7ddd711e0ab40008993cfddac8d66dc",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 449.0,
+        "X": 430.5,
         "Y": 0.0
       }
     ],

@@ -1,9 +1,9 @@
 {
-  "Uuid": "87ad3e95-f27d-4681-9952-02d475be154e",
+  "Uuid": "5fa50a37-dad4-4723-9030-912e3cde1c72",
   "IsCustomNode": true,
   "Category": "Journalysis.Actions",
-  "Description": "Computes the date of a given journal",
-  "Name": "Journal.Date",
+  "Description": "Retrieves all JournalLines of a given type from a given journal",
+  "Name": "Journal.LinesByType",
   "ElementResolver": {
     "ResolutionMap": {
       "File": {
@@ -26,15 +26,24 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalDate(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.GetDate()\r\n\telse: return None\r\n\r\nOUT = process_input(journalDate,IN[0])",
+      "Code": "import clr\r\n\r\ndef process_input(func, inputs):\r\n\tif isinstance(inputs[0], list): return [func(x, inputs[1]) for x in inputs[0]]\r\n\telse: return func(inputs[0], inputs[1])\r\n\t\r\ndef journalLinesByType(journal, type):\r\n\tif journal.__repr__() == 'Journal': \r\n\t\tif isinstance(type, list): return journal.GetLinesByTypes(type)\r\n\t\telse: return journal.GetLinesByType(type)\r\n\telse: return None\r\n\r\nOUT = process_input(journalLinesByType, IN)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
-      "Id": "c14ddd63f9df48269acc09a519a00407",
+      "Id": "db1cacd6971e4b48b124daa553b19bd8",
       "Inputs": [
         {
-          "Id": "27645e6dcbbd48a68054cc6bb20bba43",
+          "Id": "acc06815d9e84d94ba3c184e8d50b191",
           "Name": "IN[0]",
           "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d9eb78bbcc364fc797cc02b5447c77c8",
+          "Name": "IN[1]",
+          "Description": "Input #1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -43,7 +52,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4cfc574867014f25b5460b3e59e9af80",
+          "Id": "81348fa2c2a84c6798f46ffb901ddae6",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -65,11 +74,37 @@
         "DefaultValue": null,
         "Description": ""
       },
-      "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+      "Id": "fb7ff5b115584241bf12c4588f5b9c0b",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "cab6d27db64743b4ba75cbb03fc96ea9",
+          "Id": "ea044f136bf247df9ba62042c3ae3f5e",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalLineType",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "f86a2da21980415ea11dc4c206aceed7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "836fb45c8de64278a70bc24c5dd2135b",
           "Name": "",
           "Description": "Symbol",
           "UsingDefaultValue": false,
@@ -85,11 +120,11 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
       "NodeType": "OutputNode",
       "ElementResolver": null,
-      "Symbol": "dateTime",
-      "Id": "21feff7b450d483b9bf9530880e60c7d",
+      "Symbol": "journalLines",
+      "Id": "97709ecebe904a2aa93424c964d12e0f",
       "Inputs": [
         {
-          "Id": "4523bf1643c243ffa4db71df685668c1",
+          "Id": "1c608456cdf44421b2540e822ebd2939",
           "Name": "",
           "Description": "",
           "UsingDefaultValue": false,
@@ -105,14 +140,19 @@
   ],
   "Connectors": [
     {
-      "Start": "4cfc574867014f25b5460b3e59e9af80",
-      "End": "4523bf1643c243ffa4db71df685668c1",
-      "Id": "aae4ab1d87ab4514926274e002206b13"
+      "Start": "81348fa2c2a84c6798f46ffb901ddae6",
+      "End": "1c608456cdf44421b2540e822ebd2939",
+      "Id": "4e184aaeeb2346a7aa61ed76c4e6e946"
     },
     {
-      "Start": "cab6d27db64743b4ba75cbb03fc96ea9",
-      "End": "27645e6dcbbd48a68054cc6bb20bba43",
-      "Id": "4a4198dd26ff4027bd1e4378c27c828b"
+      "Start": "ea044f136bf247df9ba62042c3ae3f5e",
+      "End": "acc06815d9e84d94ba3c184e8d50b191",
+      "Id": "772be581c4cd4f0292a3f93f03ee681c"
+    },
+    {
+      "Start": "836fb45c8de64278a70bc24c5dd2135b",
+      "End": "d9eb78bbcc364fc797cc02b5447c77c8",
+      "Id": "dbff9b0d01d443e3a422498a2c4c34e6"
     }
   ],
   "Dependencies": [],
@@ -144,37 +184,47 @@
       {
         "ShowGeometry": true,
         "Name": "Python Script",
-        "Id": "c14ddd63f9df48269acc09a519a00407",
+        "Id": "db1cacd6971e4b48b124daa553b19bd8",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 250.0,
-        "Y": 0.0
+        "X": 233.0,
+        "Y": 43.5
       },
       {
         "ShowGeometry": true,
         "Name": "Input",
-        "Id": "dcd621e3fa954de0a8f0785ac7af9754",
+        "Id": "fb7ff5b115584241bf12c4588f5b9c0b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 0.0,
-        "Y": 0.0
+        "X": -95.0,
+        "Y": 14.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "f86a2da21980415ea11dc4c206aceed7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -95.0,
+        "Y": 98.5
       },
       {
         "ShowGeometry": true,
         "Name": "Output",
-        "Id": "21feff7b450d483b9bf9530880e60c7d",
+        "Id": "97709ecebe904a2aa93424c964d12e0f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 449.0,
-        "Y": 0.0
+        "X": 457.0,
+        "Y": 43.5
       }
     ],
     "Annotations": [],
-    "X": 0.0,
-    "Y": 0.0,
+    "X": 21.599999999999909,
+    "Y": 131.0,
     "Zoom": 1.0
   }
 }
