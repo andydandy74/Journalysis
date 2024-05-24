@@ -12,7 +12,6 @@
       "Id": "11ae4e4eb89544b3aa5a502d61271590",
       "Name": "String",
       "Type": "string",
-      "Type2": "string",
       "Value": "Autodesk Revit",
       "Description": "Erstellt eine Zeichenfolge.",
       "SelectedIndex": 0
@@ -21,7 +20,6 @@
       "Id": "37c77750adc24258aad3193d2214df20",
       "Name": "String",
       "Type": "string",
-      "Type2": "string",
       "Value": "Autodesk\\Revit",
       "Description": "Erstellt eine Zeichenfolge.",
       "SelectedIndex": 0
@@ -464,7 +462,6 @@
       "NodeType": "PythonScriptNode",
       "Code": "import clr\r\nfrom System import Environment\r\nOUT = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)",
       "Engine": "CPython3",
-      "EngineName": "CPython3",
       "VariableInputPorts": true,
       "Id": "a82756bb4361409f81c150a6f74b5f2e",
       "Inputs": [],
@@ -487,86 +484,72 @@
     {
       "Start": "6b40f11211094e9aadb48d1db5e1ad7b",
       "End": "54e5ff336f0645568c2b3111571b8b3f",
-      "Id": "7032d7a507724f7e9e773d58fc4a758c",
-      "IsHidden": "False"
+      "Id": "7032d7a507724f7e9e773d58fc4a758c"
     },
     {
       "Start": "114249654eb640a895b6fbc5815f9ae6",
       "End": "ca4641406025485e8c5d3bb1c82d6935",
-      "Id": "7e3915cef9364209be4432773c18a903",
-      "IsHidden": "False"
+      "Id": "7e3915cef9364209be4432773c18a903"
     },
     {
       "Start": "114249654eb640a895b6fbc5815f9ae6",
       "End": "282d1889d10c4717ac6ceb29884382b7",
-      "Id": "bd5ffe310b0c4b47bd818a4dff1d432a",
-      "IsHidden": "False"
+      "Id": "bd5ffe310b0c4b47bd818a4dff1d432a"
     },
     {
       "Start": "143e5319535346df893551cf80c95077",
       "End": "3763a21f4f3b466aa2a56e6c17124dc5",
-      "Id": "94b415a633ca4bf5a72cbf63b5801da4",
-      "IsHidden": "False"
+      "Id": "94b415a633ca4bf5a72cbf63b5801da4"
     },
     {
       "Start": "84d97dc321634e96bb2b10618d80bb9e",
       "End": "e56377403d864b26b7fd481d791a115a",
-      "Id": "4d05a1894e5c438b8915b6ae3ba0cb4b",
-      "IsHidden": "False"
+      "Id": "4d05a1894e5c438b8915b6ae3ba0cb4b"
     },
     {
       "Start": "484d4e608ee3423cbe9e41494846cb93",
       "End": "e9a8eae56d924fd89fb9440a115d470c",
-      "Id": "9f1242da1aac4d04a96853d2026bf135",
-      "IsHidden": "False"
+      "Id": "9f1242da1aac4d04a96853d2026bf135"
     },
     {
       "Start": "35483969940f4af186e5a47486546ac5",
       "End": "826837f56d6745ca96ff4303925998c4",
-      "Id": "9e07a6400eb94f988a9302691dfbff73",
-      "IsHidden": "False"
+      "Id": "9e07a6400eb94f988a9302691dfbff73"
     },
     {
       "Start": "4d03969fb85f4c7fa3bda18ec6c3b48f",
       "End": "12df769eacf84f3898132c35cda530d8",
-      "Id": "b061961363244e5698aab71d16fd4280",
-      "IsHidden": "False"
+      "Id": "b061961363244e5698aab71d16fd4280"
     },
     {
       "Start": "4d03969fb85f4c7fa3bda18ec6c3b48f",
       "End": "6277a24629644a7dbb61983099de90dd",
-      "Id": "48f768ceeef24286a57b65e6f2e4bcb7",
-      "IsHidden": "False"
+      "Id": "48f768ceeef24286a57b65e6f2e4bcb7"
     },
     {
       "Start": "09782d9510934acd9e835c8e99dbcf48",
       "End": "ce7635d5306f4b7392a2993f650e11db",
-      "Id": "cc20c74a49d2475daeef6b4061dc09ca",
-      "IsHidden": "False"
+      "Id": "cc20c74a49d2475daeef6b4061dc09ca"
     },
     {
       "Start": "0aafa24788994cc9a48dbf41318e8a50",
       "End": "3fddea612e0d428f8b8da6dc8edd43fb",
-      "Id": "3d05ad2905c74a87818ce57445da6d44",
-      "IsHidden": "False"
+      "Id": "3d05ad2905c74a87818ce57445da6d44"
     },
     {
       "Start": "af87814d0ee24ab2ad3ea8094acf9000",
       "End": "695a8c9148274e2992cdc372307de25f",
-      "Id": "94d42c472e4b465eb57095ff6524871e",
-      "IsHidden": "False"
+      "Id": "94d42c472e4b465eb57095ff6524871e"
     },
     {
       "Start": "3f811f741e744ff1a630ecbb98180a69",
       "End": "e7284107e4e44e9e949b46070938cad7",
-      "Id": "6f713531660343558512cc718e8c2b37",
-      "IsHidden": "False"
+      "Id": "6f713531660343558512cc718e8c2b37"
     },
     {
       "Start": "67e706abbea1459a91ad9db88a6fd832",
       "End": "df1aab623bcf46e5b1ab772603f38920",
-      "Id": "1725deba3a90435abae449905fe87fa8",
-      "IsHidden": "False"
+      "Id": "1725deba3a90435abae449905fe87fa8"
     }
   ],
   "Dependencies": [],
@@ -578,7 +561,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.16.2.5624",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -594,142 +577,141 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
-    "ConnectorPins": [],
     "NodeViews": [
       {
-        "Name": "Output",
         "ShowGeometry": true,
+        "Name": "Output",
         "Id": "925909c2c55948f3887797f01b2e400d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3349.66366591001,
-        "Y": 614.551160069492
+        "X": 2851.11056164065,
+        "Y": 580.230413094879
       },
       {
-        "Name": "List.FilterByBoolMask",
         "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
         "Id": "2036b2519c5a4edcaac1e9c0e46d6517",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3015.26366591001,
-        "Y": 614.551160069492
+        "X": 2616.54009242815,
+        "Y": 580.339255859161
       },
       {
-        "Name": "Code Block",
         "ShowGeometry": true,
+        "Name": "Code Block",
         "Id": "c3079a7395cc4b58a02a0d6483ff8f6f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2212.86366591001,
-        "Y": 631.378660069492
+        "X": 2027.26760144274,
+        "Y": 585.92663906924
       },
       {
-        "Name": "FileSystem.FileExists",
         "ShowGeometry": true,
+        "Name": "FileSystem.FileExists",
         "Id": "4f5222215f3c4c7695e06fab74869b64",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2685.66366591001,
-        "Y": 648.551160069492
+        "X": 2410.45288433962,
+        "Y": 647.523299885419
       },
       {
-        "Name": "List.FilterByBoolMask",
         "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
         "Id": "23aee7aabc894263ab0c2d862be341b6",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1878.46366591001,
-        "Y": 631.378660069492
+        "X": 1786.61318713178,
+        "Y": 582.353962266372
       },
       {
-        "Name": "String.StartsWith",
         "ShowGeometry": true,
+        "Name": "String.StartsWith",
         "Id": "234e265c65424ff09e8f03d14550a689",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1557.66366591001,
-        "Y": 665.378660069492
+        "X": 1532.26990766846,
+        "Y": 695.037693674175
       },
       {
-        "Name": "FileSystem.FileName",
         "ShowGeometry": true,
+        "Name": "FileSystem.FileName",
         "Id": "f5283710a2c345999380b3497e740306",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1211.2636659100099,
-        "Y": 593.378660069492
+        "X": 1250.81119649789,
+        "Y": 636.423917075362
       },
       {
-        "Name": "FileSystem.GetDirectoryContents",
         "ShowGeometry": true,
+        "Name": "FileSystem.GetDirectoryContents",
         "Id": "3312a7f7018e4635816a60db1fa605a3",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 790.46366591000992,
-        "Y": 578.378660069492
+        "X": 951.418816333212,
+        "Y": 556.309126948104
       },
       {
-        "Name": "String",
         "ShowGeometry": true,
+        "Name": "String",
         "Id": "11ae4e4eb89544b3aa5a502d61271590",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1211.2636659100099,
-        "Y": 771.378660069492
+        "X": 1370.21997012009,
+        "Y": 765.867467701936
       },
       {
-        "Name": "Directory.FromPath",
         "ShowGeometry": true,
+        "Name": "Directory.FromPath",
         "Id": "2aefa3165963433fb2873f39614ab2b7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 472.8636659100099,
-        "Y": 578.378660069492
+        "X": 751.822804223983,
+        "Y": 557.073862626683
       },
       {
-        "Name": "FileSystem.CombinePath",
         "ShowGeometry": true,
+        "Name": "FileSystem.CombinePath",
         "Id": "b8d379a39d63491aa302853d8e7a4120",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 115.26366591000988,
-        "Y": 578.378660069492
+        "X": 500.740037225572,
+        "Y": 556.803485289413
       },
       {
-        "Name": "String",
         "ShowGeometry": true,
+        "Name": "String",
         "Id": "37c77750adc24258aad3193d2214df20",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -164.73633408999012,
-        "Y": 670.378660069492
+        "X": 333.81677017937,
+        "Y": 621.502426004995
       },
       {
-        "Name": "Python Script",
         "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "a82756bb4361409f81c150a6f74b5f2e",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -164.73633408999012,
-        "Y": 520.378660069492
+        "X": 353.574576967437,
+        "Y": 525.889852437048
       }
     ],
     "Annotations": [],
-    "X": -1082.6146229246506,
-    "Y": -221.54986976821874,
-    "Zoom": 0.70856693912300983
+    "X": -70.578933742107139,
+    "Y": 127.0636646845623,
+    "Zoom": 0.30129982291801277
   }
 }
