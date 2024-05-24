@@ -28,7 +28,6 @@
       "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef ksCommandID(ksc):\r\n\tif ksc.__repr__() == 'KeyboardShortcutCommand': return ksc.ID\r\n\telse: return None\r\n\r\nOUT = process_input(ksCommandID,IN[0])",
       "Engine": "CPython3",
-      "EngineName": "CPython3",
       "VariableInputPorts": true,
       "Id": "726e35d0be8a4d71aafe83f715be3d87",
       "Inputs": [
@@ -108,14 +107,12 @@
     {
       "Start": "853e69b0ccb24a3a95cefc83c448ced0",
       "End": "8b32d674070743828ad482ed957d9e55",
-      "Id": "d858d3603a9042fd896d74b34b94b951",
-      "IsHidden": "False"
+      "Id": "d858d3603a9042fd896d74b34b94b951"
     },
     {
       "Start": "c99d40e04896415aaa82694e9f6d13fd",
       "End": "60d531b924ed420fae947c5189e01914",
-      "Id": "2b0b7f2deb914d428b30612e4e92b4d6",
-      "IsHidden": "False"
+      "Id": "2b0b7f2deb914d428b30612e4e92b4d6"
     }
   ],
   "Dependencies": [],
@@ -127,7 +124,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.16.2.5624",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -143,11 +140,10 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
-    "ConnectorPins": [],
     "NodeViews": [
       {
-        "Name": "Python Script",
         "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "726e35d0be8a4d71aafe83f715be3d87",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -156,18 +152,18 @@
         "Y": 0.0
       },
       {
-        "Name": "Input",
         "ShowGeometry": true,
+        "Name": "Input",
         "Id": "86f95311340b4cfda902ed13f15c563f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -129.89999999999998,
+        "X": -47.5,
         "Y": 0.0
       },
       {
-        "Name": "Output",
         "ShowGeometry": true,
+        "Name": "Output",
         "Id": "6583de8bd38947ca835f595d6f6bc1bb",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,

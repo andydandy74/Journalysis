@@ -28,7 +28,6 @@
       "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef ksCommandHasPaths(ksc):\r\n\tif ksc.__repr__() == 'KeyboardShortcutCommand': return ksc.HasPaths\r\n\telse: return False\r\n\r\nOUT = process_input(ksCommandHasPaths,IN[0])",
       "Engine": "CPython3",
-      "EngineName": "CPython3",
       "VariableInputPorts": true,
       "Id": "d4d9256a6a4b4e19a13da92afd5bba9b",
       "Inputs": [
@@ -108,14 +107,12 @@
     {
       "Start": "08568bef6caa4a1b87df4f90dd708b53",
       "End": "989406d5f9984e6aad8e7f4a1a3c683e",
-      "Id": "bd6911b9c5214423aeeb8987e82c4206",
-      "IsHidden": "False"
+      "Id": "bd6911b9c5214423aeeb8987e82c4206"
     },
     {
       "Start": "6ce1c6f1bb17419587a9a97e135d7139",
       "End": "c1277832c8174a329be82501ce2bd12b",
-      "Id": "e5feaa52ae874880bd498d518871b9f4",
-      "IsHidden": "False"
+      "Id": "e5feaa52ae874880bd498d518871b9f4"
     }
   ],
   "Dependencies": [],
@@ -127,7 +124,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.16.2.5624",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -143,11 +140,10 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
-    "ConnectorPins": [],
     "NodeViews": [
       {
-        "Name": "Python Script",
         "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "d4d9256a6a4b4e19a13da92afd5bba9b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -156,8 +152,8 @@
         "Y": 1.0
       },
       {
-        "Name": "Input",
         "ShowGeometry": true,
+        "Name": "Input",
         "Id": "135e99a334684f24b28e2a7b46efeff7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -166,8 +162,8 @@
         "Y": 1.0
       },
       {
-        "Name": "Output",
         "ShowGeometry": true,
+        "Name": "Output",
         "Id": "ad9f68b783884ff7a7aa3af4d872420a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
