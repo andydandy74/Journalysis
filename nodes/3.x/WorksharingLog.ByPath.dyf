@@ -1,0 +1,196 @@
+{
+  "Uuid": "9605f14e-7767-492d-a49b-895d4589d982",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Create",
+  "Description": "Creates a queryable object from a Revit worksharing log",
+  "Name": "WorksharingLog.ByPath",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "FilePath": {
+        "Key": "DSCore.IO.FilePath",
+        "Value": "DSCoreNodes.dll"
+      },
+      "String": {
+        "Key": "DSCore.String",
+        "Value": "DSCoreNodes.dll"
+      },
+      "List": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      },
+      "DSOffice.Excel": {
+        "Key": "DSOffice.Excel",
+        "Value": "DSOffice.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nimport time\r\nfrom System import DateTime\r\nfrom System.Reflection import Assembly\r\n\r\ndynamoCore = Assembly.Load(\"DynamoCore\")\r\ndynVersion = dynamoCore.GetName().Version.ToString()\r\ndynVersionParts = dynVersion.split('.')\r\ndynVersionInt = int(dynVersionParts[0] + dynVersionParts[1])\r\n\r\nclass WorksharingLog:\r\n\tdef __init__(self, version, sessions):\r\n\t\tself.Version = version\r\n\t\tself.Sessions = sessions\r\n\t\tself.SessionCount = len(sessions)\r\n\t\tself.ProcessingTime = None\r\n\tdef __repr__(self):\r\n\t\treturn \"WorksharingLog\"\r\n\tdef AllSessionsUseSameBuild(self):\r\n\t\treturn len(set([x.RevitBuild for x in self.Sessions])) == 1\r\n\tdef GetSessionByID(self, ID):\r\n\t\tsessionlookup = [x for x in self.Sessions if x.ID == ID]\r\n\t\tif len(sessionlookup) > 0: return sessionlookup[0]\r\n\t\telse: return None\r\n\r\nclass WorksharingSession:\r\n\tdef __init__(self, id):\r\n\t\tself.ID = id\r\n\t\tself.Start = None\r\n\t\tself.End = None\r\n\t\tself.Date = None\r\n\t\tself.Duration = None\r\n\t\tself.User = None\r\n\t\tself.RevitVersion = None\r\n\t\tself.RevitBuild = None\r\n\t\tself.Journal = None\r\n\t\tself.HostAddress = None\r\n\t\tself.HostName = None\r\n\t\tself.ServerAddress = None\r\n\t\tself.ServerName = None\r\n\t\tself.Central = None\r\n\t\tself.Events = []\r\n\tdef __repr__(self):\r\n\t\treturn \"WorksharingSession\"\r\n\tdef GetLoadDuration(self):\r\n\t\tif len([x for x in self.Events if x.Text == \">Open\"]) == 0: return None\r\n\t\telse:\r\n\t\t\topenStart = [x.DateTime for x in self.Events if x.Text == \">Open\"][0]\r\n\t\t\topenEnd = [x.DateTime for x in self.Events if x.Text == \"<Open\"]\r\n\t\t\twsconfigStart = [x.DateTime for x in self.Events if x.Text == \">WSConfig\"]\r\n\t\t\twsconfigEnd = [x.DateTime for x in self.Events if x.Text == \"<WSConfig\"]\r\n\t\t\tif len(openEnd) == 0: return None\r\n\t\t\telif len(wsconfigStart) > 0 and len(wsconfigEnd) > 0: return (openEnd[0] - openStart) + (wsconfigEnd[0] - wsconfigStart[0])\r\n\t\t\telse: return openEnd[0] - openStart\r\n\tdef GetLoadedLinks(self):\r\n\t\tlinks = []\r\n\t\tfor event in self.Events:\r\n\t\t\tif event.Text.startswith(\">OpenLink\"): links.append(LoadedLink(event.DateTime, event.Text.split(\"\\\"\")[1]))\r\n\t\t\telif event.Text == \"<OpenLink\" and len(links) > 0:\r\n\t\t\t\tlinks[-1].LoadEnd = event.DateTime\r\n\t\t\t\tlinks[-1].LoadDuration = event.DateTime - links[-1].LoadStart\t\t\t\t\r\n\t\treturn links\r\n\tdef GetSessionType(self):\r\n\t\tcontainsOpen = len([x for x in self.Events if x.Text == \">Open\"]) > 0\r\n\t\tcontainsOpenCentral = len([x for x in self.Events if x.Text == \">Open:Central\"]) > 0\r\n\t\tcontainsSTC = len([x for x in self.Events if x.Text == \">STC\"]) > 0\r\n\t\tcontainsWSD = len([x for x in self.Events if x.Text == \">WSD\"]) > 0\r\n\t\tcontainsReconnect = len([x for x in self.Events if x.Text.startswith(\".ReconnectInMiddle\")]) > 0\r\n\t\tif containsReconnect: return \"Reconnected\"\r\n\t\tif not containsOpen and containsSTC: return \"CreateNewCentral\"\r\n\t\telif containsOpenCentral:\r\n\t\t\tif self.Events[1].Text == \">Open\": return \"CreateDetached\"\r\n\t\t\telse: return \"WorkInCentral\"\r\n\t\telif not containsOpen and containsWSD: return \"ChooseWorksets\"\r\n\t\telif containsOpen and not containsOpenCentral: return \"CreateLocalCopy\"\r\n\t\telse: return \"Unknown\"\r\n\tdef GetSyncEvents(self):\r\n\t\tevents = []\r\n\t\tfor event in self.Events:\r\n\t\t\tif event.Text == \">STC\": events.append(SyncEvent(event.DateTime))\r\n\t\t\telif event.Text == \">STC:RL:Read\": events[-1].ReloadLatestCount += 1\r\n\t\t\telif event.Text == \".STC:RL:LockRoot RW gaveUp\": events[-1].WasAborted = True\r\n\t\t\telif event.Text == \"<STC\" and len(events) > 0:\r\n\t\t\t\tevents[-1].End = event.DateTime\r\n\t\t\t\tevents[-1].Duration = event.DateTime - events[-1].Start\r\n\t\treturn events\r\n\tdef HasLoadedLinks(self):\r\n\t\treturn len([x for x in self.Events if x.Text == \"<OpenLink\"]) > 0\r\n\tdef WasTerminatedProperly(self):\r\n\t\treturn self.End != None\r\n\r\nclass WorksharingEvent:\r\n\tdef __init__(self, timestamp, text):\r\n\t\tself.DateTime = timestamp\r\n\t\tself.Text = text\r\n\tdef __repr__(self):\r\n\t\treturn \"WorksharingEvent\"\r\n\r\nclass SyncEvent:\r\n\tdef __init__(self, start):\r\n\t\tself.Start = start\r\n\t\tself.End = None\r\n\t\tself.Duration = None\r\n\t\tself.ReloadLatestCount = 0\r\n\t\tself.WasAborted = False\r\n\tdef __repr__(self):\r\n\t\treturn \"SyncEvent\"\r\n\t\t\r\nclass LoadedLink:\r\n\tdef __init__(self, start, linkpath):\r\n\t\tself.LoadStart = start\r\n\t\tself.LoadEnd = None\r\n\t\tself.LoadDuration = None\r\n\t\tself.FileName = linkpath.split(\"\\\\\")[-1]\r\n\t\tself.FullPath = linkpath\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedLink\"\r\n\r\ndef WSLogFromPath(path):\r\n\tline = None\r\n\ttry:\r\n\t\tprocessing_started = time.time()\r\n\t\tsessions = []\r\n\t\tversion = None\r\n\t\twith open(path, 'r', encoding='utf-16-le') as slog:\r\n\t\t\tfor line in slog.readlines():\r\n\t\t\t\tline = line.lstrip(' ').rstrip('\\n')\r\n\t\t\t\tif line.startswith(\"$\"):\r\n\t\t\t\t\tcontents = line.split()\r\n\t\t\t\t\tsession_lookup = [x for x in sessions if x.ID == contents[0]]\r\n\t\t\t\t\tif len(session_lookup) == 0:\r\n\t\t\t\t\t\tsessions.append(WorksharingSession(contents[0]))\r\n\t\t\t\t\t\tcurrent_session = sessions[-1]\r\n\t\t\t\t\telse: current_session = session_lookup[0]\r\n\t\t\t\t\ttimestamp = DateTime.Parse(contents[1] + \" \" + contents[2])\r\n\t\t\t\t\ttext = ' '.join(contents[3:])\r\n\t\t\t\t\tevent = WorksharingEvent(timestamp, text)\r\n\t\t\t\t\tcurrent_session.Events.append(event)\r\n\t\t\t\t\tif text.startswith(\">Session\"): \r\n\t\t\t\t\t\tsessions[-1].Start = timestamp\r\n\t\t\t\t\t\tsessions[-1].Date = timestamp.Date\r\n\t\t\t\t\telif text.startswith(\".ReconnectInMiddle\"):\r\n\t\t\t\t\t\tcurrent_session.Start = current_session.Events[0].DateTime\r\n\t\t\t\t\t\tcurrent_session.Date = current_session.Events[0].DateTime.Date\r\n\t\t\t\t\telse: current_session.End = timestamp\r\n\t\t\t\telif line.startswith(\"user\"): \r\n\t\t\t\t\tif dynVersionInt >= 21: sessions[-1].User = line.split('user=\"')[-1][:-2]\r\n\t\t\t\t\telse: sessions[-1].User = line.split('user=\"')[-1][:-1]\r\n\t\t\t\telif line.startswith(\"build\"):\r\n\t\t\t\t\tversioninfo = line.split('build=\"')[-1].split()\r\n\t\t\t\t\tsessions[-1].RevitVersion = int(versioninfo[0])\r\n\t\t\t\t\tsessions[-1].RevitBuild = versioninfo[-1][:-1]\r\n\t\t\t\telif line.startswith(\"journal\"):\r\n\t\t\t\t\tif dynVersionInt >= 21: sessions[-1].Journal = line.split('journal=\"')[-1][:-2]\r\n\t\t\t\t\telse: sessions[-1].Journal = line.split('journal=\"')[-1][:-1]\r\n\t\t\t\telif line.startswith(\"host\"):\r\n\t\t\t\t\thostinfo = line.split('host=')[-1].split()\r\n\t\t\t\t\tsessions[-1].HostAddress = hostinfo[0]\r\n\t\t\t\t\tsessions[-1].HostName = hostinfo[-1][1:-1]\r\n\t\t\t\telif line.startswith(\"server\"):\r\n\t\t\t\t\tserverinfo = line.split('server=')[-1].split()\r\n\t\t\t\t\tsessions[-1].ServerAddress = serverinfo[0]\r\n\t\t\t\t\tsessions[-1].ServerName = serverinfo[-1][1:-1]\r\n\t\t\t\telif line.startswith(\"central\"): \r\n\t\t\t\t\tif dynVersionInt >= 21: sessions[-1].Central = line.split('central=\"')[-1][:-2]\r\n\t\t\t\t\telse: sessions[-1].Central = line.split('central=\"')[-1][:-1]\r\n\t\t\t\telif line[1:].startswith(\"Worksharing\"): version = line.split(\"Version \")[-1].split(\",\")[0]\r\n\t\tfor session in sessions: \r\n\t\t\tif session.Start and session.End: session.Duration = session.End.Subtract(session.Start)\r\n\t\tWSLog = WorksharingLog(version, sessions)\r\n\t\tWSLog.ProcessingTime = time.time() - processing_started\r\n\t\treturn WSLog\r\n\texcept:\r\n\t\timport sys\r\n\t\timport traceback\r\n\t\tif line: return traceback.format_exc() + '\\nCould not parse line:\\n' + line\r\n\t\telse: return traceback.format_exc()\r\n\r\nif isinstance(IN[0], list): OUT = [WSLogFromPath(x) for x in IN[0]]\r\nelse: OUT = WSLogFromPath(IN[0])",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "2309af7e334b4991821abd8800a5046c",
+      "Inputs": [
+        {
+          "Id": "e7e502dc24c14915ad1f0c874f8abc16",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d2b9b864704e4796a948ca49de801727",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "path",
+        "TypeName": "string",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "05e8803075a84c6ab28b6ac7771877d5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ea58c1639af4468098fd281984ce4a13",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "worksharingLog",
+      "Id": "d8f59cb9cce440c891faa7359c68994f",
+      "Inputs": [
+        {
+          "Id": "ef1ab6c24ff34a318325cc58de427011",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d2b9b864704e4796a948ca49de801727",
+      "End": "ef1ab6c24ff34a318325cc58de427011",
+      "Id": "04ef8f9970f34238b2a10a34130bf60d"
+    },
+    {
+      "Start": "ea58c1639af4468098fd281984ce4a13",
+      "End": "e7e502dc24c14915ad1f0c874f8abc16",
+      "Id": "52cb184664164931bc00d13ab96eeecd"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "2309af7e334b4991821abd8800a5046c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.89706244224177567
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "05e8803075a84c6ab28b6ac7771877d5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "d8f59cb9cce440c891faa7359c68994f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 89.346168968554991,
+    "Y": 215.22597768339807,
+    "Zoom": 1.78359936238281
+  }
+}
