@@ -1,0 +1,180 @@
+{
+  "Uuid": "f78d9021-10b2-478a-a568-d734ce7075fc",
+  "IsCustomNode": true,
+  "Category": "Journalysis.WorksharingLog.WorksharingSession.Query",
+  "Description": "Returns the date and time a given SyncEvent concluded",
+  "Name": "SyncEvent.End",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef SyncEventEnd(syncevent):\r\n\tif syncevent.__repr__() == 'SyncEvent': return syncevent.End\r\n\telse: return None\r\n\r\nOUT = process_input(SyncEventEnd,IN[0])",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "2ef495eae069469ca1c6f29eafefc948",
+      "Inputs": [
+        {
+          "Id": "c9c74223f58749c1bae33c8268d6daf6",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a5c7d2342b7a412d86fe3a2f6b03c29b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "syncEvent",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "2040d14d30c54db18ffad328a4ffae9c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "76a9bb8908434d708de85e2f11fff7f4",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "dateTime",
+      "Id": "fecb7646c74944b4a9b345e21bf10810",
+      "Inputs": [
+        {
+          "Id": "7140aee2ef5241f89b9962646d6f8547",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a5c7d2342b7a412d86fe3a2f6b03c29b",
+      "End": "7140aee2ef5241f89b9962646d6f8547",
+      "Id": "44071eb176344a1e9243ae950e0f29bb"
+    },
+    {
+      "Start": "76a9bb8908434d708de85e2f11fff7f4",
+      "End": "c9c74223f58749c1bae33c8268d6daf6",
+      "Id": "0729e3f1836545a7b9f4b66685be4813"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "2ef495eae069469ca1c6f29eafefc948",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "2040d14d30c54db18ffad328a4ffae9c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "fecb7646c74944b4a9b345e21bf10810",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
