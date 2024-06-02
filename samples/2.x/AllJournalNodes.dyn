@@ -25,119 +25,136 @@
       "Name": "Journal File Path",
       "Type": "string",
       "Value": "..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
-      "Description": "Allows you to select a file on the system to get its filename"
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen.",
+      "SelectedIndex": 0
     },
     {
       "Id": "ac80c0dcbe094f7fb71cdd1db38cb4e6",
       "Name": "String",
       "Type": "string",
       "Value": "JournalTimeStamp",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "74c30557166c489eb58861c1bcfcc026",
       "Name": "String",
       "Type": "string",
       "Value": "JournalKeyboardEvent",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "f26c27ce10504cb8a5622a6f6a96d1ba",
       "Name": "String",
       "Type": "string",
       "Value": "JournalAddinEvent",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "a4d566bdb27a44568245f8273191187f",
       "Name": "String",
       "Type": "string",
       "Value": "JournalAPIMessage",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "1605f9d0149e46488fe0ada143f5d864",
       "Name": "String",
       "Type": "string",
       "Value": "JournalDirective",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "51a557fa600647eda203c2a388436b09",
       "Name": "String",
       "Type": "string",
       "Value": "JournalData",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "ed93d718f20b4d16ae9d00868591c202",
       "Name": "String",
       "Type": "string",
       "Value": "JournalCommand",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "35ac1207c2bf434b9ffab9923cc93e02",
       "Name": "String",
       "Type": "string",
       "Value": "JournalMouseEvent",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "a13f9b6187e4410bbab0a879cd06bd77",
       "Name": "String",
       "Type": "string",
       "Value": "JournalGUIResourceUsage",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "2683393e0a634fb7a8fb4c5df785f226",
       "Name": "String",
       "Type": "string",
       "Value": "JournalUIEvent",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "9c53dd1896da45429501af0984f47a08",
       "Name": "String",
       "Type": "string",
       "Value": "JournalMemoryMetrics",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "d537d9eda0b74480bf98527a11cd245e",
       "Name": "String",
       "Type": "string",
       "Value": "JournalBasicFileInfo",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "d779e05ba4f44e3f8c0d50edfc211891",
       "Name": "String",
       "Type": "string",
       "Value": "JournalWorksharingEvent",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "be7221f79754457990d9c7bd227db412",
       "Name": "String",
       "Type": "string",
       "Value": "JournalSystemInformation",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     },
     {
       "Id": "87b8b269ffda4862987253040aebbb08",
       "Name": "Boolean",
       "Type": "boolean",
       "Value": "true",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False",
+      "SelectedIndex": 0
     },
     {
       "Id": "1038f1807e484e0f987bd5b94d12c345",
       "Name": "String",
       "Type": "string",
-      "Value": "2017",
-      "Description": "Creates a string."
+      "Value": "2022",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
     }
   ],
   "Outputs": [],
@@ -161,7 +178,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows you to select a file on the system to get its filename"
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -173,7 +190,7 @@
         {
           "Id": "937d4d0dac0f4b58aad917fab291fd00",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -182,7 +199,7 @@
         {
           "Id": "b8bffc20679345d0b2e0280bd026277e",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -191,7 +208,7 @@
         {
           "Id": "8357be193284452f95ba8493f1c391a3",
           "Name": "",
-          "Description": "Value of expression at line 3",
+          "Description": "Wert des Ausdrucks in Zeile 3",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -200,7 +217,7 @@
         {
           "Id": "b0c4bd7a8d984918a1e450c79b2472ef",
           "Name": "",
-          "Description": "Value of expression at line 4",
+          "Description": "Wert des Ausdrucks in Zeile 4",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -209,7 +226,7 @@
         {
           "Id": "9e5ddbf68e274c7db6620048631066ee",
           "Name": "",
-          "Description": "Value of expression at line 5",
+          "Description": "Wert des Ausdrucks in Zeile 5",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -218,7 +235,7 @@
         {
           "Id": "a6cfa08947794a4388c8e32056c74347",
           "Name": "",
-          "Description": "Value of expression at line 6",
+          "Description": "Wert des Ausdrucks in Zeile 6",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -227,7 +244,7 @@
         {
           "Id": "9d5ca4fd2a6e4f9c8b30d93b326ae92c",
           "Name": "",
-          "Description": "Value of expression at line 7",
+          "Description": "Wert des Ausdrucks in Zeile 7",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -236,7 +253,7 @@
         {
           "Id": "c133ba1cd55c4728af080e0b6a98516e",
           "Name": "",
-          "Description": "Value of expression at line 8",
+          "Description": "Wert des Ausdrucks in Zeile 8",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -245,7 +262,7 @@
         {
           "Id": "aaa3485a20864331a1eee4a0642f232e",
           "Name": "",
-          "Description": "Value of expression at line 9",
+          "Description": "Wert des Ausdrucks in Zeile 9",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -254,7 +271,7 @@
         {
           "Id": "7ae90e0238f84157844a44c1a9f75936",
           "Name": "",
-          "Description": "Value of expression at line 10",
+          "Description": "Wert des Ausdrucks in Zeile 10",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -262,7 +279,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -285,7 +302,7 @@
         {
           "Id": "9e4c41eb98824218a71a382e0081ecfa",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -316,7 +333,7 @@
         {
           "Id": "7231d1fe9f924b75bf9dc21162989a09",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -347,7 +364,7 @@
         {
           "Id": "0ee80985047a4503a5eedb6fa0d88709",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -378,7 +395,7 @@
         {
           "Id": "d8c126520b6a4e249ecfc4030f059b4a",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -418,7 +435,7 @@
         {
           "Id": "19b2dae1438247e7a1cd6a38f4f760f4",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -458,7 +475,7 @@
         {
           "Id": "433e0f8b7be54b0b81778ddc0a41ca0d",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -498,7 +515,7 @@
         {
           "Id": "771591034c7645ff8d558901f0fa8e85",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -526,7 +543,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -558,7 +575,7 @@
         {
           "Id": "47be528786fb4bf89997bf8e9ce5bc44",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -586,7 +603,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -618,7 +635,7 @@
         {
           "Id": "96bf22bad3a64049b7071610a7dc5942",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -646,7 +663,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -678,7 +695,7 @@
         {
           "Id": "9bbb7f8f7ac74b288bdf69431ba62909",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -706,7 +723,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -738,7 +755,7 @@
         {
           "Id": "b0cde4ae96b444bdb558f2e8aff6748b",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -766,7 +783,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -798,7 +815,7 @@
         {
           "Id": "904bb388340c4f31ad9ee2f3999800f2",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -826,7 +843,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -858,7 +875,7 @@
         {
           "Id": "591b4726be44477ca3f5cb1b887e1ac3",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -886,7 +903,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -918,7 +935,7 @@
         {
           "Id": "a6bc4297b6214c86b04d8bd36bfbd506",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -946,7 +963,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -978,7 +995,7 @@
         {
           "Id": "e56a48cc9a2948d8a3b83ef4709f842b",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1006,7 +1023,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1038,7 +1055,7 @@
         {
           "Id": "c1a185133adf4aa2a04bcc92a775912c",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1066,7 +1083,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1098,7 +1115,7 @@
         {
           "Id": "1e19647cc3e04e1eae9cfb20fe779ce7",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1126,7 +1143,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1149,7 +1166,7 @@
         {
           "Id": "6ed252dd214242cdb5fa5bd528976a9c",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1180,7 +1197,7 @@
         {
           "Id": "3f7a3bd818924051aa5fa09d9167a0b3",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1211,7 +1228,7 @@
         {
           "Id": "9e950d6a0ae042e8be60229501e80fce",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1242,7 +1259,7 @@
         {
           "Id": "fa10895b2df8431a856ef933d5615a81",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1279,7 +1296,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -1302,7 +1319,7 @@
         {
           "Id": "326201ee006c4774a8bf58c2ea0f2faf",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1333,7 +1350,7 @@
         {
           "Id": "be58e0076cbd4b1d89dc50e5a75063c1",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1364,7 +1381,7 @@
         {
           "Id": "5a4c7317bd814fb5be38e86c68e5b9aa",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1395,7 +1412,7 @@
         {
           "Id": "2175fd6985bf49feb94663d9a274a432",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1426,7 +1443,7 @@
         {
           "Id": "453559575e85460d8ecc25148f64ea9a",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1457,7 +1474,7 @@
         {
           "Id": "f094b2c8d8494b129506cf2dd64faff3",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1488,7 +1505,7 @@
         {
           "Id": "e67af8568cd0431798ac03c8192cf09a",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1519,7 +1536,7 @@
         {
           "Id": "9145447ba0484384a00c9686e060b3cf",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1550,7 +1567,7 @@
         {
           "Id": "e4d062e8768a4509af113af325a8d4b8",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1581,7 +1598,7 @@
         {
           "Id": "814a01981e604f668745cbbf7920895c",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1612,7 +1629,7 @@
         {
           "Id": "22371956e5d048e1a069861dc18b5f92",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1643,7 +1660,7 @@
         {
           "Id": "2e063ab008d841b1a2f2e6d90f706997",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1674,7 +1691,7 @@
         {
           "Id": "ca63037fac0f43d8a366d1ce32172b98",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1705,7 +1722,7 @@
         {
           "Id": "b003ff7a6b1744a48122927dfa0e8042",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1736,7 +1753,7 @@
         {
           "Id": "fa6c69786ac34b3e9317d1ab7c34b767",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1767,7 +1784,7 @@
         {
           "Id": "c1d119c9f908450a884ff2b6fb558f13",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1798,7 +1815,7 @@
         {
           "Id": "6332c8ffe77e43219768592149f32781",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1829,7 +1846,7 @@
         {
           "Id": "218f474db5d64a858b77bbb7233b395c",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1860,7 +1877,7 @@
         {
           "Id": "8b8fcb8ee40247afb81b5c39d9307c6d",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1891,7 +1908,7 @@
         {
           "Id": "ea7d4d03570a4e25a0994f47bdd75288",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1922,7 +1939,7 @@
         {
           "Id": "a4e1d65b1328458d8af204be9c92ea4f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1953,7 +1970,7 @@
         {
           "Id": "a1a6cfb0df1b4ddab7b1db5a8c3f57da",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1984,7 +2001,7 @@
         {
           "Id": "89f07ad87b004ebf8043f83580f91e56",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2015,7 +2032,7 @@
         {
           "Id": "c15ddb069103476dadf2bb004b2f11a6",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2046,7 +2063,7 @@
         {
           "Id": "577f176f42a5409a8ead1f39570e2191",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2077,7 +2094,7 @@
         {
           "Id": "ec70ef6d572745f48525fce24a8b831e",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2108,7 +2125,7 @@
         {
           "Id": "de6321f48c8d4c59aa2eab97826c288d",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2139,7 +2156,7 @@
         {
           "Id": "17fc2adc53a14353b2c1724eb336102f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2170,7 +2187,7 @@
         {
           "Id": "2b0c0f4039f545e3805807ec8cc94991",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2201,7 +2218,7 @@
         {
           "Id": "6f6d0f06f3c24ba5b503a6f02c9d3946",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2232,7 +2249,7 @@
         {
           "Id": "9b8d2432433d43bc833ce08111956ee1",
           "Name": "timeSpan",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2263,7 +2280,7 @@
         {
           "Id": "a1a8f40de82e4001a290b5edc7c66fdb",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2294,7 +2311,7 @@
         {
           "Id": "66a3ca4fd8a44fe79320eff356b8609d",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2325,7 +2342,7 @@
         {
           "Id": "3b26210f277044f3a85df7f776b28b25",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2356,7 +2373,7 @@
         {
           "Id": "04110bdd2f26480b80468c4ea34f1654",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2387,7 +2404,7 @@
         {
           "Id": "72acc89e953f4fb58326bfc599880226",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2418,7 +2435,7 @@
         {
           "Id": "de1f4e489e80463da11bd2a84d2fcc63",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2449,7 +2466,7 @@
         {
           "Id": "b8093df547854ce8ab6f88f3bdfb9060",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2480,7 +2497,7 @@
         {
           "Id": "3a8dc0e2be894e2e8d86f7f410a2b575",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2511,7 +2528,7 @@
         {
           "Id": "ee8ee49ed4dd4d9d9a1223d592354a6f",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2542,7 +2559,7 @@
         {
           "Id": "a6ae0cf3989d44a081cb2bd7301349aa",
           "Name": "bool",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2573,7 +2590,7 @@
         {
           "Id": "1f2a1800522a461b960e886cdf2c0826",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2604,7 +2621,7 @@
         {
           "Id": "5f33d868a0134a6b8f6df58c76bfe212",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2635,7 +2652,7 @@
         {
           "Id": "1d2b677b11f74524b764faadb851c0af",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2666,7 +2683,7 @@
         {
           "Id": "5b8102a3312b4421bda2916a15260f00",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2697,7 +2714,7 @@
         {
           "Id": "4626c9c9e5be4451909ba00f30a19c7f",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2728,7 +2745,7 @@
         {
           "Id": "bbd6ed3bb87c42d18254e3e09c97fa39",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2759,7 +2776,7 @@
         {
           "Id": "6e8c7e3b215f44919db254d461d444c3",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2817,7 +2834,7 @@
         {
           "Id": "c6c4b8b06eba4d0c83ed4a33bd83e120",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2848,7 +2865,7 @@
         {
           "Id": "918c3279d3e44e78b6307f53f445062d",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2879,7 +2896,7 @@
         {
           "Id": "087e42fa752b4d94ac3e85b2ed5c75f1",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2898,7 +2915,7 @@
         {
           "Id": "eed583cad3334d62b8d3bdaff3c883a0",
           "Name": "list",
-          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "Description": "Liste, aus der ein Element abgerufen werden soll\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2907,7 +2924,7 @@
         {
           "Id": "16e4f758112d4771b3d8eebc77484cbe",
           "Name": "index",
-          "Description": "Index of the item to be fetched.\n\nint",
+          "Description": "Index des abzurufenden Elements\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2918,7 +2935,7 @@
         {
           "Id": "bd6f6767bf1f45f5a3d63f9e39b9e6da",
           "Name": "item",
-          "Description": "Item in the list at the given index.",
+          "Description": "Element am angegebenen Index in der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2926,7 +2943,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+      "Description": "Gibt ein Element aus der angegebenen Liste an der Position des angegebenen Index zurück.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -2938,7 +2955,7 @@
         {
           "Id": "da7bc309685543b59d33955470d4602b",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2946,7 +2963,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -2957,7 +2974,7 @@
         {
           "Id": "193c5c3453094257935002993560c61c",
           "Name": "list",
-          "Description": "List to get the item count of.\n\nvar[]..[]",
+          "Description": "Liste, deren Elementanzahl abgerufen werden soll\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2967,8 +2984,8 @@
       "Outputs": [
         {
           "Id": "918059e6220943e6b3f3b14331690982",
-          "Name": "count",
-          "Description": "List length.",
+          "Name": "int",
+          "Description": "Länge der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2976,7 +2993,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the number of items stored in the given list.\n\nList.Count (list: var[]..[]): int"
+      "Description": "Gibt die Anzahl der Elemente in der angegebenen Liste zurück.\n\nList.Count (list: var[]..[]): int"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -2998,7 +3015,7 @@
         {
           "Id": "4ad11ed9f584493391fb196907d29ae7",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3006,7 +3023,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -3017,7 +3034,7 @@
         {
           "Id": "c412d8a9ff2f416d9dddf1f09ec7fdb8",
           "Name": "list",
-          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "Description": "Liste, aus der ein Element abgerufen werden soll\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3026,7 +3043,7 @@
         {
           "Id": "076b7dcb7f7849d78aa9d0a98d05a095",
           "Name": "index",
-          "Description": "Index of the item to be fetched.\n\nint",
+          "Description": "Index des abzurufenden Elements\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3037,7 +3054,7 @@
         {
           "Id": "9d55960061a24d4f97eefe94e526c467",
           "Name": "item",
-          "Description": "Item in the list at the given index.",
+          "Description": "Element am angegebenen Index in der Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3045,7 +3062,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+      "Description": "Gibt ein Element aus der angegebenen Liste an der Position des angegebenen Index zurück.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3077,7 +3094,7 @@
         {
           "Id": "aac42f9269c04db09dfd401a35dba540",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3135,7 +3152,7 @@
         {
           "Id": "dc8594d404de4e60b4a2faac41e22d36",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3175,7 +3192,7 @@
         {
           "Id": "5144800edc7048bbbb2737719267b2c0",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3233,7 +3250,7 @@
         {
           "Id": "8789b9500b1f4258b759fa59c24b37ac",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3273,7 +3290,7 @@
         {
           "Id": "18c302b8599748cdbc9ddb950859c0dd",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3331,7 +3348,7 @@
         {
           "Id": "a6455a3959684ddea57ceffea26b9c88",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3371,7 +3388,7 @@
         {
           "Id": "ddda36d99d20443a9417882c122b14ea",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3429,7 +3446,7 @@
         {
           "Id": "21980da790244e17b52fb81e4ea5b73d",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3449,7 +3466,7 @@
         {
           "Id": "64b6d500b8ce48bcacdb4ff1db6ec7c7",
           "Name": "",
-          "Description": "Value of expression at line 1",
+          "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3458,7 +3475,7 @@
         {
           "Id": "011d166e5ada4c7e8ee8998b12fa23c9",
           "Name": "",
-          "Description": "Value of expression at line 2",
+          "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3467,7 +3484,7 @@
         {
           "Id": "5775b402550144e49a1b6ff3476e4f42",
           "Name": "",
-          "Description": "Value of expression at line 3",
+          "Description": "Wert des Ausdrucks in Zeile 3",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3475,7 +3492,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3488,7 +3505,7 @@
         {
           "Id": "5cfd07974e58419cbcd65e9bbd09053e",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3525,7 +3542,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3538,7 +3555,7 @@
         {
           "Id": "532b1e10a2f34d0690dfa8c446cd6ac5",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3559,7 +3576,7 @@
         {
           "Id": "e6d2c85c80db47f784e26ec0702539be",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3580,7 +3597,7 @@
         {
           "Id": "b07fffad33f2470d98cf457a99014a81",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3601,7 +3618,7 @@
         {
           "Id": "88285cebeaae412dbb5c9027f2c25487",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3622,7 +3639,7 @@
         {
           "Id": "8c57de165d804c0987ed123fd02d5931",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3659,7 +3676,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -3688,7 +3705,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -3717,7 +3734,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -3746,7 +3763,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -3775,7 +3792,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -3798,7 +3815,7 @@
         {
           "Id": "f5083d728168467ebac8218b8e5d1b02",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3838,7 +3855,7 @@
         {
           "Id": "036bcd6ec2694c6cba745b27cf5b698a",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3867,7 +3884,7 @@
         {
           "Id": "68399a2f3f1c4fe2938fb64342108b0d",
           "Name": "preserveTimestamps",
-          "Description": "bool\nDefault value : false",
+          "Description": "bool\nVorgabewert : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -3878,7 +3895,7 @@
         {
           "Id": "a42e2d336ae34e8daf244f116ec4e8b1",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3909,7 +3926,7 @@
         {
           "Id": "9d383c52574c4d44a78b1a72accddff3",
           "Name": "loadedModels",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3940,7 +3957,7 @@
         {
           "Id": "3597558b705648b6ac3455892bdde9d6",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -3971,7 +3988,7 @@
         {
           "Id": "432dce7637724ed8bc480180ef7f7dd9",
           "Name": "loadedModelEvents",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4002,7 +4019,7 @@
         {
           "Id": "159aee03471546dea96a5773adc9506c",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4033,7 +4050,7 @@
         {
           "Id": "c3eabf6222694a73a793443933cf8055",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4054,7 +4071,7 @@
         {
           "Id": "9a547b8146404ba8a691c7469fda1af4",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4091,7 +4108,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4114,7 +4131,7 @@
         {
           "Id": "3ef0ed6463cc4894a2c882cd174953bc",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4145,7 +4162,7 @@
         {
           "Id": "c68e9bf07387418081a371782a663055",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4173,7 +4190,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4205,7 +4222,7 @@
         {
           "Id": "3829c3b2361d4e9085ac982008abc9d9",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4236,7 +4253,7 @@
         {
           "Id": "6864884af22a4420924fd8c4d942f1bc",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4267,7 +4284,7 @@
         {
           "Id": "39c4981399bf4b9f9fc6a967f7da976f",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4298,7 +4315,7 @@
         {
           "Id": "025c1c44b39140e69f7098508f57c0ac",
           "Name": "Locale",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4329,7 +4346,7 @@
         {
           "Id": "4b4db5bfda334887876482e5b236299d",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4360,7 +4377,7 @@
         {
           "Id": "f1c487ae09c344a5984728ae74c4b76f",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4391,7 +4408,7 @@
         {
           "Id": "46e1a4d3348f40e2ae9de141feed9e47",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4422,7 +4439,7 @@
         {
           "Id": "51fd035dc5fd4a4295d0574f46c9a15d",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4453,7 +4470,7 @@
         {
           "Id": "789d0f9246dc4974b336d8f003052c69",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4484,7 +4501,7 @@
         {
           "Id": "d0aa78d244c24bdf9481cb81ef98f463",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4515,7 +4532,7 @@
         {
           "Id": "6ef28ae4449c408b85777d34aaf2a4bd",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4546,7 +4563,7 @@
         {
           "Id": "b06f6bbb4be64d2ca0d510e5655a6103",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4577,7 +4594,7 @@
         {
           "Id": "22ac192005824d21a08e1b65f9d7a288",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4608,7 +4625,7 @@
         {
           "Id": "dd295d0146d143b097c40990e7a8fd1e",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4639,7 +4656,7 @@
         {
           "Id": "fc8e716570fb4b2c9ee3807a88e466cb",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4679,7 +4696,7 @@
         {
           "Id": "99e3da51c20d4f0c9be3b5352127d8ef",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4707,7 +4724,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4730,7 +4747,7 @@
         {
           "Id": "8b201a96e96b4401897fdc7f3cb48c7e",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4761,7 +4778,7 @@
         {
           "Id": "e879ba2bf1b24ebcad52d548ccc7d1c8",
           "Name": "dateTime",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4792,7 +4809,7 @@
         {
           "Id": "fa1d151d477b4cf08e6f932058c26cad",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4820,7 +4837,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -4852,7 +4869,7 @@
         {
           "Id": "cc19fc8560654038a77bdf6f528e6487",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4883,7 +4900,7 @@
         {
           "Id": "dfb00ca657fa494489d9be87b22214af",
           "Name": "int",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4914,7 +4931,7 @@
         {
           "Id": "3d1eb4084a7149889881f71a669ecf41",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4945,7 +4962,7 @@
         {
           "Id": "05b0a9a3e0b745aaa0fb683850e597eb",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -4976,7 +4993,7 @@
         {
           "Id": "af63892a34ff4fa8833b494b3e634e98",
           "Name": "str",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5004,7 +5021,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -5017,7 +5034,7 @@
         {
           "Id": "675f434e16fe4fe791188d91b4448629",
           "Name": "seq",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5054,7 +5071,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -5083,12 +5100,12 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualize the output of node."
+      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "2017",
+      "InputValue": "2022",
       "Id": "1038f1807e484e0f987bd5b94d12c345",
       "Inputs": [],
       "Outputs": [
@@ -5103,7 +5120,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Erstellt eine Zeichenfolge."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -5126,7 +5143,7 @@
         {
           "Id": "abcb82e62b994ad5906f87f928df9865",
           "Name": "path",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5157,7 +5174,7 @@
         {
           "Id": "4de4a3cdc7914eeb9e5fd277744ed362",
           "Name": "journal",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5176,7 +5193,7 @@
         {
           "Id": "c8683b861d3b4c46bd043b8a3a4775a3",
           "Name": "path",
-          "Description": "Path to get the file name of.\n\nstring",
+          "Description": "Pfad, dessen Dateiname abgerufen werden soll\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5185,7 +5202,7 @@
         {
           "Id": "ed8774e95bd54a57b4f8976ffc9c319f",
           "Name": "withExtension",
-          "Description": "Determines whether or not the extension is included in the result, defaults to true.\n\nbool\nDefault value : true",
+          "Description": "Erweiterung im Ergebnis berücksichtigen ein/aus\n\nbool\nVorgabewert : true",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5196,7 +5213,7 @@
         {
           "Id": "affb45320d884cd9b193422ecf9ea4e4",
           "Name": "string",
-          "Description": "string",
+          "Description": "Dateiname aus Dateipfad",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5204,7 +5221,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Returns the file name of a file path.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
+      "Description": "Gibt den Dateinamen eines Dateipfads zurück.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -5225,7 +5242,7 @@
         {
           "Id": "3b3669139c954a1281f26d8dd0018680",
           "Name": "fromDateTime",
-          "Description": "DateTime\nDefault value : null (disabled)",
+          "Description": "DateTime\nVorgabewert : null (deaktiviert)",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5234,7 +5251,7 @@
         {
           "Id": "4efaef3f360e4bea9513fd94f2eb96f6",
           "Name": "toDateTime",
-          "Description": "DateTime\nDefault value : null",
+          "Description": "DateTime\nVorgabewert : null",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5245,7 +5262,7 @@
         {
           "Id": "f454df0cde1c46c2b868a93ded7fe08a",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5264,7 +5281,7 @@
         {
           "Id": "64971febb53844be84c97d4543c76bd3",
           "Name": "year",
-          "Description": "Exact year (1-9999)\n\nint",
+          "Description": "Genaues Jahr (1-9999)\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5273,7 +5290,7 @@
         {
           "Id": "0c8a3e70b47047f890c465db9a50a562",
           "Name": "month",
-          "Description": "Exact month (1-12)\n\nint",
+          "Description": "Genauer Monat (1-12)\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5282,7 +5299,7 @@
         {
           "Id": "8399666e26ee45169e21d4abe57fdb88",
           "Name": "day",
-          "Description": "Exact day (1-[days in month])\n\nint",
+          "Description": "Genauer Tag (1 - [Tage im Monat] )\n\nint",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5291,7 +5308,7 @@
         {
           "Id": "a3453171578246ff8045b1f61c422334",
           "Name": "hour",
-          "Description": "Exact hour (0-23)\n\nint\nDefault value : 0",
+          "Description": "Genaue Stunde (0-23)\n\nint\nVorgabewert : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5300,7 +5317,7 @@
         {
           "Id": "bb74a52b63174965907a426c134218d3",
           "Name": "minute",
-          "Description": "Exact minute (0-59)\n\nint\nDefault value : 0",
+          "Description": "Genaue Minute (0-59)\n\nint\nVorgabewert : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5309,7 +5326,7 @@
         {
           "Id": "329662109526463ebce22e4beed48a72",
           "Name": "second",
-          "Description": "Exact second (0-59)\n\nint\nDefault value : 0",
+          "Description": "Genaue Sekunde (0-59)\n\nint\nVorgabewert : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5318,7 +5335,7 @@
         {
           "Id": "0efb6fc5e0eb455b86c32ec0934abb23",
           "Name": "millisecond",
-          "Description": "Exact millisecond (0-999)\n\nint\nDefault value : 0",
+          "Description": "Genaue Millisekunde (0-999)\n\nint\nVorgabewert : 0",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -5329,7 +5346,7 @@
         {
           "Id": "d87f21ec3f5541229b7c04a29b99d967",
           "Name": "dateTime",
-          "Description": "DateTime",
+          "Description": "DateTime-Wert erstellt aus Datum und Uhrzeit",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5337,7 +5354,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a new DateTime at an exact date and time.\n\nDateTime.ByDateAndTime (year: int, month: int, day: int, hour: int = 0, minute: int = 0, second: int = 0, millisecond: int = 0): var"
+      "Description": "Erstellt ein neues DateTime für ein genaues Datum und eine genaue Uhrzeit.\n\nDateTime.ByDateAndTime (year: int, month: int, day: int, hour: int = 0, minute: int = 0, second: int = 0, millisecond: int = 0): var"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
@@ -5369,7 +5386,7 @@
         {
           "Id": "f265b13f44cf48e98cd4a93a57531499",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5409,7 +5426,7 @@
         {
           "Id": "41b37b2df0714fdb9e123d3d3110d7ce",
           "Name": "journalLines",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5440,7 +5457,7 @@
         {
           "Id": "4c29b96afee04cf0ac86bc2fb19e54f4",
           "Name": "journalLine",
-          "Description": "return value",
+          "Description": "Rückgabewert",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -5449,6 +5466,285 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the JournalLIne of a given LoadedModelEvent"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "0406faa1-d393-42c7-b939-1b29bb4db371",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "dd885f6e6c5b4d50b8cef4729b99fc98",
+      "Inputs": [
+        {
+          "Id": "57b261285d8b43d28d40bb38a9d98cdf",
+          "Name": "journalAPIMessage",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "edb5ebcbff3c467bafed39a783acb57f",
+          "Name": "bool",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns whether an APIMessage reports an error"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "bc02dbf0-13b8-4b19-91b6-a3d2e82948dd",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "543ae70f3d6644a88cd9da0334259065",
+      "Inputs": [
+        {
+          "Id": "899ea0523132406cbcde6a82cd6af275",
+          "Name": "journal",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c5310827d514c5c9127ed508be774f8",
+          "Name": "recordedExceptions",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Retreives all Journal lines that make reference to exceptions"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "f8cd7d31-330e-4c4f-aece-65479a529faf",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "f733a7af563f4270adb8d68f9e130018",
+      "Inputs": [
+        {
+          "Id": "b87ec11140554fb68154b609902b9c26",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bd74800f9c6e4b44bfb71042308ab4e1",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the GUID of the addin responsible for the exception (if any)"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "44d838d0-0ec4-4727-a6aa-4fceefc75204",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "361c1192b20840fb82c5a49537f812f0",
+      "Inputs": [
+        {
+          "Id": "03cf57046dc24daf81d1226c85fb46c4",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "509dbfd7b0f741d8a4c59333d6ec0374",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the name of the addin responsible for the exception (if any)"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "9b035420-4016-4d6f-afa3-5647f308dc0f",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "ef729d77d1724a59b0d430a2fe4dcafa",
+      "Inputs": [
+        {
+          "Id": "9d33b318dc5247ada951864e9343fd15",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "da63e6ae0cb144d98f3abb3b5ace6ec5",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the event the exception is attached to (if any)"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "a5a1a11e-399e-412c-8b63-58c0ac1f7943",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "4f9c30d9953843a8b64a96b3a9eac9b9",
+      "Inputs": [
+        {
+          "Id": "06e9ccc8a19143aaaef17d70f3342446",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "06bce23776ba4d81bb10beddc1a65486",
+          "Name": "journalLine",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the journal line where the exception was recorded"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "75ad05c8-e107-4a42-a3d2-3d2c6938dbd6",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "13ad30b555554877a5f88a65ec40fb44",
+      "Inputs": [
+        {
+          "Id": "3b33e2bf84a8456ea7d2e91052d26578",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96b00afb37a84564b57410be461fe27a",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the stack trace of the exception (if any)"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "91c0a6bf-3cd2-48e2-a4d3-879259ea7d85",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "eefb7d1fdfb4401ab45a1187868a0ae3",
+      "Inputs": [
+        {
+          "Id": "e11ab3cc7469420bba7031bc5ed7b7e9",
+          "Name": "recordedException",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9653e9b8f96241dda0393f7dfa465813",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of the exception"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "7c32c388-6b81-480f-85f3-cf75b5cbfe55",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "1f6fc901f6724d87a991aac211d9a1e2",
+      "Inputs": [
+        {
+          "Id": "57c51d0885cd4b60ab075206baea58cb",
+          "Name": "journalTimeStamp",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b33604258efc42d5ae94d5f4e250d901",
+          "Name": "str",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the debug information type (error, warning or info) if any."
     }
   ],
   "Connectors": [
@@ -5568,6 +5864,11 @@
       "Id": "aedd80b7e2ca4b23be8b821f596f0d17"
     },
     {
+      "Start": "771591034c7645ff8d558901f0fa8e85",
+      "End": "57c51d0885cd4b60ab075206baea58cb",
+      "Id": "e7f7f97e6b8844609cc0203d758b57bb"
+    },
+    {
       "Start": "4f7658818bbe4c4288a33d56ce497611",
       "End": "ea768ccb9ab74f24bea0fd73a6c72df4",
       "Id": "5185957d36794f45bd2e7d2f7bea7f5f"
@@ -5601,6 +5902,11 @@
       "Start": "9bbb7f8f7ac74b288bdf69431ba62909",
       "End": "0a98112ab0fb49fc9c45216a01e99797",
       "Id": "26d5848b2b534bed8155652dbd71ad4b"
+    },
+    {
+      "Start": "9bbb7f8f7ac74b288bdf69431ba62909",
+      "End": "57b261285d8b43d28d40bb38a9d98cdf",
+      "Id": "01de5eb1160e4942b37690a5b32699a6"
     },
     {
       "Start": "e52d0f89d9ac4d44943ad52e81d25e04",
@@ -6353,9 +6659,44 @@
       "Id": "1ebf5ff4ba964db5b264a0e8a25800b1"
     },
     {
+      "Start": "4de4a3cdc7914eeb9e5fd277744ed362",
+      "End": "899ea0523132406cbcde6a82cd6af275",
+      "Id": "dd7acf022cf8497b8fbc6045e090d2e2"
+    },
+    {
       "Start": "d87f21ec3f5541229b7c04a29b99d967",
       "End": "3b3669139c954a1281f26d8dd0018680",
       "Id": "19bd1e5981854c6e9d208cdd86d5cb83"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "b87ec11140554fb68154b609902b9c26",
+      "Id": "ca27da3fdbac470e8936b8e9765d4866"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "03cf57046dc24daf81d1226c85fb46c4",
+      "Id": "1a41fd14eb6b4867abcfbc9d1bec324d"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "9d33b318dc5247ada951864e9343fd15",
+      "Id": "5e6a5a1ff25e437db7168cd417f1eba8"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "06e9ccc8a19143aaaef17d70f3342446",
+      "Id": "a931bbf2db2a46beb289e87092833b00"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "3b33e2bf84a8456ea7d2e91052d26578",
+      "Id": "f3cf4df384a945a6bb4a9c0b4d0b2ba1"
+    },
+    {
+      "Start": "3c5310827d514c5c9127ed508be774f8",
+      "End": "e11ab3cc7469420bba7031bc5ed7b7e9",
+      "Id": "000542c6c20942d389f71e7a7c6b21ec"
     }
   ],
   "Dependencies": [
@@ -6471,7 +6812,16 @@
     "e9fafde2-1cc8-4dc7-807d-cf007c0f82d5",
     "9e585478-8fee-434b-9b99-842d59bad37f",
     "56f1e702-4d21-4726-8fa9-e00e91de22ea",
-    "1304305e-d23d-4637-abcc-2d22fc4eb74b"
+    "1304305e-d23d-4637-abcc-2d22fc4eb74b",
+    "0406faa1-d393-42c7-b939-1b29bb4db371",
+    "bc02dbf0-13b8-4b19-91b6-a3d2e82948dd",
+    "f8cd7d31-330e-4c4f-aece-65479a529faf",
+    "44d838d0-0ec4-4727-a6aa-4fceefc75204",
+    "9b035420-4016-4d6f-afa3-5647f308dc0f",
+    "a5a1a11e-399e-412c-8b63-58c0ac1f7943",
+    "75ad05c8-e107-4a42-a3d2-3d2c6938dbd6",
+    "91c0a6bf-3cd2-48e2-a4d3-879259ea7d85",
+    "7c32c388-6b81-480f-85f3-cf75b5cbfe55"
   ],
   "NodeLibraryDependencies": [
     {
@@ -6608,20 +6958,59 @@
         "979dc811cb76456b92208005f3152efc",
         "1f7ad5fb76ac45e1b0774a05cd455e55"
       ]
+    },
+    {
+      "Name": "Journalysis for Dynamo 2.x",
+      "Version": "2.4.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "dd885f6e6c5b4d50b8cef4729b99fc98",
+        "543ae70f3d6644a88cd9da0334259065",
+        "f733a7af563f4270adb8d68f9e130018",
+        "361c1192b20840fb82c5a49537f812f0",
+        "ef729d77d1724a59b0d430a2fe4dcafa",
+        "4f9c30d9953843a8b64a96b3a9eac9b9",
+        "13ad30b555554877a5f88a65ec40fb44",
+        "eefb7d1fdfb4401ab45a1187868a0ae3",
+        "1f6fc901f6724d87a991aac211d9a1e2"
+      ]
     }
   ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "1.10",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.6.1.8786",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -6720,8 +7109,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1624.68589273022,
-        "Y": -1692.96418040022
+        "X": 1614.5469458197267,
+        "Y": -1643.3959955044745
       },
       {
         "ShowGeometry": true,
@@ -6730,8 +7119,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1390.68589273022,
-        "Y": -1666.96418040022
+        "X": 1380.5469458197267,
+        "Y": -1617.3959955044745
       },
       {
         "ShowGeometry": true,
@@ -6760,8 +7149,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1620.23207551489,
-        "Y": -5721.39397459429
+        "X": 1622.8362127809507,
+        "Y": -5839.8822202000511
       },
       {
         "ShowGeometry": true,
@@ -6770,8 +7159,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1383.23207551489,
-        "Y": -5695.39397459429
+        "X": 1385.8362127809507,
+        "Y": -5813.8822202000511
       },
       {
         "ShowGeometry": true,
@@ -6780,8 +7169,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1619.44531921813,
-        "Y": -5489.09886440117
+        "X": 1615.5391133190387,
+        "Y": -5539.8795410893536
       },
       {
         "ShowGeometry": true,
@@ -6790,8 +7179,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1381.44531921813,
-        "Y": -5463.09886440117
+        "X": 1377.5391133190387,
+        "Y": -5513.8795410893536
       },
       {
         "ShowGeometry": true,
@@ -6900,8 +7289,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1603.63590891113,
-        "Y": -1378.64927088319
+        "X": 1598.110193578111,
+        "Y": -1262.419197147517
       },
       {
         "ShowGeometry": true,
@@ -6910,8 +7299,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1389.63590891113,
-        "Y": -1352.64927088319
+        "X": 1384.110193578111,
+        "Y": -1236.419197147517
       },
       {
         "ShowGeometry": true,
@@ -7040,8 +7429,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2010.23207551489,
-        "Y": -5721.39397459429
+        "X": 2012.8362127809507,
+        "Y": -5839.8822202000511
       },
       {
         "ShowGeometry": true,
@@ -7210,8 +7599,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2014.68589273021,
-        "Y": -1584.96418040022
+        "X": 2020.3186410138178,
+        "Y": -1498.2198568326655
       },
       {
         "ShowGeometry": true,
@@ -7230,8 +7619,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2014.68589273021,
-        "Y": -1692.96418040022
+        "X": 2020.3186410138178,
+        "Y": -1606.2198568326655
       },
       {
         "ShowGeometry": true,
@@ -7240,8 +7629,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1993.63590891112,
-        "Y": -1324.64927088319
+        "X": 1988.110193578101,
+        "Y": -1208.419197147517
       },
       {
         "ShowGeometry": true,
@@ -7250,8 +7639,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1993.63590891112,
-        "Y": -1432.64927088319
+        "X": 1988.110193578101,
+        "Y": -1316.419197147517
       },
       {
         "ShowGeometry": true,
@@ -7300,8 +7689,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -392.695996760914,
-        "Y": -6092.17179701493
+        "X": -387.27371069758317,
+        "Y": -6187.9655174671107
       },
       {
         "ShowGeometry": true,
@@ -7320,8 +7709,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -395.32289671485,
-        "Y": -5559.24556114753
+        "X": -389.90061065151917,
+        "Y": -5655.03928159971
       },
       {
         "ShowGeometry": true,
@@ -7380,8 +7769,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -388.656066123521,
-        "Y": -5878.37495752825
+        "X": -383.23378006019016,
+        "Y": -5974.16867798043
       },
       {
         "ShowGeometry": true,
@@ -7390,8 +7779,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -388.656066123521,
-        "Y": -5770.14485489112
+        "X": -383.23378006019016,
+        "Y": -5865.9385753433007
       },
       {
         "ShowGeometry": true,
@@ -7770,8 +8159,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -402.060702146485,
-        "Y": -5440.93488570981
+        "X": -396.6384160831542,
+        "Y": -5536.7286061619907
       },
       {
         "ShowGeometry": true,
@@ -7790,8 +8179,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -390.715842949236,
-        "Y": -5981.95875052816
+        "X": -385.29355688590516,
+        "Y": -6077.75247098034
       },
       {
         "ShowGeometry": true,
@@ -7800,8 +8189,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 67.9414594060344,
-        "Y": -5540.76565700094
+        "X": 65.497597054038465,
+        "Y": -5721.6114710486427
       },
       {
         "ShowGeometry": true,
@@ -7810,8 +8199,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 60.6166411628317,
-        "Y": -5654.67811466022
+        "X": 58.17277881083578,
+        "Y": -5835.5239287079221
       },
       {
         "ShowGeometry": true,
@@ -7820,8 +8209,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 657.99098090562,
-        "Y": -5547.58675524604
+        "X": 655.547118553624,
+        "Y": -5728.4325692937427
       },
       {
         "ShowGeometry": true,
@@ -7830,8 +8219,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 659.426069890681,
-        "Y": -5751.41407535978
+        "X": 656.98220753868509,
+        "Y": -5932.2598894074827
       },
       {
         "ShowGeometry": true,
@@ -7860,8 +8249,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 66.8021173591883,
-        "Y": -5951.36260634991
+        "X": 64.358255007192383,
+        "Y": -6132.2084203976119
       },
       {
         "ShowGeometry": true,
@@ -7870,8 +8259,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 64.4761752403014,
-        "Y": -5835.06550040558
+        "X": 62.032312888305512,
+        "Y": -6015.9113144532821
       },
       {
         "ShowGeometry": true,
@@ -7940,8 +8329,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -385.901556344069,
-        "Y": -5662.05568900457
+        "X": -380.47927028073815,
+        "Y": -5757.84940945675
       },
       {
         "ShowGeometry": true,
@@ -7970,8 +8359,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6734.49505340681
+        "X": 73.2567932308969,
+        "Y": -6915.3408674545126
       },
       {
         "ShowGeometry": true,
@@ -7980,8 +8369,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6632.64084780082
+        "X": 73.2567932308969,
+        "Y": -6813.4866618485221
       },
       {
         "ShowGeometry": true,
@@ -7990,8 +8379,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6530.78664219482
+        "X": 73.2567932308969,
+        "Y": -6711.6324562425225
       },
       {
         "ShowGeometry": true,
@@ -8000,8 +8389,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6428.93243658882
+        "X": 73.2567932308969,
+        "Y": -6609.778250636522
       },
       {
         "ShowGeometry": true,
@@ -8010,8 +8399,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6330.16472206179
+        "X": 73.2567932308969,
+        "Y": -6511.010536109492
       },
       {
         "ShowGeometry": true,
@@ -8020,8 +8409,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6228.31051645579
+        "X": 73.2567932308969,
+        "Y": -6409.1563305034924
       },
       {
         "ShowGeometry": true,
@@ -8030,8 +8419,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 75.7006555828928,
-        "Y": -6129.54280192876
+        "X": 73.2567932308969,
+        "Y": -6310.3886159764625
       },
       {
         "ShowGeometry": true,
@@ -8040,8 +8429,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1622.28601017794,
-        "Y": -1045.07386203168
+        "X": 1616.760294844921,
+        "Y": -928.843788296007
       },
       {
         "ShowGeometry": true,
@@ -8050,8 +8439,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1383.75195825541,
-        "Y": -1018.35195064136
+        "X": 1378.2262429223911,
+        "Y": -902.121876905687
       },
       {
         "ShowGeometry": true,
@@ -8060,8 +8449,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2001.76002560377,
-        "Y": -1046.97702841882
+        "X": 1996.2343102707509,
+        "Y": -930.74695468314712
       },
       {
         "ShowGeometry": true,
@@ -8070,8 +8459,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2006.46884134427,
-        "Y": -1160.37250777047
+        "X": 2000.943126011251,
+        "Y": -1044.1424340347971
       },
       {
         "ShowGeometry": true,
@@ -8080,8 +8469,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2009.72394831573,
-        "Y": -941.701176300904
+        "X": 2004.198232982711,
+        "Y": -825.471102565231
       },
       {
         "ShowGeometry": true,
@@ -8160,8 +8549,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1369.03531415108,
-        "Y": -4039.56090552809
+        "X": -1375.8473241441632,
+        "Y": -4121.3050254450882
       },
       {
         "ShowGeometry": true,
@@ -8170,8 +8559,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1055.7644575367,
-        "Y": -4041.48809618181
+        "X": -1062.5764675297833,
+        "Y": -4123.2322160988078
       },
       {
         "ShowGeometry": true,
@@ -8180,8 +8569,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1056.76751926706,
-        "Y": -3861.84848099773
+        "X": -1063.5795292601431,
+        "Y": -3943.5926009147279
       },
       {
         "ShowGeometry": true,
@@ -8190,8 +8579,8 @@
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1483.72710686476,
-        "Y": -3858.50394887003
+        "X": -1490.5391168578431,
+        "Y": -3940.2480687870279
       },
       {
         "ShowGeometry": true,
@@ -8200,8 +8589,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1366.16461744979,
-        "Y": -3859.13684769687
+        "X": -1372.9766274428732,
+        "Y": -3940.8809676138681
       },
       {
         "ShowGeometry": true,
@@ -8220,8 +8609,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 359.300627643369,
-        "Y": -5541.56648892382
+        "X": 356.85676529137311,
+        "Y": -5722.412302971522
       },
       {
         "ShowGeometry": true,
@@ -8270,8 +8659,98 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 661.891244178746,
-        "Y": -5652.67114255546
+        "X": 659.44738182675007,
+        "Y": -5833.5169566031627
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JournalAPIMessage.IsError",
+        "Id": "dd885f6e6c5b4d50b8cef4729b99fc98",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2007.9146328678416,
+        "Y": -5658.138535397763
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Journal.Exceptions",
+        "Id": "543ae70f3d6644a88cd9da0334259065",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -400.19128136366567,
+        "Y": -5403.2678768221513
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.AppGUID",
+        "Id": "f733a7af563f4270adb8d68f9e130018",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 74.226055426273319,
+        "Y": -5514.4646465202359
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.AppName",
+        "Id": "361c1192b20840fb82c5a49537f812f0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 69.944776408282564,
+        "Y": -5402.2951362488784
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.Event",
+        "Id": "ef729d77d1724a59b0d430a2fe4dcafa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 65.6634973902917,
+        "Y": -5297.8319282099046
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.JournalLine",
+        "Id": "4f9c30d9953843a8b64a96b3a9eac9b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 64.807241586693635,
+        "Y": -5190.799952760136
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.StackTrace",
+        "Id": "13ad30b555554877a5f88a65ec40fb44",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 69.944776408282564,
+        "Y": -5081.1992098995734
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RecordedException.Type",
+        "Id": "eefb7d1fdfb4401ab45a1187868a0ae3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 66.5197531938901,
+        "Y": -4968.1734438246176
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JournalTimeStamp.DebugInfoType",
+        "Id": "1f6fc901f6724d87a991aac211d9a1e2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2018.3426668772704,
+        "Y": -1703.0509586586747
       }
     ],
     "Annotations": [
@@ -8327,15 +8806,16 @@
           "fc146d0f63734217aea71132f23dbe62",
           "7f03f734797e41a9a3f164958cfcdb14",
           "f4c27ec7f1b1404eb6c44c5a1f878b3b",
-          "979dc811cb76456b92208005f3152efc"
+          "979dc811cb76456b92208005f3152efc",
+          "543ae70f3d6644a88cd9da0334259065"
         ],
         "Left": -423.655895094904,
-        "Top": -6138.17179701493,
+        "Top": -6233.9655174671107,
         "Width": 321.261661826008,
-        "Height": 2686.4585221792204,
+        "Height": 2782.2522426314008,
         "FontSize": 30.0,
-        "InitialTop": -6092.17179701493,
-        "InitialHeight": 2666.4585221792204,
+        "InitialTop": -6187.9655174671107,
+        "InitialHeight": 2762.2522426314008,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8347,12 +8827,13 @@
           "ac80c0dcbe094f7fb71cdd1db38cb4e6",
           "e73bbf56083f40ee98a5f40e1fa99f1c",
           "1c235f6e709147a7b186162aeff01fd1",
-          "d675ad8174a241a6a1da56f031227454"
+          "d675ad8174a241a6a1da56f031227454",
+          "1f6fc901f6724d87a991aac211d9a1e2"
         ],
-        "Left": 1380.68589273022,
+        "Left": 1370.5469458197267,
         "Top": -1846.96418040022,
-        "Width": 931.99999999999,
-        "Height": 355.0,
+        "Width": 942.13894691048336,
+        "Height": 441.74432356755437,
         "FontSize": 30.0,
         "InitialTop": -1800.96418040022,
         "InitialHeight": 361.0,
@@ -8385,12 +8866,12 @@
           "f26c27ce10504cb8a5622a6f6a96d1ba",
           "a6bee30592874c4fb34300c9d44c33e7"
         ],
-        "Left": 1373.23207551489,
-        "Top": -5767.39397459429,
-        "Width": 894.0,
+        "Left": 1375.8362127809507,
+        "Top": -5885.8822202000511,
+        "Width": 893.99999999999977,
         "Height": 165.0,
         "FontSize": 30.0,
-        "InitialTop": -5721.39397459429,
+        "InitialTop": -5839.8822202000511,
         "InitialHeight": 171.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8402,15 +8883,16 @@
           "f27456839de0487f80bcfce2d78acb11",
           "a4d566bdb27a44568245f8273191187f",
           "d9a2f6433ae04ddfb045104939685f31",
-          "e7132e29208a4e8a884950b4b2c30060"
+          "e7132e29208a4e8a884950b4b2c30060",
+          "dd885f6e6c5b4d50b8cef4729b99fc98"
         ],
-        "Left": 1371.44531921813,
-        "Top": -5589.09886440117,
-        "Width": 898.99999999999,
-        "Height": 247.0,
+        "Left": 1367.5391133190387,
+        "Top": -5704.138535397763,
+        "Width": 912.37551954880291,
+        "Height": 362.03967099659258,
         "FontSize": 30.0,
-        "InitialTop": -5543.09886440117,
-        "InitialHeight": 253.0,
+        "InitialTop": -5658.138535397763,
+        "InitialHeight": 368.03967099659258,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       },
@@ -8425,7 +8907,7 @@
         ],
         "Left": 1362.72856760515,
         "Top": -4114.98406995576,
-        "Width": 868.0,
+        "Width": 867.99999999999977,
         "Height": 247.0,
         "FontSize": 30.0,
         "InitialTop": -4068.98406995576,
@@ -8520,12 +9002,12 @@
           "4e52fa1e7d214b0083e598047da4f9de",
           "f60a0a9862114aaf9d3405b3ffc63a0c"
         ],
-        "Left": 1379.63590891113,
-        "Top": -1478.64927088319,
-        "Width": 853.99999999999,
+        "Left": 1374.110193578111,
+        "Top": -1362.419197147517,
+        "Width": 853.99999999998977,
         "Height": 247.0,
         "FontSize": 30.0,
-        "InitialTop": -1432.64927088319,
+        "InitialTop": -1316.419197147517,
         "InitialHeight": 253.0,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8545,7 +9027,7 @@
         ],
         "Left": 1361.44483002024,
         "Top": -3287.44185251911,
-        "Width": 941.99999999999,
+        "Width": 941.99999999999022,
         "Height": 679.0,
         "FontSize": 30.0,
         "InitialTop": -3241.44185251911,
@@ -8643,8 +9125,8 @@
         ],
         "Left": -1495.85205487196,
         "Top": -3396.9829633519,
-        "Width": 608.58137039865,
-        "Height": 2166.4393053703498,
+        "Width": 576.19198659635,
+        "Height": 2250.4393053703498,
         "FontSize": 30.0,
         "InitialTop": -3350.9829633519,
         "InitialHeight": 2071.4393053703498,
@@ -8708,12 +9190,12 @@
           "ec329c71ceb242d7bf40bccd2e0edb3c",
           "69d18da2f5c247e9bcb782100da015d2"
         ],
-        "Left": 50.6166411628317,
-        "Top": -5700.67811466022,
+        "Left": 48.17277881083578,
+        "Top": -5881.5239287079221,
         "Width": 550.68398648053733,
         "Height": 278.11162573640013,
         "FontSize": 30.0,
-        "InitialTop": -5654.67811466022,
+        "InitialTop": -5835.5239287079221,
         "InitialHeight": 258.91245765927943,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8726,12 +9208,12 @@
           "f28187986b6744db89f2be62a53f82cc",
           "1f7ad5fb76ac45e1b0774a05cd455e55"
         ],
-        "Left": 647.99098090562,
-        "Top": -5797.41407535978,
+        "Left": 645.547118553624,
+        "Top": -5978.2598894074827,
         "Width": 352.23666666666668,
         "Height": 342.82732011373992,
         "FontSize": 30.0,
-        "InitialTop": -5751.41407535978,
+        "InitialTop": -5932.2598894074827,
         "InitialHeight": 348.82732011373992,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8743,12 +9225,12 @@
           "519cbb699b394dd4a28d7bd707d03fbe",
           "86ebab9437a14fe59aba89c84fb606d1"
         ],
-        "Left": 54.4761752403014,
-        "Top": -5997.36260634991,
+        "Left": 52.032312888305512,
+        "Top": -6178.2084203976119,
         "Width": 297.55,
         "Height": 255.29710594432981,
         "FontSize": 30.0,
-        "InitialTop": -5951.36260634991,
+        "InitialTop": -6132.2084203976119,
         "InitialHeight": 261.29710594432981,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8766,7 +9248,7 @@
         ],
         "Left": 1365.37016887597,
         "Top": -5322.7838272393,
-        "Width": 944.11790953205036,
+        "Width": 944.11790953205013,
         "Height": 541.77272244939013,
         "FontSize": 30.0,
         "InitialTop": -5276.7838272393,
@@ -8786,12 +9268,12 @@
           "6380e2df44b14ef48d9cfa9e1d5ca06e",
           "20bcee7b401b4f829a70db89ddabad59"
         ],
-        "Left": 65.7006555828928,
-        "Top": -6780.49505340681,
-        "Width": 378.47666666666669,
+        "Left": 63.2567932308969,
+        "Top": -6961.3408674545126,
+        "Width": 320.47666666666669,
         "Height": 743.95225147805013,
         "FontSize": 30.0,
-        "InitialTop": -6734.49505340681,
+        "InitialTop": -6915.3408674545126,
         "InitialHeight": 749.95225147805013,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8806,12 +9288,12 @@
           "20f395d221354f65962d1965bf295d9e",
           "92e2b88efbe441309e17e63886cc953a"
         ],
-        "Left": 1373.75195825541,
-        "Top": -1206.37250777047,
+        "Left": 1368.2262429223911,
+        "Top": -1090.1424340347971,
         "Width": 972.71688308886,
         "Height": 357.6713314695661,
         "FontSize": 30.0,
-        "InitialTop": -1160.37250777047,
+        "InitialTop": -1044.1424340347971,
         "InitialHeight": 363.6713314695661,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
@@ -8847,19 +9329,40 @@
           "1038f1807e484e0f987bd5b94d12c345",
           "57c4bccf52a34f9f88ec4c285068f89f"
         ],
-        "Left": -1493.72710686476,
-        "Top": -4087.48809618181,
-        "Width": 737.9626493280598,
-        "Height": 334.63961518407996,
+        "Left": -1500.5391168578431,
+        "Top": -4169.2322160988078,
+        "Width": 657.9626493280598,
+        "Height": 503.63961518407996,
         "FontSize": 30.0,
-        "InitialTop": -4041.48809618181,
+        "InitialTop": -4123.2322160988078,
         "InitialHeight": 327.98414731177991,
+        "TextblockHeight": 36.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "7c25682eee9c478fba40a556c6bf244b",
+        "Title": "RecordedException.Query",
+        "Nodes": [
+          "f733a7af563f4270adb8d68f9e130018",
+          "361c1192b20840fb82c5a49537f812f0",
+          "ef729d77d1724a59b0d430a2fe4dcafa",
+          "4f9c30d9953843a8b64a96b3a9eac9b9",
+          "13ad30b555554877a5f88a65ec40fb44",
+          "eefb7d1fdfb4401ab45a1187868a0ae3"
+        ],
+        "Left": 54.807241586693635,
+        "Top": -5560.4646465202359,
+        "Width": 350.49333333333334,
+        "Height": 685.29120269561827,
+        "FontSize": 30.0,
+        "InitialTop": -5514.4646465202359,
+        "InitialHeight": 691.29120269561827,
         "TextblockHeight": 36.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 694.75235282984568,
-    "Y": 1117.4681421751586,
-    "Zoom": 0.16147730951632908
+    "X": 519.24560868581852,
+    "Y": 958.34357023021892,
+    "Zoom": 0.13424407965184448
   }
 }
