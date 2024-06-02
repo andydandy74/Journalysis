@@ -1,7 +1,7 @@
 {
   "Uuid": "d27a7473-88b3-44f1-a1b6-82e5e3b189ec",
   "IsCustomNode": true,
-  "Category": "Journa.Journal.Query",
+  "Category": "Journalysis.Journal.Query",
   "Description": "Returns the message of the exception (if any)",
   "Name": "RecordedException.Message",
   "ElementResolver": {
