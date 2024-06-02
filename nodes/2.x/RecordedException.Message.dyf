@@ -1,0 +1,167 @@
+{
+  "Uuid": "d27a7473-88b3-44f1-a1b6-82e5e3b189ec",
+  "IsCustomNode": true,
+  "Category": "Journa.Journal.Query",
+  "Description": "Returns the message of the exception (if any)",
+  "Name": "RecordedException.Message",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef RecordedExceptionMessage(input):\r\n\tif input.__repr__() == 'RecordedException': return input.Message\r\n\telse: return None\r\n\r\nOUT = process_input(RecordedExceptionMessage,IN[0])",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "bbba41f92c724e448c7a307bd1eb5bca",
+      "Inputs": [
+        {
+          "Id": "f27b1bf9bfb849ac8b4397b7c32fac20",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c02a10e9b194a7cbd36cf4da19e3b50",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "recordedException",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "018b382ab4514013ae2f1c855566f2d9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5607e6816b0443ef9e60e5b3ce80d7c1",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "str",
+      "Id": "c4af8d7d621e4384a69c00dc2ea052f7",
+      "Inputs": [
+        {
+          "Id": "bc33ec3df68048bbab94f43c694e51eb",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1c02a10e9b194a7cbd36cf4da19e3b50",
+      "End": "bc33ec3df68048bbab94f43c694e51eb",
+      "Id": "48120ca1dc3f4b3e80fd52994204f0ce"
+    },
+    {
+      "Start": "5607e6816b0443ef9e60e5b3ce80d7c1",
+      "End": "f27b1bf9bfb849ac8b4397b7c32fac20",
+      "Id": "59fdbd27777e4fc1bb6b14faf26d4d8a"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "bbba41f92c724e448c7a307bd1eb5bca",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 303.5,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "018b382ab4514013ae2f1c855566f2d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -78.5,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "c4af8d7d621e4384a69c00dc2ea052f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 527.5,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 265.0,
+    "Y": 74.0,
+    "Zoom": 1.0
+  }
+}
