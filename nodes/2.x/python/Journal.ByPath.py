@@ -23,7 +23,7 @@ class Journal:
 		if len([x for x in self.GetLinesByTypeAndProperty('JournalAPIMessage', 'IsError', True)]) > 0: return True
 		else: return False
 	def ContainsExceptions(self):
-		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("ExceptionCode")]) > 0: return True
+		if len(self.GetExceptions()) > 0: return True
 		else: return False
 	def GetDate(self):
 		return self.GetDateTimeByBlock(1).Date
@@ -33,6 +33,13 @@ class Journal:
 	def GetDateTimeByBlocks(self, blocks):
 		if 0 in blocks: return None
 		else: return [x.DateTime for x in self.GetLinesByType('JournalTimeStamp') if x.Block in blocks]
+	def GetExceptions(self):
+		exlist = []
+		exlist.extend([x for x in self.GetLinesByType('JournalTimeStamp') if "Exception" in x.Description])
+		exlist.extend([x for x in self.GetLinesByType('JournalAPIMessage') if x.IsError and "Exception" in x.MessageText])
+		exlist.extend([x for x in self.GetLinesByType('JournalComment') if "Exception" in x.RawText and "ExceptionPolicy" not in x.RawText and "Exception occurred" not in x.RawText])
+		exlist.sort(key=lambda x: x.Number)
+		return exlist
 	def GetFirstLines(self, number):
 		return self.Lines[:number]
 	def GetLastLines(self, number):
@@ -321,6 +328,7 @@ class JournalTimeStamp(JournalLine):
 		self.TimeStampType = None
 		self.DateTime = None
 		self.Description = None
+		self.DebugInfoType = None
 		self.Type = 'JournalTimeStamp'
 	def __repr__(self):
 		return self.Type
@@ -366,6 +374,8 @@ def JournalFromPath(path):
 		jMachineName = None
 		jOSVersion = None
 		jPath = None
+		jBuild = None
+		jBranch = None
 		sysinfoStarted = False
 		commandCount = 0
 		i = 1
@@ -404,6 +414,7 @@ def JournalFromPath(path):
 				elif line[0] == "'":
 					# append linebreaks in API Messages
 					if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"): lineObjs[-1].RawText += " " + line[1:]
+					elif line[1] != " " and lineObjs[-1].Type == 'JournalTimeStamp': lineObjs[-1].RawText += " " + line[1:]
 					elif sysinfoStarted:
 						if ":< PROCESSOR INFORMATION:" in line: 
 							sysinfoType = "Processor"
@@ -465,8 +476,8 @@ def JournalFromPath(path):
 				else:
 					# Very rare case where a multiline error msg is inserted between key and values
 					d1 = line.RawText.split('"')
-					line.Key = d1[1]
-					line.Values.append(d1[2])
+					if len(d1) > 1:	line.Key = d1[1]
+					if len(d1) > 2: line.Values.append(d1[2])
 				# Add Revit version to journal metadata
 				if line.Key == 'Version': jVersion = int(line.Values[0][:4])
 				# Add username to journal metadata
@@ -484,8 +495,8 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalWorksharingEvent':
 				ws = line.RawText.split(':< SLOG ')[-1].split()
 				line.SessionID = ws[0]
-				line.DateTime = time.strptime(ws[1] + " " + ws[2])
-				line.Text = ' '.join(ws[3:])
+				if len(ws) > 2: line.DateTime = time.strptime(ws[1] + " " + ws[2])
+				if len(ws) > 3: line.Text = ' '.join(ws[3:])
 			elif line.Type == 'JournalSystemInformation':
 				si = line.RawText.split(':<    ')[-1].split(' : ')
 				line.Key = si[0]
@@ -503,29 +514,36 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalCommand':
 				c1 = line.RawText.replace("  "," ").split('" , "')
 				line.CommandType = c1[0][13:]
-				c2 = c1[1].split(" , ")
-				line.CommandDescription = c2[0]
-				CommandIDCandidate = c2[1][:-1]
-				# Allow for different formatting in Revit 2022
-				if CommandIDCandidate.endswith('"'): CommandIDCandidate = CommandIDCandidate = CommandIDCandidate[:-1]
-				line.CommandID = CommandIDCandidate
+				# only try to process command ID if line is complete
+				if len(c1) > 1:
+					c2 = c1[1].split(" , ")
+					line.CommandDescription = c2[0]
+					# only try to process command ID if line is complete
+					if len(c2) > 1:
+						CommandIDCandidate = c2[1][:-1]
+						# Allow for different formatting in Revit 2022
+						if CommandIDCandidate.endswith('"'): CommandIDCandidate = CommandIDCandidate = CommandIDCandidate[:-1]
+						line.CommandID = CommandIDCandidate
 			elif line.Type == 'JournalMouseEvent':
 				m1 = line.RawText.split(" ",1)
 				line.MouseEventType = m1[0][4:].strip()
-				for m2 in m1[1].split(","):
-					potential_int = m2.strip().rstrip('\x00')
-					# don't try converting broken lines
-					if len(potential_int) > 0: line.Data.append(int(potential_int))
+				if len(m1) > 1:
+					for m2 in m1[1].split(","):
+						potential_int = m2.strip().rstrip('\x00')
+						# don't try converting broken lines
+						if len(potential_int) > 0: line.Data.append(int(potential_int))
 			elif line.Type == 'JournalKeyboardEvent': line.Key = line.RawText.split('"')[1]
 			elif line.Type == 'JournalBasicFileInfo':
 				bfi = map(list, zip(*[x.split(":",1) for x in line.RawText[22:].split("Rvt.Attr.")[1:]]))
-				bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
-				if bfidict["Worksharing"] != "": line.Worksharing = bfidict["Worksharing"]
-				if bfidict["CentralModelPath"] != "": line.CentralModelPath = bfidict["CentralModelPath"]
-				if bfidict["LastSavePath"] != "": 
-					line.LastSavePath = bfidict["LastSavePath"]
-					line.FileName = bfidict["LastSavePath"].split("\\")[-1]
-				if bfidict["LocaleWhenSaved"] != "": line.Locale = bfidict["LocaleWhenSaved"]
+				# don't try converting broken lines 
+				if len(bfi) > 1:
+					bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
+					if "Worksharing" in bfidict and bfidict["Worksharing"] != "": line.Worksharing = bfidict["Worksharing"]
+					if "CentralModelPath" in bfidict and bfidict["CentralModelPath"] != "": line.CentralModelPath = bfidict["CentralModelPath"]
+					if "LastSavePath" in bfidict and bfidict["LastSavePath"] != "": 
+						line.LastSavePath = bfidict["LastSavePath"]
+						line.FileName = bfidict["LastSavePath"].split("\\")[-1]
+					if "LocaleWhenSaved" in bfidict and bfidict["LocaleWhenSaved"] != "": line.Locale = bfidict["LocaleWhenSaved"]
 			elif line.Type == 'JournalGUIResourceUsage':
 				g2 = []
 				for g1 in line.RawText.split(","):
@@ -566,6 +584,15 @@ def JournalFromPath(path):
 					if ':<' in ts1[1]: line.Description = ts1[1][7:].strip()
 					# formatting as of Revit 2020
 					else: line.Description = ts1[1][2:].strip()
+					if line.Description.startswith("DBG_ERROR:"):
+						line.DebugInfoType = "Error"
+						line.Description = line.Description.replace("DBG_ERROR: ","")
+					elif line.Description.startswith("DBG_WARN:"):
+						line.DebugInfoType = "Warning"
+						line.Description = line.Description.replace("DBG_WARN: ","")
+					elif line.Description.startswith("DBG_INFO:"):
+						line.DebugInfoType = "Info"
+						line.Description = line.Description.replace("DBG_INFO: ","")
 			elif line.Type == 'JournalMemoryMetrics':
 				if "Initial VM" in line.RawText: m1 = line.RawText.split(":",2)[2].replace(";","").split()
 				else: m1 = line.RawText.split(":",6)[6].split()
