@@ -29,10 +29,10 @@ def journalGetExceptions(journal):
 					newexc.Message = lp1[0]
 					lp2 = lp1[1].split(">",1)
 					newexc.StackTrace = lp2[0]
-				elif "ArchiveException" in line.Description:
-					newexc.Type = "ArchiveException"
+				else:
+					if "ArchiveException" in line.Description: newexc.Type = "ArchiveException"
+					elif line.Description.startswith("ExceptionCode"): newexc.Type = "Fatal Error"
 					newexc.Message = line.Description
-				else: newexc.Message = line.Description
 			elif line.Type == "JournalAPIMessage": 
 				lp1 = line.MessageText.split(" exception(",1)
 				newexc.Type = lp1[0]

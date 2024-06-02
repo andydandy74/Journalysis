@@ -37,7 +37,7 @@ class Journal:
 		exlist = []
 		exlist.extend([x for x in self.GetLinesByType('JournalTimeStamp') if "Exception" in x.Description])
 		exlist.extend([x for x in self.GetLinesByType('JournalAPIMessage') if x.IsError and "Exception" in x.MessageText])
-		exlist.extend([x for x in self.GetLinesByType('JournalComment') if "Exception" in x.RawText and "ExceptionPolicy" not in x.RawText and "Exception occurred" not in x.RawText])
+		exlist.extend([x for x in self.GetLinesByType('JournalComment') if "Exception" in x.RawText and "ExceptionPolicy" not in x.RawText and "Exception occurred" not in x.RawText and "unhandledExceptionFilter" not in x.RawText])
 		exlist.sort(key=lambda x: x.Number)
 		return exlist
 	def GetFirstLines(self, number):
