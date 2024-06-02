@@ -1,0 +1,167 @@
+{
+  "Uuid": "bc02dbf0-13b8-4b19-91b6-a3d2e82948dd",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Actions",
+  "Description": "Retreives all Journal lines that make reference to exceptions",
+  "Name": "Journal.Exceptions",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\nclass RecordedException:\r\n\tdef __init__(self, journalLine):\r\n\t\tself.JournalLine = journalLine\r\n\t\tself.Type = \"Unknown\"\r\n\t\tself.Message = None\r\n\t\tself.Event = None\r\n\t\tself.AppName = None\r\n\t\tself.AppGUID = None\r\n\t\tself.StackTrace = None\r\n\tdef __repr__(self):\r\n\t\treturn \"RecordedException\"\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalGetExceptions(journal):\r\n\tif journal.__repr__() == 'Journal': \r\n\t\texclines = journal.GetExceptions()\r\n\t\texcobjs = []\r\n\t\tfor line in exclines:\r\n\t\t\tnewexc = RecordedException(line)\r\n\t\t\tif line.Type == \"JournalTimeStamp\": \r\n\t\t\t\tlp1 = line.Description.split(\"ApplicationException is being thrown on behalf of the function <\",1)\r\n\t\t\t\tif len(lp1) > 1:\r\n\t\t\t\t\tnewexc.Type = \"ApplicationException\"\r\n\t\t\t\t\tnewexc.Message = lp1[0]\r\n\t\t\t\t\tlp2 = lp1[1].split(\">\",1)\r\n\t\t\t\t\tnewexc.StackTrace = lp2[0]\r\n\t\t\t\telif \"ArchiveException\" in line.Description:\r\n\t\t\t\t\tnewexc.Type = \"ArchiveException\"\r\n\t\t\t\t\tnewexc.Message = line.Description\r\n\t\t\t\telse: newexc.Message = line.Description\r\n\t\t\telif line.Type == \"JournalAPIMessage\": \r\n\t\t\t\tlp1 = line.MessageText.split(\" exception(\",1)\r\n\t\t\t\tnewexc.Type = lp1[0]\r\n\t\t\t\tif len(lp1) > 1: \r\n\t\t\t\t\tlp2 = lp1[1].split(\") was thrown from a handler of \",1)\r\n\t\t\t\t\tnewexc.Message = lp2[0]\r\n\t\t\t\t\tif len(lp2) > 1: \r\n\t\t\t\t\t\tlp3 = lp2[1].split(\"event. The API event handler was registered by application \",1)\r\n\t\t\t\t\t\tnewexc.Event = lp3[0]\r\n\t\t\t\t\t\tif len(lp3) > 1: \r\n\t\t\t\t\t\t\tlp4 = lp3[1].split(\" (\",1)\r\n\t\t\t\t\t\t\tnewexc.AppName = lp4[0]\r\n\t\t\t\t\t\t\tif len(lp4) > 1:\r\n\t\t\t\t\t\t\t\tlp5 = lp4[1].split(\")\",1)\r\n\t\t\t\t\t\t\t\tnewexc.AppGUID = lp5[0]\r\n\t\t\telif line.Type == \"JournalComment\":\r\n\t\t\t\tlp1 = line.RawText.split(\"Exception caught from managed method \",1)\r\n\t\t\t\tif len(lp1) > 1:\r\n\t\t\t\t\tlp2 = lp1[1].split(\" <\",1)\r\n\t\t\t\t\tnewexc.StackTrace = lp2[0]\r\n\t\t\t\t\tif len(lp2) > 1:\r\n\t\t\t\t\t\tlp3 = lp2[1].split(\"> <\",1)\r\n\t\t\t\t\t\tnewexc.Type = lp3[0]\r\n\t\t\t\t\t\tif len(lp3) > 1: newexc.Message = lp3[1].strip()[:-1]\r\n\t\t\t\telse: \r\n\t\t\t\t\tlp1 = line.RawText.split(\"External Command Registration Exception: \",1)\r\n\t\t\t\t\tif len(lp1) > 1:\r\n\t\t\t\t\t\tnewexc.Type = \"External Command Registration Exception\"\r\n\t\t\t\t\t\tnewexc.Message = lp1[1]\r\n\t\t\t\t\telif \"OpenStream FileException\" in line.RawText: newexc.Type = \"OpenStream FileException\"\r\n\t\t\t\t\telse: newexc.Message = line.RawText\r\n\t\t\telse: newexc.Message = line.RawText\r\n\t\t\texcobjs.append(newexc)\r\n\t\treturn excobjs\r\n\telse: return []\r\n\r\nOUT = process_input(journalGetExceptions,IN[0])",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "9cff4ceec88a4c579476332687560f6b",
+      "Inputs": [
+        {
+          "Id": "58a8a10f3f654caab8487710fedfad01",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "45aee442f1aa42949615be0f394cc7c7",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "c95774af59a947f7996aaeb5999d254d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "79783b16bdfe4b95bf1b43dfa376fbad",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "recordedExceptions",
+      "Id": "8f0858c10fed42f1a196c128eda6a885",
+      "Inputs": [
+        {
+          "Id": "97b8d0cf51754ee0b43c4cddcf554ce7",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "45aee442f1aa42949615be0f394cc7c7",
+      "End": "97b8d0cf51754ee0b43c4cddcf554ce7",
+      "Id": "99574dad4d0048238193bdfe0b51deb8"
+    },
+    {
+      "Start": "79783b16bdfe4b95bf1b43dfa376fbad",
+      "End": "58a8a10f3f654caab8487710fedfad01",
+      "Id": "fdfaeef43a05461782c20986fa67feb7"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "9cff4ceec88a4c579476332687560f6b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "c95774af59a947f7996aaeb5999d254d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "8f0858c10fed42f1a196c128eda6a885",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 476.0,
+    "Y": 308.0,
+    "Zoom": 1.0
+  }
+}
