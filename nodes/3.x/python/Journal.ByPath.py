@@ -1,5 +1,5 @@
 import clr
-import sys
+import sys                                               
 import os
 import time
 from System import DateTime
@@ -23,7 +23,7 @@ class Journal:
 		if len([x for x in self.GetLinesByTypeAndProperty('JournalAPIMessage', 'IsError', True)]) > 0: return True
 		else: return False
 	def ContainsExceptions(self):
-		if len([x for x in self.GetLinesByType('JournalTimeStamp') if x.Description.startswith("ExceptionCode")]) > 0: return True
+		if len(self.GetExceptions()) > 0: return True
 		else: return False
 	def GetDate(self):
 		return self.GetDateTimeByBlock(1)
@@ -33,6 +33,13 @@ class Journal:
 	def GetDateTimeByBlocks(self, blocks):
 		if 0 in blocks: return None
 		else: return [x.DateTime for x in self.GetLinesByType('JournalTimeStamp') if x.Block in blocks]
+	def GetExceptions(self):
+		exlist = []
+		exlist.extend([x for x in self.GetLinesByType('JournalTimeStamp') if "Exception" in x.Description])
+		exlist.extend([x for x in self.GetLinesByType('JournalAPIMessage') if x.IsError and "Exception" in x.MessageText])
+		exlist.extend([x for x in self.GetLinesByType('JournalComment') if "Exception" in x.RawText and "ExceptionPolicy" not in x.RawText and "Exception occurred" not in x.RawText and "unhandledExceptionFilter" not in x.RawText])
+		exlist.sort(key=lambda x: x.Number)
+		return exlist
 	def GetFirstLines(self, number):
 		return self.Lines[:number]
 	def GetLastLines(self, number):
@@ -321,6 +328,7 @@ class JournalTimeStamp(JournalLine):
 		self.TimeStampType = None
 		self.DateTime = None
 		self.Description = None
+		self.DebugInfoType = None
 		self.Type = 'JournalTimeStamp'
 	def __repr__(self):
 		return self.Type
@@ -406,6 +414,7 @@ def JournalFromPath(path):
 				elif line[0] == "'":
 					# append linebreaks in API Messages
 					if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"): lineObjs[-1].RawText += " " + line[1:]
+					elif line[1] != " " and lineObjs[-1].Type == 'JournalTimeStamp': lineObjs[-1].RawText += " " + line[1:]
 					elif sysinfoStarted:
 						if ":< PROCESSOR INFORMATION:" in line: 
 							sysinfoType = "Processor"
@@ -568,6 +577,15 @@ def JournalFromPath(path):
 					if ':<' in ts1[1]: line.Description = ts1[1][7:].strip()
 					# formatting as of Revit 2020
 					else: line.Description = ts1[1][2:].strip()
+					if line.Description.startswith("DBG_ERROR:"):
+						line.DebugInfoType = "Error"
+						line.Description = line.Description.replace("DBG_ERROR: ","")
+					elif line.Description.startswith("DBG_WARN:"):
+						line.DebugInfoType = "Warning"
+						line.Description = line.Description.replace("DBG_WARN: ","")
+					elif line.Description.startswith("DBG_INFO:"):
+						line.DebugInfoType = "Info"
+						line.Description = line.Description.replace("DBG_INFO: ","")
 			elif line.Type == 'JournalMemoryMetrics':
 				if "Initial VM" in line.RawText: m1 = line.RawText.split(":",2)[2].replace(";","").split()
 				else: m1 = line.RawText.split(":",6)[6].split()
