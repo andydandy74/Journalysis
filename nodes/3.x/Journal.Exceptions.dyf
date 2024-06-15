@@ -2,7 +2,7 @@
   "Uuid": "bc02dbf0-13b8-4b19-91b6-a3d2e82948dd",
   "IsCustomNode": true,
   "Category": "Journalysis.Actions",
-  "Description": "Retreives all Journal lines that make reference to exceptions",
+  "Description": "Retrieves all Journal lines that make reference to exceptions",
   "Name": "Journal.Exceptions",
   "ElementResolver": {
     "ResolutionMap": {}
