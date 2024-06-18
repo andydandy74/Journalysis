@@ -1,7 +1,7 @@
 {
   "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
   "IsCustomNode": false,
-  "Description": "",
+  "Description": "Sample graph for all keyboard shortcuts nodes",
   "Name": "AllKeyboardShortcutsNodes",
   "ElementResolver": {
     "ResolutionMap": {
@@ -24,9 +24,9 @@
       "Id": "977115e52d0f4a50862f32780097780f",
       "Name": "String",
       "Type": "string",
+      "Type2": "string",
       "Value": "2022",
-      "Description": "Erstellt eine Zeichenfolge.",
-      "SelectedIndex": 0
+      "Description": "Creates a string"
     }
   ],
   "Outputs": [],
@@ -35,8 +35,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "13528261-29c6-4137-92bd-5e2c74e5d003",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "7009494fc10545f4afb25d563638c602",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "5a62e6cd5b63488cba4e4d6b2b2a62a7",
@@ -52,7 +52,7 @@
         {
           "Id": "790317df06744726a7fd3dac0dc60292",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -66,8 +66,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "2101ae1a-adae-4246-971f-3b079e154128",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "a8ceecfa4d4e430ca5dd19eb02a208cb",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "4644b06629b64554bc29e82eafea3a1b",
@@ -83,7 +83,7 @@
         {
           "Id": "a8967e0eec4245a0a26d7ed63e2e7760",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -97,8 +97,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "700418e7-6b36-4ce3-937d-76cf8f820cea",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "d2bd1f0ec5bc4f2e9c468a0e24aa2ada",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "c229f5e5187340cd9a6fab4f2606d5e1",
@@ -114,7 +114,7 @@
         {
           "Id": "cff370e41fcc498591518e0cf1760ff4",
           "Name": "int",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -128,8 +128,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "2eda879b-e1ad-4782-89f5-9bbb16be251c",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "80b8e0989b8e413cbd5884030f810324",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "69ca28cb04c742b6ab30287a341e6264",
@@ -145,7 +145,7 @@
         {
           "Id": "bcbddefd621b4b9f99573821b831a798",
           "Name": "int",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -159,8 +159,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "58ec6d61-7f6c-4e24-9cc2-720e65369d87",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "5fa04e433f8e4be3bf9ef32fe4e95c64",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "68035e1b94be4ef4ba0b8415e6d26854",
@@ -176,7 +176,7 @@
         {
           "Id": "5e94bbba694644508948dab994d427f3",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -190,8 +190,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "2901c738-a0a3-4e64-8eb2-40d1f4681352",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "de6fc7dc7848481799ded65b7cc77ca2",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "c5e2595735fa424f9315b2a68ced9513",
@@ -207,7 +207,7 @@
         {
           "Id": "b13da9b8b0d64e77b8fa748d7e4c96d7",
           "Name": "keyboardShortcutCommands",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -221,8 +221,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "6b3c8ee8-fb06-42ba-b362-9af4047d35db",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "6132ebf3304e47e39ef96ba9435ae26a",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "5ad20b3da077402f960f55522b7aebc9",
@@ -238,7 +238,7 @@
         {
           "Id": "32f2b0d6d2754a89890c6c67741a2dbf",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -252,8 +252,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "5eb362f8-f908-4888-b04d-144d1d8b7e0e",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "16eded5b37994cf0abaf1f887b66ea23",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "fc04976b3bf74b49b75a87be075c2193",
@@ -269,7 +269,7 @@
         {
           "Id": "b5dde844fbe8498ab0c92352e2a596ba",
           "Name": "seq",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -283,8 +283,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "40e02f9c-d0c0-4fb2-acef-4204630a3242",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "c2c46f44e4c44c96a1ef9f617479c3f0",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "f8145471caf248cb9947be24118171c2",
@@ -300,7 +300,7 @@
         {
           "Id": "2f5a0e9f34704bc3853a512df6c7ffed",
           "Name": "seq",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -314,8 +314,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "04d7eca3-8497-415a-9fe2-b05cad2412f6",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "c01c73d776514b97a7e544c690f5316b",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "45b7157d05284d79859966b586d4ec2d",
@@ -331,7 +331,7 @@
         {
           "Id": "99b94173f9d7479592aacac8f1943852",
           "Name": "seq",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -343,8 +343,10 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
+      "WatchWidth": 200.0,
+      "WatchHeight": 38.4,
       "Id": "baeb800b43344813a565a52673395a70",
+      "NodeType": "ExtensionNode",
       "Inputs": [
         {
           "Id": "9cb7b92bf0ad404cbd9437c39350e509",
@@ -368,13 +370,12 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualisierung der Ausgabe des Blocks"
+      "Description": "Visualizes a node's output"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
-      "NodeType": "StringInputNode",
-      "InputValue": "2022",
       "Id": "977115e52d0f4a50862f32780097780f",
+      "NodeType": "StringInputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -388,20 +389,21 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Erstellt eine Zeichenfolge."
+      "Description": "Creates a string",
+      "InputValue": "2022"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "6dd713da-0e00-49cf-906e-58419b9503e3",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "75b0cb7445f54ea39d357f6cdaabac2a",
+      "NodeType": "FunctionNode",
       "Inputs": [],
       "Outputs": [
         {
           "Id": "63d94929adcd431896f66ee9c8e4f6d8",
           "Name": "seq",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -413,8 +415,10 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
+      "WatchWidth": 200.0,
+      "WatchHeight": 38.4,
       "Id": "0fb39138e11f4e479c42e515b589ffca",
+      "NodeType": "ExtensionNode",
       "Inputs": [
         {
           "Id": "46b66b2bb47e495c8e79040d92fdafb8",
@@ -438,14 +442,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Visualisierung der Ausgabe des Blocks"
+      "Description": "Visualizes a node's output"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "645cf02b-5fb6-46bc-a20d-5af92abdd1b6",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "d96ac45832514098a6283e3c978e98c6",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "9017888bd9dc4088a6925db9ebee0814",
@@ -461,7 +465,7 @@
         {
           "Id": "8c2c37b8757243c8a2e794d37495cbfc",
           "Name": "path",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -475,8 +479,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "9d1984f2-dbb0-41dc-8f13-902e3137cd59",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "fbbe505284234288ac40522f9e994c14",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "a04fcb38401a45dfa3bce89a758f75ea",
@@ -492,7 +496,7 @@
         {
           "Id": "14c538efc992421aa5c831e2f04ceeb3",
           "Name": "keyboardShortcuts",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -506,8 +510,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "9aef6240-0c02-4f41-8dac-b15768582912",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "f068cc1c416c4a2ab91cfe9b0d06f09b",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "04d06a281338415ea3e10b986b5edd2d",
@@ -532,7 +536,7 @@
         {
           "Id": "f51815c4298848efb85f3f553b9b7301",
           "Name": "command",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -547,82 +551,98 @@
     {
       "Start": "5e94bbba694644508948dab994d427f3",
       "End": "9cc4aa21561847a99a535a5dc58f79a0",
-      "Id": "3ba2e733a9b546bc9dda43e74a344f0e"
+      "Id": "3ba2e733a9b546bc9dda43e74a344f0e",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "5a62e6cd5b63488cba4e4d6b2b2a62a7",
-      "Id": "bf9ca2aa31374f128bdd4f8f878ad9e3"
+      "Id": "bf9ca2aa31374f128bdd4f8f878ad9e3",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "4644b06629b64554bc29e82eafea3a1b",
-      "Id": "10f3a277cf3c4e5d99de0ad58f496e56"
+      "Id": "10f3a277cf3c4e5d99de0ad58f496e56",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "68035e1b94be4ef4ba0b8415e6d26854",
-      "Id": "50322612bd9e42c6add7c13652a159fb"
+      "Id": "50322612bd9e42c6add7c13652a159fb",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "5ad20b3da077402f960f55522b7aebc9",
-      "Id": "c4bcf9f4f9cf43048a04103738d61c74"
+      "Id": "c4bcf9f4f9cf43048a04103738d61c74",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "f8145471caf248cb9947be24118171c2",
-      "Id": "58816c5ea73d4a7ba173cc1e28b74171"
+      "Id": "58816c5ea73d4a7ba173cc1e28b74171",
+      "IsHidden": "False"
     },
     {
       "Start": "b13da9b8b0d64e77b8fa748d7e4c96d7",
       "End": "fc04976b3bf74b49b75a87be075c2193",
-      "Id": "3caba11d67354500a5cee689f2a36374"
+      "Id": "3caba11d67354500a5cee689f2a36374",
+      "IsHidden": "False"
     },
     {
       "Start": "1837c405228f4a318ede819089c83c56",
       "End": "9017888bd9dc4088a6925db9ebee0814",
-      "Id": "0565aa97e3664b7b837b70f8400bf976"
+      "Id": "0565aa97e3664b7b837b70f8400bf976",
+      "IsHidden": "False"
     },
     {
       "Start": "63d94929adcd431896f66ee9c8e4f6d8",
       "End": "9cb7b92bf0ad404cbd9437c39350e509",
-      "Id": "2a9de4cf8c8d429e8700a63c6fe89c83"
+      "Id": "2a9de4cf8c8d429e8700a63c6fe89c83",
+      "IsHidden": "False"
     },
     {
       "Start": "f10a1400fe454a3eb3a3f1e714091aa0",
       "End": "a04fcb38401a45dfa3bce89a758f75ea",
-      "Id": "87339cfe9e324b008f0fbdc1be44179c"
+      "Id": "87339cfe9e324b008f0fbdc1be44179c",
+      "IsHidden": "False"
     },
     {
       "Start": "8c2c37b8757243c8a2e794d37495cbfc",
       "End": "46b66b2bb47e495c8e79040d92fdafb8",
-      "Id": "e4fb5ae93ea843e8a4175292c0a46c01"
+      "Id": "e4fb5ae93ea843e8a4175292c0a46c01",
+      "IsHidden": "False"
     },
     {
       "Start": "14c538efc992421aa5c831e2f04ceeb3",
       "End": "69ca28cb04c742b6ab30287a341e6264",
-      "Id": "33f46b23e0854b69bfc8fb664c14809a"
+      "Id": "33f46b23e0854b69bfc8fb664c14809a",
+      "IsHidden": "False"
     },
     {
       "Start": "14c538efc992421aa5c831e2f04ceeb3",
       "End": "c229f5e5187340cd9a6fab4f2606d5e1",
-      "Id": "c3128b5e17484bd88e006096718851d4"
+      "Id": "c3128b5e17484bd88e006096718851d4",
+      "IsHidden": "False"
     },
     {
       "Start": "14c538efc992421aa5c831e2f04ceeb3",
       "End": "c5e2595735fa424f9315b2a68ced9513",
-      "Id": "2a8370857b9049a09f50550918481ee9"
+      "Id": "2a8370857b9049a09f50550918481ee9",
+      "IsHidden": "False"
     },
     {
       "Start": "14c538efc992421aa5c831e2f04ceeb3",
       "End": "45b7157d05284d79859966b586d4ec2d",
-      "Id": "3123255e902f44e7a5ca53e0df8d3587"
+      "Id": "3123255e902f44e7a5ca53e0df8d3587",
+      "IsHidden": "False"
     },
     {
       "Start": "14c538efc992421aa5c831e2f04ceeb3",
       "End": "04d06a281338415ea3e10b986b5edd2d",
-      "Id": "1ec6053ed6aa44debcb92eecc5b9409a"
+      "Id": "1ec6053ed6aa44debcb92eecc5b9409a",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [
@@ -664,8 +684,9 @@
       ]
     }
   ],
-  "Thumbnail": null,
-  "GraphDocumentationURL": null,
+  "EnableLegacyPolyCurveBehavior": true,
+  "Thumbnail": "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",
+  "GraphDocumentationURL": "https://github.com/andydandy74/Journalysis",
   "ExtensionWorkspaceData": [
     {
       "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
@@ -680,9 +701,9 @@
       "Data": {}
     }
   ],
-  "Author": "None provided",
+  "Author": "Andreas Dieckmann",
   "Linting": {
-    "activeLinter": "Keine",
+    "activeLinter": "None",
     "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
     "warningCount": 0,
     "errorCount": 0
@@ -693,12 +714,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.0.3.7597",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -709,182 +730,187 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.HasPaths",
         "Id": "7009494fc10545f4afb25d563638c602",
+        "Name": "KeyboardShortcutCommand.HasPaths",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1958.70295870169
+        "ShowGeometry": true,
+        "X": 209.53996963676656,
+        "Y": -1596.0007692623951
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.HasShortcuts",
         "Id": "a8ceecfa4d4e430ca5dd19eb02a208cb",
+        "Name": "KeyboardShortcutCommand.HasShortcuts",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1833.50406038885
+        "ShowGeometry": true,
+        "X": 209.5399696367666,
+        "Y": -1445.8018709495552
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.CommandCountWithShortcuts",
         "Id": "d2bd1f0ec5bc4f2e9c468a0e24aa2ada",
+        "Name": "KeyboardShortcuts.CommandCountWithShortcuts",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -415.825497830727,
-        "Y": -1781.84067126913
+        "ShowGeometry": true,
+        "X": -385.27534144220584,
+        "Y": -1442.1948149496902
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.CommandCount",
         "Id": "80b8e0989b8e413cbd5884030f810324",
+        "Name": "KeyboardShortcuts.CommandCount",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -415.825497830727,
-        "Y": -1908.2545431673
+        "ShowGeometry": true,
+        "X": -385.27534144220584,
+        "Y": -1593.60868684786
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.ID",
         "Id": "5fa04e433f8e4be3bf9ef32fe4e95c64",
+        "Name": "KeyboardShortcutCommand.ID",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1708.30516207603
+        "ShowGeometry": true,
+        "X": 209.53996963676656,
+        "Y": -1295.6029726367353
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.Commands",
         "Id": "de6fc7dc7848481799ded65b7cc77ca2",
+        "Name": "KeyboardShortcuts.Commands",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -415.825497830727,
-        "Y": -1655.42679937096
+        "ShowGeometry": true,
+        "X": -385.27534144220584,
+        "Y": -1290.78094305152
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.Name",
         "Id": "6132ebf3304e47e39ef96ba9435ae26a",
+        "Name": "KeyboardShortcutCommand.Name",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1583.10626376319
+        "ShowGeometry": true,
+        "X": 209.53996963676656,
+        "Y": -1140.4040743238954
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.Paths",
         "Id": "16eded5b37994cf0abaf1f887b66ea23",
+        "Name": "KeyboardShortcutCommand.Paths",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1457.90736545036
+        "ShowGeometry": true,
+        "X": 209.53996963676656,
+        "Y": -990.2051760110651
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcutCommand.Shortcuts",
         "Id": "c2c46f44e4c44c96a1ef9f617479c3f0",
+        "Name": "KeyboardShortcutCommand.Shortcuts",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 153.830860928287,
-        "Y": -1332.70846713753
+        "ShowGeometry": true,
+        "X": 209.5399696367665,
+        "Y": -840.0062776982352
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.CommandsWithShortcuts",
         "Id": "c01c73d776514b97a7e544c690f5316b",
+        "Name": "KeyboardShortcuts.CommandsWithShortcuts",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -408.928440854555,
-        "Y": -1490.56151526618
+        "ShowGeometry": true,
+        "X": 796.9042024805995,
+        "Y": -1599.0090524545978
       },
       {
-        "ShowGeometry": true,
-        "Name": "Watch",
         "Id": "baeb800b43344813a565a52673395a70",
+        "Name": "Watch",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1165.4456810502734,
-        "Y": -1929.9108215280989
+        "ShowGeometry": true,
+        "X": -1391.5562737375437,
+        "Y": -1799.6788006089782
       },
       {
-        "ShowGeometry": true,
-        "Name": "String",
         "Id": "977115e52d0f4a50862f32780097780f",
+        "Name": "String",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1597.4973378721202,
-        "Y": -1725.8448269077589
+        "ShowGeometry": true,
+        "X": -1996.8333466953688,
+        "Y": -1594.7232922466833
       },
       {
-        "ShowGeometry": true,
-        "Name": "Paths.AllKeyboardShortcutFiles",
         "Id": "75b0cb7445f54ea39d357f6cdaabac2a",
+        "Name": "Paths.AllKeyboardShortcutFiles",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1511.8486974172604,
-        "Y": -1933.7380492559889
+        "ShowGeometry": true,
+        "X": -1801.1562737375439,
+        "Y": -1799.6788006089782
       },
       {
-        "ShowGeometry": true,
-        "Name": "Watch",
         "Id": "0fb39138e11f4e479c42e515b589ffca",
+        "Name": "Watch",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1166.3511865110631,
-        "Y": -1726.8689270297489
+        "ShowGeometry": true,
+        "X": -1282.4333466953688,
+        "Y": -1594.7232922466833
       },
       {
-        "ShowGeometry": true,
-        "Name": "Paths.KeyboardShortcutsFileByVersion",
         "Id": "d96ac45832514098a6283e3c978e98c6",
+        "Name": "Paths.KeyboardShortcutsFileByVersion",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1475.1237589707403,
-        "Y": -1724.700450571439
+        "ShowGeometry": true,
+        "X": -1748.033346695369,
+        "Y": -1594.7232922466833
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.ByPath",
         "Id": "fbbe505284234288ac40522f9e994c14",
+        "Name": "KeyboardShortcuts.ByPath",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -860.533356379728,
-        "Y": -1725.83724559417
+        "ShowGeometry": true,
+        "X": -858.6425143773274,
+        "Y": -1593.4783054261102
       },
       {
-        "ShowGeometry": true,
-        "Name": "KeyboardShortcuts.CommandByID",
         "Id": "f068cc1c416c4a2ab91cfe9b0d06f09b",
+        "Name": "KeyboardShortcuts.CommandByID",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -408.134934758838,
-        "Y": -1369.89467662977
+        "ShowGeometry": true,
+        "X": 797.6977085763165,
+        "Y": -1448.3422138181875
       }
     ],
     "Annotations": [
       {
         "Id": "1c929ddc8476435facd6059c3fa0be28",
         "Title": "KeyboardShortcutCommand.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "5fa04e433f8e4be3bf9ef32fe4e95c64",
           "6132ebf3304e47e39ef96ba9435ae26a",
@@ -893,53 +919,71 @@
           "a8ceecfa4d4e430ca5dd19eb02a208cb",
           "7009494fc10545f4afb25d563638c602"
         ],
-        "Left": 143.830860928287,
-        "Top": -2004.70295870169,
-        "Width": 472.34333333333336,
-        "Height": 764.59449156415985,
+        "HasNestedGroups": false,
+        "Left": 199.5399696367665,
+        "Top": -1662.0007692623951,
+        "Width": 482.34333333333336,
+        "Height": 953.7944915641599,
         "FontSize": 30.0,
-        "InitialTop": -1958.70295870169,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1596.0007692623951,
         "InitialHeight": 770.99449156416,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "f33c433110f442ae8d7af1006d81f02c",
         "Title": "KeyboardShortcuts.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "80b8e0989b8e413cbd5884030f810324",
           "d2bd1f0ec5bc4f2e9c468a0e24aa2ada",
           "de6fc7dc7848481799ded65b7cc77ca2"
         ],
-        "Left": -425.825497830727,
-        "Top": -1954.2545431673,
-        "Width": 432.0,
-        "Height": 391.42774379633988,
+        "HasNestedGroups": false,
+        "Left": -395.27534144220584,
+        "Top": -1659.60868684786,
+        "Width": 467.2,
+        "Height": 500.62774379634016,
         "FontSize": 30.0,
-        "InitialTop": -1908.2545431673,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1593.60868684786,
         "InitialHeight": 397.82774379634,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "c633950e6dea48e69e88fde10a64567e",
         "Title": "KeyboardShortcuts.Create",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "fbbe505284234288ac40522f9e994c14"
         ],
-        "Left": -870.533356379728,
-        "Top": -1771.83724559417,
-        "Width": 352.92,
-        "Height": 138.59999999999991,
+        "HasNestedGroups": false,
+        "Left": -868.6425143773274,
+        "Top": -1659.4783054261102,
+        "Width": 362.92,
+        "Height": 197.79999999999995,
         "FontSize": 30.0,
-        "InitialTop": -1725.83724559417,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1593.4783054261102,
         "InitialHeight": 145.0,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "1eeef86d37f2479d8384a4dbd9b41ac1",
         "Title": "Paths",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "baeb800b43344813a565a52673395a70",
           "977115e52d0f4a50862f32780097780f",
@@ -947,36 +991,44 @@
           "0fb39138e11f4e479c42e515b589ffca",
           "d96ac45832514098a6283e3c978e98c6"
         ],
-        "Left": -1607.4973378721202,
-        "Top": -1979.7380492559889,
-        "Width": 661.65165682184681,
-        "Height": 530.26912222623992,
+        "HasNestedGroups": false,
+        "Left": -2006.8333466953688,
+        "Top": -1865.6788006089782,
+        "Width": 1012.8000000000001,
+        "Height": 407.55550836229486,
         "FontSize": 30.0,
-        "InitialTop": -1933.7380492559889,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1799.6788006089782,
         "InitialHeight": 354.03759868454995,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "e2990c06102d4bd3bdbea1881e068f6a",
         "Title": "KeyboardShortcuts.Actions",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "c01c73d776514b97a7e544c690f5316b",
           "f068cc1c416c4a2ab91cfe9b0d06f09b"
         ],
-        "Left": -418.928440854555,
-        "Top": -1536.56151526618,
-        "Width": 365.03000000000003,
-        "Height": 284.86683863641019,
+        "HasNestedGroups": false,
+        "Left": 786.9042024805995,
+        "Top": -1665.0090524545978,
+        "Width": 431.20000000000005,
+        "Height": 378.8668386364104,
         "FontSize": 30.0,
-        "InitialTop": -1490.56151526618,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1599.0090524545978,
         "InitialHeight": 265.66683863641015,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 124.30131872074406,
-    "Y": 1614.8556649087293,
-    "Zoom": 0.96965998827589073
+    "X": 810.5558699211349,
+    "Y": 818.2939179947401,
+    "Zoom": 0.3908968523652236
   }
 }

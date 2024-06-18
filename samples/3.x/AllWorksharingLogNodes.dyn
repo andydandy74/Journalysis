@@ -1,7 +1,7 @@
 {
   "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
   "IsCustomNode": false,
-  "Description": "",
+  "Description": "Sample graph for all worksgaring log nodes",
   "Name": "AllWorksharingLogNodes",
   "ElementResolver": {
     "ResolutionMap": {
@@ -24,9 +24,9 @@
       "Id": "2018aeee636a40a5bd487e72734a2d60",
       "Name": "Worksharing Log File Path",
       "Type": "string",
+      "Type2": "string",
       "Value": "..\\..\\..\\..\\..\\Desktop\\NewFileName_backup\\NewFileName.slog",
-      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen.",
-      "SelectedIndex": 0
+      "Description": "Allows you to select a file on the system and returns its file path"
     }
   ],
   "Outputs": [],
@@ -35,8 +35,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "d934a77a-33ce-4748-95f7-be38366e1836",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "e54cc39f5f964edcb78ad0e82196cd4e",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "150067673489469dbb3f82ac2af506ff",
@@ -52,7 +52,7 @@
         {
           "Id": "fda86b1f27194e6382c4b66acaea8495",
           "Name": "timeSpan",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -66,8 +66,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "37664e1e-4d1f-4f97-a6a8-4f9278251137",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "5289e94808e54887b6b1eb321087b493",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "f1b8f4ed48514476a85bd98518f7e5bf",
@@ -83,7 +83,7 @@
         {
           "Id": "a739de67107f4fefa5e991f840cd9df6",
           "Name": "timeSpan",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -97,8 +97,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "c2c53424-91ea-44e9-b803-16f4d654efac",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "bac3f1fc623c417b8e367c88b29da0e1",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "4d5f09ff250d4e7088ad74701485e722",
@@ -114,7 +114,7 @@
         {
           "Id": "e2ce155031d543e58c87cf41faccac6c",
           "Name": "SyncEvents",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -128,8 +128,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "f78d9021-10b2-478a-a568-d734ce7075fc",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "93bc6c5baa2640478dde977b026f721b",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "7d3b088e30b649fabe9b8adbe6393569",
@@ -145,7 +145,7 @@
         {
           "Id": "47c5af6fb43641c69f4a8acea7aa9f06",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -159,8 +159,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "4a3f4f12-9d8c-435f-a8d4-6ed9afe367f3",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "fadc68317e2e42edb277b87908cc4ff3",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "908328b563d04f77983379c623a197ce",
@@ -176,7 +176,7 @@
         {
           "Id": "33d9a28cc929416abe413f4d783a8e0c",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -190,8 +190,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "a748cc28-ce91-45a3-b1e2-ea2c302023f0",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "8759f7851c81463c9430fce7bf78e72d",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "a4c1d4d7d49f463ba260089e5e87528d",
@@ -207,7 +207,7 @@
         {
           "Id": "949ffa9a848b4ba795e271693e358ab4",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -221,8 +221,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "c61374ae-b6df-4b6f-bf36-c7930874d268",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "1a14d72db8b04dbf98fe1d9e66172618",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "8d2bcee268e84c57a5665e046b862c15",
@@ -238,7 +238,7 @@
         {
           "Id": "c7888e07a94940118ca5c10be4466c4f",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -252,8 +252,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "7d273830-f0e0-408c-8121-916d958c11b2",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "567c133d9d0d4048997daea55e7f0916",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "47b7c6e870f044c18022fdc388319747",
@@ -269,7 +269,7 @@
         {
           "Id": "6fff680f78d14a048c430aba19ae6031",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -283,8 +283,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "aea7f0e2-b85c-4204-b77f-f7d3160e827f",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "6a1569342bb44ebd8614b1509a400c3b",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "84355cec57a441d9b2899e869465e11a",
@@ -300,7 +300,7 @@
         {
           "Id": "f55150b48b0a4d64b777f714103903c8",
           "Name": "int",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -314,8 +314,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "e26bb511-c97b-4f41-b2ea-a6619ebe9fa5",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "b97ac3f8e2214cb583b8b0522845719f",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "2fc0c567f9754552aaadc96ce7708c22",
@@ -331,7 +331,7 @@
         {
           "Id": "2e97ca3cb6ac4c55a1082bd552cb2425",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -345,8 +345,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "45f0da6c-93d6-44ff-ba50-906088f9ad0b",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "b6616ef82e1a4c49ba8ac6185dc7c4b5",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "4aa280e65d6441f6a1a8e07e90e6de55",
@@ -362,7 +362,7 @@
         {
           "Id": "63937b4349ac4dbca32f747c8b185352",
           "Name": "timeSpan",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -376,8 +376,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "ec8eca1b-1b91-4090-9c6c-d45038000cc2",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "125951f658d84f4289c0cb465b707fc5",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "64864d5cca24494bb86fae0546bdb26b",
@@ -393,7 +393,7 @@
         {
           "Id": "d1f364f393704fafb487d1b49d39333e",
           "Name": "worksharingEvents",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -407,8 +407,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "a06fcfd9-a217-41f4-8469-f5e7e53acf5a",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "6ee9c4ea757443f2a700c828b81fc1f6",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "812ee22de99a4d91b74f6b9dd420ea32",
@@ -424,7 +424,7 @@
         {
           "Id": "e27280ec192745658204b6244ecb16ba",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -438,8 +438,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "7de2600e-a165-4798-baf8-6c10914cc340",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "8a3358edbed34cc4a1455018eef9aeb0",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "cc4fc74995b442b59df03ab5f334f787",
@@ -455,7 +455,7 @@
         {
           "Id": "433badf8a87a42f7ba38915a4337a158",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -469,8 +469,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "c4b6f30b-6eba-4e6c-a0c4-38f4679a0f52",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "8746069384014152a4272531f5e41f47",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "b32b3b4a5144464f82aafd1dd0c3d7f4",
@@ -486,7 +486,7 @@
         {
           "Id": "5e42499abfa04c17b9c3155bc4d5b1d0",
           "Name": "worksharingSessions",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -500,8 +500,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "5c3a0926-db83-43b4-9eb4-9e7fe1006016",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "d4f2002ca39640cdb1c37a3c9ba37bef",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "e0eae84648484dd6bfee6e2ed0fd262a",
@@ -517,7 +517,7 @@
         {
           "Id": "2c92368b3e8348ac95ab546ad62a2bd2",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -531,8 +531,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "653839b7-9b27-4644-877b-2461654f2c95",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "988db513065247838672bfa5e85d7ee9",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "441622a300ec4a1a8893495e55091535",
@@ -548,7 +548,7 @@
         {
           "Id": "2d044e4db92a494dbe52188d8a5e0570",
           "Name": "timeSpan",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -562,8 +562,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "1fe317c1-c9b0-4b53-ba97-ba20404b3fe9",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "cc0cc40832724c4d812f706ce127c369",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "8d5d62c9bd714d2e9c925133e32827c0",
@@ -579,7 +579,7 @@
         {
           "Id": "22c9a86d56d14f19baa256677b29de19",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -593,8 +593,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "b4ccc034-d30a-4c2f-805e-6a2ef2b3890d",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "2be4d763455b424e8059024db1c79fbf",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "29b06b5ce5574c52b85b5ffc27e1a4f3",
@@ -610,7 +610,7 @@
         {
           "Id": "dd66f65eaee3413b9e4ac0bfecabd961",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -624,8 +624,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "974e726f-f83e-4efe-a8e9-6302a039945a",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "71f382e75d2049569d3f000201836f75",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "7cd3327b21634fe48296fff3b61fea1d",
@@ -641,7 +641,7 @@
         {
           "Id": "dc8778675f614737acafb351c5f0460e",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -653,10 +653,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\andreas\\Desktop\\NewFileName_backup\\NewFileName.slog",
-      "InputValue": "..\\..\\..\\..\\..\\Desktop\\NewFileName_backup\\NewFileName.slog",
-      "NodeType": "ExtensionNode",
       "Id": "2018aeee636a40a5bd487e72734a2d60",
+      "NodeType": "ExtensionNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -670,14 +668,16 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+      "Description": "Allows you to select a file on the system and returns its file path",
+      "HintPath": "C:\\Users\\andreas\\Desktop\\NewFileName_backup\\NewFileName.slog",
+      "InputValue": "..\\..\\..\\..\\..\\Desktop\\NewFileName_backup\\NewFileName.slog"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "06520d3d-a47d-4bb1-83e4-53e98af14c24",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "513bddc8b6b34695bb5581f5b21a7075",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "65b747c101db4109aad9cdf5a5b572d3",
@@ -693,7 +693,7 @@
         {
           "Id": "9350e75364e849fe8e9ad6bed6195f5b",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -707,8 +707,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "4ad5cfc6-cbf3-48dd-96b1-fb38473109e8",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "0ff75627203e4d818f8f3d8da59909e8",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "9f5b9eaeec544aed8917824a5344f042",
@@ -724,7 +724,7 @@
         {
           "Id": "7c4706e9c4404b3481b1c866a666a02b",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -738,8 +738,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "d9fd7e94-d809-4f23-a5b8-cbdbf8d2649c",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "46f6dab0d5a84d2bb9840f0d2ddf3c8a",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "98c0a3497ebe4103854a8c901f3dc41b",
@@ -755,7 +755,7 @@
         {
           "Id": "ce23f960e38447f1bac345ea3758523b",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -769,8 +769,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "1a2c62fa-2aa5-4541-b4c2-269e36d90aaf",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "a90707b7d6f9499cb06d5420d2493ab3",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "15bc8bdb0ba24f5c85f6ee262ab62a5b",
@@ -786,7 +786,7 @@
         {
           "Id": "1b43c7e74b01489fa1f00d6222b43b95",
           "Name": "int",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -800,8 +800,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "8987d50b-c9fd-4634-bea5-ce0956a541b7",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "a3de4278fc7b43368ffc6708c692f033",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "905dfec29a6841f0bbecbe4e60c58ef9",
@@ -817,7 +817,7 @@
         {
           "Id": "d77b458f2b18496db52a9e9fee791ccd",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -831,8 +831,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "1e569f04-3121-4f94-872a-b758aad2e2a0",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "95cf8be9a55a4c4889365941d4016d9e",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "543be9cca87546e8a0c066613199f5d9",
@@ -848,7 +848,7 @@
         {
           "Id": "65dcd80fa46142e080deca3a978c06aa",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -862,8 +862,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "fc9ef041-9b22-4547-b69f-2f92421f5964",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "1a226a455d5f4d22b31c0a494038c501",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "9bbdd055561d467c9853c9c8a295c3cc",
@@ -888,7 +888,7 @@
         {
           "Id": "d991facc6f2d4f2c9877614c8f589a10",
           "Name": "worksharingSession",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -902,8 +902,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "bdf77345-7072-4a3f-b329-45a4d477391c",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "02ad8d3bd21d4d369b368248b393a8ef",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "d499eac12e344d658faec688b3156699",
@@ -919,7 +919,7 @@
         {
           "Id": "96b6f5fdca7346c982532643f11c06f7",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -933,8 +933,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "9605f14e-7767-492d-a49b-895d4589d982",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "8cacaee62d984de881d713f84edfd04f",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "787481f2f9554d8ea7dbfddd6183bd46",
@@ -950,7 +950,7 @@
         {
           "Id": "54d779225cef41d78347b1d5f9941335",
           "Name": "worksharingLog",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -964,8 +964,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "a1e49042-4fd1-40a4-8687-88f15cb570dc",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "4bfd8fb913434e0e89df5ff8574dde5a",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "c6a5c1e1847c48c79d9233cec0b8996c",
@@ -981,7 +981,7 @@
         {
           "Id": "dd42d87af8e747ca9d54caffbd9d1f8f",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -995,8 +995,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "e2e3e9e7-dd6a-4b28-bb91-9bd1831ef9f2",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "83fa08e851014d2b90d0674c6b2733bd",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "cfeac3e5365848d09b7517cf35c783ce",
@@ -1012,7 +1012,7 @@
         {
           "Id": "1b7d7de74c6a49a8b508642ca41e984b",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1026,8 +1026,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "e06898ef-4120-4b70-9f0b-fd44d8a4c3c2",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "51b376fa0dea4a35be00d0db7d295aad",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "624bea61d9c84260aa1b925be440b1f9",
@@ -1043,7 +1043,7 @@
         {
           "Id": "304dee3d0caf4fd282d05bea262e48d9",
           "Name": "LoadedLinks",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1057,8 +1057,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "3eb9b672-07b8-444c-bc53-9caffa339499",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "928667c7f4da499cbee75fe3caaf41d6",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "f8841472150245f8bfe73d678c664941",
@@ -1074,7 +1074,7 @@
         {
           "Id": "86362218c10f49179607dbf4bff440c8",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1088,8 +1088,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "11e4cc55-e22e-48aa-8956-3c0005aa747b",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "36154e6acb2f4d11aaf45657cee6d6fc",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "15b7b35a0ee54b99aa2d65cf1ba64308",
@@ -1105,7 +1105,7 @@
         {
           "Id": "3ef56f1d274041ce8381a951d053babd",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1119,8 +1119,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "5216ece1-7c1f-4aab-a786-55f0184fba00",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "fb239c1cf5db451195cba5206a254f40",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "201cf36eb4aa48118879c4a6526781a2",
@@ -1136,7 +1136,7 @@
         {
           "Id": "dc32fc1657504230844f92dc8d188f79",
           "Name": "timeSpan",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1150,8 +1150,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "507cf92a-abdd-4b08-a081-30f097b1d99e",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "98d0f608e6884e9fa7fc91694ffa16c0",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "540418bd2ece41049a24d0a9dd2c2cd5",
@@ -1167,7 +1167,7 @@
         {
           "Id": "c1e3893a62c54e28aa7c82627cfaaa9c",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1181,8 +1181,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "7eaaffa4-7663-42de-8413-6357a047084b",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "a25a26091ab44c7eb0d9e6ba606e206d",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "7e82ff8bd72446129717a1659fecf98c",
@@ -1198,7 +1198,7 @@
         {
           "Id": "bd6f335b8aab476a9581d34caf50ef3e",
           "Name": "dateTime",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1212,8 +1212,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "09b4f1fe-8e4c-4bb2-9b2d-ed15ee431ae5",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "2b050189fe004e6aa69c624d92a884cc",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "5639381a791e4cfdad132c0173805d72",
@@ -1229,7 +1229,7 @@
         {
           "Id": "3917307271e5451b9c6fb619cfeb493a",
           "Name": "int",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1243,8 +1243,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "f98018f5-3630-4e4d-892e-b0380f7580dd",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "58b72a86c179477d83963ae232f8a526",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "b33609f719c1489994acdbbe6ca3de87",
@@ -1260,7 +1260,7 @@
         {
           "Id": "aa3525fba56e4450b62be7daa3b46b14",
           "Name": "str",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1274,8 +1274,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "fa1db0f6-bbcb-49c3-b640-e20dc7837c5d",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "84521372dcc2423dafd68dd3d2faec89",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "97fdf43adb7b44fb9377275aa5b80386",
@@ -1291,7 +1291,7 @@
         {
           "Id": "e7443fd9a6e74095bbdd060960eabb99",
           "Name": "bool",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1305,8 +1305,8 @@
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
       "FunctionSignature": "46fa1d1f-35ce-485a-90bb-84170d71e10a",
       "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
       "Id": "fbebb3a6ed344a108b14b1956d5bc855",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "f52e586332e7411caffeb6aa9b62ed05",
@@ -1322,7 +1322,7 @@
         {
           "Id": "422e426742fa49bc961ea3645383f849",
           "Name": "SyncEvents",
-          "Description": "Rückgabewert",
+          "Description": "return value",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1337,212 +1337,254 @@
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "150067673489469dbb3f82ac2af506ff",
-      "Id": "47c05f6868d743ad8e881f0f117bb723"
+      "Id": "47c05f6868d743ad8e881f0f117bb723",
+      "IsHidden": "False"
     },
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "908328b563d04f77983379c623a197ce",
-      "Id": "d7de3b249b9e488aa5a1b687e206530c"
+      "Id": "d7de3b249b9e488aa5a1b687e206530c",
+      "IsHidden": "False"
     },
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "7d3b088e30b649fabe9b8adbe6393569",
-      "Id": "89669076a4364498ab88c5395f951440"
+      "Id": "89669076a4364498ab88c5395f951440",
+      "IsHidden": "False"
     },
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "5639381a791e4cfdad132c0173805d72",
-      "Id": "a2eb5d3126554ad4ade24163abce1dfa"
+      "Id": "a2eb5d3126554ad4ade24163abce1dfa",
+      "IsHidden": "False"
     },
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "97fdf43adb7b44fb9377275aa5b80386",
-      "Id": "4d00a11b58454f6798dc13a4cad08348"
+      "Id": "4d00a11b58454f6798dc13a4cad08348",
+      "IsHidden": "False"
     },
     {
       "Start": "e2ce155031d543e58c87cf41faccac6c",
       "End": "f52e586332e7411caffeb6aa9b62ed05",
-      "Id": "09031ac45c9648f5822fb334aaf03345"
+      "Id": "09031ac45c9648f5822fb334aaf03345",
+      "IsHidden": "False"
     },
     {
       "Start": "d1f364f393704fafb487d1b49d39333e",
       "End": "812ee22de99a4d91b74f6b9dd420ea32",
-      "Id": "4084a140eceb4fb38e96575703242298"
+      "Id": "4084a140eceb4fb38e96575703242298",
+      "IsHidden": "False"
     },
     {
       "Start": "d1f364f393704fafb487d1b49d39333e",
       "End": "cc4fc74995b442b59df03ab5f334f787",
-      "Id": "5513b374594444f5943fad9bbf65a0ea"
+      "Id": "5513b374594444f5943fad9bbf65a0ea",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "4d5f09ff250d4e7088ad74701485e722",
-      "Id": "57f186c926714f33beb06c07e3a1d452"
+      "Id": "57f186c926714f33beb06c07e3a1d452",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "a4c1d4d7d49f463ba260089e5e87528d",
-      "Id": "6760bce87076431bbaf7c582a7f1be35"
+      "Id": "6760bce87076431bbaf7c582a7f1be35",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "8d2bcee268e84c57a5665e046b862c15",
-      "Id": "083bd01819d54ab0acf7bfb15923029b"
+      "Id": "083bd01819d54ab0acf7bfb15923029b",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "47b7c6e870f044c18022fdc388319747",
-      "Id": "70278f07e03b46179eb73e99ea342086"
+      "Id": "70278f07e03b46179eb73e99ea342086",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "2fc0c567f9754552aaadc96ce7708c22",
-      "Id": "f4285a9596c24e70ba1bc88308dde118"
+      "Id": "f4285a9596c24e70ba1bc88308dde118",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "4aa280e65d6441f6a1a8e07e90e6de55",
-      "Id": "4e8a44e056fe4dde865f7a4b370e739a"
+      "Id": "4e8a44e056fe4dde865f7a4b370e739a",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "64864d5cca24494bb86fae0546bdb26b",
-      "Id": "19ba9c052779474c9f6cefe7e35907b8"
+      "Id": "19ba9c052779474c9f6cefe7e35907b8",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "29b06b5ce5574c52b85b5ffc27e1a4f3",
-      "Id": "437e7db362c24068b01b16576f9b7f41"
+      "Id": "437e7db362c24068b01b16576f9b7f41",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "98c0a3497ebe4103854a8c901f3dc41b",
-      "Id": "1779c8ff8ea343798e5fb49e7211b3df"
+      "Id": "1779c8ff8ea343798e5fb49e7211b3df",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "15bc8bdb0ba24f5c85f6ee262ab62a5b",
-      "Id": "40123c45ab6849c2ba77954e661e1f50"
+      "Id": "40123c45ab6849c2ba77954e661e1f50",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "7cd3327b21634fe48296fff3b61fea1d",
-      "Id": "20e169aef2654e0784fe9b4d44d5b220"
+      "Id": "20e169aef2654e0784fe9b4d44d5b220",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "e0eae84648484dd6bfee6e2ed0fd262a",
-      "Id": "f4afff0594214dafa88aa6c59a51ccf2"
+      "Id": "f4afff0594214dafa88aa6c59a51ccf2",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "65b747c101db4109aad9cdf5a5b572d3",
-      "Id": "e5c0a22148d7425abfeea7f8cb1b2550"
+      "Id": "e5c0a22148d7425abfeea7f8cb1b2550",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "9f5b9eaeec544aed8917824a5344f042",
-      "Id": "e3bf43bd33454e3ea46dafd18563523b"
+      "Id": "e3bf43bd33454e3ea46dafd18563523b",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "905dfec29a6841f0bbecbe4e60c58ef9",
-      "Id": "763023361dd34c8bbc521c2a41076e57"
+      "Id": "763023361dd34c8bbc521c2a41076e57",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "f1b8f4ed48514476a85bd98518f7e5bf",
-      "Id": "d7f3ac4aa0d947158ecb6f51894646c1"
+      "Id": "d7f3ac4aa0d947158ecb6f51894646c1",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "d499eac12e344d658faec688b3156699",
-      "Id": "669e3149e2c149fbb65adb59b153f23d"
+      "Id": "669e3149e2c149fbb65adb59b153f23d",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "c6a5c1e1847c48c79d9233cec0b8996c",
-      "Id": "aec9e830d5e9405e88c896aa55bdf591"
+      "Id": "aec9e830d5e9405e88c896aa55bdf591",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "cfeac3e5365848d09b7517cf35c783ce",
-      "Id": "6e86dde17d3144c89ec494edf9f7882e"
+      "Id": "6e86dde17d3144c89ec494edf9f7882e",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "624bea61d9c84260aa1b925be440b1f9",
-      "Id": "595ca6ccd1f6453faba4623c5cd8de8f"
+      "Id": "595ca6ccd1f6453faba4623c5cd8de8f",
+      "IsHidden": "False"
     },
     {
       "Start": "5e42499abfa04c17b9c3155bc4d5b1d0",
       "End": "b33609f719c1489994acdbbe6ca3de87",
-      "Id": "a5ee9de82a2f491ba3aa915e20613a7c"
+      "Id": "a5ee9de82a2f491ba3aa915e20613a7c",
+      "IsHidden": "False"
     },
     {
       "Start": "dd66f65eaee3413b9e4ac0bfecabd961",
       "End": "9f6b1ee449974d309731e05c216bcd2a",
-      "Id": "19b9560fa93f4a59ab664e2b3aa60a5b"
+      "Id": "19b9560fa93f4a59ab664e2b3aa60a5b",
+      "IsHidden": "False"
     },
     {
       "Start": "dd876fc70d124f3587e374405893689d",
       "End": "787481f2f9554d8ea7dbfddd6183bd46",
-      "Id": "24b4aa82874d4e10b7b995627a09cf6d"
+      "Id": "24b4aa82874d4e10b7b995627a09cf6d",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "84355cec57a441d9b2899e869465e11a",
-      "Id": "440c677b174a406bb92fe39b1bc604d2"
+      "Id": "440c677b174a406bb92fe39b1bc604d2",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "441622a300ec4a1a8893495e55091535",
-      "Id": "7135640479ba443f8d256f4d0982cff6"
+      "Id": "7135640479ba443f8d256f4d0982cff6",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "b32b3b4a5144464f82aafd1dd0c3d7f4",
-      "Id": "e9d54a0a3c1a4fc883d50a764ebe749f"
+      "Id": "e9d54a0a3c1a4fc883d50a764ebe749f",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "8d5d62c9bd714d2e9c925133e32827c0",
-      "Id": "4a4722dde1974458a69ccbb6853a72e7"
+      "Id": "4a4722dde1974458a69ccbb6853a72e7",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "9bbdd055561d467c9853c9c8a295c3cc",
-      "Id": "0d2753dd8cf54e739fdcfadc1ad9cdea"
+      "Id": "0d2753dd8cf54e739fdcfadc1ad9cdea",
+      "IsHidden": "False"
     },
     {
       "Start": "54d779225cef41d78347b1d5f9941335",
       "End": "543be9cca87546e8a0c066613199f5d9",
-      "Id": "2ca2197a4e7e4b5e9135f2093b7ce21c"
+      "Id": "2ca2197a4e7e4b5e9135f2093b7ce21c",
+      "IsHidden": "False"
     },
     {
       "Start": "304dee3d0caf4fd282d05bea262e48d9",
       "End": "f8841472150245f8bfe73d678c664941",
-      "Id": "c5a7168b4c584c56b932f2490d8f2794"
+      "Id": "c5a7168b4c584c56b932f2490d8f2794",
+      "IsHidden": "False"
     },
     {
       "Start": "304dee3d0caf4fd282d05bea262e48d9",
       "End": "15b7b35a0ee54b99aa2d65cf1ba64308",
-      "Id": "9f4dab6258b64ef38ea0e24582cc4cc3"
+      "Id": "9f4dab6258b64ef38ea0e24582cc4cc3",
+      "IsHidden": "False"
     },
     {
       "Start": "304dee3d0caf4fd282d05bea262e48d9",
       "End": "201cf36eb4aa48118879c4a6526781a2",
-      "Id": "37053340ae6d4972ac035707e8b50d3c"
+      "Id": "37053340ae6d4972ac035707e8b50d3c",
+      "IsHidden": "False"
     },
     {
       "Start": "304dee3d0caf4fd282d05bea262e48d9",
       "End": "540418bd2ece41049a24d0a9dd2c2cd5",
-      "Id": "dade5923086b4d789975cc5c194c1ea5"
+      "Id": "dade5923086b4d789975cc5c194c1ea5",
+      "IsHidden": "False"
     },
     {
       "Start": "304dee3d0caf4fd282d05bea262e48d9",
       "End": "7e82ff8bd72446129717a1659fecf98c",
-      "Id": "5570b730b576452a9592f90660d1c50a"
+      "Id": "5570b730b576452a9592f90660d1c50a",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [
@@ -1591,7 +1633,7 @@
   "NodeLibraryDependencies": [
     {
       "Name": "Journalysis for Dynamo 2.x",
-      "Version": "2.3.1",
+      "Version": "2.4.0",
       "ReferenceType": "Package",
       "Nodes": [
         "e54cc39f5f964edcb78ad0e82196cd4e",
@@ -1638,8 +1680,9 @@
       ]
     }
   ],
-  "Thumbnail": null,
-  "GraphDocumentationURL": null,
+  "EnableLegacyPolyCurveBehavior": true,
+  "Thumbnail": "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",
+  "GraphDocumentationURL": "https://github.com/andydandy74/Journalysis",
   "ExtensionWorkspaceData": [
     {
       "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
@@ -1654,9 +1697,9 @@
       "Data": {}
     }
   ],
-  "Author": "None provided",
+  "Author": "Andreas Dieckmann",
   "Linting": {
-    "activeLinter": "Keine",
+    "activeLinter": "None",
     "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
     "warningCount": 0,
     "errorCount": 0
@@ -1667,12 +1710,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.0.5650",
+      "Version": "3.0.3.7597",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -1683,483 +1726,506 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "SyncEvent.Duration",
         "Id": "e54cc39f5f964edcb78ad0e82196cd4e",
+        "Name": "SyncEvent.Duration",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 857.937701146361,
-        "Y": -850.006912014997
+        "ShowGeometry": true,
+        "X": -371.6507252626168,
+        "Y": -850.1247017754345
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.LoadDuration",
         "Id": "5289e94808e54887b6b1eb321087b493",
+        "Name": "WorksharingSession.LoadDuration",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 367.73118549839,
-        "Y": -1102.70227167096
+        "ShowGeometry": true,
+        "X": -1021.2547725970983,
+        "Y": -1186.9828014577893
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.SyncEvents",
         "Id": "bac3f1fc623c417b8e367c88b29da0e1",
+        "Name": "WorksharingSession.SyncEvents",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 360.020975988875,
-        "Y": -899.419192071994
+        "ShowGeometry": true,
+        "X": -1028.9649821066132,
+        "Y": -883.6997218588232
       },
       {
-        "ShowGeometry": true,
-        "Name": "SyncEvent.End",
         "Id": "93bc6c5baa2640478dde977b026f721b",
+        "Name": "SyncEvent.End",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 857.169044959181,
-        "Y": -742.098702583473
+        "ShowGeometry": true,
+        "X": -372.4193814497968,
+        "Y": -697.2164923439104
       },
       {
-        "ShowGeometry": true,
-        "Name": "SyncEvent.Start",
         "Id": "fadc68317e2e42edb277b87908cc4ff3",
+        "Name": "SyncEvent.Start",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 870.467653787381,
-        "Y": -538.161579313747
+        "ShowGeometry": true,
+        "X": -359.12077262159676,
+        "Y": -398.27936907418416
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Build",
         "Id": "8759f7851c81463c9430fce7bf78e72d",
+        "Name": "WorksharingSession.Build",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 342.510149662054,
-        "Y": -521.487521545036
+        "ShowGeometry": true,
+        "X": -1025.6922767483902,
+        "Y": -330.51955144809324
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Central",
         "Id": "1a14d72db8b04dbf98fe1d9e66172618",
+        "Name": "WorksharingSession.Central",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 341.22910330646,
-        "Y": -425.853995862256
+        "ShowGeometry": true,
+        "X": -1026.9733231039843,
+        "Y": -179.88602576531326
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Date",
         "Id": "567c133d9d0d4048997daea55e7f0916",
+        "Name": "WorksharingSession.Date",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 340.791702450083,
-        "Y": -324.567948237156
+        "ShowGeometry": true,
+        "X": -1027.4107239603613,
+        "Y": -28.599978140213267
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.SessionCount",
         "Id": "6a1569342bb44ebd8614b1509a400c3b",
+        "Name": "WorksharingLog.SessionCount",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -383.050353002324,
-        "Y": -816.280413738068
+        "ShowGeometry": true,
+        "X": -1596.4236681714622,
+        "Y": 234.92527821489682
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.End",
         "Id": "b97ac3f8e2214cb583b8b0522845719f",
+        "Name": "WorksharingSession.End",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 341.900523381351,
-        "Y": -127.290954407016
+        "ShowGeometry": true,
+        "X": -1026.3019030290934,
+        "Y": 268.67701568992675
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Duration",
         "Id": "b6616ef82e1a4c49ba8ac6185dc7c4b5",
+        "Name": "WorksharingSession.Duration",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 342.483631090699,
-        "Y": -226.383351338446
+        "ShowGeometry": true,
+        "X": -1025.7187953197454,
+        "Y": 119.58461875849673
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Events",
         "Id": "125951f658d84f4289c0cb465b707fc5",
+        "Name": "WorksharingSession.Events",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 341.741219295336,
-        "Y": -28.1064827590951
+        "ShowGeometry": true,
+        "X": -1026.4612071151082,
+        "Y": 417.8614873378476
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingEvent.DateTime",
         "Id": "6ee9c4ea757443f2a700c828b81fc1f6",
+        "Name": "WorksharingEvent.DateTime",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 836.372961130837,
-        "Y": -43.7366204457972
+        "ShowGeometry": true,
+        "X": -355.64019007489514,
+        "Y": 281.3768175357279
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingEvent.Text",
         "Id": "8a3358edbed34cc4a1455018eef9aeb0",
+        "Name": "WorksharingEvent.Text",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 835.988876804465,
-        "Y": 64.2514710737127
+        "ShowGeometry": true,
+        "X": -356.0242744012671,
+        "Y": 429.36490905523794
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.Sessions",
         "Id": "8746069384014152a4272531f5e41f47",
+        "Name": "WorksharingLog.Sessions",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -389.196076316862,
-        "Y": -615.863347792238
+        "ShowGeometry": true,
+        "X": -1602.569391486,
+        "Y": 530.3423441607268
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.HostName",
         "Id": "d4f2002ca39640cdb1c37a3c9ba37bef",
+        "Name": "WorksharingSession.HostName",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 339.029250774803,
-        "Y": 165.979503545754
+        "ShowGeometry": true,
+        "X": -1029.1731756356412,
+        "Y": 716.9474736426968
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.ProcessingTime",
         "Id": "988db513065247838672bfa5e85d7ee9",
+        "Name": "WorksharingLog.ProcessingTime",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -386.09239665132,
-        "Y": -718.519053216359
+        "ShowGeometry": true,
+        "X": -1599.4657118204582,
+        "Y": 382.6866387366058
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.Version",
         "Id": "cc0cc40832724c4d812f706ce127c369",
+        "Name": "WorksharingLog.Version",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -388.839555309409,
-        "Y": -521.575887929138
+        "ShowGeometry": true,
+        "X": -1602.212870478547,
+        "Y": 684.6298040238268
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.ID",
         "Id": "2be4d763455b424e8059024db1c79fbf",
+        "Name": "WorksharingSession.ID",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 336.234680112756,
-        "Y": 261.921462799764
+        "ShowGeometry": true,
+        "X": -1031.9677462976883,
+        "Y": 872.8894328967067
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Journal",
         "Id": "71f382e75d2049569d3f000201836f75",
+        "Name": "WorksharingSession.Journal",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 337.215760614559,
-        "Y": 360.743876306604
+        "ShowGeometry": true,
+        "X": -1030.9866657958853,
+        "Y": 1021.7118464035468
       },
       {
-        "ShowGeometry": true,
-        "Name": "Worksharing Log File Path",
         "Id": "2018aeee636a40a5bd487e72734a2d60",
+        "Name": "Worksharing Log File Path",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1334.55414314247,
-        "Y": -719.464211875573
+        "ShowGeometry": true,
+        "X": -2708.315885029368,
+        "Y": 406.74148007739177
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.ServerName",
         "Id": "513bddc8b6b34695bb5581f5b21a7075",
+        "Name": "WorksharingSession.ServerName",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 335.747657678522,
-        "Y": 548.736043852014
+        "ShowGeometry": true,
+        "X": -1032.4547687319223,
+        "Y": 1319.7040139489568
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Start",
         "Id": "0ff75627203e4d818f8f3d8da59909e8",
+        "Name": "WorksharingSession.Start",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 334.786656856828,
-        "Y": 645.841085894414
+        "ShowGeometry": true,
+        "X": -1033.4157695536164,
+        "Y": 1466.8090559913567
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.User",
         "Id": "46f6dab0d5a84d2bb9840f0d2ddf3c8a",
+        "Name": "WorksharingSession.User",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 338.796015485099,
-        "Y": 746.166594971856
+        "ShowGeometry": true,
+        "X": -1029.4064109253454,
+        "Y": 1617.1345650687986
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Version",
         "Id": "a90707b7d6f9499cb06d5420d2493ab3",
+        "Name": "WorksharingSession.Version",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 336.21315550566,
-        "Y": 850.081530228166
+        "ShowGeometry": true,
+        "X": -1031.9892709047845,
+        "Y": 1766.0495003251085
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.WasTerminatedProperly",
         "Id": "a3de4278fc7b43368ffc6708c692f033",
+        "Name": "WorksharingSession.WasTerminatedProperly",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 364.244809389625,
-        "Y": -695.640856746855
+        "ShowGeometry": true,
+        "X": -1024.7411487058632,
+        "Y": -584.9213865336842
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.AllSessionsUseSameBuild",
         "Id": "95cf8be9a55a4c4889365941d4016d9e",
+        "Name": "WorksharingLog.AllSessionsUseSameBuild",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -388.753616069544,
-        "Y": -1125.30211098642
+        "ShowGeometry": true,
+        "X": -356.20722861942227,
+        "Y": 704.6171120652092
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.SessionByID",
         "Id": "1a226a455d5f4d22b31c0a494038c501",
+        "Name": "WorksharingLog.SessionByID",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -390.717875195678,
-        "Y": -1029.51394689268
+        "ShowGeometry": true,
+        "X": -358.1714877455562,
+        "Y": 860.4052761589495
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.HasLoadedLinks",
         "Id": "02ad8d3bd21d4d369b368248b393a8ef",
+        "Name": "WorksharingSession.HasLoadedLinks",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 374.965461893492,
-        "Y": -1206.40160931757
+        "ShowGeometry": true,
+        "X": -1014.0204962019964,
+        "Y": -1335.6821391043995
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingLog.ByPath",
         "Id": "8cacaee62d984de881d713f84edfd04f",
+        "Name": "WorksharingLog.ByPath",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -856.927595913265,
-        "Y": -720.181499419774
+        "ShowGeometry": true,
+        "X": -2070.300911082403,
+        "Y": 406.0241925331908
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.HostAddress",
         "Id": "4bfd8fb913434e0e89df5ff8574dde5a",
+        "Name": "WorksharingSession.HostAddress",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 341.481840850844,
-        "Y": 69.3210266242057
+        "ShowGeometry": true,
+        "X": -1026.7205855596003,
+        "Y": 565.2889967211485
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.ServerAddress",
         "Id": "83fa08e851014d2b90d0674c6b2733bd",
+        "Name": "WorksharingSession.ServerAddress",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 335.80214170611,
-        "Y": 451.280794107554
+        "ShowGeometry": true,
+        "X": -1032.4002847043344,
+        "Y": 1172.2487642044966
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.LoadedLinks",
         "Id": "51b376fa0dea4a35be00d0db7d295aad",
+        "Name": "WorksharingSession.LoadedLinks",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 363.774825317039,
-        "Y": -1001.36691553627
+        "ShowGeometry": true,
+        "X": -1025.2111327784492,
+        "Y": -1030.6474453230992
       },
       {
-        "ShowGeometry": true,
-        "Name": "LoadedLink.FileName",
         "Id": "928667c7f4da499cbee75fe3caaf41d6",
+        "Name": "LoadedLink.FileName",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 848.449380637499,
-        "Y": -1464.0984209144
+        "ShowGeometry": true,
+        "X": -368.7650060557057,
+        "Y": -1710.9775347771215
       },
       {
-        "ShowGeometry": true,
-        "Name": "LoadedLink.FullPath",
         "Id": "36154e6acb2f4d11aaf45657cee6d6fc",
+        "Name": "LoadedLink.FullPath",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 849.816214004989,
-        "Y": -1353.42008519042
+        "ShowGeometry": true,
+        "X": -367.3981726882157,
+        "Y": -1560.2991990531414
       },
       {
-        "ShowGeometry": true,
-        "Name": "LoadedLink.LoadDuration",
         "Id": "fb239c1cf5db451195cba5206a254f40",
+        "Name": "LoadedLink.LoadDuration",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 848.449380637499,
-        "Y": -1240.00808273147
+        "ShowGeometry": true,
+        "X": -368.7650060557057,
+        "Y": -1406.8871965941912
       },
       {
-        "ShowGeometry": true,
-        "Name": "LoadedLink.LoadEnd",
         "Id": "98d0f608e6884e9fa7fc91694ffa16c0",
+        "Name": "LoadedLink.LoadEnd",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 849.816214004989,
-        "Y": -1129.76191343509
+        "ShowGeometry": true,
+        "X": -367.3981726882157,
+        "Y": -1256.6410272978114
       },
       {
-        "ShowGeometry": true,
-        "Name": "LoadedLink.LoadStart",
         "Id": "a25a26091ab44c7eb0d9e6ba606e206d",
+        "Name": "LoadedLink.LoadStart",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 848.449380637499,
-        "Y": -1019.98307760865
+        "ShowGeometry": true,
+        "X": -368.7650060557057,
+        "Y": -1106.8621914713713
       },
       {
-        "ShowGeometry": true,
-        "Name": "SyncEvent.ReloadLatestCount",
         "Id": "2b050189fe004e6aa69c624d92a884cc",
+        "Name": "SyncEvent.ReloadLatestCount",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 865.322743777692,
-        "Y": -636.255937230545
+        "ShowGeometry": true,
+        "X": -364.2656826312857,
+        "Y": -546.3737269909823
       },
       {
-        "ShowGeometry": true,
-        "Name": "WorksharingSession.Type",
         "Id": "58b72a86c179477d83963ae232f8a526",
+        "Name": "WorksharingSession.Type",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 361.516089666903,
-        "Y": -793.583663755685
+        "ShowGeometry": true,
+        "X": -1027.4698684285854,
+        "Y": -732.8641935425143
       },
       {
-        "ShowGeometry": true,
-        "Name": "SyncEvent.WasAborted",
         "Id": "84521372dcc2423dafd68dd3d2faec89",
+        "Name": "SyncEvent.WasAborted",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 866.622606120702,
-        "Y": -421.959748582748
+        "ShowGeometry": true,
+        "X": -362.9658202882757,
+        "Y": -247.0775383431852
       },
       {
-        "ShowGeometry": true,
-        "Name": "Helpers.FindSyncEventOverlaps",
         "Id": "fbebb3a6ed344a108b14b1956d5bc855",
+        "Name": "Helpers.FindSyncEventOverlaps",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 854.150254285528,
-        "Y": -236.953648721216
+        "ShowGeometry": true,
+        "X": -366.1576423366198,
+        "Y": -7.863491679210483
       }
     ],
     "Annotations": [
       {
         "Id": "7f0af76a43ec4354bbde87daeb7c6821",
         "Title": "INPUT",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "2018aeee636a40a5bd487e72734a2d60"
         ],
-        "Left": -1344.55414314247,
-        "Top": -765.464211875573,
-        "Width": 345.0,
-        "Height": 140.0,
+        "HasNestedGroups": false,
+        "Left": -2718.315885029368,
+        "Top": 340.74148007739177,
+        "Width": 472.8000000000002,
+        "Height": 207.39999999999998,
         "FontSize": 30.0,
-        "InitialTop": -719.464211875573,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 406.74148007739177,
         "InitialHeight": 145.0,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FF848484"
       },
       {
         "Id": "22d73219f35a4177aa6ab62f3583f774",
         "Title": "WorksharingLog.Create",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "8cacaee62d984de881d713f84edfd04f"
         ],
-        "Left": -866.927595913265,
-        "Top": -766.181499419774,
-        "Width": 318.76000000000005,
-        "Height": 139.0,
+        "HasNestedGroups": false,
+        "Left": -2080.300911082403,
+        "Top": 340.0241925331908,
+        "Width": 328.76000000000005,
+        "Height": 197.79999999999995,
         "FontSize": 30.0,
-        "InitialTop": -720.181499419774,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 406.0241925331908,
         "InitialHeight": 145.0,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "144cdd00d41c471ea3b7a5c3e566620c",
         "Title": "WorksharingLog.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "6a1569342bb44ebd8614b1509a400c3b",
           "8746069384014152a4272531f5e41f47",
           "988db513065247838672bfa5e85d7ee9",
           "cc0cc40832724c4d812f706ce127c369"
         ],
-        "Left": -399.196076316862,
-        "Top": -862.280413738068,
-        "Width": 363.0,
-        "Height": 433.70452580892993,
+        "HasNestedGroups": false,
+        "Left": -1612.569391486,
+        "Top": 168.92527821489682,
+        "Width": 364.0,
+        "Height": 647.5045258089299,
         "FontSize": 30.0,
-        "InitialTop": -816.280413738068,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 234.92527821489682,
         "InitialHeight": 439.70452580892993,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "dc5adca4dca744fda461d236c133543a",
         "Title": "WorksharingSession.Actions",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "5289e94808e54887b6b1eb321087b493",
           "bac3f1fc623c417b8e367c88b29da0e1",
@@ -2168,19 +2234,25 @@
           "51b376fa0dea4a35be00d0db7d295aad",
           "58b72a86c179477d83963ae232f8a526"
         ],
-        "Left": 350.020975988875,
-        "Top": -1252.40160931757,
-        "Width": 380.41333333333336,
-        "Height": 649.76075257071511,
+        "HasNestedGroups": false,
+        "Left": -1038.9649821066132,
+        "Top": -1401.6821391043995,
+        "Width": 433.02383340074994,
+        "Height": 948.5607525707153,
         "FontSize": 30.0,
-        "InitialTop": -1206.40160931757,
-        "InitialHeight": 655.76075257071511,
-        "TextblockHeight": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1335.6821391043995,
+        "InitialHeight": 655.7607525707151,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "657520e2469441faba67bb499afa9437",
         "Title": "WorksharingSession.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "8759f7851c81463c9430fce7bf78e72d",
           "1a14d72db8b04dbf98fe1d9e66172618",
@@ -2198,53 +2270,71 @@
           "83fa08e851014d2b90d0674c6b2733bd",
           "4bfd8fb913434e0e89df5ff8574dde5a"
         ],
-        "Left": 324.786656856828,
-        "Top": -567.487521545036,
-        "Width": 381.954562438508,
-        "Height": 1510.5690517732019,
+        "HasNestedGroups": false,
+        "Left": -1043.4157695536164,
+        "Top": -396.51955144809324,
+        "Width": 382.15456243850826,
+        "Height": 2294.3690517732016,
         "FontSize": 30.0,
-        "InitialTop": -521.487521545036,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -330.51955144809324,
         "InitialHeight": 1516.5690517732019,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "9793f99e84e44508be96d81d19525e86",
         "Title": "WorksharingEvent.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "6ee9c4ea757443f2a700c828b81fc1f6",
           "8a3358edbed34cc4a1455018eef9aeb0"
         ],
-        "Left": 825.988876804465,
-        "Top": -89.7366204457972,
-        "Width": 336.19333333333333,
-        "Height": 246.98809151950991,
+        "HasNestedGroups": false,
+        "Left": -366.0242744012671,
+        "Top": 215.37681753572792,
+        "Width": 346.1933333333333,
+        "Height": 345.78809151951,
         "FontSize": 30.0,
-        "InitialTop": -43.7366204457972,
-        "InitialHeight": 252.98809151950991,
-        "TextblockHeight": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 281.3768175357279,
+        "InitialHeight": 252.9880915195099,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "b4aea97dbe0a4dadb5f8b2ab1475b547",
         "Title": "WorksharingLog.Actions",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "95cf8be9a55a4c4889365941d4016d9e",
           "1a226a455d5f4d22b31c0a494038c501"
         ],
-        "Left": -400.717875195678,
-        "Top": -1171.30211098642,
-        "Width": 357.0,
-        "Height": 260.78816409374008,
+        "HasNestedGroups": false,
+        "Left": -368.1714877455562,
+        "Top": 638.6171120652092,
+        "Width": 415.56425912613395,
+        "Height": 383.98816409374024,
         "FontSize": 30.0,
-        "InitialTop": -1125.30211098642,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": 704.6171120652092,
         "InitialHeight": 240.78816409374008,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "b15165b40d364c4585558465a51d87a4",
         "Title": "SyncEvent.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "e54cc39f5f964edcb78ad0e82196cd4e",
           "93bc6c5baa2640478dde977b026f721b",
@@ -2252,19 +2342,25 @@
           "2b050189fe004e6aa69c624d92a884cc",
           "84521372dcc2423dafd68dd3d2faec89"
         ],
-        "Left": 847.169044959181,
-        "Top": -896.006912014997,
-        "Width": 270.29860882820014,
-        "Height": 567.04716343224914,
+        "HasNestedGroups": false,
+        "Left": -382.4193814497968,
+        "Top": -916.1247017754345,
+        "Width": 324.9536988185111,
+        "Height": 800.8471634322493,
         "FontSize": 30.0,
-        "InitialTop": -850.006912014997,
-        "InitialHeight": 573.04716343224914,
-        "TextblockHeight": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -850.1247017754345,
+        "InitialHeight": 573.0471634322491,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "54a7b6f8b3534b5a99eeeb4c903c785f",
         "Title": "LoadedLink.Query",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "928667c7f4da499cbee75fe3caaf41d6",
           "36154e6acb2f4d11aaf45657cee6d6fc",
@@ -2272,35 +2368,43 @@
           "98d0f608e6884e9fa7fc91694ffa16c0",
           "a25a26091ab44c7eb0d9e6ba606e206d"
         ],
-        "Left": 838.449380637499,
-        "Top": -1510.0984209144,
-        "Width": 263.36683336749,
-        "Height": 583.11534330575012,
+        "HasNestedGroups": false,
+        "Left": -378.7650060557057,
+        "Top": -1776.9775347771215,
+        "Width": 283.2,
+        "Height": 801.9153433057502,
         "FontSize": 30.0,
-        "InitialTop": -1464.0984209144,
-        "InitialHeight": 589.11534330575012,
-        "TextblockHeight": 36.0,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -1710.9775347771215,
+        "InitialHeight": 589.1153433057501,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "7f2a1e09308b49a49ede383090b5754d",
         "Title": "WorksharingLog.Helpers",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
         "Nodes": [
           "fbebb3a6ed344a108b14b1956d5bc855"
         ],
-        "Left": 844.150254285528,
-        "Top": -282.95364872121604,
-        "Width": 333.69,
-        "Height": 139.00000000000003,
+        "HasNestedGroups": false,
+        "Left": -376.1576423366198,
+        "Top": -73.86349167921048,
+        "Width": 343.69,
+        "Height": 197.8,
         "FontSize": 30.0,
-        "InitialTop": -236.953648721216,
+        "GroupStyleId": "00000000-0000-0000-0000-000000000000",
+        "InitialTop": -7.863491679210483,
         "InitialHeight": 145.00000000000003,
-        "TextblockHeight": 36.0,
+        "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 847.24091930260124,
-    "Y": 610.209403713096,
-    "Zoom": 0.3962912570800583
+    "X": 688.591889328,
+    "Y": 311.08229101339526,
+    "Zoom": 0.16428169587276908
   }
 }
