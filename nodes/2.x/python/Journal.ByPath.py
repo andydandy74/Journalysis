@@ -109,13 +109,13 @@ class Journal:
 				if len(foundByGUID) > 0: foundByGUID[0].Events.append(apimsg)
 		return loadedAssemblies
 	def GetMaxRAMPeak(self):
-		return max([x.RAMPeak for x in self.GetLinesByType('JournalMemoryMetrics')])
+		return max([x.RAMPeak for x in self.GetLinesByType('JournalMemoryMetrics') if x.RAMPeak])
 	def GetMaxVMPeak(self):
-		return max([x.VMPeak for x in self.GetLinesByType('JournalMemoryMetrics')])
+		return max([x.VMPeak for x in self.GetLinesByType('JournalMemoryMetrics') if x.VMPeak])
 	def GetMinRAMAvailable(self):
-		return min([x.RAMAvailable for x in self.GetLinesByType('JournalMemoryMetrics')])
+		return min([x.RAMAvailable for x in self.GetLinesByType('JournalMemoryMetrics') if x.RAMAvailable])
 	def GetMinVMAvailable(self):
-		return min([x.VMAvailable for x in self.GetLinesByType('JournalMemoryMetrics')])
+		return min([x.VMAvailable for x in self.GetLinesByType('JournalMemoryMetrics') if x.VMAvailable])
 	def GetSessionTime(self):
 		ts = self.GetLinesByType('JournalTimeStamp')
 		return ts[-1].DateTime - ts[0].DateTime
