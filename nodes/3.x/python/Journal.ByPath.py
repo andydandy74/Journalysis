@@ -495,7 +495,7 @@ def JournalFromPath(path):
 			elif line.Type == 'JournalWorksharingEvent':
 				ws = line.RawText.split(':< SLOG ')[-1].split()
 				line.SessionID = ws[0]
-				if len(ws) > 2: line.DateTime = time.strptime(ws[1] + " " + ws[2], "%Y-%m-%d %H:%M:%S.%f")
+				if len(ws) > 2: line.DateTime = DateTime.Parse(ws[1] + " " + ws[2])
 				if len(ws) > 3: line.Text = ' '.join(ws[3:])
 			elif line.Type == 'JournalSystemInformation':
 				si = line.RawText.split(':<    ')[-1].split(' : ')
