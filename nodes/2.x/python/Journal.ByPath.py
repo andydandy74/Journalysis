@@ -462,7 +462,8 @@ def JournalFromPath(path):
 				elif line.MessageText.startswith("Unregistering"): line.MessageType = "UnregisteringEvent"
 				elif line.MessageText.startswith("Restoring command id"): line.MessageType = "RestoringCommandID"
 				elif line.MessageText.startswith("API unregistering command"): line.MessageType = "UnregisteringCommandEvent"
-				elif line.MessageText.startswith("System."): line.MessageType = "Exception"
+				elif "Assembly version conflict" in line.MessageText: line.MessageType = "AssemblyVersionConflict"
+				elif line.MessageText.startswith("An external service execution throws") or  line.MessageText.startswith("System."): line.MessageType = "Exception"
 				else: line.MessageType = "Unknown"
 			elif line.Type == 'JournalDirective':
 				d1 = line.RawText.split('"  , ')
