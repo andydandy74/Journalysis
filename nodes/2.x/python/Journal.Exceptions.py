@@ -73,12 +73,22 @@ def journalGetExceptions(journal):
 					if len(lp1) > 1:
 						newexc.Type = "External Command Registration Exception"
 						newexc.Message = lp1[1]
-					elif "OpenStream FileException" in line.RawText: newexc.Type = "OpenStream FileException"
+					elif "OpenStream FileException" in line.RawText: 
+						newexc.Type = "OpenStream FileException"
+						newexc.Message = line.RawText.split("OpenStream FileException",1)[1].strip()
 					elif "exceptionsInOnOpenDocument" in line.RawText:
 						addnewexc = False
 						lp3 = line.RawText.split("<<")
 						if len(lp3) > 1: excobjs[-1].Message = excobjs[-1].Message + " " + lp3[1]
-					elif len(lp2) > 1: newexc.Message = lp2[1]
+					elif len(lp2) > 1: 
+						if "ExceptionProxy:" in lp2[1]:
+							lp3 = lp2[1].split(": ",1)
+							newexc.Type = lp3[0]
+							if len(lp3) > 1:
+								lp4 = lp3[1].split(" at",1)
+								newexc.Message = lp4[0]
+								if len(lp4) > 1: newexc.StackTrace = "at" + lp4[1]
+						else: newexc.Message = lp2[1]
 					else: newexc.Message = line.RawText
 			else: newexc.Message = line.RawText
 			if addnewexc: excobjs.append(newexc)

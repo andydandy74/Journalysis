@@ -415,6 +415,7 @@ def JournalFromPath(path):
 					# append linebreaks in API Messages
 					if line[1] != " " and lineObjs[-1].Type == 'JournalAPIMessage' and not lineObjs[-1].RawText.endswith("}"): lineObjs[-1].RawText += " " + line[1:]
 					elif line[1] != " " and lineObjs[-1].Type == 'JournalTimeStamp': lineObjs[-1].RawText += " " + line[1:]
+					elif line.StartsWith("'   ") and lineObjs[-1].Type == 'JournalComment' and ":<" not in line: lineObjs[-1].RawText += line[3:]
 					elif sysinfoStarted:
 						if ":< PROCESSOR INFORMATION:" in line: 
 							sysinfoType = "Processor"
