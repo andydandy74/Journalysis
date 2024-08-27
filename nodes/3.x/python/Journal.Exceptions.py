@@ -38,7 +38,8 @@ def journalGetExceptions(journal):
 				if line.MessageText.startswith("An external service execution throws"):
 					addnewexc = False
 					lp1 = line.MessageText.split(":")
-					excobjs[-1].Message = excobjs[-1].Message + " " + lp1[0]
+					if len(excobjs[-1].Message) > 0: excobjs[-1].Message + " "
+					excobjs[-1].Message = excobjs[-1].Message + lp1[0]
 					if len(lp1) > 1:
 						lp2 = lp1[1].split("; ")
 						excobjs[-1].AppName = lp2[0].replace(" Name(","").replace(")","")
