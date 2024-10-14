@@ -26,7 +26,8 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input1, input2):\r\n\tif isinstance(input, list): return [func(x, input2) for x in input1]\r\n\telse: return func(input1, input2)\r\n\t\r\ndef journalStripComments(journal, preserveTimestamps):\r\n\tif journal.__repr__() == 'Journal': return journal.StripComments(preserveTimestamps)\r\n\telse: return None\r\n\r\nOUT = process_input(journalStripComments,IN[0],IN[1])",
+      "Code": "import clr\r\n\r\ndef process_input(func, input1, input2):\r\n\tif isinstance(input1, list): return [func(x, input2) for x in input1]\r\n\telse: return func(input1, input2)\r\n\t\r\ndef journalStripComments(journal, preserveTimestamps):\r\n\tif journal.__repr__() == 'Journal': return journal.StripComments(preserveTimestamps)\r\n\telse: return None\r\n\r\nOUT = process_input(journalStripComments,IN[0],IN[1])",
+      "Engine": "IronPython2",
       "VariableInputPorts": true,
       "Id": "3c96bdccedc449aaa56b3b160c737cb5",
       "Inputs": [
@@ -61,7 +62,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Runs an embedded IronPython script."
+      "Description": "Führt ein eingebettetes Python-Skript aus."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
@@ -87,7 +88,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
@@ -108,7 +109,7 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "A function output, use with custom nodes"
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
@@ -134,7 +135,7 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     }
   ],
   "Connectors": [
@@ -155,18 +156,20 @@
     }
   ],
   "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.0.3.8810",
+      "Version": "2.12.1.8246",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Background Preview",
+      "Name": "Hintergrundvorschau",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -179,41 +182,41 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Python Script",
         "Id": "3c96bdccedc449aaa56b3b160c737cb5",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 313.5,
         "Y": 37.5
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "22e8a1880f5d4d0dad70fb0c587778f7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": -88.5,
         "Y": 8.5
       },
       {
+        "ShowGeometry": true,
+        "Name": "Output",
         "Id": "c3e8e0f1c2f548768d7449d1176756c1",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Output",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 537.5,
         "Y": 37.5
       },
       {
+        "ShowGeometry": true,
+        "Name": "Input",
         "Id": "a7eedddbbf17464ab1c45928958bfd6d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Input",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": -88.5,
         "Y": 92.5
