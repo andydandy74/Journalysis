@@ -551,8 +551,9 @@ def JournalFromPath(path):
 				for g1 in line.RawText.split(","):
 					g2.append(int(g1.strip().split()[-1]))
 				line.Available = g2[0]
-				line.Used = g2[1]
-				line.User = g2[2]
+				if len(g2) > 1:
+					line.Used = g2[1]
+					if len(g2) > 2: line.User = g2[2]
 			elif line.Type == 'JournalUIEvent':
 				d1 = line.RawText.split(" ",1)
 				line.UIEventType = d1[0][4:]
