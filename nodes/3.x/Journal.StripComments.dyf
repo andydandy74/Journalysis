@@ -26,7 +26,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\n\r\ndef process_input(func, input1, input2):\r\n\tif isinstance(input, list): return [func(x, input2) for x in input1]\r\n\telse: return func(input1, input2)\r\n\t\r\ndef journalStripComments(journal, preserveTimestamps):\r\n\tif journal.__repr__() == 'Journal': return journal.StripComments(preserveTimestamps)\r\n\telse: return None\r\n\r\nOUT = process_input(journalStripComments,IN[0],IN[1])",
+      "Code": "import clr\r\n\r\ndef process_input(func, input1, input2):\r\n\tif isinstance(input1, list): return [func(x, input2) for x in input1]\r\n\telse: return func(input1, input2)\r\n\t\r\ndef journalStripComments(journal, preserveTimestamps):\r\n\tif journal.__repr__() == 'Journal': return journal.StripComments(preserveTimestamps)\r\n\telse: return None\r\n\r\nOUT = process_input(journalStripComments,IN[0],IN[1])",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "3c96bdccedc449aaa56b3b160c737cb5",
