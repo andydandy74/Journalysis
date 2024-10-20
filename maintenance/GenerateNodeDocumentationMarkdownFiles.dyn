@@ -11,7 +11,7 @@
       "Id": "d7036ab226c44a93802d397e5a1be3df",
       "Name": "Package Directory Path",
       "Type": "string",
-      "Value": "U:\\repos\\Journalysis",
+      "Value": "C:\\Users\\adsk\\Documents\\andreas\\repos\\Journalysis",
       "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen.",
       "SelectedIndex": 0
     },
@@ -29,7 +29,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
       "HintPath": "U:\\repos\\Journalysis",
-      "InputValue": "U:\\repos\\Journalysis",
+      "InputValue": "C:\\Users\\adsk\\Documents\\andreas\\repos\\Journalysis",
       "NodeType": "ExtensionNode",
       "Id": "d7036ab226c44a93802d397e5a1be3df",
       "Inputs": [],
@@ -272,7 +272,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
       "NodeType": "StringInputNode",
-      "InputValue": "{DEPENDENCIES}{1}## Sample file\n- Download sample file: [All{0}Nodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/{VERSION}/All{0}Nodes.dyn)\n- [More sample files](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x) {MORESAMPLES}\n\n## Useful links\n- [Journalysis repository on GitHub](https://github.com/andydandy74/Journalysis)\n- [Report an issue](https://github.com/andydandy74/Journalysis/issues)\n- [Version history](https://github.com/andydandy74/Journalysis/wiki/Version-history)\n- [Journalysis wiki](https://github.com/andydandy74/Journalysis/wiki)\n\n![Journalysis logo](https://raw.githubusercontent.com/andydandy74/Journalysis/master/icons/raw/Journalysis.png)",
+      "InputValue": "{DEPENDENCIES}{1}## Sample file\n- Download sample file: [All{0}Nodes.dyn](https://raw.githubusercontent.com/andydandy74/Journalysis/master/samples/{VERSION}/All{0}Nodes.dyn)\n- [More sample files](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x) {MORESAMPLES}\n\n## Useful links\n- [Journalysis repository on GitHub](https://github.com/andydandy74/Journalysis)\n- [Report an issue](https://github.com/andydandy74/Journalysis/issues)\n- [Version history](https://github.com/andydandy74/Journalysis/wiki/Version-history)\n- [Journalysis wiki](https://github.com/andydandy74/Journalysis/wiki)\n\n![Journalysis logo](https://raw.githubusercontent.com/andydandy74/Journalysis/master/icons/raw/JournalysisLogoDocs.png)",
       "Id": "6738e85dcfd245088be7818cc964f066",
       "Inputs": [],
       "Outputs": [
@@ -2511,8 +2511,8 @@
         ],
         "Left": -190.57203893692827,
         "Top": 976.71970488645593,
-        "Width": 333.20703178749181,
-        "Height": 2684.8882141942936,
+        "Width": 333.00703178749183,
+        "Height": 2686.2882141942937,
         "FontSize": 30.0,
         "InitialTop": 1022.7197048864559,
         "InitialHeight": 2619.8882141942936,
@@ -2530,8 +2530,8 @@
         ],
         "Left": 613.84365570998511,
         "Top": 1002.6307434256723,
-        "Width": 1031.5594298556719,
-        "Height": 262.0,
+        "Width": 1030.9594298556719,
+        "Height": 261.79999999999995,
         "FontSize": 30.0,
         "InitialTop": 1048.6307434256723,
         "InitialHeight": 293.0,
@@ -2545,13 +2545,13 @@
           "92406b9cee7646168c46f023431a5880"
         ],
         "Left": -198.60188039700267,
-        "Top": 665.15109809242688,
+        "Top": 665.35109809242681,
         "Width": 338.6,
-        "Height": 247.0,
+        "Height": 246.60000000000002,
         "FontSize": 48.0,
         "InitialTop": 848.15109809242688,
         "InitialHeight": 145.0,
-        "TextblockHeight": 173.0,
+        "TextblockHeight": 172.8,
         "Background": "#FF848484"
       },
       {
@@ -2569,13 +2569,13 @@
           "ff56281846214ee1a4128406e8d20b85"
         ],
         "Left": 2836.2188192163508,
-        "Top": 589.36752736461847,
-        "Width": 2399.5772606281012,
-        "Height": 694.62266348530886,
+        "Top": 589.16752736461842,
+        "Width": 2398.1772606281015,
+        "Height": 694.022663485309,
         "FontSize": 36.0,
         "InitialTop": 642.36752736461847,
         "InitialHeight": 683.62266348530886,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
       {
@@ -2597,13 +2597,13 @@
           "38821af5235145229da11bba5403ac45"
         ],
         "Left": 1535.5663526137162,
-        "Top": 1413.0867729135682,
-        "Width": 2552.508024552847,
-        "Height": 600.85895561703865,
+        "Top": 1412.8867729135682,
+        "Width": 2554.7080245528468,
+        "Height": 600.6589556170386,
         "FontSize": 36.0,
         "InitialTop": 1466.0867729135682,
         "InitialHeight": 599.85895561703865,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
       {
@@ -2615,13 +2615,13 @@
           "e55379b3293d4abcb864a577f8a95d3f"
         ],
         "Left": 217.11777449025249,
-        "Top": 1171.0328602872619,
-        "Width": 344.06607258476367,
-        "Height": 249.08797358965421,
+        "Top": 1170.6328602872618,
+        "Width": 343.6660725847637,
+        "Height": 249.28797358965426,
         "FontSize": 36.0,
         "InitialTop": 1267.0328602872619,
         "InitialHeight": 230.08797358965421,
-        "TextblockHeight": 86.0,
+        "TextblockHeight": 86.4,
         "Background": "#FFC1D676"
       },
       {
@@ -2639,13 +2639,13 @@
           "94f51557bb984cd2941afaf415b7b48c"
         ],
         "Left": 1524.2656133348489,
-        "Top": 2076.2288776912628,
-        "Width": 1004.1534666225109,
-        "Height": 605.35282651248417,
+        "Top": 2076.028877691263,
+        "Width": 1004.7534666225108,
+        "Height": 604.35282651248417,
         "FontSize": 36.0,
         "InitialTop": 2129.2288776912628,
         "InitialHeight": 552.35282651248417,
-        "TextblockHeight": 43.0,
+        "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
       {
@@ -2663,8 +2663,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 112.34835876599448,
-    "Y": -147.04319338908655,
-    "Zoom": 0.2756104345987494
+    "X": 58.2920348404371,
+    "Y": 8.6019051085842761,
+    "Zoom": 0.15000929354936973
   }
 }
