@@ -11,4 +11,4 @@
 - [Version history](https://github.com/andydandy74/Journalysis/wiki/Version-history)
 - [Journalysis wiki](https://github.com/andydandy74/Journalysis/wiki)
 
-![Journalysis logo](https://raw.githubusercontent.com/andydandy74/Journalysis/master/icons/raw/Journalysis.png)
+![Journalysis logo](https://raw.githubusercontent.com/andydandy74/Journalysis/master/icons/raw/JournalysisLogoDocs.png)
