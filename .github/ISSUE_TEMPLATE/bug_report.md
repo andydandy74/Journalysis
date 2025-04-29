@@ -1,6 +1,9 @@
 ---
 name: Bug report
 about: Report bugs here to help improve Journalysis
+title: ''
+labels: bug
+assignees: andydandy74
 
 ---
 

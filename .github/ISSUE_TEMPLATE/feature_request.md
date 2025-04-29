@@ -1,6 +1,9 @@
 ---
 name: Feature request
 about: Suggest future improvements for Journalysis
+title: ''
+labels: enhancement
+assignees: andydandy74
 
 ---
 
