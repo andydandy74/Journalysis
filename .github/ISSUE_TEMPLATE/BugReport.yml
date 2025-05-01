@@ -1,0 +1,61 @@
+name: Bug Report
+description: Report bugs here to help improve Journalysis
+title: "[Bug] "
+labels: ["Bug"]
+assignees:
+  - andydandy74
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this issue template to report any bugs you found during the use of any Journalysis node. Please search to see if an issue already exists for the bug you encountered.
+  - type: input
+    id: AffectedNode
+    attributes:
+      label: Affected node
+      description: Which node is giving you grief? If multiple nodes are affected, enter "Multiple".
+    validations:
+      required: true
+  - type: textarea
+    id: ProblemDescription
+    attributes:
+      label: Problem description
+      description: A clear and concise description of what the bug is. Depending on the case, it will be helpful if you include screenshots, step-by-step instructions, a simplified Dynamo graph and/or Revit journal files.
+    validations:
+      required: true
+  - type: textarea
+    id: ExpectedBehaviour
+    attributes:
+      label: Expected behaviour (optional)
+      description: A clear and concise description of what you expected to happen. Only fill this out if you have a specific expection other than "The node should work".
+  - type: dropdown
+    id: JournalysisVersion
+    attributes:
+      label: Journalysis version
+      description: What version of Journalysis are you using? Versions not listed here are no longer supported.
+      options:
+        - 3.2.1
+        - 2.12.0
+        - 2.4.0
+        - 2.3.1
+        - 2.3.0
+    validations:
+      required: true
+  - type: dropdown
+    id: RevitVersion
+    attributes:
+      label: Revit version
+      description: What version of Revit are you using?
+      options:
+        - 2026
+        - 2025
+        - 2024
+        - 2023
+        - 2022
+        - None/other (specify in problem description above)
+    validations:
+      required: true  
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this report.
