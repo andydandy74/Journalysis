@@ -452,6 +452,7 @@ def JournalFromPath(path):
 		for line in lineObjs:
 			if line.Type == 'JournalAPIMessage':
 				line.MessageText = line.RawText.split("{ ")[1].split(" }")[0].strip()
+				if line.MessageText.startswith(" :"): line.MessageText = line.MessageText[2:]
 				if line.MessageText.startswith("Registered an external service"): line.MessageType = "RegisteredExternalService"
 				elif line.MessageText.startswith("Registered an external server") or line.MessageText.startswith("An external server has been registered"): line.MessageType = "RegisteredExternalServer"
 				elif line.MessageText.startswith("Starting External DB Application"): line.MessageType = "StartingExternalDBApp"
@@ -552,8 +553,8 @@ def JournalFromPath(path):
 					g2.append(int(g1.strip().split()[-1]))
 				line.Available = g2[0]
 				if len(g2) > 1:
-				    line.Used = g2[1]
-				    if len(g2) > 2: line.User = g2[2]
+					line.Used = g2[1]
+					if len(g2) > 2: line.User = g2[2]
 			elif line.Type == 'JournalUIEvent':
 				d1 = line.RawText.split(" ",1)
 				line.UIEventType = d1[0][4:]
@@ -599,7 +600,7 @@ def JournalFromPath(path):
 					elif m2 in ("Avail","Used","Peak"): m4.append(m2)
 				if len(m3) > 0: line.VMAvailable = m3[0]
 				if len(m3) > 1: line.VMUsed = m3[1]
-				if len(m3) == 6:		
+				if len(m3) == 6:
 					line.VMPeak = m3[2]
 					line.RAMAvailable = m3[3]
 					line.RAMUsed = m3[4]
