@@ -386,7 +386,7 @@ def JournalFromPath(path):
 				line = line.lstrip().rstrip('\n').rstrip('\x00')
 				# ignore empty lines
 				if len(line) < 2: pass
-				elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E "):
+				elif line.startswith("'C ") or line.startswith("'H ") or line.startswith("'E ") or line.startswith("' C ") or line.startswith("' H ") or line.startswith("' E "):
 					b += 1
 					lineObjs.append(JournalTimeStamp(i,line,b))
 				elif ":< API_SUCCESS { " in line: lineObjs.append(JournalAPIMessage(i,line,b,False))
