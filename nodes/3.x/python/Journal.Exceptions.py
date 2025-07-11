@@ -33,7 +33,7 @@ def journalGetExceptions(journal):
 				else:
 					if "ArchiveException" in line.Description: newexc.Type = "ArchiveException"
 					elif line.Description.startswith("ExceptionCode"): newexc.Type = "Fatal Error"
-					newexc.Message = line.Description
+					newexc.Message = line.Description.replace("CLARITY: First Chance Exception: ","")
 			elif line.Type == "JournalAPIMessage": 
 				if line.MessageText.startswith("An external service execution throws"):
 					addnewexc = False
