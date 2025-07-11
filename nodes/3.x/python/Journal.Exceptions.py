@@ -36,7 +36,7 @@ def journalGetExceptions(journal):
 					newexc.Message = line.Description.replace("CLARITY: First Chance Exception: ","")
 					lp2 = newexc.Message.split(" :  ",1)
 					if len(lp2) > 1:
-						if lp2[0].endswith("Exception") or lp2[0].endswith("ExceptionProxy"): 
+						if " " not in lp2[0]: 
 							newexc.Type = lp2[0]
 							newexc.Message = lp2[1]
 			elif line.Type == "JournalAPIMessage": 
