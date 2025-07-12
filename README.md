@@ -1,7 +1,6 @@
 ![Maintained](https://img.shields.io/badge/Maintained-yes-brightgreen.svg) 
 [![Current version](https://img.shields.io/github/v/release/andydandy74/Journalysis?label=Current%20version&color=brightgreen)](https://github.com/andydandy74/Journalysis/releases) 
-![2.x node count](https://img.shields.io/github/directory-file-count/andydandy74/Journalysis/nodes%2F2.x?type=file&label=2.x%20node%20count&color=brightgreen) 
-![3.x node count](https://img.shields.io/github/directory-file-count/andydandy74/Journalysis/nodes%2F3.x?type=file&label=3.x%20node%20count&color=brightgreen) 
+![Node count](https://img.shields.io/github/directory-file-count/andydandy74/Journalysis/nodes%2F3.x?type=file&label=3.x%20node%20count&color=brightgreen) 
 [![Open issues](https://img.shields.io/github/issues-raw/andydandy74/Journalysis?label=Open%20issues&color=brightgreen)](https://github.com/andydandy74/Journalysis/issues?q=is%3Aopen+is%3Aissue)
 [![Closed issues](https://img.shields.io/github/issues-closed-raw/andydandy74/Journalysis?label=Closed%20issues&color=brightgreen)](https://github.com/andydandy74/Journalysis/issues?q=is%3Aissue+is%3Aclosed)
 [![Commits since last release](https://img.shields.io/github/commits-since/andydandy74/Journalysis/latest?label=Commits%20since%20last%20release&color=brightgreen)](https://github.com/andydandy74/Journalysis/commits/master/)
