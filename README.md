@@ -17,7 +17,7 @@
 Package name | Supported | Available on Dynamo Package Manager | Last version | Revit versions | Change log | Repository | Samples
 -- | -- | -- | -- | -- | -- | -- | -- 
 Journalysis for Dynamo **3.x** | :white_check_mark: | :white_check_mark: | 3.2.1 | 2022+ | [Changes](https://github.com/andydandy74/Journalysis/wiki/Version-history#journalysis-for-dynamo-3x) | [Repo](https://github.com/andydandy74/Journalysis/tree/master/nodes/3.x) | [Samples](https://github.com/andydandy74/Journalysis/tree/master/samples/3.x)
-Journalysis for Dynamo **2.x** | :x: | :white_check_mark: | 2.12.0 | 2017-24 | [Changes](https://github.com/andydandy74/Journalysis/wiki/Version-history#journalysis-for-dynamo-2x) | [Repo](https://github.com/andydandy74/Journalysis/tree/master/nodes/2.x) | [Samples](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x)
+Journalysis for Dynamo **2.x** | :x: | :white_check_mark: | 2.12.0 | 2017-25 | [Changes](https://github.com/andydandy74/Journalysis/wiki/Version-history#journalysis-for-dynamo-2x) | [Repo](https://github.com/andydandy74/Journalysis/tree/master/nodes/2.x) | [Samples](https://github.com/andydandy74/Journalysis/tree/master/samples/2.x)
 Journalysis for Dynamo **1.x** | :x: | :x: | 1.34.1 | 2015-19 | [Changes](https://github.com/andydandy74/Journalysis/wiki/Version-history#journalysis-for-dynamo-1x) | [Repo](https://github.com/andydandy74/Journalysis/tree/master/nodes/1.x) | [Samples](https://github.com/andydandy74/Journalysis/tree/master/samples/1.x)
 
 # Documentation
