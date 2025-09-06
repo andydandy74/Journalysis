@@ -452,7 +452,7 @@ def JournalFromPath(path):
 		for line in lineObjs:
 			if line.Type == 'JournalAPIMessage':
 				line.MessageText = line.RawText.split("{ ")[1].split(" }")[0].strip()
-				if line.MessageText.startswith(" :"): line.MessageText = line.MessageText[2:]
+				if line.MessageText.startswith(": "): line.MessageText = line.MessageText[2:]
 				if line.MessageText.startswith("Registered an external service"): line.MessageType = "RegisteredExternalService"
 				elif line.MessageText.startswith("Registered an external server") or line.MessageText.startswith("An external server has been registered"): line.MessageType = "RegisteredExternalServer"
 				elif line.MessageText.startswith("Starting External DB Application"): line.MessageType = "StartingExternalDBApp"
