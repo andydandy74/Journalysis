@@ -31,11 +31,9 @@ This package is aimed at automating the analysis of Revit journals and workshari
 - Monitor sync with central duration
 - Keyboard shortcut usage
 
-## Sponsoring?
+# Sponsoring?
 This is free software. I've created and maintained it on my spare time for a number of years now.
 I don't do Patreon or GitHub Sponsors and I'm not planning to.
 However, if you are using this software or have done so in the past and it has increased your productivity, please consider giving something back nonetheless. If you're smart enough to use Dynamo, you're most probably smart enough to know climate change is real, too. And I'd like to believe you're already doing something to battle it at this point. 
 
 Do more.
-
-[![Bad Monkeys logo](https://www.badmonkeys.net/wp-content/uploads/2016/12/BadMonkey_finalLogo-01.png)](http://www.badmonkeys.net/)
