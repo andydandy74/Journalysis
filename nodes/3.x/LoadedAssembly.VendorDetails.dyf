@@ -1,0 +1,170 @@
+{
+  "Uuid": "c0397af6-b464-44e0-b4dc-997e1f95d1c4",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.Query",
+  "Description": "Returns details about the vencor of a given LoadedAssembly (typically full name and URL)",
+  "Name": "LoadedAssembly.VendorDetails",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef LAVendorDetails(assembly):\r\n\tif assembly.__repr__() == 'LoadedAssembly': return assembly.VendorDetails\r\n\telse: return None\r\n\r\nOUT = process_input(LAVendorDetails,IN[0])",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "0c5b77bc5bf94d379b09e543a0ae3737",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "585ba8dbc5654ca898bd94b1accfbcb3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cfffded7d5f74c4abe4897a0fceb15ca",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "Parameter": {
+        "Name": "loadedAssembly",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "1314db72d20d462f9620d029a562fa6e",
+      "NodeType": "InputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9ce5526a22a545c5996cbad5adaef98d",
+          "Name": "",
+          "Description": "Eingabedaten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "ElementResolver": null,
+      "Symbol": "str",
+      "Id": "74e377a2c17d4b0a8312c7ed75e0a29e",
+      "NodeType": "OutputNode",
+      "Inputs": [
+        {
+          "Id": "2cd5d1ffc5dc487284b080e5b19624d7",
+          "Name": "",
+          "Description": "Ausgabedaten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "cfffded7d5f74c4abe4897a0fceb15ca",
+      "End": "2cd5d1ffc5dc487284b080e5b19624d7",
+      "Id": "c8e9185a65a348448bee14ae61a8ba57",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "9ce5526a22a545c5996cbad5adaef98d",
+      "End": "585ba8dbc5654ca898bd94b1accfbcb3",
+      "Id": "483e98453d7a41409ae0312f173b9e0e",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "0c5b77bc5bf94d379b09e543a0ae3737",
+        "Name": "Python Script",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 307.70000000000005,
+        "Y": 0.0
+      },
+      {
+        "Id": "1314db72d20d462f9620d029a562fa6e",
+        "Name": "Input",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -82.699999999999932,
+        "Y": 0.0
+      },
+      {
+        "Id": "74e377a2c17d4b0a8312c7ed75e0a29e",
+        "Name": "Output",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 582.1,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

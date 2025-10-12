@@ -67,13 +67,19 @@ class Journal:
 		for apimsg in apimsgs:
 			if apimsg.MessageText.startswith("Starting"):
 				startdata1 = apimsg.MessageText.split("Application: ")[-1].split(", Class: ")
-				startdata2 = startdata1[-1].split(", Vendor : ")
-				startdata3 = startdata2[-1].split(", Assembly: ") 
 				appname = startdata1[0]
+				startdata2 = startdata1[-1].split(", Vendor : ")
 				classname = startdata2[0]
-				path = startdata3[-1]
-				vendor = startdata3[0]
-				loadedAssemblies.append(LoadedAssembly(appname, classname, path, vendor, apimsg))
+				startdata3 = startdata2[-1].split(", Assembly: ")
+				startdata4 = startdata3[-1].split(",")
+				path = startdata4[0]
+				if len(startdata4) > 1: assversion = startdata4[1].lstrip().replace("Assembly Version: ","")
+				else: assversion = None
+				startdata5 = startdata3[0].split("(")
+				vendor = startdata5[0]
+				vendorDetails = startdata5[1][:-1].strip()
+				if len(vendorDetails) == 0: vendorDetails = None
+				loadedAssemblies.append(LoadedAssembly(appname, classname, path, assversion, vendor, vendorDetails, apimsg))
 		for apimsg in apimsgs:
 			if apimsg.MessageText.startswith("Registering") or apimsg.MessageText.startswith("Unregistering") or apimsg.MessageText.startswith("API registering") or apimsg.MessageText.startswith("API unregistering"):
 				regevt = apimsg.MessageText.split("by application ")[-1].rsplit(" (",1)
@@ -353,12 +359,14 @@ class JournalWorksharingEvent(JournalLine):
 		return self.Type
 
 class LoadedAssembly:
-	def __init__(self, name, classname, path, vendor, initialEvent):
+	def __init__(self, name, classname, path, version, vendor, vendorDetails, initialEvent):
 		self.Name = name
 		self.Class = classname
 		self.Path = path
 		self.Filename = path.split("\\")[-1]
+		self.Version = version
 		self.Vendor = vendor
+		self.VendorDetails = vendorDetails
 		self.GUID = None
 		self.Events = [initialEvent]
 	def __repr__(self):
