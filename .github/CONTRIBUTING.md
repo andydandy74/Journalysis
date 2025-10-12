@@ -5,7 +5,7 @@ If you're interested in helping with this project, I welcome the following types
 - Use cases
 - Data that should be mined from a journal but is not yet supported by any of the nodes
 
-Some simple rules for posting issues and pull requests for Journalysis
+Some simple rules for posting issues and pull requests for Journalysis:
 
 ### Issues
 - **When posting bugs: Describe what you were doing, what went wrong and what you were expecting to happen.** Include journals, screenshots and graphs where applicable.
