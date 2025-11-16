@@ -12,27 +12,27 @@
       "Id": "11ae4e4eb89544b3aa5a502d61271590",
       "Name": "String",
       "Type": "string",
+      "Type2": "string",
       "Value": "Autodesk Revit",
-      "Description": "Erstellt eine Zeichenfolge.",
-      "SelectedIndex": 0
+      "Description": "Creates a string."
     },
     {
       "Id": "37c77750adc24258aad3193d2214df20",
       "Name": "String",
       "Type": "string",
+      "Type2": "string",
       "Value": "Autodesk\\Revit",
-      "Description": "Erstellt eine Zeichenfolge.",
-      "SelectedIndex": 0
+      "Description": "Creates a string."
     }
   ],
   "Outputs": [],
   "Nodes": [
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "seq",
       "Id": "925909c2c55948f3887797f01b2e400d",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "54e5ff336f0645568c2b3111571b8b3f",
@@ -46,18 +46,17 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
       "Id": "2036b2519c5a4edcaac1e9c0e46d6517",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "ca4641406025485e8c5d3bb1c82d6935",
           "Name": "list",
-          "Description": "Zu filternde Liste\n\nvar[]..[]",
+          "Description": "List to filter.\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -66,7 +65,7 @@
         {
           "Id": "3763a21f4f3b466aa2a56e6c17124dc5",
           "Name": "mask",
-          "Description": "Liste der booleschen Ausdrücke, die eine Maske darstellen\n\nvar[]..[]",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -77,7 +76,7 @@
         {
           "Id": "6b40f11211094e9aadb48d1db5e1ad7b",
           "Name": "in",
-          "Description": "Elemente mit Maskenindex true",
+          "Description": "Items whose mask index is true.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -86,21 +85,21 @@
         {
           "Id": "2de3f5c2923442a7a42a679b58ffc447",
           "Name": "out",
-          "Description": "Elemente mit Maskenindex false",
+          "Description": "Items whose mask index is false.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
       "Replication": "Auto",
-      "Description": "Filtert eine Sequenz durch Abrufen entsprechender Indizes in einer separaten Liste boolescher Werte.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "dir + \"\\\\KeyboardShortcuts.xml\";",
       "Id": "c3079a7395cc4b58a02a0d6483ff8f6f",
+      "NodeType": "CodeBlockNode",
       "Inputs": [
         {
           "Id": "e56377403d864b26b7fd481d791a115a",
@@ -115,8 +114,8 @@
       "Outputs": [
         {
           "Id": "114249654eb640a895b6fbc5815f9ae6",
-          "Name": "",
-          "Description": "Wert des Ausdrucks in Zeile 1",
+          "Name": "function",
+          "Description": "dir + \"\\KeyboardShortcuts.xml\"",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -124,18 +123,18 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "dir + \"\\\\KeyboardShortcuts.xml\";"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.IO.FileSystem.FileExists@string",
       "Id": "4f5222215f3c4c7695e06fab74869b64",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "282d1889d10c4717ac6ceb29884382b7",
           "Name": "path",
-          "Description": "Zeichenfolge, die einen Dateipfad darstellt\n\nstring",
+          "Description": "String representing a file path\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -146,26 +145,26 @@
         {
           "Id": "143e5319535346df893551cf80c95077",
           "Name": "bool",
-          "Description": "True, wenn Datei vorhanden ist, sonst False",
+          "Description": "True if file exists, false if it doesn't",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.IO.FileSystem.FileExists@string",
       "Replication": "Auto",
-      "Description": "Ermittelt, ob unter dem angegebenen Pfad eine Datei vorhanden ist.\n\nFileSystem.FileExists (path: string): bool"
+      "Description": "Determines if a file exists at the given path.\n\nFileSystem.FileExists (path: string): bool"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
       "Id": "23aee7aabc894263ab0c2d862be341b6",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "12df769eacf84f3898132c35cda530d8",
           "Name": "list",
-          "Description": "Zu filternde Liste\n\nvar[]..[]",
+          "Description": "List to filter.\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -174,7 +173,7 @@
         {
           "Id": "e9a8eae56d924fd89fb9440a115d470c",
           "Name": "mask",
-          "Description": "Liste der booleschen Ausdrücke, die eine Maske darstellen\n\nvar[]..[]",
+          "Description": "List of booleans representing a mask.\n\nvar[]..[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -185,7 +184,7 @@
         {
           "Id": "84d97dc321634e96bb2b10618d80bb9e",
           "Name": "in",
-          "Description": "Elemente mit Maskenindex true",
+          "Description": "Items whose mask index is true.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -194,26 +193,26 @@
         {
           "Id": "f54fc467d99146b7b21b3c0d0db6b489",
           "Name": "out",
-          "Description": "Elemente mit Maskenindex false",
+          "Description": "Items whose mask index is false.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
       "Replication": "Auto",
-      "Description": "Filtert eine Sequenz durch Abrufen entsprechender Indizes in einer separaten Liste boolescher Werte.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+      "Description": "Filters a sequence by looking up corresponding indices in a separate list of booleans.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.String.StartsWith@string,string,bool",
       "Id": "234e265c65424ff09e8f03d14550a689",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "826837f56d6745ca96ff4303925998c4",
           "Name": "string",
-          "Description": "Zeichenfolge, deren Anfang durchsucht werden soll\n\nstring",
+          "Description": "String to search the start of\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -222,7 +221,7 @@
         {
           "Id": "ce7635d5306f4b7392a2993f650e11db",
           "Name": "searchFor",
-          "Description": "Am Anfang zu suchende Teilzeichenfolge\n\nstring",
+          "Description": "Substring to search the start for.\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -231,7 +230,7 @@
         {
           "Id": "a626aa21be2147a8aeb4f09bec474086",
           "Name": "ignoreCase",
-          "Description": "True, um die Groß- und Kleinschreibung beim Vergleich zu ignorieren; False, um die Groß- und Kleinschreibung zu berücksichtigen\n\nbool\nVorgabewert : false",
+          "Description": "True to ignore case in comparison, false to take case into account\n\nbool\nDefault value : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -242,26 +241,26 @@
         {
           "Id": "484d4e608ee3423cbe9e41494846cb93",
           "Name": "bool",
-          "Description": "True, wenn die Zeichenfolge mit der Teilzeichenfolge beginnt, sonst False",
+          "Description": "True if string starts with substring, false if it doesn’t",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.String.StartsWith@string,string,bool",
       "Replication": "Auto",
-      "Description": "Bestimmt, ob die angegebene Zeichenfolge mit der angegebenen Teilzeichenfolge beginnt.\n\nString.StartsWith (string: string, searchFor: string, ignoreCase: bool = false): bool"
+      "Description": "Determines if the given string starts with the given substring.\n\nString.StartsWith (string: string, searchFor: string, ignoreCase: bool = false): bool"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.IO.FileSystem.FileName@string,bool",
       "Id": "f5283710a2c345999380b3497e740306",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "6277a24629644a7dbb61983099de90dd",
           "Name": "path",
-          "Description": "Pfad, dessen Dateiname abgerufen werden soll\n\nstring",
+          "Description": "Path to get the file name of\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -270,7 +269,7 @@
         {
           "Id": "bd0b5868fa9c443e8d8279f732a457aa",
           "Name": "withExtension",
-          "Description": "Erweiterung im Ergebnis berücksichtigen ein/aus\n\nbool\nVorgabewert : true",
+          "Description": "Toggle to include extension in result\n\nbool\nDefault value : true",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -281,26 +280,26 @@
         {
           "Id": "35483969940f4af186e5a47486546ac5",
           "Name": "string",
-          "Description": "Dateiname aus Dateipfad",
+          "Description": "File name from file path",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.IO.FileSystem.FileName@string,bool",
       "Replication": "Auto",
-      "Description": "Gibt den Dateinamen eines Dateipfads zurück.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
+      "Description": "Returns the file name of a file path.\n\nFileSystem.FileName (path: string, withExtension: bool = true): string"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.IO.FileSystem.GetDirectoryContents@var,string,bool",
       "Id": "3312a7f7018e4635816a60db1fa605a3",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "3fddea612e0d428f8b8da6dc8edd43fb",
           "Name": "directory",
-          "Description": "Verzeichnis zum Abrufen des Inhalts\n\nvar",
+          "Description": "Directory to get contents of\n\nvar",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -309,7 +308,7 @@
         {
           "Id": "dec4d88eb96947108b97e60a6d2ae386",
           "Name": "searchString",
-          "Description": "Suchzeichenfolge zum Filtern von Ergebnissen\n\nstring\nVorgabewert : \"*.*\"",
+          "Description": "Search string used to filter results\n\nstring\nDefault value : \"*.*\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -318,7 +317,7 @@
         {
           "Id": "e6e488ffebd1441f95179d9327ee1dc9",
           "Name": "includeSubdirectories",
-          "Description": "Legen Sie diese Option auf True fest, um Dateien und Ordner in Unterverzeichnissen (rekursiv) einzubeziehen, oder legen Sie False fest, um Ergebnisse nur aus der obersten Ebene des angegebenen Verzeichnisses einzubeziehen.\n\nbool\nVorgabewert : false",
+          "Description": "Set to true to include files and folders in subdirectories (recursive) or set to false to include results from top-level of given directory only.\n\nbool\nDefault value : false",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -329,7 +328,7 @@
         {
           "Id": "f660eb5ce383429d8c81db72b13eae79",
           "Name": "files",
-          "Description": "Aus Abfrage resultierende Dateien",
+          "Description": "Resulting files from query",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -338,21 +337,23 @@
         {
           "Id": "4d03969fb85f4c7fa3bda18ec6c3b48f",
           "Name": "directories",
-          "Description": "Aus Abfrage resultierende Verzeichnisse",
+          "Description": "Resulting directories from query",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
+      "FunctionSignature": "DSCore.IO.FileSystem.GetDirectoryContents@var,string,bool",
       "Replication": "Auto",
-      "Description": "Gibt eine Liste mit Dateien und Verzeichnissen zurück, die sich in einem bestimmten Verzeichnis befinden. Mit einer optionalen searchString können Sie die Ergebnisse filtern.\n\nFileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
+      "Description": "Will return a list of files and directories that are contained within a given directory. An optional searchString can be used to filter the results.\n\nFileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
-      "NodeType": "StringInputNode",
-      "InputValue": "Autodesk Revit",
+      "SerializedWidth": 0.0,
+      "SerializedHeight": 0.0,
       "Id": "11ae4e4eb89544b3aa5a502d61271590",
+      "NodeType": "StringInputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -366,12 +367,13 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Erstellt eine Zeichenfolge."
+      "Description": "Creates a string.",
+      "InputValue": "Autodesk Revit"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.DirectoryObject, CoreNodeModels",
-      "NodeType": "ExtensionNode",
       "Id": "2aefa3165963433fb2873f39614ab2b7",
+      "NodeType": "ExtensionNode",
       "Inputs": [
         {
           "Id": "695a8c9148274e2992cdc372307de25f",
@@ -395,19 +397,19 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Erstellt ein Verzeichnisobjekt aus einem Pfad."
+      "Description": "Creates a directory object from the given path"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
       "FunctionSignature": "DSCore.IO.FileSystem.CombinePath@string[]",
       "FunctionType": "VariableArgument",
-      "NodeType": "FunctionNode",
       "Id": "b8d379a39d63491aa302853d8e7a4120",
+      "NodeType": "FunctionNode",
       "Inputs": [
         {
           "Id": "df1aab623bcf46e5b1ab772603f38920",
           "Name": "string0",
-          "Description": "Zu einem Pfad zu kombinierende Zeichenfolgen\n\nstring[]",
+          "Description": "Strings to combine into a path\n\nstring[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -427,7 +429,7 @@
         {
           "Id": "af87814d0ee24ab2ad3ea8094acf9000",
           "Name": "string",
-          "Description": "Kombinierter Dateipfad",
+          "Description": "Combined file path",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -435,13 +437,14 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Verbindet mehrere Zeichenfolgen zu einem einzelnen Dateipfad.\n\nFileSystem.CombinePath (strings: string[]): string"
+      "Description": "Combines multiple strings into a single file path.\n\nFileSystem.CombinePath (strings: string[]): string"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
-      "NodeType": "StringInputNode",
-      "InputValue": "Autodesk\\Revit",
+      "SerializedWidth": 0.0,
+      "SerializedHeight": 0.0,
       "Id": "37c77750adc24258aad3193d2214df20",
+      "NodeType": "StringInputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -455,15 +458,16 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Erstellt eine Zeichenfolge."
+      "Description": "Creates a string.",
+      "InputValue": "Autodesk\\Revit"
     },
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\nfrom System import Environment\r\nOUT = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)",
-      "Engine": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "a82756bb4361409f81c150a6f74b5f2e",
+      "NodeType": "PythonScriptNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -477,83 +481,106 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     }
   ],
   "Connectors": [
     {
       "Start": "6b40f11211094e9aadb48d1db5e1ad7b",
       "End": "54e5ff336f0645568c2b3111571b8b3f",
-      "Id": "7032d7a507724f7e9e773d58fc4a758c"
+      "Id": "7032d7a507724f7e9e773d58fc4a758c",
+      "IsHidden": "False"
     },
     {
       "Start": "114249654eb640a895b6fbc5815f9ae6",
       "End": "ca4641406025485e8c5d3bb1c82d6935",
-      "Id": "7e3915cef9364209be4432773c18a903"
+      "Id": "7e3915cef9364209be4432773c18a903",
+      "IsHidden": "False"
     },
     {
       "Start": "114249654eb640a895b6fbc5815f9ae6",
       "End": "282d1889d10c4717ac6ceb29884382b7",
-      "Id": "bd5ffe310b0c4b47bd818a4dff1d432a"
+      "Id": "bd5ffe310b0c4b47bd818a4dff1d432a",
+      "IsHidden": "False"
     },
     {
       "Start": "143e5319535346df893551cf80c95077",
       "End": "3763a21f4f3b466aa2a56e6c17124dc5",
-      "Id": "94b415a633ca4bf5a72cbf63b5801da4"
+      "Id": "94b415a633ca4bf5a72cbf63b5801da4",
+      "IsHidden": "False"
     },
     {
       "Start": "84d97dc321634e96bb2b10618d80bb9e",
       "End": "e56377403d864b26b7fd481d791a115a",
-      "Id": "4d05a1894e5c438b8915b6ae3ba0cb4b"
+      "Id": "4d05a1894e5c438b8915b6ae3ba0cb4b",
+      "IsHidden": "False"
     },
     {
       "Start": "484d4e608ee3423cbe9e41494846cb93",
       "End": "e9a8eae56d924fd89fb9440a115d470c",
-      "Id": "9f1242da1aac4d04a96853d2026bf135"
+      "Id": "9f1242da1aac4d04a96853d2026bf135",
+      "IsHidden": "False"
     },
     {
       "Start": "35483969940f4af186e5a47486546ac5",
       "End": "826837f56d6745ca96ff4303925998c4",
-      "Id": "9e07a6400eb94f988a9302691dfbff73"
+      "Id": "9e07a6400eb94f988a9302691dfbff73",
+      "IsHidden": "False"
     },
     {
       "Start": "4d03969fb85f4c7fa3bda18ec6c3b48f",
       "End": "12df769eacf84f3898132c35cda530d8",
-      "Id": "b061961363244e5698aab71d16fd4280"
+      "Id": "b061961363244e5698aab71d16fd4280",
+      "IsHidden": "False"
     },
     {
       "Start": "4d03969fb85f4c7fa3bda18ec6c3b48f",
       "End": "6277a24629644a7dbb61983099de90dd",
-      "Id": "48f768ceeef24286a57b65e6f2e4bcb7"
+      "Id": "48f768ceeef24286a57b65e6f2e4bcb7",
+      "IsHidden": "False"
     },
     {
       "Start": "09782d9510934acd9e835c8e99dbcf48",
       "End": "ce7635d5306f4b7392a2993f650e11db",
-      "Id": "cc20c74a49d2475daeef6b4061dc09ca"
+      "Id": "cc20c74a49d2475daeef6b4061dc09ca",
+      "IsHidden": "False"
     },
     {
       "Start": "0aafa24788994cc9a48dbf41318e8a50",
       "End": "3fddea612e0d428f8b8da6dc8edd43fb",
-      "Id": "3d05ad2905c74a87818ce57445da6d44"
+      "Id": "3d05ad2905c74a87818ce57445da6d44",
+      "IsHidden": "False"
     },
     {
       "Start": "af87814d0ee24ab2ad3ea8094acf9000",
       "End": "695a8c9148274e2992cdc372307de25f",
-      "Id": "94d42c472e4b465eb57095ff6524871e"
+      "Id": "94d42c472e4b465eb57095ff6524871e",
+      "IsHidden": "False"
     },
     {
       "Start": "3f811f741e744ff1a630ecbb98180a69",
       "End": "e7284107e4e44e9e949b46070938cad7",
-      "Id": "6f713531660343558512cc718e8c2b37"
+      "Id": "6f713531660343558512cc718e8c2b37",
+      "IsHidden": "False"
     },
     {
       "Start": "67e706abbea1459a91ad9db88a6fd832",
       "End": "df1aab623bcf46e5b1ab772603f38920",
-      "Id": "1725deba3a90435abae449905fe87fa8"
+      "Id": "1725deba3a90435abae449905fe87fa8",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a82756bb4361409f81c150a6f74b5f2e"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -561,12 +588,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -577,141 +604,142 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "925909c2c55948f3887797f01b2e400d",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 2851.11056164065,
         "Y": 580.230413094879
       },
       {
-        "ShowGeometry": true,
-        "Name": "List.FilterByBoolMask",
         "Id": "2036b2519c5a4edcaac1e9c0e46d6517",
+        "Name": "List.FilterByBoolMask",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 2616.54009242815,
         "Y": 580.339255859161
       },
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "c3079a7395cc4b58a02a0d6483ff8f6f",
+        "Name": "Code Block",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 2027.26760144274,
         "Y": 585.92663906924
       },
       {
-        "ShowGeometry": true,
-        "Name": "FileSystem.FileExists",
         "Id": "4f5222215f3c4c7695e06fab74869b64",
+        "Name": "FileSystem.FileExists",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 2410.45288433962,
         "Y": 647.523299885419
       },
       {
-        "ShowGeometry": true,
-        "Name": "List.FilterByBoolMask",
         "Id": "23aee7aabc894263ab0c2d862be341b6",
+        "Name": "List.FilterByBoolMask",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 1786.61318713178,
         "Y": 582.353962266372
       },
       {
-        "ShowGeometry": true,
-        "Name": "String.StartsWith",
         "Id": "234e265c65424ff09e8f03d14550a689",
+        "Name": "String.StartsWith",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 1532.26990766846,
         "Y": 695.037693674175
       },
       {
-        "ShowGeometry": true,
-        "Name": "FileSystem.FileName",
         "Id": "f5283710a2c345999380b3497e740306",
+        "Name": "FileSystem.FileName",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 1250.81119649789,
         "Y": 636.423917075362
       },
       {
-        "ShowGeometry": true,
-        "Name": "FileSystem.GetDirectoryContents",
         "Id": "3312a7f7018e4635816a60db1fa605a3",
+        "Name": "FileSystem.GetDirectoryContents",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 951.418816333212,
         "Y": 556.309126948104
       },
       {
-        "ShowGeometry": true,
-        "Name": "String",
         "Id": "11ae4e4eb89544b3aa5a502d61271590",
+        "Name": "String",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 1370.21997012009,
         "Y": 765.867467701936
       },
       {
-        "ShowGeometry": true,
-        "Name": "Directory.FromPath",
         "Id": "2aefa3165963433fb2873f39614ab2b7",
+        "Name": "Directory.FromPath",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 751.822804223983,
         "Y": 557.073862626683
       },
       {
-        "ShowGeometry": true,
-        "Name": "FileSystem.CombinePath",
         "Id": "b8d379a39d63491aa302853d8e7a4120",
+        "Name": "FileSystem.CombinePath",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 500.740037225572,
         "Y": 556.803485289413
       },
       {
-        "ShowGeometry": true,
-        "Name": "String",
         "Id": "37c77750adc24258aad3193d2214df20",
+        "Name": "String",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 333.81677017937,
         "Y": 621.502426004995
       },
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "a82756bb4361409f81c150a6f74b5f2e",
+        "Name": "Python Script",
         "IsSetAsInput": true,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 353.574576967437,
         "Y": 525.889852437048
       }
     ],
     "Annotations": [],
-    "X": -70.578933742107139,
-    "Y": 127.0636646845623,
-    "Zoom": 0.30129982291801277
+    "X": 198.46143444505674,
+    "Y": -138.225329647794,
+    "Zoom": 0.6665537619562919
   }
 }
