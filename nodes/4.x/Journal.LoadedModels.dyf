@@ -1,0 +1,180 @@
+{
+  "Uuid": "d48e6dd4-5381-4996-a8aa-28ad1d8219fd",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Actions",
+  "Description": "Retrieves a list of all models loaded during a given Revit session",
+  "Name": "Journal.LoadedModels",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nimport sys\r\nimport os\r\n\r\nclass LoadedModel:\r\n\tdef __init__(self, journal, path, initialEvent):\r\n\t\tself.Journal = journal\r\n\t\tif path != None: self.Path = self.NormalizePath(path)\r\n\t\telse: self.Path = None\r\n\t\tself.Events = []\r\n\t\tself.Events.append(initialEvent)\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModel\"\r\n\tdef GetVersion(self):\r\n\t\treturn [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)) if x.Type == \"JournalComment\" and \":< File was saved in\" in x.RawText][0].RawText.split(\"File was saved in\")[-1].strip()\r\n\tdef GetVersionHistory(self):\r\n\t\tallComments = [x for x in self.Journal.GetLinesByBlocks(range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block))] \r\n\t\tsaveHistoryMarkers = [x.Number for x in allComments if x.Type == \"JournalComment\" and \":< Document save history\" in x.RawText]\r\n\t\treturn [x.RawText.split(\":<\")[-1].strip() for x in allComments if x.Number in range(saveHistoryMarkers[0] + 1, saveHistoryMarkers[1])]\r\n\tdef NormalizePath(self, path):\r\n\t\treturn os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path),path))\r\n\r\nclass LoadedModelEvent:\r\n\tdef __init__(self, journalLine, type, dateTime):\r\n\t\tself.JournalLine = journalLine\r\n\t\tself.Type = type\r\n\t\tself.DateTime = dateTime\r\n\tdef __repr__(self):\r\n\t\treturn \"LoadedModelEvent\"\r\n\r\njournal = IN[0]\r\n\r\n# All variations of opening a document via dialog\r\nevents = [LoadedModelEvent(x, 'Open_Dialog', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID in ('ID_REVIT_FILE_OPEN', 'ID_APPMENU_PROJECT_OPEN')]\r\n# All variations of opening a document via recent files\r\nevents.extend([LoadedModelEvent(x, 'Open_Recent', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalCommand') if x.CommandID == 'ID_FILE_MRU_FIRST' or x.CommandID.startswith('ID_FILE_MRU_FILE')])\r\n# Models opened via drag & drop\r\nevents.extend([LoadedModelEvent(x, 'Open_DragDrop', x.GetDateTimeOfBlock()) for x in journal.GetLinesByType('JournalUIEvent') if x.UIEventType == \"DropFiles\"])\r\n\r\n# Get next JournalData line to extract file path\r\nnextDataLines = [x.JournalLine.NextOfType('JournalData') for x in events]\r\npaths = []\r\nignoreEvents = []\r\ni = 0\r\nfor line in nextDataLines:\r\n\t# For workshared models we'll need the second JournalData line\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tline = line.NextOfType('JournalData')\r\n\tnextDataLine = line.NextOfType('JournalData')\r\n\t# Flag models that do not have a JournalData line that carries the filename\r\n\tif line.Key not in (\"File Name\", \"Dropped File Name\", \"MRUFileName\"):\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in file open dialog\r\n\telif line.Key == \"File Name\" and line.Values[0] == \"IDCANCEL\":\r\n\t\tignoreEvents.append(i)\r\n\t# Flag models that were canceled in status bar, otherwise add path to list\r\n\telif nextDataLine != None:\r\n\t\tif nextDataLine.Key == \"ProgressCancelled\":\r\n\t\t\tnextDataLine2 = nextDataLine.NextOfType('JournalData')\r\n\t\t\tif nextDataLine2.Key == \"TaskDialogResult\" and nextDataLine2.Values[-1] == \"IDYES\":\r\n\t\t\t\tignoreEvents.append(i)\r\n\t\t\telse: paths.append(line.Values[-1])\r\n\t\telse: paths.append(line.Values[-1])\r\n\telse: paths.append(line.Values[-1])\r\n\ti += 1\r\n\r\n# Remove flagged events\r\nfor index in sorted(ignoreEvents, reverse=True): del events[index]\r\n\r\n# Build LoadedModel objects\r\nloadedModels = [LoadedModel(journal, paths[x], events[x]) for x in range(0, len(events))]\r\n\r\n# Get lines of load completed\r\nloadedLines = [x.JournalLine.NextOfTypeAndProperty('JournalComment', 'RawText', \"'***********************************************************\").NextOfType('JournalTimeStamp') for x in events]\r\n# Create event objects for load completed\r\nloadedEvents = [LoadedModelEvent(x, 'Loaded', x.DateTime) for x in loadedLines]\r\n# Add events to loaded models\r\n[loadedModels[x].Events.append(loadedEvents[x]) for x in range(0, len(loadedModels))]\r\n\r\nOUT = loadedModels",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "565bb644a7f1428fac81630740fa3d3d",
+      "Inputs": [
+        {
+          "Id": "363b9a2933824cfcbd5bdc5457192093",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "861b79179a0b49a68d168601ab06362b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "d7de26d0a1de4ee89b9c619ac3c5b4aa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2259f1ce61bf426a8aa594c0af64052d",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "loadedModels",
+      "Id": "a92aba09ef7043b2ac479f62265902d7",
+      "Inputs": [
+        {
+          "Id": "1464d718329a4bb8892259f09d30954b",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "861b79179a0b49a68d168601ab06362b",
+      "End": "1464d718329a4bb8892259f09d30954b",
+      "Id": "60e38a92ea804b019686b678b6e3f461"
+    },
+    {
+      "Start": "2259f1ce61bf426a8aa594c0af64052d",
+      "End": "363b9a2933824cfcbd5bdc5457192093",
+      "Id": "652c591cfc694bb8b6e213b95e6d5e49"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "565bb644a7f1428fac81630740fa3d3d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 192.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "d7de26d0a1de4ee89b9c619ac3c5b4aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 33.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "a92aba09ef7043b2ac479f62265902d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 416.0,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 120.47374282625,
+    "Y": 323.662849096523,
+    "Zoom": 1.78359936238281
+  }
+}

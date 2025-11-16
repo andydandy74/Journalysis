@@ -1,0 +1,261 @@
+{
+  "Uuid": "653839b7-9b27-4644-877b-2461654f2c95",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Query",
+  "Description": "Returns the amount of time it took to process the given WorksharingLog",
+  "Name": "WorksharingLog.ProcessingTime",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef WSLogProcessingTime(wslog):\r\n\tif wslog.__repr__() == 'WorksharingLog': return wslog.ProcessingTime\r\n\telse: return None\r\n\r\nOUT = process_input(WSLogProcessingTime,IN[0])",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "5dbf814607744bd299208aca7e078d7d",
+      "Inputs": [
+        {
+          "Id": "b609758964ae47d0be110f73453b2e5f",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a5c7d6e4a6dc451a93fc35216c259909",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "worksharingLog",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "f1d2ea6d73e9410a9a28cec556f1bcd3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "23b170dd51484366a4f26b597fa280c9",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "timeSpan",
+      "Id": "770a74dde8144194b6aa2a46d65b9cd0",
+      "Inputs": [
+        {
+          "Id": "fee38b0fd79c4afba7a1d42c3797c60a",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.TimeSpan.Create@double,double,double,double,double",
+      "Id": "87752aab58f447dab645ad1f7a233b70",
+      "Inputs": [
+        {
+          "Id": "5ab2945cc07d4f72b29dd988c69a846e",
+          "Name": "days",
+          "Description": "Enthaltene Tage\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "123ca1962def494faed770edd350d4d6",
+          "Name": "hours",
+          "Description": "Enthaltene Stunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "52063524a0de4cb69fd7ba1a1a446bd5",
+          "Name": "minutes",
+          "Description": "Enthaltene Minuten\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0ed5098b91094ed6a71db71fa64e0c6e",
+          "Name": "seconds",
+          "Description": "Enthaltene Sekunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "91cb85d58e0f4e7c889d155b0d6d2659",
+          "Name": "milliseconds",
+          "Description": "Enthaltene Millisekunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b5924a44ab6141129a945ea718caa656",
+          "Name": "timeSpan",
+          "Description": "TimeSpan-Wert wurde erstellt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen neuen TimeSpan-Wert aus einer Zeitspanne.\n\nTimeSpan.Create (days: double = 0, hours: double = 0, minutes: double = 0, seconds: double = 0, milliseconds: double = 0): var"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a5c7d6e4a6dc451a93fc35216c259909",
+      "End": "0ed5098b91094ed6a71db71fa64e0c6e",
+      "Id": "cdd9a163f2654b7c914531ee8ba9af5e"
+    },
+    {
+      "Start": "23b170dd51484366a4f26b597fa280c9",
+      "End": "b609758964ae47d0be110f73453b2e5f",
+      "Id": "4e3bced1e4a34059ac0bd5c1579840f2"
+    },
+    {
+      "Start": "b5924a44ab6141129a945ea718caa656",
+      "End": "fee38b0fd79c4afba7a1d42c3797c60a",
+      "Id": "323d2b1d3a9a40abb5039504a995245e"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5dbf814607744bd299208aca7e078d7d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 359.0,
+        "Y": 342.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "f1d2ea6d73e9410a9a28cec556f1bcd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 109.0,
+        "Y": 342.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "770a74dde8144194b6aa2a46d65b9cd0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 833.0,
+        "Y": 266.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TimeSpan.Create",
+        "Id": "87752aab58f447dab645ad1f7a233b70",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 539.0,
+        "Y": 265.0
+      }
+    ],
+    "Annotations": [],
+    "X": -44.199999999999932,
+    "Y": 78.4,
+    "Zoom": 1.0
+  }
+}

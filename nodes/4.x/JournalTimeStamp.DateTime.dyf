@@ -1,0 +1,180 @@
+{
+  "Uuid": "fa0fee5f-a8ca-4194-b925-362f47f1e6c7",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Journal.JournalLine.Query",
+  "Description": "Returns the date and time of a TimeStamp line",
+  "Name": "JournalTimeStamp.DateTime",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalTimeStampDateTime(input):\r\n\tif input.__repr__() == 'JournalTimeStamp': return input.DateTime\r\n\telse: return None\r\n\r\nOUT = process_input(journalTimeStampDateTime,IN[0])",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "17a271c9bbb7480995fab62c045031e5",
+      "Inputs": [
+        {
+          "Id": "0f37d6ed6bf245ce8c71c89bcd274f60",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "36925d0ffd984fc98fb674c8d3692d32",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journalTimeStamp",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "120d7b8723564a97a251c7292791f952",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a74ecb19cadd4768b8633069e25f3622",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "dateTime",
+      "Id": "ee37b06789e141f1b53986212f034d27",
+      "Inputs": [
+        {
+          "Id": "c13e4f24b55a461fa77c50c36a44995b",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "36925d0ffd984fc98fb674c8d3692d32",
+      "End": "c13e4f24b55a461fa77c50c36a44995b",
+      "Id": "59592b4cc82b41fb8b4415b73a58895e"
+    },
+    {
+      "Start": "a74ecb19cadd4768b8633069e25f3622",
+      "End": "0f37d6ed6bf245ce8c71c89bcd274f60",
+      "Id": "ee9ab831300e4986bb257da63339497b"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "17a271c9bbb7480995fab62c045031e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 300.846044797093,
+        "Y": 1.8989540458958913
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "120d7b8723564a97a251c7292791f952",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 38.846044797093,
+        "Y": 1.89895404589589
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "ee37b06789e141f1b53986212f034d27",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 524.846044797093,
+        "Y": 1.89895404589589
+      }
+    ],
+    "Annotations": [],
+    "X": -257.0,
+    "Y": 276.79999999999995,
+    "Zoom": 1.0
+  }
+}

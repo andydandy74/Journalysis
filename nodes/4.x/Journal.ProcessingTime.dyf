@@ -1,0 +1,266 @@
+{
+  "Uuid": "d6c5d44c-06f3-45c1-83a9-ef152295ef7e",
+  "IsCustomNode": true,
+  "Category": "Journalysis.Query",
+  "Description": "Returns the time it took the Journal.ByString node to process a given journal",
+  "Name": "Journal.ProcessingTime",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalProcessingTime(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.ProcessingTime\r\n\telse: return None\r\n\r\nOUT = process_input(journalProcessingTime,IN[0])",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "91862ce131d747eca2218eba71d8e1e4",
+      "Inputs": [
+        {
+          "Id": "2755e3f4d4744cfd862feb2fc232b839",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "62dfa50e5eec4912b7f22f0acffcb952",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "4a7327e97bd7483785f00d5f9a7d0222",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d783338d64714bdabf2369093212e52b",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "timeSpan",
+      "Id": "a7e88d12061b45bfb7b52a7dd52a96d1",
+      "Inputs": [
+        {
+          "Id": "29a63ba5f0274c9191fc8dfe6cfc9152",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.TimeSpan.Create@double,double,double,double,double",
+      "Id": "e233822060ff4648a64e4d64076a79b6",
+      "Inputs": [
+        {
+          "Id": "c5f1cf84591f41daa3626096f4f1825d",
+          "Name": "days",
+          "Description": "Enthaltene Tage\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9fc551461cdf4700aaef3b48f2b62ffd",
+          "Name": "hours",
+          "Description": "Enthaltene Stunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7d7f2d6a814c4ad59c7d0f264ed40179",
+          "Name": "minutes",
+          "Description": "Enthaltene Minuten\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "34d630930592476f992809425bf8727c",
+          "Name": "seconds",
+          "Description": "Enthaltene Sekunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "49ea8bb966754f1e84954074cfb43751",
+          "Name": "milliseconds",
+          "Description": "Enthaltene Millisekunden\n\ndouble\nVorgabewert : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a5ad4f24729b421795db484c5df699e4",
+          "Name": "timeSpan",
+          "Description": "TimeSpan-Wert wurde erstellt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen neuen TimeSpan-Wert aus einer Zeitspanne.\n\nTimeSpan.Create (days: double = 0, hours: double = 0, minutes: double = 0, seconds: double = 0, milliseconds: double = 0): var"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "62dfa50e5eec4912b7f22f0acffcb952",
+      "End": "34d630930592476f992809425bf8727c",
+      "Id": "ba4df58bdf914557901c17d81f746f20",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d783338d64714bdabf2369093212e52b",
+      "End": "2755e3f4d4744cfd862feb2fc232b839",
+      "Id": "c6ec25cafb7c41b2ab50f2e5f98c0f24",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a5ad4f24729b421795db484c5df699e4",
+      "End": "29a63ba5f0274c9191fc8dfe6cfc9152",
+      "Id": "389fb66895fe4eb394f9c8dedebdd289",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.16.2.5624",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Id": "91862ce131d747eca2218eba71d8e1e4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 702.5,
+        "Y": 339.25
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "4a7327e97bd7483785f00d5f9a7d0222",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 452.44828465682326,
+        "Y": 351.82805040740067
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "a7e88d12061b45bfb7b52a7dd52a96d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1278.5,
+        "Y": 261.25
+      },
+      {
+        "Name": "TimeSpan.Create",
+        "ShowGeometry": true,
+        "Id": "e233822060ff4648a64e4d64076a79b6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 926.5,
+        "Y": 261.25
+      }
+    ],
+    "Annotations": [],
+    "X": -371.05747872799566,
+    "Y": -49.181259273824651,
+    "Zoom": 0.95404292488281262
+  }
+}
