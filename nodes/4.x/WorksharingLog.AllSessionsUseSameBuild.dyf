@@ -25,11 +25,11 @@
   "Nodes": [
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef WSLogAllSessionsUseSameBuild(wslog):\r\n\tif wslog.__repr__() == 'WorksharingLog': return wslog.AllSessionsUseSameBuild()\r\n\telse: return None\r\n\r\nOUT = process_input(WSLogAllSessionsUseSameBuild,IN[0])",
-      "Engine": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "f4cbc6c6fca04bbaae9986ecbcfa5aed",
+      "NodeType": "PythonScriptNode",
       "Inputs": [
         {
           "Id": "7bdeef0e67c04052a9a72720ca52a45a",
@@ -53,11 +53,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "worksharingLog",
         "TypeName": "var",
@@ -66,6 +65,7 @@
         "Description": ""
       },
       "Id": "20553ba5250f47038d830b798b26b0a2",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -79,14 +79,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "bool",
       "Id": "258941f8b4874f5a958e5e955e51a972",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "076949ed33644c2789c0e26d9eeb537c",
@@ -100,23 +100,34 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
     {
       "Start": "ff0352ce821e4de9a05008148d1ad569",
       "End": "076949ed33644c2789c0e26d9eeb537c",
-      "Id": "79dfc1ed824f44979d454d9c2e824890"
+      "Id": "79dfc1ed824f44979d454d9c2e824890",
+      "IsHidden": "False"
     },
     {
       "Start": "74cff230a86b4fd890c0d86297624afe",
       "End": "7bdeef0e67c04052a9a72720ca52a45a",
-      "Id": "74a7df4b0e204ac18f254f2c5c85e092"
+      "Id": "74a7df4b0e204ac18f254f2c5c85e092",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "f4cbc6c6fca04bbaae9986ecbcfa5aed"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -124,12 +135,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -140,34 +151,35 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "f4cbc6c6fca04bbaae9986ecbcfa5aed",
+        "Name": "Python Script",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 250.0,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "20553ba5250f47038d830b798b26b0a2",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 0.0,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "258941f8b4874f5a958e5e955e51a972",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 449.0,
         "Y": 0.0
       }

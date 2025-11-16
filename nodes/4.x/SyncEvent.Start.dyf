@@ -25,11 +25,11 @@
   "Nodes": [
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef SyncEventStart(syncevent):\r\n\tif syncevent.__repr__() == 'SyncEvent': return syncevent.Start\r\n\telse: return None\r\n\r\nOUT = process_input(SyncEventStart,IN[0])",
-      "Engine": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "e6ab279157ed45a1b91d93f09c20055f",
+      "NodeType": "PythonScriptNode",
       "Inputs": [
         {
           "Id": "35e29f8b1abb4ee4baf527db91bf86b9",
@@ -53,11 +53,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "syncEvent",
         "TypeName": "var",
@@ -66,6 +65,7 @@
         "Description": ""
       },
       "Id": "3e747d56ca7f4b54a1da71a2c0bc05f4",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -79,14 +79,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "dateTime",
       "Id": "571f2c72dd6640cc9b1abafdb8f8228e",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "5b8bfb373593463d9bf4a44cceea7e6c",
@@ -100,23 +100,34 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
     {
       "Start": "90c51ef343d94bf1bd64dcf72728e091",
       "End": "5b8bfb373593463d9bf4a44cceea7e6c",
-      "Id": "22c2050db0204eb1bd1407256610c9dc"
+      "Id": "22c2050db0204eb1bd1407256610c9dc",
+      "IsHidden": "False"
     },
     {
       "Start": "5233829d54484bdcb881ec280a26e012",
       "End": "35e29f8b1abb4ee4baf527db91bf86b9",
-      "Id": "fc04673494fc44fd8644cc72a8b0c010"
+      "Id": "fc04673494fc44fd8644cc72a8b0c010",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "e6ab279157ed45a1b91d93f09c20055f"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -124,12 +135,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -140,34 +151,35 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "e6ab279157ed45a1b91d93f09c20055f",
+        "Name": "Python Script",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 250.0,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "3e747d56ca7f4b54a1da71a2c0bc05f4",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 0.0,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "571f2c72dd6640cc9b1abafdb8f8228e",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 449.0,
         "Y": 0.0
       }
