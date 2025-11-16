@@ -12,11 +12,11 @@
   "Nodes": [
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalTimeStampDebugInfoType(input):\r\n\tif input.__repr__() == 'JournalTimeStamp': return input.DebugInfoType\r\n\telse: return None\r\n\r\nOUT = process_input(journalTimeStampDebugInfoType,IN[0])",
-      "Engine": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "11356ddd28f041a6a64a7314884b5f1b",
+      "NodeType": "PythonScriptNode",
       "Inputs": [
         {
           "Id": "67beba8f76254556bb3cb6d4190e1ab4",
@@ -40,11 +40,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "journalTimeStamp",
         "TypeName": "var",
@@ -53,6 +52,7 @@
         "Description": ""
       },
       "Id": "390a71f26c464d1f84cfb11e8f9350d1",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -66,14 +66,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "str",
       "Id": "eab4e230927a43c098cd7d3b632d986f",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "62310dfb447747f9b42963cf04dfe93e",
@@ -87,23 +87,34 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
     {
       "Start": "9ed9fb1105634cb7be9c1cf2d7e8cc87",
       "End": "62310dfb447747f9b42963cf04dfe93e",
-      "Id": "0c476e5f1229486c8ea6e0ac405662e7"
+      "Id": "0c476e5f1229486c8ea6e0ac405662e7",
+      "IsHidden": "False"
     },
     {
       "Start": "333d781386d54e5da25f01b78d9b2939",
       "End": "67beba8f76254556bb3cb6d4190e1ab4",
-      "Id": "ba38e9bb764c4cfc9c84e4c846e3eab2"
+      "Id": "ba38e9bb764c4cfc9c84e4c846e3eab2",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "11356ddd28f041a6a64a7314884b5f1b"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -111,12 +122,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -127,34 +138,35 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "11356ddd28f041a6a64a7314884b5f1b",
+        "Name": "Python Script",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 299.5,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "390a71f26c464d1f84cfb11e8f9350d1",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": -74.5,
         "Y": 0.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "eab4e230927a43c098cd7d3b632d986f",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 523.5,
         "Y": 0.0
       }

@@ -25,12 +25,11 @@
   "Nodes": [
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalOSVersion(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.OSVersion\r\n\telse: return None\r\n\r\nOUT = process_input(journalOSVersion,IN[0])",
-      "Engine": "CPython3",
-      "EngineName": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "d86c03e83ce94dd9b1a7761ef7036877",
+      "NodeType": "PythonScriptNode",
       "Inputs": [
         {
           "Id": "c8f1ada6fdd741e9b07d71c4b7171616",
@@ -54,11 +53,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "journal",
         "TypeName": "var",
@@ -67,6 +65,7 @@
         "Description": ""
       },
       "Id": "8f426242899249bb9f6ad248042e5f0a",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -80,14 +79,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "str",
       "Id": "5b18c2c88566401ba98d2155070fbb6e",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "e2f2566f53114140aee924b6f14da4c4",
@@ -101,7 +100,7 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
@@ -119,7 +118,16 @@
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d86c03e83ce94dd9b1a7761ef7036877"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -127,12 +135,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.16.2.5624",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -146,32 +154,32 @@
     "ConnectorPins": [],
     "NodeViews": [
       {
-        "Name": "Python Script",
-        "ShowGeometry": true,
         "Id": "d86c03e83ce94dd9b1a7761ef7036877",
+        "Name": "Python Script",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 206.5,
         "Y": 0.0
       },
       {
-        "Name": "Input",
-        "ShowGeometry": true,
         "Id": "8f426242899249bb9f6ad248042e5f0a",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 18.5,
         "Y": 0.0
       },
       {
-        "Name": "Output",
-        "ShowGeometry": true,
         "Id": "5b18c2c88566401ba98d2155070fbb6e",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 430.5,
         "Y": 0.0
       }

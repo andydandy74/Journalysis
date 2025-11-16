@@ -25,11 +25,11 @@
   "Nodes": [
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
       "Code": "import clr\r\n\r\ndef process_input(func, inputs):\r\n\tif isinstance(inputs[0], list): return [func(x, inputs[1], inputs[2], inputs[3]) for x in inputs[0]]\r\n\telse: return func(inputs[0], inputs[1], inputs[2], inputs[3])\r\n\t\r\ndef journalLinesByTypeAndProperty(journal, type, prop, val):\r\n\tif journal.__repr__() == 'Journal': \r\n\t\treturn journal.GetLinesByTypeAndProperty(type, prop, val)\r\n\telse: return None\r\n\r\nOUT = process_input(journalLinesByTypeAndProperty, IN)",
-      "Engine": "CPython3",
+      "Engine": "PythonNet3",
       "VariableInputPorts": true,
       "Id": "fea2812f6b004fc4b93f5742d17a25af",
+      "NodeType": "PythonScriptNode",
       "Inputs": [
         {
           "Id": "15d5610901a34c95a541786608bb37a3",
@@ -80,11 +80,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Führt ein eingebettetes Python-Skript aus."
+      "Description": "Runs an embedded Python script."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "journal",
         "TypeName": "var",
@@ -93,6 +92,7 @@
         "Description": ""
       },
       "Id": "eeafc7bb36fb410c8fae731a28dc6d75",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -106,11 +106,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "journalLineType",
         "TypeName": "var",
@@ -119,6 +118,7 @@
         "Description": ""
       },
       "Id": "fb031a7d6d1948ea93bb14c5e30810ee",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -132,11 +132,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "property",
         "TypeName": "var",
@@ -145,6 +144,7 @@
         "Description": ""
       },
       "Id": "b9ca840577964aa3afe63633310ebf4a",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -158,11 +158,10 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
-      "NodeType": "InputNode",
       "Parameter": {
         "Name": "value",
         "TypeName": "var",
@@ -171,6 +170,7 @@
         "Description": ""
       },
       "Id": "381ea0240c9a4e149cd98963c9f47e60",
+      "NodeType": "InputNode",
       "Inputs": [],
       "Outputs": [
         {
@@ -184,14 +184,14 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Ein Funktionsparameter zur Verwendung mit benutzerdefinierten Blöcken.\r\n\r\nSie können den Typ und den Vorgabewert für den Parameter angeben, z. B.\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
-      "NodeType": "OutputNode",
       "ElementResolver": null,
       "Symbol": "journalLines",
       "Id": "a7e0c117e68e49cab73b7e8f68f208de",
+      "NodeType": "OutputNode",
       "Inputs": [
         {
           "Id": "f4c47439598a4a5486de0541f3efb9f6",
@@ -205,38 +205,52 @@
       ],
       "Outputs": [],
       "Replication": "Disabled",
-      "Description": "Eine Funktionsausgabe zur Verwendung mit benutzerdefinierten Blöcken"
+      "Description": "A function output, use with custom nodes"
     }
   ],
   "Connectors": [
     {
       "Start": "36aec9bc4ece43a1b3da22f70cf11f73",
       "End": "f4c47439598a4a5486de0541f3efb9f6",
-      "Id": "75ab8deec4cf49748730f9b82654a7e2"
+      "Id": "75ab8deec4cf49748730f9b82654a7e2",
+      "IsHidden": "False"
     },
     {
       "Start": "3d332984907447a78e014cfebcc48b74",
       "End": "15d5610901a34c95a541786608bb37a3",
-      "Id": "9e178cd74f314140839acb4be014c612"
+      "Id": "9e178cd74f314140839acb4be014c612",
+      "IsHidden": "False"
     },
     {
       "Start": "3c7f72242e6246e69eaa95ab64862a7a",
       "End": "d29ab3aef5ec4d509b67ccb2e1cfbbc8",
-      "Id": "e9b36b5a94ee4e84b667d2c4a7cb0a4b"
+      "Id": "e9b36b5a94ee4e84b667d2c4a7cb0a4b",
+      "IsHidden": "False"
     },
     {
       "Start": "bc2eae821d4b456f95dbe0b2d5fe6e6e",
       "End": "1dc5ceea436545d5a12c936b7e11fc2e",
-      "Id": "acad6abde5cf4cb58fc2717333e3ee20"
+      "Id": "acad6abde5cf4cb58fc2717333e3ee20",
+      "IsHidden": "False"
     },
     {
       "Start": "d7dd5fc1eaff4ce2b2cc72f08aa03101",
       "End": "8d40bf5c6d374ec397e35b6cd42ace7f",
-      "Id": "f9627571073e45f89890253ee8461dba"
+      "Id": "f9627571073e45f89890253ee8461dba",
+      "IsHidden": "False"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "fea2812f6b004fc4b93f5742d17a25af"
+      ]
+    }
+  ],
   "Author": "None provided",
   "Bindings": [],
   "View": {
@@ -244,12 +258,12 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": false,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.12.1.8246",
+      "Version": "3.6.1.9895",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
-      "Name": "Hintergrundvorschau",
+      "Name": "_Background Preview",
       "EyeX": -17.0,
       "EyeY": 24.0,
       "EyeZ": 50.0,
@@ -260,64 +274,65 @@
       "UpY": 1.0,
       "UpZ": 0.0
     },
+    "ConnectorPins": [],
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Python Script",
         "Id": "fea2812f6b004fc4b93f5742d17a25af",
+        "Name": "Python Script",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 239.5,
         "Y": 186.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "eeafc7bb36fb410c8fae731a28dc6d75",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": -14.5,
         "Y": 100.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "fb031a7d6d1948ea93bb14c5e30810ee",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": -14.5,
         "Y": 183.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "b9ca840577964aa3afe63633310ebf4a",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": -14.5,
         "Y": 267.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Input",
         "Id": "381ea0240c9a4e149cd98963c9f47e60",
+        "Name": "Input",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": -14.5,
         "Y": 350.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Output",
         "Id": "a7e0c117e68e49cab73b7e8f68f208de",
+        "Name": "Output",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
+        "ShowGeometry": true,
         "X": 463.5,
         "Y": 186.0
       }
