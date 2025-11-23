@@ -81,7 +81,7 @@ class WorksharingSession:
 	def HasLoadedLinks(self):
 		return len([x for x in self.Events if x.Text == "<OpenLink"]) > 0
 	def WasTerminatedProperly(self):
-		return self.End != None
+		return self.End is not None
 
 class WorksharingEvent:
 	def __init__(self, timestamp, text):
