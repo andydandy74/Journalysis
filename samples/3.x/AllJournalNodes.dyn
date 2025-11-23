@@ -25,7 +25,7 @@
       "Name": "Journal File Path",
       "Type": "string",
       "Type2": "string",
-      "Value": "..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
+      "Value": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2025\\Journals\\journal.0058.txt",
       "Description": "Allows you to select a file on the system and returns its file path"
     },
     {
@@ -177,8 +177,8 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows you to select a file on the system and returns its file path",
-      "HintPath": "C:\\Users\\andreas\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt",
-      "InputValue": "..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2023\\Journals\\journal.0002.txt"
+      "HintPath": "C:\\Users\\adsk\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2025\\Journals\\journal.0058.txt",
+      "InputValue": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Autodesk\\Revit\\Autodesk Revit 2025\\Journals\\journal.0058.txt"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -3519,8 +3519,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "WatchWidth": 200.0,
-      "WatchHeight": 38.4,
+      "WatchWidth": 72.8,
+      "WatchHeight": 200.0,
       "Id": "33bc219bca6f4b8f9742f474dd3475cc",
       "NodeType": "ExtensionNode",
       "Inputs": [
@@ -5093,7 +5093,7 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "WatchWidth": 200.0,
+      "WatchWidth": 420.0,
       "WatchHeight": 38.4,
       "Id": "74bc20e6c8c04df1b93e2b9a86de94c9",
       "NodeType": "ExtensionNode",
@@ -5858,6 +5858,37 @@
       ],
       "Replication": "Auto",
       "Description": "Returns the message of the exception (if any)"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "6cefd6e7-cdbb-44c0-8e8c-2808a4fe5d8d",
+      "FunctionType": "Graph",
+      "Id": "ee18ee65e67a4c23b5ae386262472f16",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "5c8baa6c11a2417ea63de60041edb310",
+          "Name": "journal",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f421c6ff6ae6456b9c7c8c6ab2e3f8e5",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the Revit release from a given journal"
     }
   ],
   "Connectors": [
@@ -6972,6 +7003,12 @@
       "IsHidden": "False"
     },
     {
+      "Start": "4de4a3cdc7914eeb9e5fd277744ed362",
+      "End": "5c8baa6c11a2417ea63de60041edb310",
+      "Id": "d41c14a32ba04c909dcdbb19ad78e9b3",
+      "IsHidden": "False"
+    },
+    {
       "Start": "d87f21ec3f5541229b7c04a29b99d967",
       "End": "3b3669139c954a1281f26d8dd0018680",
       "Id": "19bd1e5981854c6e9d208cdd86d5cb83",
@@ -7145,7 +7182,8 @@
     "7c32c388-6b81-480f-85f3-cf75b5cbfe55",
     "c0397af6-b464-44e0-b4dc-997e1f95d1c4",
     "2648891c-d637-439f-be19-e9129fb4d01a",
-    "d27a7473-88b3-44f1-a1b6-82e5e3b189ec"
+    "d27a7473-88b3-44f1-a1b6-82e5e3b189ec",
+    "6cefd6e7-cdbb-44c0-8e8c-2808a4fe5d8d"
   ],
   "NodeLibraryDependencies": [
     {
@@ -7299,7 +7337,16 @@
       "Nodes": [
         "17938e8f929d468791952aa39bd08adc",
         "d5427164587a497b9b1e1e346e684152",
-        "f7f69f7d7591469d82209a9132b422ba"
+        "f7f69f7d7591469d82209a9132b422ba",
+        "ee18ee65e67a4c23b5ae386262472f16"
+      ]
+    },
+    {
+      "Name": "journal.0058.txt",
+      "ReferenceType": "External",
+      "Nodes": [
+        "19fd1f7bc2dc4f959b5f26ec82af2d4a",
+        "86effb6a106445cea3dbff3b83cc2cdf"
       ]
     }
   ],
@@ -7388,8 +7435,8 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "ShowGeometry": true,
-        "X": -889.6795958312912,
-        "Y": -1679.5082723032751
+        "X": -887.0846926536225,
+        "Y": -1474.510921267449
       },
       {
         "Id": "d817f8df4e94405da03e838e47500b76",
@@ -8078,8 +8125,8 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "ShowGeometry": true,
-        "X": -888.6208081657182,
-        "Y": -1826.322081855455
+        "X": -882.5660340844912,
+        "Y": -1624.784601723187
       },
       {
         "Id": "64dd85fcbea645f1b123085309d9f8b2",
@@ -9110,6 +9157,16 @@
         "ShowGeometry": true,
         "X": -259.31349402122294,
         "Y": -5088.663427698023
+      },
+      {
+        "Id": "ee18ee65e67a4c23b5ae386262472f16",
+        "Name": "Journal.RevitRelease",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -872.4341664092399,
+        "Y": -1803.6539729043989
       }
     ],
     "Annotations": [
@@ -9132,13 +9189,14 @@
           "552b6337408c4482b0eaf08e9c89ccf4",
           "64dd85fcbea645f1b123085309d9f8b2",
           "b5dea8e4678e40b48949710dccf93445",
-          "ffc2a86d68584090b649597e62aa7759"
+          "ffc2a86d68584090b649597e62aa7759",
+          "ee18ee65e67a4c23b5ae386262472f16"
         ],
         "HasNestedGroups": false,
         "Left": -914.6931078647403,
         "Top": -3382.570658295155,
         "Width": 287.27229969902214,
-        "Height": 1834.86238599188,
+        "Height": 2039.8597370277062,
         "FontSize": 30.0,
         "GroupStyleId": "00000000-0000-0000-0000-000000000000",
         "InitialTop": -3316.570658295155,
@@ -9860,7 +9918,7 @@
         "HasNestedGroups": false,
         "Left": -2690.265006585946,
         "Top": -4012.37078417131,
-        "Width": 968.0,
+        "Width": 1188.0,
         "Height": 382.23961518407987,
         "FontSize": 30.0,
         "GroupStyleId": "00000000-0000-0000-0000-000000000000",
@@ -9893,7 +9951,7 @@
         "FontSize": 30.0,
         "GroupStyleId": "00000000-0000-0000-0000-000000000000",
         "InitialTop": -5669.669351250744,
-        "InitialHeight": 891.2912026956183,
+        "InitialHeight": 1024.6417513302085,
         "TextblockHeight": 56.0,
         "Background": "#FFC1D676"
       }

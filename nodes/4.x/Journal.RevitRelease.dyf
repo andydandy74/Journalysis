@@ -1,0 +1,192 @@
+{
+  "Uuid": "6cefd6e7-cdbb-44c0-8e8c-2808a4fe5d8d",
+  "IsCustomNode": true,
+  "Category": "Journalysis.WorksharingLog.Query",
+  "Description": "Returns the Revit release from a given journal",
+  "Name": "Journal.RevitRelease",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "File": {
+        "Key": "DSCore.IO.File",
+        "Value": "DSCoreNodes.dll"
+      },
+      "System.IO.FileInfo": {
+        "Key": "System.IO.FileInfo",
+        "Value": ""
+      },
+      "List.Empty": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "import clr\r\n\r\ndef process_input(func, input):\r\n\tif isinstance(input, list): return [func(x) for x in input]\r\n\telse: return func(input)\r\n\t\r\ndef journalRelease(journal):\r\n\tif journal.__repr__() == 'Journal': return journal.Release\r\n\telse: return None\r\n\r\nOUT = process_input(journalRelease,IN[0])",
+      "Engine": "PythonNet3",
+      "VariableInputPorts": true,
+      "Id": "d9d87ca202104581a90377202e6bfee0",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "64a2b558fbe84266888e69879ef2fb4c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b4a2621914234e96896853cd9a2cf04b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "Parameter": {
+        "Name": "journal",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "bdabea5b44c94844a85d4dda142d0a9e",
+      "NodeType": "InputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "410c27bb86fd45998200b7ea3c5d0fcb",
+          "Name": "",
+          "Description": "Input Data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "ElementResolver": null,
+      "Symbol": "str",
+      "Id": "0269afe820d643e392c31da9b74d9bfd",
+      "NodeType": "OutputNode",
+      "Inputs": [
+        {
+          "Id": "7489de9f5b684642811dfa5069089e75",
+          "Name": "",
+          "Description": "Output Data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b4a2621914234e96896853cd9a2cf04b",
+      "End": "7489de9f5b684642811dfa5069089e75",
+      "Id": "f6c09b6be3b147dd90374aa2bc8e39cb",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "410c27bb86fd45998200b7ea3c5d0fcb",
+      "End": "64a2b558fbe84266888e69879ef2fb4c",
+      "Id": "8f66b77da0f543b29b583ea8b72c3d5f",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "PythonNet3 Engine",
+      "Version": "1.1.1",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d9d87ca202104581a90377202e6bfee0"
+      ]
+    }
+  ],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "3.6.1.9895",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "d9d87ca202104581a90377202e6bfee0",
+        "Name": "Python Script",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 279.7,
+        "Y": 0.0
+      },
+      {
+        "Id": "bdabea5b44c94844a85d4dda142d0a9e",
+        "Name": "Input",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -54.69999999999999,
+        "Y": 0.0
+      },
+      {
+        "Id": "0269afe820d643e392c31da9b74d9bfd",
+        "Name": "Output",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 554.0999999999999,
+        "Y": 0.0
+      }
+    ],
+    "Annotations": [],
+    "X": 218.39999999999998,
+    "Y": 106.39999999999998,
+    "Zoom": 1.0
+  }
+}
