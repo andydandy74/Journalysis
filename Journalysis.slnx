@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Journalysis.Core.Tests/Journalysis.Core.Tests.csproj" Id="3bd629c1-68f1-4017-b3d2-fc68353dd578" />
+  <Project Path="Journalysis.Core/Journalysis.Core.csproj" />
+</Solution>
