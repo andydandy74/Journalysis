@@ -144,7 +144,7 @@ public static class RecordedExceptionAnalyzer
 
         if (messageText.StartsWith("An external service execution throws", StringComparison.Ordinal))
         {
-            // Python behavior appends this information to the previous exception.
+            // Append this information to the previous exception.
             if (parsedExceptions.Count == 0)
             {
                 // No previous exception to enrich, keep this as a standalone record.
@@ -282,7 +282,7 @@ public static class RecordedExceptionAnalyzer
 
         if (rawText.Contains("exceptionsInOnOpenDocument", StringComparison.Ordinal))
         {
-            // Python behavior appends this detail to the previous exception.
+            // Append this detail to the previous exception.
             if (parsedExceptions.Count == 0)
             {
                 exception.Message = rawText;

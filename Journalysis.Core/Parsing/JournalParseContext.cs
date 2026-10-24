@@ -21,10 +21,8 @@ internal sealed class JournalParseContext
     public string? MachineName { get; set; }
     public string? OsVersion { get; set; }
 
-    // Preserve the original parser's first-match behavior for these fields.
     public bool MachineNameFound { get; set; }
     public bool OsVersionFound { get; set; }
 
-    // The original parser increments this across system-information records.
     public int SystemInformationItemNumber { get; set; }
 }

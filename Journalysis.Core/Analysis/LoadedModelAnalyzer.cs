@@ -39,7 +39,7 @@ public static class LoadedModelAnalyzer
                 .Where(x => string.Equals(x.UiEventType.ToString(), "DropFiles", StringComparison.Ordinal))
                 .Select(x => new LoadedModelEvent(x, LoadedModelEventType.OpenDragDrop, x.GetDateTimeOfBlock())));
 
-        // Preserve Python behavior: process candidate events in encounter order.
+        // Process candidate events in encounter order.
         var paths = new List<string>();
         var ignoreEventIndexes = new List<int>();
 
@@ -158,8 +158,7 @@ public static class LoadedModelAnalyzer
         ArgumentNullException.ThrowIfNull(journal);
         ArgumentNullException.ThrowIfNull(path);
 
-        // Mirror Python behavior:
-        // os.path.normpath(os.path.join(os.path.dirname(self.Journal.Path), path))
+        // Normalize the path by combining it with the journal's directory and resolving the full path.
         if (string.IsNullOrEmpty(journal.Path))
         {
             return path;

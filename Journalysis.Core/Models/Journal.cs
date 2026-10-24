@@ -382,7 +382,6 @@ public sealed class Journal
                     return _startupTime;
                 }
 
-                // Keep the same priority order as the original Python implementation.
                 string[] startupCommandIds =
                 [
                     "ID_REVIT_MODEL_BROWSER_OPEN", // Revit 2019 and later

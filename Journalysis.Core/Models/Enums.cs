@@ -163,7 +163,7 @@ public enum JournalUiEventType
     PushButton,
     RadioButton,
 
-    // Referenced during property extraction, but not recognized by the original
+    // Referenced during property extraction, but not recognized by the 
     // first-pass UI classification. Declaring it here does not change classification.
     Restore,
 

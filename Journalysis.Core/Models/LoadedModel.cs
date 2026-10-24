@@ -42,7 +42,6 @@ public sealed class LoadedModel
 
     /// <summary>
     /// Gets the first comment that contains "File was saved in" between open and loaded blocks.
-    /// Preserves Python behavior and assumptions about event ordering.
     /// The value is computed on first access and then cached.
     /// </summary>
     public string Version =>
@@ -81,9 +80,7 @@ public sealed class LoadedModel
 
     private IReadOnlyList<JournalLine> GetLinesBetweenOpenAndLoadedBlocks()
     {
-        // Python uses:
-        // range(self.Events[0].JournalLine.Block, self.Events[1].JournalLine.Block)
-        // which is start-inclusive, end-exclusive.
+        // Get the range of blocks between the first two events.
         var fromBlock = Events[0].JournalLine.Block;
         var toBlock = Events[1].JournalLine.Block;
 

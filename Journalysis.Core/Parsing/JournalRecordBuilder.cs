@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Journalysis.Core.Models;
 
 namespace Journalysis.Core.Parsing;
@@ -21,7 +22,6 @@ internal static class JournalRecordBuilder
         {
             state.PhysicalLineNumber++;
 
-            // Preserve Python normalization behavior.
             var line = NormalizeLine(rawPhysicalLine);
 
             // Ignore empty/very short lines.
@@ -30,7 +30,7 @@ internal static class JournalRecordBuilder
                 continue;
             }
 
-            // The original logic relies on these ordered checks:
+            // The logic relies on these ordered checks:
             // 1) classify known new records
             // 2) append multiline continuations
             // 3) special handling for apostrophe lines / sysinfo
@@ -60,8 +60,7 @@ internal static class JournalRecordBuilder
 
     private static string NormalizeLine(string? line)
     {
-        // Match Python behavior:
-        // line = line.lstrip().rstrip('\n').rstrip('\x00')
+        // Trim leading spaces and remove trailing newline and null characters.
         return (line ?? string.Empty)
             .TrimStart()
             .TrimEnd('\n')
@@ -174,7 +173,7 @@ internal static class JournalRecordBuilder
             return false;
         }
 
-        // Preserve Python ordering: timestamp lines must be handled as new records
+        // Timestamp lines must be handled as new records
         // by TryCreateNewRecord and never consumed as continuation text.
         if (IsTimeStampStart(line))
         {

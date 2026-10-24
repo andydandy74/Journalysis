@@ -98,7 +98,7 @@ internal static class JournalLineParser
     {
         var fields = line.RawText.Split('"');
 
-        // Match Python's split('"')[3]: do not remove empty fields or trim text.
+        // Extract the second quoted field without removing empty fields or trimming text.
         if (fields.Length < 4)
         {
             throw new FormatException(
@@ -129,7 +129,6 @@ internal static class JournalLineParser
                     "the opening message delimiter is missing."));
         }
 
-        // Preserve Python's split("{ ")[1].split(" }")[0] behavior.
         // A missing closing delimiter leaves the remaining text as the message.
         // A second opening delimiter ends the segment selected by the first split.
         var messageText = openingParts[1]
@@ -146,7 +145,7 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Classifies API messages in the same precedence order as the Python parser.
+    /// Classifies API messages.
     /// </summary>
     private static JournalApiMessageType ParseApiMessageType(string messageText)
     {
@@ -243,11 +242,11 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Parses [Jrn.BasicFileInfo] key/value attributes, preserving Python semantics.
+    /// Parses [Jrn.BasicFileInfo] key/value attributes.
     /// </summary>
     private static Dictionary<string, string> ParseBasicFileInfoAttributes(string rawText)
     {
-        // Preserve Python's [22:] slicing (safe even if text is shorter).
+        // Extract the payload starting from index 22 (safe even if text is shorter).
         var payload = rawText.Length > 22 ? rawText[22..] : string.Empty;
 
         // Split by attribute marker and skip the first preamble segment.
@@ -267,7 +266,7 @@ internal static class JournalLineParser
 
             if (split.Length < 2)
             {
-                // Python would drop these because zip(*) cannot pair them.
+                // Skip malformed fragments that cannot be paired.
                 continue;
             }
 
@@ -279,7 +278,7 @@ internal static class JournalLineParser
             return new Dictionary<string, string>(StringComparer.Ordinal);
         }
 
-        // Python dict(zip(...)) keeps the last duplicate key; emulate that behavior.
+        // Keep the last duplicate key.
         var dict = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var pair in pairs)
         {
@@ -294,8 +293,7 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseCommand(JournalCommandLine line)
     {
-        // Preserve Python behavior:
-        // c1 = raw.replace("  "," ").split('" , "')
+        // Replace double spaces with single spaces and split by the delimiter.
         var c1 = line.RawText
             .Replace("  ", " ", StringComparison.Ordinal)
             .Split("\" , \"", StringSplitOptions.None);
@@ -305,7 +303,7 @@ internal static class JournalLineParser
             return;
         }
 
-        // Preserve Python's [13:] slicing.
+        // Identify the CommandType by taking the substring after the first 13 characters of the first segment.
         line.CommandType = ParseCommandType(
             c1[0][Math.Min(13, c1[0].Length)..]);
 
@@ -328,7 +326,6 @@ internal static class JournalLineParser
             return;
         }
 
-        // Preserve Python's [:-1] behavior.
         var commandIdCandidate = c2[1].Length > 0
             ? c2[1][..^1]
             : c2[1];
@@ -423,11 +420,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts a build-metadata token using the original whitespace rules.
+    /// Extracts a build-metadata token.
     /// </summary>
     private static string ExtractBuildMetadataToken(string text)
     {
-        // Match Python's lstrip().split(" ")[0].strip().
         // The separator is a literal space, not arbitrary whitespace.
         return text.TrimStart()
             .Split(' ', StringSplitOptions.None)[0]
@@ -443,7 +439,7 @@ internal static class JournalLineParser
             "\"  , ",
             StringSplitOptions.None);
 
-        // Preserve Python's [10:] slicing.
+        // Identify the key by taking the substring after the first 10 characters of the first segment.
         var keyCandidate = parts[0][Math.Min(10, parts[0].Length)..];
 
         // Allow for different formatting in Revit 2022.
@@ -474,8 +470,7 @@ internal static class JournalLineParser
 
         if (parts.Length > 1)
         {
-            // Preserve Python's [15:] slicing, which returns an empty string when
-            // the starting position is at or beyond the end of the text.
+            // Return an empty string when the starting position is at or beyond the end of the text.
             var keyCandidate = parts[0][Math.Min(15, parts[0].Length)..];
 
             // Allow for different formatting in Revit 2022.
@@ -490,7 +485,7 @@ internal static class JournalLineParser
         else
         {
             // Very rare case where a multiline error message is inserted between
-            // the key and values. Preserve the original quote-based fallback.
+            // the key and values. 
             var quotedParts = line.RawText.Split('"');
 
             if (quotedParts.Length > 1)
@@ -500,7 +495,7 @@ internal static class JournalLineParser
 
             if (quotedParts.Length > 2)
             {
-                // Unlike the normal branch, Python stores this segment unchanged.
+                // Unlike the normal branch, store this segment unchanged.
                 line.Values.Add(quotedParts[2]);
             }
         }
@@ -516,8 +511,7 @@ internal static class JournalLineParser
                         "the version value is missing."));
             }
 
-            // Python takes at most the first four characters before converting
-            // the result to an integer.
+            // Take at most the first four characters before converting the result to an integer.
             var value = line.Values[0];
             var versionText = value[..Math.Min(4, value.Length)];
 
@@ -534,7 +528,7 @@ internal static class JournalLineParser
                         "the version value does not begin with a valid year."));
             }
 
-            // Later directives overwrite earlier metadata, matching Python.
+            // Later directives overwrite earlier metadata.
             context.Version = version;
         }
         else if (line.Key == "Username")
@@ -557,14 +551,11 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseGuiResourceUsage(JournalGuiResourceUsageLine line)
     {
-        // Python behavior:
-        // g2 = []
-        // for g1 in raw.split(","): g2.append(int(g1.strip().split()[-1]))
         var values = new List<int>();
 
         foreach (var segment in line.RawText.Split(',', StringSplitOptions.None))
         {
-            // Preserve Python split() semantics (whitespace-collapsing tokenization).
+            // Whitespace-collapsing tokenization.
             var tokens = segment.Trim().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
             if (tokens.Length == 0)
@@ -620,8 +611,7 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseKeyboardEvent(JournalKeyboardEventLine line)
     {
-        // Python behavior:
-        // line.Key = line.RawText.split('"')[1]
+        // Identify the key by taking the substring after the first 10 characters of the first segment.
         var parts = line.RawText.Split('"', StringSplitOptions.None);
 
         if (parts.Length < 2)
@@ -641,11 +631,8 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseMouseEvent(JournalMouseEventLine line)
     {
-        // Preserve Python behavior:
-        // m1 = raw.split(" ",1)
+        // Identify the mouse event type by taking the substring after the first 4 characters of the first segment.
         var m1 = line.RawText.Split(" ", 2, StringSplitOptions.None);
-
-        // Preserve Python slicing: m1[0][4:].strip()
         var eventToken = m1[0].Length >= 4 ? m1[0][4..].Trim() : string.Empty;
         line.MouseEventType = ParseMouseEventType(eventToken);
 
@@ -656,17 +643,16 @@ internal static class JournalLineParser
 
         foreach (var part in m1[1].Split(',', StringSplitOptions.None))
         {
-            // Preserve Python cleanup:
-            // potential_int = m2.strip().rstrip('\x00')
+            // Strip whitespace and trailing null characters.
             var candidate = part.Trim().TrimEnd('\0');
 
-            // Preserve Python behavior: skip empty fragments.
+            // Skip empty fragments.
             if (candidate.Length == 0)
             {
                 continue;
             }
 
-            // Python calls int(...) directly; malformed values throw.
+            // Convert to integer.
             try
             {
                 line.Data.Add(int.Parse(
@@ -715,9 +701,7 @@ internal static class JournalLineParser
     {
         string[] tokens;
 
-        // Python behavior:
-        // if "Initial VM" in raw: m1 = raw.split(":",2)[2].replace(";","").split()
-        // else: m1 = raw.split(":",6)[6].split()
+        // Extract the relevant portion of the raw text.
         if (line.RawText.Contains("Initial VM", StringComparison.Ordinal))
         {
             var split = line.RawText.Split(':', 3, StringSplitOptions.None);
@@ -781,7 +765,6 @@ internal static class JournalLineParser
             line.VmUsed = numbers[1];
         }
 
-        // Python branch mapping preserved exactly.
         if (numbers.Count == 6)
         {
             line.VmPeak = numbers[2];
@@ -825,7 +808,7 @@ internal static class JournalLineParser
     {
         const string marker = ":<    ";
 
-        // Python takes the segment after the last occurrence of the marker.
+        // Take the segment after the last occurrence of the marker.
         // If it is absent, the entire record is used.
         var markerIndex = line.RawText.LastIndexOf(
             marker,
@@ -838,11 +821,11 @@ internal static class JournalLineParser
         var fields = payload.Split(" : ", StringSplitOptions.None);
 
         // Preserve the extracted text without additional trimming. If multiple
-        // separators exist, Python uses only the first two segments.
+        // separators exist, only the first two segments are used.
         line.Key = fields.Length > 0 ? fields[0] : string.Empty;
         line.Value = fields.Length > 1 ? fields[1] : null;
 
-        // Preserve the original shared counter: it does not reset when the
+        // Shared counter - it does not reset when the
         // system-information section changes.
         if ((line.SystemInformationType == JournalSystemInformationType.Processor &&
              line.Key == "AddressWidth") ||
@@ -856,8 +839,7 @@ internal static class JournalLineParser
             context.SystemInformationItemNumber++;
         }
 
-        // Match the original raw-text condition rather than restricting this to
-        // the OperatingSystem section. Only the first matching caption is retained.
+        // Only the first matching caption is retained.
         if (!context.OsVersionFound &&
             line.RawText.Contains("Caption :", StringComparison.Ordinal))
         {
@@ -885,8 +867,7 @@ internal static class JournalLineParser
 
         line.TimeStampType = ParseTimeStampType(line.RawText[1]);
 
-        // Preserve Python behavior:
-        // ts1 = raw.split(";")
+        // Split the raw text by ';' without removing empty entries.
         var ts1 = line.RawText.Split(';', StringSplitOptions.None);
 
         // If this line is cut off, do not try to extract datetime or description.
@@ -895,7 +876,7 @@ internal static class JournalLineParser
             return;
         }
 
-        // Preserve Python behavior: DateTime.Parse(ts1[0][3:])
+        // Extract the datetime portion of the timestamp.
         var dateTimeText = ts1[0].Length >= 3 ? ts1[0][3..] : string.Empty;
         try
         {
@@ -964,22 +945,20 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseUiEvent(JournalUiEventLine line)
     {
-        // Preserve Python behavior:
-        // d1 = raw.split(" ",1)
+        // Split the raw text by the first space.
         var d1 = line.RawText.Split(" ", 2, StringSplitOptions.None);
 
-        // Preserve Python slicing: d1[0][4:]
+        // Extract the event token.
         var eventToken = d1[0].Length >= 4 ? d1[0][4..] : string.Empty;
         line.UiEventType = ParseUiEventType(eventToken);
 
-        // Python assumes there is payload text for most event types.
-        // Keep that behavior while still guarding for malformed input.
+        // Check if there is payload text for most event types.
         if (d1.Length <= 1)
         {
             return;
         }
 
-        // Python skips payload parsing for Maximize/Minimize/Restore.
+        // Skip payload parsing for Maximize/Minimize/Restore.
         if (line.UiEventType is JournalUiEventType.Maximize
             or JournalUiEventType.Minimize
             or JournalUiEventType.Restore)
@@ -989,8 +968,7 @@ internal static class JournalLineParser
 
         foreach (var d2 in d1[1].Split(',', StringSplitOptions.None))
         {
-            // Preserve Python cleanup order:
-            // d3 = d2.strip().replace('"','').strip()
+            // Cleanup order: trim, remove quotes, trim again.
             var d3 = d2.Trim().Replace("\"", string.Empty, StringComparison.Ordinal).Trim();
 
             if (line.UiEventType is JournalUiEventType.RibbonEvent
@@ -1068,12 +1046,10 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseBasicFileInfo(JournalBasicFileInfoLine line)
     {
-        // Python behavior:
-        // bfi = list(map(list, zip(*[x.split(":",1) for x in line.RawText[22:].split("Rvt.Attr.")[1:]])))
-        // if len(bfi) > 1: bfidict = dict(zip(bfi[0], [x.strip() for x in bfi[1]]))
+        // Extract basic file information attributes.
         var attributes = ParseBasicFileInfoAttributes(line.RawText);
 
-        // Keep Python behavior: missing or empty values do not overwrite nulls.
+        // Missing or empty values do not overwrite nulls.
         if (attributes.TryGetValue("Worksharing", out var worksharing) && worksharing.Length > 0)
         {
             line.Worksharing = worksharing;
@@ -1088,7 +1064,7 @@ internal static class JournalLineParser
         {
             line.LastSavePath = lastSavePath;
 
-            // Python uses backslash split for file name extraction.
+            // Use backslash split for file name extraction.
             var fileNameParts = lastSavePath.Split('\\', StringSplitOptions.None);
             line.FileName = fileNameParts[^1];
         }
@@ -1104,12 +1080,11 @@ internal static class JournalLineParser
     /// </summary>
     private static void ParseWorksharingEvent(JournalWorksharingEventLine line)
     {
-        // Python behavior:
-        // ws = line.RawText.split(':< SLOG ')[-1].split()
+        // Split the raw text by ':< SLOG ' and take the last part.
         var slogParts = line.RawText.Split(":< SLOG ", StringSplitOptions.None);
         var payload = slogParts[^1];
 
-        // Python split() with no separator collapses whitespace.
+        // Split the payload by whitespace, removing empty entries.
         var ws = payload.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
         if (ws.Length == 0)
@@ -1123,7 +1098,7 @@ internal static class JournalLineParser
         {
             var dateTimeText = ws[1] + " " + ws[2];
 
-            // Python uses DateTime.Parse without explicit culture.
+            // Parse the datetime without explicit culture.
             try
             {
                 line.DateTime = DateTime.Parse(dateTimeText);
@@ -1140,23 +1115,23 @@ internal static class JournalLineParser
 
         if (ws.Length > 3)
         {
-            // Preserve Python's ' '.join(ws[3:]).
+            // Join the remaining parts of the payload with spaces.
             line.Text = string.Join(" ", ws, 3, ws.Length - 3);
         }
     }
 
     /// <summary>
-    /// Appends comma-separated values using the original journal parser's rules.
+    /// Appends comma-separated values.
     /// </summary>
     private static void AppendJournalValues(
         string text,
         System.Collections.Generic.List<string> values)
     {
         // This intentionally is not a CSV parser: commas inside quoted strings
-        // still split values, and empty entries are retained, matching Python.
+        // still split values, and empty entries are retained.
         foreach (var value in text.Split(',', StringSplitOptions.None))
         {
-            // Preserve the operation order: trim first, then remove double quotes.
+            // Trim first, then remove double quotes.
             // Spaces originally inside quotes therefore remain in the result.
             values.Add(value.Trim().Replace("\"", string.Empty, StringComparison.Ordinal));
         }
