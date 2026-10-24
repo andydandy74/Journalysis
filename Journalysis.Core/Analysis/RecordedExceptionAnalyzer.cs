@@ -6,13 +6,20 @@ using Journalysis.Core.Models;
 namespace Journalysis.Core.Analysis;
 
 /// <summary>
-/// Extracts and parses recorded exceptions from journal lines.
+/// Extracts and normalizes exception records from parsed journal lines.
 /// </summary>
+/// <remarks>
+/// Extraction combines timestamp, API-message, and comment-based exception patterns.
+/// Some line patterns enrich the previously parsed exception instead of creating a new one.
+/// </remarks>
 public static class RecordedExceptionAnalyzer
 {
     /// <summary>
-    /// Builds recorded exception objects from exception-related journal lines.
+    /// Builds recorded-exception objects from exception-related journal lines.
     /// </summary>
+    /// <param name="journal">Parsed journal to analyze.</param>
+    /// <returns>A read-only list of parsed exception records in source order.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="journal"/> is <see langword="null"/>.</exception>
     public static IReadOnlyList<RecordedException> GetRecordedExceptions(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
@@ -57,6 +64,12 @@ public static class RecordedExceptionAnalyzer
     /// <summary>
     /// Collects journal lines that are candidates for exception parsing.
     /// </summary>
+    /// <param name="journal">Parsed journal to scan.</param>
+    /// <returns>Exception-candidate lines in physical source order.</returns>
+    /// <remarks>
+    /// Filters intentionally exclude known non-exception noise entries
+    /// such as ExceptionPolicy and unhandledExceptionFilter diagnostics.
+    /// </remarks>
     private static IReadOnlyList<JournalLine> GetExceptionLines(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
@@ -90,6 +103,15 @@ public static class RecordedExceptionAnalyzer
             .ToArray();
     }
 
+    /// <summary>
+    /// Parses exception information from timestamp descriptions.
+    /// </summary>
+    /// <param name="exception">Destination exception model.</param>
+    /// <param name="line">Source timestamp line.</param>
+    /// <remarks>
+    /// Supports CLARITY first-chance format, ApplicationException handler format,
+    /// ArchiveException markers, and fatal ExceptionCode markers.
+    /// </remarks>
     private static void ParseTimeStampLine(RecordedException exception, JournalTimeStampLine line)
     {
         var description = line.Description ?? string.Empty;
@@ -135,6 +157,16 @@ public static class RecordedExceptionAnalyzer
         }
     }
 
+    /// <summary>
+    /// Parses exception information from API error messages.
+    /// </summary>
+    /// <param name="exception">Destination exception model.</param>
+    /// <param name="line">Source API message line.</param>
+    /// <param name="parsedExceptions">Already parsed exceptions used for continuation enrichment.</param>
+    /// <returns>
+    /// <see langword="true"/> to add <paramref name="exception"/> as a new record;
+    /// <see langword="false"/> when information was appended to the previous exception.
+    /// </returns>
     private static bool ParseApiMessageLine(
         RecordedException exception,
         JournalApiMessageLine line,
@@ -221,6 +253,16 @@ public static class RecordedExceptionAnalyzer
         return true;
     }
 
+    /// <summary>
+    /// Parses exception information from comment-based exception patterns.
+    /// </summary>
+    /// <param name="exception">Destination exception model.</param>
+    /// <param name="line">Source comment line.</param>
+    /// <param name="parsedExceptions">Already parsed exceptions used for continuation enrichment.</param>
+    /// <returns>
+    /// <see langword="true"/> to add <paramref name="exception"/> as a new record;
+    /// <see langword="false"/> when information was appended to the previous exception.
+    /// </returns>
     private static bool ParseCommentLine(
         RecordedException exception,
         JournalCommentLine line,

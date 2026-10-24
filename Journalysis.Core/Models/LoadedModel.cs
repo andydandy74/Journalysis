@@ -5,10 +5,21 @@ using System.Linq;
 namespace Journalysis.Core.Models;
 
 /// <summary>
-/// Represents one model load detected in a journal and its related events.
+/// Represents one detected model-load sequence in a parsed journal.
 /// </summary>
+/// <remarks>
+/// A sequence is built from one opening event and, when detected, one load-completion event.
+/// Additional derived metadata (for example <see cref="Version"/> and
+/// <see cref="VersionHistory"/>) is read from comments between the opening and loaded blocks.
+/// </remarks>
 public sealed class LoadedModel
 {
+    /// <summary>
+    /// Initializes a detected loaded-model sequence.
+    /// </summary>
+    /// <param name="journal">Parent journal containing the source records.</param>
+    /// <param name="path">Detected model path, when available.</param>
+    /// <param name="initialEvent">Opening event that starts this sequence.</param>
     public LoadedModel(Journal journal, string? path, LoadedModelEvent initialEvent)
     {
         ArgumentNullException.ThrowIfNull(journal);
@@ -28,22 +39,33 @@ public sealed class LoadedModel
     public Journal Journal { get; }
 
     /// <summary>
-    /// Gets the model path as provided by the analysis layer, if available.
+    /// Gets the detected model path, when available.
     /// </summary>
+    /// <remarks>
+    /// Path normalization and path-source selection are performed by the analysis layer.
+    /// </remarks>
     public string? Path { get; }
 
     /// <summary>
-    /// Gets the ordered event sequence for this model load.
-    /// First entry is expected to be an open event, second is typically "Loaded".
+    /// Gets the ordered lifecycle events for this model load.
     /// </summary>
+    /// <remarks>
+    /// The first entry is expected to be an open event.
+    /// When available, the second entry is typically a <see cref="LoadedModelEventType.Loaded"/> marker.
+    /// </remarks>
     public List<LoadedModelEvent> Events { get; }
 
     public override string ToString() => nameof(LoadedModel);
 
     /// <summary>
-    /// Gets the first comment that contains "File was saved in" between open and loaded blocks.
-    /// The value is computed on first access and then cached.
+    /// Gets the first comment text containing <c>":&lt; File was saved in"</c>
+    /// between the opening and loaded blocks.
     /// </summary>
+    /// <remarks>
+    /// The value is computed on first access and then cached.
+    /// This property assumes the sequence contains at least two events and that the
+    /// expected comment exists in the block range.
+    /// </remarks>
     public string Version =>
         _version ??= GetLinesBetweenOpenAndLoadedBlocks()
             .OfType<JournalCommentLine>()
@@ -51,10 +73,13 @@ public sealed class LoadedModel
             .RawText;
 
     /// <summary>
-    /// Gets comment text between the first two "Document save history" markers
-    /// between open and loaded blocks.
-    /// The value is computed on first access and then cached.
+    /// Gets save-history comment lines between the first two
+    /// <c>":&lt; Document save history"</c> markers in the open→loaded range.
     /// </summary>
+    /// <remarks>
+    /// The value is computed on first access and then cached.
+    /// This property assumes both markers exist in the block range.
+    /// </remarks>
     public IReadOnlyList<string> VersionHistory =>
         _versionHistory ??= GetVersionHistoryInternal();
 
@@ -92,8 +117,6 @@ public sealed class LoadedModel
 
         return Journal.GetLinesByBlocks(Enumerable.Range(fromBlock, blockCount));
     }
-
-    
 }
 
 /// <summary>
@@ -101,6 +124,14 @@ public sealed class LoadedModel
 /// </summary>
 public sealed class LoadedModelEvent
 {
+    /// <summary>
+    /// Initializes a loaded-model event.
+    /// </summary>
+    /// <param name="journalLine">Source journal line that triggered this event.</param>
+    /// <param name="type">Event type (open method or load-completion marker).</param>
+    /// <param name="dateTime">Event timestamp, when available.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="journalLine"/> is <see langword="null"/>.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="type"/> is not a defined enum value.</exception>
     public LoadedModelEvent(
         JournalLine journalLine,
         LoadedModelEventType type,
@@ -131,7 +162,7 @@ public sealed class LoadedModelEvent
     public LoadedModelEventType Type { get; }
 
     /// <summary>
-    /// Gets the event timestamp when available.
+    /// Gets the event timestamp, when available.
     /// </summary>
     public DateTime? DateTime { get; }
 

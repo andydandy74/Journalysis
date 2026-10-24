@@ -7,10 +7,20 @@ using Journalysis.Core.Models;
 namespace Journalysis.Core.Analysis;
 
 /// <summary>
-/// Extracts loaded-model sequences from parsed journal records.
+/// Extracts loaded-model lifecycles from parsed journal records.
 /// </summary>
+/// <remarks>
+/// Detection is heuristic and based on command/UI open triggers, nearby data records
+/// carrying file names, and a subsequent load-completion marker pattern.
+/// </remarks>
 public static class LoadedModelAnalyzer
 {
+    /// <summary>
+    /// Gets loaded-model sequences detected in a parsed journal.
+    /// </summary>
+    /// <param name="journal">Parsed journal to analyze.</param>
+    /// <returns>A read-only list of detected loaded-model sequences.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="journal"/> is <see langword="null"/>.</exception>
     public static IReadOnlyList<LoadedModel> GetLoadedModels(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
@@ -62,7 +72,7 @@ public static class LoadedModelAnalyzer
             {
                 ignoreEventIndexes.Add(i);
             }
-            // Flag models canceled in file open dialog.
+            // Flag models canceled in file-open dialog.
             else if (string.Equals(dataLine.Key, "File Name", StringComparison.Ordinal) &&
                      dataLine.Values.Count > 0 &&
                      string.Equals(dataLine.Values[0], "IDCANCEL", StringComparison.Ordinal))
@@ -153,6 +163,22 @@ public static class LoadedModelAnalyzer
         return loadedModels;
     }
 
+    /// <summary>
+    /// Normalizes a model path against the recorded journal directory when possible.
+    /// </summary>
+    /// <param name="journal">Parent journal used to resolve base directory.</param>
+    /// <param name="path">Raw model path text extracted from journal data lines.</param>
+    /// <returns>
+    /// A normalized absolute path when base context is available; otherwise the original path.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="journal"/> or <paramref name="path"/> is <see langword="null"/>.
+    /// </exception>
+    /// <remarks>
+    /// Path normalization uses <see cref="Path.GetFullPath(string)"/> after combining
+    /// with the directory of <see cref="Journal.Path"/>. If no usable base directory is
+    /// available, this method returns <paramref name="path"/> unchanged.
+    /// </remarks>
     private static string NormalizePath(Journal journal, string path)
     {
         ArgumentNullException.ThrowIfNull(journal);

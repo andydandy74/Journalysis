@@ -6,14 +6,23 @@ using Journalysis.Core.Models;
 namespace Journalysis.Core.Analysis;
 
 /// <summary>
-/// Extracts loaded add-in information and associates related API messages.
+/// Extracts loaded add-in assemblies and correlates related API messages.
 /// </summary>
+/// <remarks>
+/// Correlation is heuristic and based on parsed API message text patterns
+/// (GUID, application name, command replacement IDs, and assembly path/file name).
+/// </remarks>
 public static class LoadedAssemblyAnalyzer
 {
     /// <summary>
-    /// Finds loaded add-in assemblies in a parsed journal.
-    /// Assembly paths are treated as data only; no assemblies are loaded.
+    /// Finds loaded add-in assemblies in a parsed journal and attaches related API messages.
     /// </summary>
+    /// <param name="journal">Parsed journal to analyze.</param>
+    /// <returns>A read-only list of discovered loaded assemblies.</returns>
+    /// <remarks>
+    /// Assembly paths are treated as journal data only; no assemblies are loaded from disk.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException"><paramref name="journal"/> is <see langword="null"/>.</exception>
     public static IReadOnlyList<LoadedAssembly> GetLoadedAssemblies(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
@@ -153,6 +162,15 @@ public static class LoadedAssemblyAnalyzer
         return assemblies.AsReadOnly();
     }
 
+    /// <summary>
+    /// Attempts to create a <see cref="LoadedAssembly"/> from a startup API message.
+    /// </summary>
+    /// <param name="message">API message candidate.</param>
+    /// <returns>A populated assembly model when parsing succeeds; otherwise <see langword="null"/>.</returns>
+    /// <remarks>
+    /// Supports both "Starting External Application" and
+    /// "Starting External DB Application" style payloads.
+    /// </remarks>
     private static LoadedAssembly? TryReadLoadedAssembly(JournalApiMessageLine message)
     {
         var text = message.MessageText;
@@ -223,6 +241,14 @@ public static class LoadedAssemblyAnalyzer
             message);
     }
 
+    /// <summary>
+    /// Splits text on the first occurrence of a separator.
+    /// </summary>
+    /// <param name="text">Input text.</param>
+    /// <param name="separator">Separator to locate.</param>
+    /// <param name="before">Text before separator when found.</param>
+    /// <param name="after">Text after separator when found.</param>
+    /// <returns><see langword="true"/> when separator is found; otherwise <see langword="false"/>.</returns>
     private static bool TrySplitOnce(
         string text,
         string separator,
@@ -242,6 +268,12 @@ public static class LoadedAssemblyAnalyzer
         return true;
     }
 
+    /// <summary>
+    /// Extracts a single-quoted value following a marker.
+    /// </summary>
+    /// <param name="text">Input text.</param>
+    /// <param name="marker">Marker immediately preceding the quoted value.</param>
+    /// <returns>Extracted value, or <see langword="null"/> when not found.</returns>
     private static string? ExtractQuotedValue(string text, string marker)
     {
         var start = text.IndexOf(marker, StringComparison.Ordinal);
@@ -255,6 +287,10 @@ public static class LoadedAssemblyAnalyzer
         return end >= start ? text[start..end] : null;
     }
 
+    /// <summary>
+    /// Extracts file name from a journal-reported path using either slash style.
+    /// </summary>
+    /// <param name="path">Path text from journal message.</param>
     private static string GetJournalFileName(string path)
     {
         var separator = Math.Max(path.LastIndexOf('\\'), path.LastIndexOf('/'));

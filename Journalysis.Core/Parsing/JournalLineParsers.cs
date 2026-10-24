@@ -1,13 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using Journalysis.Core.Models;
 
 namespace Journalysis.Core.Parsing;
 
 /// <summary>
-/// Routes assembled journal records to their type-specific parsing logic.
+/// Routes assembled journal records to their type-specific second-pass parsers.
 /// </summary>
+/// <remarks>
+/// Pass 2 populates parsed fields on existing <see cref="JournalLine"/> instances
+/// and updates shared metadata in <see cref="JournalParseContext"/>.
+/// </remarks>
 internal static class JournalLineParser
 {
+    /// <summary>
+    /// Parses one already-classified journal record.
+    /// </summary>
+    /// <param name="line">Record to parse.</param>
+    /// <param name="context">Shared parse context for journal-level metadata/state.</param>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="line"/> or <paramref name="context"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="NotSupportedException">
+    /// No second-pass handler exists for the concrete record type.
+    /// </exception>
     internal static void Parse(
         JournalLine line,
         JournalParseContext context)
@@ -92,8 +108,12 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts the second quoted field as the add-in event message.
+    /// Extracts the second quoted field as add-in event message text.
     /// </summary>
+    /// <param name="line">Add-in event record.</param>
+    /// <exception cref="FormatException">
+    /// The expected quoted payload field is missing.
+    /// </exception>
     private static void ParseAddinEvent(JournalAddinEventLine line)
     {
         var fields = line.RawText.Split('"');
@@ -112,8 +132,12 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts API message text and assigns its recognized category.
+    /// Extracts API message text payload and assigns recognized message category.
     /// </summary>
+    /// <param name="line">API message record.</param>
+    /// <exception cref="FormatException">
+    /// The opening API payload delimiter is missing.
+    /// </exception>
     private static void ParseApiMessage(JournalApiMessageLine line)
     {
         var openingParts = line.RawText.Split(
@@ -145,8 +169,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Classifies API messages.
+    /// Maps API message text to a known <see cref="JournalApiMessageType"/>.
     /// </summary>
+    /// <param name="messageText">Extracted API message text.</param>
     private static JournalApiMessageType ParseApiMessageType(string messageText)
     {
         if (messageText.StartsWith(
@@ -242,8 +267,14 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Parses [Jrn.BasicFileInfo] key/value attributes.
+    /// Parses <c>[Jrn.BasicFileInfo]</c> attribute fragments into key/value pairs.
     /// </summary>
+    /// <param name="rawText">Raw basic-file-info record text.</param>
+    /// <returns>Attribute dictionary keyed by attribute name.</returns>
+    /// <remarks>
+    /// Duplicate keys keep the last observed value.
+    /// Malformed fragments are ignored.
+    /// </remarks>
     private static Dictionary<string, string> ParseBasicFileInfoAttributes(string rawText)
     {
         // Extract the payload starting from index 22 (safe even if text is shorter).
@@ -289,8 +320,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts command context, description, and command identifier.
+    /// Extracts command context, description, and command ID.
     /// </summary>
+    /// <param name="line">Command record.</param>
     private static void ParseCommand(JournalCommandLine line)
     {
         // Replace double spaces with single spaces and split by the delimiter.
@@ -340,8 +372,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Maps raw command context text to known command types.
+    /// Maps raw command-context token text to known command types.
     /// </summary>
+    /// <param name="value">Raw command-context token.</param>
     private static JournalCommandType ParseCommandType(string value)
     {
         return value switch
@@ -359,12 +392,17 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts recorded journal path, build information, and machine metadata
-    /// from comment records.
+    /// Parses comment records for journal-level metadata:
+    /// recorded path, build info, and machine-name information.
     /// </summary>
+    /// <param name="line">Comment record.</param>
+    /// <param name="context">Shared parse context.</param>
+    /// <exception cref="FormatException">
+    /// Required separators are missing in recognized metadata comment formats.
+    /// </exception>
     private static void ParseComment(
-    JournalCommentLine line,
-    JournalParseContext context)
+        JournalCommentLine line,
+        JournalParseContext context)
     {
         var text = line.RawText;
 
@@ -420,8 +458,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts a build-metadata token.
+    /// Extracts the first build-metadata token from a colon-delimited build segment.
     /// </summary>
+    /// <param name="text">Build segment text.</param>
+    /// <returns>Trimmed first token.</returns>
     private static string ExtractBuildMetadataToken(string text)
     {
         // The separator is a literal space, not arbitrary whitespace.
@@ -431,8 +471,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts a data record's key and values.
+    /// Extracts <see cref="JournalDataLine.Key"/> and value tokens.
     /// </summary>
+    /// <param name="line">Data record.</param>
     private static void ParseData(JournalDataLine line)
     {
         var parts = line.RawText.Split(
@@ -458,8 +499,13 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts a directive's key and values, and updates applicable journal metadata.
+    /// Extracts directive key/values and updates applicable journal metadata.
     /// </summary>
+    /// <param name="line">Directive record.</param>
+    /// <param name="context">Shared parse context.</param>
+    /// <exception cref="FormatException">
+    /// Expected Version/Username directive values are missing or malformed.
+    /// </exception>
     private static void ParseDirective(
         JournalDirectiveLine line,
         JournalParseContext context)
@@ -485,7 +531,7 @@ internal static class JournalLineParser
         else
         {
             // Very rare case where a multiline error message is inserted between
-            // the key and values. 
+            // the key and values.
             var quotedParts = line.RawText.Split('"');
 
             if (quotedParts.Length > 1)
@@ -547,11 +593,15 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts GUI resource usage counters from a journal GUI metrics record.
+    /// Extracts GUI resource-usage counters from a GUI metrics record.
     /// </summary>
+    /// <param name="line">GUI resource-usage record.</param>
+    /// <exception cref="FormatException">
+    /// Numeric counter parsing fails or expected segments are missing.
+    /// </exception>
     private static void ParseGuiResourceUsage(JournalGuiResourceUsageLine line)
     {
-        var values = new List<int>();
+        var values = new System.Collections.Generic.List<int>();
 
         foreach (var segment in line.RawText.Split(',', StringSplitOptions.None))
         {
@@ -607,8 +657,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts the keyboard key token from a journal keyboard event record.
+    /// Extracts keyboard key token from a keyboard-event record.
     /// </summary>
+    /// <param name="line">Keyboard-event record.</param>
+    /// <exception cref="FormatException">Quoted key token is missing.</exception>
     private static void ParseKeyboardEvent(JournalKeyboardEventLine line)
     {
         // Identify the key by taking the substring after the first 10 characters of the first segment.
@@ -627,8 +679,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts the mouse event type and its integer payload values.
+    /// Extracts mouse-event type and integer payload values.
     /// </summary>
+    /// <param name="line">Mouse-event record.</param>
+    /// <exception cref="FormatException">One or more payload values cannot be parsed as integers.</exception>
     private static void ParseMouseEvent(JournalMouseEventLine line)
     {
         // Identify the mouse event type by taking the substring after the first 4 characters of the first segment.
@@ -672,8 +726,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Maps a raw mouse event token to a known mouse event type.
+    /// Maps raw mouse-event token text to known mouse-event types.
     /// </summary>
+    /// <param name="token">Raw mouse-event token.</param>
     private static JournalMouseEventType ParseMouseEventType(string token)
     {
         return token switch
@@ -695,8 +750,12 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts virtual-memory and RAM metrics from a journal memory record.
+    /// Extracts VM/RAM metrics from memory-metrics records.
     /// </summary>
+    /// <param name="line">Memory-metrics record.</param>
+    /// <exception cref="FormatException">
+    /// Required payload segments are missing or contain unparseable datetime/numeric data.
+    /// </exception>
     private static void ParseMemoryMetrics(JournalMemoryMetricsLine line)
     {
         string[] tokens;
@@ -799,9 +858,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts system-information fields, assigns the item number, and collects
-    /// the first matching OS caption.
+    /// Extracts system-information key/value fields, item numbering, and first OS caption.
     /// </summary>
+    /// <param name="line">System-information record.</param>
+    /// <param name="context">Shared parse context.</param>
     private static void ParseSystemInformation(
         JournalSystemInformationLine line,
         JournalParseContext context)
@@ -854,6 +914,10 @@ internal static class JournalLineParser
     /// <summary>
     /// Extracts timestamp marker, datetime, description, and debug category.
     /// </summary>
+    /// <param name="line">Timestamp record.</param>
+    /// <exception cref="FormatException">
+    /// Prefix is incomplete or datetime cannot be parsed.
+    /// </exception>
     private static void ParseTimeStamp(JournalTimeStampLine line)
     {
         if (line.RawText.Length < 2)
@@ -927,8 +991,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Maps the single-character timestamp marker to a known timestamp type.
+    /// Maps single-character timestamp marker to known timestamp type.
     /// </summary>
+    /// <param name="marker">Timestamp marker character.</param>
     private static JournalTimeStampType ParseTimeStampType(char marker)
     {
         return marker switch
@@ -943,6 +1008,7 @@ internal static class JournalLineParser
     /// <summary>
     /// Extracts UI event type and tokenized payload data.
     /// </summary>
+    /// <param name="line">UI event record.</param>
     private static void ParseUiEvent(JournalUiEventLine line)
     {
         // Split the raw text by the first space.
@@ -1008,8 +1074,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Maps a raw UI event token to a known UI event type.
+    /// Maps raw UI event token text to known UI event types.
     /// </summary>
+    /// <param name="token">Raw UI event token.</param>
     private static JournalUiEventType ParseUiEventType(string token)
     {
         return token switch
@@ -1042,8 +1109,9 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts basic file information from a [Jrn.BasicFileInfo] record.
+    /// Extracts basic-file-info fields from a <c>[Jrn.BasicFileInfo]</c> record.
     /// </summary>
+    /// <param name="line">Basic-file-info record.</param>
     private static void ParseBasicFileInfo(JournalBasicFileInfoLine line)
     {
         // Extract basic file information attributes.
@@ -1076,8 +1144,10 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts worksharing session id, datetime, and descriptive text.
+    /// Extracts worksharing session ID, datetime, and descriptive text.
     /// </summary>
+    /// <param name="line">Worksharing-event record.</param>
+    /// <exception cref="FormatException">Worksharing datetime parsing fails.</exception>
     private static void ParseWorksharingEvent(JournalWorksharingEventLine line)
     {
         // Split the raw text by ':< SLOG ' and take the last part.
@@ -1121,8 +1191,14 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Appends comma-separated values.
+    /// Appends comma-separated journal values to a destination collection.
     /// </summary>
+    /// <param name="text">Raw comma-separated text segment.</param>
+    /// <param name="values">Destination value collection.</param>
+    /// <remarks>
+    /// This intentionally is not a CSV parser:
+    /// commas inside quoted strings still split values, and empty entries are retained.
+    /// </remarks>
     private static void AppendJournalValues(
         string text,
         System.Collections.Generic.List<string> values)
@@ -1137,6 +1213,11 @@ internal static class JournalLineParser
         }
     }
 
+    /// <summary>
+    /// Builds a parse error message including the source raw text.
+    /// </summary>
+    /// <param name="line">Source record.</param>
+    /// <param name="message">Primary error message.</param>
     private static string BuildParseErrorMessage(JournalLine line, string message)
     {
         return $"{message}{Environment.NewLine}RawText: {line.RawText}";

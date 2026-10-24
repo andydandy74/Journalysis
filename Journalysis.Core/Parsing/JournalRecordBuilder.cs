@@ -6,11 +6,23 @@ using Journalysis.Core.Models;
 namespace Journalysis.Core.Parsing;
 
 /// <summary>
-/// First parser pass: assembles multiline journal records and classifies them
-/// into the correct <see cref="JournalLine"/> subtype.
+/// Parser pass 1: assembles physical lines into logical journal records and
+/// classifies each record into a concrete <see cref="JournalLine"/> subtype.
 /// </summary>
+/// <remarks>
+/// This pass performs structural grouping only. Type-specific field extraction
+/// is deferred to parser pass 2.
+/// </remarks>
 internal static class JournalRecordBuilder
 {
+    /// <summary>
+    /// Builds logical records from normalized physical lines.
+    /// </summary>
+    /// <param name="physicalLines">Raw physical lines in source order.</param>
+    /// <returns>
+    /// A result containing pass-1 records and final block count.
+    /// </returns>
+    /// <exception cref="ArgumentNullException"><paramref name="physicalLines"/> is <see langword="null"/>.</exception>
     internal static JournalRecordBuilderResult Build(IEnumerable<string> physicalLines)
     {
         ArgumentNullException.ThrowIfNull(physicalLines);
@@ -33,7 +45,7 @@ internal static class JournalRecordBuilder
             // The logic relies on these ordered checks:
             // 1) classify known new records
             // 2) append multiline continuations
-            // 3) special handling for apostrophe lines / sysinfo
+            // 3) special handling for apostrophe lines / system information
             // 4) fallback to misc command
             if (TryCreateNewRecord(line, state, records))
             {
@@ -58,6 +70,15 @@ internal static class JournalRecordBuilder
         return new JournalRecordBuilderResult(records, state.CurrentBlock);
     }
 
+    /// <summary>
+    /// Applies first-pass line normalization.
+    /// </summary>
+    /// <param name="line">Input physical line.</param>
+    /// <returns>Normalized line text.</returns>
+    /// <remarks>
+    /// Matches original parser behavior:
+    /// trim leading spaces, then remove trailing newline and null characters.
+    /// </remarks>
     private static string NormalizeLine(string? line)
     {
         // Trim leading spaces and remove trailing newline and null characters.
@@ -67,6 +88,13 @@ internal static class JournalRecordBuilder
             .TrimEnd('\0');
     }
 
+    /// <summary>
+    /// Attempts to classify a line as a new logical record.
+    /// </summary>
+    /// <param name="line">Normalized input line.</param>
+    /// <param name="state">Mutable builder state.</param>
+    /// <param name="records">Accumulated logical records.</param>
+    /// <returns><see langword="true"/> when a new record was created; otherwise <see langword="false"/>.</returns>
     private static bool TryCreateNewRecord(
         string line,
         JournalRecordBuilderState state,
@@ -166,6 +194,12 @@ internal static class JournalRecordBuilder
         return false;
     }
 
+    /// <summary>
+    /// Attempts to append a physical line as continuation text to the previous record.
+    /// </summary>
+    /// <param name="line">Normalized input line.</param>
+    /// <param name="records">Accumulated logical records.</param>
+    /// <returns><see langword="true"/> when continuation was applied; otherwise <see langword="false"/>.</returns>
     private static bool TryAppendContinuation(string line, List<JournalLine> records)
     {
         if (records.Count == 0)
@@ -199,6 +233,13 @@ internal static class JournalRecordBuilder
         return false;
     }
 
+    /// <summary>
+    /// Handles apostrophe-prefixed lines that may be comments, continuations,
+    /// or system-information records.
+    /// </summary>
+    /// <param name="line">Normalized input line.</param>
+    /// <param name="state">Mutable builder state.</param>
+    /// <param name="records">Accumulated logical records.</param>
     private static void HandleApostropheLine(
         string line,
         JournalRecordBuilderState state,
@@ -308,6 +349,10 @@ internal static class JournalRecordBuilder
         records.Add(new JournalCommentLine(state.PhysicalLineNumber, line, state.CurrentBlock));
     }
 
+    /// <summary>
+    /// Determines whether a line starts a timestamp record.
+    /// </summary>
+    /// <param name="line">Normalized input line.</param>
     private static bool IsTimeStampStart(string line) =>
         line.StartsWith("'C ", StringComparison.Ordinal) ||
         line.StartsWith("'H ", StringComparison.Ordinal) ||
@@ -316,6 +361,11 @@ internal static class JournalRecordBuilder
         line.StartsWith("' H ", StringComparison.Ordinal) ||
         line.StartsWith("' E ", StringComparison.Ordinal);
 
+    /// <summary>
+    /// Determines whether a line starts with any configured prefix.
+    /// </summary>
+    /// <param name="line">Input line.</param>
+    /// <param name="prefixes">Candidate prefixes.</param>
     private static bool StartsWithAny(string line, string[] prefixes)
     {
         foreach (var prefix in prefixes)
@@ -329,37 +379,83 @@ internal static class JournalRecordBuilder
         return false;
     }
 
+    /// <summary>
+    /// Mouse-event prefixes generated from <see cref="JournalMouseEventType"/> values.
+    /// </summary>
     private static readonly string[] MousePrefixes =
-    Enum.GetValues<JournalMouseEventType>()
-        .Where(type => type != JournalMouseEventType.Unknown)
-        .Select(type => $"Jrn.{type}")
-        .ToArray();
+        Enum.GetValues<JournalMouseEventType>()
+            .Where(type => type != JournalMouseEventType.Unknown)
+            .Select(type => $"Jrn.{type}")
+            .ToArray();
 
+    /// <summary>
+    /// UI-event prefixes generated from <see cref="JournalUiEventType"/> values.
+    /// </summary>
     private static readonly string[] UiPrefixes =
-    Enum.GetValues<JournalUiEventType>()
-        .Where(type => type != JournalUiEventType.Unknown)
-        .Select(type => $"Jrn.{type}")
-        .ToArray();
+        Enum.GetValues<JournalUiEventType>()
+            .Where(type => type != JournalUiEventType.Unknown)
+            .Select(type => $"Jrn.{type}")
+            .ToArray();
 }
 
+/// <summary>
+/// Mutable state used while building pass-1 logical records.
+/// </summary>
 internal sealed class JournalRecordBuilderState
 {
+    /// <summary>
+    /// Gets or sets the current 1-based physical line number being processed.
+    /// </summary>
     public int PhysicalLineNumber { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current timestamp-delimited block number.
+    /// </summary>
     public int CurrentBlock { get; set; }
+
+    /// <summary>
+    /// Gets or sets the number of command records seen during pass 1.
+    /// </summary>
+    /// <remarks>
+    /// Kept for parser parity with legacy behavior.
+    /// </remarks>
     public int CommandCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets whether parser has entered system-information comment sections.
+    /// </summary>
     public bool SystemInformationStarted { get; set; }
+
+    /// <summary>
+    /// Gets or sets the current system-information section type.
+    /// </summary>
     public JournalSystemInformationType CurrentSystemInformationType { get; set; } =
         JournalSystemInformationType.Unknown;
 }
 
+/// <summary>
+/// Result of parser pass 1 (record building/classification).
+/// </summary>
 internal sealed class JournalRecordBuilderResult
 {
+    /// <summary>
+    /// Initializes a pass-1 result container.
+    /// </summary>
+    /// <param name="records">Built logical records.</param>
+    /// <param name="blockCount">Final block count after processing all input lines.</param>
     public JournalRecordBuilderResult(IReadOnlyList<JournalLine> records, int blockCount)
     {
         Records = records;
         BlockCount = blockCount;
     }
 
+    /// <summary>
+    /// Gets the built logical records in encounter order.
+    /// </summary>
     public IReadOnlyList<JournalLine> Records { get; }
+
+    /// <summary>
+    /// Gets the total number of detected timestamp-delimited blocks.
+    /// </summary>
     public int BlockCount { get; }
 }
