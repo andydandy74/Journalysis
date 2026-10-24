@@ -51,19 +51,18 @@ public sealed class LoadedAssembly
     }
 
     /// <summary>
-    /// Gets the application name associated with the loaded assembly.
-    /// </summary>
-    public string Name { get; }
-
-    /// <summary>
     /// Gets the application class name associated with the loaded assembly.
     /// </summary>
     public string ClassName { get; }
 
     /// <summary>
-    /// Gets the assembly path as recorded in journal text.
+    /// Gets the correlated API messages associated with this assembly.
     /// </summary>
-    public string Path { get; }
+    /// <remarks>
+    /// The first entry is the <paramref name="initialEvent"/> passed to the constructor.
+    /// Additional events may be appended by analysis correlation rules.
+    /// </remarks>
+    public List<JournalApiMessageLine> Events { get; }
 
     /// <summary>
     /// Gets the file name portion extracted from <see cref="Path"/>.
@@ -71,9 +70,19 @@ public sealed class LoadedAssembly
     public string Filename { get; }
 
     /// <summary>
-    /// Gets the assembly version text when available.
+    /// Gets or sets the application GUID when discovered from related API messages.
     /// </summary>
-    public string? Version { get; }
+    public string? Guid { get; set; }
+
+    /// <summary>
+    /// Gets the application name associated with the loaded assembly.
+    /// </summary>
+    public string Name { get; }
+
+    /// <summary>
+    /// Gets the assembly path as recorded in journal text.
+    /// </summary>
+    public string Path { get; }
 
     /// <summary>
     /// Gets the vendor name when available.
@@ -86,16 +95,7 @@ public sealed class LoadedAssembly
     public string? VendorDetails { get; }
 
     /// <summary>
-    /// Gets or sets the application GUID when discovered from related API messages.
+    /// Gets the assembly version text when available.
     /// </summary>
-    public string? Guid { get; set; }
-
-    /// <summary>
-    /// Gets the correlated API messages associated with this assembly.
-    /// </summary>
-    /// <remarks>
-    /// The first entry is the <paramref name="initialEvent"/> passed to the constructor.
-    /// Additional events may be appended by analysis correlation rules.
-    /// </remarks>
-    public List<JournalApiMessageLine> Events { get; }
+    public string? Version { get; }
 }

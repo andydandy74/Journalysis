@@ -163,6 +163,35 @@ public static class LoadedAssemblyAnalyzer
     }
 
     /// <summary>
+    /// Extracts a single-quoted value following a marker.
+    /// </summary>
+    /// <param name="text">Input text.</param>
+    /// <param name="marker">Marker immediately preceding the quoted value.</param>
+    /// <returns>Extracted value, or <see langword="null"/> when not found.</returns>
+    private static string? ExtractQuotedValue(string text, string marker)
+    {
+        var start = text.IndexOf(marker, StringComparison.Ordinal);
+        if (start < 0)
+        {
+            return null;
+        }
+
+        start += marker.Length;
+        var end = text.IndexOf('\'', start);
+        return end >= start ? text[start..end] : null;
+    }
+
+    /// <summary>
+    /// Extracts file name from a journal-reported path using either slash style.
+    /// </summary>
+    /// <param name="path">Path text from journal message.</param>
+    private static string GetJournalFileName(string path)
+    {
+        var separator = Math.Max(path.LastIndexOf('\\'), path.LastIndexOf('/'));
+        return path[(separator + 1)..];
+    }
+
+    /// <summary>
     /// Attempts to create a <see cref="LoadedAssembly"/> from a startup API message.
     /// </summary>
     /// <param name="message">API message candidate.</param>
@@ -266,34 +295,5 @@ public static class LoadedAssemblyAnalyzer
         before = text[..index];
         after = text[(index + separator.Length)..];
         return true;
-    }
-
-    /// <summary>
-    /// Extracts a single-quoted value following a marker.
-    /// </summary>
-    /// <param name="text">Input text.</param>
-    /// <param name="marker">Marker immediately preceding the quoted value.</param>
-    /// <returns>Extracted value, or <see langword="null"/> when not found.</returns>
-    private static string? ExtractQuotedValue(string text, string marker)
-    {
-        var start = text.IndexOf(marker, StringComparison.Ordinal);
-        if (start < 0)
-        {
-            return null;
-        }
-
-        start += marker.Length;
-        var end = text.IndexOf('\'', start);
-        return end >= start ? text[start..end] : null;
-    }
-
-    /// <summary>
-    /// Extracts file name from a journal-reported path using either slash style.
-    /// </summary>
-    /// <param name="path">Path text from journal message.</param>
-    private static string GetJournalFileName(string path)
-    {
-        var separator = Math.Max(path.LastIndexOf('\\'), path.LastIndexOf('/'));
-        return path[(separator + 1)..];
     }
 }

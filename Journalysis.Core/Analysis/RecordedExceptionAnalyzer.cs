@@ -104,60 +104,6 @@ public static class RecordedExceptionAnalyzer
     }
 
     /// <summary>
-    /// Parses exception information from timestamp descriptions.
-    /// </summary>
-    /// <param name="exception">Destination exception model.</param>
-    /// <param name="line">Source timestamp line.</param>
-    /// <remarks>
-    /// Supports CLARITY first-chance format, ApplicationException handler format,
-    /// ArchiveException markers, and fatal ExceptionCode markers.
-    /// </remarks>
-    private static void ParseTimeStampLine(RecordedException exception, JournalTimeStampLine line)
-    {
-        var description = line.Description ?? string.Empty;
-
-        var lp1 = description.Split(
-            new[] { "ApplicationException is being thrown on behalf of the function <" },
-            2,
-            StringSplitOptions.None);
-
-        if (lp1.Length > 1)
-        {
-            exception.Type = "ApplicationException";
-            exception.Message = lp1[0];
-
-            var lp2 = lp1[1].Split(new[] { ">" }, 2, StringSplitOptions.None);
-            exception.StackTrace = lp2[0];
-            return;
-        }
-
-        if (description.Contains("ArchiveException", StringComparison.Ordinal))
-        {
-            exception.Type = "ArchiveException";
-        }
-        else if (description.StartsWith("ExceptionCode", StringComparison.Ordinal))
-        {
-            exception.Type = "Fatal Error";
-        }
-
-        exception.Message = description.Replace(
-            "CLARITY: First Chance Exception: ",
-            string.Empty,
-            StringComparison.Ordinal);
-
-        var lp2Type = (exception.Message ?? string.Empty).Split(
-            new[] { " :  " },
-            2,
-            StringSplitOptions.None);
-
-        if (lp2Type.Length > 1 && !lp2Type[0].Contains(' '))
-        {
-            exception.Type = lp2Type[0];
-            exception.Message = lp2Type[1];
-        }
-    }
-
-    /// <summary>
     /// Parses exception information from API error messages.
     /// </summary>
     /// <param name="exception">Destination exception model.</param>
@@ -369,5 +315,59 @@ public static class RecordedExceptionAnalyzer
 
         exception.Message = rawText;
         return true;
+    }
+
+    /// <summary>
+    /// Parses exception information from timestamp descriptions.
+    /// </summary>
+    /// <param name="exception">Destination exception model.</param>
+    /// <param name="line">Source timestamp line.</param>
+    /// <remarks>
+    /// Supports CLARITY first-chance format, ApplicationException handler format,
+    /// ArchiveException markers, and fatal ExceptionCode markers.
+    /// </remarks>
+    private static void ParseTimeStampLine(RecordedException exception, JournalTimeStampLine line)
+    {
+        var description = line.Description ?? string.Empty;
+
+        var lp1 = description.Split(
+            new[] { "ApplicationException is being thrown on behalf of the function <" },
+            2,
+            StringSplitOptions.None);
+
+        if (lp1.Length > 1)
+        {
+            exception.Type = "ApplicationException";
+            exception.Message = lp1[0];
+
+            var lp2 = lp1[1].Split(new[] { ">" }, 2, StringSplitOptions.None);
+            exception.StackTrace = lp2[0];
+            return;
+        }
+
+        if (description.Contains("ArchiveException", StringComparison.Ordinal))
+        {
+            exception.Type = "ArchiveException";
+        }
+        else if (description.StartsWith("ExceptionCode", StringComparison.Ordinal))
+        {
+            exception.Type = "Fatal Error";
+        }
+
+        exception.Message = description.Replace(
+            "CLARITY: First Chance Exception: ",
+            string.Empty,
+            StringComparison.Ordinal);
+
+        var lp2Type = (exception.Message ?? string.Empty).Split(
+            new[] { " :  " },
+            2,
+            StringSplitOptions.None);
+
+        if (lp2Type.Length > 1 && !lp2Type[0].Contains(' '))
+        {
+            exception.Type = lp2Type[0];
+            exception.Message = lp2Type[1];
+        }
     }
 }

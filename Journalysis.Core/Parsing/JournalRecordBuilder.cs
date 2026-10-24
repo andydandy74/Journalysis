@@ -71,169 +71,6 @@ internal static class JournalRecordBuilder
     }
 
     /// <summary>
-    /// Applies first-pass line normalization.
-    /// </summary>
-    /// <param name="line">Input physical line.</param>
-    /// <returns>Normalized line text.</returns>
-    /// <remarks>
-    /// Matches original parser behavior:
-    /// trim leading spaces, then remove trailing newline and null characters.
-    /// </remarks>
-    private static string NormalizeLine(string? line)
-    {
-        // Trim leading spaces and remove trailing newline and null characters.
-        return (line ?? string.Empty)
-            .TrimStart()
-            .TrimEnd('\n')
-            .TrimEnd('\0');
-    }
-
-    /// <summary>
-    /// Attempts to classify a line as a new logical record.
-    /// </summary>
-    /// <param name="line">Normalized input line.</param>
-    /// <param name="state">Mutable builder state.</param>
-    /// <param name="records">Accumulated logical records.</param>
-    /// <returns><see langword="true"/> when a new record was created; otherwise <see langword="false"/>.</returns>
-    private static bool TryCreateNewRecord(
-        string line,
-        JournalRecordBuilderState state,
-        List<JournalLine> records)
-    {
-        if (IsTimeStampStart(line))
-        {
-            state.CurrentBlock++;
-            records.Add(new JournalTimeStampLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.Contains(":< API_SUCCESS { ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalApiMessageLine(state.PhysicalLineNumber, line, state.CurrentBlock, isError: false));
-            return true;
-        }
-
-        if (line.Contains(":< API_ERROR { ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalApiMessageLine(state.PhysicalLineNumber, line, state.CurrentBlock, isError: true));
-            return true;
-        }
-
-        if (line.Contains(":: Delta VM: ", StringComparison.Ordinal) ||
-            line.StartsWith("' 0:< Initial VM: ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalMemoryMetricsLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.Contains(":< GUI Resource Usage GDI: ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalGuiResourceUsageLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.StartsWith("' [Jrn.BasicFileInfo]", StringComparison.Ordinal))
-        {
-            records.Add(new JournalBasicFileInfoLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.StartsWith("Jrn.Data ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalDataLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.StartsWith("Jrn.Directive ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalDirectiveLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.StartsWith("Jrn.Command ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalCommandLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            if (state.CommandCount < 2)
-            {
-                state.CommandCount++;
-            }
-
-            return true;
-        }
-
-        if (line.StartsWith("Jrn.Key ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalKeyboardEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.StartsWith("Jrn.AddInEvent ", StringComparison.Ordinal))
-        {
-            records.Add(new JournalAddinEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (StartsWithAny(line, MousePrefixes))
-        {
-            records.Add(new JournalMouseEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (StartsWithAny(line, UiPrefixes))
-        {
-            records.Add(new JournalUiEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        if (line.Contains(":< SLOG $", StringComparison.Ordinal))
-        {
-            records.Add(new JournalWorksharingEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Attempts to append a physical line as continuation text to the previous record.
-    /// </summary>
-    /// <param name="line">Normalized input line.</param>
-    /// <param name="records">Accumulated logical records.</param>
-    /// <returns><see langword="true"/> when continuation was applied; otherwise <see langword="false"/>.</returns>
-    private static bool TryAppendContinuation(string line, List<JournalLine> records)
-    {
-        if (records.Count == 0)
-        {
-            return false;
-        }
-
-        // Timestamp lines must be handled as new records
-        // by TryCreateNewRecord and never consumed as continuation text.
-        if (IsTimeStampStart(line))
-        {
-            return false;
-        }
-
-        var previous = records[^1];
-
-        // Append linebreaks to previous line if previous raw text ends with "_".
-        if (previous.RawText.Length > 0 && previous.RawText[^1] == '_')
-        {
-            previous.RawText = previous.RawText[..^1] + line;
-            return true;
-        }
-
-        // Append linebreaks in commands.
-        if (line[0] == ',')
-        {
-            previous.RawText = (previous.RawText + line).Replace(" _,", ",", StringComparison.Ordinal);
-            return true;
-        }
-
-        return false;
-    }
-
-    /// <summary>
     /// Handles apostrophe-prefixed lines that may be comments, continuations,
     /// or system-information records.
     /// </summary>
@@ -362,6 +199,33 @@ internal static class JournalRecordBuilder
         line.StartsWith("' E ", StringComparison.Ordinal);
 
     /// <summary>
+    /// Mouse-event prefixes generated from <see cref="JournalMouseEventType"/> values.
+    /// </summary>
+    private static readonly string[] MousePrefixes =
+        Enum.GetValues<JournalMouseEventType>()
+            .Where(type => type != JournalMouseEventType.Unknown)
+            .Select(type => $"Jrn.{type}")
+            .ToArray();
+
+    /// <summary>
+    /// Applies first-pass line normalization.
+    /// </summary>
+    /// <param name="line">Input physical line.</param>
+    /// <returns>Normalized line text.</returns>
+    /// <remarks>
+    /// Matches original parser behavior:
+    /// trim leading spaces, then remove trailing newline and null characters.
+    /// </remarks>
+    private static string NormalizeLine(string? line)
+    {
+        // Trim leading spaces and remove trailing newline and null characters.
+        return (line ?? string.Empty)
+            .TrimStart()
+            .TrimEnd('\n')
+            .TrimEnd('\0');
+    }
+
+    /// <summary>
     /// Determines whether a line starts with any configured prefix.
     /// </summary>
     /// <param name="line">Input line.</param>
@@ -380,13 +244,149 @@ internal static class JournalRecordBuilder
     }
 
     /// <summary>
-    /// Mouse-event prefixes generated from <see cref="JournalMouseEventType"/> values.
+    /// Attempts to append a physical line as continuation text to the previous record.
     /// </summary>
-    private static readonly string[] MousePrefixes =
-        Enum.GetValues<JournalMouseEventType>()
-            .Where(type => type != JournalMouseEventType.Unknown)
-            .Select(type => $"Jrn.{type}")
-            .ToArray();
+    /// <param name="line">Normalized input line.</param>
+    /// <param name="records">Accumulated logical records.</param>
+    /// <returns><see langword="true"/> when continuation was applied; otherwise <see langword="false"/>.</returns>
+    private static bool TryAppendContinuation(string line, List<JournalLine> records)
+    {
+        if (records.Count == 0)
+        {
+            return false;
+        }
+
+        // Timestamp lines must be handled as new records
+        // by TryCreateNewRecord and never consumed as continuation text.
+        if (IsTimeStampStart(line))
+        {
+            return false;
+        }
+
+        var previous = records[^1];
+
+        // Append linebreaks to previous line if previous raw text ends with "_".
+        if (previous.RawText.Length > 0 && previous.RawText[^1] == '_')
+        {
+            previous.RawText = previous.RawText[..^1] + line;
+            return true;
+        }
+
+        // Append linebreaks in commands.
+        if (line[0] == ',')
+        {
+            previous.RawText = (previous.RawText + line).Replace(" _,", ",", StringComparison.Ordinal);
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to classify a line as a new logical record.
+    /// </summary>
+    /// <param name="line">Normalized input line.</param>
+    /// <param name="state">Mutable builder state.</param>
+    /// <param name="records">Accumulated logical records.</param>
+    /// <returns><see langword="true"/> when a new record was created; otherwise <see langword="false"/>.</returns>
+    private static bool TryCreateNewRecord(
+        string line,
+        JournalRecordBuilderState state,
+        List<JournalLine> records)
+    {
+        if (IsTimeStampStart(line))
+        {
+            state.CurrentBlock++;
+            records.Add(new JournalTimeStampLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.Contains(":< API_SUCCESS { ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalApiMessageLine(state.PhysicalLineNumber, line, state.CurrentBlock, isError: false));
+            return true;
+        }
+
+        if (line.Contains(":< API_ERROR { ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalApiMessageLine(state.PhysicalLineNumber, line, state.CurrentBlock, isError: true));
+            return true;
+        }
+
+        if (line.Contains(":: Delta VM: ", StringComparison.Ordinal) ||
+            line.StartsWith("' 0:< Initial VM: ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalMemoryMetricsLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.Contains(":< GUI Resource Usage GDI: ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalGuiResourceUsageLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.StartsWith("' [Jrn.BasicFileInfo]", StringComparison.Ordinal))
+        {
+            records.Add(new JournalBasicFileInfoLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.StartsWith("Jrn.Data ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalDataLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.StartsWith("Jrn.Directive ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalDirectiveLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.StartsWith("Jrn.Command ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalCommandLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            if (state.CommandCount < 2)
+            {
+                state.CommandCount++;
+            }
+
+            return true;
+        }
+
+        if (line.StartsWith("Jrn.Key ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalKeyboardEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.StartsWith("Jrn.AddInEvent ", StringComparison.Ordinal))
+        {
+            records.Add(new JournalAddinEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (StartsWithAny(line, MousePrefixes))
+        {
+            records.Add(new JournalMouseEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (StartsWithAny(line, UiPrefixes))
+        {
+            records.Add(new JournalUiEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        if (line.Contains(":< SLOG $", StringComparison.Ordinal))
+        {
+            records.Add(new JournalWorksharingEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
+        return false;
+    }
 
     /// <summary>
     /// UI-event prefixes generated from <see cref="JournalUiEventType"/> values.
@@ -404,9 +404,12 @@ internal static class JournalRecordBuilder
 internal sealed class JournalRecordBuilderState
 {
     /// <summary>
-    /// Gets or sets the current 1-based physical line number being processed.
+    /// Gets or sets the number of command records seen during pass 1.
     /// </summary>
-    public int PhysicalLineNumber { get; set; }
+    /// <remarks>
+    /// Kept for parser parity with legacy avior.
+    /// </remarks>
+    public int CommandCount { get; set; }
 
     /// <summary>
     /// Gets or sets the current timestamp-delimited block number.
@@ -414,23 +417,20 @@ internal sealed class JournalRecordBuilderState
     public int CurrentBlock { get; set; }
 
     /// <summary>
-    /// Gets or sets the number of command records seen during pass 1.
+    /// Gets or sets the current system-information section type.
     /// </summary>
-    /// <remarks>
-    /// Kept for parser parity with legacy behavior.
-    /// </remarks>
-    public int CommandCount { get; set; }
+    public JournalSystemInformationType CurrentSystemInformationType { get; set; } =
+        JournalSystemInformationType.Unknown;
+
+    /// <summary>
+    /// Gets or sets the current 1-based physical line number being processed.
+    /// </summary>
+    public int PhysicalLineNumber { get; set; }
 
     /// <summary>
     /// Gets or sets whether parser has entered system-information comment sections.
     /// </summary>
     public bool SystemInformationStarted { get; set; }
-
-    /// <summary>
-    /// Gets or sets the current system-information section type.
-    /// </summary>
-    public JournalSystemInformationType CurrentSystemInformationType { get; set; } =
-        JournalSystemInformationType.Unknown;
 }
 
 /// <summary>
@@ -450,12 +450,12 @@ internal sealed class JournalRecordBuilderResult
     }
 
     /// <summary>
-    /// Gets the built logical records in encounter order.
-    /// </summary>
-    public IReadOnlyList<JournalLine> Records { get; }
-
-    /// <summary>
     /// Gets the total number of detected timestamp-delimited blocks.
     /// </summary>
     public int BlockCount { get; }
+
+    /// <summary>
+    /// Gets the built logical records in encounter order.
+    /// </summary>
+    public IReadOnlyList<JournalLine> Records { get; }
 }

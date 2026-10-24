@@ -109,37 +109,9 @@ public sealed class Journal
     private bool? _wasSessionTerminatedProperly;
 
     /// <summary>
-    /// Gets all parsed logical records in encounter order.
-    /// </summary>
-    /// <remarks>
-    /// This is a read-only snapshot created at construction time.
-    /// </remarks>
-    public IReadOnlyList<JournalLine> Lines { get; }
-
-    /// <summary>
-    /// Gets the parsed Revit version year, when available.
-    /// </summary>
-    public int? Version { get; }
-
-    /// <summary>
-    /// Gets the parsed username, when available.
-    /// </summary>
-    public string? User { get; }
-
-    /// <summary>
     /// Gets the total number of timestamp-delimited blocks found during parsing.
     /// </summary>
     public int BlockCount { get; }
-
-    /// <summary>
-    /// Gets the journal path recorded inside the journal content, when available.
-    /// </summary>
-    public string? Path { get; }
-
-    /// <summary>
-    /// Gets the parsed build token, when available.
-    /// </summary>
-    public string? Build { get; }
 
     /// <summary>
     /// Gets the parsed branch token, when available.
@@ -147,31 +119,9 @@ public sealed class Journal
     public string? Branch { get; }
 
     /// <summary>
-    /// Gets the parsed release token, when available.
+    /// Gets the parsed build token, when available.
     /// </summary>
-    public string? Release { get; }
-
-    /// <summary>
-    /// Gets the parsed machine name, when available.
-    /// </summary>
-    public string? Machine { get; }
-
-    /// <summary>
-    /// Gets the parsed operating system version text, when available.
-    /// </summary>
-    public string? OsVersion { get; }
-
-    /// <summary>
-    /// Gets total parse-processing time when assigned by the parser.
-    /// </summary>
-    public TimeSpan? ProcessingTime { get; internal set; }
-
-    /// <summary>
-    /// Gets the number of parsed logical records, not the physical file line count.
-    /// </summary>
-    public int LineCount => Lines.Count;
-
-    public override string ToString() => nameof(Journal);
+    public string? Build { get; }
 
     /// <summary>
     /// Gets whether the journal contains API error messages.
@@ -398,6 +348,19 @@ public sealed class Journal
                 StringComparison.Ordinal) == true);
 
     /// <summary>
+    /// Gets the number of parsed logical records, not the physical file line count.
+    /// </summary>
+    public int LineCount => Lines.Count;
+
+    /// <summary>
+    /// Gets all parsed logical records in encounter order.
+    /// </summary>
+    /// <remarks>
+    /// This is a read-only snapshot created at construction time.
+    /// </remarks>
+    public IReadOnlyList<JournalLine> Lines { get; }
+
+    /// <summary>
     /// Gets loaded add-in assemblies inferred from API messages.
     /// Analysis is performed on first access and then cached.
     /// </summary>
@@ -410,6 +373,11 @@ public sealed class Journal
     /// </summary>
     public IReadOnlyList<LoadedModel> LoadedModels =>
         _loadedModels ??= LoadedModelAnalyzer.GetLoadedModels(this);
+
+    /// <summary>
+    /// Gets the parsed machine name, when available.
+    /// </summary>
+    public string? Machine { get; }
 
     /// <summary>
     /// Gets the maximum recorded RAM peak, computed on first access and cached.
@@ -490,6 +458,26 @@ public sealed class Journal
             return _minVmAvailable;
         }
     }
+
+    /// <summary>
+    /// Gets the parsed operating system version text, when available.
+    /// </summary>
+    public string? OsVersion { get; }
+
+    /// <summary>
+    /// Gets the journal path recorded inside the journal content, when available.
+    /// </summary>
+    public string? Path { get; }
+
+    /// <summary>
+    /// Gets total parse-processing time when assigned by the parser.
+    /// </summary>
+    public TimeSpan? ProcessingTime { get; internal set; }
+
+    /// <summary>
+    /// Gets the parsed release token, when available.
+    /// </summary>
+    public string? Release { get; }
 
     /// <summary>
     /// Gets recorded exceptions inferred from timestamp/API/comment lines.
@@ -619,6 +607,18 @@ public sealed class Journal
                     (preserveTimeStamps && line is JournalTimeStampLine))
                 .Select(line => line.RawText));
     }
+
+    public override string ToString() => nameof(Journal);
+
+    /// <summary>
+    /// Gets the parsed username, when available.
+    /// </summary>
+    public string? User { get; }
+
+    /// <summary>
+    /// Gets the parsed Revit version year, when available.
+    /// </summary>
+    public int? Version { get; }
 
     /// <summary>
     /// Gets whether playback interruption is recorded in the journal.

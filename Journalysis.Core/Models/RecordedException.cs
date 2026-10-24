@@ -24,27 +24,9 @@ public sealed class RecordedException
     }
 
     /// <summary>
-    /// Gets the journal line that introduced this exception record.
+    /// Gets the associated application GUID text, when available.
     /// </summary>
-    public JournalLine JournalLine { get; }
-
-    /// <summary>
-    /// Gets the parsed exception type.
-    /// </summary>
-    /// <remarks>
-    /// Defaults to <c>"Unknown"</c> when a type cannot be inferred from source text.
-    /// </remarks>
-    public string Type { get; internal set; } = "Unknown";
-
-    /// <summary>
-    /// Gets the parsed exception message text, when available.
-    /// </summary>
-    public string? Message { get; internal set; }
-
-    /// <summary>
-    /// Gets the associated API event name, when available.
-    /// </summary>
-    public string? Event { get; internal set; }
+    public string? AppGuid { get; internal set; }
 
     /// <summary>
     /// Gets the associated application name, when available.
@@ -52,9 +34,19 @@ public sealed class RecordedException
     public string? AppName { get; internal set; }
 
     /// <summary>
-    /// Gets the associated application GUID text, when available.
+    /// Gets the associated API event name, when available.
     /// </summary>
-    public string? AppGuid { get; internal set; }
+    public string? Event { get; internal set; }
+
+    /// <summary>
+    /// Gets the journal line that introduced this exception record.
+    /// </summary>
+    public JournalLine JournalLine { get; }
+
+    /// <summary>
+    /// Gets the parsed exception message text, when available.
+    /// </summary>
+    public string? Message { get; internal set; }
 
     /// <summary>
     /// Gets the parsed stack trace or managed-method descriptor, when available.
@@ -62,4 +54,12 @@ public sealed class RecordedException
     public string? StackTrace { get; internal set; }
 
     public override string ToString() => nameof(RecordedException);
+
+    /// <summary>
+    /// Gets the parsed exception type.
+    /// </summary>
+    /// <remarks>
+    /// Defaults to <c>"Unknown"</c> when a type cannot be inferred from source text.
+    /// </remarks>
+    public string Type { get; internal set; } = "Unknown"; 
 }

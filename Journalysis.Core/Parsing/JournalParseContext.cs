@@ -1,4 +1,7 @@
-﻿namespace Journalysis.Core.Parsing;
+﻿using System.Collections.Generic;
+using Journalysis.Core.Models;
+
+namespace Journalysis.Core.Parsing;
 
 /// <summary>
 /// Holds journal metadata and shared parse state collected during parser pass 2.
@@ -10,22 +13,9 @@
 internal sealed class JournalParseContext
 {
     /// <summary>
-    /// Gets or sets the parsed Revit version year (typically from directive records).
+    /// Gets or sets the parsed branch token.
     /// </summary>
-    public int? Version { get; set; }
-
-    /// <summary>
-    /// Gets or sets the parsed username (typically from directive records).
-    /// </summary>
-    public string? UserName { get; set; }
-
-    /// <summary>
-    /// Gets or sets the journal path recorded inside journal text.
-    /// </summary>
-    /// <remarks>
-    /// This may differ from the file-system path used as parser input.
-    /// </remarks>
-    public string? RecordedPath { get; set; }
+    public string? Branch { get; set; }
 
     /// <summary>
     /// Gets or sets the parsed build token.
@@ -33,24 +23,9 @@ internal sealed class JournalParseContext
     public string? Build { get; set; }
 
     /// <summary>
-    /// Gets or sets the parsed branch token.
-    /// </summary>
-    public string? Branch { get; set; }
-
-    /// <summary>
-    /// Gets or sets the parsed release token.
-    /// </summary>
-    public string? Release { get; set; }
-
-    /// <summary>
     /// Gets or sets the parsed machine name.
     /// </summary>
     public string? MachineName { get; set; }
-
-    /// <summary>
-    /// Gets or sets the parsed operating-system version text.
-    /// </summary>
-    public string? OsVersion { get; set; }
 
     /// <summary>
     /// Gets or sets whether machine name has already been captured.
@@ -61,12 +36,30 @@ internal sealed class JournalParseContext
     public bool MachineNameFound { get; set; }
 
     /// <summary>
+    /// Gets or sets the parsed operating-system version text.
+    /// </summary>
+    public string? OsVersion { get; set; }
+
+    /// <summary>
     /// Gets or sets whether OS version has already been captured.
     /// </summary>
     /// <remarks>
     /// Preserves first-match behavior from the original parser.
     /// </remarks>
     public bool OsVersionFound { get; set; }
+
+    /// <summary>
+    /// Gets or sets the journal path recorded inside journal text.
+    /// </summary>
+    /// <remarks>
+    /// This may differ from the file-system path used as parser input.
+    /// </remarks>
+    public string? RecordedPath { get; set; }
+
+    /// <summary>
+    /// Gets or sets the parsed release token.
+    /// </summary>
+    public string? Release { get; set; }
 
     /// <summary>
     /// Gets or sets the running item number for system-information records.
@@ -76,4 +69,14 @@ internal sealed class JournalParseContext
     /// and is intentionally shared across section types.
     /// </remarks>
     public int SystemInformationItemNumber { get; set; }
+
+    /// <summary>
+    /// Gets or sets the parsed username (typically from directive records).
+    /// </summary>
+    public string? UserName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the parsed Revit version year (typically from directive records).
+    /// </summary>
+    public int? Version { get; set; }
 }

@@ -34,6 +34,15 @@ public sealed class LoadedModel
     private IReadOnlyList<string>? _versionHistory;
 
     /// <summary>
+    /// Gets the ordered lifecycle events for this model load.
+    /// </summary>
+    /// <remarks>
+    /// The first entry is expected to be an open event.
+    /// When available, the second entry is typically a <see cref="LoadedModelEventType.Loaded"/> marker.
+    /// </remarks>
+    public List<LoadedModelEvent> Events { get; }
+
+    /// <summary>
     /// Gets the journal that produced this loaded-model sequence.
     /// </summary>
     public Journal Journal { get; }
@@ -45,15 +54,6 @@ public sealed class LoadedModel
     /// Path normalization and path-source selection are performed by the analysis layer.
     /// </remarks>
     public string? Path { get; }
-
-    /// <summary>
-    /// Gets the ordered lifecycle events for this model load.
-    /// </summary>
-    /// <remarks>
-    /// The first entry is expected to be an open event.
-    /// When available, the second entry is typically a <see cref="LoadedModelEventType.Loaded"/> marker.
-    /// </remarks>
-    public List<LoadedModelEvent> Events { get; }
 
     public override string ToString() => nameof(LoadedModel);
 
@@ -83,6 +83,21 @@ public sealed class LoadedModel
     public IReadOnlyList<string> VersionHistory =>
         _versionHistory ??= GetVersionHistoryInternal();
 
+    private IReadOnlyList<JournalLine> GetLinesBetweenOpenAndLoadedBlocks()
+    {
+        // Get the range of blocks between the first two events.
+        var fromBlock = Events[0].JournalLine.Block;
+        var toBlock = Events[1].JournalLine.Block;
+
+        var blockCount = toBlock - fromBlock;
+        if (blockCount <= 0)
+        {
+            return Array.Empty<JournalLine>();
+        }
+
+        return Journal.GetLinesByBlocks(Enumerable.Range(fromBlock, blockCount));
+    }
+
     private IReadOnlyList<string> GetVersionHistoryInternal()
     {
         var linesInRange = GetLinesBetweenOpenAndLoadedBlocks().ToArray();
@@ -101,21 +116,6 @@ public sealed class LoadedModel
             .Where(x => x.Number >= start && x.Number < end)
             .Select(x => x.RawText.Split(":<", StringSplitOptions.None)[^1].Trim())
             .ToArray();
-    }
-
-    private IReadOnlyList<JournalLine> GetLinesBetweenOpenAndLoadedBlocks()
-    {
-        // Get the range of blocks between the first two events.
-        var fromBlock = Events[0].JournalLine.Block;
-        var toBlock = Events[1].JournalLine.Block;
-
-        var blockCount = toBlock - fromBlock;
-        if (blockCount <= 0)
-        {
-            return Array.Empty<JournalLine>();
-        }
-
-        return Journal.GetLinesByBlocks(Enumerable.Range(fromBlock, blockCount));
     }
 }
 
@@ -152,19 +152,19 @@ public sealed class LoadedModelEvent
     }
 
     /// <summary>
+    /// Gets the event timestamp, when available.
+    /// </summary>
+    public DateTime? DateTime { get; }
+
+    /// <summary>
     /// Gets the source journal line that triggered this event.
     /// </summary>
     public JournalLine JournalLine { get; }
+
+    public override string ToString() => nameof(LoadedModelEvent);
 
     /// <summary>
     /// Gets the model-opening method or load-completion event type.
     /// </summary>
     public LoadedModelEventType Type { get; }
-
-    /// <summary>
-    /// Gets the event timestamp, when available.
-    /// </summary>
-    public DateTime? DateTime { get; }
-
-    public override string ToString() => nameof(LoadedModelEvent);
 }
