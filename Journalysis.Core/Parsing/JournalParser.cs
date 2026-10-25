@@ -68,7 +68,8 @@ public sealed class JournalParser
             branch: context.Branch,
             release: context.Release,
             machine: context.MachineName,
-            osVersion: context.OsVersion);
+            osVersion: context.OsVersion,
+            parsingErrors: context.ParsingErrors);
 
         journal.ProcessingTime = Stopwatch.GetElapsedTime(processingStarted);
 
@@ -93,7 +94,16 @@ public sealed class JournalParser
         // numbering can depend on previously processed records.
         foreach (var record in records)
         {
-            JournalLineParser.Parse(record, context);
+            try
+            {
+                JournalLineParser.Parse(record, context);
+            }
+            catch (FormatException exception)
+            {
+                // Keep partially parsed content and continue with later records.
+                // The parse error message includes the source raw text.
+                context.ParsingErrors.Add(new JournalParsingError(record, exception.Message));
+            }
         }
 
         return context;

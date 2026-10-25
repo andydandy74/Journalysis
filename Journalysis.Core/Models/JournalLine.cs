@@ -27,6 +27,12 @@ public abstract class JournalLine
         Block = block;
     }
 
+    private bool? _hasParsingError;
+    private JournalLine? _next;
+    private bool _nextInitialized;
+    private JournalLine? _previous;
+    private bool _previousInitialized;
+
     /// <summary>
     /// Gets all following records in the same journal.
     /// </summary>
@@ -87,6 +93,27 @@ public abstract class JournalLine
     public DateTime? GetDateTimeOfBlock() => Journal?.GetDateTimeByBlock(Block);
 
     /// <summary>
+    /// Gets whether this record has a recoverable parsing error.
+    /// </summary>
+    /// <remarks>
+    /// Returns <see langword="false"/> when this record has no owning journal.
+    /// Once a journal is assigned, the value is computed on first access and cached.
+    /// </remarks>
+    public bool HasParsingError
+    {
+        get
+        {
+            if (Journal is null)
+            {
+                return false;
+            }
+
+            return _hasParsingError ??= Journal.ParsingErrors.Any(
+                error => ReferenceEquals(error.JournalLine, this));
+        }
+    }
+
+    /// <summary>
     /// Gets the zero-based index of this record in <see cref="Journal.Lines"/>.
     /// </summary>
     public int Index { get; internal set; }
@@ -104,11 +131,31 @@ public abstract class JournalLine
     /// <summary>
     /// Gets the next record in the same journal.
     /// </summary>
-    /// <returns>The next record, or <see langword="null"/> when none exists.</returns>
-    public JournalLine? Next() =>
-        Journal is not null && Index + 1 < Journal.Lines.Count
-            ? Journal.Lines[Index + 1]
-            : null;
+    /// <remarks>
+    /// Returns <see langword="null"/> when no owning journal or next record exists.
+    /// Once a journal is assigned, the result is computed on first access and
+    /// cached, including when the result is <see langword="null"/>.
+    /// </remarks>
+    public JournalLine? Next
+    {
+        get
+        {
+            if (Journal is null)
+            {
+                return null;
+            }
+
+            if (!_nextInitialized)
+            {
+                _next = Index + 1 < Journal.Lines.Count
+                    ? Journal.Lines[Index + 1]
+                    : null;
+                _nextInitialized = true;
+            }
+
+            return _next;
+        }
+    }
 
     /// <summary>
     /// Gets the next record of a specific type.
@@ -126,11 +173,31 @@ public abstract class JournalLine
     /// <summary>
     /// Gets the previous record in the same journal.
     /// </summary>
-    /// <returns>The previous record, or <see langword="null"/> when none exists.</returns>
-    public JournalLine? Previous() =>
-        Journal is not null && Index > 0
-            ? Journal.Lines[Index - 1]
-            : null;
+    /// <remarks>
+    /// Returns <see langword="null"/> when no owning journal or previous record exists.
+    /// Once a journal is assigned, the result is computed on first access and
+    /// cached, including when the result is <see langword="null"/>.
+    /// </remarks>
+    public JournalLine? Previous
+    {
+        get
+        {
+            if (Journal is null)
+            {
+                return null;
+            }
+
+            if (!_previousInitialized)
+            {
+                _previous = Index > 0
+                    ? Journal.Lines[Index - 1]
+                    : null;
+                _previousInitialized = true;
+            }
+
+            return _previous;
+        }
+    }
 
     /// <summary>
     /// Gets the previous record of a specific type.

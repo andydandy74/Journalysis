@@ -31,10 +31,15 @@ public sealed class Journal
     /// <param name="release">Revit release token extracted from build metadata, when available.</param>
     /// <param name="machine">Machine name extracted from journal comments, when available.</param>
     /// <param name="osVersion">OS version extracted from system-information sections, when available.</param>
+    /// <param name="parsingErrors">
+    /// Recoverable parsing errors associated with the supplied records,
+    /// or <see langword="null"/> when no errors were reported.
+    /// </param>
     /// <exception cref="ArgumentNullException"><paramref name="lines"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentException">
     /// Thrown when <paramref name="lines"/> contains null entries, duplicate object instances,
-    /// or line instances already assigned to a different journal.
+    /// line instances already assigned to a different journal, or when a parsing error references
+    /// a line that is not part of <paramref name="lines"/>.
     /// </exception>
     public Journal(
         IReadOnlyList<JournalLine> lines,
@@ -46,7 +51,8 @@ public sealed class Journal
         string? branch,
         string? release,
         string? machine,
-        string? osVersion)
+        string? osVersion,
+        IReadOnlyList<JournalParsingError>? parsingErrors = null)
     {
         ArgumentNullException.ThrowIfNull(lines);
 
@@ -68,7 +74,25 @@ public sealed class Journal
             throw new ArgumentException("A line cannot belong to more than one journal.", nameof(lines));
         }
 
+        // Snapshot diagnostics as well so later external collection changes do not affect this journal.
+        var parsingErrorSnapshot = parsingErrors?.ToArray() ?? Array.Empty<JournalParsingError>();
+
+        if (parsingErrorSnapshot.Any(error => error is null))
+        {
+            throw new ArgumentException("Parsing errors cannot contain null entries.", nameof(parsingErrors));
+        }
+
+        if (parsingErrorSnapshot.Any(error =>
+                !snapshot.Any(line => ReferenceEquals(line, error.JournalLine))))
+        {
+            throw new ArgumentException(
+                "Every parsing error must reference a line that belongs to this journal.",
+                nameof(parsingErrors));
+        }
+
         Lines = Array.AsReadOnly(snapshot);
+        ParsingErrors = Array.AsReadOnly(parsingErrorSnapshot);
+
         Version = version;
         User = user;
         BlockCount = blockCount;
@@ -89,6 +113,7 @@ public sealed class Journal
     private bool? _containsApiErrors;
     private DateTime? _date;
     private bool _dateInitialized;
+    private bool? _hasParsingErrors;
     private bool? _isInPlaybackMode;
     private IReadOnlyList<LoadedAssembly>? _loadedAssemblies;
     private IReadOnlyList<LoadedModel>? _loadedModels;
@@ -338,6 +363,12 @@ public sealed class Journal
     }
 
     /// <summary>
+    /// Gets whether recoverable parsing errors were reported.
+    /// The result is computed on first access and then cached.
+    /// </summary>
+    public bool HasParsingErrors => _hasParsingErrors ??= ParsingErrors.Count > 0;
+
+    /// <summary>
     /// Gets whether the journal records the start of journal playback.
     /// The result is computed on first access and then cached.
     /// </summary>
@@ -463,6 +494,15 @@ public sealed class Journal
     /// Gets the parsed operating system version text, when available.
     /// </summary>
     public string? OsVersion { get; }
+
+    /// <summary>
+    /// Gets recoverable parsing errors encountered while parsing this journal.
+    /// </summary>
+    /// <remarks>
+    /// The collection is a read-only snapshot. Affected records remain in
+    /// <see cref="Lines"/> and may contain successfully parsed fields.
+    /// </remarks>
+    public IReadOnlyList<JournalParsingError> ParsingErrors { get; }
 
     /// <summary>
     /// Gets the journal path recorded inside the journal content, when available.
