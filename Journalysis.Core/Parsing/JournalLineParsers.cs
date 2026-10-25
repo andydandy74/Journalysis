@@ -136,7 +136,8 @@ internal static class JournalLineParser
     /// </summary>
     /// <param name="line">API message record.</param>
     /// <exception cref="FormatException">
-    /// The opening API payload delimiter is missing.
+    /// The API payload cannot be parsed due to missing required delimiters
+    /// or empty payload text.
     /// </exception>
     private static void ParseApiMessage(JournalApiMessageLine line)
     {
@@ -153,19 +154,40 @@ internal static class JournalLineParser
                     "the opening message delimiter is missing."));
         }
 
-        // A missing closing delimiter leaves the remaining text as the message.
-        // A second opening delimiter ends the segment selected by the first split.
-        var messageText = openingParts[1]
-            .Split(" }", StringSplitOptions.None)[0]
-            .Trim();
+        // Keep best-effort extraction so partially cut-off lines still preserve
+        // useful payload text for analysis.
+        var payloadAndTail = openingParts[1];
+        var closingParts = payloadAndTail.Split(" }", StringSplitOptions.None);
+        var hasClosingDelimiter = closingParts.Length > 1;
+        var messageText = closingParts[0].Trim();
 
         if (messageText.StartsWith(": ", StringComparison.Ordinal))
         {
             messageText = messageText[2..];
         }
 
+        if (messageText.Length == 0)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse API message at physical line {line.Number}: " +
+                    "the API payload is empty."));
+        }
+
         line.MessageText = messageText;
         line.MessageType = ParseApiMessageType(messageText);
+
+        // Report truncation but keep parsed fields assigned above.
+        if (!hasClosingDelimiter)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse API message at physical line {line.Number}: " +
+                    "the closing message delimiter is missing. " +
+                    "The available payload text was preserved."));
+        }
     }
 
     /// <summary>
