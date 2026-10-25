@@ -6,7 +6,7 @@ using Journalysis.Core.Models;
 namespace Journalysis.Core.Analysis;
 
 /// <summary>
-/// Extracts loaded add-in assemblies and correlates related API messages.
+/// Extracts loaded assemblies and correlates related API messages.
 /// </summary>
 /// <remarks>
 /// Correlation is heuristic and based on parsed API message text patterns
@@ -15,18 +15,31 @@ namespace Journalysis.Core.Analysis;
 public static class LoadedAssemblyAnalyzer
 {
     /// <summary>
-    /// Finds loaded add-in assemblies in a parsed journal and attaches related API messages.
+    /// Finds loaded assemblies from API messages and assembly-load comments.
     /// </summary>
     /// <param name="journal">Parsed journal to analyze.</param>
-    /// <returns>A read-only list of discovered loaded assemblies.</returns>
-    /// <remarks>
-    /// Assembly paths are treated as journal data only; no assemblies are loaded from disk.
-    /// </remarks>
+    /// <returns>A read-only list of discovered assemblies in initial-event order.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="journal"/> is <see langword="null"/>.</exception>
     public static IReadOnlyList<LoadedAssembly> GetLoadedAssemblies(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
 
+        var assemblies = GetLoadedAssembliesFromApiMessages(journal)
+            .Concat(GetLoadedAssembliesFromComments(journal))
+            .OrderBy(assembly => assembly.Events[0].Index)
+            .ToArray();
+
+        return Array.AsReadOnly(assemblies);
+    }
+
+    /// <summary>
+    /// Discovers add-in assemblies from startup API messages and attaches related
+    /// registration, command, and exception messages.
+    /// </summary>
+    /// <param name="journal">Parsed journal to analyze.</param>
+    /// <returns>Assemblies discovered from API messages, with correlated events.</returns>
+    private static IReadOnlyList<LoadedAssembly> GetLoadedAssembliesFromApiMessages(Journal journal)
+    {
         var messages = journal.GetLines<JournalApiMessageLine>();
         var assemblies = new List<LoadedAssembly>();
         var replacedCommands = new Dictionary<string, LoadedAssembly>(StringComparer.Ordinal);
@@ -163,6 +176,27 @@ public static class LoadedAssemblyAnalyzer
     }
 
     /// <summary>
+    /// Discovers assemblies from comments that explicitly report an assembly load.
+    /// </summary>
+    /// <param name="journal">Parsed journal to analyze.</param>
+    /// <returns>Assemblies discovered from assembly-load comments.</returns>
+    private static IReadOnlyList<LoadedAssembly> GetLoadedAssembliesFromComments(Journal journal)
+    {
+        var assemblies = new List<LoadedAssembly>();
+
+        foreach (var comment in journal.GetLines<JournalCommentLine>())
+        {
+            var assembly = TryReadLoadedAssemblyFromComment(comment);
+            if (assembly is not null)
+            {
+                assemblies.Add(assembly);
+            }
+        }
+
+        return assemblies.AsReadOnly();
+    }
+
+    /// <summary>
     /// Extracts a single-quoted value following a marker.
     /// </summary>
     /// <param name="text">Input text.</param>
@@ -221,6 +255,10 @@ public static class LoadedAssemblyAnalyzer
             return null;
         }
 
+        name = name.Trim();
+        className = className.Trim();
+        vendorText = vendorText.Trim();
+
         string path;
         string? version = null;
 
@@ -239,7 +277,11 @@ public static class LoadedAssemblyAnalyzer
             path = assemblyText;
         }
 
-        if (string.IsNullOrWhiteSpace(path))
+        path = path.Trim();
+
+        if (string.IsNullOrWhiteSpace(name) ||
+            string.IsNullOrWhiteSpace(className) ||
+            string.IsNullOrWhiteSpace(path))
         {
             return null;
         }
@@ -250,7 +292,7 @@ public static class LoadedAssemblyAnalyzer
 
         if (detailsStart >= 0)
         {
-            vendor = vendorText[..detailsStart];
+            vendor = vendorText[..detailsStart].Trim();
             var detailsEnd = vendorText.LastIndexOf(')');
 
             if (detailsEnd > detailsStart)
@@ -258,6 +300,11 @@ public static class LoadedAssemblyAnalyzer
                 var details = vendorText[(detailsStart + 1)..detailsEnd].Trim();
                 vendorDetails = details.Length > 0 ? details : null;
             }
+        }
+
+        if (string.IsNullOrWhiteSpace(vendor))
+        {
+            vendor = null;
         }
 
         return new LoadedAssembly(
@@ -268,6 +315,89 @@ public static class LoadedAssemblyAnalyzer
             vendor,
             vendorDetails,
             message);
+    }
+
+    /// <summary>
+    /// Attempts to extract an assembly identity and path from an assembly-load comment.
+    /// </summary>
+    /// <param name="comment">Comment record to inspect.</param>
+    /// <returns>
+    /// A populated assembly model, or <see langword="null"/> when the expected
+    /// structure or required fields are missing.
+    /// </returns>
+    /// <remarks>
+    /// Application class and vendor information are not supplied by this comment format.
+    /// Incomplete records are skipped without throwing.
+    /// </remarks>
+    private static LoadedAssembly? TryReadLoadedAssemblyFromComment(JournalCommentLine comment)
+    {
+        const string marker = ":< The requested assembly '";
+        var markerIndex = comment.RawText.IndexOf(marker, StringComparison.Ordinal);
+
+        if (markerIndex < 0)
+        {
+            return null;
+        }
+
+        var assemblyAndTail = comment.RawText[(markerIndex + marker.Length)..];
+
+        // Require the expected structure so unrelated quoted comment text is not
+        // mistaken for an assembly identity or file path.
+        if (!TrySplitOnce(
+                assemblyAndTail,
+                "' was loaded to the context '",
+                out var identity,
+                out var contextAndPath) ||
+            !TrySplitOnce(
+                contextAndPath,
+                "' from '",
+                out _,
+                out var pathAndTail))
+        {
+            return null;
+        }
+
+        // A closing quote is required: otherwise a cut-off path could look valid.
+        var pathEnd = pathAndTail.IndexOf('\'');
+        if (pathEnd < 0)
+        {
+            return null;
+        }
+
+        var path = pathAndTail[..pathEnd].Trim();
+        var identityParts = identity.Split(',');
+        var name = identityParts[0].Trim();
+
+        if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(path))
+        {
+            return null;
+        }
+
+        string? version = null;
+
+        foreach (var part in identityParts.Skip(1))
+        {
+            const string versionPrefix = "Version=";
+            var attribute = part.Trim();
+
+            if (!attribute.StartsWith(versionPrefix, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var value = attribute[versionPrefix.Length..].Trim();
+            version = value.Length > 0 ? value : null;
+            break;
+        }
+
+        return new LoadedAssembly(
+            name: name,
+            className: null,
+            path: path,
+            version: version,
+            vendor: null,
+            vendorDetails: null,
+            initialEvent: comment);
     }
 
     /// <summary>

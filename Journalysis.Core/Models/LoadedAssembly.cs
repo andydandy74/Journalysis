@@ -1,24 +1,23 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace Journalysis.Core.Models;
 
 /// <summary>
-/// Represents an add-in assembly inferred from API journal messages.
+/// Represents an assembly inferred from API messages or assembly-load comments.
 /// </summary>
 /// <remarks>
-/// Instances are built by analysis logic that correlates startup/registration-related
-/// API messages. The object stores journal-reported strings as-is; no assembly loading
-/// or file-system validation is performed.
+/// Instances are built from startup API messages or explicit assembly-load comments.
+/// Related API messages may be attached by analysis correlation rules.
+/// No assembly loading or file-system validation is performed.
 /// </remarks>
 public sealed class LoadedAssembly
 {
     /// <summary>
-    /// Initializes a loaded-assembly model from parsed API message data.
+    /// Initializes a loaded-assembly model from journal-reported data.
     /// </summary>
-    /// <param name="name">Application name as reported in API message text.</param>
-    /// <param name="className">Application class name as reported in API message text.</param>
+    /// <param name="name">Application or assembly name reported by the source record.</param>
+    /// <param name="className">Application class name, when available.</param>
     /// <param name="path">
     /// Assembly path as reported in journal text. This may use separators and roots
     /// that do not match the current operating system.
@@ -26,15 +25,15 @@ public sealed class LoadedAssembly
     /// <param name="version">Assembly version text, when present in the source message.</param>
     /// <param name="vendor">Vendor name text, when present.</param>
     /// <param name="vendorDetails">Vendor details text (typically parenthesized), when present.</param>
-    /// <param name="initialEvent">The API message that first established this assembly record.</param>
+    /// <param name="initialEvent">The journal record that established this assembly record.</param>
     public LoadedAssembly(
         string name,
-        string className,
+        string? className,
         string path,
         string? version,
         string? vendor,
         string? vendorDetails,
-        JournalApiMessageLine initialEvent)
+        JournalLine initialEvent)
     {
         Name = name;
         ClassName = className;
@@ -51,18 +50,18 @@ public sealed class LoadedAssembly
     }
 
     /// <summary>
-    /// Gets the application class name associated with the loaded assembly.
+    /// Gets the application class name, when supplied by the source record.
     /// </summary>
-    public string ClassName { get; }
+    public string? ClassName { get; }
 
     /// <summary>
-    /// Gets the correlated API messages associated with this assembly.
+    /// Gets the journal records associated with this assembly.
     /// </summary>
     /// <remarks>
-    /// The first entry is the <paramref name="initialEvent"/> passed to the constructor.
+    /// The first entry is the initial event passed to the constructor.
     /// Additional events may be appended by analysis correlation rules.
     /// </remarks>
-    public List<JournalApiMessageLine> Events { get; }
+    public List<JournalLine> Events { get; }
 
     /// <summary>
     /// Gets the file name portion extracted from <see cref="Path"/>.
@@ -75,7 +74,8 @@ public sealed class LoadedAssembly
     public string? Guid { get; set; }
 
     /// <summary>
-    /// Gets the application name associated with the loaded assembly.
+    /// Gets the application name from an API message or the assembly name
+    /// from an assembly-load comment.
     /// </summary>
     public string Name { get; }
 
