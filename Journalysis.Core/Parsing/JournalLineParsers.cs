@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Journalysis.Core.Models;
 
 namespace Journalysis.Core.Parsing;
@@ -112,13 +113,15 @@ internal static class JournalLineParser
     /// </summary>
     /// <param name="line">Add-in event record.</param>
     /// <exception cref="FormatException">
-    /// The expected quoted payload field is missing.
+    /// The second quoted payload field is missing, or its closing quote is missing.
+    /// Available second-field text is preserved when closing quote is missing.
     /// </exception>
     private static void ParseAddinEvent(JournalAddinEventLine line)
     {
         var fields = line.RawText.Split('"');
 
-        // Extract the second quoted field without removing empty fields or trimming text.
+        // Need at least:
+        // [0]=prefix, [1]=first field, [2]=separator, [3]=second field
         if (fields.Length < 4)
         {
             throw new FormatException(
@@ -128,7 +131,19 @@ internal static class JournalLineParser
                     "the second quoted field is missing."));
         }
 
+        // Preserve available text (can be partial when the closing quote is missing).
         line.MessageText = fields[3];
+
+        // A complete second quoted field requires the trailing segment after its closing quote.
+        if (fields.Length < 5)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse add-in event at physical line {line.Number}: " +
+                    "the closing quote of the second field is missing. " +
+                    "The available message text was preserved."));
+        }
     }
 
     /// <summary>
@@ -289,6 +304,111 @@ internal static class JournalLineParser
     }
 
     /// <summary>
+    /// Extracts basic-file-info fields from a <c>[Jrn.BasicFileInfo]</c> record.
+    /// </summary>
+    /// <param name="line">Basic-file-info record.</param>
+    private static void ParseBasicFileInfo(JournalBasicFileInfoLine line)
+    {
+        var attributes = ParseBasicFileInfoAttributes(line.RawText);
+
+        if (attributes.TryGetValue("Worksharing", out var worksharing) &&
+            worksharing.Length > 0)
+        {
+            line.Worksharing = worksharing;
+        }
+
+        if (attributes.TryGetValue("CentralModelPath", out var centralModelPath) &&
+            centralModelPath.Length > 0)
+        {
+            line.CentralModelPath = centralModelPath;
+        }
+
+        if (attributes.TryGetValue("LastSavePath", out var lastSavePath) &&
+            lastSavePath.Length > 0)
+        {
+            line.LastSavePath = lastSavePath;
+
+            var fileNameParts = lastSavePath.Split(
+                '\\',
+                StringSplitOptions.None);
+
+            line.FileName = fileNameParts[^1];
+        }
+
+        if (attributes.TryGetValue("LocaleWhenSaved", out var locale) &&
+            locale.Length > 0)
+        {
+            line.Locale = locale;
+        }
+
+        if (attributes.TryGetValue("FileExt", out var fileExtension) &&
+            fileExtension.Length > 0)
+        {
+            line.FileExtension = fileExtension;
+        }
+
+        if (attributes.TryGetValue("RevitBuildVersion", out var buildVersion) &&
+            buildVersion.Length > 0)
+        {
+            const string versionPrefix = "Autodesk Revit ";
+            var versionStart = buildVersion.IndexOf(
+                versionPrefix,
+                StringComparison.Ordinal);
+
+            if (versionStart >= 0)
+            {
+                versionStart += versionPrefix.Length;
+
+                var versionEnd = buildVersion.IndexOf(
+                    ' ',
+                    versionStart);
+
+                if (versionEnd < 0)
+                {
+                    versionEnd = buildVersion.Length;
+                }
+
+                var versionText = buildVersion[
+                    versionStart..versionEnd];
+
+                if (int.TryParse(
+                        versionText,
+                        System.Globalization.NumberStyles.Integer,
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        out var version))
+                {
+                    line.Version = version;
+                }
+            }
+
+            const string buildMarker = "(Build:";
+            var buildStart = buildVersion.IndexOf(
+                buildMarker,
+                StringComparison.Ordinal);
+
+            if (buildStart >= 0)
+            {
+                buildStart += buildMarker.Length;
+
+                var buildEnd = buildVersion.LastIndexOf(')');
+
+                if (buildEnd < buildStart)
+                {
+                    buildEnd = buildVersion.Length;
+                }
+
+                var build = buildVersion[
+                    buildStart..buildEnd].Trim();
+
+                if (build.Length > 0)
+                {
+                    line.Build = build;
+                }
+            }
+        }
+    }
+
+    /// <summary>
     /// Parses <c>[Jrn.BasicFileInfo]</c> attribute fragments into key/value pairs.
     /// </summary>
     /// <param name="rawText">Raw basic-file-info record text.</param>
@@ -297,48 +417,54 @@ internal static class JournalLineParser
     /// Duplicate keys keep the last observed value.
     /// Malformed fragments are ignored.
     /// </remarks>
-    private static Dictionary<string, string> ParseBasicFileInfoAttributes(string rawText)
+    private static Dictionary<string, string> ParseBasicFileInfoAttributes(
+    string rawText)
     {
-        // Extract the payload starting from index 22 (safe even if text is shorter).
-        var payload = rawText.Length > 22 ? rawText[22..] : string.Empty;
+        const string recordMarker = "[Jrn.BasicFileInfo]";
 
-        // Split by attribute marker and skip the first preamble segment.
-        var attrSegments = payload.Split("Rvt.Attr.", StringSplitOptions.None);
-        if (attrSegments.Length <= 1)
+        var markerIndex = rawText.IndexOf(
+            recordMarker,
+            StringComparison.Ordinal);
+
+        if (markerIndex < 0)
         {
-            return new Dictionary<string, string>(StringComparer.Ordinal);
+            return new Dictionary<string, string>(
+                StringComparer.Ordinal);
         }
 
-        // Build key/value pairs using split(":", 1), skipping malformed fragments.
-        var pairs = new List<KeyValuePair<string, string>>();
+        var payload = rawText[
+            (markerIndex + recordMarker.Length)..];
+
+        var attrSegments = payload.Split(
+            "Rvt.Attr.",
+            StringSplitOptions.None);
+
+        var dictionary = new Dictionary<string, string>(
+            StringComparer.Ordinal);
 
         for (var i = 1; i < attrSegments.Length; i++)
         {
-            var segment = attrSegments[i];
-            var split = segment.Split(':', 2, StringSplitOptions.None);
+            var split = attrSegments[i].Split(
+                ':',
+                2,
+                StringSplitOptions.None);
 
             if (split.Length < 2)
             {
-                // Skip malformed fragments that cannot be paired.
                 continue;
             }
 
-            pairs.Add(new KeyValuePair<string, string>(split[0], split[1].Trim()));
+            var key = split[0].Trim();
+
+            if (key.Length == 0)
+            {
+                continue;
+            }
+
+            dictionary[key] = split[1].Trim();
         }
 
-        if (pairs.Count == 0)
-        {
-            return new Dictionary<string, string>(StringComparer.Ordinal);
-        }
-
-        // Keep the last duplicate key.
-        var dict = new Dictionary<string, string>(StringComparer.Ordinal);
-        foreach (var pair in pairs)
-        {
-            dict[pair.Key] = pair.Value;
-        }
-
-        return dict;
+        return dictionary;
     }
 
     /// <summary>
@@ -348,49 +474,100 @@ internal static class JournalLineParser
     private static void ParseCommand(JournalCommandLine line)
     {
         // Replace double spaces with single spaces and split by the delimiter.
-        var c1 = line.RawText
+        var commandParts = line.RawText
             .Replace("  ", " ", StringComparison.Ordinal)
             .Split("\" , \"", StringSplitOptions.None);
 
-        if (c1.Length == 0)
+        if (commandParts.Length == 0)
         {
-            return;
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the command type is missing."));
         }
 
-        // Identify the CommandType by taking the substring after the first 13 characters of the first segment.
-        line.CommandType = ParseCommandType(
-            c1[0][Math.Min(13, c1[0].Length)..]);
+        const string commandPrefix = "Jrn.Command \"";
 
-        // Only try to process command details if the line is complete.
-        if (c1.Length <= 1)
+        var commandTypeSegment = commandParts[0];
+
+        if (!commandTypeSegment.StartsWith(commandPrefix, StringComparison.Ordinal) ||
+            !commandTypeSegment.EndsWith("\"", StringComparison.Ordinal) ||
+            commandTypeSegment.Length <= commandPrefix.Length)
         {
-            return;
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the quoted command type is incomplete."));
         }
 
-        var c2 = c1[1].Split(" , ", StringSplitOptions.None);
+        var commandTypeText = commandTypeSegment[commandPrefix.Length..^1];
+        line.CommandType = ParseCommandType(commandTypeText);
 
-        if (c2.Length > 0)
+        // A complete command type without a payload is still malformed.
+        if (commandParts.Length <= 1)
         {
-            line.CommandDescription = c2[0];
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the command description and command ID are missing."));
         }
 
-        // Only try to process command ID if line is complete.
-        if (c2.Length <= 1)
+        var payloadParts = commandParts[1]
+            .Split(" , ", StringSplitOptions.None);
+
+        if (payloadParts.Length == 0 ||
+            !payloadParts[0].StartsWith("\"", StringComparison.Ordinal))
         {
-            return;
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the quoted command description is incomplete."));
         }
 
-        var commandIdCandidate = c2[1].Length > 0
-            ? c2[1][..^1]
-            : c2[1];
+        line.CommandDescription = payloadParts[0];
+
+        if (payloadParts.Length <= 1)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the command ID is missing or incomplete."));
+        }
+
+        var rawCommandId = payloadParts[1];
+
+        if (!rawCommandId.EndsWith("\"", StringComparison.Ordinal))
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    "the quoted command ID is incomplete."));
+        }
+
+        var commandId = rawCommandId[..^1];
 
         // Allow for different formatting in Revit 2022.
-        if (commandIdCandidate.EndsWith("\"", StringComparison.Ordinal))
+        if (commandId.EndsWith("\"", StringComparison.Ordinal))
         {
-            commandIdCandidate = commandIdCandidate[..^1];
+            commandId = commandId[..^1];
         }
 
-        line.CommandId = commandIdCandidate;
+        line.CommandId = commandId;
+
+        if (line.CommandType == JournalCommandType.Unknown)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse command at physical line {line.Number}: " +
+                    $"unknown command type '{commandTypeText}'."));
+        }
     }
 
     /// <summary>
@@ -423,59 +600,109 @@ internal static class JournalLineParser
     /// Required separators are missing in recognized metadata comment formats.
     /// </exception>
     private static void ParseComment(
-        JournalCommentLine line,
-        JournalParseContext context)
+    JournalCommentLine line,
+    JournalParseContext context)
     {
         var text = line.RawText;
 
         if (text.Contains("this journal =", StringComparison.Ordinal))
         {
             var fields = text.Split('=', StringSplitOptions.None);
-            if (fields.Length < 2)
+            var recordedPath = fields.Length > 1
+                ? fields[1].Trim()
+                : null;
+
+            context.RecordedPath = string.IsNullOrEmpty(recordedPath)
+                ? null
+                : recordedPath;
+
+            if (context.RecordedPath is null)
             {
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
                         $"Cannot parse recorded journal path at physical line {line.Number}: " +
-                        "expected '=' separator."));
+                        "the journal path is missing."));
             }
 
-            context.RecordedPath = fields[1].Trim();
+            return;
         }
-        else if (text.StartsWith("' Build:", StringComparison.Ordinal))
+
+        if (text.StartsWith("' Build:", StringComparison.Ordinal))
         {
             var fields = text.Split(':', StringSplitOptions.None);
 
-            if (fields.Length < 4)
+            context.Build = fields.Length > 1
+                ? ExtractBuildMetadataToken(fields[1])
+                : null;
+
+            context.Branch = fields.Length > 2
+                ? ExtractBuildMetadataToken(fields[2])
+                : null;
+
+            context.Release = fields.Length > 3
+                ? ExtractBuildMetadataToken(fields[3])
+                : null;
+
+            if (context.Build is null ||
+                context.Branch is null ||
+                context.Release is null)
             {
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
                         $"Cannot parse build metadata at physical line {line.Number}: " +
-                        "expected build, branch, and release segments."));
+                        "at least one of build, branch, or release is missing."));
             }
 
-            context.Build = ExtractBuildMetadataToken(fields[1]);
-            context.Branch = ExtractBuildMetadataToken(fields[2]);
-            context.Release = ExtractBuildMetadataToken(fields[3]);
+            return;
         }
-        else if (!context.MachineNameFound &&
-                 text.Contains("Additional IP address/name found for host", StringComparison.Ordinal))
-        {
-            var fields = text.Split(':', StringSplitOptions.None);
 
-            if (fields.Length < 2)
+        if (!context.MachineNameFound &&
+            text.Contains(
+                "Additional IP address/name found for host",
+                StringComparison.Ordinal))
+        {
+            const string marker = "Additional IP address/name found for host";
+            var markerIndex = text.IndexOf(marker, StringComparison.Ordinal);
+            var hostAndAddress = text[(markerIndex + marker.Length)..].TrimStart();
+
+            var colonIndex = hostAndAddress.IndexOf(':');
+
+            if (colonIndex >= 0)
             {
-                throw new FormatException(
-                    BuildParseErrorMessage(
-                        line,
-                        $"Cannot parse machine metadata at physical line {line.Number}: " +
-                        "expected ':' separator."));
+                var machineName = hostAndAddress[..colonIndex].Trim();
+
+                context.MachineName = string.IsNullOrEmpty(machineName)
+                    ? null
+                    : machineName;
+
+                if (context.MachineName is null)
+                {
+                    throw new FormatException(
+                        BuildParseErrorMessage(
+                            line,
+                            $"Cannot parse machine metadata at physical line {line.Number}: " +
+                            "the machine name is missing before the colon."));
+                }
+
+                context.MachineNameFound = true;
+                return;
             }
 
-            var words = fields[1].Split(' ', StringSplitOptions.None);
-            context.MachineName = words.Length > 0 ? words[^1] : string.Empty;
-            context.MachineNameFound = true;
+            // Without the colon we cannot know whether the machine name is complete.
+            // Preserve the recognizable partial value, but report the malformed record.
+            context.MachineName = string.IsNullOrEmpty(hostAndAddress)
+                ? null
+                : hostAndAddress;
+
+            context.MachineNameFound = context.MachineName is not null;
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse machine metadata at physical line {line.Number}: " +
+                    "the colon after the machine name is missing."));
         }
     }
 
@@ -484,12 +711,14 @@ internal static class JournalLineParser
     /// </summary>
     /// <param name="text">Build segment text.</param>
     /// <returns>Trimmed first token.</returns>
-    private static string ExtractBuildMetadataToken(string text)
+    private static string? ExtractBuildMetadataToken(string text)
     {
         // The separator is a literal space, not arbitrary whitespace.
-        return text.TrimStart()
+        var token = text.TrimStart()
             .Split(' ', StringSplitOptions.None)[0]
             .Trim();
+
+        return token.Length == 0 ? null : token;
     }
 
     /// <summary>
@@ -498,26 +727,79 @@ internal static class JournalLineParser
     /// <param name="line">Data record.</param>
     private static void ParseData(JournalDataLine line)
     {
-        var parts = line.RawText.Split(
-            "\"  , ",
-            StringSplitOptions.None);
+        const string dataPrefix = "Jrn.Data";
 
-        // Identify the key by taking the substring after the first 10 characters of the first segment.
-        var keyCandidate = parts[0][Math.Min(10, parts[0].Length)..];
+        var rawText = line.RawText;
+        var index = dataPrefix.Length;
 
-        // Allow for different formatting in Revit 2022.
-        if (keyCandidate.StartsWith("\"", StringComparison.Ordinal))
+        while (index < rawText.Length &&
+               char.IsWhiteSpace(rawText[index]))
         {
-            keyCandidate = keyCandidate[1..];
+            index++;
         }
 
-        line.Key = keyCandidate;
-
-        // If this line is cut off, do not try to extract values.
-        if (parts.Length > 1)
+        if (index >= rawText.Length ||
+            rawText[index] != '"')
         {
-            AppendJournalValues(parts[1], line.Values);
+            line.Key = null;
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse data at physical line {line.Number}: " +
+                    "the quoted data key is missing."));
         }
+
+        var keyStart = ++index;
+        var keyEnd = rawText.IndexOf('"', keyStart);
+
+        if (keyEnd < 0)
+        {
+            line.Key = rawText[keyStart..];
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse data at physical line {line.Number}: " +
+                    "the quoted data key is incomplete."));
+        }
+
+        var key = rawText[keyStart..keyEnd];
+
+        if (key.Length == 0)
+        {
+            line.Key = null;
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse data at physical line {line.Number}: " +
+                    "the data key is empty."));
+        }
+
+        line.Key = key;
+        index = keyEnd + 1;
+
+        while (index < rawText.Length &&
+               char.IsWhiteSpace(rawText[index]))
+        {
+            index++;
+        }
+
+        if (index >= rawText.Length ||
+            rawText[index] != ',')
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse data at physical line {line.Number}: " +
+                    "the data values are missing."));
+        }
+
+        ParseMultiValues(
+            line,
+            rawText[(index + 1)..],
+            line.Values);
     }
 
     /// <summary>
@@ -529,49 +811,112 @@ internal static class JournalLineParser
     /// Expected Version/Username directive values are missing or malformed.
     /// </exception>
     private static void ParseDirective(
-        JournalDirectiveLine line,
-        JournalParseContext context)
+    JournalDirectiveLine line,
+    JournalParseContext context)
     {
-        var parts = line.RawText.Split(
-            "\"  , ",
-            StringSplitOptions.None);
+        const string directivePrefix = "Jrn.Directive";
 
-        if (parts.Length > 1)
+        var rawText = line.RawText;
+        var index = directivePrefix.Length;
+
+        while (index < rawText.Length &&
+               char.IsWhiteSpace(rawText[index]))
         {
-            // Return an empty string when the starting position is at or beyond the end of the text.
-            var keyCandidate = parts[0][Math.Min(15, parts[0].Length)..];
+            index++;
+        }
 
-            // Allow for different formatting in Revit 2022.
-            if (keyCandidate.StartsWith("\"", StringComparison.Ordinal))
-            {
-                keyCandidate = keyCandidate[1..];
-            }
+        if (index >= rawText.Length ||
+            rawText[index] != '"')
+        {
+            line.Key = null;
 
-            line.Key = keyCandidate;
-            AppendJournalValues(parts[1], line.Values);
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse directive at physical line {line.Number}: " +
+                    "the quoted directive key is missing."));
+        }
+
+        var keyStart = ++index;
+        var keyEnd = rawText.IndexOf('"', keyStart);
+
+        if (keyEnd < 0)
+        {
+            line.Key = rawText[keyStart..];
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse directive at physical line {line.Number}: " +
+                    "the quoted directive key is incomplete."));
+        }
+
+        var key = rawText[keyStart..keyEnd];
+
+        if (key.Length == 0)
+        {
+            line.Key = null;
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse directive at physical line {line.Number}: " +
+                    "the directive key is empty."));
+        }
+
+        line.Key = key;
+        index = keyEnd + 1;
+
+        while (index < rawText.Length &&
+               char.IsWhiteSpace(rawText[index]))
+        {
+            index++;
+        }
+
+        if (index < rawText.Length &&
+            rawText[index] == ',')
+        {
+            ParseMultiValues(
+                line,
+                rawText[(index + 1)..],
+                line.Values);
         }
         else
         {
-            // Very rare case where a multiline error message is inserted between
-            // the key and values.
-            var quotedParts = line.RawText.Split('"');
-
-            if (quotedParts.Length > 1)
-            {
-                line.Key = quotedParts[1];
-            }
+            // Preserve the existing fallback behavior for an error message
+            // between the key and the values.
+            var quotedParts = rawText.Split('"');
 
             if (quotedParts.Length > 2)
             {
-                // Unlike the normal branch, store this segment unchanged.
-                line.Values.Add(quotedParts[2]);
+                var errorMessage = quotedParts[2];
+                line.Values.Add(
+                    errorMessage.Length == 0
+                        ? null
+                        : errorMessage);
+
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse directive at physical line {line.Number}: " +
+                        "an error message was stored as a value between " +
+                        "the key and the values."));
             }
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse directive at physical line {line.Number}: " +
+                    "the directive values are missing."));
         }
 
         if (line.Key == "Version")
         {
-            if (line.Values.Count == 0)
+            if (line.Values.Count == 0 ||
+                line.Values[0] is not { Length: > 0 } value)
             {
+                context.Version = null;
+
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
@@ -579,15 +924,13 @@ internal static class JournalLineParser
                         "the version value is missing."));
             }
 
-            // Take at most the first four characters before converting the result to an integer.
-            var value = line.Values[0];
             var versionText = value[..Math.Min(4, value.Length)];
 
             if (!int.TryParse(
-                versionText,
-                System.Globalization.NumberStyles.Integer,
-                System.Globalization.CultureInfo.InvariantCulture,
-                out var version))
+                    versionText,
+                    System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    out var version))
             {
                 throw new FormatException(
                     BuildParseErrorMessage(
@@ -596,13 +939,15 @@ internal static class JournalLineParser
                         "the version value does not begin with a valid year."));
             }
 
-            // Later directives overwrite earlier metadata.
             context.Version = version;
         }
         else if (line.Key == "Username")
         {
-            if (line.Values.Count == 0)
+            if (line.Values.Count == 0 ||
+                line.Values[0] is null)
             {
+                context.UserName = null;
+
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
@@ -623,59 +968,80 @@ internal static class JournalLineParser
     /// </exception>
     private static void ParseGuiResourceUsage(JournalGuiResourceUsageLine line)
     {
-        var values = new System.Collections.Generic.List<int>();
+        var segments = line.RawText.Split(',', StringSplitOptions.None);
 
-        foreach (var segment in line.RawText.Split(',', StringSplitOptions.None))
-        {
-            // Whitespace-collapsing tokenization.
-            var tokens = segment.Trim().Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
-
-            if (tokens.Length == 0)
-            {
-                throw new FormatException(
-                    BuildParseErrorMessage(
-                        line,
-                        $"Cannot parse GUI resource usage at physical line {line.Number}: " +
-                        "a comma-separated segment is empty."));
-            }
-
-            try
-            {
-                values.Add(int.Parse(
-                    tokens[^1],
-                    System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.InvariantCulture));
-            }
-            catch (Exception ex)
-            {
-                throw new FormatException(
-                    BuildParseErrorMessage(
-                        line,
-                        $"Cannot parse GUI resource usage at physical line {line.Number}."),
-                    ex);
-            }
-        }
-
-        if (values.Count == 0)
+        if (segments.Length == 0)
         {
             throw new FormatException(
                 BuildParseErrorMessage(
                     line,
                     $"Cannot parse GUI resource usage at physical line {line.Number}: " +
-                    "no numeric counters were found."));
+                    "the resource usage payload is missing."));
         }
 
-        line.Available = values[0];
-
-        if (values.Count > 1)
+        static int ParseCounter(
+            JournalGuiResourceUsageLine line,
+            string segment,
+            string counterName)
         {
-            line.Used = values[1];
+            var tokens = segment
+                .Trim()
+                .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 
-            if (values.Count > 2)
+            var counterIndex = Array.IndexOf(tokens, counterName);
+
+            if (counterIndex < 0)
             {
-                line.User = values[2];
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse GUI resource usage at physical line {line.Number}: " +
+                        $"the '{counterName}' counter is missing."));
             }
+
+            var valueIndex = counterIndex + 1;
+
+            if (valueIndex >= tokens.Length ||
+                !int.TryParse(
+                    tokens[valueIndex],
+                    System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    out var value))
+            {
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse GUI resource usage at physical line {line.Number}: " +
+                        $"the value for '{counterName}' is missing or invalid."));
+            }
+
+            return value;
         }
+
+        // Preserve successfully parsed values if a later part of the line is truncated.
+        line.Available = ParseCounter(line, segments[0], "Avail");
+
+        if (segments.Length < 2)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse GUI resource usage at physical line {line.Number}: " +
+                    "the 'Used' counter is missing."));
+        }
+
+        line.Used = ParseCounter(line, segments[1], "Used");
+
+        if (segments.Length < 3)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse GUI resource usage at physical line {line.Number}: " +
+                    "the 'User' counter is missing."));
+        }
+
+        line.User = ParseCounter(line, segments[2], "Used");
     }
 
     /// <summary>
@@ -685,10 +1051,9 @@ internal static class JournalLineParser
     /// <exception cref="FormatException">Quoted key token is missing.</exception>
     private static void ParseKeyboardEvent(JournalKeyboardEventLine line)
     {
-        // Identify the key by taking the substring after the first 10 characters of the first segment.
-        var parts = line.RawText.Split('"', StringSplitOptions.None);
+        var openingQuote = line.RawText.IndexOf('"');
 
-        if (parts.Length < 2)
+        if (openingQuote < 0)
         {
             throw new FormatException(
                 BuildParseErrorMessage(
@@ -697,7 +1062,193 @@ internal static class JournalLineParser
                     "the quoted key token is missing."));
         }
 
-        line.Key = parts[1];
+        var closingQuote = line.RawText.IndexOf('"', openingQuote + 1);
+
+        if (closingQuote < 0)
+        {
+            line.Key = line.RawText[(openingQuote + 1)..];
+
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse keyboard event at physical line {line.Number}: " +
+                    "the quoted key token is incomplete."));
+        }
+
+        var key = line.RawText[(openingQuote + 1)..closingQuote];
+
+        if (key.Length == 0)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse keyboard event at physical line {line.Number}: " +
+                    "the quoted key token is empty."));
+        }
+
+        line.Key = key;
+    }
+
+    /// <summary>
+    /// Extracts VM/RAM metrics from memory-metrics records.
+    /// </summary>
+    /// <param name="line">Memory-metrics record.</param>
+    /// <exception cref="FormatException">
+    /// Required payload segments are missing or contain unparseable datetime/numeric data.
+    /// </exception>
+    private static void ParseMemoryMetrics(JournalMemoryMetricsLine line)
+    {
+        var rawText = line.RawText;
+
+        var initialMarkerIndex = rawText.IndexOf(
+            "Initial VM:",
+            StringComparison.Ordinal);
+
+        var deltaMarkerIndex = rawText.IndexOf(
+            "Delta VM:",
+            StringComparison.Ordinal);
+
+        var isDelta = deltaMarkerIndex >= 0;
+        var markerIndex = isDelta
+            ? deltaMarkerIndex
+            : initialMarkerIndex;
+
+        var marker = isDelta
+            ? "Delta VM:"
+            : "Initial VM:";
+
+        if (markerIndex < 0)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse memory metrics at physical line {line.Number}: " +
+                    "the memory metrics payload is missing."));
+        }
+
+        var tokens = rawText[(markerIndex + marker.Length)..]
+            .Split(
+                [' ', '\t', ',', ';'],
+                StringSplitOptions.RemoveEmptyEntries);
+
+        var index = 0;
+        var isRam = false;
+        var metricFound = false;
+
+        static FormatException IncompleteLine(JournalMemoryMetricsLine line)
+        {
+            return new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse memory metrics at physical line {line.Number}: " +
+                    "the line is incomplete."));
+        }
+
+        static FormatException InvalidValue(
+            JournalMemoryMetricsLine line,
+            string value)
+        {
+            return new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse memory metrics at physical line {line.Number}: " +
+                    $"'{value}' is not a valid integer."));
+        }
+
+        while (index < tokens.Length)
+        {
+            var token = tokens[index++];
+
+            if (token == "RAM:")
+            {
+                isRam = true;
+                continue;
+            }
+
+            if (token == "MB")
+            {
+                continue;
+            }
+
+            if (token is not ("Avail" or "Used" or "Peak"))
+            {
+                throw IncompleteLine(line);
+            }
+
+            metricFound = true;
+
+            if (index >= tokens.Length)
+            {
+                throw IncompleteLine(line);
+            }
+
+            var firstValueText = tokens[index++];
+
+            if (!int.TryParse(
+                    firstValueText,
+                    System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    out var value))
+            {
+                throw InvalidValue(line, firstValueText);
+            }
+
+            // For Delta VM lines, the value after the arrow is authoritative.
+            if (isDelta &&
+                index < tokens.Length &&
+                tokens[index] == "->")
+            {
+                index++;
+
+                if (index >= tokens.Length)
+                {
+                    throw IncompleteLine(line);
+                }
+
+                var finalValueText = tokens[index++];
+
+                if (!int.TryParse(
+                        finalValueText,
+                        System.Globalization.NumberStyles.Integer,
+                        System.Globalization.CultureInfo.InvariantCulture,
+                        out value))
+                {
+                    throw InvalidValue(line, finalValueText);
+                }
+            }
+
+            switch (metricFound, isRam, token)
+            {
+                case (true, false, "Avail"):
+                    line.VmAvailable = value;
+                    break;
+
+                case (true, false, "Used"):
+                    line.VmUsed = value;
+                    break;
+
+                case (true, false, "Peak"):
+                    line.VmPeak = value;
+                    break;
+
+                case (true, true, "Avail"):
+                    line.RamAvailable = value;
+                    break;
+
+                case (true, true, "Used"):
+                    line.RamUsed = value;
+                    break;
+
+                case (true, true, "Peak"):
+                    line.RamPeak = value;
+                    break;
+            }
+        }
+
+        if (!metricFound)
+        {
+            throw IncompleteLine(line);
+        }
     }
 
     /// <summary>
@@ -707,43 +1258,63 @@ internal static class JournalLineParser
     /// <exception cref="FormatException">One or more payload values cannot be parsed as integers.</exception>
     private static void ParseMouseEvent(JournalMouseEventLine line)
     {
-        // Identify the mouse event type by taking the substring after the first 4 characters of the first segment.
-        var m1 = line.RawText.Split(" ", 2, StringSplitOptions.None);
-        var eventToken = m1[0].Length >= 4 ? m1[0][4..].Trim() : string.Empty;
-        line.MouseEventType = ParseMouseEventType(eventToken);
+        var parts = line.RawText
+            .TrimStart()
+            .Split((char[]?)null, 2, StringSplitOptions.RemoveEmptyEntries);
 
-        if (m1.Length <= 1)
+        if (parts.Length == 0 ||
+            !parts[0].StartsWith("Jrn.", StringComparison.Ordinal))
         {
-            return;
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse mouse event at physical line {line.Number}: " +
+                    "the mouse event type is missing."));
         }
 
-        foreach (var part in m1[1].Split(',', StringSplitOptions.None))
+        var eventToken = parts[0][4..];
+        line.MouseEventType = ParseMouseEventType(eventToken);
+
+        if (parts.Length < 2 ||
+            parts[1].Trim().Length == 0)
         {
-            // Strip whitespace and trailing null characters.
-            var candidate = part.Trim().TrimEnd('\0');
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse mouse event at physical line {line.Number}: " +
+                    "no values were found."));
+        }
 
-            // Skip empty fragments.
+        foreach (var part in parts[1].Split(',', StringSplitOptions.None))
+        {
+            var candidate = part
+                .Trim()
+                .TrimEnd('\0')
+                .Trim();
+
             if (candidate.Length == 0)
-            {
-                continue;
-            }
-
-            // Convert to integer.
-            try
-            {
-                line.Data.Add(int.Parse(
-                    candidate,
-                    System.Globalization.NumberStyles.Integer,
-                    System.Globalization.CultureInfo.InvariantCulture));
-            }
-            catch (Exception ex)
             {
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
-                        $"Cannot parse mouse event value at physical line {line.Number}."),
-                    ex);
+                        $"Cannot parse mouse event at physical line {line.Number}: " +
+                        "a value is missing."));
             }
+
+            if (!int.TryParse(
+                    candidate,
+                    System.Globalization.NumberStyles.Integer,
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    out var value))
+            {
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse mouse event at physical line {line.Number}: " +
+                        $"'{candidate}' is not a valid integer."));
+            }
+
+            line.Data.Add(value);
         }
     }
 
@@ -772,126 +1343,16 @@ internal static class JournalLineParser
     }
 
     /// <summary>
-    /// Extracts VM/RAM metrics from memory-metrics records.
-    /// </summary>
-    /// <param name="line">Memory-metrics record.</param>
-    /// <exception cref="FormatException">
-    /// Required payload segments are missing or contain unparseable datetime/numeric data.
-    /// </exception>
-    private static void ParseMemoryMetrics(JournalMemoryMetricsLine line)
-    {
-        string[] tokens;
-
-        // Extract the relevant portion of the raw text.
-        if (line.RawText.Contains("Initial VM", StringComparison.Ordinal))
-        {
-            var split = line.RawText.Split(':', 3, StringSplitOptions.None);
-
-            if (split.Length < 3)
-            {
-                throw new FormatException(
-                    BuildParseErrorMessage(
-                        line,
-                        $"Cannot parse memory metrics at physical line {line.Number}: " +
-                        "the initial VM payload is incomplete."));
-            }
-
-            tokens = split[2]
-                .Replace(";", string.Empty, StringComparison.Ordinal)
-                .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
-        }
-        else
-        {
-            var split = line.RawText.Split(':', 7, StringSplitOptions.None);
-
-            if (split.Length < 7)
-            {
-                throw new FormatException(
-                    BuildParseErrorMessage(
-                        line,
-                        $"Cannot parse memory metrics at physical line {line.Number}: " +
-                        "the delta VM payload is incomplete."));
-            }
-
-            tokens = split[6]
-                .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
-        }
-
-        var numbers = new List<int>();
-        var labels = new List<string>();
-
-        foreach (var token in tokens)
-        {
-            if (int.TryParse(
-                token,
-                System.Globalization.NumberStyles.Integer,
-                System.Globalization.CultureInfo.InvariantCulture,
-                out var number))
-            {
-                numbers.Add(number);
-            }
-            else if (token is "Avail" or "Used" or "Peak")
-            {
-                labels.Add(token);
-            }
-        }
-
-        if (numbers.Count > 0)
-        {
-            line.VmAvailable = numbers[0];
-        }
-
-        if (numbers.Count > 1)
-        {
-            line.VmUsed = numbers[1];
-        }
-
-        if (numbers.Count == 6)
-        {
-            line.VmPeak = numbers[2];
-            line.RamAvailable = numbers[3];
-            line.RamUsed = numbers[4];
-            line.RamPeak = numbers[5];
-        }
-        else if (numbers.Count == 5)
-        {
-            if (labels.Count > 2 && labels[2] == "Avail")
-            {
-                line.VmPeak = null;
-                line.RamAvailable = numbers[2];
-                line.RamUsed = numbers[3];
-                line.RamPeak = numbers[4];
-            }
-            else if (labels.Count > 2 && labels[2] == "Peak")
-            {
-                line.VmPeak = numbers[2];
-                line.RamAvailable = numbers[3];
-                line.RamUsed = numbers[4];
-                line.RamPeak = null;
-            }
-        }
-        else if (numbers.Count == 4)
-        {
-            line.VmPeak = null;
-            line.RamAvailable = numbers[2];
-            line.RamUsed = numbers[3];
-            line.RamPeak = null;
-        }
-    }
-
-    /// <summary>
     /// Extracts system-information key/value fields, item numbering, and first OS caption.
     /// </summary>
     /// <param name="line">System-information record.</param>
     /// <param name="context">Shared parse context.</param>
     private static void ParseSystemInformation(
-        JournalSystemInformationLine line,
-        JournalParseContext context)
+    JournalSystemInformationLine line,
+    JournalParseContext context)
     {
         const string marker = ":<    ";
 
-        // Take the segment after the last occurrence of the marker.
-        // If it is absent, the entire record is used.
         var markerIndex = line.RawText.LastIndexOf(
             marker,
             StringComparison.Ordinal);
@@ -900,15 +1361,27 @@ internal static class JournalLineParser
             ? line.RawText[(markerIndex + marker.Length)..]
             : line.RawText;
 
-        var fields = payload.Split(" : ", StringSplitOptions.None);
+        var separatorIndex = payload.IndexOf(
+            " : ",
+            StringComparison.Ordinal);
 
-        // Preserve the extracted text without additional trimming. If multiple
-        // separators exist, only the first two segments are used.
-        line.Key = fields.Length > 0 ? fields[0] : string.Empty;
-        line.Value = fields.Length > 1 ? fields[1] : null;
+        if (separatorIndex < 0)
+        {
+            line.Key = payload.Trim();
+            line.Value = null;
 
-        // Shared counter - it does not reset when the
-        // system-information section changes.
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse system information at physical line {line.Number}: " +
+                    "the key/value separator is missing."));
+        }
+
+        line.Key = payload[..separatorIndex].Trim();
+
+        var value = payload[(separatorIndex + 3)..].Trim();
+        line.Value = value.Length == 0 ? null : value;
+
         if ((line.SystemInformationType == JournalSystemInformationType.Processor &&
              line.Key == "AddressWidth") ||
             (line.SystemInformationType == JournalSystemInformationType.VideoController &&
@@ -921,12 +1394,12 @@ internal static class JournalLineParser
             context.SystemInformationItemNumber++;
         }
 
-        // Only the first matching caption is retained.
         if (!context.OsVersionFound &&
-            line.RawText.Contains("Caption :", StringComparison.Ordinal))
+            line.SystemInformationType == JournalSystemInformationType.OperatingSystem &&
+            line.Key == "Caption" &&
+            line.Value is not null)
         {
-            var lastColon = line.RawText.LastIndexOf(':');
-            context.OsVersion = line.RawText[(lastColon + 1)..].Trim();
+            context.OsVersion = line.Value;
             context.OsVersionFound = true;
         }
 
@@ -942,7 +1415,9 @@ internal static class JournalLineParser
     /// </exception>
     private static void ParseTimeStamp(JournalTimeStampLine line)
     {
-        if (line.RawText.Length < 2)
+        var rawText = line.RawText;
+
+        if (rawText.Length < 2)
         {
             throw new FormatException(
                 BuildParseErrorMessage(
@@ -951,19 +1426,48 @@ internal static class JournalLineParser
                     "the timestamp prefix is incomplete."));
         }
 
-        line.TimeStampType = ParseTimeStampType(line.RawText[1]);
+        var markerIndex = 1;
 
-        // Split the raw text by ';' without removing empty entries.
-        var ts1 = line.RawText.Split(';', StringSplitOptions.None);
+        // Support both "'C" and "' C" timestamp prefixes.
+        if (char.IsWhiteSpace(rawText[markerIndex]))
+        {
+            markerIndex++;
+        }
 
-        // If this line is cut off, do not try to extract datetime or description.
-        if (ts1.Length <= 1)
+        if (markerIndex >= rawText.Length)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse timestamp at physical line {line.Number}: " +
+                    "the timestamp marker is missing."));
+        }
+
+        line.TimeStampType = ParseTimeStampType(rawText[markerIndex]);
+
+        var semicolonIndex = rawText.IndexOf(
+            ';',
+            markerIndex + 1);
+
+        // Preserve the timestamp type when the record is truncated before
+        // the datetime/description separator.
+        if (semicolonIndex < 0)
         {
             return;
         }
 
-        // Extract the datetime portion of the timestamp.
-        var dateTimeText = ts1[0].Length >= 3 ? ts1[0][3..] : string.Empty;
+        var dateTimeText = rawText[
+            (markerIndex + 1)..semicolonIndex].Trim();
+
+        if (dateTimeText.Length == 0)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse timestamp at physical line {line.Number}: " +
+                    "the datetime value is missing."));
+        }
+
         try
         {
             line.DateTime = DateTime.Parse(
@@ -979,37 +1483,67 @@ internal static class JournalLineParser
                 ex);
         }
 
-        // Formatting until Revit 2019: contains ':<'
-        // Formatting as of Revit 2020: no ':<'
-        if (ts1[1].Contains(":<", StringComparison.Ordinal))
+        var description = rawText[(semicolonIndex + 1)..].Trim();
+
+        var descriptionMarkerIndex = description.IndexOf(
+            ":<",
+            StringComparison.Ordinal);
+
+        if (descriptionMarkerIndex >= 0)
         {
-            line.Description = ts1[1].Length >= 7
-                ? ts1[1][7..].Trim()
-                : string.Empty;
+            description = description[
+                (descriptionMarkerIndex + 2)..].Trim();
+        }
+
+        var debugInfoIndex = description.IndexOf(
+            "DBG_ERROR:",
+            StringComparison.Ordinal);
+
+        if (debugInfoIndex >= 0)
+        {
+            line.DebugInfoType = JournalDebugInfoType.Error;
+
+            description = (
+                description[..debugInfoIndex] +
+                description[(debugInfoIndex + "DBG_ERROR:".Length)..])
+                .Trim();
         }
         else
         {
-            line.Description = ts1[1].Length >= 2
-                ? ts1[1][2..].Trim()
-                : string.Empty;
+            debugInfoIndex = description.IndexOf(
+                "DBG_WARN:",
+                StringComparison.Ordinal);
+
+            if (debugInfoIndex >= 0)
+            {
+                line.DebugInfoType = JournalDebugInfoType.Warning;
+
+                description = (
+                    description[..debugInfoIndex] +
+                    description[(debugInfoIndex + "DBG_WARN:".Length)..])
+                    .Trim();
+            }
+            else
+            {
+                debugInfoIndex = description.IndexOf(
+                    "DBG_INFO:",
+                    StringComparison.Ordinal);
+
+                if (debugInfoIndex >= 0)
+                {
+                    line.DebugInfoType = JournalDebugInfoType.Info;
+
+                    description = (
+                        description[..debugInfoIndex] +
+                        description[(debugInfoIndex + "DBG_INFO:".Length)..])
+                        .Trim();
+                }
+            }
         }
 
-        // Debug prefixes are mutually exclusive in the source parser.
-        if (line.Description.StartsWith("DBG_ERROR:", StringComparison.Ordinal))
-        {
-            line.DebugInfoType = JournalDebugInfoType.Error;
-            line.Description = line.Description.Replace("DBG_ERROR: ", string.Empty, StringComparison.Ordinal);
-        }
-        else if (line.Description.StartsWith("DBG_WARN:", StringComparison.Ordinal))
-        {
-            line.DebugInfoType = JournalDebugInfoType.Warning;
-            line.Description = line.Description.Replace("DBG_WARN: ", string.Empty, StringComparison.Ordinal);
-        }
-        else if (line.Description.StartsWith("DBG_INFO:", StringComparison.Ordinal))
-        {
-            line.DebugInfoType = JournalDebugInfoType.Info;
-            line.Description = line.Description.Replace("DBG_INFO: ", string.Empty, StringComparison.Ordinal);
-        }
+        line.Description = description.Length == 0
+            ? null
+            : description;
     }
 
     /// <summary>
@@ -1054,13 +1588,18 @@ internal static class JournalLineParser
             return;
         }
 
+        if (line.UiEventType == JournalUiEventType.RibbonEvent)
+        {
+            ParseRibbonEvent(line, d1[1]);
+            return;
+        }
+
         foreach (var d2 in d1[1].Split(',', StringSplitOptions.None))
         {
             // Cleanup order: trim, remove quotes, trim again.
             var d3 = d2.Trim().Replace("\"", string.Empty, StringComparison.Ordinal).Trim();
 
-            if (line.UiEventType is JournalUiEventType.RibbonEvent
-                or JournalUiEventType.SBTrayAction)
+            if (line.UiEventType is JournalUiEventType.SBTrayAction)
             {
                 foreach (var d4Token in d3.Split(':', StringSplitOptions.None))
                 {
@@ -1130,38 +1669,58 @@ internal static class JournalLineParser
         };
     }
 
-    /// <summary>
-    /// Extracts basic-file-info fields from a <c>[Jrn.BasicFileInfo]</c> record.
-    /// </summary>
-    /// <param name="line">Basic-file-info record.</param>
-    private static void ParseBasicFileInfo(JournalBasicFileInfoLine line)
+    private static void ParseRibbonEvent(
+    JournalUiEventLine line,
+    string rawPayload)
     {
-        // Extract basic file information attributes.
-        var attributes = ParseBasicFileInfoAttributes(line.RawText);
+        var payload = rawPayload.Trim();
 
-        // Missing or empty values do not overwrite nulls.
-        if (attributes.TryGetValue("Worksharing", out var worksharing) && worksharing.Length > 0)
+        if (payload.StartsWith('"'))
         {
-            line.Worksharing = worksharing;
+            var valueBuilder = new StringBuilder();
+            var closingQuoteFound = false;
+
+            for (var index = 1; index < payload.Length; index++)
+            {
+                var character = payload[index];
+
+                if (character == '"')
+                {
+                    // In journal text, doubled quotes represent one literal quote.
+                    if (index + 1 < payload.Length &&
+                        payload[index + 1] == '"')
+                    {
+                        valueBuilder.Append('"');
+                        index++;
+                        continue;
+                    }
+
+                    closingQuoteFound = true;
+                    break;
+                }
+
+                valueBuilder.Append(character);
+            }
+
+            // Preserve the available value even when the line is truncated.
+            payload = valueBuilder.ToString();
+
+            _ = closingQuoteFound;
         }
 
-        if (attributes.TryGetValue("CentralModelPath", out var centralModelPath) && centralModelPath.Length > 0)
+        // The first two separators identify the Ribbon event and action.
+        // Everything after them belongs to the optional payload, such as JSON.
+        foreach (var token in payload.Split(
+                     ':',
+                     3,
+                     StringSplitOptions.None))
         {
-            line.CentralModelPath = centralModelPath;
-        }
+            var value = token.Trim();
 
-        if (attributes.TryGetValue("LastSavePath", out var lastSavePath) && lastSavePath.Length > 0)
-        {
-            line.LastSavePath = lastSavePath;
-
-            // Use backslash split for file name extraction.
-            var fileNameParts = lastSavePath.Split('\\', StringSplitOptions.None);
-            line.FileName = fileNameParts[^1];
-        }
-
-        if (attributes.TryGetValue("LocaleWhenSaved", out var locale) && locale.Length > 0)
-        {
-            line.Locale = locale;
+            if (value.Length > 0)
+            {
+                line.Data.Add(value);
+            }
         }
     }
 
@@ -1221,18 +1780,130 @@ internal static class JournalLineParser
     /// This intentionally is not a CSV parser:
     /// commas inside quoted strings still split values, and empty entries are retained.
     /// </remarks>
-    private static void AppendJournalValues(
-        string text,
-        System.Collections.Generic.List<string> values)
+    private static void ParseMultiValues(
+    JournalLine line,
+    string text,
+    List<string?> values)
     {
-        // This intentionally is not a CSV parser: commas inside quoted strings
-        // still split values, and empty entries are retained.
-        foreach (var value in text.Split(',', StringSplitOptions.None))
+        var index = 0;
+
+        while (index < text.Length &&
+               char.IsWhiteSpace(text[index]))
         {
-            // Trim first, then remove double quotes.
-            // Spaces originally inside quotes therefore remain in the result.
-            values.Add(value.Trim().Replace("\"", string.Empty, StringComparison.Ordinal));
+            index++;
         }
+
+        if (index >= text.Length)
+        {
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse values at physical line {line.Number}: " +
+                    "the value list is empty."));
+        }
+
+        while (true)
+        {
+            while (index < text.Length &&
+                   char.IsWhiteSpace(text[index]))
+            {
+                index++;
+            }
+
+            if (index >= text.Length)
+            {
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse values at physical line {line.Number}: " +
+                        "a value is missing after the separator."));
+            }
+
+            if (text[index] == '"')
+            {
+                var valueStart = ++index;
+                var valueEnd = text.IndexOf('"', valueStart);
+
+                if (valueEnd < 0)
+                {
+                    throw new FormatException(
+                        BuildParseErrorMessage(
+                            line,
+                            $"Cannot parse values at physical line {line.Number}: " +
+                            "a quoted value is incomplete."));
+                }
+
+                var value = text[valueStart..valueEnd];
+
+                // An explicitly empty quoted value represents null.
+                values.Add(value.Length == 0 ? null : value);
+                index = valueEnd + 1;
+            }
+            else
+            {
+                var valueStart = index;
+                var commaIndex = text.IndexOf(',', valueStart);
+                var valueEnd = commaIndex >= 0
+                    ? commaIndex
+                    : text.Length;
+
+                var value = text[valueStart..valueEnd].Trim();
+
+                if (value.Length == 0)
+                {
+                    values.Add(null);
+
+                    throw new FormatException(
+                        BuildParseErrorMessage(
+                            line,
+                            $"Cannot parse values at physical line {line.Number}: " +
+                            "an unquoted value is empty."));
+                }
+
+                if (!IsNumericDataValue(value))
+                {
+                    throw new FormatException(
+                        BuildParseErrorMessage(
+                            line,
+                            $"Cannot parse values at physical line {line.Number}: " +
+                            $"the unquoted value '{value}' is not numeric."));
+                }
+
+                values.Add(value);
+                index = valueEnd;
+            }
+
+            while (index < text.Length &&
+                   char.IsWhiteSpace(text[index]))
+            {
+                index++;
+            }
+
+            if (index >= text.Length)
+            {
+                return;
+            }
+
+            if (text[index] != ',')
+            {
+                throw new FormatException(
+                    BuildParseErrorMessage(
+                        line,
+                        $"Cannot parse values at physical line {line.Number}: " +
+                        "a value separator is missing."));
+            }
+
+            index++;
+        }
+    }
+
+    private static bool IsNumericDataValue(string value)
+    {
+        return double.TryParse(
+            value,
+            System.Globalization.NumberStyles.Float,
+            System.Globalization.CultureInfo.InvariantCulture,
+            out _);
     }
 
     /// <summary>

@@ -274,9 +274,19 @@ public sealed class JournalBasicFileInfoLine : JournalLine
     }
 
     /// <summary>
+    /// Gets or sets the extracted Revit build token.
+    /// </summary>
+    public string? Build { get; set; }
+
+    /// <summary>
     /// Gets or sets the extracted central model path.
     /// </summary>
     public string? CentralModelPath { get; set; }
+
+    /// <summary>
+    /// Gets or sets the extracted file extension, for example <c>rfa</c>.
+    /// </summary>
+    public string? FileExtension { get; set; }
 
     /// <summary>
     /// Gets or sets file name extracted from <see cref="LastSavePath"/>.
@@ -294,6 +304,11 @@ public sealed class JournalBasicFileInfoLine : JournalLine
     /// Gets or sets locale text recorded when the model was saved.
     /// </summary>
     public string? Locale { get; set; }
+
+    /// <summary>
+    /// Gets or sets the extracted Revit version year, for example 2026.
+    /// </summary>
+    public int? Version { get; set; }
 
     /// <summary>
     /// Gets or sets worksharing mode text (for example: Central, Local, Not enabled).
@@ -359,7 +374,7 @@ public sealed class JournalDataLine : JournalLine
     /// <summary>
     /// Gets parsed value tokens associated with <see cref="Key"/>.
     /// </summary>
-    public List<string> Values { get; } = [];
+    public List<string?> Values { get; } = [];
 }
 
 /// <summary>
@@ -381,7 +396,7 @@ public sealed class JournalDirectiveLine : JournalLine
     /// <summary>
     /// Gets parsed value tokens associated with <see cref="Key"/>.
     /// </summary>
-    public List<string> Values { get; } = [];
+    public List<string?> Values { get; } = [];
 }
 
 /// <summary>
@@ -494,6 +509,10 @@ public sealed class JournalMouseEventLine : JournalLine
     /// <summary>
     /// Gets parsed integer payload values for this mouse event.
     /// </summary>
+    /// <remarks>
+    /// Assumptions regarding the contents of the Data list: 
+    /// [0] likely encodes button/state flags; [1] and [2] are likely X/Y coordinates.
+    /// </remarks>
     public List<int> Data { get; } = [];
 
     public override JournalLineKind Kind => JournalLineKind.MouseEvent;
@@ -507,6 +526,83 @@ public sealed class JournalMouseEventLine : JournalLine
 /// <summary>
 /// Parsed system-information key/value line inside a system-information section.
 /// </summary>
+/// <remarks>
+/// The expected keys depend on <see cref="SystemInformationType"/>. The following
+/// keys were observed in the supported journal format:
+///
+/// <list type="bullet">
+/// <item>
+/// <term><see cref="JournalSystemInformationType.OperatingSystem"/></term>
+/// <description>
+/// <c>BuildNumber</c>, <c>BuildType</c>, <c>Caption</c>, <c>CodeSet</c>,
+/// <c>CountryCode</c>, <c>FreePhysicalMemory</c>,
+/// <c>FreeSpaceInPagingFiles</c>, <c>FreeVirtualMemory</c>,
+/// <c>MaxProcessMemorySize</c>, <c>OSLanguage</c>, <c>OSType</c>,
+/// <c>ServicePackMajorVersion</c>, <c>ServicePackMinorVersion</c>,
+/// <c>TotalVirtualMemorySize</c>, <c>TotalVisibleMemorySize</c>,
+/// and <c>Version</c>.
+/// </description>
+/// </item>
+///
+/// <item>
+/// <term><see cref="JournalSystemInformationType.Processor"/></term>
+/// <description>
+/// <c>AddressWidth</c>, <c>Architecture</c>, <c>Availability</c>,
+/// <c>Caption</c>, <c>CurrentClockSpeed</c>, <c>DataWidth</c>,
+/// <c>Description</c>, <c>Family</c>, <c>L2CacheSize</c>, <c>Level</c>,
+/// <c>Manufacturer</c>, <c>MaxClockSpeed</c>, <c>Name</c>,
+/// <c>ProcessorType</c>, <c>Role</c>, <c>SocketDesignation</c>,
+/// <c>StatusInfo</c>, and <c>Version</c>.
+/// </description>
+/// </item>
+///
+/// <item>
+/// <term><see cref="JournalSystemInformationType.VideoController"/></term>
+/// <description>
+/// <c>AdapterCompatibility</c>, <c>AdapterDACType</c>, <c>AdapterRAM</c>,
+/// <c>Caption</c>, <c>CurrentBitsPerPixel</c>,
+/// <c>CurrentHorizontalResolution</c>, <c>CurrentNumberOfColors</c>,
+/// <c>CurrentRefreshRate</c>, <c>CurrentVerticalResolution</c>,
+/// <c>Description</c>, <c>DriverDate</c>, <c>DriverVersion</c>,
+/// <c>MaxRefreshRate</c>, <c>MinRefreshRate</c>, <c>Monochrome</c>,
+/// <c>Name</c>, <c>VideoArchitecture</c>, <c>VideoMemoryType</c>,
+/// <c>VideoModeDescription</c>, and <c>VideoProcessor</c>.
+/// Multiple video-controller sections may occur.
+/// </description>
+/// </item>
+///
+/// <item>
+/// <term><see cref="JournalSystemInformationType.Printer"/></term>
+/// <description>
+/// <c>Caption</c>, <c>Default</c>, <c>DeviceID</c>, <c>Direct</c>,
+/// <c>DriverName</c>, <c>EnableBIDI</c>, <c>EnableDevQueryPrint</c>,
+/// <c>HorizontalResolution</c>, <c>Local</c>, <c>Name</c>, <c>Network</c>,
+/// <c>PortName</c>, <c>PrintJobDataType</c>, <c>PrintProcessor</c>,
+/// <c>RawOnly</c>, <c>Shared</c>, <c>SpoolEnabled</c>, and
+/// <c>VerticalResolution</c>.
+/// Multiple printer entries may occur. The <c>Caption</c> key identifies
+/// the beginning of a new printer entry.
+/// </description>
+/// </item>
+///
+/// <item>
+/// <term><see cref="JournalSystemInformationType.PrinterConfiguration"/></term>
+/// <description>
+/// <c>Color</c>, <c>Copies</c>, <c>Description</c>, <c>DriverVersion</c>,
+/// <c>Duplex</c>, <c>MediaType</c>, <c>Orientation</c>, <c>PaperLength</c>,
+/// <c>PaperSize</c>, <c>PaperWidth</c>, <c>PrintQuality</c>,
+/// <c>SpecificationVersion</c>, <c>XResolution</c>, and <c>YResolution</c>.
+/// Multiple printer-configuration entries may occur. The <c>Color</c> key
+/// identifies the beginning of a new printer-configuration entry.
+/// </description>
+/// </item>
+///
+/// Each physical key/value line is represented by a separate
+/// <see cref="JournalSystemInformationLine"/>. For repeated devices or
+/// configurations, <see cref="ItemNumber"/> groups the lines belonging to the
+/// same device or configuration. The journal may interrupt these sections with
+/// timestamps or other record types.
+/// </remarks>
 public sealed class JournalSystemInformationLine : JournalLine
 {
     public JournalSystemInformationLine(
