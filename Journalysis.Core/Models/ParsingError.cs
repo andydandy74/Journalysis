@@ -71,3 +71,17 @@ public sealed class JournalParsingError : ParsingError<JournalLine>
     /// </summary>
     public JournalLine JournalLine => Source;
 }
+
+public sealed class WorksharingLogParsingError : ParsingError<string>
+{
+    public WorksharingLogParsingError(
+        int lineNumber, string lineText, string message)
+        : base(lineText, message)
+    {
+        LineNumber = lineNumber;
+    }
+
+    public int LineNumber { get; }
+
+    public string LineText => Source;
+}

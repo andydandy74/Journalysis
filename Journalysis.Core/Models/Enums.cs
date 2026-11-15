@@ -591,3 +591,52 @@ public enum LoadedModelEventType
     /// </summary>
     Loaded
 }
+
+/// <summary>
+/// Identifies the kind of worksharing session derived from its recorded events.
+/// </summary>
+/// <remarks>
+/// Classification is heuristic and based on the presence of event markers such as
+/// <c>&gt;Open</c>, <c>&gt;Open:Central</c>, <c>&gt;STC</c>, <c>&gt;WSD</c>, and
+/// <c>.ReconnectInMiddle</c>.
+/// </remarks>
+public enum WorksharingSessionType
+{
+    /// <summary>
+    /// The session could not be classified.
+    /// </summary>
+    Unknown = 0,
+
+    /// <summary>
+    /// The session opened a central model and the second event is an open marker,
+    /// indicating a detached copy was created.
+    /// </summary>
+    CreateDetached,
+
+    /// <summary>
+    /// The session opened a model without opening the central model directly,
+    /// indicating a local copy was created.
+    /// </summary>
+    CreateLocalCopy,
+
+    /// <summary>
+    /// The session synchronized with central without opening a model,
+    /// indicating a new central model was created.
+    /// </summary>
+    CreateNewCentral,
+
+    /// <summary>
+    /// The session changed worksets without opening a model.
+    /// </summary>
+    ChooseWorksets,
+
+    /// <summary>
+    /// The session reconnected in the middle of an existing session.
+    /// </summary>
+    Reconnected,
+
+    /// <summary>
+    /// The session worked directly in the central model.
+    /// </summary>
+    WorkInCentral
+}
