@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Journalysis.Core.Analysis;
 
 namespace Journalysis.Core.Models;
 
@@ -53,6 +54,7 @@ public sealed class WorksharingLog
 
     private bool? _allSessionsUseSameBuild;
     private bool? _hasParsingErrors;
+    private IReadOnlyList<SyncEventOverlap>? _syncEventOverlaps;
 
     /// <summary>
     /// Gets whether all sessions were recorded with the same Revit build.
@@ -101,6 +103,17 @@ public sealed class WorksharingLog
     /// Gets the parsed sessions in encounter order.
     /// </summary>
     public IReadOnlyList<WorksharingSession> Sessions { get; }
+
+    /// <summary>
+    /// Gets overlapping synchronize-with-central pairs across all sessions.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    /// <remarks>
+    /// Touching endpoints count as overlaps. Operations without end markers
+    /// are excluded. Results are individual pairs, not merged groups.
+    /// </remarks>
+    public IReadOnlyList<SyncEventOverlap> SyncEventOverlaps =>
+        _syncEventOverlaps ??= SyncEventOverlapAnalyzer.GetSyncEventOverlaps(this);
 
     public override string ToString() => nameof(WorksharingLog);
 
