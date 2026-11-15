@@ -12,7 +12,7 @@ namespace Journalysis.Core.Analysis;
 /// Correlation is heuristic and based on parsed API message text patterns
 /// (GUID, application name, command replacement IDs, and assembly path/file name).
 /// </remarks>
-public static class LoadedAssemblyAnalyzer
+internal static class LoadedAssemblyAnalyzer
 {
     /// <summary>
     /// Finds loaded assemblies from API messages and assembly-load comments.
@@ -20,7 +20,7 @@ public static class LoadedAssemblyAnalyzer
     /// <param name="journal">Parsed journal to analyze.</param>
     /// <returns>A read-only list of discovered assemblies in initial-event order.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="journal"/> is <see langword="null"/>.</exception>
-    public static IReadOnlyList<LoadedAssembly> GetLoadedAssemblies(Journal journal)
+    internal static IReadOnlyList<LoadedAssembly> GetLoadedAssemblies(Journal journal)
     {
         ArgumentNullException.ThrowIfNull(journal);
 

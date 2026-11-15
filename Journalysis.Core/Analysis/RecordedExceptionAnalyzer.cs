@@ -12,7 +12,7 @@ namespace Journalysis.Core.Analysis;
 /// Extraction combines timestamp, API-message, and comment-based exception patterns.
 /// Some line patterns enrich the previously parsed exception instead of creating a new one.
 /// </remarks>
-public static class RecordedExceptionAnalyzer
+internal static class RecordedExceptionAnalyzer
 {
     /// <summary>
     /// Builds recorded-exception objects from exception-related journal lines.

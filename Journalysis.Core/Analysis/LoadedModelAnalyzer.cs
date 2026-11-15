@@ -13,7 +13,7 @@ namespace Journalysis.Core.Analysis;
 /// Detection is heuristic and based on command/UI open triggers, nearby data records
 /// carrying file names, and a subsequent load-completion marker pattern.
 /// </remarks>
-public static class LoadedModelAnalyzer
+internal static class LoadedModelAnalyzer
 {
     /// <summary>
     /// Gets loaded-model sequences detected in a parsed journal.
