@@ -66,6 +66,10 @@ internal static class LoadedModelAnalyzer
 
             var nextDataLine = dataLine?.NextOfType<JournalDataLine>();
 
+            var normalizedPath = dataLine?.Values.LastOrDefault() is { } rawPath
+                ? NormalizePath(journal, rawPath)
+                : null;
+
             // Flag models that do not have a JournalData line carrying the filename.
             if (dataLine is null ||
                 dataLine.Key is not ("File Name" or "Dropped File Name" or "MRUFileName"))
@@ -92,19 +96,19 @@ internal static class LoadedModelAnalyzer
                     {
                         ignoreEventIndexes.Add(i);
                     }
-                    else if (dataLine.Values.Count > 0)
+                    else if (normalizedPath is not null)
                     {
-                        paths.Add(NormalizePath(journal, dataLine.Values[^1]));
+                        paths.Add(normalizedPath);
                     }
                 }
-                else if (dataLine.Values.Count > 0)
+                else if (normalizedPath is not null)
                 {
-                    paths.Add(NormalizePath(journal, dataLine.Values[^1]));
+                    paths.Add(normalizedPath);
                 }
             }
-            else if (dataLine.Values.Count > 0)
+            else if (normalizedPath is not null)
             {
-                paths.Add(NormalizePath(journal, dataLine.Values[^1]));
+                paths.Add(normalizedPath);
             }
         }
 
