@@ -379,9 +379,17 @@ internal static class JournalRecordBuilder
             return true;
         }
 
-        if (line.Contains(":< SLOG $", StringComparison.Ordinal))
+        if (line.Contains(":< SLOG ", StringComparison.Ordinal))
         {
-            records.Add(new JournalWorksharingEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            var entryType = line.Contains(":< SLOG $", StringComparison.Ordinal)
+                ? JournalWorksharingEntryType.Event
+                : JournalWorksharingEntryType.Metadata;
+    
+            records.Add(new JournalWorksharingEventLine(
+                state.PhysicalLineNumber,
+                line,
+                state.CurrentBlock,
+                entryType));
             return true;
         }
 

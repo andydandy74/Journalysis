@@ -132,6 +132,7 @@ public sealed class Journal
     private bool _startupTimeInitialized;
     private bool? _wasPlaybackInterrupted;
     private bool? _wasSessionTerminatedProperly;
+    private IReadOnlyList<WorksharingSession>? _worksharingSessions;
 
     /// <summary>
     /// Gets the total number of timestamp-delimited blocks found during parsing.
@@ -680,6 +681,13 @@ public sealed class Journal
                 line.Description,
                 "finished recording journal file",
                 StringComparison.Ordinal));
+
+    /// <summary>
+    /// Gets worksharing sessions reconstructed from journal SLOG entries.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public IReadOnlyList<WorksharingSession> WorksharingSessions =>
+        _worksharingSessions ??= JournalWorksharingSessionAnalyzer.GetWorksharingSessions(this);
 
     /// <summary>
     /// Compares objects by reference so duplicate line instances can be detected reliably.

@@ -558,6 +558,27 @@ public enum JournalUiEventType
 }
 
 /// <summary>
+/// Classifies SLOG lines in the journal as event lines or session metadata.
+/// </summary>
+public enum JournalWorksharingEntryType
+{
+    /// <summary>
+    /// Not recognized.
+    /// </summary>
+    Unknown = 0,
+
+    /// <summary>
+    /// SLOG event with session ID, timestamp, and event text.
+    /// </summary>
+    Event,
+
+    /// <summary>
+    /// SLOG metadata line (e.g., build=..., user=..., host=...).
+    /// </summary>
+    Metadata
+}
+
+/// <summary>
 /// Identifies how a model was opened or whether loading completed.
 /// </summary>
 /// <remarks>

@@ -1735,6 +1735,14 @@ internal static class JournalLineParser
         var slogParts = line.RawText.Split(":< SLOG ", StringSplitOptions.None);
         var payload = slogParts[^1];
 
+        // Metadata entries do not have a session ID or datetime, so just store the payload as-is.
+        if (line.EntryType == JournalWorksharingEntryType.Metadata)
+        {
+            line.Text = payload.Trim();
+            return;
+        }
+
+        // Continue if the entry type is Event, which requires parsing the session ID and datetime.
         // Split the payload by whitespace, removing empty entries.
         var ws = payload.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
 

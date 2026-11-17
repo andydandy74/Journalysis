@@ -697,14 +697,25 @@ public sealed class JournalUiEventLine : JournalLine
 /// </summary>
 public sealed class JournalWorksharingEventLine : JournalLine
 {
-    public JournalWorksharingEventLine(int number, string rawText, int block) : base(number, rawText, block)
+    public JournalWorksharingEventLine(
+        int number,
+        string rawText,
+        int block,
+        JournalWorksharingEntryType entryType)
+        : base(number, rawText, block)
     {
+        EntryType = entryType;
     }
 
     /// <summary>
     /// Gets or sets extracted worksharing timestamp.
     /// </summary>
     public DateTime? DateTime { get; set; }
+
+    /// <summary>
+    /// Gets the SLOG entry type (Event or Metadata).
+    /// </summary>
+    public JournalWorksharingEntryType EntryType { get; }
 
     public override JournalLineKind Kind => JournalLineKind.WorksharingEvent;
 
