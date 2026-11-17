@@ -1,0 +1,1 @@
+Jrn.AddInEvent "AddInJournaling"  , "WpfPopup().WpfButton(0,YesButton).Click()"
