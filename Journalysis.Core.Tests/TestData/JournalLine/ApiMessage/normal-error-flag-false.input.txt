@@ -1,0 +1,1 @@
+0:< API_SUCCESS { Registering ApplicationInitialized event by application BIM IFC Exporter (d2fe9530-a191-4f58-b3c4-1653384a6286). }

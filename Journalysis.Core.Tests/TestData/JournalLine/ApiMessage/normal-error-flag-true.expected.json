@@ -1,0 +1,4 @@
+{
+  "IsError": true,
+  "MessageText": "Assembly version conflict in some references in Revit.IFC.Export.dll assembly Addin's module RevitAPI of version 24.2.0.0 conflicts with same preloaded module of version 24.3.50.0 Addin's module RevitAPIIFC of version 24.2.0.0 conflicts with same preloaded module of version 24.3.50.0"
+}

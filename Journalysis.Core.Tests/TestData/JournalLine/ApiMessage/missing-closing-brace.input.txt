@@ -1,0 +1,1 @@
+0:< API_SUCCESS { Registering ApplicationInitialized event

@@ -160,6 +160,7 @@ internal static class JournalLineParser
             "{ ",
             StringSplitOptions.None);
 
+        // Defensive check for the opening delimiter, even though the first-pass parser should have already validated it.
         if (openingParts.Length < 2)
         {
             throw new FormatException(
