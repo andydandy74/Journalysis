@@ -492,8 +492,9 @@ internal static class JournalLineParser
 
         var commandTypeSegment = commandParts[0];
 
+        // The split delimiter consumes the closing quote of the command type,
+        // so commandTypeSegment ends with the type text, not with a quote.
         if (!commandTypeSegment.StartsWith(commandPrefix, StringComparison.Ordinal) ||
-            !commandTypeSegment.EndsWith("\"", StringComparison.Ordinal) ||
             commandTypeSegment.Length <= commandPrefix.Length)
         {
             throw new FormatException(
@@ -503,7 +504,12 @@ internal static class JournalLineParser
                     "the quoted command type is incomplete."));
         }
 
-        var commandTypeText = commandTypeSegment[commandPrefix.Length..^1];
+        // The type text runs from after the prefix to the end of the segment.
+        // It may still carry a trailing quote and whitespace when the line has
+        // no payload delimiter, so trim both before classification.
+        var commandTypeText = commandTypeSegment[commandPrefix.Length..]
+            .Trim()
+            .TrimEnd('"');
         line.CommandType = ParseCommandType(commandTypeText);
 
         // A complete command type without a payload is still malformed.
@@ -519,16 +525,8 @@ internal static class JournalLineParser
         var payloadParts = commandParts[1]
             .Split(" , ", StringSplitOptions.None);
 
-        if (payloadParts.Length == 0 ||
-            !payloadParts[0].StartsWith("\"", StringComparison.Ordinal))
-        {
-            throw new FormatException(
-                BuildParseErrorMessage(
-                    line,
-                    $"Cannot parse command at physical line {line.Number}: " +
-                    "the quoted command description is incomplete."));
-        }
-
+        // The split delimiter consumes the opening quote of the description,
+        // so payloadParts[0] starts directly with the description text.
         line.CommandDescription = payloadParts[0];
 
         if (payloadParts.Length <= 1)
@@ -540,7 +538,10 @@ internal static class JournalLineParser
                     "the command ID is missing or incomplete."));
         }
 
-        var rawCommandId = payloadParts[1];
+        // The split delimiter consumes the opening quote of the command ID and
+        // may leave trailing whitespace at the end of the line. Trim both so the
+        // ID is extracted from the quoted token reliably.
+        var rawCommandId = payloadParts[1].Trim();
 
         if (!rawCommandId.EndsWith("\"", StringComparison.Ordinal))
         {
@@ -582,6 +583,7 @@ internal static class JournalLineParser
             "AccelKey" => JournalCommandType.AccelKey,
             "Internal" => JournalCommandType.Internal,
             "KeyboardShortcut" => JournalCommandType.KeyboardShortcut,
+            "ProjectBrowser" => JournalCommandType.ProjectBrowser,
             "PrintPreviewUI" => JournalCommandType.PrintPreviewUi,
             "Ribbon" => JournalCommandType.Ribbon,
             "StartupPage" => JournalCommandType.StartupPage,

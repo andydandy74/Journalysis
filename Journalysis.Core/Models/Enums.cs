@@ -113,6 +113,11 @@ public enum JournalCommandType
     KeyboardShortcut,
 
     /// <summary>
+    /// Command started from Revit's project browser.
+    /// </summary>
+    ProjectBrowser,
+
+    /// <summary>
     /// Command started from the print preview UI.
     /// </summary>
     PrintPreviewUi,

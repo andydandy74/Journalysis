@@ -1,0 +1,5 @@
+{
+  "CommandType": "Ribbon",
+  "CommandDescription": "Öffnet ein Projekt",
+  "CommandId": "ID_REVIT_FILE_OPEN"
+}

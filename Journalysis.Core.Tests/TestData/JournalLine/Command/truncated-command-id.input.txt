@@ -1,0 +1,1 @@
+  Jrn.Command "Ribbon"  , "Öffnet ein Projekt , ID_REVIT_FILE_OP

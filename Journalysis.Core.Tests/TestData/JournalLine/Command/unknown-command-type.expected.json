@@ -1,0 +1,6 @@
+{
+  "Exception": "FormatException",
+  "CommandType": "Unknown",
+  "CommandDescription": "Some description",
+  "CommandId": "ID_SOME_COMMAND"
+}
