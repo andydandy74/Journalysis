@@ -1,0 +1,1 @@
+' [Jrn.BasicFileInfo] Rvt.Attr.Worksharing: In progress Rvt.Attr.Username:  Rvt.Attr.CentralModelPath:  Rvt.Attr.RevitBuildVersion: Autodesk Revit 2026 (Build: 20260629_1515(x64)) Rvt.Attr.LastSavePath: C:\myfolder\mymodel.rvt Rvt.Attr.LTProject: notLTProject Rvt.Attr.LocaleWhenSaved: DEU Rvt.Attr.FileExt: rvt

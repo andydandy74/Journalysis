@@ -1,0 +1,1 @@
+' [Jrn.BasicFileInfo] Rvt.Attr.Worksharing: File-Based Central Rvt.Attr.CentralModelPath: \\myserver\myfolder\mymodel.rvt Rvt.Attr.RevitBuildVersion: 2026 (Build: 20260629_1515(x64)) Rvt.Attr.LastSavePath: \\myserver\myfolder\mymodel.rvt Rvt.Attr.LocaleWhenSaved: DEU Rvt.Attr.FileExt: rvt
