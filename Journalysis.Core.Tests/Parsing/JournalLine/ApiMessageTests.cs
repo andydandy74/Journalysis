@@ -43,11 +43,24 @@ public sealed class ApiMessageTests
 
             if (expected.RootElement.TryGetProperty("MessageText", out var messageTextElement))
             {
-                Assert.Equal(messageTextElement.GetString(), apiMessage.MessageText);
+                var expectedMsg = messageTextElement.GetString();
+                if (expectedMsg is null)
+                {
+                    Assert.Null(apiMessage.MessageText);
+                }
+                else
+                {
+                    Assert.Equal(expectedMsg, apiMessage.MessageText);
+                }
             }
-            else
+
+            if (expected.RootElement.TryGetProperty("MessageType", out var messageTypeElement))
             {
-                Assert.Null(apiMessage.MessageText);
+                var expectedTypeString = messageTypeElement.GetString();
+                if (Enum.TryParse<JournalApiMessageType>(expectedTypeString, out var expectedType))
+                {
+                    Assert.Equal(expectedType, apiMessage.MessageType);
+                }
             }
 
             return;
@@ -65,11 +78,24 @@ public sealed class ApiMessageTests
 
         if (expected.RootElement.TryGetProperty("MessageText", out var messageTextNormalElement))
         {
-            Assert.Equal(messageTextNormalElement.GetString(), apiMessageLine.MessageText);
+            var expectedMsgNormal = messageTextNormalElement.GetString();
+            if (expectedMsgNormal is null)
+            {
+                Assert.Null(apiMessageLine.MessageText);
+            }
+            else
+            {
+                Assert.Equal(expectedMsgNormal, apiMessageLine.MessageText);
+            }
         }
-        else
+
+        if (expected.RootElement.TryGetProperty("MessageType", out var messageTypeNormalElement))
         {
-            Assert.Null(apiMessageLine.MessageText);
+            var expectedTypeString = messageTypeNormalElement.GetString();
+            if (Enum.TryParse<JournalApiMessageType>(expectedTypeString, out var expectedType))
+            {
+                Assert.Equal(expectedType, apiMessageLine.MessageType);
+            }
         }
     }
 }
