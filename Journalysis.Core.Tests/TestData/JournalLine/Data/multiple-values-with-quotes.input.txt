@@ -1,0 +1,3 @@
+  Jrn.Data  _
+          "Selection action"  , "REPLACE" ,  _
+           "SEL RESULT: <empty>"

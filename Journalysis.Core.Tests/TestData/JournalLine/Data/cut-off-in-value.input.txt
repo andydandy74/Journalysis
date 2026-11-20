@@ -1,0 +1,2 @@
+  Jrn.Data  _
+          "Transaction Successful"  , "Verschieb

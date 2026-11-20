@@ -1,0 +1,2 @@
+  Jrn.Data  _
+          "ViewManipRotateFlag"  , 1
