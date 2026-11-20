@@ -1,0 +1,2 @@
+Jrn.Directive  _
+        "JournalDataAlignmentStationLabelSetIntervalMeters"  , 3280.83989501312317
