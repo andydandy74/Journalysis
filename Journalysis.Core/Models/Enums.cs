@@ -348,7 +348,7 @@ public enum JournalMouseEventType
     RButtonUp,
 
     /// <summary>
-    /// Scroll action event.
+    /// Scroll action event - possibly deprecated.
     /// </summary>
     Scroll,
 
