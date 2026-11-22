@@ -1,0 +1,1 @@
+'C 28-Jul-2021 14:20:34.214;  DBG_ERROR: RegenStep changes another element: GoodSymbol of FamilyInstance {########} (-1: FamilyInstanceGoodSymbolStep): line 398 of d:\ship\2019_px64\source\revit\revitdb\regen\ADocumentRegen.cpp.

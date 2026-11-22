@@ -1,0 +1,6 @@
+{
+  "TimeStampType": "C",
+  "DateTime": "2021-07-28 14:20:34.214",
+  "DebugInfoType": "Error",
+  "Description": "RegenStep changes another element: GoodSymbol of FamilyInstance {########} (-1: FamilyInstanceGoodSymbolStep): line 398 of d:\\ship\\2019_px64\\source\\revit\\revitdb\\regen\\ADocumentRegen.cpp."
+}
