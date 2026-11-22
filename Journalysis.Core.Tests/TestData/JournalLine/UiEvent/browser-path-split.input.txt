@@ -1,0 +1,1 @@
+Jrn.Browser "ToggleExpandedState" , ">>Ansichten (Basis alle LPH)>>BIM Koordination>>"

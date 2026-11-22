@@ -1,0 +1,1 @@
+Jrn.SBTrayAction "ID_INDICATOR_SLCCNTR"  , "LButtonDown: 526157, 1869, 8"

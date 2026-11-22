@@ -497,12 +497,12 @@ public enum JournalUiEventType
     ListBox,
 
     /// <summary>
-    /// Maximizing a view.
+    /// Maximizing a view. Possibly deprecated.
     /// </summary>
     Maximize,
 
     /// <summary>
-    /// Minimizing a view.
+    /// Minimizing a view.  Possibly deprecated.
     /// </summary>
     Minimize,
 
@@ -522,7 +522,7 @@ public enum JournalUiEventType
     RadioButton,
 
     /// <summary>
-    /// Restoring a minimized view.
+    /// Restoring a minimized view. Possibly deprecated.
     /// </summary>
     Restore,
 

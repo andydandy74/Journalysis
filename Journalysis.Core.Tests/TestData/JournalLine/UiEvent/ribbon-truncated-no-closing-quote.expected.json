@@ -1,0 +1,4 @@
+{
+  "UiEventType": "RibbonEvent",
+  "Data": ["ComboCurrentChangedEvent", "TypeSelector", "MyFloorType:Geschos"]
+}

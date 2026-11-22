@@ -1,0 +1,1 @@
+Jrn.PushButton "Modeless , Autodesk Revit 2025 , Dialog_Revit_DocWarnDialog" , "Abbrechen, IDABORT"

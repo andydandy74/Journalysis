@@ -1,0 +1,1 @@
+Jrn.TreeCtrl "Dialog_Revit_ExtendedErrorDialog"  , "2637" , "ToggleExpandedState"  , ">>555 Warnung(en) (können ignoriert werden)>>Unerwartete Fehler beim Exportieren dieser Elemente in die IFC-Datei.>>Warnung 3>>"

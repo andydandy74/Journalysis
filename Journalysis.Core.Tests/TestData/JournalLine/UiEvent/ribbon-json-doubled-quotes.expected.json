@@ -1,0 +1,8 @@
+{
+  "UiEventType": "RibbonEvent",
+  "Data": [
+    "ModelBrowserOpenDocumentEvent",
+    "open",
+    "{\"projectGuid\":null,\"modelGuid\":null,\"id\":\"\\\\\\\\myserver\\\\mydrive\\\\mymodel.rvt\",\"displayName\":\"mymodel.rvt\",\"region\":null,\"modelVersion\":\"0\"}"
+  ]
+}
