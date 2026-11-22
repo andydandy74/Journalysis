@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Journalysis.Core.Models;
 
@@ -1731,7 +1732,10 @@ internal static class JournalLineParser
     /// Extracts worksharing session ID, datetime, and descriptive text.
     /// </summary>
     /// <param name="line">Worksharing-event record.</param>
-    /// <exception cref="FormatException">Worksharing datetime parsing fails.</exception>
+    /// <exception cref="FormatException">
+    /// The session ID is not a dollar sign followed by eight hexadecimal digits,
+    /// or the worksharing datetime does not match <c>yyyy-MM-dd HH:mm:ss.fff</c>.
+    /// </exception>
     private static void ParseWorksharingEvent(JournalWorksharingEventLine line)
     {
         // Split the raw text by ':< SLOG ' and take the last part.
@@ -1751,26 +1755,48 @@ internal static class JournalLineParser
 
         if (ws.Length == 0)
         {
-            return;
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Cannot parse worksharing session ID at physical line {line.Number}."));
         }
 
         line.SessionId = ws[0];
 
-        if (ws.Length > 2)
+        // Keep the assigned value on failure (same behaviour as the datetime path),
+        // but reject invalid identifiers before attempting to parse the datetime.
+        if (!IsValidWorksharingSessionId(line.SessionId))
         {
-            var dateTimeText = ws[1] + " " + ws[2];
+            throw new FormatException(
+                BuildParseErrorMessage(
+                    line,
+                    $"Worksharing session ID has unexpected format at physical line {line.Number}."));
+        }
 
-            // Parse the datetime without explicit culture.
+        // A datetime, if present, must match the journal format exactly.
+        // ParseExact rejects truncated values instead of silently completing them
+        // (e.g. "2026-09-28 10:02:5" would otherwise become "10:02:05").
+        if (ws.Length > 1)
+        {
+            const string dateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff";
+            var dateTimeText = ws.Length > 2
+                ? ws[1] + " " + ws[2]
+                : ws[1];
+
             try
             {
-                line.DateTime = DateTime.Parse(dateTimeText);
+                line.DateTime = DateTime.ParseExact(
+                    dateTimeText,
+                    dateTimeFormat,
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.None);
             }
             catch (Exception ex)
             {
                 throw new FormatException(
                     BuildParseErrorMessage(
                         line,
-                        $"Cannot parse worksharing datetime at physical line {line.Number}."),
+                        $"Worksharing datetime has unexpected format at physical line {line.Number}."),
                     ex);
             }
         }
@@ -1780,6 +1806,22 @@ internal static class JournalLineParser
             // Join the remaining parts of the payload with spaces.
             line.Text = string.Join(" ", ws, 3, ws.Length - 3);
         }
+    }
+
+    /// <summary>
+    /// Checks whether the token is a dollar sign followed by exactly eight
+    /// hexadecimal digits.
+    /// </summary>
+    private static bool IsValidWorksharingSessionId(string sessionId)
+    {
+        // uint, not int: eight hex digits may reach 0xFFFFFFFF.
+        return sessionId.Length == 9
+               && sessionId[0] == '$'
+               && uint.TryParse(
+                   sessionId.AsSpan(1),
+                   NumberStyles.HexNumber,
+                   CultureInfo.InvariantCulture,
+                   out _);
     }
 
     /// <summary>
