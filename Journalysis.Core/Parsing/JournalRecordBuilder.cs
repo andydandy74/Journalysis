@@ -157,7 +157,8 @@ internal static class JournalRecordBuilder
             {
                 var afterMarker = line[(line.IndexOf(":<    ", StringComparison.Ordinal) + 6)..];
 
-                if (afterMarker.StartsWith(" ", StringComparison.Ordinal))
+                if (afterMarker.StartsWith(" ", StringComparison.Ordinal) ||
+                    !afterMarker.Contains(" : ", StringComparison.Ordinal))
                 {
                     records.Add(new JournalCommentLine(state.PhysicalLineNumber, line, state.CurrentBlock));
                 }
