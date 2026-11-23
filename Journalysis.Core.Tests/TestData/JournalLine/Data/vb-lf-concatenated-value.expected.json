@@ -1,0 +1,8 @@
+{
+  "Key": "TaskDialogResult",
+  "Values": [
+    "Die folgenden neu zu ladenden Gruppen haben dieselben Namen wie bereits im Projekt vorhandene Gruppen: MY_GROUP  Sollen die vorhandenen Gruppen ersetzt werden?",
+    "No",
+    "IDNO"
+  ]
+}

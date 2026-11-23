@@ -1,0 +1,3 @@
+  Jrn.Data  _
+          "Selection action"  , "REPLACE" ,  _
+           "SEL RESULT: Ansicht ""3D-Ansicht: {3d -my_username}"" : 3D-Schnittbereiche : 3D-Schnittbereich" 

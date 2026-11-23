@@ -1,0 +1,4 @@
+    Jrn.Data  _
+            "TaskDialogResult"  , "Die folgenden neu zu ladenden Gruppen haben dieselben Namen wie bereits im Projekt vorhandene Gruppen:" & vbLf & "MY_GROUP" & vbLf & "" & vbLf & "Sollen die vorhandenen Gruppen ersetzt werden?" ,  _
+             "No"  _
+            , "IDNO" 

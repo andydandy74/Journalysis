@@ -1874,23 +1874,110 @@ internal static class JournalLineParser
 
             if (text[index] == '"')
             {
-                var valueStart = ++index;
-                var valueEnd = text.IndexOf('"', valueStart);
+                var valueBuilder = new StringBuilder();
+                index++;
 
-                if (valueEnd < 0)
+                while (true)
                 {
-                    throw new FormatException(
-                        BuildParseErrorMessage(
-                            line,
-                            $"Cannot parse values at physical line {line.Number}: " +
-                            "a quoted value is incomplete."));
+                    index = AppendQuotedLiteral(text, index, valueBuilder, line);
+
+                    while (index < text.Length &&
+                           char.IsWhiteSpace(text[index]))
+                    {
+                        index++;
+                    }
+
+                    if (index >= text.Length || text[index] != '&')
+                    {
+                        break;
+                    }
+
+                    // VB concatenation: "& vbLf &" becomes a single space.
+                    index++;
+
+                    while (index < text.Length &&
+                           char.IsWhiteSpace(text[index]))
+                    {
+                        index++;
+                    }
+
+                    if (index >= text.Length)
+                    {
+                        throw new FormatException(
+                            BuildParseErrorMessage(
+                                line,
+                                $"Cannot parse values at physical line {line.Number}: " +
+                                "a concatenation operand is missing."));
+                    }
+
+                    // A directly quoted operand is handled by the next iteration.
+                    if (text[index] == '"')
+                    {
+                        index++;
+                        continue;
+                    }
+
+                    var fragmentStart = index;
+
+                    while (index < text.Length &&
+                           !char.IsWhiteSpace(text[index]) &&
+                           text[index] != '&')
+                    {
+                        index++;
+                    }
+
+                    var fragment = text[fragmentStart..index];
+
+                    if (!TryMapConcatenationConstant(fragment, out var replacement))
+                    {
+                        throw new FormatException(
+                            BuildParseErrorMessage(
+                                line,
+                                $"Cannot parse values at physical line {line.Number}: " +
+                                $"the concatenation constant '{fragment}' is not supported."));
+                    }
+
+                    valueBuilder.Append(replacement);
+
+                    while (index < text.Length &&
+                           char.IsWhiteSpace(text[index]))
+                    {
+                        index++;
+                    }
+
+                    if (index >= text.Length || text[index] != '&')
+                    {
+                        throw new FormatException(
+                            BuildParseErrorMessage(
+                                line,
+                                $"Cannot parse values at physical line {line.Number}: " +
+                                "a concatenation separator is missing."));
+                    }
+
+                    index++;
+
+                    while (index < text.Length &&
+                           char.IsWhiteSpace(text[index]))
+                    {
+                        index++;
+                    }
+
+                    if (index >= text.Length || text[index] != '"')
+                    {
+                        throw new FormatException(
+                            BuildParseErrorMessage(
+                                line,
+                                $"Cannot parse values at physical line {line.Number}: " +
+                                "a quoted value is missing after concatenation."));
+                    }
+
+                    index++;
                 }
 
-                var value = text[valueStart..valueEnd];
+                var value = valueBuilder.ToString();
 
                 // An explicitly empty quoted value represents null.
                 values.Add(value.Length == 0 ? null : value);
-                index = valueEnd + 1;
             }
             else
             {
@@ -1947,6 +2034,66 @@ internal static class JournalLineParser
             }
 
             index++;
+        }
+    }
+
+    /// <summary>
+    /// Appends one quoted literal, treating doubled quotes as escaped quotes.
+    /// </summary>
+    /// <returns>Index just past the closing quote.</returns>
+    private static int AppendQuotedLiteral(
+        string text,
+        int start,
+        StringBuilder value,
+        JournalLine line)
+    {
+        var index = start;
+
+        while (index < text.Length)
+        {
+            if (text[index] == '"')
+            {
+                if (index == start ||
+                    index + 1 >= text.Length ||
+                    text[index + 1] != '"')
+                {
+                    return index + 1;
+                }
+
+                value.Append('"');
+                index += 2;
+                continue;
+            }
+
+            value.Append(text[index]);
+            index++;
+        }
+
+        throw new FormatException(
+            BuildParseErrorMessage(
+                line,
+                $"Cannot parse values at physical line {line.Number}: " +
+                "a quoted value is incomplete."));
+    }
+
+    /// <summary>
+    /// Maps VB constants used in journal concatenation to their replacement text.
+    /// </summary>
+    private static bool TryMapConcatenationConstant(
+        string fragment,
+        out string replacement)
+    {
+        switch (fragment)
+        {
+            case "vbLf":
+            case "vbCrLf":
+            case "vbCr":
+            case "vbTab":
+                replacement = " ";
+                return true;
+            default:
+                replacement = string.Empty;
+                return false;
         }
     }
 
