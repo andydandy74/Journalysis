@@ -1,0 +1,2 @@
+' 0:< API_SUCCESS { Added pushbutton Id: 6514, name: cmdExportActiveView, text: Export 
+' Active View, class: EvolveLAB.Helix.Revit.ExportModelToHubCommand, assembly: C:\ProgramData\EvolveLAB\Helix\Revit\2025\EvolveLAB.Helix.dll, parentId: CustomCtrl_%Helix%Helix } 
