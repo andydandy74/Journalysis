@@ -429,6 +429,11 @@ public sealed class JournalGuiResourceUsageLine : JournalLine
 /// <summary>
 /// Parsed <c>Jrn.Key</c> keyboard event record.
 /// </summary>
+/// <remarks>
+/// The raw record also contains two numeric counters whose meaning has not been
+/// established; they are not exposed on this model. Known key tokens are documented
+/// by <see cref="JournalKeyboardKey"/>; unlisted tokens are preserved verbatim.
+/// </remarks>
 public sealed class JournalKeyboardEventLine : JournalLine
 {
     public JournalKeyboardEventLine(int number, string rawText, int block) : base(number, rawText, block)
@@ -436,7 +441,9 @@ public sealed class JournalKeyboardEventLine : JournalLine
     }
 
     /// <summary>
-    /// Gets or sets extracted keyboard token (for example: <c>VK_DOWN</c>).
+    /// Gets or sets the quoted keyboard token from the journal (for example:
+    /// <c>VK_DOWN</c>, <c>CR</c>, <c>Tab</c>). The value stays a string so unrecognized
+    /// tokens are not lost; see <see cref="JournalKeyboardKey"/> for the documented vocabulary.
     /// </summary>
     public string? Key { get; set; }
 
@@ -488,6 +495,10 @@ public sealed class JournalMemoryMetricsLine : JournalLine
 /// <summary>
 /// Parsed playback-relevant command line that does not match other command-like types.
 /// </summary>
+/// <remarks>
+/// Observed tokens include <c>Dim Jrn</c> and <c>Set Jrn = CrsJournalScript</c>.
+/// Other tokens should be reported so they can be documented here.
+/// </remarks>
 public sealed class JournalMiscCommandLine : JournalLine
 {
     public JournalMiscCommandLine(int number, string rawText, int block) : base(number, rawText, block)

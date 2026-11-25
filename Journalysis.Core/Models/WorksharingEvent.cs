@@ -32,6 +32,7 @@ public sealed class WorksharingEvent
     /// <remarks>
     /// A leading <c>&gt;</c> marks the start of an operation, <c>&lt;</c> its end,
     /// and <c>.</c> an informational marker.
+    /// Known event terms are documented by <see cref="WorksharingLogEventType"/>.
     /// </remarks>
     public string Text { get; }
 
