@@ -49,7 +49,6 @@ internal sealed class JournalParseContext
     public bool OsVersionFound { get; set; }
 
     /// <summary>
-    /// <summary>
     /// Gets recoverable parsing errors in record encounter order.
     /// </summary>
     public List<JournalParsingError> ParsingErrors { get; } = new List<JournalParsingError>();

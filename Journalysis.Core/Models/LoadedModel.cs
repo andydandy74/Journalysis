@@ -59,18 +59,18 @@ public sealed class LoadedModel
 
     /// <summary>
     /// Gets the first comment text containing <c>":&lt; File was saved in"</c>
-    /// between the opening and loaded blocks.
+    /// between the opening and loaded blocks, when available.
     /// </summary>
     /// <remarks>
     /// The value is computed on first access and then cached.
-    /// This property assumes the sequence contains at least two events and that the
-    /// expected comment exists in the block range.
+    /// Returns <see langword="null"/> when the sequence has no load-complete event
+    /// or the expected comment is absent from the block range.
     /// </remarks>
-    public string Version =>
+    public string? Version =>
         _version ??= GetLinesBetweenOpenAndLoadedBlocks()
             .OfType<JournalCommentLine>()
-            .First(x => x.RawText.Contains(":< File was saved in", StringComparison.Ordinal))
-            .RawText;
+            .FirstOrDefault(x => x.RawText.Contains(":< File was saved in", StringComparison.Ordinal))
+            ?.RawText;
 
     /// <summary>
     /// Gets save-history comment lines between the first two
@@ -85,6 +85,12 @@ public sealed class LoadedModel
 
     private IReadOnlyList<JournalLine> GetLinesBetweenOpenAndLoadedBlocks()
     {
+        // A sequence without a load-complete event has no range to inspect.
+        if (Events.Count < 2)
+        {
+            return Array.Empty<JournalLine>();
+        }
+
         // Get the range of blocks between the first two events.
         var fromBlock = Events[0].JournalLine.Block;
         var toBlock = Events[1].JournalLine.Block;
