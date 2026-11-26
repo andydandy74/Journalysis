@@ -65,6 +65,10 @@ internal static class JournalLineParser
                 ParseDirective(directive, context);
                 break;
 
+            case JournalExternalEventLine externalEvent:
+                ParseExternalEvent(externalEvent);
+                break;
+
             case JournalGuiResourceUsageLine guiResourceUsage:
                 ParseGuiResourceUsage(guiResourceUsage);
                 break;
@@ -961,6 +965,83 @@ internal static class JournalLineParser
             }
 
             context.UserName = line.Values[0];
+        }
+    }
+
+    /// <summary>
+    /// Extracts add-in attributes from an <c>[Jrn.ExternalEventExecution]</c> record.
+    /// </summary>
+    /// <param name="line">External-event record.</param>
+    /// <remarks>
+    /// Missing or malformed attributes are ignored, so partial records keep
+    /// the values that were recorded.
+    /// </remarks>
+    private static void ParseExternalEvent(JournalExternalEventLine line)
+    {
+        const string recordMarker = "[Jrn.ExternalEventExecution]";
+
+        var markerIndex = line.RawText.IndexOf(
+            recordMarker,
+            StringComparison.Ordinal);
+
+        if (markerIndex < 0)
+        {
+            return;
+        }
+
+        var payload = line.RawText[
+            (markerIndex + recordMarker.Length)..];
+
+        var attrSegments = payload.Split(
+            "Rvt.Attr.",
+            StringSplitOptions.None);
+
+        for (var i = 1; i < attrSegments.Length; i++)
+        {
+            var split = attrSegments[i].Split(
+                ':',
+                2,
+                StringSplitOptions.None);
+
+            if (split.Length < 2)
+            {
+                continue;
+            }
+
+            var key = split[0].Trim();
+            var value = split[1].Trim();
+
+            if (value.Length == 0)
+            {
+                continue;
+            }
+
+            switch (key)
+            {
+                case "AddInId":
+                    line.AddInId = value;
+                    break;
+
+                case "AddInName":
+                    line.AddInName = value;
+                    break;
+
+                case "AddInVersion":
+                    line.AddInVersion = value;
+                    break;
+
+                case "ExternalEventName":
+                    line.ExternalEventName = value;
+                    break;
+
+                case "VendorDescription":
+                    line.VendorDescription = value;
+                    break;
+
+                case "VendorId":
+                    line.VendorId = value;
+                    break;
+            }
         }
     }
 

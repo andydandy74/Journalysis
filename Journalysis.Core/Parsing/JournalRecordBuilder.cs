@@ -333,6 +333,12 @@ internal static class JournalRecordBuilder
             return true;
         }
 
+        if (line.StartsWith("' [Jrn.ExternalEventExecution]", StringComparison.Ordinal))
+        {
+            records.Add(new JournalExternalEventLine(state.PhysicalLineNumber, line, state.CurrentBlock));
+            return true;
+        }
+
         if (line.StartsWith("Jrn.Data ", StringComparison.Ordinal))
         {
             records.Add(new JournalDataLine(state.PhysicalLineNumber, line, state.CurrentBlock));

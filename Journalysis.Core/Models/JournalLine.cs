@@ -456,6 +456,48 @@ public sealed class JournalDirectiveLine : JournalLine
 }
 
 /// <summary>
+/// Parsed <c>[Jrn.ExternalEventExecution]</c> metadata comment.
+/// </summary>
+public sealed class JournalExternalEventLine : JournalLine
+{
+    public JournalExternalEventLine(int number, string rawText, int block) : base(number, rawText, block)
+    {
+    }
+
+    /// <summary>
+    /// Gets or sets the add-in ID recorded for the external event.
+    /// </summary>
+    public string? AddInId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the add-in name recorded for the external event.
+    /// </summary>
+    public string? AddInName { get; set; }
+
+    /// <summary>
+    /// Gets or sets the add-in version recorded for the external event.
+    /// </summary>
+    public string? AddInVersion { get; set; }
+
+    /// <summary>
+    /// Gets or sets the name of the executed external event.
+    /// </summary>
+    public string? ExternalEventName { get; set; }
+
+    public override JournalLineKind Kind => JournalLineKind.ExternalEvent;
+
+    /// <summary>
+    /// Gets or sets the vendor description recorded for the external event.
+    /// </summary>
+    public string? VendorDescription { get; set; }
+
+    /// <summary>
+    /// Gets or sets the vendor ID recorded for the external event.
+    /// </summary>
+    public string? VendorId { get; set; }
+}
+
+/// <summary>
 /// Parsed GUI resource-usage comment (GDI counters).
 /// </summary>
 public sealed class JournalGuiResourceUsageLine : JournalLine

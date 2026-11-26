@@ -251,6 +251,12 @@ public enum JournalLineKind
     Directive,
 
     /// <summary>
+    /// External-event execution comment ([Jrn.ExternalEventExecution]) recording
+    /// the add-in that raised the event, its version and vendor, and the event name.
+    /// </summary>
+    ExternalEvent,
+
+    /// <summary>
     /// GUI resource-usage comment (GDI availability/usage counters).
     /// </summary>
     GuiResourceUsage,
