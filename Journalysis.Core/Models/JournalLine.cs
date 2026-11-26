@@ -93,6 +93,62 @@ public abstract class JournalLine
     public DateTime? GetDateTimeOfBlock() => Journal?.GetDateTimeByBlock(Block);
 
     /// <summary>
+    /// Gets up to <paramref name="count"/> records immediately after this one, in encounter order.
+    /// </summary>
+    /// <param name="count">Maximum number of following records to return.</param>
+    /// <returns>A snapshot of up to <paramref name="count"/> following records.</returns>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
+    /// <remarks>
+    /// Returns an empty snapshot when this record has no owning journal or no following records.
+    /// Unlike <see cref="AllNext"/>, this does not materialize the entire suffix.
+    /// </remarks>
+    public IReadOnlyList<JournalLine> GetNextLines(int count)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(count);
+
+        if (Journal is null || Index + 1 >= Journal.Lines.Count || count == 0)
+        {
+            return Array.Empty<JournalLine>();
+        }
+
+        var result = new JournalLine[Math.Min(count, Journal.Lines.Count - Index - 1)];
+        for (var index = 0; index < result.Length; index++)
+        {
+            result[index] = Journal.Lines[Index + 1 + index];
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Gets up to <paramref name="count"/> records immediately before this one, in encounter order.
+    /// </summary>
+    /// <param name="count">Maximum number of preceding records to return.</param>
+    /// <returns>A snapshot of up to <paramref name="count"/> preceding records.</returns>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
+    /// <remarks>
+    /// Returns an empty snapshot when this record has no owning journal or no preceding records.
+    /// Unlike <see cref="AllPrevious"/>, this does not materialize the entire prefix.
+    /// </remarks>
+    public IReadOnlyList<JournalLine> GetPreviousLines(int count)
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(count);
+
+        if (Journal is null || Index <= 0 || count == 0)
+        {
+            return Array.Empty<JournalLine>();
+        }
+
+        var result = new JournalLine[Math.Min(count, Index)];
+        for (var index = 0; index < result.Length; index++)
+        {
+            result[index] = Journal.Lines[Index - result.Length + index];
+        }
+
+        return result;
+    }
+
+    /// <summary>
     /// Gets whether this record has a recoverable parsing error.
     /// </summary>
     /// <remarks>
