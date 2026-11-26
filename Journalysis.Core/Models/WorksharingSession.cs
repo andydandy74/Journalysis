@@ -66,6 +66,11 @@ public sealed class WorksharingSession
     public DateTime? End { get; internal set; }
 
     /// <summary>
+    /// Gets the number of events recorded for this session.
+    /// </summary>
+    public int EventCount => Events.Count;
+
+    /// <summary>
     /// Gets the events recorded for this session in encounter order.
     /// </summary>
     public IReadOnlyList<WorksharingEvent> Events => _events;
@@ -94,6 +99,12 @@ public sealed class WorksharingSession
     /// Gets the path of the journal file associated with this session, when available.
     /// </summary>
     public string? Journal { get; internal set; }
+
+    /// <summary>
+    /// Gets the number of loaded links derived from this session's events.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int LoadedLinkCount => LoadedLinks.Count;
 
     /// <summary>
     /// Gets loaded-link records derived from <c>&gt;OpenLink</c> / <c>&lt;OpenLink</c> event pairs.
@@ -132,6 +143,12 @@ public sealed class WorksharingSession
     /// Gets the session start timestamp, when available.
     /// </summary>
     public DateTime? Start { get; internal set; }
+
+    /// <summary>
+    /// Gets the number of synchronize-with-central operations derived from this session's events.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int SyncEventCount => SyncEvents.Count;
 
     /// <summary>
     /// Gets synchronize-with-central records derived from <c>&gt;STC</c> / <c>&lt;STC</c> event pairs.
