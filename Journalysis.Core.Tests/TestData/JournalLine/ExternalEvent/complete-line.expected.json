@@ -1,0 +1,8 @@
+{
+  "AddInId": "bea1df91-34ec-4296-af6d-81d1d7a9d606",
+  "AddInName": "Autodesk Issues Addin for Revit 2024",
+  "AddInVersion": "7.0.1",
+  "ExternalEventName": "Autodesk.Bim360.Revit.Issues.Addin.IntermediateApplication, Autodesk.Bim360.Revit.Issues.Addin, Version=7.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "VendorDescription": "Autodesk, Inc, www.autodesk.com",
+  "VendorId": "ADSK"
+}
