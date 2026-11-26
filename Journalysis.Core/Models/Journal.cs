@@ -110,10 +110,9 @@ public sealed class Journal
         }
     }
 
-    private bool? _containsApiErrors;
+    private IReadOnlyList<JournalApiMessageLine>? _apiErrors;
     private DateTime? _date;
     private bool _dateInitialized;
-    private bool? _hasParsingErrors;
     private bool? _isInPlaybackMode;
     private IReadOnlyList<LoadedAssembly>? _loadedAssemblies;
     private IReadOnlyList<LoadedModel>? _loadedModels;
@@ -135,6 +134,19 @@ public sealed class Journal
     private IReadOnlyList<WorksharingSession>? _worksharingSessions;
 
     /// <summary>
+    /// Gets the number of API error messages in the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int ApiErrorCount => ApiErrors.Count;
+
+    /// <summary>
+    /// Gets API error messages inferred from journal records.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public IReadOnlyList<JournalApiMessageLine> ApiErrors =>
+        _apiErrors ??= GetLines<JournalApiMessageLine>(line => line.IsError);
+
+    /// <summary>
     /// Gets the total number of timestamp-delimited blocks found during parsing.
     /// </summary>
     public int BlockCount { get; }
@@ -148,22 +160,6 @@ public sealed class Journal
     /// Gets the parsed build token, when available.
     /// </summary>
     public string? Build { get; }
-
-    /// <summary>
-    /// Gets whether the journal contains API error messages.
-    /// The result is computed on first access and then cached.
-    /// </summary>
-    public bool ContainsApiErrors =>
-        _containsApiErrors ??= GetLines<JournalApiMessageLine>().Any(x => x.IsError);
-
-    /// <summary>
-    /// Gets whether any recorded exceptions were identified in the journal.
-    /// </summary>
-    /// <remarks>
-    /// This property uses <see cref="RecordedExceptions"/> and therefore triggers
-    /// lazy exception analysis on first access.
-    /// </remarks>
-    public bool ContainsExceptions => RecordedExceptions.Count > 0;
 
     /// <summary>
     /// Gets the journal timestamp from block 1.
@@ -256,6 +252,14 @@ public sealed class Journal
         ArgumentOutOfRangeException.ThrowIfNegative(number);
         return Lines.Skip(Math.Max(0, Lines.Count - number)).ToArray();
     }
+
+    /// <summary>
+    /// Gets the first record whose original physical line number matches <paramref name="number"/>.
+    /// </summary>
+    /// <param name="number">Original physical line number in the source file.</param>
+    /// <returns>The matching record, or <see langword="null"/> when no record has that number.</returns>
+    public JournalLine? GetLineByNumber(int number) =>
+        Lines.FirstOrDefault(line => line.Number == number);
 
     /// <summary>
     /// Gets all records of a specific journal-line subtype.
@@ -364,10 +368,43 @@ public sealed class Journal
     }
 
     /// <summary>
-    /// Gets whether recoverable parsing errors were reported.
-    /// The result is computed on first access and then cached.
+    /// Gets whether the journal contains API error messages.
+    /// Equivalent to <see cref="ApiErrorCount"/> being greater than zero.
     /// </summary>
-    public bool HasParsingErrors => _hasParsingErrors ??= ParsingErrors.Count > 0;
+    public bool HasApiErrors => ApiErrorCount > 0;
+
+    /// <summary>
+    /// Gets whether any assemblies were inferred from the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public bool HasLoadedAssemblies => LoadedAssemblyCount > 0;
+
+    /// <summary>
+    /// Gets whether any models were detected as loaded in the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public bool HasLoadedModels => LoadedModelCount > 0;
+
+    /// <summary>
+    /// Gets whether recoverable parsing errors were reported.
+    /// Equivalent to <see cref="ParsingErrorCount"/> being greater than zero.
+    /// </summary>
+    public bool HasParsingErrors => ParsingErrorCount > 0;
+
+    /// <summary>
+    /// Gets whether any recorded exceptions were identified in the journal.
+    /// </summary>
+    /// <remarks>
+    /// This property uses <see cref="RecordedExceptionCount"/> and therefore triggers
+    /// lazy exception analysis on first access.
+    /// </remarks>
+    public bool HasRecordedExceptions => RecordedExceptionCount > 0;
+
+    /// <summary>
+    /// Gets whether any worksharing sessions were reconstructed from the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public bool HasWorksharingSessions => WorksharingSessionCount > 0;
 
     /// <summary>
     /// Gets whether the journal records the start of journal playback.
@@ -393,11 +430,23 @@ public sealed class Journal
     public IReadOnlyList<JournalLine> Lines { get; }
 
     /// <summary>
+    /// Gets the number of loaded assemblies inferred from the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int LoadedAssemblyCount => LoadedAssemblies.Count;
+
+    /// <summary>
     /// Gets loaded add-in assemblies inferred from API messages.
     /// Analysis is performed on first access and then cached.
     /// </summary>
     public IReadOnlyList<LoadedAssembly> LoadedAssemblies =>
         _loadedAssemblies ??= LoadedAssemblyAnalyzer.GetLoadedAssemblies(this);
+
+    /// <summary>
+    /// Gets the number of loaded models detected in the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int LoadedModelCount => LoadedModels.Count;
 
     /// <summary>
     /// Gets loaded-model sequences inferred from commands/UI events.
@@ -497,6 +546,11 @@ public sealed class Journal
     public string? OsVersion { get; }
 
     /// <summary>
+    /// Gets the number of recoverable parsing errors collected for this journal.
+    /// </summary>
+    public int ParsingErrorCount => ParsingErrors.Count;
+
+    /// <summary>
     /// Gets recoverable parsing errors encountered while parsing this journal.
     /// </summary>
     /// <remarks>
@@ -519,6 +573,12 @@ public sealed class Journal
     /// Gets the parsed release token, when available.
     /// </summary>
     public string? Release { get; }
+
+    /// <summary>
+    /// Gets the number of individual recorded exceptions in the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int RecordedExceptionCount => RecordedExceptions.Count;
 
     /// <summary>
     /// Gets recorded exceptions inferred from timestamp/API/comment lines.
@@ -681,6 +741,12 @@ public sealed class Journal
                 line.Description,
                 "finished recording journal file",
                 StringComparison.Ordinal));
+
+    /// <summary>
+    /// Gets the number of worksharing sessions reconstructed from the journal.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int WorksharingSessionCount => WorksharingSessions.Count;
 
     /// <summary>
     /// Gets worksharing sessions reconstructed from journal SLOG entries.
