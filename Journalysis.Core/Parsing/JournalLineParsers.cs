@@ -586,6 +586,7 @@ internal static class JournalLineParser
             "KeyboardShortcut" => JournalCommandType.KeyboardShortcut,
             "ProjectBrowser" => JournalCommandType.ProjectBrowser,
             "PrintPreviewUI" => JournalCommandType.PrintPreviewUi,
+            "RepeatLastCommand" => JournalCommandType.RepeatLastCommand,
             "Ribbon" => JournalCommandType.Ribbon,
             "StartupPage" => JournalCommandType.StartupPage,
             "StatusBar" => JournalCommandType.StatusBar,

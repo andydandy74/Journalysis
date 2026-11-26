@@ -129,6 +129,7 @@ public sealed class Journal
     private bool _sessionTimeInitialized;
     private TimeSpan? _startupTime;
     private bool _startupTimeInitialized;
+    private IReadOnlyList<JournalLine>? _unknownEnumValueLines;
     private bool? _wasPlaybackInterrupted;
     private bool? _wasSessionTerminatedProperly;
     private IReadOnlyList<WorksharingSession>? _worksharingSessions;
@@ -399,6 +400,12 @@ public sealed class Journal
     /// lazy exception analysis on first access.
     /// </remarks>
     public bool HasRecordedExceptions => RecordedExceptionCount > 0;
+
+    /// <summary>
+    /// Gets whether any record has an enum property set to <c>Unknown</c>.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public bool HasUnknownEnumValues => UnknownEnumValueCount > 0;
 
     /// <summary>
     /// Gets whether any worksharing sessions were reconstructed from the journal.
@@ -710,6 +717,19 @@ public sealed class Journal
     }
 
     public override string ToString() => nameof(Journal);
+
+    /// <summary>
+    /// Gets the number of records with an enum property set to <c>Unknown</c>.
+    /// Analysis is performed on first access and then cached.
+    /// </summary>
+    public int UnknownEnumValueCount => UnknownEnumValueLines.Count;
+
+    /// <summary>
+    /// Gets records whose parsed enum property was set to <c>Unknown</c>, in
+    /// physical line order. Analysis is performed on first access and then cached.
+    /// </summary>
+    public IReadOnlyList<JournalLine> UnknownEnumValueLines =>
+        _unknownEnumValueLines ??= UnknownEnumValueAnalyzer.GetUnknownEnumValueLines(this);
 
     /// <summary>
     /// Gets the parsed username, when available.

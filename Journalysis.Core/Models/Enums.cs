@@ -146,7 +146,12 @@ public enum JournalCommandType
     /// Command started from the system menu.
     /// In observed journals, this has primarily been used for exiting Revit.
     /// </summary>
-    SystemMenu
+    SystemMenu,
+
+    /// <summary>
+    /// Command started by repeating the most recently used command.
+    /// </summary>
+    RepeatLastCommand
 }
 
 /// <summary>
