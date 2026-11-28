@@ -257,7 +257,8 @@ public enum JournalLineKind
     ExternalEvent,
 
     /// <summary>
-    /// GUI resource-usage comment (GDI availability/usage counters).
+    /// GUI resource-usage comment reporting Windows GDI availability and usage
+    /// counters and the current User-object count for the Revit process.
     /// </summary>
     GuiResourceUsage,
 
@@ -356,6 +357,31 @@ public enum JournalMemoryMetric
     /// Peak virtual memory in MB.
     /// </summary>
     VmPeak
+}
+
+/// <summary>
+/// Identifies one of the three GUI resource counters sampled from GUI resource-usage records.
+/// </summary>
+/// <remarks>
+/// Values are object counts. GdiAvailable is the remaining share of the 10,000-object
+/// GDI budget; GdiUsed and UserUsed are current GDI and User object counts.
+/// </remarks>
+public enum JournalGuiResourceMetric
+{
+    /// <summary>
+    /// Available GDI objects out of the 10,000-object per-process budget.
+    /// </summary>
+    GdiAvailable,
+
+    /// <summary>
+    /// GDI objects currently in use by the Revit process.
+    /// </summary>
+    GdiUsed,
+
+    /// <summary>
+    /// User objects currently in use by the Revit process.
+    /// </summary>
+    UserUsed
 }
 
 /// <summary>

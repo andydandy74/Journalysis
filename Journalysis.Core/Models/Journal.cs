@@ -131,10 +131,17 @@ public sealed class Journal
     private IReadOnlyList<JournalApiMessageLine>? _apiErrors;
     private DateTime? _date;
     private bool _dateInitialized;
+    private GuiResourceTimeline? _guiResourceTimeline;
     private bool? _isInPlaybackMode;
     private IReadOnlyList<LoadedAssembly>? _loadedAssemblies;
     private IReadOnlyList<LoadedModel>? _loadedModels;
     private MemoryMetricsTimeline? _memoryMetricsTimeline;
+    private int? _maxGdiObjectsUsed;
+    private bool _maxGdiObjectsUsedInitialized;
+    private int? _maxGdiObjectsUser;
+    private bool _maxGdiObjectsUserInitialized;
+    private int? _minGdiObjectsAvailable;
+    private bool _minGdiObjectsAvailableInitialized;
     private int? _maxRamPeak;
     private bool _maxRamPeakInitialized;
     private int? _maxRamUsed;
@@ -515,13 +522,66 @@ public sealed class Journal
     public IReadOnlyList<LoadedModel> LoadedModels =>
         _loadedModels ??= LoadedModelAnalyzer.GetLoadedModels(this);
 
+    private GuiResourceTimeline GuiResourceTimeline =>
+        _guiResourceTimeline ??= GuiResourceAnalyzer.GetTimeline(this);
+
     private MemoryMetricsTimeline MemoryMetricsTimeline =>
         _memoryMetricsTimeline ??= MemoryMetricsAnalyzer.GetTimeline(this);
+
+    /// <summary>
+    /// Gets the available-GDI-objects timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalGuiResourcePoint> GdiAvailableTimeline => GuiResourceTimeline.GdiAvailable;
+
+    /// <summary>
+    /// Gets the used-GDI-objects timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalGuiResourcePoint> GdiUsedTimeline => GuiResourceTimeline.GdiUsed;
 
     /// <summary>
     /// Gets the parsed machine name, when available.
     /// </summary>
     public string? Machine { get; }
+
+    /// <summary>
+    /// Gets the maximum number of GDI objects recorded as in use, computed on first access and cached.
+    /// </summary>
+    public int? MaxGdiObjectsUsed
+    {
+        get
+        {
+            if (!_maxGdiObjectsUsedInitialized)
+            {
+                _maxGdiObjectsUsed = Lines.OfType<JournalGuiResourceUsageLine>()
+                    .Select(line => line.Used)
+                    .Max();
+
+                _maxGdiObjectsUsedInitialized = true;
+            }
+
+            return _maxGdiObjectsUsed;
+        }
+    }
+
+    /// <summary>
+    /// Gets the maximum number of User objects recorded as in use, computed on first access and cached.
+    /// </summary>
+    public int? MaxGdiObjectsUser
+    {
+        get
+        {
+            if (!_maxGdiObjectsUserInitialized)
+            {
+                _maxGdiObjectsUser = Lines.OfType<JournalGuiResourceUsageLine>()
+                    .Select(line => line.User)
+                    .Max();
+
+                _maxGdiObjectsUserInitialized = true;
+            }
+
+            return _maxGdiObjectsUser;
+        }
+    }
 
     /// <summary>
     /// Gets the maximum recorded RAM peak, computed on first access and cached.
@@ -600,6 +660,26 @@ public sealed class Journal
             }
 
             return _maxVmUsed;
+        }
+    }
+
+    /// <summary>
+    /// Gets the minimum number of GDI objects recorded as available, computed on first access and cached.
+    /// </summary>
+    public int? MinGdiObjectsAvailable
+    {
+        get
+        {
+            if (!_minGdiObjectsAvailableInitialized)
+            {
+                _minGdiObjectsAvailable = Lines.OfType<JournalGuiResourceUsageLine>()
+                    .Select(line => line.Available)
+                    .Min();
+
+                _minGdiObjectsAvailableInitialized = true;
+            }
+
+            return _minGdiObjectsAvailable;
         }
     }
 
@@ -841,6 +921,11 @@ public sealed class Journal
     /// </summary>
     public IReadOnlyList<JournalLine> UnknownEnumValueLines =>
         _unknownEnumValueLines ??= UnknownEnumValueAnalyzer.GetUnknownEnumValueLines(this);
+
+    /// <summary>
+    /// Gets the used-User-objects timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalGuiResourcePoint> UserUsedTimeline => GuiResourceTimeline.UserUsed;
 
     /// <summary>
     /// Gets the parsed username, when available.

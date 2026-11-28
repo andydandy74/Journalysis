@@ -498,8 +498,14 @@ public sealed class JournalExternalEventLine : JournalLine
 }
 
 /// <summary>
-/// Parsed GUI resource-usage comment (GDI counters).
+/// GUI resource-usage comment reporting the Windows GDI and User object counters
+/// held by the Revit process at a point in the session.
 /// </summary>
+/// <remarks>
+/// GDI objects have a 10,000-per-process budget: <see cref="Available"/> and
+/// <see cref="Used"/> are complementary and always sum to 10,000. <see cref="User"/>
+/// is a separate User-object counter and is not part of that budget.
+/// </remarks>
 public sealed class JournalGuiResourceUsageLine : JournalLine
 {
     public JournalGuiResourceUsageLine(int number, string rawText, int block) : base(number, rawText, block)
@@ -507,19 +513,22 @@ public sealed class JournalGuiResourceUsageLine : JournalLine
     }
 
     /// <summary>
-    /// Gets or sets available GUI-resource count.
+    /// Gets or sets the number of GDI objects still available to the Revit process
+    /// out of its 10,000-object budget.
     /// </summary>
     public int? Available { get; set; }
 
     public override JournalLineKind Kind => JournalLineKind.GuiResourceUsage;
 
     /// <summary>
-    /// Gets or sets used GUI-resource count.
+    /// Gets or sets the number of GDI objects currently allocated to the Revit process.
+    /// Together with <see cref="Available"/> this always totals 10,000.
     /// </summary>
     public int? Used { get; set; }
 
     /// <summary>
-    /// Gets or sets user-related GUI-resource count.
+    /// Gets or sets the number of User objects currently in use by the Revit process.
+    /// This is a separate Windows counter and is not included in the GDI budget.
     /// </summary>
     public int? User { get; set; }
 }
