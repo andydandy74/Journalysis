@@ -78,7 +78,7 @@ internal static class JournalLineParser
                 break;
 
             case JournalMemoryMetricsLine memoryMetrics:
-                ParseMemoryMetrics(memoryMetrics);
+                ParseMemoryMetrics(memoryMetrics, context);
                 break;
 
             case JournalMiscCommandLine:
@@ -1179,10 +1179,13 @@ internal static class JournalLineParser
     /// Extracts VM/RAM metrics from memory-metrics records.
     /// </summary>
     /// <param name="line">Memory-metrics record.</param>
+    /// <param name="context">Shared parse context for journal-level initial memory values.</param>
     /// <exception cref="FormatException">
     /// Required payload segments are missing or contain unparseable datetime/numeric data.
     /// </exception>
-    private static void ParseMemoryMetrics(JournalMemoryMetricsLine line)
+    private static void ParseMemoryMetrics(
+        JournalMemoryMetricsLine line,
+        JournalParseContext context)
     {
         var rawText = line.RawText;
 
@@ -1334,6 +1337,19 @@ internal static class JournalLineParser
         if (!metricFound)
         {
             throw IncompleteLine(line);
+        }
+
+        // Only the marked initial measurement contributes journal-level initial
+        // values; delta lines still populate their own record fields as before.
+        if (!isDelta && !context.InitialMemoryMetricsFound)
+        {
+            context.InitialMemoryMetricsFound = true;
+            context.InitialRamAvailable = line.RamAvailable;
+            context.InitialRamUsed = line.RamUsed;
+            context.InitialRamPeak = line.RamPeak;
+            context.InitialVmAvailable = line.VmAvailable;
+            context.InitialVmUsed = line.VmUsed;
+            context.InitialVmPeak = line.VmPeak;
         }
     }
 

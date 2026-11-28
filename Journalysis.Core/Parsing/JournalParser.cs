@@ -69,6 +69,12 @@ public sealed class JournalParser
             release: context.Release,
             machine: context.MachineName,
             osVersion: context.OsVersion,
+            initialRamAvailable: context.InitialRamAvailable,
+            initialRamUsed: context.InitialRamUsed,
+            initialRamPeak: context.InitialRamPeak,
+            initialVmAvailable: context.InitialVmAvailable,
+            initialVmUsed: context.InitialVmUsed,
+            initialVmPeak: context.InitialVmPeak,
             parsingErrors: context.ParsingErrors);
 
         journal.ProcessingTime = Stopwatch.GetElapsedTime(processingStarted);

@@ -31,6 +31,12 @@ public sealed class Journal
     /// <param name="release">Revit release token extracted from build metadata, when available.</param>
     /// <param name="machine">Machine name extracted from journal comments, when available.</param>
     /// <param name="osVersion">OS version extracted from system-information sections, when available.</param>
+    /// <param name="initialRamAvailable">Available RAM from the initial memory-metrics line, when available.</param>
+    /// <param name="initialRamUsed">Used RAM from the initial memory-metrics line, when available.</param>
+    /// <param name="initialRamPeak">Peak RAM from the initial memory-metrics line, when available.</param>
+    /// <param name="initialVmAvailable">Available virtual memory from the initial memory-metrics line, when available.</param>
+    /// <param name="initialVmUsed">Used virtual memory from the initial memory-metrics line, when available.</param>
+    /// <param name="initialVmPeak">Peak virtual memory from the initial memory-metrics line, when available.</param>
     /// <param name="parsingErrors">
     /// Recoverable parsing errors associated with the supplied records,
     /// or <see langword="null"/> when no errors were reported.
@@ -52,6 +58,12 @@ public sealed class Journal
         string? release,
         string? machine,
         string? osVersion,
+        int? initialRamAvailable = null,
+        int? initialRamUsed = null,
+        int? initialRamPeak = null,
+        int? initialVmAvailable = null,
+        int? initialVmUsed = null,
+        int? initialVmPeak = null,
         IReadOnlyList<JournalParsingError>? parsingErrors = null)
     {
         ArgumentNullException.ThrowIfNull(lines);
@@ -102,6 +114,12 @@ public sealed class Journal
         Release = release;
         Machine = machine;
         OsVersion = osVersion;
+        InitialRamAvailable = initialRamAvailable;
+        InitialRamUsed = initialRamUsed;
+        InitialRamPeak = initialRamPeak;
+        InitialVmAvailable = initialVmAvailable;
+        InitialVmUsed = initialVmUsed;
+        InitialVmPeak = initialVmPeak;
 
         for (var index = 0; index < snapshot.Length; index++)
         {
@@ -116,10 +134,15 @@ public sealed class Journal
     private bool? _isInPlaybackMode;
     private IReadOnlyList<LoadedAssembly>? _loadedAssemblies;
     private IReadOnlyList<LoadedModel>? _loadedModels;
+    private MemoryMetricsTimeline? _memoryMetricsTimeline;
     private int? _maxRamPeak;
     private bool _maxRamPeakInitialized;
+    private int? _maxRamUsed;
+    private bool _maxRamUsedInitialized;
     private int? _maxVmPeak;
     private bool _maxVmPeakInitialized;
+    private int? _maxVmUsed;
+    private bool _maxVmUsedInitialized;
     private int? _minRamAvailable;
     private bool _minRamAvailableInitialized;
     private int? _minVmAvailable;
@@ -414,6 +437,36 @@ public sealed class Journal
     public bool HasWorksharingSessions => WorksharingSessionCount > 0;
 
     /// <summary>
+    /// Gets the available RAM from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialRamAvailable { get; }
+
+    /// <summary>
+    /// Gets the used RAM from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialRamUsed { get; }
+
+    /// <summary>
+    /// Gets the peak RAM from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialRamPeak { get; }
+
+    /// <summary>
+    /// Gets the available virtual memory from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialVmAvailable { get; }
+
+    /// <summary>
+    /// Gets the used virtual memory from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialVmUsed { get; }
+
+    /// <summary>
+    /// Gets the peak virtual memory from the initial memory-metrics line, when available.
+    /// </summary>
+    public int? InitialVmPeak { get; }
+
+    /// <summary>
     /// Gets whether the journal records the start of journal playback.
     /// The result is computed on first access and then cached.
     /// </summary>
@@ -462,6 +515,9 @@ public sealed class Journal
     public IReadOnlyList<LoadedModel> LoadedModels =>
         _loadedModels ??= LoadedModelAnalyzer.GetLoadedModels(this);
 
+    private MemoryMetricsTimeline MemoryMetricsTimeline =>
+        _memoryMetricsTimeline ??= MemoryMetricsAnalyzer.GetTimeline(this);
+
     /// <summary>
     /// Gets the parsed machine name, when available.
     /// </summary>
@@ -488,6 +544,26 @@ public sealed class Journal
     }
 
     /// <summary>
+    /// Gets the maximum recorded RAM usage, computed on first access and cached.
+    /// </summary>
+    public int? MaxRamUsed
+    {
+        get
+        {
+            if (!_maxRamUsedInitialized)
+            {
+                _maxRamUsed = Lines.OfType<JournalMemoryMetricsLine>()
+                    .Select(line => line.RamUsed)
+                    .Max();
+
+                _maxRamUsedInitialized = true;
+            }
+
+            return _maxRamUsed;
+        }
+    }
+
+    /// <summary>
     /// Gets the maximum recorded virtual-memory peak, computed on first access and cached.
     /// </summary>
     public int? MaxVmPeak
@@ -504,6 +580,26 @@ public sealed class Journal
             }
 
             return _maxVmPeak;
+        }
+    }
+
+    /// <summary>
+    /// Gets the maximum recorded virtual-memory usage, computed on first access and cached.
+    /// </summary>
+    public int? MaxVmUsed
+    {
+        get
+        {
+            if (!_maxVmUsedInitialized)
+            {
+                _maxVmUsed = Lines.OfType<JournalMemoryMetricsLine>()
+                    .Select(line => line.VmUsed)
+                    .Max();
+
+                _maxVmUsedInitialized = true;
+            }
+
+            return _maxVmUsed;
         }
     }
 
@@ -565,6 +661,21 @@ public sealed class Journal
     /// <see cref="Lines"/> and may contain successfully parsed fields.
     /// </remarks>
     public IReadOnlyList<JournalParsingError> ParsingErrors { get; }
+
+    /// <summary>
+    /// Gets the available-RAM timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> RamAvailableTimeline => MemoryMetricsTimeline.RamAvailable;
+
+    /// <summary>
+    /// Gets the peak-RAM timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> RamPeakTimeline => MemoryMetricsTimeline.RamPeak;
+
+    /// <summary>
+    /// Gets the used-RAM timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> RamUsedTimeline => MemoryMetricsTimeline.RamUsed;
 
     /// <summary>
     /// Gets the journal path recorded inside the journal content, when available.
@@ -740,6 +851,21 @@ public sealed class Journal
     /// Gets the parsed Revit version year, when available.
     /// </summary>
     public int? Version { get; }
+
+    /// <summary>
+    /// Gets the available-virtual-memory timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> VmAvailableTimeline => MemoryMetricsTimeline.VmAvailable;
+
+    /// <summary>
+    /// Gets the peak-virtual-memory timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> VmPeakTimeline => MemoryMetricsTimeline.VmPeak;
+
+    /// <summary>
+    /// Gets the used-virtual-memory timeline; analysis runs on first access and is cached.
+    /// </summary>
+    public IReadOnlyList<JournalMemoryMetricsPoint> VmUsedTimeline => MemoryMetricsTimeline.VmUsed;
 
     /// <summary>
     /// Gets whether playback interruption is recorded in the journal.

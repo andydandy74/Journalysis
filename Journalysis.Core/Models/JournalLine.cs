@@ -705,6 +705,7 @@ public sealed class JournalMouseEventLine : JournalLine
 /// identifies the beginning of a new printer-configuration entry.
 /// </description>
 /// </item>
+/// </list>
 ///
 /// Each physical key/value line is represented by a separate
 /// <see cref="JournalSystemInformationLine"/>. For repeated devices or

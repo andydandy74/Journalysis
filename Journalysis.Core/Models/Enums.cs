@@ -318,6 +318,47 @@ public enum JournalLineKind
 }
 
 /// <summary>
+/// Identifies one of the six memory metrics sampled from memory-metrics records.
+/// </summary>
+/// <remarks>
+/// Values are reported in MB. Available metrics describe how much memory was free,
+/// used/peak metrics describe consumption; lower available and higher used/peak values
+/// indicate greater memory pressure.
+/// </remarks>
+public enum JournalMemoryMetric
+{
+    /// <summary>
+    /// Available RAM in MB.
+    /// </summary>
+    RamAvailable,
+
+    /// <summary>
+    /// Used RAM in MB.
+    /// </summary>
+    RamUsed,
+
+    /// <summary>
+    /// Peak RAM in MB.
+    /// </summary>
+    RamPeak,
+
+    /// <summary>
+    /// Available virtual memory in MB.
+    /// </summary>
+    VmAvailable,
+
+    /// <summary>
+    /// Used virtual memory in MB.
+    /// </summary>
+    VmUsed,
+
+    /// <summary>
+    /// Peak virtual memory in MB.
+    /// </summary>
+    VmPeak
+}
+
+/// <summary>
 /// Identifies a mouse-related journal command.
 /// </summary>
 /// <remarks>

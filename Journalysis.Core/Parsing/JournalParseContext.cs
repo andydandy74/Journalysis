@@ -23,6 +23,44 @@ internal sealed class JournalParseContext
     public string? Build { get; set; }
 
     /// <summary>
+    /// Gets or sets whether the initial (non-delta) memory-metrics line has been captured.
+    /// </summary>
+    /// <remarks>
+    /// Preserves first-match behavior and prevents delta lines from overwriting initial values.
+    /// </remarks>
+    public bool InitialMemoryMetricsFound { get; set; }
+
+    /// <summary>
+    /// Gets or sets the available RAM from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialRamAvailable { get; set; }
+
+    /// <summary>
+    /// Gets or sets the peak RAM from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialRamPeak { get; set; }
+
+    /// <summary>
+    /// Gets or sets the used RAM from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialRamUsed { get; set; }
+
+    /// <summary>
+    /// Gets or sets the available virtual memory from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialVmAvailable { get; set; }
+
+    /// <summary>
+    /// Gets or sets the peak virtual memory from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialVmPeak { get; set; }
+
+    /// <summary>
+    /// Gets or sets the used virtual memory from the initial memory-metrics line.
+    /// </summary>
+    public int? InitialVmUsed { get; set; }
+
+    /// <summary>
     /// Gets or sets the parsed machine name.
     /// </summary>
     public string? MachineName { get; set; }
